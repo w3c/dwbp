@@ -1,8 +1,7 @@
-<!-- <!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <title>Use Cases for Data on the Web Best Practices</title>
-  <meta name="description" content="A vocabulary for describing the contents of a data catalog" />
+  <title>Data on the Web Best Practices Use Cases & Requirement</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <!--[if lt IE 9]>
   <script src="http://www.w3.org/2008/site/js/html5shiv.js"></script>  <![endif]-->
@@ -15,6 +14,7 @@
           // specification status (e.g. WD, LC, WG-NOTE, etc.). If in doubt use ED.
           specStatus:           "ED", 
           //specStatus:           "CR",
+
 
           // the specification's short name, as in http://www.w3.org/TR/short-name/
           shortName:            "dwbp-usecases",
@@ -165,126 +165,1561 @@ pre {
   <section>
     <h2 id="use-cases">Use Cases</h2>
     <p>A use case describes a scenario that illustrates an experience of publishing and using Data on the Web.The information gathered from the uses cases should be helpful for the identification of the best practices that will guide the publishing and usage of Data on the Web. In general, a best practice will be described at least by a statement and a how to do it section, i.e., a discussion of techniques and suggestions as how to implement it. Use cases descriptions shows some of the main challenges faced by publishers or developers. Information about challenges will be helpful to identify areas where Best Practices are necessary. According to the challenges,  a set of requirements were defined, in such a way that a requirement motivates the creation of one or more best practices.</p>
-	<section>
-		<h3 id="UC-1">Use-Case #1 - Documented Support and Release of Data </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-2">Use-Case #2 - Feedback Loop for Corrections </h3>
-    	<p>
-   		</p>
-	</section>
-    <section>
-	<h3 id="UC-3">Use-Case #3 - Datasets required for Natural Disaster Management </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-    <h3 id="UC-4">Use-Case #4 - OKFN Tranport WG </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-5">Use-Case #5 - Tracking of data usage</h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-6">Use-Case #6 - Open City Data Pipeline </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-7">Use-Case #7 - Machine-readability and Interoperability of Licenses  </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-8">Use-Case #8 - Machine-readability of SLAs </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-9">Use-Case #9 - Publication of Data via APIs </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-10">Use-Case #10 - NYC Open Data Program  </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-11">Use-Case #11 - Recife Open Data Portal </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-12">Use-Case #12 - Dados.gov.br </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-13">Use-Case #13 - ISO GEO Story </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-14">Use-Case #14 - Dutch basic registers  </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-15">Use-Case #15 - Wind Characterization Scientific Study  </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-16">Use-Case #16 - BuildingEye: SME use of public data  </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-17">Use-Case #17 - Digital archiving of Linked Data </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-18">Use-Case #18 - LA Times' reporting of Ron Galperin's Infographic </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-19">Use-Case #19 - The Land Portal </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
-	<h3 id="UC-20">Use-Case #20 - Radar Parlamentar </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
+	<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+id="UC-DocumentedSupportandRelease">
+  <h3 id="h3_UC-DocumentedSupportandRelease" role="heading"
+  aria-level="2">
+  <span class="secno"></span>Use Case #1 - Documented Support and
+  Release of Data</h3>
+  <p>
+    <span style="font-size: 10pt">(Contributed by Deirdre
+    Lee)</span>
+  </p>
+  <p>While many cases of Data on the Web may contain meta-data
+  about creation data and last update, the regularity of the
+  release schedule is not always clear. Similarly, how and by whom
+  the dataset is supported should also be made clear in the
+  meta-data. These attributes are necessary to improve the
+  reliability of the data so that third-party users can trust the
+  timely delivery of the data, with a follow-up point should there
+  be any issues.</p>
+  <p>
+    <strong>Technical Challenges:</strong>
+  </p>
+  <ul>
+    <li>Describe release schedule in meta-data</li>
+    <li>Describe support mechanisms in meta-data</li>
+  </ul>
+  <p>
+    <strong>Potential Requirements:</strong>
+  </p>
+  <ul>
+    <li>Propose use of dcat properties dct:accrualPeriodicity and
+    dcat:contactpoint</li>
+    <li>Potentially extend dcat?</li>
+  </ul>
+  <p>
+    <strong>Requires:</strong>
+    <a href=""></a>
+    <a href=""></a>
+  </p>
+  </section>
+	
 
-	<h3 id="UC-21">Use-Case #21 - Uruguay: open data catalogue </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
+  <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+  id="UC-FeedbackLoopforCorrections">
+    <h3 id="h3_UC-FeedbackLoopforCorrections" role="heading"
+    aria-level="2">
+    <span class="secno"></span>Use Case #2 - Feedback Loop for
+    Corrections</h3>
+    <p>
+      <span style="font-size: 10pt">(Contributed by Deirdre Lee
+      (based on email by Leigh Dodds and OKF Greece workshop)
+      )</span>
+    </p>
+    <p>One of the advantages of publishing Open Data is often
+    quoted as improving the quality of the data. Many eyes looking
+    at a dataset helps spot errors and holes quicker than a public
+    body may identify this themselves. For example, when bus-stop
+    data is published, it may turn out that the official location
+    of a bus-stop is not always accurate, but when this is
+    mashed-up with OSM, the mistake is identified. However, how
+    this 'improved' data is fed back into the public body is not
+    clear. Should there be an automated mechanism for this? How can
+    the improvement be described in a machine readable format? What
+    is best practice for reincorporating such improvements?</p>
+    <p>
+      <strong>Technical Challenges:</strong>
+    </p>
+    <ul>
+      <li>Should there be an automated mechanism for this?</li>
+      <li>How can the improvement be described in a machine
+      readable format?</li>
+      <li>What is best practice for reincorporating such
+      improvements?</li>
+    </ul>
+    <p>
+      <strong>Requires:</strong>
+      <a href=""></a>
+      <a href=""></a>
+    </p>
+  </section>
+  
+  
+  
+  
+  <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+  id="UC-DatasetsforNaturalDisasterManagement">
+    <h3 id="h3_UC-DatasetsforNaturalDisasterManagement"
+    role="heading" aria-level="2">
+    <span class="secno"></span>Use Case #3 - Datasets required for
+    Natural Disaster Management</h3>
+    <p>
+      <span style="font-size: 10pt">(Contributed by Deirdre Lee
+      (based on OKF Greece workshop) )</span>
+    </p>
+    <p>Many of the datasets that are required for Natural Disaster
+    Management, for example critical infrastructure, utility
+    services, road networks, are not available online as they are
+    also deemed to be datasets that could be used for homeland
+    security attacks. (will expand on this use-case once slides are
+    available)</p>
+    <strong>Requires:</strong>
+    <a href=""></a>
+    <a href=""></a>
+	  </section>
+	
+	
+  
+  <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+  id="UC-OKFNTranportWG">
+    <h3 id="h3_UC-OKFNTranportWG" role="heading" aria-level="2">
+    <span class="secno"></span>Use Case #4 - OKFN Tranport WG</h3>
+    <p>
+      <span style="font-size: 10pt">(Contributed by Deirdre Lee
+      (based on OKF Greece workshop) )</span>
+    </p>
+    <p>The OKFN Transport WG have identified the following
+    shortcomings with transport data on the web... (will expand on
+    this use-case once slides are available)</p>
+    <!--    <p> <strong>Technical Challenges:</strong> </p>
+                <ul>
+                        <li> </li>
+                </ul>
 
-	<h3 id="UC-22">Use-Case #22 - GS1: GS1 Digital </h3>
-    	<p>
-   		</p>
-	</section>
-	<section>
+                <p> <strong>Potential Requirements:</strong> </p>
+                
+                <ul>
+                        <li></li>
+                        
+                </ul>
 
-	<h3 id="UC-23">Use-Case #23 - Tabulae - how to get value out of data </h3>
-    	<p>
-   		</p>
+                <p> -->
+    <strong>Requires:</strong>
+    <a href=""></a>
+    <a href=""></a>
+  </section>
+  
+  
+  
+  <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+  id="UC-TrackingofDataUsage">
+    <h3 id="h3_UC-TrackingofDataUsage" role="heading"
+    aria-level="2">
+    <span class="secno"></span>Use Case #5 - Tracking of data
+    usage</h3>
+    <p>
+      <span style="font-size: 10pt">(Contributed by Deirdre
+      Lee)</span>
+    </p>
+    <p>There are many potential/perceived benefits of Open Data,
+    however in order to publish data, some initial
+    investment/resources are required by public bodies. When
+    justifying these resources and evaluating the impact of the
+    investment, many Open Data providers express the desire to be
+    able to track how the datasets are being used. However Open
+    Data by design often requires no registration, explanation or
+    feedback to enable the access to and usage of the data. How can
+    data usage be tracked in order to inform the Open Data
+    ecosystem and improve data provision?</p>
+    <p>
+      <strong>Technical Challenges:</strong>
+    </p>
+    <ul>
+      <li>No registration required by data user</li>
+      <li>automatic vs. manual solution</li>
+      <li>solution should not break basic Open Data principles</li>
+      <li>Most developers may not mind giving feedback if it will
+      improve quality of data/service</li>
+    </ul>
+    <!-- ><p> <strong>Potential Requirements:</strong> </p>
+                
+                <ul>
+                        <li></li>
+                        
+                </ul> -->
+    <p>
+      <strong>Requires:</strong>
+      <a href=""></a>
+      <a href=""></a>
+    </p>
+  </section>
+  
+  
+  <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+  id="UC-OpenCityDataPipeline">
+    <h3 id="h3_UC-OpenCityDataPipeline" role="heading"
+    aria-level="2">
+    <span class="secno"></span>Use Case #6 - Open City Data
+    Pipeline</h3>
+    <p>
+      <span style="font-size: 10pt">(Contributed by Deirdre Lee 
+      <a href="http://ai.wu.ac.at/~polleres/presentations/20140319CityDataPipeline_EDF2014_Polleres.pdf">
+      (based on presentation by Axel Polleres at EDF14))</a></span>
+    </p>
+    <p>Axel presented the Open City Data Pipeline, which aims to to
+    provide an extensible platform to support citizens and city
+    administrators by providing city key performance indicators
+    (KPIs),leveraging Open Data sources. The assumption of Open
+    Data is the &#8220;Added value comes from comparable Open
+    datasets being combined&#8221;. Axel highlighted that Open Data
+    needs stronger standards to be useful, in particular for
+    industrial uptake. Industrial usage has different requirements
+    than app hobbyist or civil society, it's important to think how
+    Open Data can be used by industry at time of publication. They
+    have developed a data pipeline to 
+  <ol>
+<li> (semi-)automatically collect and integrate various Open Data Sources in different formats  
+</li>
+<li> compose and calculate complex city KPIs from the collected data 
+</li>
+</ol>
+<p>Current Data Summary
+</p>
+<ul>
+<li> Ca. 475 different indicators 
+</li>
+</ul>
+<ul>
+<li> Categories: Demography, Geography, Social Aspects, Economy, Environment, etc. 
+</li>
+</ul>
+<ul>
+<li> from 32 sources (html, CSV, RDF, ...) 
+</li>
+</ul>
+<ul>
+<li> Wikipedia, urbanaudit.org, Statistics from City homepages, country Statistics, iea.org
+</li>
+</ul>
+<ul>
+<li> Covering 350+cities in 28 European countries 
+</li>
+</ul>
+<ul>
+<li> District Data for selected cities (Vienna, Berlin) 
+</li>
+<li> Mostly snapshots, Partially covering timelines 
+</li>
+<li> On average ca. 285 facts per city.
+</li>
+</ul>
+<p>Base assumption (for our use case): 
+Added value comes from comparable Open datasets being combined 
+Challenges &amp; Lessons Learnt:
+</p>
+<ul>
+<li> <b>Incomplete</b> Data: can be partially overcome  
+</li>
+
+<ul>
+<li> By ontological reasoning (RDF &amp; OWL), by aggregation, or by rules &amp; equations, e.g. &#160;:populationDensity =&#160;:population /&#160;:area , cf. [ESWC2013]  
+</li>
+</ul>
+ 
+<ul>
+<li> By statistical methods or Multi-dimensional Matrix Decomposition:  
+</li>
+</ul> 
+</ul>(unfortunately only partially successful, because these algorithms assume normally-distributed data.) 
+<ul>
+<li> <b>Incomparable</b> Data:   
+</li>
+<ul>
+<li> dbpedia:populationTotal </li>
+ <li>dbpedia:populationCensus </li>
+ </ul>
+ </ul>
+<ul>
+<li> <b>Heterogeneity</b> across Open Government Data efforts:  
+</li>
+
+<ul>
+<li> Different <b>Indicators</b>, Different Temporal and Spatial Granularity  
+</li>
+<li> Different <b>Licenses</b> of Open Data: e.g. CC-BY, country specific licences, etc.  
+</li>
+<li> Heterogeneous <b>Formats</b> (CSV&#160;!= CSV) ... Maybe the W3C CSV on the Web WG will solve this issue) 
+</li>
+</ul>
+</ul>
+
+<p>Open Data needs stronger standards to be useful
+[ESWC2013] Stefan Bischof and Axel Polleres. RDFS with attribute equations via SPARQL rewriting. In Proc. Of the 10th ESWC, vol. 7882 of Lecture Notes in Computer Science (LNCS), p. 335-350, May 2013. Springer. 
+</p>
+        <!--    <p> <strong>Potential Requirements:</strong> </p>
+                
+                <ul>
+                        <li></li>
+                        
+                </ul> -->
+        <p>
+          <strong>Requires:</strong>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+		</section>
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter"
+        id="UC-MachineReadabilityandInteroperabilityofLicenses">
+          <h3 id="h3_UC-MachineReadabilityandInteroperabilityofLicenses"
+          role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #7 -
+          Machine-readability and Interoperability of Licenses</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Deirdre
+            Lee, based on post by Leigh Dodds)</span>
+          </p>
+          <p>There are many different licenses available under
+          which data on the web can be published, 
+          <a href="http://opendefinition.org/licenses/">e.g.
+          Creative Commons, Open Data Commons, national licenses,
+          etc.</a>It is important that the license is available in
+          a machine-readable format. Leigh Dodds has done some work
+          towards this with the Open Data Rights Statement
+          Vocabulary http://schema.theodi.org/odrs/
+          http://theodi.org/guides/publishers-guide-to-the-open-data-rights-statement-vocabulary
+          http://theodi.org/guides/odrs-reusers-guide Another issue
+          is when data under different licenses are combined, the
+          license terms under which the data is available also have
+          to be merged. This interoperability of licenses is a
+          challenge [may be out of scope of W3C DWBP, as it is more
+          concerned with legal issues]</p>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>standard vocabulary for data licenses</li>
+            <li>machine-readability of data licenses</li>
+            <li>interoperability of data licenses</li>
+          </ul>
+          <!-- <p> <strong>Potential Requirements:</strong> </p>
+                
+                <ul>
+                        <li></li>
+                        
+                </ul>
+-->
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-MachineReadabilityofSLAs">
+          <h3 id="h3_UC-MachineReadabilityofSLAs" role="heading"
+          aria-level="2">
+          <span class="secno"></span>Use Case #8 -
+          Machine-readability of SLAs</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Deirdre
+            Lee (based on a number of talks at EDF14) )</span>
+          </p>
+          <p>A main focus of publishing data on the web is to
+          facilitate industry resuse for commercial purposes. In
+          order for a commercial body to reuse data on the web, the
+          terms of reuse must be clear. The legal terms of reuse
+          are included in the license, but there are other factors
+          that are important for commercial reuse, e.g. reliabiliy,
+          support, incidient recovery, etc. These could be included
+          in an SLA. Is there a standardised, machine-readable
+          approach to SLAs?</p>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Defining common SLA requrirements for industry
+            re-use</li>
+            <li>Existing standards/vocabularies for SLA
+            requirements</li>
+            <li>Machine-readable access to SLAs</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-PublicationofDataviaAPIs">
+          <h3 id="h3_UC-PublicationofDataviaAPIs" role="heading"
+          aria-level="2">
+          <span class="secno"></span>Use Case #9 - Publication of
+          Data via APIs</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Deirdre
+            Lee)</span>
+          </p>
+          <p>APIs are commonly used to publish data in formats
+          designed for machine-consumption, as opposed to the
+          corresponding HTML pages whose main aim is to deliver
+          content suitable for human-consumption. There remains 
+          <a href="http://ruben.verborgh.org/blog/2013/11/29/the-lie-of-the-api/">
+          questions</a>around how APIs can best be designed to
+          publish data, and even if APIs are the most suitable way
+          for publishing data at all . Could use of HTTP and URIs
+          be sufficient? If the goal is to facilitate
+          machine-readable data, what is best-practice?</p>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>APIs can be too clunky/rich in their functionality,
+            which may increase the amount of calls necessary and
+            size of data transferred, reducing performance</li>
+            <li>Collaboration between API providers and users is
+            necessary to agree on 'useful' calls</li>
+            <li>API key agreements could restrict Openess of Open
+            Data?</li>
+            <li>Documentation accompanying APIs can be lacking</li>
+            <li>What is best practice for publishing streams of
+            real-time data (with/without APIs)?</li>
+            <li>Each resource should have one URI uniquly
+            identifying it. There can then be different
+            representations of the resource
+            (xml/html/json/rdf)</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-">
+          <h3 id="h3_UC-" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #10 - NYC Open Data
+          Program</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Steven
+            Adler)</span>
+          </p>
+          <p>Carole Post was appointed by Mayor Bloomberg as
+          Commissioner of the NY Departnmen of IT (DOITT) in 2010
+          and was the first woman in the city's history to be CIO.
+          She was the architect of NYC's Open Data program,
+          sponsored the Open Data Portal and helped pass the city's
+          Open Data Legislation. On March 11, she gave a
+          presentation to the W3C on her experiences changing the
+          city culture, building the Open Data Portal. A recording
+          of her presentation is provided 
+          <a href="http://chaordix-ibm-gc-prod.s3.amazonaws.com/blog/wp-content/uploads/2014/03/Carole-Post-NYC-Open-Data.wmv">
+          here</a>. A copy of her presentation in PDF can be found 
+          <a href="http://chaordix-ibm-gc-prod.s3.amazonaws.com/blog/wp-content/uploads/2014/03/WC3-Webinar-on-Open-Data.pdf">
+          here</a>.</p>
+          <!-- ><p> <strong>Technical Challenges:</strong> </p>
+                <ul>
+                        <li> </li>
+                </ul>
+
+                <p> <strong>Potential Requirements:</strong> </p>
+                
+                <ul>
+                        <li></li>
+                        
+                </ul> -->
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+    
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-RecifeOpenDataPortal">
+          <h3 id="h3_UC-RecifeOpenDataPortal" role="heading"
+          aria-level="2">
+          <span class="secno"></span>Use Case #11 - Recife Open
+          Data Portal</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by
+            Bernadette L&#243;scio )</span>
+          </p>
+          <p>Recife is a beautiful city situated in the Northeast
+          of Brazil and it is famous for being one of the
+          Brazil&#8217;s biggest tech hubs. Recife is also one of
+          the first Brazilian cities to release data generated by
+          public sector organisations for public use as Open Data.
+          Then 
+          <a href="http://dados.recife.pe.gov.br/">Open Data Portal
+          Recife</a>was created to offer access to a repository of
+          governmental machine-readable data about several domains,
+          including: finances, health, education and tourism. Data
+          is available in csv and geojson format and every dataset
+          has a metadata description, i.e. descriptions of the
+          data, that helps in the understanding and usage of the
+          data. However, the metadata is not described using
+          standard vocabularies or taxonomies. In general, data is
+          created in a static way, where data from relational
+          databases are exported in a csv format and then published
+          in the data catalog. Currently, they are working to have
+          dynamically generated data from the contents of
+          relational databases, then data will be available as soon
+          as they are created. The main phases of the development
+          of this initiative were: to educate people with
+          appropriate knowledge concerning Open Data, relevant data
+          identification in order to identify the sources of data
+          that their pontential consumers could find useful, data
+          extraction and transformation from the original data
+          sources to the open data format, configuration and
+          installation of the open data catalogue tool, data
+          publication and portal release.</p>
+          <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains: Base registers, Cultural heritage
+            information, Geographic information, Infrastructure
+            information, Social data and Tourism Information</li>
+            <li>Obligation/motivation: Data that must be provided
+            to the public under a legal obligation (Brazilian
+            Information Acess Act, edited in 2012); Provide public
+            data to the citizens</li>
+            <li>Usage: Data that supports democracy and
+            transparency; Data used by application developers</li>
+            <li>Quality: Verified and clean data</li>
+            <li>Size: in general small to medium CSV files</li>
+            <li>Type/format: CSV, geojson</li>
+            <li>Rate of change: different rates of changes
+            depending on the data source</li>
+            <li>Data lifespan:</li>
+            <li>Potential audience: application developers,
+            startups, government organizations</li>
+          </ul>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Use common vocabs to facilitate data
+            integration</li>
+            <li>Provide structural metadata to help data
+            understanding and usage</li>
+            <li>Automate the data publishing process to keep data
+            up to date and accurate</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-DadosGovBr">
+          <h3 id="h3_UC-DadosGovBr" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #12 -
+          Dados.gov.br</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by
+            Yasodara)</span>
+          </p>
+          <p>Data.gov.br is the open data portal of the Brazil's
+          Federal Government. The site was built in community, in a
+          network pulled by three technicians from the Ministry of
+          Planning. They managed the WG3 from 
+          <a href="http://wiki.gtinda.ibge.gov.br/Tecnologia.ashx">
+          "INDA"</a>or "National Infrastructure for Open Data". The
+          CKAN was chosen because it is Free Software and present
+          more independent solutions for the placement of data
+          catalog of the Federal Government provided on the
+          internet.</p>
+          <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains: federal budget, addresses, Infrastructure
+            information, e-gov tools usage, social data, geographic
+            information, political information, Transport
+            information</li>
+            <li>Obligation/motivation: Data that must be provided
+            to the public under a legal obligation, the called LAI
+            or Brazilian Information Acess Act, edited in 2012</li>
+            <li>Usage: Data that is the basis for services to the
+            public; Data that has commercial re-use potential.</li>
+            <li>Quality: Authoritative, clean data, vetted and
+            guaranteed;</li>
+            <li>Lineage/Derivation: Data came from various
+            publishers. As a catalog, the site has faced several
+            challenges, one of them was to integrate the various
+            technologies and formulas used by publishers to provide
+            datasets in the portal.</li>
+            <li>Size:</li>
+            <li>Type/format: Tabular data, text data</li>
+            <li>Rate of change: There is fixed data and data with
+            high rate of change</li>
+            <li>Data lifespan:</li>
+            <li>Potential audience:</li>
+          </ul>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>data integration (lack of vocabs)</li>
+            <li>collaborative construction of the portal: managing
+            online sprints and balancing public expectatives.</li>
+            <li>Licencing the data of the portal. Most of data that
+            is inn the portal has not a special licence for data.
+            As you can see, there is different types of licences
+            that applied to the datasets.</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		 <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-ISOGEOStory">
+          <h3 id="h3_UC-ISOGEOStory" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #13 - ISO GEO
+          Story</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Ghislain
+            Atemezing)</span>
+          </p>
+          <p>ISO GEO is a company managing catalogs records of
+          geographic information in XML, conformed to ISO-19139.
+          (ISO- 19139 is a French adaptation of the ISO- 19115) An
+          excerpts is 
+          <a href="http://cl.ly/3A1p0g2U0A2z">here</a>. They export
+          thousands of catalogs like that today, but they need to
+          manage them better. In their platform, they store the
+          information in a more conventional manner, and use this
+          standard for export dataset compliant to Inspire
+          interoperability , or via the CSW protocol. Sometimes,
+          they have to enrich their metadata with other ones,
+          produced by tools like GeoSource and accessed through SDI
+          (Spatial Data Infrastructure), with their own metadata
+          records. A sample containing 402 metadata records in ISO
+          19139 are in public consultation 
+          <a href="http://geobretagne.fr/geonetwork/srv/fr/main.home">
+          here</a>. They want to be able to integrate all the
+          different implementations of the ISO 19139 in different
+          tools in a single framework to better understand the
+          thousand of metadata records they use in their day-to-day
+          business. Types of information recorded in each file (see
+          example 
+          <a href="http://www.eurecom.fr/~atemezin/datalift/isogeo/5cb5cbeb-fiche1.xml">
+          here )</a>are the following: Contact info (metadata)
+          [Data issued]; spatial representation ; reference system
+          info [code space ], spatial Resolution ; Geographic
+          Extension of the data, File distribution; Data Quality ;
+          process step, etc.</p>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Achieve interoperability between supporting
+            applications, e.g.:, validation and discovery services
+            built over metada repository</li>
+            <li>Capture the semantics of the current metadata
+            records with respect to ISO 19139 standard.</li>
+            <li>Unify way to have access to each record within the
+            catalog at different level e.g.:, local, regional,
+            national or EU level.</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="UC-DutchBasicRegisters">
+		<h3 id="h3_UC-DutchBasicRegisters" role="heading" aria-level="2"><span class="secno"></span>Use Case #14 - Dutch basic registers</h3>
+		        <p>
+		          <span style="font-size: 10pt">(Contributed by Christophe Guéret)</span>
+		        </p>
+		<p>
+			The Netherlands have a <a href = "http://e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistraties"> set of registers </a> they are looking at opening and exposing as Linked (Open) Data under the context of the project <a href = "http://www.pilod.nl/wiki/Hoofdpagina">"PiLOD" </a>. The registers contain information about buildings, people, businesses and other individuals public bodies may want to refer to for they daily activities. One of them is, for instance, the service of public taxes ("BelastingDienst") which regularly pulls out data from several registers, stores this data in a big Oracle instance and curates it. This costly and time consuming process could be optimised by providing on-demand access to up-to-date descriptions provided by the register owners.
+		</p>
+		
+		<p> <strong>Technical Challenges:</strong> </p>
+		In terms of challenges, linking is for once not much of an issue as <a href = "http://www.e-overheid.nl/onderwerpen/stelselinformatiepunt/stelselthemas/verbindingen/verbindingen-tussen-basisregistraties"> registers already cross-reference unique identifiers </a> (see also <a href= "http://www.wikixl.nl/wiki/gemma/index.php/Ontsluiting_basisgegevens"> http://www.wikixl.nl/wiki/gemma/index.php/Ontsluiting_basisgegevens </a>). A <a href = "http://www.pilod.nl/wiki/Boek/URI-strategie"> URIs scheme </a>  with predicable URIs is being considered for implementation. Actual challenges include:
+		<ul>
+			<li> Capacity: at this point, it can not be asked that every register owner cares for publishing his own data. Some of them export what they have on the national open data portal. This data has been used to do some testing with third-party publication from PiLODers but this is rather sensitive as a long term strategy (governmental data has to be tracable/trustable as such). The middle ground solution currently deployed is the PiLOD platform, a (semi)-official platform for publishing register data.</li>
+			<li> Privacy: some of the register data is personal or may become so when linked to others (e.g. disambiguate personal data based on adresses). Some registers will require to provide secured access to some of their data to some people only (Linked Data, not Open). Some others can go along with open data as long as they get a precise log of who is using what.</li>
+			<li> Revenue: institutions working under mixed gov/non-gov funding generate part of their revenue by selling some of the data they curate. Switching to an open data model will generate a direct loss in revenue that has to be backed-up by other means. This does not have to mean closing the data, e.g. a model of open dereferencing + paid dumps can be considered, as well as other indirect revenue streams. </li>
+		</ul>
+
+			<p>
+	          <strong>Requires:</strong>
+	          <a href=""></a> <a href=""></a>
+	        </p>
+		
 	</section>
-			 </section>
-      </section>
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter"
+        id="UC-WindCharacterizationScientificStudy">
+        <h3 id="h3_UC-WindCharacterizationScientificStudy"
+        role="heading" aria-level="2">
+        <span class="secno"></span>Use Case #15 - Wind
+        Characterization Scientific Study</h3>
+        <p>
+          <span style="font-size: 10pt">(Contributed by Eric
+          Stephan)</span>
+        </p>
+        <p>This use case describes a data management facility being
+        constructed to support scientific offshore wind energy
+        research for the U.S. Department of Energy&#8217;s Office
+        of Energy Efficiency and Renewable Energy (EERE) Wind and
+        Water Power Program. The Reference Facility for Renewable
+        Energy (RFORE) project is responsible collecting wind
+        characterization data from remote sensing and in situ
+        instruments located on an offshore platform. This raw data
+        is collected by the Data Management Facility and processed
+        into a standardized NetCDF format. Both the raw
+        measurements and processed data are archived in the PNNL
+        Institutional Computing (PIC) petascale computing facility.
+        The DMF will record all processing history, quality
+        assurance work, problem reporting, and maintenance
+        activities for both instrumentation and data. All datasets,
+        instrumentation, and activities are cataloged providing a
+        seamless knowledge representation of the scientific study.
+        The DMF catalog relies on linked open vocabularies and
+        domain vocabularies to make the study data searchable.
+        Scientists will be able to use the catalog for faceted
+        browsing, ad-hoc searches, query by example. For accessing
+        individual datasets a REST GET interface to the archive
+        will be provided.</p>
+        <p>
+          <strong>Technical Challenges:</strong>
+        </p>For accessing numerous datasets scientists will be
+        accessing the archive directly using other protocols such
+        as sftp, rsync, scp, access techniques such as: 
+        <a href="http://www.psc.edu/index.php/hpn-ssh">
+        http://www.psc.edu/index.php/hpn-ssh</a>
+        <p>
+          <strong>Requires:</strong>
+          <a href=""></a>
+          <a href=""></a>
+        </p></section>
+		
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-BuildingEye">
+          <h3 id="h3_UC-BuildingEye" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #16 - BuildingEye:
+          SME use of public data</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Deirdre
+            Lee)</span>
+          </p>
+          <p>Buildingeye.com makes building and planning
+          information easier to find and understand by mapping
+          what's happening in your city. In Ireland local
+          authorities handle planning applications and usually
+          provide some customised views of the data (pdfs, maps,
+          etc.) on their own website. However there isn't an easy
+          way to get a nationwide view of the data. BuildingEye, an
+          independent SME, built 
+          <a href="http://mypp.ie/">http://mypp.ie/</a>to achieve
+          this. However as each local authority didn't have an Open
+          Data portal, BuildingEye had to directly ask each local
+          authority for its data. It was granted access to some
+          authorities, but not all. The data it did receive was in
+          different formats and of varying quality/detail.
+          BuildingEye harmonised this data for its own system.
+          However, if another SME wanted to use this data, they
+          would have to go through the same process and again go to
+          each local authority asking for the data.</p>
+          <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains: Planning data</li>
+            <li>Obligation/motivation: demand from SME</li>
+            <li>Usage: Commercial usage</li>
+            <li>Quality: standardised, interoperable across local
+            authorities</li>
+            <li>Size: medium</li>
+            <li>Type/format: structured according to legacy system
+            schema</li>
+            <li>Rate of change: daily</li>
+            <li>Data lifespan:</li>
+            <li>Potential audience: Business, citizens</li>
+            <li>&#8220;Governance&#8221;: local authorities</li>
+          </ul>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Access to data is currently a manual process, on a
+            case by case basis</li>
+            <li>Data is provided in different formats, e.g.
+            database dumps, spreadsheets</li>
+            <li>Data is structured differently, depending on the
+            legacy system schema, concepts and terms not
+            interoperable</li>
+            <li>No official Open license associated with the
+            data</li>
+            <li>Data is not available for further reuse by other
+            parties</li>
+          </ul>
+          <p>
+            <strong>Potential Requirements:</strong>
+          </p>
+          <ul>
+            <li>Creation of top-down policy on Open Data to ensure
+            common understanding and approach</li>
+            <li>Top-down guidance on recommended Open license
+            usage</li>
+            <li>Standardised, non-proprietary formats</li>
+            <li>Availability of recommended domain-specific
+            vocabularies.</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-DigitalArchivingofLinkedData">
+          <h3 id="h3_UC-DigitalArchivingofLinkedData"
+          role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #17 - Digital
+          archiving of Linked Data</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by
+            Christophe Gu&#233;ret)</span>
+          </p>
+          <p>Taking the concrete example of the digital archive 
+          <a href="http://dans.knaw.nl/">"DANS"</a>, digital
+          archives have so far been concerned with the preservation
+          of what could be defined as "frozen" dataset. A frozen
+          dataset is a finished, self-contained, set of data that
+          does not evolve after it has been constituted. The goal
+          of the preserving institution is to ensure this dataset
+          remains available and readable for as many years as
+          possible. This can for example concern an audio record, a
+          digitized image, e-books or database dumps. Consumers of
+          the data are expected to look-up for a specific content
+          based on its associated 
+          <a href="http://www.persid.org/">persistent
+          identifier</a>, download it from the archive and use it.
+          Now comes the 
+          <a href="http://www.prelida.eu/">question of the
+          preservation of Linked Open Data.</a>In opposition to
+          "frozen" data sets, linked data can be qualified as
+          "live" data. The resources it contains are part of a
+          larger entity to which third parties contribute, one of
+          the design principles indicate that other data producers
+          and consumers should be able to point to data. As LD
+          publishers stop offering their data (e.g. at the end of a
+          project), taking the LD off-line as a dump and putting it
+          in an archive effectively turns it into a frozen dataset,
+          likewise to SQL dumps and other kind of data bases. The
+          question then raises as to which extent this is an
+          issue...</p>
+          <p>
+          <strong>Technical Challenges:</strong>The archive has to
+          think about whether serving dereferencing for resources
+          found in preserved datasets is required or not, also
+          think about providing a SPARQL end point or not. If data
+          consumers and publishers are fine with having RDF data
+          dumps to be downloaded from the archive prior to its
+          usage - just like any other digital item so far - the
+          technical challenges could be limited to handling the
+          size of the dumps and taking care of serialisation
+          evolution over time (e.g. from Ntriples to Trig, or from
+          RDF/XML to 
+          <a href="http://www.rdfhdt.org/">HDT</a>) as the
+          preference for these formats evolves. Turning a live
+          dataset into a frozen dump also raises the question of
+          the scope. Considering that LD items are only part of a
+          much larger graph that gives them meaning through context
+          the only valid dump would be a complete snapshot of the
+          entire connected component of the Web of Data graph the
+          target dataset is part of.</p>
+          <p>
+          <strong>Potential Requirements:</strong>Decide on the
+          importance of the de-referencability of resources and the
+          potential implications for domain names and naming of
+          resources. Decide on the scope of the step that will turn
+          a connected sub-graph into an isolated data dump.</p>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		
+		
+		
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-LATimesReporting">
+          <h3 id="h3_UC-LATimesReporting" role="heading"
+          aria-level="2">
+          <span class="secno"></span>Use Case #18 - LA Times'
+          reporting of Ron Galperin's Infographic</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Phil
+            Archer )</span>
+          </p>
+          <p>On 27 March 2014, the LA Times published a story 
+          <a href="http://www.latimes.com/local/lanow/la-me-ln-gender-wage-gap-city-government-20140327,0,4409293.story">
+          Women earn 83 cents for every $1 men earn in L.A. city
+          government</a>. It was based on an Infographic released
+          by LA's City Controller, Ron Galperin. The Infographic
+          was based on a dataset published on LA's open data
+          portal, 
+          <a href="https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja">
+          Control Panel LA</a>. That portal uses the 
+          <a href="http://www.socrata.com/">Socrata</a>platform
+          which offers a number of spreadhseet-like tools for
+          examining the data, the ability to download it as CSV,
+          embed it in a Web page and see its 
+          <a href="https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/about&gt;">
+          metadata</a>.</p>
+          <p>
+            <strong>Positive aspects:</strong>
+          </p>
+          <ul>
+            <li>The LA Times story makes its sources clear (it also
+            links to a related 
+            <a href="http://www.pewsocialtrends.org/2013/12/11/on-pay-gap-millennial-women-near-parity-for-now/">
+            Pew Research Center article</a>).</li>
+            <li>It offers readers a commentary on the particular
+            issue raised and is easy for anyone to digest.</li>
+            <li>Data sources are cited directly and can be followed
+            up on by (human) readers.</li>
+          </ul>
+          <p>
+            <strong>Negative aspects:</strong>
+          </p>
+          <ul>
+            <li>The Infographic itself only cites the data portal,
+            not the specific dataset, i.e.
+            https://controllerdata.lacity.org/ not
+            https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/</li>
+            <li>The 
+            <a href="https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/about">
+            metadata</a>provided on the data portal is very sparse
+            with many fields left empty.</li>
+            <li>The dataset is itself the result of an analysis
+            (there are only 8 lines in the table), the raw data on
+            which it is based is not cited, let alone made
+            available, and the methods used are not described.</li>
+          </ul>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Data Citation - how could Ron Galperin have
+            referred to the source data in the Infographic? (the
+            URI is way too long). QR code? Short PURL?</li>
+            <li>How could the publisher of the data link to the
+            Infographic as a visualization of it?</li>
+            <li>In this case, the creator of the underlying data is
+            the same as the creator of the Infographic, but if they
+            were different, how could the data creator discover the
+            Infographic, still less the media report about it?</li>
+            <li>The methodology used is not explained - making it
+            hard to assess trustworthiness. How can provenance be
+            described?</li>
+            <li>The metadata is incomplete and does not used a
+            recognized standard vocabulary making automated
+            discovery and use by anyone other than the data creator
+            difficult.</li>
+          </ul>
+          <p>
+            <strong>Other Data Journalism blogs:</strong>
+          </p>
+          <ul>
+            <li>
+              <a href="http://fivethirtyeight.com/features/what-the-fox-knows/">
+              FiveThirtyEight</a>
+            </li>
+            <li>
+              <a href="http://blogs.wsj.com/numbersguy/">Wall
+              Street Journal&#8217;s Number Guy column</a>
+            </li>
+            <li>
+              <a href="http://www.theguardian.com/news/datablog">
+              Guardian&#8217;s data blog</a>
+            </li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+		
+		<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+id="UC-TheLandPortal">
+  <h3 id="h3_UC-TheLandPortal" role="heading" aria-level="2">
+  <span class="secno"></span>Use Case #19 - The Land Portal</h3>
+  <p>
+    <span style="font-size: 10pt">(Contributed by Carlos
+    Iglesias)</span>
+  </p>
+  <p>The IFAD Land Portal platform it's been completely rebuilt as
+  an Open Data collaborative platform for the Land Governance
+  community. Among the new features the Land Portal will provide
+  access to comprehensive and in-depth 100+ indicators from 25+
+  different sources on land governance issues for 200+ countries
+  over the world, as well as a repository of land related-content
+  and documentation. Thanks to the new platform people could (1)
+  curate and incorporate new data and metadata by means of
+  different data importers and making use of the underlying common
+  data model; (2) search, explore and compare the data through
+  countries and indicators; and (3) consume and reuse the data by
+  different means (i.e. raw data download at the data catalog;
+  linked data and SPARQL endpoint at RDF triplestore; RESTful API;
+  and built-in graphic visualization framework)</p>
+  <p>
+    <strong>Elements:</strong>
+  </p>
+  <ul>
+    <li>Domains: Land Governance; Development</li>
+    <li>Obligation/motivation: To find reliable data driven
+    indicators on land governance and put all them together to
+    facilitate access, study, analysis, comparison and data gaps
+    detection.</li>
+    <li>Usage: Research; Policy Making, Journalism; Development;
+    Investments; Governance; Food security; Poverty; Gender
+    issues.</li>
+    <li>Quality: Every sort of data, from high quality to
+    unverified one.</li>
+    <li>Size: Varies, but low-medium in general.</li>
+    <li>Type/format: Varies: APIs; JSON; spreadsheets; CSVs; HTMLs;
+    XMLs; PDFs...</li>
+    <li>Rate of change: Usually yearly, but also lower rates
+    (monthly, quarterly...)</li>
+    <li>Data lifespan: Unlimited.</li>
+    <li>Potential audience: Practitioners; Policy makers;
+    Activists; Researchers; Journalists.</li>
+  </ul>
+  <p>
+    <strong>Technical Challenges:</strong>
+  </p>
+  <ul>
+    <li>Data coverage.</li>
+    <li>Quality of data and metadata.</li>
+    <li>Lack of machine-readable metadata.</li>
+    <li>Inconsistency between different data sources.</li>
+    <li>Wide variety of formats and technologies.</li>
+    <li>Some non machine-readable formats.</li>
+    <li>Data variability (models, sources, etc.)</li>
+    <li>Data provenance.</li>
+    <li>Diversity and (sometimes) complexity of Licenses.</li>
+    <li>Internationalization issues (e.g. different formats for
+    numbers, dates, etc.) and multilingualism</li>
+  </ul>
+  <p>
+    <strong>Potential Requirements:</strong>
+  </p>
+  <ul>
+    <li>Availability of general use taxonomies (countries, topics,
+    etc.).</li>
+    <li>Data interoperability i.e. domain-specific vocabularies for
+    a common data model with reference formats and protocols.</li>
+    <li>Data persistence.</li>
+    <li>Versioning mechanisms.</li>
+  </ul>
+  <p>
+    <strong>Requires:</strong>
+    <a href=""></a>
+    <a href=""></a>
+  </p>
+</section>
+
+
+<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+id="UC-RadarParlamentar">
+  <h3 id="h3_UC-RadarParlamentar" role="heading" aria-level="2">
+  <span class="secno"></span>Use Case #20 - Radar Parlamentar</h3>
+  <p>
+    <span style="font-size: 10pt">(Contributed by Nathalia )</span>
+  </p>
+  <p>
+  <a href="http://radarparlamentar.polignu.org/">Radar
+  Parlamentar</a>is a web application that illustrates the
+  similarities between political parties based on the vote data
+  analysis that occurs in the Brazilian congress. The similarities
+  are presented in a two-dimensional graphics, in which circles
+  represent parties or parliamentarians, and the distance between
+  these circles is how similar they vote. There is also only a
+  section dedicated to gender issues: how many women are in each
+  party over the years, which are the themes most handled by each
+  gender and party, etc.</p>
+  <p>
+    <strong>Elements:</strong>
+  </p>
+  <ul>
+    <li>Domains: Political information, voting records</li>
+    <li>Obligation/motivation: The Brazilian government began to
+    provide their data in an open format through webservices in the
+    portal Dados.gov.br .</li>
+    <li>Usage: Re-use and exploration of data available in portal
+    Dados.gov.br in another kinds of visualisation.</li>
+    <li>Quality:</li>
+    <li>Size:</li>
+    <li>Type/format: Tag clouds, 2D graphic, matrix display,
+    treemap</li>
+    <li>Rate of change:</li>
+    <li>Data lifespan:</li>
+    <li>Potential audience: Brazilian citizens</li>
+  </ul>
+  <p>
+  <strong>Potential Requirements:</strong>Documentation: there is a
+  page in the web application explaining the used 
+  <a href="">methodology</a></p>
+  <p>
+    <strong>Requires:</strong>
+    <a href=""></a>
+    <a href=""></a>
+  </p>
+</section>
+
+
+<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+id="UC-UruguayOpenDataCatalogue">
+  <h3 id="h3_UC-UruguayOpenDataCatalogue" role="heading"
+  aria-level="2">
+  <span class="secno"></span>Use Case #21 - Uruguay: open data
+  catalogue</h3>
+  <p>
+    <span style="font-size: 10pt">(Contributed by AGESIC )</span>
+  </p>
+  <p>Uruguay open data site holds 85 datasets containing 114
+  resources since the first dataset was published in Dec. 2012.
+  Open data initiative prioritizes the &#8220;use of data&#8221;
+  rather than &#8220;quantity of data&#8221;, that&#8217;s why the
+  catalogue holds 25 applications using datasets resources in some
+  way. It&#8217;s important for the project to keep the relation
+  1/3 between applications and datasets. Most of the resources are
+  CSV and shapefiles; basically we have a 3 stars catalogue and the
+  reason why we can&#8217;t go to the next level is the lack of
+  resources (time, human, economic, etc.) at government agencies to
+  implement an open data liberation strategy. So when we are asked
+  about opening data, keep it simple is the answer, and CSV is far
+  the easiest and smart way to start. Uruguay has an Access to
+  public information law but don&#8217;t have legislation about
+  open data. The open data initiative is leaded by AGESIC with the
+  support of the open data working group. OD Working group: -
+  Intendencia de Montevideo &#8211; www.montevideo.gub.uy - INE
+  &#8211; www.ine.gub.uy - AGEV &#8211; www.agev.opp.gub.uy - FING
+  &#8211; UDELAR &#8211; www.fing.edu.uy - D.A.T.A. &#8211;
+  www.datauy.org</p>
+  <p>
+    <strong>Elements:</strong>
+  </p>
+  <ul>
+    <li>Domains: </li>
+    <ul>
+      <li>Infraestructure: Most of the datasets are
+      shapefiles.</li>
+      <li>Transportation: Shapefiles and CSV, containing
+      information about public transportation (stops and
+      frequency), roads, accidents, etc.</li>
+      <li>Tourism: data about regional events, cultural agenda,
+      hotels, campings, statistics.</li>
+      <li>Economics: Budget, Consumer price declarations, etc.</li>
+      <li>Social development</li>
+      <li>Environment</li>
+      <li>Health</li>
+      <li>Education</li>
+      <li>Culture</li>
+    </ul>
+    <li>Obligation/motivation: There is no obligation for the
+    government agencies to publish open data. All initiatives were
+    carried on by agencies that wants to support the
+    initiative.</li>
+    <li>Usage: Develop applications and new services for citizens,
+    agencies interoperability (exchange of information in open data
+    formats), transparency</li>
+    <li>Quality: Most of the data is actualized properly, datasets
+    metadata is complete, resources metadata about 70%
+    complete.</li>
+    <li>Size: Small; most of the datasets size is less than
+    1Gb.</li>
+    <li>Type/format: SHAPEFILE (35), CSV (26), TXT (19), ZIP (12),
+    HTML (7), XLS (6),PDF (4), XML (3), RAR (2)</li>
+    <li>Rate of change: Depends on the dataset.</li>
+    <li>Data lifespan: Depends on the dataset, some change in real
+    time, other monthly, every 6 month, annual or never
+    change.</li>
+    <li>Potential audience: Developers, Journalists, Civil society,
+    Entrepreneurs. Technical Challenges: Consolidate tool to manage
+    datasets, improve visualizations and transform resources to
+    higher level (4 &#8211; 5 stars). Automate publication process
+    using harvesting or similar tools. Alerts or control panel to
+    keep data updated.</li>
+	</ul>
+    <p>
+    <strong>Technical Challenges:</strong>Consolidate tool to
+    manage datasets, improve visualizations and transform resources
+    to higher level (4 &#8211; 5 stars). Automate publication
+    process using harvesting or similar tools. Alerts or control
+    panel to keep data updated.</p>
+    <p>
+      <strong>Requires:</strong>
+      <a href=""></a>
+      <a href=""></a>
+    </p>
+	</section>
+	
+    <section rel="bibo:Chapter" resource="#ref"
+    typeof="bibo:Chapter" id="UC-GS1 Digital">
+      <h3 id="h3_UC-GS1 Digital" role="heading" aria-level="2">
+      <span class="secno"></span>Use Case #22 - GS1: GS1
+      Digital</h3>
+      <p>
+        <span style="font-size: 10pt">(Contributed by Mark Harrison
+        (University of Cambridge) &amp; Eric Kauz (GS1) )</span>
+      </p>
+      <p>Retailers and Manufacturers / Brand Owners are beginning
+      to understand that there can be benefits to openly publishing
+      structured data about products and product offerings on the
+      web as Linked Open Data. Some of the initial benefits may be
+      enhanced search listing results (e.g. Google Rich Snippets)
+      that improve the likelihood of consumers choosing such a
+      product or product offer over an alternative product that
+      lacks the enhanced search results. However, the longer term
+      vision is that an ecosystem of new product-related services
+      can be enabled if such data is available. Many of these will
+      be consumer-facing and might be accessed via smartphones and
+      other mobile devices, to help consumers to find the products
+      and product offers that best match their search criteria and
+      personal preferences or needs - and to alert them if a
+      particular product is incompatible with their dietary
+      preferences or other criteria such as ethical / environmental
+      impact considerations - and to suggest an alternative product
+      that may be a more suitable match. The complete description
+      of this use case may be found 
+      <a href="https://www.w3.org/2013/dwbp/wiki/Use_Cases#GS1:_GS1_Digital">
+      here</a>.</p>
+      <p>
+        <strong>Elements:</strong>
+      </p>
+      <ul>
+        <li>Domains: </li>
+        <ul>
+          <li>Product master data (e.g. technical specifications,
+          ingredients, nutritional information, dimensions, weight,
+          packaging)</li>
+          <li>Product offerings (e.g. sales price, availability
+          (online, locally), payment options, delivery/collection
+          options</li>
+          <li>Ethical / environmental claims about a product and
+          its production process</li>
+        </ul>
+        <li>Obligation/motivation: </li>
+        <ul>
+          <li>initially, enhanced search result listings (e.g.
+          Google Rich Snippets)</li>
+          <li>vision is to enable an ecosystem of new digital apps
+          around product data</li>
+          <li>the food sector in the EU is already obliged under
+          new food labelling legislation (EU 1169 / 2011, Article
+          14) to provide the same amount of information about a
+          food product that is sold online to consumers as the
+          information that would be available to them from the
+          product packaging if they picked up the product in-store.
+          Although the legislation does not suggest that Linked
+          Open Data technology should be used to make the same
+          information available in a machine-readable format, there
+          is currently significant investment and effort to upgrade
+          websites to provide accurate and detailed information
+          about food products; the GS1 Digital team consider that
+          for a relatively small amount of effort, these companies
+          could gain some tangible benefits (e.g. enhanced search
+          results) from such compliance efforts by using Linked
+          Open Data technology within their web pages.</li>
+        </ul>
+        <li>Usage:</li>
+        <ul>
+          <li>data providing transparency about product
+          characteristics</li>
+          <li>data used to help consumers make informed choices
+          about which products to buy/consume</li>
+        </ul>
+        <li>Quality: Very important to have trustworthy
+        authoritative data from respective organizations</li>
+        <li>Size: Typically 20+ factual claims per product -
+        probably 40+ RDF triples</li>
+        <li>Type/format: HTML + RDFa / JSON-LD / Microdata</li>
+        <li>Rate of change: mostly static data initially - but
+        subject to some variation over time</li>
+        <li>Data lifespan: data should remain accessible until
+        products are no longer considered to be in circulation;
+        this represents a challenge for deprecated product lines
+        data that is stated authoritatively by one organization
+        might be embedded / referenced in the data asserted by
+        another organization; this raises concerns about whether
+        embedded data becomes stale if it is inadequately
+        synchronized, that referenced data is not dereferenced (and
+        therefore not discovered / gathered) by consumers or the
+        data. From a liability perspective, there also needs to be
+        clarity about which organization asserted which factual
+        information - and also information about which organization
+        has the authority to assert specific factual claims.</li>
+        <li>Potential audience: machine-readable (search engines,
+        data aggregators, mobile apps etc.)</li>
+		</ul>
+        <p>
+          <strong>Technical Challenges:</strong>
+        </p>
+        <ul>
+          <li>Linked Open Data about products is likely to be
+          highly distributed in nature and various parties have
+          authority over specific claims</li>
+          <li>Accreditation agencies have authority over
+          ethical/environmental claims</li>
+          <li>Brand owners / manufacturers have authority over
+          product master data</li>
+          <li>Retailers have authority over facts related to
+          product offerings (price, availability etc.)</li>
+          <li>An organization (e.g. retailer) might embed
+          authoritative data asserted by another organization (e.g.
+          brand owner) and there is the risk that such embedded
+          information becomes stale if it is not continuously
+          synchronized.</li>
+          <li>An organization (e.g. retailer) might reference a
+          graph of authoritative data that can be retrieved via an
+          HTTP request to a remote HTTP URI. There is a risk that
+          software or search engines consuming Linked Open Data
+          containing such references may fail to dereference such
+          HTTP URIs and in doing so may fail to gather all of the
+          relevant data.</li>
+          <li>Organizations are currently faced with a choice of
+          whether to embed machine-readable structured data in
+          their web pages using a block approach (e.g. using
+          JSON-LD) or using an inline approach (e.g. using RDFa,
+          RDFa Lite or Microdata). A block approach (JSON-LD) may
+          be simpler and less brittle than inline annotation,
+          especially as it can be easily decoupled from structural
+          changes to the body of the web page that may happen over
+          time in the redesign of a website. At present, tool
+          support for the 3 major markup approaches for embedded
+          Linked Open Data (RDFa, JSON-LD, MIcrodata) is unequal
+          across the three formats and some tools may not export or
+          import / ingest all 3 formats - some tools even fail to
+          extract data from JSON-LD markup created by their
+          corresponding export tool. There are some significant
+          challenges to ensure that the structured data embedded
+          within a web page is correctly linked to form coherent
+          RDF triples, without any dangling nodes that should be
+          connected to the Subject or other nodes.</li>
+          <li>Only through the provision of best-in-class tool
+          support that recognize all three major formats on a
+          completely equal footing can organizations have any
+          confidence that they can use any of the 3 major markup
+          formats and the ability to verify / validate that their
+          own markup does result in the correct RDF triples.</li>
+        </ul>
+        <p>
+          <strong>Potential Requirements:</strong>
+        </p>
+        <ul>
+          <li>The ability to determine who asserted various facts -
+          and whether they are the organization that can assert
+          those facts authoritatively.</li>
+          <li>Where data from other sources is embedded, there is a
+          risk that the embedded data might be stale. It is
+          therefore helpful to indicate which graph of triples is a
+          snapshot in time from data from another source - and to
+          provide a link to the original source, so that the
+          consumer of the data has the opportunity to obtain a
+          fresh version of the live data rather than relying on a
+          potentially stale snapshot graph of data. DWBP could
+          provide guidance about how to indicate which graph of
+          data is a snapshot and where it came from.</li>
+          <li>Consumers of Linked Open Data about products might
+          rely on it for making decisions - not only about purchase
+          but even consumption. If the data about a product is
+          inaccurate or out-of-date, we might need to provide some
+          guidance about how liability terms and disclaimers can be
+          expressed in Linked Open Data. We&#8217;re not suggesting
+          that we define such terms from a legal perspective - but
+          perhaps there is an existing framework in a similar way
+          that there is an existing framework for expressing
+          various licences of the data? If not, perhaps such a
+          framework needs to be developed - but outside of the DWBP
+          group? Licensing generally says what you&#8217;re allowed
+          to do with the data - but I don&#8217;t think it says
+          anything about liability for using the data or making
+          decisions based on that data. This area probably needs
+          some clarification, particularly if there is a risk of
+          injury or death (due to inaccurate information about
+          allergens in a food product).</li>
+        </ul>
+        <p>
+          <strong>Requires:</strong>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+		</section>
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-Tabulae">
+          <h3 id="h3_UC-Tabulae" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #23 - Tabulae - how
+          to get value out of data</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by Luis Polo
+            )</span>
+          </p>
+          <p>Tabul.ae is a framework to publish and visually
+          explore data that can used to deploy powerful and
+          easy-to-exploit open data platforms, so contributing
+          organizations to unleash the potential of their data. The
+          aim is to enable data owners (public organizations) and
+          consumers (citizens and business re-users) to transform
+          the information they manage into added-value knowledge,
+          empowering them to easily create data-centric web
+          applications. These applications are built upon
+          interactive and powerful graphs, and take the shape of
+          interactive charts, dashboards, infographies and reports.
+          Tabulae provides a high degree of assistance to create
+          these apps and also automate several data visualizations
+          tasks (i.e., recognition of geographical entities to
+          automatically generate a map). In addition, the charts
+          and maps are portable outside the platform and can be
+          smartly integrated with any web content, enhancing the
+          reusability of the information.</p>
+          <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains: Quantitative and geographical information:
+            stats, biodiversity, socio-economic indicators,
+            environment, security, etc</li>
+            <li>Obligation/motivation: to help citizens and
+            companies (especially, consultancy firms) to understand
+            and create value from open data by means of reusable,
+            user-made visualizations.</li>
+            <li>Usage: Data used by citizens, public employees and
+            companies.</li>
+            <li>Quality: The information must be at least
+            semi-structured (for instance, an spreadsheet).</li>
+            <li>Size: Medium and large datasets (hundreds of
+            thousands and millions rows)</li>
+            <li>Type/format: Tabulae can manage relational
+            databases, geojson, csv files and spreadsheets, and
+            provides an API for programmatic access.</li>
+            <li>Rate of change: depending on the original datasets.
+            The platform enables automatic update from original
+            sources.</li>
+            <li>Data lifespan: depending on the original
+            datasets.</li>
+            <li>Potential audience: Organizations that want to
+            publish their catalogue of datasets and aim to maximize
+            their impact and consumption.</li>
+          </ul>
+          <p>
+            <strong>Technical Challenges:</strong>
+          </p>
+          <ul>
+            <li>Quality of data and metadata.</li>
+            <li>Inconsistency between different data sources.</li>
+            <li>Wide variety of formats and technologies.</li>
+            <li>Different data schemas that complicates the
+            integration of data sources.</li>
+            <li>Diversity and (sometimes) complexity of
+            Licenses.</li>
+            <li>Data persistence.</li>
+            <li>Internationalization and format issues (e.g.,
+            languages, numbers, dates, etc.)</li>
+          </ul>
+          <p>
+            <strong>Potential Requirements:</strong>
+          </p>
+          <ul>
+            <li>Dataset versioning and updating mechanisms</li>
+            <li>Standardization of schemas</li>
+            <li>Integration with other platforms/services</li>
+          </ul>
+          <p>
+            <strong>Requires:</strong>
+            <a href=""></a>
+            <a href=""></a>
+          </p>
+        </section>
+        <section rel="bibo:Chapter" resource="#ref"
+        typeof="bibo:Chapter" id="UC-ViolenceMap">
+          <h3 id="h3_UC-ViolenceMap" role="heading" aria-level="2">
+          <span class="secno"></span>Use Case #24 - Retrato da
+          Viol&#234;ncia (Violence Map)</h3>
+          <p>
+            <span style="font-size: 10pt">(Contributed by YasodaraC
+            )</span>
+          </p>
+          <p>This is a Data Visualization made in 2012 by 
+          <a href="http://vitorbaptista.com/">Vitor Batista</a>, 
+          <a href="http://leotartari.com/">L&#233;o tartari</a>and 
+          <a href="http://tbueno.com/">Thiago Bueno</a>for a W3C
+          Brazil Office challenge about data from Rio Grande do Sul
+          (a brazilian region). The data was released in a .zip
+          package, the original format was .csv. The code and the
+          documentation of the project are 
+          <a href="https://github.com/dataviz/retrato-da-violencia.org">
+          in it's GitHub repository</a></p>
+          <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains: political information, regional security
+            information.</li>
+            <li>Obligation/motivation: Data that must be provided
+            to the public under a legal obligation, the called LAI
+            or Brazilian Information Acess Act, edited in 2012</li>
+            <li>Usage:</li>
+            <li>Quality: not guaranteed data</li>
+            <li>Size:</li>
+            <li>Type/format: Tabular data</li>
+            <li>Rate of change: There is no new releases of
+            data</li>
+            <li>Data lifespan:</li>
+            <li>Potential audience:</li>
+          </ul>
+          <p>
+          <strong>Positive Aspects:</strong>the decision on
+          transforming CSV in to JSON was based on the necessity to
+          have hierarchical data - the positive point, that CSV
+          structure can be mapped to an XML or JSON was considered.
+          CSV only covers tabular format and JSON can cover more
+          complex structures.</p>
+          <p>
+          <strong>Negative Aspects:</strong>the data was in CSV
+          format, but it's now (2014) outdated, and there's no
+          prevision for new releases. There's no metadata in
+          it.</p>
+        </section>
+         </section>
+ 
+
+     
   <section>
   
    <h2 id="challenges">General Challenges</h2>
@@ -312,6 +1747,7 @@ pre {
     <p>Based on general challenges...</p>
 	<section>
 	<h3 id="req1">Requirements for Data on the Web Best Practices</h3>
+	
       <section>
           <h4 id="h4_can-req-metadata"><span class="secno"></span>Requirements for Metadata</h4>
           <dl>
@@ -357,6 +1793,9 @@ pre {
                 <a href="#UC-"></a>,    </p>                          
             </dd>
 			</section>
+			
+
+
 			<section>
   <h4 id="h4_can-req-granularity">
   <span class="secno"></span>Requirements for Data Granularity</h4>
@@ -381,6 +1820,7 @@ pre {
     </dd>    
   </dl>
 </section>
+
 <section>
   <h4 id="h4_can-req-Formats">
   <span class="secno"></span>Requirements for Data Formats</h4>
@@ -423,6 +1863,7 @@ pre {
     </dd>
      </dl>
 </section>
+
 <section>
   <h4 id="h4_can-req-vocabularies">
   <span class="secno"></span>Requirements for Data Vocabularies</h4>
@@ -466,6 +1907,87 @@ pre {
 
   </dl>
 </section>
+
+
+<section>
+<h4 id="h4_can-req-licenses">
+  <span class="secno"></span>Requirements for Licenses</h4>
+  <dl>
+   <dt id="R-LicenseAvailable">R-LicenseAvailable</dt>
+    <dd>
+      <em id="LicenseAvailable">
+        <p>Data should be associated with a license</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+    <dt id="R-LicenseInteroperable">R-LicenseInteroperable</dt>
+    <dd>
+      <em id="LicenseInteroperable">
+        <p>Data licenses should be interoperable</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+ <dt id="R-LicenseMachineRead">R-LicenseMachineRead</dt>
+    <dd>
+      <em id="LicenseMachineRead">
+        <p>Data licenses should be provided in a machine-readable format </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+ <dt id="R-LicenseStandard">R-LicenseStandard</dt>
+    <dd>
+      <em id="LicenseStandard">
+        <p>Standard vocabularies should be used to describe licenses </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+  </dl>
+</section>
+
+<section>
+<h4 id="h4_can-req-provenance">
+  <span class="secno"></span>Requirements for Provenance</h4>
+  <dl>
+   <dt id="R-ProvAvailable">R-ProvAvailable</dt>
+    <dd>
+      <em id="ProvAvailable">
+        <p>Data provenance information should be available </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+	 <dt id="R-ProvMachineRead">R-ProvMachineRead</dt>
+    <dd>
+      <em id="ProvMachineRead">
+        <p>Data licenses should be provided in a machine-readable format </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+
+   <dt id="R-ProvStandard">R-ProvStandard</dt>
+    <dd>
+      <em id="ProvStandard">
+        <p>Standard vocabularies should be used to describe data provenance</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+	
+  </dl>
+</section>
+
 <section>
   <h4 id="h4_can-req-selection">
   <span class="secno"></span>Requirements for Data Selection</h4>
@@ -549,163 +2071,103 @@ pre {
 
   </dl>
 </section>
-<section>
-<h4 id="h4_can-req-usage">
-  <span class="secno"></span>Requirements for Data Usage</h4>
-  <dl>
-    <dt id="R-UsageDataTracking">R-UsageDataTracking</dt>
-    <dd>
-      <em id="_R-UsageDataTracking">
-        <p>The use of data should be able to be tracked</p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
-	<dt id="R-UsageUserTracking">R-UsageUserTracking</dt>
-    <dd>
-      <em id="_R-UsageUserTracking">
-        <p> Information about who is using the data should be provided</p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
-	<dt id="R-UsageFeedback">R-UsageFeedback</dt>
-    <dd>
-      <em id="_R-UsageFeedback">
-        <p> Feedback about data should be provided </p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
-
-
-  </dl>
-</section>
 
 <section>
 <h4 id="h4_can-req-identification">
-  <span class="secno"></span>Requirements for Data Identification</h4>
+  <span class="secno"></span>Requirements for Data Identifiers</h4>
   <dl>
-    <dt id="R-IdentificationUnique">R-IdentificationUnique</dt>
+    <dt id="R-UniqueIdentifier">R-UniqueIdentifier</dt>
     <dd>
-      <em id="_IdentificationUnique">
-        <p>Every data resource should have a unique identifier</p>
+      <em id="UniqueIdentifier">
+        <p>Each data resource should be associated with a unique identifier</p>
       </em>
       <p>
       <strong>Motivation:</strong>
       <a href="#UC-"></a>,</p>
     </dd>
-
+	  <dt id="R-MultipleRepresentations">R-MultipleRepresentations</dt>
+    <dd>
+      <em id="MultipleRepresentations">
+        <p>A data resource may have multiple representations, e.g. xml/html/json/rdf</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
   </dl>
 </section>
 
 <section>
 <h4 id="h4_can-req-industry-reuse">
-  <span class="secno"></span>Requirements for Industry-reuse</h4>
+  <span class="secno"></span>Requirements for Industry Reuse</h4>
   <dl>
-    <dt id="R-IndustryMachineRead">R-IndustryMachineRead</dt>
+   <dt id="R-IndustryReuse">R-IndustryReuse</dt>
     <dd>
-      <em id="_IndustryMachineRead">
-        <p>SLAs should be provided in a machine-readable format</p>
+      <em id="IndustryReuse">
+        <p>Data should be suitable for industry reuse</p>
       </em>
       <p>
       <strong>Motivation:</strong>
       <a href="#UC-"></a>,</p>
     </dd>
- <dt id="R-IndustryStandard">R-IndustryStandard</dt>
+    <dt id="R-SLAAvailability">R-SLAAvailability</dt>
     <dd>
-      <em id="_IndustryStandard">
-        <p>Standard vocabularies should be used to describe SLA </p>
+      <em id="SLAAvailability">
+        <p>Service Level Agreements (SLAs) for industry reuse of the data should be available if requested</p>
       </em>
       <p>
       <strong>Motivation:</strong>
       <a href="#UC-"></a>,</p>
     </dd>
-
+	 <dt id="R-SLAMachineRead">R-SLAMachineRead</dt>
+    <dd>
+      <em id="SLAMachineRead">
+        <p>SLAs should be provided in a machine-readable format </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+ <dt id="R-SLAStandard">R-SLAStandard</dt>
+    <dd>
+      <em id="SLAStandard">
+        <p>Standard vocabularies should be used to describe SLAs </p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
   </dl>
 </section>
 
-<section>
-<h4 id="h4_can-req-provenance">
-  <span class="secno"></span>Requirements for Provenance</h4>
-  <dl>
-    <dt id="R-ProvenanceStandards">R-ProvenanceStandards</dt>
-    <dd>
-      <em id="_ProvenanceStandards">
-        <p>Standard vocabularies should be used to describe data provenance</p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
- <dt id="R-ProvenanceAvailable">R-ProvenanceAvailable</dt>
-    <dd>
-      <em id="_ProvenanceAvailable">
-        <p>Information about data provenance should be available </p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
-
-  </dl>
-</section>
 
 
 <section>
-<h4 id="h4_can-req-licenses">
-  <span class="secno"></span>Requirements for Licenses</h4>
+<h4 id="h4_can-req-persistence">
+  <span class="secno"></span>Requirements for Persistence</h4>
   <dl>
-    <dt id="R-LicensesInteroperable">R-LicensesInteroperable</dt>
+   <dt id="R-Persistent">R-Persistent</dt>
     <dd>
-      <em id="_LicensesInteroperable">
-        <p>Data licenses should be interoperable</p>
+      <em id="Persistent">
+        <p>Data should be persistently identifiable</p>
       </em>
       <p>
       <strong>Motivation:</strong>
       <a href="#UC-"></a>,</p>
     </dd>
- <dt id="R-LicensesMachineRead">R-LicensesMachineRead</dt>
+	
+	 <dt id="R-Archiving">R-Archiving</dt>
     <dd>
-      <em id="_LicensesMachineRead">
-        <p>Data licenses should be provided in a machine-readable format </p>
+      <em id="Archiving">
+        <p>??</p>
       </em>
       <p>
       <strong>Motivation:</strong>
       <a href="#UC-"></a>,</p>
     </dd>
- <dt id="R-LicensesStandards">R-LicensesMachineRead</dt>
-    <dd>
-      <em id="_LicensesStandards">
-        <p>Standard vocabularies should be used to describe licenses </p>
-      </em>
-      <p>
-      <strong>Motivation:</strong>
-      <a href="#UC-"></a>,</p>
-    </dd>
-
-	<dt id="R-LicensesStandards">R-LicensesMachineRead</dt>
-	    <dd>
-	      <em id="_LicensesStandards">
-	        <p>Standard vocabularies should be used to describe licenses </p>
-	      </em>
-	      <p>
-	      <strong>Motivation:</strong>
-	      <a href="#UC-"></a>,</p>
-	    </dd>
 
   </dl>
 </section>
-
-
-
-
-
-
-
 			
 			</dl>
 			 </section>
@@ -761,6 +2223,33 @@ pre {
   <section>
 			 <h3 id="req3">Requirements for Data Usage Description Vocabulary</h3>
       <p>
+	  
+<section>
+<h4 id="h4_can-req-usage">
+  <span class="secno"></span>Requirements for Data Usage</h4>
+  <dl>
+    <dt id="R-TrackDataUsage">R-TrackDataUsage</dt>
+    <dd>
+      <em id="_R-TrackDataUsage">
+        <p>It should be possible to track the usage of data</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+	<dt id="R-IncorporateFeedback">R-IncorporateFeedback</dt>
+    <dd>
+      <em id="_R-IncorporateFeedback">
+        <p>It should be possible to incorporate feedback on the data</p>
+      </em>
+      <p>
+      <strong>Motivation:</strong>
+      <a href="#UC-"></a>,</p>
+    </dd>
+
+
+  </dl>
+</section>
              </p>
   </section>
     </section>
