@@ -115,7 +115,7 @@
   }
   td, th {
     border:1px solid black;
-    padding:1em;
+    padding:5px;
   }  
   table#namespaces td {
     font-family: monospace;
@@ -576,8 +576,8 @@ Challenges &amp; Lessons Learnt:
 		
 		
         <section rel="bibo:Chapter" resource="#ref"
-        typeof="bibo:Chapter" id="UC-">
-          <h3 id="h3_UC-" role="heading" aria-level="2">
+        typeof="bibo:Chapter" id="UC-NYCOpenData">
+          <h3 id="h3_UC-NYCOpenData" role="heading" aria-level="2">
           <span class="secno"></span>Use Case #10 - NYC Open Data
           Program</h3>
           <p>
@@ -1641,7 +1641,7 @@ id="UC-UruguayOpenDataCatalogue">
           <span class="secno"></span>Use Case #24 - Retrato da
           Viol&#234;ncia (Violence Map)</h3>
           <p>
-            <span style="font-size: 10pt">(Contributed by YasodaraC
+            <span style="font-size: 10pt">(Contributed by Yasodara
             )</span>
           </p>
           <p>This is a Data Visualization made in 2012 by 
@@ -1694,7 +1694,181 @@ id="UC-UruguayOpenDataCatalogue">
         typeof="bibo:Chapter" id="UC-Bio2RDF">
           <h3 id="h3_UC-Bio2RDF" role="heading" aria-level="2">
           <span class="secno"></span>Use Case #25 - Bio2RDF</h3>
-        </section>
+		 <span style="font-size: 10pt">(Contributed by Carlos Laufer)</span>
+          </p>
+          <p> <a href="http://bio2rdf.org/">Bio2RDF</a>  is an open source project that uses Semantic Web technologies to make possible the distributed querying of integrated life sciences data. Since its inception [2], Bio2RDF has made use of the Resource Description Framework (RDF) and the RDF Schema (RDFS) to unify the representation of data obtained from diverse (molecules, enzymes, pathways, diseases, etc.) and heterogeneously formatted biological data (e.g. flat-files, tab-delimited files, SQL, dataset specific formats, XML etc.). Once converted to RDF, this biological data can be queried using the SPARQL Protocol and RDF Query Language (SPARQL), which can be used to federate queries across multiple SPARQL endpoints. </p>
+		 <p>
+            <strong>Elements:</strong>
+          </p>
+          <ul>
+            <li>Domains:Biological data </li>
+            <li>Obligation/motivation: Biological researchers are often confronted with the inevitable and unenviable task of having to integrate their experimental results with those of others. This task usually involves a tedious manual search and assimilation of often isolated and diverse collections of life sciences data hosted by multiple independent providers including organizations such as the National Center for Bio-technology Information (<a href="http://www.ncbi.nlm.nih.gov/">NCBI</a>) and the European Bioinformatics Institute (<a href="http://www.ebi.ac.uk/">EBI</a>) ) which provide dozens of user-submitted and curated data, as well as smaller institutions such as the Donaldson group which publishes iRefIndex [3], a database of molecular interactions aggregated from 13 data sources. While these mostly isolated silos of biological information occasionally provide links between their records (e.g. Uni-Prot links its entries to hundreds of other <a href="http://www.uniprot.org/database/">databases</a>), they are typically serialized in either HTML tags or in flat file data dumps that lack the semantic richness required to serialize the intent of the linkage between data records. With thousands of biological databases and hundreds of thousands if not millions of datasets, the ability to find relevant data is hampered by non-standard database interfaces and an enormous number of haphazard data formats [4]. Moreover, metadata about these biological data providers (dataset source data information, dataset versioning, licensing information, date of creation, etc.) is often difficult to obtain. Taken together, the inability to easily navigate through available data presents an overwhelming barrier to their reuse.</li>
+            <li>Usage: Biological research</li>
+            <li>Quality: Provenance Bio2RDF scripts generate provenance records using the W3C Vocabulary of Interlinked Datasets (VoID), the Provenance vocabulary (PROV) and Dublin Core vocabulary. Each data item is linked to a provenance object that indicates the source of the data, the time at which the RDF was generated, licensing (if available from data source provider), the SPARQL endpoint in which the resource can be found, and the downloadable RDF file where the data item is located. Each dataset provenance object has a unique IRI and label based on the dataset name and creation date. The date-specific dataset IRI is linked to a unique dataset IRI using the W3C PROV predicate "wasDerivedFrom" such that one can query the dataset SPARQL endpoint to retrieve all provenance records for datasets created on different dates. Each resource in the dataset is linked the date-unique dataset IRI that is part of the provenance record using the VoID "inDataset" predicate. Other important features of the provenance record include the use of the Dublin Core "creator" term to link a dataset to the script on Github that was used to generate it, the VoID predicate "sparqlEndpoint" to point to the dataset SPARQL endpoint, and VoID predicate "dataDump" to point to the data download URL.
+				<p>
+	
+				Dataset metrics
+				<ol> 
+				<li>total number of triples
+				<li>number of unique subjects
+				<li>number of unique predicates
+				<li>number of unique objects
+				<li>number of unique types
+				<li>unique predicate-object links and their frequencies
+				<li>unique predicate-literal links and their frequencies
+				<li>unique subject type-predicate-object type links and their frequencies
+				<li>unique subject type-predicate-literal links and their frequencies
+				<li>total number of references to a namespace
+				<li>total number of inter-namespace references
+				<li>total number of inter-namespace-predicate references
+				</ol>
+	
+	</li>
+            <li>Size: <br>
+	Nineteen datasets were generated as part of the Bio2RDF 2 release. Several of the datasets are themselves collections of datasets that are now available as one resource. Each dataset has been loaded into a dataset specific SPARQL endpoint using Openlink Virtuoso version 6.1.6. SPARQL endpoints, available at http://[namespace].bio2rdf.org. All updated Bio2RDF linked data and their corresponding Virtuoso DB files are available for <a href="http://download.bio2rdf.org/">download</a>.</li> <p>
+	
+<table>
+	<tr>
+	  <th>Dataset</th>
+	  <th>Namespace</th> 
+	  <th>#of triples</th>
+	</tr>
+	<tr>
+	  <td>Affymetrix</td>
+	  <td>affymetrix</td> 
+	  <td>44469611</td>
+	</tr>
+	<tr>
+	  <td>Biomodels</td>
+	  <td>biomodels</td> 
+	  <td>589753</td>
+	</tr>
+	<tr>
+	  <td>Comparative Tox-icogenomics Data-base</td>
+	  <td>ctd </td> 
+	  <td>141845167</td>
+	</tr>
+	<tr>
+	  <td>DrugBank</td>
+	  <td>drugbank</td> 
+	  <td>1121468</td>
+	</tr>
+	<tr>
+	  <td>NCBI Gene	</td>
+	  <td>ncbigene	</td> 
+	  <td>394026267</td>
+	</tr>
+	<tr>
+	  <td>Gene Ontology Annotations	</td>
+	  <td>goa</td> 
+	  <td>80028873
+	</td>
+	</tr>
+	<tr>
+	  <td>HUGO Gene No-menclature Committee		</td>
+	  <td>hgnc</td> 
+	  <td>836060</td>
+	</tr>
+	<tr>
+	  <td>Homologene		</td>
+	  <td>homologene</td> 
+	  <td>1281881</td>
+	</tr>
+	<tr>
+	  <td>InterPro		</td>
+	  <td>interpro</td> 
+	  <td>999031</td>
+	</tr>
+	<tr>
+	  <td>iProClass		</td>
+	  <td>iproclass</td> 
+	  <td>211365460</td>
+	</tr>
+	<tr>
+	  <td>iRefIndex		</td>
+	  <td>irefindex</td> 
+	  <td>31042135</td>
+	</tr>
+	<tr>
+	  <td>Medical Subject Headings </td>
+	  <td>mesh</td> 
+	  <td>4172230</td>
+	</tr>
+	<tr>
+	  <td>National Center for Biomedical Ontology	 </td>
+	  <td>ncbo</td> 
+	  <td>15384622</td>
+	</tr>
+	<tr>
+	  <td>National Drug Code Directory		 </td>
+	  <td>ndc</td> 
+	  <td>17814216</td>
+	</tr>
+	<tr>
+	  <td>Online Mendelian Inheritance in Man			 </td>
+	  <td>omim</td> 
+	  <td>1848729</td>
+	</tr>
+	<tr>
+	  <td>Pharmacogenomics Knowledge Base				 </td>
+	  <td>pharmgkb</td> 
+	  <td> </td>
+	</tr>
+	<tr>
+	  <td>SABIO-RK					 </td>
+	  <td>sabiork</td> 
+	  <td>2618288</td>
+	</tr>
+	<tr>
+	  <td>Saccharomyces Genome Database				 </td>
+	  <td>sgd</td> 
+	  <td>5551009</td>
+	</tr>
+	<tr>
+	  <td>NCBI Taxonomy				 </td>
+	  <td>19</td> 
+	  <td>17814216</td>
+	</tr>
+	<tr>
+	  <td>Total			 </td>
+	  <td>taxon</td> 
+	  <td>1010758291</td>
+	</tr>
+	
+	</table>
+	<p>
+            <li>Type/format:RDF </li>
+            <li>Rate of change: </li>
+            <li>Data lifespan:</li>
+            <li>Potential audience: Biological researchers</li>
+          </ul>
+          <p>
+			 
+	          <strong>Technical Challenges:</strong>
+	          </p>
+	          <ul>
+	            <li>Lack of human-readable metadata.
+				<li>Data variability (models, sources, etc.).
+				<li> RDFizations of Datasets.
+				<li> Wide variety of formats and technologies.
+			  </ul>
+			
+			 <p>
+
+		          <strong>Potential Requirements:</strong>
+		          </p>
+		          <ul>
+		            <li>Dataset versioning and updating mechanisms
+					<li>Standardization of schemas
+					<li>Integration with other platforms/services
+					<li>Data persistence
+				  </ul>
+				 <strong>Requires:</strong>
+		           
+		          </p>			
+
+
+</section>
 
          </section>
  
@@ -1738,7 +1912,7 @@ id="UC-UruguayOpenDataCatalogue">
               </em>
 			  <p>
               <strong>Motivation:</strong>
-                <a href="#UC-DocumentedSupportandRelease">UC-DocumentedSupportandRelease</a>, <a href="#UC-BuildingEye">UC-BuildingEye</a>, <a href="#UC-LATimesReporting">UC-LATimesReporting</a> and <a href="#UC-ViolenceMap">UC-ViolenceMap</a>
+                <a href="#UC-DocumentedSupportandRelease">DocumentedSupportandRelease</a>, <a href="#UC-BuildingEye">BuildingEye</a>, <a href="#UC-LATimesReporting">LATimesReporting</a> and <a href="#UC-ViolenceMap">ViolenceMap</a>
 				</p>				
             </dd>
 			  <dt id="R-MetadataMachineRead">R-MetadataMachineRead</dt>
