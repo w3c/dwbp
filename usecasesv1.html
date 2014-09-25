@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>Data on the Web Best Practices Use Cases &amp; Requirements</title>
     <!--[if lt IE 9]>
   <script src="http://www.w3.org/2008/site/js/html5shiv.js"></script>  <![endif]-->
-    <script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"></script>
     <script class="remove">
       var respecConfig = {
 
@@ -106,15 +106,17 @@
 
       };
     </script>
-    <link rel="stylesheet" href="http://www.w3.org/TR/2014/WD-dwbp-ucr-20140605/localstyles.css" />
+    <link href="http://www.w3.org/TR/2014/WD-dwbp-ucr-20140605/localstyles.css"
+
+      rel="stylesheet" />
   </head>
   <body>
     <section id="abstract">
-      <p>This document lists some use cases, compiled by the Data on the Web
-        Best Practices Working Group, that represent scenarios of how data is
-        commonly published on the Web and how it is used. This document also
-        provides a set of requirements derived from these use cases that have
-        been used to guide the development of the set of Data on the Web Best
+      <p>This document lists use cases, compiled by the Data on the
+        Web Best Practices Working Group, that represent scenarios of how data
+        is commonly published on the Web and how it is used. This document also
+        provides a set of requirements derived from these use cases that will be
+        used to guide the development of the set of Data on the Web Best
         Practices and the development of two new vocabularies: Quality and
         Granularity Description Vocabulary and Data Usage Description
         Vocabulary. </p>
@@ -127,7 +129,7 @@
         variety of data available on the Web covering several domains like
         education, economy, security, cultural heritage and scientific data. On
         the other hand, developers and journalists manipulate this data to
-        create visualizations and to perform data analysis. However, despite of
+        create visualizations and to perform data analysis. However, despite
         these experiences, several important issues need to be addressed in
         order to meet the requirements of both data publishers and data
         consumers. </p>
@@ -151,7 +153,7 @@
           particularly welcome via <a href="mailto:public-dwbp-comments@w3.org">public-dwbp-comments@w3.org</a>
           (<a href="mailto:public-dwbp-comments-request@w3.org?subject=subscribe">subscribe</a>,
           <a href="http://lists.w3.org/Archives/Public/public-dwbp-comments/">archives</a>).</p>
-        <p>There are many outstanding <a href="http://www.w3.org/2013/dwbp/track/issues/raised">issues</a>
+        <p>There are some outstanding <a href="http://www.w3.org/2013/dwbp/track/issues/raised">issues</a>
           associated with the use cases presented here that are being addressed.
           Where those issue are related to a specific use case or requirement,
           they are highlighted in the body of the document below.</p>
@@ -164,44 +166,46 @@
         uses cases should be helpful for the identification of the best
         practices that will guide the publishing and usage of Data on the Web.
         In general, a best practice will be described at least by a statement
-        and a how to do it section, i.e., a discussion of techniques and
-        suggestions as how to implement it. Use cases descriptions shows some of
-        the main challenges faced by publishers or developers. Information about
-        challenges will be helpful to identify areas where Best Practices are
-        necessary. According to the challenges, a set of requirements were
-        defined, in such a way that a requirement motivates the creation of one
-        or more best practices.</p>
-      <section id="UC-BuildingEye" typeof="bibo:Chapter" resource="#UC-BuildingEye"
+        and a discussion of how the use case is currently implemented. Use cases
+        descriptions demonstrate some of the main challenges faced by publishers
+        or developers. Information about challenges will be helpful to identify
+        areas where Best Practices are necessary. According to the challenges, a
+        set of requirements are abstracted, in such a way that a requirement
+        motivates the creation of one or more best practices.</p>
+      <section rel="bibo:Chapter" resource="#UC-BuildingEye" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-BuildingEye">Use Case #1 -
+        id="UC-BuildingEye">
+        <h3 id="h3_UC-BuildingEye" role="heading" aria-level="2">Use Case #1 -
           BuildingEye: SME use of public data</h3>
-        <p class="contributor">(Contributed by Deirdre Lee)</p>
+        <p class="contributor">(Contributed by Deirdre Lee)<br />
+          URL: <a href="http://mypp.ie/">http://mypp.ie/</a></p>
         <p>Buildingeye.com makes building and planning information easier to
           find and understand by mapping what's happening in your city. In
           Ireland local authorities handle planning applications and usually
-          provide some customized views of the data (PDFs, maps, etc.) on their
+          provide some customised views of the data (PDFs, maps, etc.) on their
           own website. However there isn't an easy way to get a nationwide view
           of the data. BuildingEye, an independent SME, built <a href="http://mypp.ie/">http://mypp.ie/</a>
           to achieve this. However as each local authority didn't have an Open
           Data portal, BuildingEye had to directly ask each local authority for
           its data. It was granted access to some authorities, but not all. The
           data it did receive was in different formats and of varying
-          quality/detail. BuildingEye harmonized this data for its own system.
+          quality/detail. BuildingEye harmonised this data for its own system.
           However, if another SME wanted to use this data, they would have to go
           through the same process and again go to each local authority asking
           for the data. </p>
         <p> <strong>Elements:</strong> </p>
         <ul>
-          <li>Domains: Planning data</li>
-          <li>Obligation/motivation: demand from SME</li>
-          <li>Usage: Commercial usage</li>
-          <li>Quality: standardized, interoperable across local authorities</li>
-          <li>Size: medium</li>
-          <li>Type/format: structured according to legacy system schema</li>
-          <li>Rate of change: daily</li>
-          <li>Potential audience: Business, citizens</li>
-          <li>“Governance”: local authorities</li>
+          <li><b><i>Domains:</i></b> Planning data</li>
+          <li><b><i>Obligation/motivation:</i></b> demand from SME</li>
+          <li><b><i>Usage:</i></b> Commercial usage</li>
+          <li><b><i>Quality:</i></b> standardised, interoperable across local
+            authorities</li>
+          <li><b><i>Size:</i></b> medium</li>
+          <li><b><i>Type/format:</i></b> structured according to legacy system
+            schema</li>
+          <li><b><i>Rate of change:</i></b> daily</li>
+          <li><b><i>Potential audience:</i></b> Business, citizens</li>
+          <li><b><i>Governance:</i></b> local authorities</li>
         </ul>
         <p> <strong>Challenges:</strong> </p>
         <ul>
@@ -219,21 +223,22 @@
           <li>Creation of top-down policy on Open Data to ensure common
             understanding and approach</li>
           <li>Top-down guidance on recommended Open license usage</li>
-          <li>Standardized, non-proprietary formats</li>
+          <li>Standardised, non-proprietary formats</li>
           <li>Availability of recommended domain-specific vocabularies.</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-FormatMachineRead">FormatMachineRead</a>
-          , <a href="#R-FormatStandardized">FormatStandardized</a> , <a href="#R-FormatOpen">FormatOpen</a>
-          , <a href="#R-LicenseAvailable">LicenseAvailable</a> and <a href="#R-AccessBulk">AccessBulk</a>
+        <p> <strong>Requires:</strong> <a href="#R-FormatMachineRead">R-FormatMachineRead</a>
+          , <a href="#R-FormatStandardised">R-FormatStandardised</a> , <a href="#R-FormatOpen">R-FormatOpen</a>
+          , <a href="#R-LicenseAvailable">R-LicenseAvailable</a> and <a href="#R-AccessBulk">R-AccessBulk</a>
         </p>
       </section>
-      <section id="UC-TheLandPortal" rel="bibo:Chapter" resource="#h3_UC-TheLandPortal"
+      <section typeof="bibo:Chapter" resource="#h3_UC-TheLandPortal" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-TheLandPortal">Use Case #2 -
+        id="UC-TheLandPortal">
+        <h3 id="h3_UC-TheLandPortal" role="heading" aria-level="2">Use Case #2 -
           The Land Portal</h3>
-        <p class="contributor">(Contributed by Carlos Iglesias)</p>
-        <p>The IFAD Land Portal platform it's been completely rebuilt as an Open
+        <p class="contributor">(Contributed by Carlos Iglesias)<br />
+          URL: </p>
+        <p>The IFAD Land Portal platform has been completely rebuilt as an Open
           Data collaborative platform for the Land Governance community. Among
           the new features the Land Portal will provide access to comprehensive
           and in-depth 100+ indicators from 25+ different sources on land
@@ -248,21 +253,24 @@
           graphic visualization framework)</p>
         <p><strong>Elements:</strong></p>
         <ul>
-          <li>Domains: Land Governance; Development</li>
-          <li>Obligation/motivation: To find reliable data driven indicators on
-            land governance and put all them together to facilitate access,
-            study, analysis, comparison and data gaps detection.</li>
-          <li>Usage: Research; Policy Making, Journalism; Development;
-            Investments; Governance; Food security; Poverty; Gender issues.</li>
-          <li>Quality: Every sort of data, from high quality to unverified one.</li>
-          <li>Size: Varies, but low-medium in general.</li>
-          <li>Type/format: Varies: APIs; JSON; spreadsheets; CSVs; HTMLs; XMLs;
-            PDFs...</li>
-          <li>Rate of change: Usually yearly, but also lower rates (monthly,
-            quarterly...)</li>
-          <li>Data lifespan: Unlimited.</li>
-          <li>Potential audience: Practitioners; Policy makers; Activists;
-            Researchers; Journalists.</li>
+          <li><b><i>Domains:</i></b> Land Governance; Development</li>
+          <li><b><i>Obligation/motivation:</i></b> To find reliable data driven
+            indicators on land governance and put all them together to
+            facilitate access, study, analysis, comparison and data gaps
+            detection.</li>
+          <li><b><i>Usage:</i></b> Research; Policy Making, Journalism;
+            Development; Investments; Governance; Food security; Poverty; Gender
+            issues.</li>
+          <li><b><i>Quality:</i></b> Every sort of data, from high quality to
+            unverified one.</li>
+          <li><b><i>Size:</i></b> Varies, but low-medium in general.</li>
+          <li><b><i>Type/format:</i></b> Varies: APIs; JSON; spreadsheets; CSVs;
+            HTMLs; XMLs; PDFs...</li>
+          <li><b><i>Rate of change:</i></b> Usually yearly, but also lower rates
+            (monthly, quarterly...)</li>
+          <li><b><i>Data lifespan:</i></b> Unlimited.</li>
+          <li><b><i>Potential audience:</i></b> Practitioners; Policy makers;
+            Activists; Researchers; Journalists.</li>
         </ul>
         <p><strong>Challenges:</strong></p>
         <ul>
@@ -286,25 +294,23 @@
           <li>Data persistence.</li>
           <li>Versioning mechanisms.</li>
         </ul>
-        <p><strong>Requires:</strong> <a href="#R-MetadataMachineRead">MetadataMachineRead</a>
-          , <a href="#R-GranularityLevels">GranularityLevels</a> , <a href="#R-FormatMachineRead">FormatMachineRead</a>
-          , <a href="#R-FormatStandardized">FormatStandardized</a> , <a href="#R-FormatLocalize">FormatLocalize</a>
-          , <a href="#R-VocabReference">VocabReference</a> , <a href="#R-VocabVersion">VocabVersion</a>
-          , <a href="#R-ProvAvailable">ProvAvailable</a> , <a href="#R-AccessBulk">AccessBulk</a>
-          , <a href="#R-AccessRealTime">AccessRealTime</a> , <a href="#R-PersistentIdentification">Persistent</a>
-          , <a href="#R-QualityCompleteness">QualityCompleteness</a> and <a href="#R-QualityMetrics">QualityMetrics</a>
-        </p>
-        <p> <strong>Requires:</strong> <a href="#R-MetadataStandardized">R-MetadataStandardized</a>
-          , <a href="#R-MetadataInteroperable">MetadataInteroperable</a> and <a
+        <p><strong>Requires:</strong> <a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>
+          , <a href="#R-GranularityLevels">R-GranularityLevels</a> , <a href="#R-FormatMachineRead">R-FormatMachineRead</a>
+          , <a href="#R-FormatStandardised">R-FormatStandardised</a> , <a href="#R-FormatLocalise">R-FormatLocalise</a>
+          , <a href="#R-VocabReference">R-VocabReference</a> , <a href="#R-VocabVersion">R-VocabVersion</a>
+          , <a href="#R-ProvAvailable">R-ProvAvailable</a> , <a href="#R-AccessBulk">R-AccessBulk</a>
+          , <a href="#R-AccessRealTime">R-AccessRealTime</a> , <a href="#R-PersistentIdentification">R-PersistentIdentification</a>
+          , <a href="#R-QualityCompleteness">R-QualityCompleteness</a> and <a
 
-            href="#R-GranularityLevels">GranularityLevels</a> </p>
+            href="#R-QualityMetrics">R-QualityMetrics</a> </p>
       </section>
-      <section id="UC-RecifeOpenDataPortal" typeof="bibo:Chapter" resource="#UC-RecifeOpenDataPortal"
+      <section rel="bibo:Chapter" resource="#UC-RecifeOpenDataPortal" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-RecifeOpenDataPortal">Use
+        id="UC-RecifeOpenDataPortal">
+        <h3 id="h3_UC-RecifeOpenDataPortal" role="heading" aria-level="2">Use
           Case #3 - Recife Open Data Portal</h3>
-        <p class="contributor">(Contributed by Bernadette Lóscio )</p>
+        <p class="contributor">(Contributed by Bernadette Lóscio )<br />
+          URL: <a href="http://dados.recife.pe.gov.br/">http://dados.recife.pe.gov.br/</a></p>
         <p>Recife is a city situated in the Northeast of Brazil and it is famous
           for being one of the Brazil’s biggest tech hubs. Recife is also one of
           the first Brazilian cities to release data generated by public sector
@@ -329,21 +335,21 @@
           open data catalogue tool, data publication and portal release.</p>
         <p><strong>Elements:</strong></p>
         <ul>
-          <li>Domains: Base registers, Cultural heritage information, Geographic
-            information, Infrastructure information, Social data and Tourism
-            Information</li>
-          <li>Obligation/motivation: Data that must be provided to the public
-            under a legal obligation (Brazilian Information Acess Act, edited in
-            2012); Provide public data to the citizens</li>
-          <li>Usage: Data that supports democracy and transparency; Data used by
-            application developers</li>
-          <li>Quality: Verified and clean data</li>
-          <li>Size: in general small to medium CSV files</li>
-          <li>Type/format: CSV, geojson</li>
-          <li>Rate of change: different rates of changes depending on the data
-            source</li>
-          <li>Potential audience: application developers, startups, government
-            organizations</li>
+          <li><b><i>Domains:</i></b> Base registers, Cultural heritage
+            information, Geographic information, Infrastructure information,
+            Social data and Tourism Information</li>
+          <li><b><i>Obligation/motivation:</i></b> Data that must be provided to
+            the public under a legal obligation (Brazilian Information Acess
+            Act, edited in 2012); Provide public data to the citizens</li>
+          <li><b><i>Usage:</i></b> Data that supports democracy and
+            transparency; Data used by application developers</li>
+          <li><b><i>Quality:</i></b> Verified and clean data</li>
+          <li><b><i>Size:</i></b> in general small to medium CSV files</li>
+          <li><b><i>Type/format:</i></b> CSV, geojson</li>
+          <li><b><i>Rate of change:</i></b> different rates of changes depending
+            on the data source</li>
+          <li><b><i>Potential audience:</i></b> application developers,
+            startups, government organizations</li>
         </ul>
         <p> <strong>Challenges:</strong> </p>
         <ul>
@@ -352,20 +358,22 @@
           <li>Automate the data publishing process to keep data up to date and
             accurate</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-MetadataMachineRead">MetadataMachineRead</a>
-          , <a href="#R-MetadataStandardized">MetadataStandardized</a> , <a href="#R-MetadataDocum">MetadataDocum</a>
-          , <a href="#R-VocabReference">VocabReference</a> , <a href="#R-VocabDocum">VocabDocum</a>
-          , <a href="#R-VocabOpen">VocabOpen</a> , <a href="#R-SelectHighValue">SelectHighValue</a>
-          , <a href="#R-SelectDemand">SelectDemand</a> , <a href="#R-QualityCompleteness">QualityCompleteness</a>
-          , <a href="#R-SynchronisedData">SynchronisedData</a> and <a href="#R-QualityComparable">QualityComparable</a>
-        </p>        
-      </section>
-      <section id="UC-DadosGovBr" typeof="bibo:Chapter" resource="#UC-DadosGovBr"
+        <p> <strong>Requires:</strong> <a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>
+          , <a href="#R-MetadataStandardised">R-MetadataStandardised</a> , <a
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DadosGovBr">Use Case #4 -
+            href="#R-MetadataDocum">R-MetadataDocum</a> , <a href="#R-VocabReference">R-VocabReference</a>
+          , <a href="#R-VocabDocum">R-VocabDocum</a> , <a href="#R-VocabOpen">R-VocabOpen</a>
+          , <a href="#R-SelectHighValue">R-SelectHighValue</a> , <a href="#R-SelectDemand">R-SelectDemand</a>
+          , <a href="#R-QualityCompleteness">R-QualityCompleteness</a> , <a href="#R-SynchronisedData">R-SynchronisedData</a>
+          and <a href="#R-QualityComparable">R-QualityComparable</a> </p>
+      </section>
+      <section rel="bibo:Chapter" resource="#UC-DadosGovBr" typeof="bibo:Chapter"
+
+        id="UC-DadosGovBr">
+        <h3 id="h3_UC-DadosGovBr" role="heading" aria-level="2">Use Case #4 -
           Dados.gov.br</h3>
-        <p class="contributor">(Contributed by Yasodara)</p>
+        <p class="contributor">(Contributed by Yasodara)<br />
+          URL: <a href="http://dados.gov.br/">http://dados.gov.br/</a></p>
         <p> Dados.gov.br is the open data portal of the Brazil's Federal
           Government. The site was built in community, in a network pulled by
           three technicians from the Ministry of Planning. They managed the WG3
@@ -375,22 +383,23 @@
           of data catalog of the Federal Government provided on the internet. </p>
         <p> <strong>Elements:</strong> </p>
         <ul>
-          <li>Domains: federal budget, addresses, Infrastructure information,
-            e-gov tools usage, social data, geographic information, political
-            information, Transport information</li>
-          <li>Obligation/motivation: Data that must be provided to the public
-            under a legal obligation, the called LAI or Brazilian Information
-            Acess Act, edited in 2012</li>
-          <li>Usage: Data that is the basis for services to the public; Data
-            that has commercial reuse potential.</li>
-          <li>Quality: Authoritative, clean data, vetted and guaranteed;</li>
-          <li>Lineage/Derivation: Data came from various publishers. As a
-            catalog, the site has faced several challenges, one of them was to
-            integrate the various technologies and formulas used by publishers
-            to provide datasets in the portal.</li>
-          <li>Type/format: Tabular data, text data</li>
-          <li>Rate of change: There is fixed data and data with high rate of
-            change</li>
+          <li><b><i>Domains:</i></b> federal budget, addresses, Infrastructure
+            information, e-gov tools usage, social data, geographic information,
+            political information, Transport information</li>
+          <li><b><i>Obligation/motivation:</i></b> Data that must be provided to
+            the public under a legal obligation, the called LAI or Brazilian
+            Information Acess Act, edited in 2012</li>
+          <li><b><i>Usage: </i></b>Data that is the basis for services to the
+            public; Data that has commercial reuse potential.</li>
+          <li><b><i>Quality:</i></b> Authoritative, clean data, vetted and
+            guaranteed;</li>
+          <li><b><i>Lineage/Derivation:</i></b> Data came from various
+            publishers. As a catalog, the site has faced several challenges, one
+            of them was to integrate the various technologies and formulas used
+            by publishers to provide datasets in the portal.</li>
+          <li><b><i>Type/format:</i></b> Tabular data, text data</li>
+          <li><b><i>Rate of change:</i></b> There is fixed data and data with
+            high rate of change</li>
         </ul>
         <p> <strong>Challenges:</strong> </p>
         <ul>
@@ -401,20 +410,21 @@
             portal has not a special licence for data. As you can see, there is
             different types of licences that applied to the datasets.</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-VocabReference">R-VocabReference</a>
-          , <a href="#R-LicenseAvailable">R-LicenseAvailable</a> and <a href="#R-QualityOpinions">R-QualityOpinions</a>
-        </p>
+        <p> <strong>Requires:</strong> <a href="#R-FormatStandardised">R-FormatStandardised</a>,
+          <a href="#R-VocabReference">R-VocabReference</a> , <a href="#R-LicenseAvailable">R-LicenseAvailable</a>
+          and <a href="#R-QualityOpinions">R-QualityOpinions</a> </p>
       </section>
-      <section id="UC-ISOGEOStory" typeof="bibo:Chapter" resource="#UC-ISOGEOStory"
+      <section rel="bibo:Chapter" resource="#UC-ISOGEOStory" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-ISOGEOStory">Use Case #5 -
+        id="UC-ISOGEOStory">
+        <h3 id="h3_UC-ISOGEOStory" role="heading" aria-level="2">Use Case #5 -
           ISO GEO Story</h3>
-        <p class="contributor">(Contributed by Ghislain Atemezing)</p>
+        <p class="contributor">(Contributed by Ghislain Atemezing)<br />
+          URL: </p>
         <p> ISO GEO is a company managing catalogs records of geographic
           information in XML, conformed to ISO-19139. (ISO- 19139 is a French
-          adaptation of the ISO- 19115) An excerpts is <a href="http://cl.ly/3A1p0g2U0A2z">here</a>
-          . They export thousands of catalogs like that today, but they need to
+          adaptation of the ISO- 19115) An excerpt is <a href="http://cl.ly/3A1p0g2U0A2z">here</a>.
+          They export thousands of catalogs like that today, but they need to
           manage them better. In their platform, they store the information in a
           more conventional manner, and use this standard for export dataset
           compliant to Inspire interoperability , or via the CSW protocol.
@@ -428,10 +438,10 @@
           framework to better understand the thousand of metadata records they
           use in their day-to-day business. Types of information recorded in
           each file (see example <a href="http://www.eurecom.fr/%7Eatemezin/datalift/isogeo/5cb5cbeb-fiche1.xml">
-            here )</a> are the following: Contact info (metadata) [Data issued];
+            here</a>) are the following: contact info (metadata) [data issued];
           spatial representation ; reference system info [code space ], spatial
-          Resolution ; Geographic Extension of the data, File distribution; Data
-          Quality ; process step, etc. </p>
+          resolution ; geographic extension of the data, file distribution; data
+          quality ; process step, etc. </p>
         <p> <strong>Challenges:</strong> </p>
         <ul>
           <li>Achieve interoperability between supporting applications, e.g.:,
@@ -441,13 +451,17 @@
           <li>Unify way to have access to each record within the catalog at
             different level e.g.:, local, regional, national or EU level.</li>
         </ul>
+        <p> <strong>Requires:</strong> <a href="#R-VocabReference">R-VocabReference</a>,
+          <a href="#R-MetadataStandardised">R-MetadataStandardised</a> and <a href="#R-GranularityLevels">R-GranularityLevels</a>
+        </p>
       </section>
-      <section id="UC-DutchBasicRegisters" rel="bibo:Chapter" resource="#h3_UC-DutchBasicRegisters"
+      <section typeof="bibo:Chapter" resource="#h3_UC-DutchBasicRegisters" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DutchBasicRegisters">Use
+        id="UC-DutchBasicRegisters">
+        <h3 id="h3_UC-DutchBasicRegisters" role="heading" aria-level="2">Use
           Case #6 - Dutch basic registers</h3>
-        <p class="contributor">(Contributed by Christophe Guéret)</p>
+        <p class="contributor">(Contributed by Christophe Guéret)<br />
+          URL: <a href="http://www.e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties">http://www.e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties</a></p>
         <p> The Netherlands has a <a href="http://e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistraties">
             set of registers </a> they are looking at opening and exposing as
           Linked (Open) Data under the context of the project <a href="http://www.pilod.nl/wiki/Hoofdpagina">"PiLOD"</a>
@@ -457,7 +471,7 @@
           instance, the service of public taxes ("BelastingDienst") which
           regularly pulls out data from several registers, stores this data in a
           big Oracle instance and curates it. This costly and time consuming
-          process could be optimized by providing on-demand access to up-to-date
+          process could be optimised by providing on-demand access to up-to-date
           descriptions provided by the register owners. </p>
         <p> <strong>Challenges:</strong> </p>
         In terms of challenges, linking is for once not much of an issue as <a
@@ -493,15 +507,15 @@
             paid dumps can be considered, as well as other indirect revenue
             streams. </li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-VocabReference">VocabReference</a>
-          , <a href="#R-SensitivePrivacy">R-SensitivePrivacy</a> , <a href="#R-UniqueIdentifier">UniqueIdentifier</a>
-          , <a href="#R-MultipleRepresentations">MultipleRepresentations</a>
+        <p> <strong>Requires:</strong> <a href="#R-VocabReference">R-VocabReference</a>
+          , <a href="#R-SensitivePrivacy">R-SensitivePrivacy</a> , <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a>
+          , <a href="#R-MultipleRepresentations">R-MultipleRepresentations</a>
           and <a href="#R-CoreRegister">R-CoreRegister</a> </p>
       </section>
-      <section id="UC-WindCharacterizationScientificStudy" typeof="bibo:Chapter"
+      <section rel="bibo:Chapter" resource="#UC-WindCharacterizationScientificStudy"
 
-        resource="#UC-WindCharacterizationScientificStudy" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-WindCharacterizationScientificStudy">Use
+        typeof="bibo:Chapter" id="UC-WindCharacterizationScientificStudy">
+        <h3 id="h3_UC-WindCharacterizationScientificStudy" role="heading" aria-level="2">Use
           Case #7 - Wind Characterization Scientific Study</h3>
         <p class="contributor">(Contributed by Eric Stephan)</p>
         <p>This use case describes a data management facility being constructed
@@ -511,7 +525,7 @@
           Renewable Energy (RFORE) project is responsible collecting wind
           characterization data from remote sensing and in situ instruments
           located on an offshore platform. This raw data is collected by the
-          Data Management Facility and processed into a standardized NetCDF
+          Data Management Facility and processed into a standardised NetCDF
           format. Both the raw measurements and processed data are archived in
           the PNNL Institutional Computing (PIC) petascale computing facility.
           The DMF will record all processing history, quality assurance work,
@@ -528,23 +542,24 @@
         directly using other protocols such as sftp, rsync, scp, access
         techniques such as: <a href="http://www.psc.edu/index.php/hpn-ssh">
           http://www.psc.edu/index.php/hpn-ssh</a>
-        <p> <strong>Requires:</strong> <a href="#R-FormatStandardized">FormatStandardized</a>
-          , <a href="#R-VocabReference">VocabReference</a> , <a href="#R-VocabOpen">VocabOpen</a>
-          and <a href="#R-AccessRealTime">AccessRealTime</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-FormatStandardised">R-FormatStandardised</a>
+          , <a href="#R-VocabReference">R-VocabReference</a> , <a href="#R-VocabOpen">R-VocabOpen</a>
+          and <a href="#R-AccessRealTime">R-AccessRealTime</a> </p>
       </section>
-      <section id="UC-DigitalArchivingofLinkedData" typeof="bibo:Chapter" resource="#UC-DigitalArchivingofLinkedData"
+      <section rel="bibo:Chapter" resource="#UC-DigitalArchivingofLinkedData" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DigitalArchivingofLinkedData">Use
+        id="UC-DigitalArchivingofLinkedData">
+        <h3 id="h3_UC-DigitalArchivingofLinkedData" role="heading" aria-level="2">Use
           Case #8 - Digital archiving of Linked Data</h3>
-        <p class="contributor">(Contributed by Christophe Guéret)</p>
+        <p class="contributor">(Contributed by Christophe Guéret)<br />
+          URL: <a href="http://dans.knaw.nl/">http://dans.knaw.nl/</a></p>
         <p> Taking the concrete example of the digital archive <a href="http://dans.knaw.nl/">"DANS"</a>
           , digital archives have so far been concerned with the preservation of
           what could be defined as "frozen" dataset. A frozen dataset is a
           finished, self-contained, set of data that does not evolve after it
           has been constituted. The goal of the preserving institution is to
           ensure this dataset remains available and readable for as many years
-          as possible. This can for example concern an audio record, a digitized
+          as possible. This can for example concern an audio record, a digitised
           image, e-books or database dumps. Consumers of the data are expected
           to look-up for a specific content based on its associated <a href="http://www.persid.org/">persistent
             identifier</a> , download it from the archive and use it. Now comes
@@ -578,16 +593,17 @@
           for domain names and naming of resources. Decide on the scope of the
           step that will turn a connected sub-graph into an isolated data dump.
         </p>
-        <p> <strong>Requires:</strong> <a href="#R-VocabReference">VocabReference</a>
-          , <a href="#R-UniqueIdentifier">UniqueIdentifier</a> , <a href="#R-PersistentIdentification">PersistentIdentification</a>
-          and <a href="#R-Archiving">Archiving</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-VocabReference">R-VocabReference</a>
+          , <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a> , <a href="#R-PersistentIdentification">R-PersistentIdentification</a>
+          and <a href="#R-Archiving">R-Archiving</a> </p>
       </section>
-      <section id="UC-LATimesReporting" typeof="bibo:Chapter" resource="#UC-LATimesReporting"
+      <section rel="bibo:Chapter" resource="#UC-LATimesReporting" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-LATimesReporting">Use Case
+        id="UC-LATimesReporting">
+        <h3 id="h3_UC-LATimesReporting" role="heading" aria-level="2">Use Case
           #9 - LA Times' reporting of Ron Galperin's Infographic</h3>
-        <p class="contributor">(Contributed by Phil Archer )</p>
+        <p class="contributor">(Contributed by Phil Archer )<br />
+          URL: <a href="http://articles.latimes.com/2014/mar/27/local/la-me-ln-gender-wage-gap-city-government-20140327">http://articles.latimes.com/2014/mar/27/local/la-me-ln-gender-wage-gap-city-government-20140327</a></p>
         <p> On 27 March 2014, the LA Times published a story <i>Women earn 83
             cents for every $1 men earn in L.A. city government</i>. It was
           based on an Infographic released by LA's City Controller, Ron
@@ -610,8 +626,8 @@
         <p> <strong>Negative aspects:</strong> </p>
         <ul>
           <li>The Infographic itself only cites the data portal, not the
-            specific dataset, i.e. https://controllerdata.lacity.org/ not
-https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/</li>
+            specific dataset, i.e. <a href="https://controllerdata.lacity.org/%20not%20https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/">gender
+              breakdown dataset</a></li>
           <li> The <a href="https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Category/fvfi-5kja/about">
               metadata</a> provided on the data portal is very sparse with many
             fields left empty. </li>
@@ -632,7 +648,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             media report about it?</li>
           <li>The methodology used is not explained - making it hard to assess
             trustworthiness. How can provenance be described?</li>
-          <li>The metadata is incomplete and does not used a recognized standard
+          <li>The metadata is incomplete and does not used a recognised standard
             vocabulary making automated discovery and use by anyone other than
             the data creator difficult.</li>
         </ul>
@@ -645,19 +661,20 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li> <a href="http://www.theguardian.com/news/datablog"> Guardian’s
               data blog</a> </li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-MetadataStandardized">MetadataStandardized</a>
-          , <a href="#R-UniqueIdentifier">UniqueIdentifier</a> and <a href="#R-Citable">Citable</a>
-        </p>        
+        <p> <strong>Requires:</strong> <a href="#R-MetadataStandardised">R-MetadataStandardised</a>
+          , <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a> and <a href="#R-Citable">R-Citable</a>
+        </p>
       </section>
-      <section id="UC-UruguayOpenDataCatalogue" typeof="bibo:Chapter" resource="#UC-UruguayOpenDataCatalogue"
+      <section rel="bibo:Chapter" resource="#UC-UruguayOpenDataCatalogue" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-UruguayOpenDataCatalogue">Use
-          Case #10 - Uruguay: open data catalogue</h3>
-        <p class="contributor">(Contributed by AGESIC )</p>
+        id="UC-UruguayOpenDataCatalogue">
+        <h3 id="h3_UC-UruguayOpenDataCatalogue" role="heading" aria-level="2">Use
+          Case #10 - Uruguay: Open Data Catalogue</h3>
+        <p class="contributor">(Contributed by AGESIC )<br />
+          URL: <a href="http://datauy.org/">http://datauy.org/</a></p>
         <p>Uruguay open data site holds 85 datasets containing 114 resources
           since the first dataset was published in Dec. 2012. Open data
-          initiative prioritizes the “use of data” rather than “quantity of
+          initiative prioritises the “use of data” rather than “quantity of
           data”, that’s why the catalogue holds 25 applications using datasets
           resources in some way. It’s important for the project to keep the
           relation 1/3 between applications and datasets. Most of the resources
@@ -674,7 +691,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           www.fing.edu.uy - D.A.T.A. – www.datauy.org</p>
         <p><strong>Elements:</strong></p>
         <ul>
-          <li>Domains:
+          <li><b><i>Domains:</i></b>
             <ul>
               <li>Infrastructure: Most of the datasets are shapefiles.</li>
               <li>Transportation: Shapefiles and CSV, containing information
@@ -690,37 +707,40 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
               <li>Culture</li>
             </ul>
           </li>
-          <li>Obligation/motivation: There is no obligation for the government
-            agencies to publish open data. All initiatives were carried on by
-            agencies that wants to support the initiative.</li>
-          <li>Usage: Develop applications and new services for citizens,
-            agencies interoperability (exchange of information in open data
-            formats), transparency</li>
-          <li>Quality: Most of the data is actualized properly, datasets
-            metadata is complete, resources metadata about 70% complete.</li>
-          <li>Size: Small; most of the datasets size is less than 1Gb.</li>
-          <li>Type/format: SHAPEFILE (35), CSV (26), TXT (19), ZIP (12), HTML
-            (7), XLS (6),PDF (4), XML (3), RAR (2)</li>
-          <li>Rate of change: Depends on the dataset.</li>
-          <li>Data lifespan: Depends on the dataset, some change in real time,
-            other monthly, every 6 month, annual or never change.</li>
-          <li>Potential audience: Developers, Journalists, Civil society,
-            Entrepreneurs. </li>
+          <li><b><i>Obligation/motivation:</i></b> There is no obligation for
+            the government agencies to publish open data. All initiatives were
+            carried on by agencies that wants to support the initiative.</li>
+          <li><b><i>Usage:</i></b> Develop applications and new services for
+            citizens, agencies interoperability (exchange of information in open
+            data formats), transparency</li>
+          <li><b><i>Quality:</i></b> Most of the data is actualised properly,
+            datasets metadata is complete, resources metadata about 70%
+            complete.</li>
+          <li><b><i>Size:</i></b> Small; most of the datasets size is less than
+            1Gb.</li>
+          <li><b><i>Type/format:</i></b> SHAPEFILE (35), CSV (26), TXT (19), ZIP
+            (12), HTML (7), XLS (6),PDF (4), XML (3), RAR (2)</li>
+          <li><b><i>Rate of change:</i></b> Depends on the dataset.</li>
+          <li><b><i>Data lifespan:</i></b> Depends on the dataset, some change
+            in real time, other monthly, every 6 month, annual or never change.</li>
+          <li><b><i>Potential audience:</i></b> Developers, Journalists, Civil
+            society, Entrepreneurs. </li>
         </ul>
         <p> <strong>Challenges:</strong> Consolidate tool to manage datasets,
           improve visualizations and transform resources to higher level (4 – 5
           stars). Automate publication process using harvesting or similar
           tools. Alerts or control panel to keep data updated. </p>
-        <p> <strong>Requires:</strong> <a href="#R-VocabReference">VocabReference</a>
-          and <a href="#R-SynchronisedData">SynchronisedData</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-VocabReference">R-VocabReference</a>
+          and <a href="#R-SynchronisedData">R-SynchronisedData</a> </p>
       </section>
-      <section id="UC-GS1-Digital" typeof="bibo:Chapter" resource="#UC-GS1-Digital"
+      <section rel="bibo:Chapter" resource="#UC-GS1-Digital" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-GS1-Digital">Use Case #11 -
+        id="UC-GS1-Digital">
+        <h3 id="h3_UC-GS1-Digital" role="heading" aria-level="2">Use Case #11 -
           GS1: GS1 Digital</h3>
         <p class="contributor">(Contributed by Mark Harrison (University of
-          Cambridge) &amp; Eric Kauz (GS1) )</p>
+          Cambridge) &amp; Eric Kauz (GS1) )<br />
+          URL: <a href="http://www.gs1.org/digital">http://www.gs1.org/digital</a></p>
         <p>Retailers and Manufacturers / Brand Owners are beginning to
           understand that there can be benefits to openly publishing structured
           data about products and product offerings on the web as Linked Open
@@ -740,7 +760,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             description</a> of this use case is available.</p>
         <p><strong>Elements:</strong></p>
         <ul>
-          <li>Domains:
+          <li><b><i>Domains:</i></b>
             <ul>
               <li>Product master data (e.g. technical specifications,
                 ingredients, nutritional information, dimensions, weight,
@@ -751,7 +771,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
                 production process</li>
             </ul>
           </li>
-          <li>Obligation/motivation:
+          <li><b><i>Obligation/motivation:</i></b>
             <ul>
               <li>initially, enhanced search result listings (e.g. Google Rich
                 Snippets)</li>
@@ -773,33 +793,34 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
                 Linked Open Data technology within their web pages.</li>
             </ul>
           </li>
-          <li>Usage:
+          <li><b><i>Usage:</i></b>
             <ul>
               <li>data providing transparency about product characteristics</li>
               <li>data used to help consumers make informed choices about which
                 products to buy/consume</li>
             </ul>
           </li>
-          <li>Quality: Very important to have trustworthy authoritative data
-            from respective organizations</li>
-          <li>Size: Typically 20+ factual claims per product - probably 40+ RDF
-            triples</li>
-          <li>Type/format: HTML + RDFa / JSON-LD / Microdata</li>
-          <li>Rate of change: mostly static data initially - but subject to some
-            variation over time</li>
-          <li>Data lifespan: data should remain accessible until products are no
-            longer considered to be in circulation; this represents a challenge
-            for deprecated product lines data that is stated authoritatively by
-            one organization might be embedded / referenced in the data asserted
-            by another organization; this raises concerns about whether embedded
-            data becomes stale if it is inadequately synchronized, that
-            referenced data is not dereferenced (and therefore not discovered /
-            gathered) by consumers or the data. From a liability perspective,
-            there also needs to be clarity about which organization asserted
-            which factual information - and also information about which
-            organization has the authority to assert specific factual claims.</li>
-          <li>Potential audience: machine-readable (search engines, data
-            aggregators, mobile apps etc.)</li>
+          <li><b><i>Quality:</i></b> Very important to have trustworthy
+            authoritative data from respective organizations</li>
+          <li><b><i>Size:</i></b> Typically 20+ factual claims per product -
+            probably 40+ RDF triples</li>
+          <li><b><i>Type/format:</i></b> HTML + RDFa / JSON-LD / Microdata</li>
+          <li><b><i>Rate of change:</i></b> mostly static data initially - but
+            subject to some variation over time</li>
+          <li><b><i>Data lifespan:</i></b> data should remain accessible until
+            products are no longer considered to be in circulation; this
+            represents a challenge for deprecated product lines data that is
+            stated authoritatively by one organization might be embedded /
+            referenced in the data asserted by another organization; this raises
+            concerns about whether embedded data becomes stale if it is
+            inadequately synchronised, that referenced data is not dereferenced
+            (and therefore not discovered / gathered) by consumers or the data.
+            From a liability perspective, there also needs to be clarity about
+            which organization asserted which factual information - and also
+            information about which organization has the authority to assert
+            specific factual claims.</li>
+          <li><b><i>Potential audience:</i></b> machine-readable (search
+            engines, data aggregators, mobile apps etc.)</li>
         </ul>
         <p> <strong>Challenges:</strong> </p>
         <ul>
@@ -814,7 +835,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>An organization (e.g. retailer) might embed authoritative data
             asserted by another organization (e.g. brand owner) and there is the
             risk that such embedded information becomes stale if it is not
-            continuously synchronized.</li>
+            continuously synchronised.</li>
           <li>An organization (e.g. retailer) might reference a graph of
             authoritative data that can be retrieved via an HTTP request to a
             remote HTTP URI. There is a risk that software or search engines
@@ -838,7 +859,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             RDF triples, without any dangling nodes that should be connected to
             the Subject or other nodes.</li>
           <li>Only through the provision of best-in-class tool support that
-            recognize all three major formats on a completely equal footing can
+            recognise all three major formats on a completely equal footing can
             organizations have any confidence that they can use any of the 3
             major markup formats and the ability to verify / validate that their
             own markup does result in the correct RDF triples.</li>
@@ -872,17 +893,18 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             of injury or death (due to inaccurate information about allergens in
             a food product).</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-FormatStandardized">FormatStandardized</a>
-          , <a href="#R-FormatMultiple">FormatMultiple</a> , <a href="#R-ProvAvailable">ProvAvailable</a>
-          , <a href="#R-AccessUptodate">AccessUptodate</a> , <a href="#R-LicenseLiability">LicenseLiability</a>
-          , <a href="#R-PersistentIdentification">PersistentIdentification</a>
-          , <a href="#R-Citable">Citable</a> , <a href="#R-SynchronisedData">SynchronisedData</a>
-          and <a href="#R-CoreRegister">CoreRegister</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-FormatStandardised">R-FormatStandardised</a>
+          , <a href="#R-FormatMultiple">R-FormatMultiple</a> , <a href="#R-ProvAvailable">R-ProvAvailable</a>
+          , <a href="#R-AccessUptodate">R-AccessUptodate</a> , <a href="#R-LicenseLiability">R-LicenseLiability</a>
+          , <a href="#R-PersistentIdentification">R-PersistentIdentification</a>
+          , <a href="#R-Citable">R-Citable</a> , <a href="#R-SynchronisedData">R-SynchronisedData</a>
+          and <a href="#R-CoreRegister">R-CoreRegister</a> </p>
       </section>
-      <section id="UC-Tabulae" typeof="bibo:Chapter" resource="#UC-Tabulae" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-Tabulae">Use Case #12 -
+      <section rel="bibo:Chapter" resource="#UC-Tabulae" typeof="bibo:Chapter" id="UC-Tabulae">
+        <h3 id="h3_UC-Tabulae" role="heading" aria-level="2">Use Case #12 -
           Tabulae - how to get value out of data</h3>
-        <p class="contributor">(Contributed by Luis Polo )</p>
+        <p class="contributor">(Contributed by Luis Polo )<br />
+          URL: <a href="http://www.tabulaeapp.com/">http://www.tabulaeapp.com/</a></p>
         <p>Tabul.ae is a framework to publish and visually explore data that can
           used to deploy powerful and easy-to-exploit open data platforms, so
           contributing organizations to unleash the potential of their data. The
@@ -899,24 +921,27 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           web content, enhancing the reusability of the information.</p>
         <p> <strong>Elements:</strong> </p>
         <ul>
-          <li>Domains: Quantitative and geographical information: stats,
-            biodiversity, socio-economic indicators, environment, security, etc</li>
-          <li>Obligation/motivation: to help citizens and companies (especially,
-            consultancy firms) to understand and create value from open data by
-            means of reusable, user-made visualizations.</li>
-          <li>Usage: Data used by citizens, public employees and companies.</li>
-          <li>Quality: The information must be at least semi-structured (for
-            instance, an spreadsheet).</li>
-          <li>Size: Medium and large datasets (hundreds of thousands and
-            millions rows)</li>
-          <li>Type/format: Tabulae can manage relational databases, GeoJSON, CSV
-            files and spreadsheets, and provides an API for programmatic access.</li>
-          <li>Rate of change: depending on the original datasets. The platform
-            enables automatic update from original sources.</li>
-          <li>Data lifespan: depending on the original datasets.</li>
-          <li>Potential audience: Organizations that want to publish their
-            catalogue of datasets and aim to maximize their impact and
-            consumption.</li>
+          <li><b><i>Domains:</i></b> Quantitative and geographical information:
+            stats, biodiversity, socio-economic indicators, environment,
+            security, etc</li>
+          <li><b><i>Obligation/motivation:</i></b> to help citizens and
+            companies (especially, consultancy firms) to understand and create
+            value from open data by means of reusable, user-made visualizations.</li>
+          <li><b><i>Usage:</i></b> Data used by citizens, public employees and
+            companies.</li>
+          <li><b><i>Quality:</i></b> The information must be at least
+            semi-structured (for instance, an spreadsheet).</li>
+          <li><b><i>Size:</i></b> Medium and large datasets (hundreds of
+            thousands and millions rows)</li>
+          <li><b><i>Type/format:</i></b> Tabulae can manage relational
+            databases, GeoJSON, CSV files and spreadsheets, and provides an API
+            for programmatic access.</li>
+          <li><b><i>Rate of change:</i></b> depending on the original datasets.
+            The platform enables automatic update from original sources.</li>
+          <li><b><i>Data lifespan:</i></b> depending on the original datasets.</li>
+          <li><b><i>Potential audience:</i></b> Organizations that want to
+            publish their catalogue of datasets and aim to maximise their impact
+            and consumption.</li>
         </ul>
         <p> <strong>Challenges:</strong> </p>
         <ul>
@@ -936,18 +961,19 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>Standardization of schemas</li>
           <li>Integration with other platforms/services</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-FormatStandardized">FormatStandardized</a>
-          , <a href="#R-FormatLocalize">FormatLocalize</a> , <a href="#R-VocabReference">VocabReference</a>
-          , <a href="#R-VocabVersion">VocabVersion</a> , <a href="#R-ProvAvailable">ProvAvailable</a>
-          , <a href="#R-SynchronisedData">SynchronisedData</a> and <a href="#R-QualityCompleteness">QualityCompleteness</a>
+        <p> <strong>Requires:</strong> <a href="#R-FormatStandardised">R-FormatStandardised</a>
+          , <a href="#R-FormatLocalise">R-FormatLocalise</a> , <a href="#R-VocabReference">R-VocabReference</a>
+          , <a href="#R-VocabVersion">R-VocabVersion</a> , <a href="#R-ProvAvailable">R-ProvAvailable</a>
+          , <a href="#R-SynchronisedData">R-SynchronisedData</a> and <a href="#R-QualityCompleteness">R-QualityCompleteness</a>
         </p>
       </section>
-      <section id="UC-ViolenceMap" typeof="bibo:Chapter" resource="#UC-ViolenceMap"
+      <section rel="bibo:Chapter" resource="#UC-ViolenceMap" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-ViolenceMap">Use Case #13 -
+        id="UC-ViolenceMap">
+        <h3 id="h3_UC-ViolenceMap" role="heading" aria-level="2">Use Case #13 -
           Retrato da Violência (Violence Map)</h3>
-        <p class="contributor">(Contributed by Yasodara )</p>
+        <p class="contributor">(Contributed by Yasodara )<br />
+          URL: <a href="https://github.com/dataviz/retrato-da-violencia.org">https://github.com/dataviz/retrato-da-violencia.org</a></p>
         <p> This is a Data Visualization made in 2012 by <a href="http://vitorbaptista.com/">Vitor
             Batista</a> , <a href="http://leotartari.com/">Léo tartari</a> and
           <a href="http://tbueno.com/">Thiago Bueno</a> for a <abbr title="World Wide Web Consortium">W3C</abbr>
@@ -957,14 +983,14 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             in it's GitHub repository</a> </p>
         <p> <strong>Elements:</strong> </p>
         <ul>
-          <li>Domains: political information, regional security
+          <li><b><i>Domains:</i></b> political information, regional security
             information.</li>
-          <li>Obligation/motivation: Data that must be provided to the public
-            under a legal obligation, the called LAI or Brazilian Information
-            Acess Act, edited in 2012</li>
-          <li>Quality: not guaranteed data</li>
-          <li>Type/format: Tabular data</li>
-          <li>Rate of change: There is no new releases of data</li>
+          <li><b><i>Obligation/motivation:</i></b> Data that must be provided to
+            the public under a legal obligation, the called LAI or Brazilian
+            Information Acess Act, edited in 2012</li>
+          <li><b><i>Quality:</i></b> not guaranteed data</li>
+          <li><b><i>Type/format:</i></b> Tabular data</li>
+          <li><b><i>Rate of change:</i></b> There is no new releases of data</li>
         </ul>
         <p> <strong>Positive Aspects:</strong> the decision on transforming CSV
           in to JSON was based on the necessity to have hierarchical data - the
@@ -974,14 +1000,16 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
         <p> <strong>Negative Aspects:</strong> the data was in CSV format, but
           it's now (2014) outdated, and there's no prevision for new releases.
           There's no metadata in it. </p>
-        <p> <strong>Requires:</strong> <a href="#R-QualityCompleteness">QualityCompleteness</a>
-          , <a href="#R-PersistentIdentification">PersistentIdentification</a>
-          and <a href="#R-SynchronisedData">SynchronisedData</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-QualityCompleteness">R-QualityCompleteness</a>
+          , <a href="#R-AcessUptodate">R-AcessUptodate</a>, <a href="#R-MetadataAvailable">R-MetadataAvailable</a>,
+          ,<a href="#R-PersistentIdentification">R-PersistentIdentification</a>
+          and <a href="#R-SynchronisedData">R-SynchronisedData</a> </p>
       </section>
-      <section id="UC-Bio2RDF" typeof="bibo:Chapter" resource="#UC-Bio2RDF" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-Bio2RDF">Use Case #14 -
+      <section rel="bibo:Chapter" resource="#UC-Bio2RDF" typeof="bibo:Chapter" id="UC-Bio2RDF">
+        <h3 id="h3_UC-Bio2RDF" role="heading" aria-level="2">Use Case #14 -
           Bio2RDF</h3>
-        <p class="contributor">(Contributed by Carlos Laufer)</p>
+        <p class="contributor">(Contributed by Carlos Laufer)<br />
+          URL: <a href="http://bio2rdf.org/">http://bio2rdf.org/</a></p>
         <p> <a href="http://bio2rdf.org/">Bio2RDF</a> is an open source project
           that uses Semantic Web technologies to make possible the distributed
           querying of integrated life sciences data. Since its inception [2],
@@ -995,14 +1023,14 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           federate queries across multiple SPARQL endpoints. </p>
         <p> <strong>Elements:</strong> </p>
         <ul>
-          <li>Domains:Biological data </li>
-          <li> Obligation/motivation: Biological researchers are often
-            confronted with the inevitable and unenviable task of having to
-            integrate their experimental results with those of others. This task
-            usually involves a tedious manual search and assimilation of often
-            isolated and diverse collections of life sciences data hosted by
-            multiple independent providers including organizations such as the
-            National Center for Bio-technology Information ( <a href="http://www.ncbi.nlm.nih.gov/">NCBI</a>
+          <li><b><i>Domains:</i></b>Biological data </li>
+          <li><b><i>Obligation/motivation:</i></b> Biological researchers are
+            often confronted with the inevitable and unenviable task of having
+            to integrate their experimental results with those of others. This
+            task usually involves a tedious manual search and assimilation of
+            often isolated and diverse collections of life sciences data hosted
+            by multiple independent providers including organizations such as
+            the National Center for Bio-technology Information ( <a href="http://www.ncbi.nlm.nih.gov/">NCBI</a>
             ) and the European Bioinformatics Institute ( <a href="http://www.ebi.ac.uk/">EBI</a>
             ) ) which provide dozens of user-submitted and curated data, as well
             as smaller institutions such as the Donaldson group which publishes
@@ -1010,8 +1038,8 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             13 data sources. While these mostly isolated silos of biological
             information occasionally provide links between their records (e.g.
             Uni-Prot links its entries to hundreds of other <a href="http://www.uniprot.org/database/">databases</a>
-            ), they are typically serialized in either HTML tags or in flat file
-            data dumps that lack the semantic richness required to serialize the
+            ), they are typically serialised in either HTML tags or in flat file
+            data dumps that lack the semantic richness required to serialise the
             intent of the linkage between data records. With thousands of
             biological databases and hundreds of thousands if not millions of
             datasets, the ability to find relevant data is hampered by
@@ -1021,9 +1049,9 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             licensing information, date of creation, etc.) is often difficult to
             obtain. Taken together, the inability to easily navigate through
             available data presents an overwhelming barrier to their reuse. </li>
-          <li>Usage: Biological research</li>
-          <li> Quality: Provenance Bio2RDF scripts generate provenance records
-            using the <abbr title="World Wide Web Consortium">W3C</abbr>
+          <li><b><i>Usage:</i></b> Biological research</li>
+          <li><b><i>Quality:</i></b> Provenance Bio2RDF scripts generate
+            provenance records using the <abbr title="World Wide Web Consortium">W3C</abbr>
             Vocabulary of Interlinked Datasets (VoID), the Provenance vocabulary
             (PROV) and Dublin Core vocabulary. Each data item is linked to a
             provenance object that indicates the source of the data, the time at
@@ -1061,7 +1089,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
               <li>total number of inter-namespace-predicate references </li>
             </ol>
           </li>
-          <li>Size: <br />
+          <li><b><i>Size:</i></b> <br />
             Nineteen datasets were generated as part of the Bio2RDF 2 release.
             Several of the datasets are themselves collections of datasets that
             are now available as one resource. Each dataset has been loaded into
@@ -1186,6 +1214,22 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>Data lifespan:</li>
           <li>Potential audience: Biological researchers</li>
         </ul>
+        <p><strong>References:</strong></p>
+        <ol>
+          <li>Callahan A, Cruz-Toledo J, Ansell P, Klassen D, Tumarello G,
+            Dumontier M: Improved dataset coverage and interoperability with
+            Bio2RDF Release 2. SWAT4LS 2012, Proceedings of the 5th
+            International Workshop on Semantic Web Applications and Tools for
+            Life Sciences, Paris, France, November 28-30, 2012 (<a href="http://ceur-ws.org/Vol-952/paper_18.pdf">download</a>)</li>
+          <li>Belleau F, Nolin MA, Tourigny N, Rigault P, Morissette J: Bio2RDF:
+            towards a mashup to build bioinformatics knowledge systems. J Biomed
+            Inform 2008, 41(5):706-716.</li>
+          <li>Razick S, Magklaras G, Donaldson IM: iRefIndex: a consolidated
+            protein interaction database with provenance. BMC Bioinformatics
+            2008, 9:405.</li>
+          <li>Goble C, Stevens R: State of the nation in data integration for
+            bioinformatics. J Biomed Inform 2008, 41(5):687-693.</li>
+        </ol>
         <p><strong>Challenges:</strong></p>
         <ul>
           <li>Lack of human-readable metadata. </li>
@@ -1200,18 +1244,22 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>Integration with other platforms/services </li>
           <li>Data persistence </li>
         </ul>
-        <p><strong>Requires: <a href="#R-Archiving"> Archiving </a> and <a href="#R-FormatStandardized">R-FormatStandardized
-              </a></strong></p> </section>
+        <p><strong>Requires: <a href="#R-Archiving"> R-Archiving </a>, <a href="#R-VocabReference">R-VocabReference</a>,
+            <a href="#R-FormatMultiple">R-FormatMultiple</a>, <a href="#R-AccessUptodate">R-AccessUptodate</a>,
+            <a href="#R-PersistentIdentification">R-PersistentIdentification</a>
+            and <a href="#R-FormatStandardised">R-FormatStandardised </a></strong></p>
+      </section>
       <!--   <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="UC-NYCOpenData">
         <h3 id="h3_UC-NYCOpenData" role="heading" aria-level="2">Use Case #15 - NYC Open Data Program</h3>        <p class="contributor">(Contributed by Steven Adler)</p>        <p>Carole Post was appointed by Mayor Bloomberg as Commissioner of the          NY Departnmen of IT (DOITT) in 2010 and was the first woman in the          city's history to be CIO. She was the architect of NYC's Open Data          program, sponsored the Open Data Portal and helped pass the city's          Open Data Legislation. On March 11, she gave a presentation to the W3C          on her experiences changing the city culture, building the Open Data          Portal. A recording of her presentation is provided <a href="http://chaordix-ibm-gc-prod.s3.amazonaws.com/blog/wp-content/uploads/2014/03/Carole-Post-NYC-Open-Data.wmv">            here</a>. A copy of her presentation in PDF can be found <a href="http://chaordix-ibm-gc-prod.s3.amazonaws.com/blog/wp-content/uploads/2014/03/WC3-Webinar-on-Open-Data.pdf">            here</a>.</p>        <p> <strong>Requires:</strong> </p>        </section> -->
       <!--   
             <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="UC-RadarParlamentar">        <h3 id="h3_UC-RadarParlamentar" role="heading" aria-level="2">Use Case #16 - Radar Parlamentar</h3>        <p class="contributor">(Contributed by Nathalia )</p>        <p> <a href="http://radarparlamentar.polignu.org/">Radar Parlamentar</a>is          a web application that illustrates the similarities between political          parties based on the vote data analysis that occurs in the Brazilian          congress. The similarities are presented in a two-dimensional          graphics, in which circles represent parties or parliamentarians, and          the distance between these circles is how similar they vote. There is          also only a section dedicated to gender issues: how many women are in          each party over the years, which are the themes most handled by each          gender and party, etc.</p>        <p> <strong>Elements:</strong> </p>        <ul>          <li>Domains: Political information, voting records</li>          <li>Obligation/motivation: The Brazilian government began to provide            their data in an open format through webservices in the portal            Dados.gov.br .</li>          <li>Usage: reuse and exploration of data available in portal            Dados.gov.br in another kinds of visualisation.</li>          <li>Type/format: Tag clouds, 2D graphic, matrix display, treemap</li>          <li>Potential audience: Brazilian citizens</li>        </ul>        <p> <strong>Potential Requirements:</strong>Documentation: there is a          page in the web application explaining the used <a href="">methodology</a></p>        <p> <strong>Requires:</strong> </p>        </section> -->
-      <section id="UC-DocumentedSupportandRelease" typeof="bibo:Chapter" resource="#UC-DocumentedSupportandRelease"
+      <section rel="bibo:Chapter" resource="#UC-DocumentedSupportandRelease" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DocumentedSupportandRelease">Use
+        id="UC-DocumentedSupportandRelease">
+        <h3 id="h3_UC-DocumentedSupportandRelease" role="heading" aria-level="2">Use
           Case #15 - Documented Support and Release of Data</h3>
-        <p class="contributor">(Contributed by Deirdre Lee)</p>
+        <p class="contributor">(Contributed by Deirdre Lee)<br />
+          URL: </p>
         <p>While many cases of Data on the Web may contain meta-data about
           creation data and last update, the regularity of the release schedule
           is not always clear. Similarly, how and by whom the dataset is
@@ -1221,22 +1269,21 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           follow-up point should there be any issues.</p>
         <p> <strong>Challenges:</strong> </p>
         <ul>
-          <li>Describe release schedule in meta-data</li>
-          <li>Describe support mechanisms in meta-data</li>
+          <li>Release schedule of data is unknown</li>
+          <li>Support mechanisms (e.g. contact point) of data is unknown</li>
         </ul>
-        <!--
-          <p> <strong>Potential Requirements:</strong> </p>        <ul>          <li>Propose use of dcat <a href="http://www.w3.org/TR/vocab-dcat/"> dcat </a> properties <a href="http://purl.org/dc/terms/accrualPeriodicity"> dct:accrualPeriodicity </a> and            <a href="http://www.w3.org/TR/vocab-dcat/#contactpoint"> dcat:contactpoint </a> </li>          <li>Potentially extend dcat?</li>        </ul> -->
-        <p> <strong>Requires:</strong> <a href="#R-AccessUptodate">AccessUptodate</a>
-          and <a href="#R-SLAAvailable">SLAAvailable</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-AccessUptodate">R-AccessUptodate</a>
+          and <a href="#R-SLAAvailable">R-SLAAvailable</a> </p>
       </section>
-      <section id="UC-FeedbackLoopforCorrections" typeof="bibo:Chapter" resource="#UC-FeedbackLoopforCorrections"
+      <section rel="bibo:Chapter" resource="#UC-FeedbackLoopforCorrections" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-FeedbackLoopforCorrections">Use
+        id="UC-FeedbackLoopforCorrections">
+        <h3 id="h3_UC-FeedbackLoopforCorrections" role="heading" aria-level="2">Use
           Case #16 - Feedback Loop for Corrections</h3>
         <p class="contributor">(Contributed by Deirdre Lee (based on Pieter
-          Colpaert's paper <a href="http://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_56">'Route
-            planning using Linked Open Data'</a>) )</p>
+          Colpaert's paper <br />
+          URL: <a href="http://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_56">'Route
+            planning using Linked Open Data'</a>) ) </p>
         <p>One of the advantages of publishing Open Data is often quoted as
           improving the quality of the data. Many eyes looking at a dataset
           helps spot errors and holes quicker than a public body may identify
@@ -1254,27 +1301,29 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>How can the improvement be described in a machine readable format?</li>
           <li>What is best practice for reincorporating such improvements?</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-QualityOpinions">QualityOpinions</a>
-          and <a href="#R-IncorporateFeedback">IncorporateFeedback</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-QualityOpinions">R-QualityOpinions</a>
+          and <a href="#R-IncorporateFeedback">R-IncorporateFeedback</a> </p>
       </section>
-      <section id="UC-DatasetsforNaturalDisasterManagement" typeof="bibo:Chapter"
+      <section rel="bibo:Chapter" resource="#UC-DatasetsforNaturalHazardsManagement"
 
-        resource="#UC-DatasetsforNaturalDisasterManagement" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DatasetsforNaturalDisasterManagement">Use
-          Case #17 - Datasets required for Natural Disaster Management</h3>
-        <p class="contributor">(Contributed by Deirdre Lee (based on OKF Greece
-          workshop) )</p>
-        <p>Many of the datasets that are required for Natural Disaster
+        typeof="bibo:Chapter" id="UC-DatasetsforNaturalHazardsManagement">
+        <h3 id="h3_UC-DatasetsforNaturalHazardsManagement" role="heading" aria-level="2">Use
+          Case #17 - Datasets required for Natural Hazards Management</h3>
+        <p class="contributor">(Contributed by Deirdre Lee (based on Prof
+          Vassilis Vescoukis' talk at the OKF Greece workshop) )<br />
+          URL: <a href="http://okfn.gr/2014/03/okf-meetup/">http://okfn.gr/2014/03/okf-meetup/</a></p>
+        <p>Many of the datasets that are required for Natural Hazards
           Management, for example critical infrastructure, utility services,
           road networks, are not available online as they are also deemed to be
           datasets that could be used for homeland security attacks. </p>
         <strong>Requires:</strong> <a href="#R-SensitiveSecurity">SensitiveSecurity</a>
       </section>
-      <section id="UC-OKFNTranportWG" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-OKFNTranportWG">Use Case #18
+      <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="UC-OKFNTranportWG">
+        <h3 id="h3_UC-OKFNTranportWG" role="heading" aria-level="2">Use Case #18
           - OKFN Tranport WG</h3>
-        <p class="contributor">(Contributed by Deirdre Lee (based on <a href="http://www.scribd.com/doc/111890372/Helsinki-Open-Transport-Data-Manifesto">2012
-            ePSI Open Transport Data Manifesto</a>) )</p>
+        <p class="contributor">(Contributed by Deirdre Lee (based on <br />
+          URL: <a href="http://www.scribd.com/doc/111890372/Helsinki-Open-Transport-Data-Manifesto">2012
+            ePSI Open Transport Data Manifesto</a>) ) </p>
         <p>The Context: Transportation is an important contemporary issue, which
           has a direct impact on economic strength, environmental sustainability
           and social equity. Accordingly, transport data – largely produced or
@@ -1334,18 +1383,18 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             long-term perspective, whereby fair competition needs to be
             safeguarded</li>
         </ul>
-        <p><strong>Requires:</strong> <a href="#R-AccessBulk">AccessBulk</a>, <a
-
-            href="#R-FormatOpen">FormatOpen</a>, <a href="#R-VocabOpen">VocabOpen</a>,
-          <a href="#R-QualityMetrics">QualityMetrics</a>, <a href="#R-FormatLocalize">FormatLocalize</a>,and
-          <a href="#R-LicenseLiability">LicenseLiability</a></p>
+        <p><strong>Requires:</strong> <a href="#R-AccessBulk">R-AccessBulk</a>,
+          <a href="#R-FormatOpen">R-FormatOpen</a>, <a href="#R-VocabOpen">R-VocabOpen</a>,
+          <a href="#R-QualityMetrics">R-QualityMetrics</a>, <a href="#R-FormatLocalise">R-FormatLocalise</a>,and
+          <a href="#R-LicenseLiability">R-LicenseLiability</a></p>
       </section>
-      <section id="UC-TrackingofDataUsage" typeof="bibo:Chapter" resource="#UC-TrackingofDataUsage"
+      <section rel="bibo:Chapter" resource="#UC-TrackingofDataUsage" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-TrackingofDataUsage">Use
+        id="UC-TrackingofDataUsage">
+        <h3 id="h3_UC-TrackingofDataUsage" role="heading" aria-level="2">Use
           Case #19 - Tracking of data usage</h3>
-        <p class="contributor">(Contributed by Deirdre Lee)</p>
+        <p class="contributor">(Contributed by Deirdre Lee)<br />
+          URL: </p>
         <p> There are many potential/perceived benefits of <a href="http://opendefinition.org/">Open
             Data</a>, however in order to publish data, some initial
           investment/resources are required by public bodies. When justifying
@@ -1363,15 +1412,17 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>Most developers may not mind giving feedback if it will improve
             quality of data/service</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-TrackDataUsage">TrackDataUsage</a>
+        <p> <strong>Requires:</strong> <a href="#R-TrackDataUsage">R-TrackDataUsage</a>
         </p>
       </section>
-      <section id="UC-OpenCityDataPipeline" typeof="bibo:Chapter" resource="#UC-OpenCityDataPipeline"
+      <section rel="bibo:Chapter" resource="#UC-OpenCityDataPipeline" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-OpenCityDataPipeline">Use
+        id="UC-OpenCityDataPipeline">
+        <h3 id="h3_UC-OpenCityDataPipeline" role="heading" aria-level="2">Use
           Case #20 - Open City Data Pipeline</h3>
-          <p class="contributor">(Contributed by Deirdre Lee, based on <a href="https://ai.wu.ac.at/~polleres/presentations/20140319CityDataPipeline_EDF2014_Polleres.pdf">a presentation by Axel Polleres at EDF 2014)</a></p>
+        <p class="contributor">(Contributed by Deirdre Lee, based on <br />
+          URL: <a href="https://ai.wu.ac.at/%7Epolleres/presentations/20140319CityDataPipeline_EDF2014_Polleres.pdf">a
+            presentation by Axel Polleres at EDF 2014)</a> </p>
         <p>The Open City Data Pipeline aims to to provide an extensible platform
           to support citizens and city administrators by providing city key
           performance indicators (KPIs),leveraging Open Data sources. The
@@ -1442,17 +1493,20 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li> Metadata is not always uniform, not only titles of columns, but
             standardisation about units, etc.</li>
         </ul>
-        <p><strong>Requires:</strong> <a href="#R-FormatStandardized">FormatStandardized</a>
-          , <a href="#R-IndustryReuse">IndustryReuse</a> , <a href="#R-QualityCompleteness">QualityCompleteness</a>
-          and <a href="#R-QualityComparable">QualityComparable</a> </p>
+        <p><strong>Requires:</strong> <a href="#R-FormatStandardised">R-FormatStandardised</a>
+          , <a href="#R-IndustryReuse">R-IndustryReuse</a> , <a href="#R-QualityCompleteness">R-QualityCompleteness</a>
+          and <a href="#R-QualityComparable">R-QualityComparable</a> </p>
       </section>
-      <section id="UC-MachineReadabilityandInteroperabilityofLicenses" typeof="bibo:Chapter"
+      <section rel="bibo:Chapter" resource="#UC-MachineReadabilityandInteroperabilityofLicenses"
 
-        resource="#UC-MachineReadabilityandInteroperabilityofLicenses" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-MachineReadabilityandInteroperabilityofLicenses">Use
-          Case #21 - Machine-readability and Interoperability of Licenses</h3>
+        typeof="bibo:Chapter" id="UC-MachineReadabilityandInteroperabilityofLicenses">
+        <h3 id="h3_UC-MachineReadabilityandInteroperabilityofLicenses" role="heading"
+
+          aria-level="2">Use Case #21 - Machine-readability and Interoperability
+          of Licenses</h3>
         <p class="contributor">(Contributed by Deirdre Lee, based on post by
-          Leigh Dodds)</p>
+          Leigh Dodds)<br />
+          URL: <a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2014Mar/0189.html">http://lists.w3.org/Archives/Public/public-dwbp-wg/2014Mar/0189.html</a></p>
         <p> There are many different licenses available under which data on the
           web can be published, <a href="http://opendefinition.org/licenses/">e.g.
             Creative Commons, Open Data Commons, national licenses, etc.</a> It
@@ -1471,38 +1525,40 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <li>machine-readability of data licenses</li>
           <li>interoperability of data licenses</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-LicenseAvailable">LicenseAvailable</a>
+        <p> <strong>Requires:</strong> <a href="#R-LicenseAvailable">R-LicenseAvailable</a>
         </p>
       </section>
-      <section id="UC-MachineReadabilityofSLAs" typeof="bibo:Chapter" resource="#UC-MachineReadabilityofSLAs"
+      <section rel="bibo:Chapter" resource="#UC-MachineReadabilityofSLAs" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-MachineReadabilityofSLAs">Use
+        id="UC-MachineReadabilityofSLAs">
+        <h3 id="h3_UC-MachineReadabilityofSLAs" role="heading" aria-level="2">Use
           Case #22 - Machine-readability of SLAs</h3>
         <p class="contributor">(Contributed by Deirdre Lee (based on a number of
-          talks at EDF14) )</p>
+          talks at EDF14) )<br />
+          URL: <a href="http://2014.data-forum.eu/program">http://2014.data-forum.eu/program</a></p>
         <p>A main focus of publishing data on the web is to facilitate industry
           resuse for commercial purposes. In order for a commercial body to
           reuse data on the web, the terms of reuse must be clear. The legal
           terms of reuse are included in the license, but there are other
           factors that are important for commercial reuse, e.g. reliabiliy,
           support, incidient recovery, etc. These could be included in an SLA.
-          Is there a standardized, machine-readable approach to SLAs?</p>
+          Is there a standardised, machine-readable approach to SLAs?</p>
         <p><strong>Challenges:</strong></p>
         <ul>
           <li>Defining common SLA requrirements for industry reuse</li>
           <li>Existing standards/vocabularies for SLA requirements</li>
           <li>Machine-readable access to SLAs</li>
         </ul>
-        <p><strong>Requires:</strong><a href="#R-SLAAvailable">SLAAvailable</a>
+        <p><strong>Requires:</strong><a href="#R-SLAAvailable">R-SLAAvailable</a>
         </p>
       </section>
-      <section id="UC-PublicationofDataviaAPIs" typeof="bibo:Chapter" resource="#UC-PublicationofDataviaAPIs"
+      <section rel="bibo:Chapter" resource="#UC-PublicationofDataviaAPIs" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-PublicationofDataviaAPIs">Use
+        id="UC-PublicationofDataviaAPIs">
+        <h3 id="h3_UC-PublicationofDataviaAPIs" role="heading" aria-level="2">Use
           Case #23 - Publication of Data via APIs</h3>
-        <p class="contributor">(Contributed by Deirdre Lee)</p>
+        <p class="contributor">(Contributed by Deirdre Lee)<br />
+          URL: </p>
         <p> APIs are commonly used to publish data in formats designed for
           machine-consumption, as opposed to the corresponding HTML pages whose
           main aim is to deliver content suitable for human-consumption. There
@@ -1526,13 +1582,13 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             can then be different representations of the resource
             (xml/html/json/rdf)</li>
         </ul>
-        <p> <strong>Requires:</strong> <a href="#R-AccessBulk">AccessBulk</a>
-          and <a href="#R-AccessRealTime">AccessRealTime</a> </p>
+        <p> <strong>Requires:</strong> <a href="#R-AccessBulk">R-AccessBulk</a>
+          and <a href="#R-AccessRealTime">R-AccessRealTime</a> </p>
       </section>
       <br />
     </section>
-    <section id="general-challenges" rel="bibo:Chapter" resource="#challenges" typeof="bibo:Chapter">
-      <h2 role="heading" aria-level="1" id="challenges">General Challenges</h2>
+    <section typeof="bibo:Chapter" resource="#challenges" rel="bibo:Chapter" id="general-challenges">
+      <h2 id="challenges" aria-level="1" role="heading">General Challenges</h2>
       <p>The use cases presented in the previous section illustrate a number of
         challenges faced by data publishers and data consumers. These challenges
         show that some guidance is required on specifc areas and therefore best
@@ -1548,110 +1604,144 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           <tr>
             <th>Challenge</th>
             <th>Requirements</th>
+            <th><br />
+            </th>
           </tr>
           <tr>
             <td>Data Formats</td>
             <td> <a href="#h4_can-req-Formats">Requirements for Data Formats </a>
             </td>
+            <td> <a href="#R-FormatMachineRead">R-FormatMachineRead</a>, <a href="#R-FormatStandardised">R-FormatStandardised</a>,
+              <a href="#R-FormatOpen">R-FormatOpen</a>, <a href="#R-FormatMultiple">R-FormatMultiple</a>,
+              <a href="#R-FormatLocalise">R-FormatLocalise</a> </td>
           </tr>
           <tr>
             <td>Data Vocabularies</td>
             <td> <a href="#h4_can-req-vocabularies">Requirements for Data
                 Vocabularies </a> </td>
+            <td> <a href="#R-VocabReference">R-VocabReference </a>, <a href="#R-VocabDocum">R-VocabDocum</a>,
+              <a href="#R-VocabOpen">R-VocabOpen</a>, <a href="#R-VocabVersion">R-VocabVersion</a>
+            </td>
           </tr>
           <tr>
             <td>Metadata</td>
             <td> <a href="#h4_can-req-metadata">Requirements for Metadata</a> </td>
+            <td> <a href="#R-MetadataAvailable">R-MetadataAvailable</a>,<a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>,
+              <a href="#R-MetadataStandardised">R-MetadataStandardised</a>, <a href="#R-MetadataDocum">R-MetadataDocum</a> </td>
           </tr>
           <tr>
             <td>Licenses</td>
             <td> <a href="#h4_can-req-licenses">Requirements for Licenses </a>
+            </td>
+            <td> <a href="#R-LicenseAvailable">R-LicenseAvailable</a>, <a href="#R-LicenseLiability">R-LicenseLiability</a>
             </td>
           </tr>
           <tr>
             <td>Provenance</td>
             <td> <a href="#h4_can-req-provenance">Requirements for Provenance </a>
             </td>
+            <td> <a href="#R-ProvAvailable">R-ProvAvailable</a> </td>
           </tr>
           <tr>
             <td>Industry-reuse</td>
             <td> <a href="#h4_can-req-industry-reuse">Requirements for Industry
                 reuse </a> </td>
+            <td> <a href="#R-SLAAvailable">R-SLAAvailable</a>, <a href="#R-IndustryReuse">R-IndustryReuse</a>,
+              <a href="#R-PotentialRevenue">R-PotentialRevenue</a> </td>
           </tr>
           <tr>
             <td>Data Granularity</td>
             <td> <a href="#h4_can-req-granularity">Requirements for Data
                 Granularity </a> </td>
+            <td> <a href="#R-GranularityLevels">R-GranularityLevels</a> </td>
           </tr>
           <tr>
             <td>Data Selection</td>
             <td> <a href="#h4_can-req-selection">Requirements for Data
                 Selection </a> </td>
+            <td> <a href="#R-SelectHighValue">R-SelectHighValue</a>, <a href="#R-SelectDemand">R-SelectDemand</a>
+            </td>
           </tr>
           <tr>
             <td>Data Access</td>
             <td> <a href="#h4_can-req-access">Requirements for Data Access </a>
             </td>
+            <td> <a href="#R-AccessBulk">R-AccessBulk</a>, <a href="#R-AccessRealTime">R-AccessRealTime</a>,
+              <a href="#R-AccessUptodate">R-AccessUptodate</a> </td>
           </tr>
           <tr>
             <td>Sensitive Data</td>
             <td> <a href="#h4_can-req-sensitive">Requirements for Sensitive
                 Data</a> </td>
+            <td> <a href="#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="#R-SensitiveSecurity">R-SensitiveSecurity</a>
+            </td>
           </tr>
           <tr>
             <td>Data Identification</td>
             <td> <a href="#h4_can-req-identification">Requirements for Data
                 Identification </a> </td>
+            <td> <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a>, <a href="#R-MultipleRepresentations">R-MultipleRepresentations</a>
+            </td>
           </tr>
           <tr>
             <td>Data Publication</td>
             <td> <a href="#h4_can-req-publication">Requirements for Data
                 Publication </a> </td>
+            <td> <a href="#R-SynchronisedData">R-SynchronisedData</a>, <a href="#R-CoreRegister">R-CoreRegister</a>
+            </td>
           </tr>
           <tr>
             <td>Persistence</td>
             <td> <a href="#h4_can-req-persistence">Requirements for Persistence
               </a> </td>
+            <td> <a href="#R-PersistentIdentification">R-PersistentIdentification</a>,
+              <a href="#R-Archiving">R-Archiving</a> </td>
           </tr>
           <tr>
             <td>Data Quality</td>
             <td> <a href="#h4_can-req-quality">Requirements for Data Quality </a>
             </td>
+            <td> <a href="#R-QualityCompleteness">R-QualityCompleteness</a>, <a
+
+                href="#R-QualityComparable">R-QualityComparable</a>, <a href="#R-QualityMetrics">R-QualityMetrics</a>,
+              <a href="#R-QualityOpinions">R-QualityOpinions</a> </td>
           </tr>
           <tr>
             <td>Data Usage</td>
             <td> <a href="#h4_can-req-usage">Requirements for Data Usage </a>
             </td>
+            <td> <a href="#R-TrackDataUsage">R-TrackDataUsage</a>, <a href="#R-IncorporateFeedback">R-IncorporateFeedback</a>,
+              <a href="#R-Citable">R-Citable</a> </td>
           </tr>
         </tbody>
       </table>
     </section>
-    <section id="requirements-1" rel="bibo:Chapter" resource="#requirements" typeof="bibo:Chapter">
+    <section typeof="bibo:Chapter" resource="#requirements" rel="bibo:Chapter" id="requirements-1">
       <!--OddPage-->
-      <h2 role="heading" aria-level="1" id="requirements">Requirements</h2>
+      <h2 id="requirements" aria-level="1" role="heading">Requirements</h2>
       <p> </p>
-      <section id="requirements-for-data-on-the-web-best-practices" rel="bibo:Chapter"
-
-        resource="#req1" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req1">Requirements for Data on the
+      <section typeof="bibo:Chapter" resource="#req1" rel="bibo:Chapter" id="requirements-for-data-on-the-web-best-practices">
+        <h3 id="req1" aria-level="2" role="heading">Requirements for Data on the
           Web Best Practices </h3>
-        <section id="requirements-for-data-formats" rel="bibo:Chapter" resource="#h4_can-req-Formats"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-Formats" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-Formats">Requirements
+          id="requirements-for-data-formats">
+          <h4 id="h4_can-req-Formats" aria-level="3" role="heading">Requirements
             for Data Formats</h4>
           <dl>
             <dt id="R-FormatMachineRead">R-FormatMachineRead</dt>
             <dd>
               <p id="_R-FormatMachineRead"><em>Data should be available in a
-                  machine-readable format that is adequate for its intended or potential use</em></p>
+                  machine-readable format that is adequate for its intended or
+                  potential use</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-BuildingEye">BuildingEye</a>
                 and <a href="#UC-TheLandPortal">TheLandPortal</a> </p>
             </dd>
-            <dt id="R-FormatStandardized">R-FormatStandardized</dt>
+            <dt id="R-FormatStandardised">R-FormatStandardised</dt>
             <dd>
-              <p id="_R-FormatStandardized"><em>Data should be availabe in a
-                  standardized format. Through standardization, interoperability is also expected.</em></p>
+              <p id="_R-FormatStandardised"><em>Data should be availabe in a
+                  standardised format. Through standardization, interoperability
+                  is also expected.</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-OpenCityDataPipeline">OpenCityDataPipeline</a>
                 , <a href="#UC-WindCharacterizationScientificStudy">WindCharacterizationScientificStudy</a>
                 , <a href="#UC-BuildingEye">BuildingEye</a> , <a href="#UC-TheLandPortal">TheLandPortal</a>
@@ -1672,19 +1762,19 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
               <p> <strong>Motivation:</strong> <a href="#UC-GS1-Digital">GS1
                   Digital</a> </p>
             </dd>
-            <dt id="R-FormatLocalize">R-FormatLocalize</dt>
+            <dt id="R-FormatLocalise">R-FormatLocalise</dt>
             <dd>
-              <p id="_R-FormatLocalize"><em>Information about locale parameters
+              <p id="_R-FormatLocalise"><em>Information about locale parameters
                   (date and number formats, language) should be made available</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-TheLandPortal">TheLandPortal</a>
                 and <a href="#UC-Tabulae">Tabulae</a> </p>
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-vocabularies" rel="bibo:Chapter" resource="#h4_can-req-vocabularies"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-vocabularies" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-vocabularies">Requirements
+          id="requirements-for-data-vocabularies">
+          <h4 id="h4_can-req-vocabularies" aria-level="3" role="heading">Requirements
             for Data Vocabularies</h4>
           <dl>
             <dt id="R-VocabReference">R-VocabReference</dt>
@@ -1724,41 +1814,45 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-metadata" rel="bibo:Chapter" resource="#h4_can-req-metadata"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-metadata" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-metadata"> <span class="secno"></span>Requirements
+          id="requirements-for-metadata">
+          <h4 id="h4_can-req-metadata" aria-level="3" role="heading"> <span class="secno"></span>Requirements
             for Metadata</h4>
           <dl>
+            <dt id="R-MetadataAvailable">R-MetadataAvailable</dt>
+            <dd>
+              <p id="_R-MetadataAvailable"><em>Metadata should be available</em></p>
+              <p><strong>Motivation:</strong> <a href="#UC-ViolenceMap">ViolenceMap</a></p>
+            </dd>
             <dt id="R-MetadataMachineRead">R-MetadataMachineRead</dt>
             <dd>
               <p id="_R-MetadataMachineRead"><em>Metadata should be
                   machine-readable</em></p>
               <p><strong>Motivation:</strong> <a href="#UC-RecifeOpenDataPortal">RecifeOpenDataPortal</a>,
-                <a href="#UC-Bio2RDF">Bio2RDF</a>
-                and <a href="#UC-TheLandPortal">TheLandPortal</a></p>
+                <a href="#UC-Bio2RDF">Bio2RDF</a> and <a href="#UC-TheLandPortal">TheLandPortal</a></p>
             </dd>
-            <dt id="R-MetadataStandardized">R-MetadataStandardized</dt>
+            <dt id="R-MetadataStandardised">R-MetadataStandardised</dt>
             <dd>
-              <p id="_R-MetadataStandardized"><em>Metadata should be
-                  standardized. Through standardization, interoperability is also expected.</em></p>
+              <p id="_R-MetadataStandardised"><em>Metadata should be
+                  standardised. Through standardization, interoperability is
+                  also expected.</em></p>
               <p><strong>Motivation:</strong> <a href="#UC-RecifeOpenDataPortal">RecifeOpenDataPortal</a>,
-                <a href="#UC-ISOGEOStory">ISOGEOStory</a>
-                and <a href="#UC-LATimesReporting">LATimesReporting</a></p>
+                <a href="#UC-ISOGEOStory">ISOGEOStory</a> and <a href="#UC-LATimesReporting">LATimesReporting</a></p>
             </dd>
             <dt id="R-MetadataDocum">R-MetadataDocum</dt>
             <dd>
               <p id="_R-MetadatDocum"><em>Metadata vocabulary, or values if
-                  vocabulary is not standardized, should be well-documented</em></p>
+                  vocabulary is not standardised, should be well-documented</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-RecifeOpenDataPortal">RecifeOpenDataPortal</a>
               </p>
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-licenses" rel="bibo:Chapter" resource="#h4_can-req-licenses"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-licenses" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-licenses">Requirements
+          id="requirements-for-licenses">
+          <h4 id="h4_can-req-licenses" aria-level="3" role="heading">Requirements
             for Licenses</h4>
           Note: Licenses are a form of metadata and so inherit metadata
           requirements
@@ -1782,10 +1876,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-provenance" rel="bibo:Chapter" resource="#h4_can-req-provenance"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-provenance" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-provenance">Requirements
+          id="requirements-for-provenance">
+          <h4 id="h4_can-req-provenance" aria-level="3" role="heading">Requirements
             for Provenance</h4>
           Note: Provenance data is a form of metadata and so inherits metadata
           requirements
@@ -1800,10 +1894,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-industry-reuse" rel="bibo:Chapter" resource="#h4_can-req-industry-reuse"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-industry-reuse" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-industry-reuse">Requirements
+          id="requirements-for-industry-reuse">
+          <h4 id="h4_can-req-industry-reuse" aria-level="3" role="heading">Requirements
             for Industry Reuse</h4>
           Note: SLAs are a form of metadata and so inherit metadata requirements
           <dl>
@@ -1833,10 +1927,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-granularity" rel="bibo:Chapter" resource="#h4_can-req-granularity"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-granularity" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-granularity">Requirements
+          id="requirements-for-data-granularity">
+          <h4 id="h4_can-req-granularity" aria-level="3" role="heading">Requirements
             for Data Granularity</h4>
           <dl>
             <dt id="R-GranularityLevels">R-GranularityLevels</dt>
@@ -1845,15 +1939,14 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
                   levels of granularity should be accessible and modelled in a
                   common way</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-ISOGEOStory">ISOGEOStory</a>
-                and <a href="#UC-TheLandPortal">TheLandPortal</a>
-              </p>
+                and <a href="#UC-TheLandPortal">TheLandPortal</a> </p>
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-selection" rel="bibo:Chapter" resource="#h4_can-req-selection"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-selection" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-selection">Requirements
+          id="requirements-for-data-selection">
+          <h4 id="h4_can-req-selection" aria-level="3" role="heading">Requirements
             for Data Selection</h4>
           <dl>
             <dt id="R-SelectHighValue">R-SelectHighValue</dt>
@@ -1874,10 +1967,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-access" rel="bibo:Chapter" resource="#h4_can-req-access"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-access" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-access">Requirements
+          id="requirements-for-data-access">
+          <h4 id="h4_can-req-access" aria-level="3" role="heading">Requirements
             for Data Access</h4>
           <dl>
             <dt id="R-AccessBulk">R-AccessBulk</dt>
@@ -1905,10 +1998,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-sensitive-data" rel="bibo:Chapter" resource="#h4_can-req-sensitive"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-sensitive" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-sensitive">Requirements
+          id="requirements-for-sensitive-data">
+          <h4 id="h4_can-req-sensitive" aria-level="3" role="heading">Requirements
             for Sensitive Data</h4>
           <dl>
             <dt id="R-SensitivePrivacy">R-SensitivePrivacy</dt>
@@ -1922,15 +2015,15 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             <dd>
               <p id="_RSensitiveSecurity"><em>Data should not infringe on
                   national security</em></p>
-              <p> <strong>Motivation:</strong> <a href="#UC-DatasetsforNaturalDisasterManagement">DatasetsforNaturalDisasterManagement</a>
+              <p> <strong>Motivation:</strong> <a href="#UC-DatasetsforNaturalHazardsManagement">DatasetsforNaturalHazardsManagement</a>
               </p>
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-identification" rel="bibo:Chapter" resource="#h4_can-req-identification"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-identification" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-identification">Requirements
+          id="requirements-for-data-identification">
+          <h4 id="h4_can-req-identification" aria-level="3" role="heading">Requirements
             for Data Identification</h4>
           <dl>
             <dt id="R-UniqueIdentifier">R-UniqueIdentifier</dt>
@@ -1951,10 +2044,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-publication" rel="bibo:Chapter" resource="#h4_can-req-publication"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-publication" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-publication">Requirements
+          id="requirements-for-data-publication">
+          <h4 id="h4_can-req-publication" aria-level="3" role="heading">Requirements
             for Data Publication</h4>
           <dl>
             <dt id="R-DynamicGeneration">R-SynchronisedData</dt>
@@ -1976,10 +2069,10 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-persistence" rel="bibo:Chapter" resource="#h4_can-req-persistence"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-persistence" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-persistence">Requirements
+          id="requirements-for-persistence">
+          <h4 id="h4_can-req-persistence" aria-level="3" role="heading">Requirements
             for Persistence</h4>
           <dl>
             <dt id="R-PersistentIdentification">R-PersistentIdentification</dt>
@@ -1998,15 +2091,13 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           </dl>
         </section>
       </section>
-      <section id="requirements-for-quality-and-granularity-description-vocabulary"
-
-        rel="bibo:Chapter" resource="#req2" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req2">Requirements for Quality and
+      <section typeof="bibo:Chapter" resource="#req2" rel="bibo:Chapter" id="requirements-for-quality-and-granularity-description-vocabulary">
+        <h3 id="req2" aria-level="2" role="heading">Requirements for Quality and
           Granularity Description Vocabulary</h3>
-        <section id="requirements-for-data-quality" rel="bibo:Chapter" resource="#h4_can-req-quality"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-quality" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-quality"> <span class="secno">4.2.1
+          id="requirements-for-data-quality">
+          <h4 id="h4_can-req-quality" aria-level="3" role="heading"> <span class="secno">4.2.1
               </span>Requirements for Data Quality</h4>
           <dl>
             <dt id="R-QualityCompleteness">R-QualityCompleteness</dt>
@@ -2027,7 +2118,7 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
             <dt id="R-QualityMetrics">R-QualityMetrics</dt>
             <dd>
               <p id="_R-QualityMetrics"><em>Data should be associated with a set
-                  of standardized, objective quality metrics</em></p>
+                  of standardised, objective quality metrics</em></p>
               <p> <strong>Motivation:</strong> <a href="#UC-TheLandPortal">TheLandPortal</a>
               </p>
             </dd>
@@ -2041,15 +2132,13 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
           </dl>
         </section>
       </section>
-      <section id="requirements-for-data-usage-description-vocabulary" rel="bibo:Chapter"
-
-        resource="#req3" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req3">Requirements for Data Usage
+      <section typeof="bibo:Chapter" resource="#req3" rel="bibo:Chapter" id="requirements-for-data-usage-description-vocabulary">
+        <h3 id="req3" aria-level="2" role="heading">Requirements for Data Usage
           Description Vocabulary</h3>
-        <section id="requirements-for-data-usage" rel="bibo:Chapter" resource="#h4_can-req-usage"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-usage" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-usage">Requirements
+          id="requirements-for-data-usage">
+          <h4 id="h4_can-req-usage" aria-level="3" role="heading">Requirements
             for Data Usage</h4>
           <dl>
             <dt id="R-TrackDataUsage">R-TrackDataUsage</dt>
@@ -2077,88 +2166,88 @@ https://controllerdata.lacity.org/Payroll/Gender-Breakdown-of-City-Workers-by-Ca
         </section>
       </section>
     </section>
-    <section id="reading-material-1" rel="bibo:Chapter" resource="#reading-material"
+    <section typeof="bibo:Chapter" resource="#reading-material" rel="bibo:Chapter"
 
-      typeof="bibo:Chapter">
-      <h2 role="heading" aria-level="1" id="reading-material">Reading Material</h2>
-      <section id="general-resources-1" rel="bibo:Chapter" resource="#general-resources"
+      id="reading-material-1">
+      <h2 id="reading-material" aria-level="1" role="heading">Reading Material</h2>
+      <section typeof="bibo:Chapter" resource="#general-resources" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="general-resources">General
+        id="general-resources-1">
+        <h3 id="general-resources" aria-level="2" role="heading">General
           Resources</h3>
         <ul>
-          <li><a href="http://www.w3.org/TR/ld-glossary/" class="external text">Government
+          <li><a class="external text" href="http://www.w3.org/TR/ld-glossary/">Government
               Linked Data (GLD) Glossary of Terms</a></li>
-          <li><a href="http://lov.okfn.org/dataset/lov/" class="external text">Open
+          <li><a class="external text" href="http://lov.okfn.org/dataset/lov/">Open
               Knowledge Foundation (OKFN) Linked Open Vocabulary Browser</a></li>
-          <li><a href="http://www.w3.org/TR/ld-bp/" class="external text">Best
+          <li><a class="external text" href="http://www.w3.org/TR/ld-bp/">Best
               Practices for Publishing Linked Data</a></li>
-          <li><a href="http://philarcher.org/diary/2013/uripersistence/" class="external text">
+          <li><a class="external text" href="http://philarcher.org/diary/2013/uripersistence/">
               10 Rules for Persistent URIs</a></li>
-          <li><a href="http://www.w3.org/2012/ldp/" class="external text">Linked
+          <li><a class="external text" href="http://www.w3.org/2012/ldp/">Linked
               Data Platform Working Group</a></li>
-          <li>The <a href="http://www.prelida.eu/" class="external text">PRELIDA</a>
+          <li>The <a class="external text" href="http://www.prelida.eu/">PRELIDA</a>
             and <a href="http://www.diachron-fp7.eu/">Diachron</a> projects are
             concerned with preserving <abbr title="Linked Open Data">LOD</abbr></li>
         </ul>
       </section>
-      <section id="relevant-vocabularies" rel="bibo:Chapter" resource="#relevant-vocabs"
+      <section typeof="bibo:Chapter" resource="#relevant-vocabs" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="relevant-vocabs">Relevant
+        id="relevant-vocabularies">
+        <h3 id="relevant-vocabs" aria-level="2" role="heading">Relevant
           Vocabularies</h3>
         <ul>
-          <li><a href="http://www.w3.org/TR/vocab-org/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-org/">The
               Organization Ontology (ORG)</a></li>
-          <li><a href="http://www.w3.org/TR/vocab-dcat/" class="external text">Data
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-dcat/">Data
               Catalog Vocabulary(DCAT)</a></li>
-          <li><a href="http://www.w3.org/TR/vocab-data-cube/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-data-cube/">The
               RDF Data Cube Vocabulary (QB)</a></li>
-          <li><a href="http://www.w3.org/TR/prov-o/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/prov-o/">The
               Provenance (PROV) Ontology</a></li>
-          <li><a href="http://www.w3.org/TR/skos-reference/" class="external text">Simple
+          <li><a class="external text" href="http://www.w3.org/TR/skos-reference/">Simple
               Knowledge Organization System Reference (SKOS)</a></li>
         </ul>
       </section>
-      <section id="communities-of-interest-1" rel="bibo:Chapter" resource="#communities-of-interest"
+      <section typeof="bibo:Chapter" resource="#communities-of-interest" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="communities-of-interest">Communities
+        id="communities-of-interest-1">
+        <h3 id="communities-of-interest" aria-level="2" role="heading">Communities
           of Interest</h3>
         <ul>
-          <li><a href="http://www.w3.org/2013/data/" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2013/data/"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Data Activity</a></li>
-          <li><a href="http://www.w3.org/2013/05/lcsv-charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2013/05/lcsv-charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Comma Separated
               Values (CSV) On the Web Working Group</a>
             <ul>
-              <li><a href="http://www.w3.org/TR/csvw-ucr/" class="external text">
+              <li><a class="external text" href="http://www.w3.org/TR/csvw-ucr/">
                   CSV On the Web Use Cases</a></li>
             </ul>
           </li>
-          <li><a href="http://www.w3.org/2011/gld/charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2011/gld/charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Government Linked
               Data Working Group</a> (This WG is now closed but in some respects
             is the forerunner of the DWBP)</li>
-          <li><a href="http://www.w3.org/2011/07/privacy-ig-charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2011/07/privacy-ig-charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Privacy on the Web
               (PING) Working Group</a></li>
         </ul>
       </section>
     </section>
-    <section rel="bibo:Chapter" resource="#acknowledgements" typeof="bibo:Chapter"
+    <section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements"
 
-      class="appendix" id="acknowledgements">
-      <h2 id="h2_acknowledgements" role="heading" aria-level="1">Acknowledgements</h2>
+      rel="bibo:Chapter">
+      <h2 aria-level="1" role="heading" id="h2_acknowledgements">Acknowledgements</h2>
     </section>
-    <section rel="bibo:Chapter" resource="#change-history" typeof="bibo:Chapter"
+    <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history"
 
-      class="appendix" id="change-history">
-      <h2 id="h2_change-history" role="heading" aria-level="1">Change history</h2>
+      rel="bibo:Chapter">
+      <h2 aria-level="1" role="heading" id="h2_change-history">Change history</h2>
     </section>
   </body>
 </html>
