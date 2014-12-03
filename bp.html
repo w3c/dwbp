@@ -2,58 +2,28 @@
 
 <html>
 <head>
-  <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Linux https://github.com/w3c/tidy-html5/tree/c63cc39">
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 (experimental) for Linux https://github.com/w3c/tidy-html5/tree/c63cc39">
   <meta charset="utf-8">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="width=device-width,initial-scale=1" name=
+  "viewport">
 
   <title>Data on the Web Best Practices</title>
-  <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common">
+  <script class="remove" src=
+  "http://www.w3.org/Tools/respec/respec-w3c-common">
 </script>
   <script class="remove" src="bpconfig.js">
 </script>
-  <style type="text/css">
-
-  #bp-summary ul {
-    list-style-type: none;
-    padding-left: 0;
-    line-height:1.6em;
-    background-color: #FCFAEE;
-  }
-
-  @media screen and (min-width: 500px) {
-    #bp-summary ul {
-    column-count:2;
-    column-gap: 1em;
-    }
-  }
-
-  @media screen and (min-width: 800px) {
-    #bp-summary ul {
-    column-count:3;
-    }
-  }
-
-  .practice {
-    padding-left: 1em;
-    background-color: #FCFAEE;
-    border-left: thick solid #E0CB52;
-  }
-  .practice p.practicedesc {
-    font-style:italic;
-    border-bottom: thin solid black;
-  }
-  .practice p.subhead {
-    font-weight:bold;
-  }
-  .practice dl dt {
-    font-weight:normal;
-  }
-  </style>
 </head>
 
 <body>
   <section id="abstract">
-    <p>Abstract here</p>
+    <p>This document provides best practices designed to improve
+    publishing and using of data on the Web. As experience of
+    publishing and using data on the Web grows there are further
+    issues that need addressing to facilitate interaction between
+    data publishers and data consumers. These best practices are
+    developed to bridge the gap between them.</p>
   </section>
 
   <section id="sotd">
@@ -62,49 +32,291 @@
 
   <section id="intro" class="informative">
     <h2>Introduction</h2>
+
+    <p>In recent years, more and more structured and
+    semi-structured data is moving onto the Web. The increasing
+    interest on publishing open data together with social media and
+    crowdsourcing applications motivates the growth of the volume
+    of data available on the Web. On the one hand, data publishers
+    aim to share data related to multitude domains, like transport,
+    sciences, education, financial, cultural heritage and
+    e-commerce. On the other hand, data consumers would like easy
+    access to data that is accurate, regularly updated and
+    guaranteed to be available at all times.</p>
+
+    <p>A fundamental aspect about publishing and consuming data on
+    the Web is having a common understanding between data
+    publishers and data consumers. Without this agreement, data
+    publishers efforts may be incompatible with data consumers
+    desires. In order to achieve the full potential of having data
+    on the Web, it is important to facilitate better communication
+    between developers and publishers while contributing to develop
+    the data on the Web ecosystem.</p>
+
+    <p>Publishing data on the Web creates new challenges, like how
+    to represent, describe and make data available on the Web in a
+    way that it will be easy to find and to understand these data,
+    while it is also possible to trust on them. In this context, it
+    becomes crucial to provide guidance to publishers that will
+    improve consistency in the way data is managed, thus promoting
+    the re-use of data and also to foster trust in the data among
+    developers, whatever technology they choose to use, increasing
+    the potential for genuine innovation.</p>
+
+    <p>This document sets out a series of best practices mainly
+    designed to help to face the new challenges poses by data on
+    the Web, while bridges the gap between data publishers and data
+    consumers. These best practices are organized around the
+    different phases of the Data on the Web lifecycle, which
+    provides a plan for considering the several tasks that will
+    need to be performed on a data throughout its life on the Web.
+    As proposed by [[MOLLER]], data is a living thing that moves
+    through various stages, such as creation, publishing, use or
+    termination. Best practices can be seen as guidelines that help
+    to manage the data on these different phases.</p>
+
+    <p>Best practices cover different aspects related to data
+    publishing and consuming, like data formats, data access, data
+    identification and metadata. In order to delimit the scope and
+    elicit the required features for Data on the Web Best
+    Practices, the <acronym title=
+    "Data on the Web Best Practices">DWBP</acronym> working group
+    compiled a set of <a href="usecasesv1.html">use cases</a> that
+    represent scenarios of how data is commonly published on the
+    Web and how it is used. The set of requirements derived from
+    these use cases were used to guide the development of the
+    DWBP.</p>
   </section>
 
   <section id="audience" class="informative">
     <h2>Audience</h2>
+
+    <p>This document provides guidance to those who publish data on
+    the Web, but also to those who consume data on the Web. These
+    best practices have been written to meet the needs of many
+    different audiences from developers and information management
+    staff to scientists interested on sharing data on the Web.
+    Every attempt has been made to make the document as readable
+    and usable as possible while still retaining the accuracy and
+    clarity needed in a technical specification.</p>
+
+    <p>Readers of this document are expected to be familiar with
+    some fundamental concepts of the architecture of the Web
+    [[WEBARCH]], such as resources and URIs, as well as open data
+    formats [[REF]]. Basic knowledge about vocabularies and
+    ontologies would be helpful to better understand some aspects
+    of this document.</p>
   </section>
 
   <section id="scope" class="informative">
     <h2>Scope</h2>
 
-    <ul>
-      <li>Is it unique to publishing data on the web?</li>
+    <p>As the goal of the document is to specify Best Practices for
+    data on the Web, statements that are not unique to publishing
+    or consuming data on the Web are not included. In particular,
+    this specification provides best practices to encourage reuse
+    or publication of data on the Web.<br>
+    All best practices are written as testable criteria for
+    objectively determining if they were correctly employed.
+    Testing the best practices would involve a combination of
+    automated testing and human evaluation.</p>
 
-      <li>Does it encourage reuse or publication of data on the Web?</li>
-
-      <li>Is it testable?</li>
-    </ul>
+    <p>Lack of adherence to any given best practice, however, does
+    not necessarily imply a lack of quality; they are
+    recommendations that are said to be 'best' in most cases and in
+    most contexts, but not all. A best practice is always subject
+    to improvement as we learn and evolve the Web together.</p>
   </section>
 
   <section id="context" class="informative">
     <h2>Context</h2>
-  </section>
 
-  <section id="lifecyle" class="informative">
-    <h2>Data on the Web Lifecycle</h2>
+    <section id="challenges">
+      <h2>Data on the Web Challenges</h2>
 
-    <section id="dataSelection">
-      <h3>Data Selection</h3>
+      <p>The openness and flexibility of the Web creates new
+      challenges for data publishers and data consumers. Different
+      from conventional databases, for example, where theres is a
+      single data model to represent the data and a database
+      management system (DBMS) to control data access, data on the
+      Web implies to have several ways to represent and to access
+      data. Besides, since data publishers and data consumers may
+      not belong to the same company, it becomes essential to
+      provide information about data quality and data provenance.
+      In the same way, data licenses should also be explicitly
+      informed. The table below summarizes some of the main
+      challenges faced when publishing or consuming data on the
+      Web. These challenges were identified from the DWBP Use Cases
+      and Requirements and are described by one or more
+      questions.</p>
+
+      <dl>
+        <dt>Data Formats</dt>
+
+        <dd><em>What kind of data formats should be considered when
+        publishing data on the Web?</em></dd>
+
+        <dt>Vocabularies</dt>
+
+        <dd><em>How to use existing vocabularies to provide
+        semantic interoperability?<br>
+        How to design a new vocabulary when it is not possible to
+        use an existing one?</em></dd>
+
+        <dt>Metadata</dt>
+
+        <dd><em>What kind of metadata should be considered when
+        describing data on the Web?<br>
+        How to describe metadata in a machine readable
+        way?</em></dd>
+
+        <dt>Licenses</dt>
+
+        <dd><em>How to describe data licenses in a machine readable
+        way?<br>
+        How to provide/gather data licenses information about data
+        published on the Web?</em></dd>
+
+        <dt>Provenance</dt>
+
+        <dd><em>How to provide/gather data provenance information
+        about data published on the Web?</em></dd>
+
+        <dt>Data Granularity</dt>
+
+        <dd><em>What kind of data granularity should be considered
+        when publishing data on the Web?</em></dd>
+
+        <dt>Data Access</dt>
+
+        <dd><em>What kind of data access should be considered when
+        publishing data on the Web?<br>
+        What requirements to take into account when deciding how to
+        make data available on the Web?</em></dd>
+
+        <dt>Sensitive Data</dt>
+
+        <dd><em>How to deal with sensitive data in order to not
+        infringe a person's right to privacy or an organization's
+        security?</em></dd>
+
+        <dt>Data Identification</dt>
+
+        <dd><em>How to provide unique identifiers for data
+        resources?<br>
+        How to deal with URI Design and management for
+        persistence?</em></dd>
+
+        <dt>Preservation</dt>
+
+        <dd><em>How to manage preservation when data on the Web
+        should be archived?</em></dd>
+
+        <dt>Data Quality</dt>
+
+        <dd><em>How to provide/gather data quality information
+        about data on the Web?</em></dd>
+
+        <dt>Versioning</dt>
+
+        <dd><em>How to track/manage different versions of a data on
+        the Web?</em></dd>
+
+        <dt>Feedback</dt>
+
+        <dd><em>How to track/gather user feedback about data
+        consumed from the Web?</em></dd>
+      </dl>
     </section>
 
-    <section id="dataOrganization">
-      <h3>Data Organization</h3>
+    <section id="lifecycle">
+      <h2>Data on the Web Lifecycle</h2>
+
+      <p>Literature presentes a lot of proposals for data
+      lifecycles ranging from multimedia data [[HARDMAN]] to
+      digital libraries [[LIFECYC]]. In [[MOLLER]] is presented a
+      survey of lifecycle models for data-centric domains as well
+      as an Abstract Data Lifecycle Model (<acronym title=
+      "Abstract Data Lifecycle Model">ADLM</acronym>) composed by a
+      set of phases, features and roles, which can be used to
+      classify and compare existing lifecycle models. ADLM also
+      provides the basis to construct new lifecycle models for
+      data-centric domains. According to [[MOLLER]] a generic
+      lifecycle model for data-centric domains is composed by the
+      following main phases: <em>Ontology development</em>,
+      <em>Planning</em>, <em>Creation</em>, <em>Archiving</em>,
+      <em>Refinement</em>, <em>Publication</em>, <em>Access</em>,
+      <em>External use</em>, <em>Feedback</em> and
+      <em>Termination</em>.</p>
+
+      <p>The Data on the Web lifecycle used in this document is an
+      instance of ADLM. In the following, the ADLM phases are
+      revisited and defined according to the data on the Web
+      context. It is important to note that the ontology
+      development phase is not included, since it is considered an
+      independent phase that can take place a priori.</p>
+
+      <ul>
+        <li><em>Planning</em>: this phase concerns the moment when
+        the intent to publish data on the Web takes a concrete
+        form. It also comprises the selection of data to be
+        published</li>
+
+        <li><em>Creation</em>: defines the moment when new data is
+        created. It means that the data did not exist in the
+        Web</li>
+
+        <li><em>Archiving</em>: this phase concerns the process of
+        anchoring a piece of data within the system by the means of
+        indexing, cataloguing or a similar activity</li>
+
+        <li><em>Refinement</em>: this phase covers all kinds of
+        activities which make additions or changes to data that
+        already exist in the Web</li>
+
+        <li><em>Publication</em>: this phase concerns the moment
+        when data is made accessible on the Web</li>
+
+        <li><em>Access</em>: denotes the moment in the lifecycle
+        when users gain access to the data available on the
+        Web</li>
+
+        <li><em>External</em> use: implies that the user performs
+        some further actions to create visualizations and to
+        perform data analysis, for example</li>
+
+        <li><em>Feedback</em>: allows users to comment on the data
+        or metadata available on the Web they have previously
+        accessed and used</li>
+
+        <li><em>Termination</em>: presents the moment when data is
+        removed from the Web</li>
+      </ul>
+
+      <p>As proposed in [[MOLLER]], the data on the Web lifecycle
+      model is an evolving one, since there is no restriction for
+      data to pass through all phases of the lifecycle before a the
+      start of a new iteration.</p>
+
+      <p>In the data on the Web context, two main roles may be
+      played by actors in the lifecycle: data publishers and data
+      consumer. The data publisher role may be played by several
+      actors who are responsible for performing actions like data
+      and metadata creation, and data publication and archiving.
+      The data consumer are those actors who receive and consume
+      the data.</p>
     </section>
 
-    <section id="dataPublication">
-      <h3>Data Publication</h3>
-    </section>
+    <section id="terminology">
+      <h2>Terminology</h2>
 
-    <section id="dataUsage">
-      <h3>Data Usage</h3>
-    </section>
-
-    <section id="feedback">
-      <h3>Feedback</h3>
+      <p>This section will present some scenarios of publishing and
+      consuming data on the Web, which will be written based on the
+      DWBP use cases document. The idea is to generalize some use
+      cases and present scenarios that describe real situations
+      faced by both data publishers and data consumers. The
+      terminology adopted in this documented will be presented
+      together with the scenarios description.</p>
     </section>
   </section>
 
@@ -121,10 +333,17 @@
       <section id="metadata">
         <h4>Metadata</h4>
 
-        <p>The metadata section here, which has a number of sub-sections.</p>
+        <p>The metadata section here, which has a number of
+        sub-sections.</p>
 
         <section class="issue">
-          <p>At TPAC we talked about the distinction between discovery metadata and structural metadata. These are not (yet) reflected here although <a href="http://www.w3.org/2013/dwbp/track/issues/76">Issue-76</a> looks relevant. New <a href="https://www.w3.org/2013/dwbp/track/issues/79">issue-79</a> opened.</p>
+          <p>At TPAC we talked about the distinction between
+          discovery metadata and structural metadata. These are not
+          (yet) reflected here although <a href=
+          "http://www.w3.org/2013/dwbp/track/issues/76">Issue-76</a>
+          looks relevant. New <a href=
+          "https://www.w3.org/2013/dwbp/track/issues/79">issue-79</a>
+          opened.</p>
         </section>
 
         <section id="licenses">
@@ -132,20 +351,23 @@
 
           <p>The section on licenses</p>
 
-          <div class="practice">
-            <p><span class="practicelab">License</span></p>
-
-            <p class="practicedesc">Data must be associated with a license.</p>
-
+          <article class="bp">
+			<header>
+            <h2 class="title">License</h2>
+            <p class="description">Data must be associated with a
+            license.</p>
+			</header>
             <div class="axioms">
               <p class="subhead">Why</p>
 
               <dl>
-                <dt>Why this is unique to publishing data on the Web</dt>
+                <dt>Why this is unique to publishing data on the
+                Web</dt>
 
                 <dd>Something here to answer this question</dd>
 
-                <dt>How this encourages publication or reuse of data on the Web</dt>
+                <dt>How this encourages publication or reuse of
+                data on the Web</dt>
 
                 <dd>Something here to answer this question</dd>
               </dl>
@@ -154,9 +376,15 @@
             <div class="description">
               <p class="subhead">What</p>
 
-              <p>Full text description goes here. It can be any length but is likely to be no more than a few sentences. Maybe more. I mean, some things just can't be expressed in a few sentences. There may even by diagrams (I like pictures).</p>
+              <p>Full text description goes here. It can be any
+              length but is likely to be no more than a few
+              sentences. Maybe more. I mean, some things just can't
+              be expressed in a few sentences. There may even by
+              diagrams (I like pictures).</p>
 
-              <p>Anyway, you get this idea, no more than the sufficient amount of text to convey the best practice.</p>
+              <p>Anyway, you get this idea, no more than the
+              sufficient amount of text to convey the best
+              practice.</p>
 
               <p class="subhead">Intended outcome</p>
 
@@ -164,7 +392,8 @@
             </div>
 
             <div class="how">
-              <p class="subhead">Possible Approach to Implementation</p>
+              <p class="subhead">Possible Approach to
+              Implementation</p>
 
               <p>Description of how to implement the BP.</p>
             </div>
@@ -172,49 +401,66 @@
             <div class="test">
               <p class="subhead">How to Test</p>
 
-              <p>Information on how to test the BP has been met. This might or might not be machine testable.</p>
+              <p>Information on how to test the BP has been met.
+              This might or might not be machine testable.</p>
             </div>
 
             <div class="ucr">
               <p class="subhead">Evidence</p>
 
-              <p><span>Relevant use cases</span>: R-AccessBulk, R-FormatOpen, R-VocabOpen etc.</p>
+              <p><span>Relevant use cases</span>: R-AccessBulk,
+              R-FormatOpen, R-VocabOpen etc.</p>
             </div>
           </div>
 
           <div class="practice">
-            <p><span class="practicelab">Machine detectable License</span></p>
+            <p><span class="practicelab">Machine detectable
+            License</span></p>
 
-            <p class="practicedesc">A License should be detectable by machines</p>
+            <p class="practicedesc">A License should be detectable
+            by machines</p>
 
             <div class="axioms">
               <p class="subhead">Why</p>
 
               <dl>
-                <dt>Why this is unique to publishing data on the Web</dt>
+                <dt>Why this is unique to publishing data on the
+                Web</dt>
 
-                <dd>Because the Web is a network of machines that can do cool stuff if they are given a chance</dd>
+                <dd>Because the Web is a network of machines that
+                can do cool stuff if they are given a chance</dd>
 
-                <dt>How this encourages publication or reuse of data on the Web</dt>
+                <dt>How this encourages publication or reuse of
+                data on the Web</dt>
 
-                <dd>Machines, including search engines, can be set up to automatically harvest data that has an associated license</dd>
+                <dd>Machines, including search engines, can be set
+                up to automatically harvest data that has an
+                associated license</dd>
               </dl>
             </div>
 
             <div class="description">
               <p class="subhead">What</p>
 
-              <p>Full text description goes here. It can be any length but is likely to be no more than a few sentences. Maybe more. I mean, some things just can't be expressed in a few sentences. There may even by diagrams (I like pictures).</p>
+              <p>Full text description goes here. It can be any
+              length but is likely to be no more than a few
+              sentences. Maybe more. I mean, some things just can't
+              be expressed in a few sentences. There may even by
+              diagrams (I like pictures).</p>
 
-              <p>Anyway, you get this idea, no more than the sufficient amount of text to convey the best practice.</p>
+              <p>Anyway, you get this idea, no more than the
+              sufficient amount of text to convey the best
+              practice.</p>
 
               <p class="subhead">Intended outcome</p>
 
-              <p>Machines can automatically detect whether a given dataset does or does not carry a license.</p>
+              <p>Machines can automatically detect whether a given
+              dataset does or does not carry a license.</p>
             </div>
 
             <div class="how">
-              <p class="subhead">Possible Approach to Implementation</p>
+              <p class="subhead">Possible Approach to
+              Implementation</p>
 
               <p>Link to a CC license</p>
             </div>
@@ -222,13 +468,15 @@
             <div class="test">
               <p class="subhead">How to Test</p>
 
-              <p>Look for a link element ot HTTP Link Header with a @rel value of <code>license</code> [[RFC4946]]</p>
+              <p>Look for a link element ot HTTP Link Header with a
+              @rel value of <code>license</code> [[RFC4946]]</p>
             </div>
 
             <div class="ucr">
               <p class="subhead">Evidence</p>
 
-              <p><span>Relevant use cases</span>: R-AccessBulk, R-FormatOpen, R-VocabOpen etc.</p>
+              <p><span>Relevant use cases</span>: R-AccessBulk,
+              R-FormatOpen, R-VocabOpen etc.</p>
             </div>
           </div>
         </section>
@@ -260,38 +508,52 @@
         <div class="practice">
           <p><span class="practicelab">Identifier</span></p>
 
-          <p class="practicedesc">All datasets must have a unique, persistent identifier</p>
+          <p class="practicedesc">All datasets must have a unique,
+          persistent identifier</p>
 
           <div class="axioms">
             <p class="subhead">Why</p>
 
             <dl>
-              <dt>Why this is unique to publishing data on the Web</dt>
+              <dt>Why this is unique to publishing data on the
+              Web</dt>
 
-              <dd>Because the Web is built on links and this is kind of basic stuff</dd>
+              <dd>Because the Web is built on links and this is
+              kind of basic stuff</dd>
 
-              <dt>How this encourages publication or reuse of data on the Web</dt>
+              <dt>How this encourages publication or reuse of data
+              on the Web</dt>
 
-              <dd>A stable reference ensures long term discoverability and citations.</dd>
+              <dd>A stable reference ensures long term
+              discoverability and citations.</dd>
             </dl>
           </div>
 
           <div class="description">
             <p class="subhead">What</p>
 
-            <p>Full text description goes here. It can be any length but is likely to be no more than a few sentences. Maybe more. I mean, some things just can't be expressed in a few sentences. There may even by diagrams (I like pictures).</p>
+            <p>Full text description goes here. It can be any
+            length but is likely to be no more than a few
+            sentences. Maybe more. I mean, some things just can't
+            be expressed in a few sentences. There may even by
+            diagrams (I like pictures).</p>
 
-            <p>Anyway, you get this idea, no more than the sufficient amount of text to convey the best practice.</p>
+            <p>Anyway, you get this idea, no more than the
+            sufficient amount of text to convey the best
+            practice.</p>
 
             <p class="subhead">Intended outcome</p>
 
-            <p>That the dataset be discoverable and citable today and in future.</p>
+            <p>That the dataset be discoverable and citable today
+            and in future.</p>
           </div>
 
           <div class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
+            <p class="subhead">Possible Approach to
+            Implementation</p>
 
-            <p>Well now we're getting into URI design and, for those that want them, DOIs and all that.</p>
+            <p>Well now we're getting into URI design and, for
+            those that want them, DOIs and all that.</p>
           </div>
 
           <div class="test">
@@ -303,7 +565,8 @@
           <div class="ucr">
             <p class="subhead">Evidence</p>
 
-            <p><span>Relevant use cases</span>: R-AccessBulk, R-FormatOpen, R-VocabOpen etc.</p>
+            <p><span>Relevant use cases</span>: R-AccessBulk,
+            R-FormatOpen, R-VocabOpen etc.</p>
           </div>
         </div>
       </section>
@@ -327,111 +590,80 @@
       </section>
 
       <section id="preservation">
-        <h4>Data Preservation</h4>
-Data preservation is a well understood and commonly performed tasks for static and self-contained data. This commonly includes the following steps:
-<ul>
-<li>Ingest the data and assign a persistent identifier to it</li>
-<li>Ensure the data is correctly stored and prevent bit rot</li>
-<li>Provide access to the data and perform format translation if needed</li>
-</ul>
-The model most commonly referred to is <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">Open Archival Information System</a>. Many institutions taking care of digital preservation are implementing this model or some variant of it. Web pages can be preserved following the same strategies, considering a web site as a static data set that is self-contained and can be all snap-shoted and preserved at a fixed time.
+        <h4>Data Preservation</h4>Data preservation is a well
+        understood and commonly performed tasks for static and
+        self-contained data. This commonly includes the following
+        steps:
 
-When it comes to Web data some new elements have to be taken into account, namely:
-<ul>
-<li>The persistent identifiers (IRI) used across the web are related to live data that can change</li>
-<li>The meaning of a resource is contextualized by the other resources it is linked to</li>
-<li>Documents fetched in HTML, RDF of JSON, for instance, are only one of the many possible serialisation of the data they represent</li>
-</ul>
+        <ul>
+          <li>Ingest the data and assign a persistent identifier to
+          it</li>
 
-The two following sections tackle requirements for the digital archive and the data depositors of Web data.
+          <li>Ensure the data is correctly stored and prevent bit
+          rot</li>
 
-<h5>Digital trusted repositories</h5>
-{{BP
-| title = Maintain a list of resources
-| description = Archives should maintain a list of resources being described in the preserved datasets
-| why = Web data is about the description of resources identified with a IRI. It is to be expected that queries made by data consumers will resolve around finding a preserved description of a particular resource. 
-| what = At ingestion time a Web data dataset dump is scanned for all the subject described. For RDF and JSON-LD, this corresponds to all the resources in the "subject" position of statements.
-| outcome = A list of resources per ingested dataset
-| implementation = .
-| test = .
-| evidence = .
-}}
+          <li>Provide access to the data and perform format
+          translation if needed</li>
+        </ul>The model most commonly referred to is <a href=
+        "http://en.wikipedia.org/wiki/Open_Archival_Information_System">
+        Open Archival Information System</a>. Many institutions
+        taking care of digital preservation are implementing this
+        model or some variant of it. Web pages can be preserved
+        following the same strategies, considering a web site as a
+        static data set that is self-contained and can be all
+        snap-shoted and preserved at a fixed time. When it comes to
+        Web data some new elements have to be taken into account,
+        namely:
 
-{{BP
-| title = Assess preservation coverage
-| description = Archives should assess the preservation coverage of a particular dataset prior to ingestion
-| why = A chunk of Web data is by definition dependent on the rest of the global graph. This global context influences the meaning of the description of the resources found in the dataset. Ideally, the preservation of a particular dataset would involve preserving all its context. That is the entire Web of Data.
-| what = At ingestion time an evaluation of the linkage of Web data dataset dump to already preserved resources is assessed. The presence of all the vocabularies and target resources in uses is sought in a set of digital archives taking care of preserving Web data. Datasets for which very few of the vocabularies used and/or resources pointed out are already preserved somewhere should be flagged as being at risk.
-| outcome = A evaluation of the preservation coverage for a given dataset
-| implementation = 
-| test = 
-| evidence = 
-}}
+        <ul>
+          <li>The persistent identifiers (IRI) used across the web
+          are related to live data that can change</li>
 
-<h5>Depositors</h5>
+          <li>The meaning of a resource is contextualized by the
+          other resources it is linked to</li>
 
-{{BP
-| title = Provide data using a recognized serialisation format
-| description = Data depositors should provide their data dump in a W3C standard serialisation
-| why = 
-| what = 
-| outcome = 
-| implementation = 
-| test = 
-| evidence = 
-}}
+          <li>Documents fetched in HTML, RDF of JSON, for instance,
+          are only one of the many possible serialisation of the
+          data they represent</li>
+        </ul>The two following sections tackle requirements for the
+        digital archive and the data depositors of Web data.
 
-        <article class="bp" id="bp1">
-          <header>
-            <div class="identifier">
-              BP1
-            </div>
-            <h2>Best Practice Title</h2>
-            <p>Short description of the BP, pref one line</p>
-          </header>
+        <h5>Digital trusted repositories</h5>{{BP | title =
+        Maintain a list of resources | description = Archives
+        should maintain a list of resources being described in the
+        preserved datasets | why = Web data is about the
+        description of resources identified with a IRI. It is to be
+        expected that queries made by data consumers will resolve
+        around finding a preserved description of a particular
+        resource. | what = At ingestion time a Web data dataset
+        dump is scanned for all the subject described. For RDF and
+        JSON-LD, this corresponds to all the resources in the
+        "subject" position of statements. | outcome = A list of
+        resources per ingested dataset | implementation = . | test
+        = . | evidence = . }} {{BP | title = Assess preservation
+        coverage | description = Archives should assess the
+        preservation coverage of a particular dataset prior to
+        ingestion | why = A chunk of Web data is by definition
+        dependent on the rest of the global graph. This global
+        context influences the meaning of the description of the
+        resources found in the dataset. Ideally, the preservation
+        of a particular dataset would involve preserving all its
+        context. That is the entire Web of Data. | what = At
+        ingestion time an evaluation of the linkage of Web data
+        dataset dump to already preserved resources is assessed.
+        The presence of all the vocabularies and target resources
+        in uses is sought in a set of digital archives taking care
+        of preserving Web data. Datasets for which very few of the
+        vocabularies used and/or resources pointed out are already
+        preserved somewhere should be flagged as being at risk. |
+        outcome = A evaluation of the preservation coverage for a
+        given dataset | implementation = | test = | evidence = }}
 
-          <section class="axioms">
-            <h3>Why</h3>
-            <dl>
-              <dt>Why this is unique to publishing data on the Web</dt>
-              <dd>Something here to answer this question</dd>
-              <dt>How this encourages publication or reuse of data on the Web</dt>
-              <dd>Something here to answer this question</dd>
-            </dl>
-          </section>
-
-          <section class="description">
-            <h3>What</h3>
-            <p>Full text description goes here. It can be any length but is likely to be no more than a few sentences. Maybe more. I mean, some things just can't be expressed in a few sentences. There may even by diagrams (I like pictures).</p>
-            <p>Anyway, you get this idea, no more than the sufficient amount of text to convey the best practice.</p>
-            <h4>Intended outcome</h4>
-            <p>What it should do</p>
-          </section>
-
-          <section class="outcome">
-            <h3>Intended Outcome</h3>
-
-            <p>What it should do</p>
-          </section>
-
-          <section class="how">
-            <h3>Possible Approach to Implementation</h3>
-
-            <p>Description of how to implement the BP.</p>
-          </section>
-
-          <section class="test">
-            <h3>How to Test</h3>
-
-            <p>Information on how to test the BO has been met. This might or might not be machine testable.</p>
-          </section>
-
-          <section class="ucr">
-            <h3>Evidence</h3>
-
-            <p><span>Relevant requirements</span>: R-AccessBulk, R-FormatOpen, R-VocabOpen etc.</p>
-          </section>
-        </article>
+        <h5>Depositors</h5>{{BP | title = Provide data using a
+        recognized serialisation format | description = Data
+        depositors should provide their data dump in a W3C standard
+        serialisation | why = | what = | outcome = | implementation
+        = | test = | evidence = }}
       </section>
 
       <section id="dataVersioning">
@@ -471,5 +703,58 @@ The two following sections tackle requirements for the digital archive and the d
   <section id="conclusions">
     <h2>Conclusions</h2>
   </section>
+
+  <section>
+	<h2>BP Template</h2>
+	<p>See <a href="http://www.w3.org/respec/guide.html">http://www.w3.org/respec/guide.html</a></p>
+        <div class="practice">
+          <p>
+            <span id="template" class="practicelab">Best Practice Title</span>
+          </p>
+            <p class="practicedesc">Short description of the BP, pref one line</p>
+          <section class="axioms">
+            <h3>Why</h3>
+            <dl>
+              <dt>Why this is unique to publishing data on the
+              Web</dt>
+              <dd>Something here to answer this question</dd>
+              <dt>How this encourages publication or reuse of data
+              on the Web</dt>
+              <dd>Something here to answer this question</dd>
+            </dl>
+          </section>
+          <section class="description">
+            <h3>What</h3>
+            <p>Full text description goes here. It can be any
+            length but is likely to be no more than a few
+            sentences. Maybe more. I mean, some things just can't
+            be expressed in a few sentences. There may even by
+            diagrams (I like pictures).</p>
+            <p>Anyway, you get this idea, no more than the
+            sufficient amount of text to convey the best
+            practice.</p>
+            <h4>Intended outcome</h4>
+            <p>What it should do</p>
+          </section>
+          <section class="outcome">
+            <h3>Intended Outcome</h3>
+            <p>What it should do</p>
+          </section>
+          <section class="how">
+            <h3>Possible Approach to Implementation</h3>
+            <p>Description of how to implement the BP.</p>
+          </section>
+          <section class="test">
+            <h3>How to Test</h3>
+            <p>Information on how to test the BO has been met. This
+            might or might not be machine testable.</p>
+          </section>
+          <section class="ucr">
+            <h3>Evidence</h3>
+            <p><span>Relevant requirements</span>: R-AccessBulk,
+            R-FormatOpen, R-VocabOpen etc.</p>
+          </section>
+        </div>
+  </section> 
 </body>
 </html>
