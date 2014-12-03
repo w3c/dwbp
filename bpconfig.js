@@ -22,11 +22,6 @@ var respecConfig = {
 			companyURL: "http://nic.br/",
 			mailto: "newton@nic.br"
 		}],
-    // authors: [{ 
-      // name: "A contributor", 
-      // company: "ACME Section Writers", 
-      // companyURL: "http://www.example.com/" 
-    // }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
     wgPublicList: "public-dwbp-wg",
@@ -35,12 +30,12 @@ var respecConfig = {
     noIDLIn: true,
     noLegacyStyle: false,
 
-		// localBiblio: {
-			// "REF": {
-			//	title: "Teste de Referência no Documento",
-			//	href: "http://nic.br",
-			//	authors: ["Newton Calegari", "Bernadette Loscio"],
-			//	publisher: "NIC/CGI"
-		//	}	
-		// }
+		 localBiblio: {
+			 "MOLLER": {
+				title: "Lifecycle models of data-centric systems and domains: The abstract data lifecycle model",
+				authors: ["Knud Möller"],
+        date: "2013",
+        status: "Semantic Web 4.1: 67-88"
+			}	
+		}
     };
