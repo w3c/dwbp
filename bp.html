@@ -47,27 +47,91 @@
 </head>
 <body>
   <section id="abstract">
-    <p>Abstract here </p>
+		<p>This document provides best practices designed to improve publishing and using of data on the Web. As experience of publishing and using data on the Web grows there are further issues that need addressing to facilitate interaction between data publishers and data consumers. These best practices are developed to bridge the gap between them.</p>
   </section>
   <section id="sotd">
     <p>Something here</p>
   </section>
   <section id="intro" class="informative">
     <h2>Introduction</h2>
+		<p>In recent years, more and more structured and semi-structured data is moving onto the Web. The increasing interest on publishing open data together with social media and crowdsourcing applications motivates the growth of the volume of data available on the Web. On the one hand, data publishers aim to share data related to multitude domains, like transport, sciences, education, financial, cultural heritage and e-commerce. On the other hand, data consumers would like easy access to data that is accurate, regularly updated and guaranteed to be available at all times.</p>
+		<p>A fundamental aspect about publishing and consuming data on the Web is having a common understanding between data publishers and data consumers. Without this agreement, data publishers efforts may be incompatible with data consumers desires. In order to achieve the full potential of having data on the Web, it is important to facilitate better communication between developers and publishers while contributing to develop the data on the Web ecosystem.</p>
+		<p>Publishing data on the Web creates new challenges, like how to represent, describe and make data available on the Web in a way that it will be easy to find and to understand these data, while it is also possible to trust on them. In this context, it becomes crucial to provide guidance to publishers that will improve consistency in the way data is managed, thus promoting the re-use of data and also to foster trust in the data among developers, whatever technology they choose to use, increasing the potential for genuine innovation.</p>	
+    <p>This document sets out a series of best practices mainly designed to help to face the new challenges poses by data on the Web, while bridges the gap between data publishers and data consumers. These best practices are organized around the different phases of the Data on the Web lifecycle, which provides a plan for considering the several tasks that will need to be performed on a data throughout its life on the Web. As proposed by [[MOLLER]], data is a living thing that moves through various stages, such as creation, publishing, use or termination. Best practices can be seen as guidelines that help to manage the data on these different phases.</p>
+    <p>Best practices cover different aspects related to data publishing and consuming, like data formats, data access, data identification and metadata. In order to delimit the scope and elicit the required features for Data on the Web Best Practices, the <acronym title="Data on the Web Best Practices">DWBP</acronym> working group compiled a set of <a href="usecasesv1.html">use cases</a> that represent scenarios of how data is commonly published on the Web and how it is used. The set of requirements derived from these use cases were used to guide the development of the DWBP.</p>
   </section>
   <section id="audience" class="informative">
     <h2>Audience</h2>
+		<p>This document provides guidance to those who publish data on the Web, but also to those who consume data on the Web. These best practices have been written to meet the needs of many different audiences from developers and information management staff to scientists interested on sharing data on the Web. Every attempt has been made to make the document as readable and usable as possible while still retaining the accuracy and clarity needed in a technical specification.</p>
+		<p>Readers of this document are expected to be familiar with some fundamental concepts of the architecture of the Web [[WEBARCH]], such as resources and URIs, as well as open data formats [[REF]]. Basic knowledge about vocabularies and ontologies would be helpful to better understand some aspects of this document.</p>
   </section>
   <section id="scope" class="informative">
     <h2>Scope</h2>
-    <ul>
-      <li>Is it unique to publishing data on the web?</li>
-      <li>Does it encourage reuse or publication of data on the Web?</li>
-      <li>Is it testable?</li>
-    </ul>
+		<p>As the goal of the document is to specify Best Practices for data on the Web, statements that are not unique to publishing or consuming data on the Web are not included. In particular, this specification provides best practices to encourage reuse or publication of data on the Web.<br>
+		All best practices are written as testable criteria for objectively determining if they were correctly employed. Testing the best practices would involve a combination of automated testing and human evaluation.</p>
+		<p>Lack of adherence to any given best practice, however, does not necessarily imply a lack of quality; they are recommendations that are said to be 'best' in most cases and in most contexts, but not all. A best practice is always subject to improvement as we learn and evolve the Web together.</p>
   </section>
   <section id="context" class="informative">
     <h2>Context</h2>
+    <section id="challenges">
+    <h2>Data on the Web Challenges</h2>
+      <p>The openness and flexibility of the Web creates new challenges for data publishers and data consumers. Different from conventional databases, for example, where theres is a single data model to represent the data and a database management system (DBMS) to control data access, data on the Web implies to have several ways to represent and to access data. Besides, since data publishers and data consumers may not belong to the same company, it becomes essential to provide information about data quality and data provenance. In the same way, data licenses should also be explicitly informed. The table below summarizes some of the main challenges faced when publishing or consuming data on the Web. These challenges were identified from the DWBP Use Cases and Requirements and are described by one or more questions.</p>
+      <dl>
+        <dt>Data Formats</dt>
+        <dd><em>What kind of data formats should be considered when publishing data on the Web?</em></dd>
+        <dt>Vocabularies</dt>
+        <dd><em>How to use existing vocabularies to provide semantic interoperability?<br>
+        How to design a new vocabulary when it is not possible to use an existing one?</em></dd>
+        <dt>Metadata</dt>
+        <dd><em>What kind of metadata should be considered when describing data on the Web?<br>
+        How to describe metadata in a machine readable way?</em></dd>
+        <dt>Licenses</dt>
+        <dd><em>How to describe data licenses in a machine readable way?<br>
+        How to provide/gather data licenses information about data published on the Web?</em></dd>
+        <dt>Provenance</dt>
+        <dd><em>How to provide/gather data provenance information about data published on the Web?</em></dd>
+        <dt>Data Granularity</dt>
+        <dd><em>What kind of data granularity should be considered when publishing data on the Web?</em></dd>
+        <dt>Data Access</dt>
+        <dd><em>What kind of data access should be considered when publishing data on the Web?<br>
+        What requirements to take into account when deciding how to make data available on the Web?</em></dd>
+        <dt>Sensitive Data</dt>
+        <dd><em>How to deal with sensitive data in order to not infringe a person's right to privacy or an organization's security?</em></dd>
+        <dt>Data Identification</dt>
+        <dd><em>How to provide unique identifiers for data resources?<br>
+        How to deal with URI Design and management for persistence?</em></dt>
+        <dt>Preservation</dt>
+        <dd><em>How to manage preservation when data on the Web should be archived?</em></dd>
+        <dt>Data Quality</dt>
+        <dd><em>How to provide/gather data quality information about data on the Web?</em></dd>
+        <dt>Versioning</dt>
+        <dd><em>How to track/manage different versions of a data on the Web?</em></dd>
+        <dt>Feedback</dt>
+        <dd><em>How to track/gather user feedback about data consumed from the Web?</em></dd>
+      </dl>
+    </section>
+    <section id="lifecycle">
+      <h2>Data on the Web Lifecycle</h2>
+      <p>Literature presentes a lot of proposals for data lifecycles ranging from multimedia data [[HARDMAN]] to digital libraries [[LIFECYC]]. In [[MOLLER]] is presented a survey of lifecycle models for data-centric domains as well as an Abstract Data Lifecycle Model (<acronym title="Abstract Data Lifecycle Model">ADLM</acronym>) composed by a set of phases, features and roles, which can be used to classify and compare existing lifecycle models. ADLM also provides the basis to construct new lifecycle models for data-centric domains. According to [[MOLLER]] a generic lifecycle model for data-centric domains is composed by the following main phases: <em>Ontology development</em>, <em>Planning</em>, <em>Creation</em>, <em>Archiving</em>, <em>Refinement</em>, <em>Publication</em>, <em>Access</em>, <em>External use</em>, <em>Feedback</em> and <em>Termination</em>.</p>
+      <p>The Data on the Web lifecycle used in this document is an instance of ADLM.  In the following, the ADLM phases are revisited and defined according to the data on the Web context. It is important to note that the ontology development phase is not included, since it is considered an independent phase that can take place a priori.</p>
+      <ul>
+        <li><em>Planning</em>: this phase concerns the moment when the intent to publish data on the Web takes a concrete form. It also comprises the selection of data to be published</li>
+        <li><em>Creation</em>: defines the moment when new data is created. It means that the data did not exist in the Web</li>
+        <li><em>Archiving</em>: this phase concerns the process of anchoring a piece of data within the system by the means of indexing, cataloguing or a similar activity</li>
+        <li><em>Refinement</em>: this phase covers all kinds of activities which make additions or changes to data that already exist in the Web</li>
+        <li><em>Publication</em>: this phase concerns the moment when data is made accessible on the Web</li>
+        <li><em>Access</em>: denotes the moment in the lifecycle when users gain access to the data available on the Web</li>
+        <li><em>External</em> use: implies that the user performs some further actions to create visualizations and to perform data analysis, for example</li>
+        <li><em>Feedback</em>: allows users to comment on the data or metadata available on the Web they have previously accessed and used</li>
+        <li><em>Termination</em>: presents the moment when data is removed from the Web</li>
+      </ul>
+      <p>As proposed in [[MOLLER]], the data on the Web lifecycle model is an evolving one, since there is no restriction for data to pass through all phases of the lifecycle before a the start of a new iteration.</p>
+      <p>In the data on the Web context, two main roles may be played by actors in the lifecycle: data publishers and data consumer. The data publisher role may be played by several actors who are responsible for performing actions like data and metadata creation, and data publication and archiving. The data consumer are those actors who receive and consume the data.</p>
+    </section>
+    <section id="terminology">
+    <h2>Terminology</h2>
+      <p>This section will present some scenarios of publishing and consuming data on the Web, which will be written based on the DWBP use cases document. The idea is to generalize some use cases and present scenarios that describe real situations faced by both data publishers and data consumers. The terminology adopted in this documented will be presented together with the scenarios description.</p>
+    </section>
   </section>
   <section id="lifecyle" class="informative">
     <h2>Data on the Web Lifecycle</h2>

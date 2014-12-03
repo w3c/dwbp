@@ -12,17 +12,30 @@ var respecConfig = {
       name: "Bernadette Farias Lóscio",
       company: "Centro de Informática - Universidade Federal de Pernambuco, Brazil",
       companyURL: "http://www.cin.ufpe.br/"
-    }],
-    authors: [{ 
-      name: "A contributor", 
-      company: "ACME Section Writers", 
-      companyURL: "http://www.example.com/" 
-    }],
+    }, {
+			name: "Caroline Burle",
+			company: "W3C Brasil, Brazil",
+			companyURL: "http://w3c.br/"
+		}, {
+			name: "Newton Calegari",
+			company: "NIC.br, Brazil",
+			companyURL: "http://nic.br/",
+			mailto: "newton@nic.br"
+		}],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
     wgPublicList: "public-dwbp-wg",
     wgPatentURI: "http://www.w3.org/2004/01/pp-impl/68239/status",
     inlineCSS: true,
     noIDLIn: true,
-    noLegacyStyle: false
+    noLegacyStyle: false,
+
+		 localBiblio: {
+			 "MOLLER": {
+				title: "Lifecycle models of data-centric systems and domains: The abstract data lifecycle model",
+				authors: ["Knud Möller"],
+        date: "2013",
+        status: "Semantic Web 4.1: 67-88"
+			}	
+		}
     };
