@@ -15,8 +15,9 @@ var respecConfig = {
             companyURL: "http://www.cin.ufpe.br/"
         }, {
 			name: "Caroline Burle",
-			company: "W3C Brasil, Brazil",
-			companyURL: "http://w3c.br/"
+			company: "NIC.br, Brazil",
+			companyURL: "http://nic.br/",
+			mailto: "cburle@nic.br"
 		}, {
 			name: "Newton Calegari",
 			company: "NIC.br, Brazil",
