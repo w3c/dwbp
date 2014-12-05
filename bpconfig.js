@@ -23,11 +23,6 @@ var respecConfig = {
 			company: "NIC.br, Brazil",
 			companyURL: "http://nic.br/",
 			mailto: "newton@nic.br"
-		}, {
-			name: "Christophe Guéret",
-			company: "DANS/KNAW, Netherlands",
-			companyURL: "http://dans.knaw.nl/",
-			mailto: "christophe.gueret@dans.knaw.nl"
 		}],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
