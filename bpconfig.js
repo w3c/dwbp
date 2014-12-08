@@ -9,20 +9,18 @@ var respecConfig = {
     // lcEnd: "3000-01-01",
     // crEnd: "3000-01-01",
     editors: [
-        {
-            name: "Bernadette Farias Lóscio",
-            company: "Centro de Informática - Universidade Federal de Pernambuco, Brazil",
-            companyURL: "http://www.cin.ufpe.br/"
-        }, {
+    {
+      name: "Bernadette Farias Lóscio",
+      company: "Centro de Informática - Universidade Federal de Pernambuco, Brazil",
+      companyURL: "http://www.cin.ufpe.br/"
+    }, {
 			name: "Caroline Burle",
 			company: "NIC.br, Brazil",
 			companyURL: "http://nic.br/",
-			mailto: "cburle@nic.br"
 		}, {
 			name: "Newton Calegari",
 			company: "NIC.br, Brazil",
 			companyURL: "http://nic.br/",
-			mailto: "newton@nic.br"
 		}],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
