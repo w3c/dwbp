@@ -22,6 +22,14 @@ var respecConfig = {
 			company: "NIC.br, Brazil",
 			companyURL: "http://nic.br/",
 		}],
+    otherLinks: [
+    {
+      key: "Contributors",
+      data: [
+      {
+        value: "Christophe Guéret"
+      }]
+    }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
     wgPublicList: "public-dwbp-wg",
