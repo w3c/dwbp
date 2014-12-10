@@ -44,6 +44,12 @@ var respecConfig = {
 				authors: ["Knud Möller"],
         date: "2013",
         status: "Semantic Web 4.1: 67-88"
-			}	
+             },
+             "ROSENTHAL": {
+                 title: "Transparent Format Migration of Preserved Web Content",
+                 authors: ["David Rosenthal", "Thomas Lipkis","Thomas Robertson","Seth Morabito"],
+                 date: "2004",
+                 status: "DLib Magazine"
+             }
 		}
     };
