@@ -28,6 +28,9 @@ var respecConfig = {
       data: [
       {
         value: "Christophe Guéret"
+      },
+      {
+        value: "Phil Archer"
       }]
     }],
     wg: "Data on the Web Best Practices Working Group",
@@ -41,9 +44,34 @@ var respecConfig = {
 		 localBiblio: {
 			 "MOLLER": {
 				title: "Lifecycle models of data-centric systems and domains: The abstract data lifecycle model",
+        href: "http://www.semantic-web-journal.net/content/lifecycle-models-data-centric-systems-and-domains",
 				authors: ["Knud Möller"],
-        date: "2013",
+        date: "2012",
         status: "Semantic Web 4.1: 67-88"
-			}	
+			}	,
+
+      "OKFN-INDEX": {
+				title: "Global Open Data Index",
+        href: "http://index.okfn.org/",
+				authors: ["Open Knowledge Foundation"]
+
+      },
+      "BNF" : {
+        title: "Reference information about authors, works, topics",
+        authors: ["Bibliothèque nationale de France"],
+        href: "http://data.bnf.fr/"
+      },
+      "LODC" : {
+        title: "The Linking Open Data Cloud Diagram",
+        authors: ["Max Schmachtenberg", "Christian Bizer", "Anja Jentzsch", "Richard Cyganiak"],
+        href: "http://lod-cloud.net/"
+      },
+      "UCR" : {
+        title: "Data on the Web Best Practices Use Cases & Requirements",
+        authors: ["Deirdre Lee", "Bernadette Farias Lóscio", "Phil Archer"],
+        href: "http://www.w3.org/TR/dwbp-ucr/",
+        status: "Note"
+      }
+
 		}
     };
