@@ -280,76 +280,122 @@
 
   <section id="bestPractices">
     <h2>The Best Practices</h2>
+      <section id="dataCreation">
+        <h3>Best Practices for Data Creation and Publication</h3>
+        <div class="issue">Intro to data organization section here.</div>
+        <section id="metadata">
+          <h4>Metadata</h4>
+          <p>The data on the Web ecosystem has an underlying architecture that
+            involves actors with different roles. Primary among these are the roles of
+            data <em>publisher</em> and data <em>consumer</em> but this suggests a clear boundary
+            between the two that may not exist or be helpful. For example, a data <em>broker</em> would
+            consume data, process and/or enrich it in some way and then re-publish it, perhaps
+            charging a fee for the service.</p>
+          <p>The data itself is a central entity in this ecosystem, but on its own it
+            is likely to be hard to use if not completely useless. In order to help the consumer to discover and 
+            understand data sufficiently to be able to use it in some way requires
+            more data about the data, that is, metadata.</p>
+          <p>Metadata is a complex topic in its own right. It exists at
+            different levels of granularity that go from a single property of 
+            a resource to a whole dataset, or all datasets from a specific organization.
+            It supports multiple tasks including dataset discovery and dataset structure.
+            Data consumers may aggregate metadata about, for example, data usage, 
+            generating feedback to data providers that might meet more needs of more users 
+            and to help improve data quality. And it's metadata that describes the 
+            license and terms of use, the organization that generated the data, 
+            the data quality, the update schedule etc.</p>
 
-    <section id="dataCreation">
-      <h3>Best Practices for Data Creation and Publication</h3>
+<div class="issue">Should the following 2 paragraphs become best practices?</div>
 
-      <p>Intro to data organization section here.</p>
+          <p>Metadata can be provided in two forms: human-readable and
+            machine-readable. It is important to provide both forms of metadata
+            in order to reach humans and applications. In the case of
+            machine-readable metadata, the use of standard vocabularies should
+            be encouraged as a way of enhancing common semantics. For example,
+            data provenance could be described using PROV-O, a W3C
+            Recommendation that provides a set of classes, properties, and
+            restrictions that can be used to represent and interchange
+            provenance information generated in different systems and under
+            different contexts.</p>
+          <p>Metadata can be of different types. These types can be classified
+            in different taxonomies, with different grouping criterias. For
+            example, a specific taxonomy could define three metadata types
+            according to descriptive, structural and administrative features.
+            Descriptive metadata serves to identify a dataset, structural
+            metadata serves to understand the format that the dataset is
+            distributed and administrative metadata serves to provide
+            information about version, update schedule, etc. A different
+            taxonomy could define metadata types with a scheme according to
+            tasks where metadata are used, for example, discovery and reuse.</p>
+          <p>This document specifies the intended outcomes for each best
+            practice and then gives some guidance on possible implementation methods.
+            In terms of metadata, the particular implementation method will depend 
+            on the format of the dataset distribution, for example, metadata
+            describing a CSV file should be provided in a different way than for
+            an RDF dataset. However, the <em>intention</em> is the same irrespective
+            of format.</p>
 
-      <section id="metadata">
-        <h4>Metadata</h4>
 
-        <p>Metadata is data about data. It provides additional information
-        about data, to help consumers better understand the meaning
-        of data, its structure, and to clarify other issues, as for
-        example, license of use, the organization that generated
-        the data, data quality, data access, the update schedule of
-        datasets, etc.</p>
+          <div class="practice">
+            <p><span id="ProvideMetadata" class="practicelab">Provide Metadata</span></p>
 
-        <p>Metadata can be used to help tasks as, for example,
-        dataset discovery and reuse, and can
-        be assigned considering different granularity that goes
-        from a single property of a resource to a whole dataset, or
-        all datasets from a specific organization.</p>
+            <p class="practicedesc">Data on the Web must be described by metadata</p>
 
-        <p>Metadata SHOULD be available in human-readable
-        and machine-readable forms. It is important to provide both forms
-        of metadata in order to reach humans and applications. In
-        the case of machine-readable metadata, the use of standard
-        vocabularies should be encouraged as a way of enhancing
-        common semantics. For example, data provenance could be
-        described using PROV-O, a W3C Recommendation that provides
-        a set of classes, properties, and restrictions that can be
-        used to represent and interchange provenance information
-        generated in different systems and under different
-        contexts.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
 
-        <p>Metadata can be of different types. These types can be
-        classified in different taxonomies, with different grouping
-        criterias. For example, a specific taxonomy could define
-        three metadata types according to descriptive, structural
-        and administrative features. Descriptive metadata serves to
-        identify a dataset, structural metadata serves to
-        understand the format that the dataset is distributed and
-        administrative metadata serves to provide information about
-        version, update schedule, etc. A different taxonomy could
-        define metadata types with a scheme according to tasks
-        where metadata are used, for example, discovery and
-        reuse.</p>
+            <ul>
+              <li>The Web is an open information space; in the absence of a specific context, such
+              a company's internal information system, metadata is essential.</li>
 
-        <p>Is out of the scope of this document to talk about
-        metadata types related to dataset distribution formats,
-        for example, CSV files, Linked Data, etc. Each format has
-        its particular metadata scheme and different W3C groups are
-        responsible for defining each of these standards. Taking
-        the CSV example, W3C CSV on the Web WG has the mission of
-        providing technologies whereby data dependent applications
-        on the Web can provide higher interoperability when working
-        with datasets using the CSV (Comma-Separated Values) or
-        similar formats. In this document we will talk about some types of
-        metadata that are common to datasets, independently of the
-        domain or the distribution format.</p>
+              <li>Data will not be discoverable or reusable by anyone other than the
+              publisher if insufficient metadata is provided.</li>
+            </ul>
+          </section>
 
-        <section class="issue">
-          <p>At TPAC we talked about the distinction between
-          discovery metadata and structural metadata. These are not
-          (yet) reflected here although <a href=
-          "http://www.w3.org/2013/dwbp/track/issues/76">Issue-76</a>
-          looks relevant. New <a href=
-          "https://www.w3.org/2013/dwbp/track/issues/79">issue-79</a>
-          opened.</p>
-        </section>
-      </section>
+          <section class="description">
+            <p class="subhead">What</p>
+
+            <p>As noted above, the provision of metadata is fundamental to data
+            on the Web. Metadata is the shop window, the user-manual and the conditions of use.</p>
+          </section>
+
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+
+            <p>Consumers <span class="rfc2119">MUST</span> be able to:</p><ol>
+              <li>discover the data;</li>
+              <li>understand the nature and structure of the data, i.e. what the data describes and how it does it;</li>
+              <li>the origin of the data and under what terms it may be used.</li></ol>
+          </section>
+
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Later best practices provide more implementation guidance but in brief:</p><ul>
+            <li>Use DCAT [[VOCAB-DCAT]] to <strong>describe the dataset as a whole</strong> 
+            and the administrative environment in which it was created. This vocabulary reuses much of the
+            Dublin Core Metadata set [[DC-TERMS]] that provides common terms such as 
+            title, date, description, creator etc.</li>
+            <li>Use an appropriate metadata schema to describe the <strong>structure of the dataset</strong>. Examples include:<ul>
+              <li>Metadata Vocabulary for Tabular Data for <abbr title="Comma Separataed Variables">CSV</abbr> files [[TABULAR-METADATA]]</li>
+              <li>Use the Vocabulary of Interlinked Datasets (VoID) for RDF datasets [[VOID]]</li>
+            </ul></li>
+            <li>Use the <code>dcterms:license</code> or <code>dcterms:rights</code> to link a dataset to license and/or rights information. (@@@Not at all sure this is universally agreed!@@@)</li></ul>
+          </section>
+
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Test for the presence of metadata associated with the dataset. More detailed tests
+            are suggested for more detailed best practices later in this document.</p>
+          </section>
+
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:
+            <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
+          </section>
+        </div>
+        </section> <!-- Metadata -->
 
       <section id="licenses">
         <h4>Data Licenses</h4>
