@@ -71,7 +71,12 @@ var respecConfig = {
         authors: ["Deirdre Lee", "Bernadette Farias Lóscio", "Phil Archer"],
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
+      },
+      "RDA" : {
+        title: "Research Data Alliance",
+        href: "http://rd-alliance.org"
       }
+
 
 		}
     };
