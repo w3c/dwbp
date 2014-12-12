@@ -80,6 +80,11 @@ var respecConfig = {
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
+      },
+      "FORMATS": {
+        title: "Unique URIs for File Formats",
+        authors: ["Ivan Herman"],
+        href: "http://www.w3.org/ns/formats/"
       }
     }
 };
