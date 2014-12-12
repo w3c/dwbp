@@ -8,6 +8,7 @@ Here you'll find some deliverables and notes of the Working Group. Take a look a
 
 To see action, visit https://w3c.github.io/dwbp
 
-The chairs of the group are <a href="https://github.com/yaso">Yaso</a>, <a href="http://uk.linkedin.com/in/hadleybeeman">Hadley Beeman</a> and <a href="http://ibmdatamag.com/author/sadler/">Steve Adler</a>. 
+The chairs of the group are <a href="https://github.com/yaso">Yaso</a>, <a href="http://uk.linkedin.com/in/hadleybeeman">Hadley Beeman</a>, 
+<a href="http://https://www.deri.ie/users/deirdre-lee"> Deirdre Lee</a> and <a href="http://ibmdatamag.com/author/sadler/">Steve Adler</a>. 
 
 If you have the need to "push" directly to this repository, talk to <a href="http://philarcher.org/">Phil Archer</a>, the W3C team contact.   
