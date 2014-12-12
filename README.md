@@ -11,4 +11,4 @@ To see action, visit https://w3c.github.io/dwbp
 The chairs of the group are <a href="https://github.com/yaso">Yaso</a>, <a href="http://uk.linkedin.com/in/hadleybeeman">Hadley Beeman</a>, 
 <a href="http://https://www.deri.ie/users/deirdre-lee"> Deirdre Lee</a> and <a href="http://ibmdatamag.com/author/sadler/">Steve Adler</a>. 
 
-If you have need access to this repository, contact <a href="http://philarcher.org/">Phil Archer</a>, the W3C team contact.   
+If you need to have access to this repository, contact <a href="http://philarcher.org/">Phil Archer</a>, the W3C team contact.   
