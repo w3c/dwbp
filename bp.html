@@ -13,33 +13,63 @@
   padding-left: 0;
   line-height:1.6em;
   background-color: #FCFAEE;
-  }
-  @media screen and (min-width: 500px) {
+}
+
+@media screen and (min-width: 600px) {
   #bp-summary ul {
-  column-count:2;
-  column-gap: 1em;
+    column-count:2;
+    -moz-column-count:2;
+    -webkit-column-count:2;
+    column-gap: 1em;
   }
+}
+
+@media screen and (min-width: 900px) {
+    #bp-summary ul {
+    column-count:3;
+    -moz-column-count:3;
+    -webkit-column-count:3;
   }
-  @media screen and (min-width: 800px) {
-  #bp-summary ul {
-  column-count:3;
-  }
-  }
-  .practice {
+}
+
+.practice, #tempPractice {
   padding-left: 1em;
   background-color: #FCFAEE;
-  border-left: thick solid #E0CB52;
-  }
-  .practice p.practicedesc {
+  border: thin solid black;
+}
+
+#tempPractice .tempPracticelab {
+  background-color:#dfffff;
+  position: relative;
+  top: -1.5em;
+  font-weight:bold;
+}
+
+.practice p.practicedesc, #tempPractice p.tempPracticedesc {
   font-style:italic;
   border-bottom: thin solid black;
-  }
-  .practice p.subhead {
+  position:relative;
+  top:-1.5em;
+  margin: 0 2em -1em 1em;;
+}
+
+.subhead{
   font-weight:bold;
-  }
-  .practice dl dt {
+}
+
+.practice dl dt #tempPractice dl dt{
   font-weight:normal;
-  }
+}
+
+figure {
+  text-align:center;
+}
+
+figure figcaption {
+  text-align:center;
+  font-style:italic;
+}
+
   </style>
   </head>
   <body>
@@ -88,17 +118,6 @@
       <p>This document sets out a series of best practices that will help
         publishers and consumers face the new challenges and opportunities posed
         by data on the Web. </p>
-      <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/100">Tracker Issue 100</a></p>
-
- <p>I am not sure if it still makes sense to organize BP around the
-        phases of the lifecycle. <br>
-        I removed the following sentence about organizing BP around the phases:
-        "These best practices are organized around the different phases of the
-        Data on the Web lifecycle, which provides a framework for considering
-        the several tasks that will need to be performed on a dataset throughout
-        its life on the Web. As proposed by [MOLLER], data is a living thing
-        that moves through various stages, such as creation, publishing, use or
-        termination."</p> </div>
       <p>Best practices cover different aspects related to data publishing and
         consumption, like data formats, data access, data identification and
         metadata. In order to delimit the scope and elicit the required features
@@ -158,7 +177,6 @@
           quality, provenance and any terms of use. The following list
           summarizes some of the main challenges faced when publishing or
           consuming data on the Web. These challenges were identified from the <abbr
-
             title="Data on the Web Best Practices">DWBP</abbr> Use Cases and
           Requirements [[UCR]] and are described by one or more questions.</p>
         <dl>
@@ -207,20 +225,17 @@
           <dd><em>How can user feedback about data consumed from the Web be
               gathered?</em></dd>
         </dl>
-        <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/101">Tracker Issue 101</a><p>Should we use a table to present the challenges?</p></div>
         <p> Each one of these challenges originated one or more requirements as
           documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
             use-cases document</a>. The development of Data on the Web Best
           practices were guided by these requirements, in such a way that each
           best practice should have at least one of these requirements as an
           evidence of its relevance.</p>
-        <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/102">Tracker Issue 102</a></p><p> I included the paragraph above to make clear the
-          relation between BP and UC requirements. Is it ok? </p></div>
       </section>
       <section id="lifecycle">
         <h2>Data on the Web Lifecycle</h2>
         <p>Literature presents a lot of proposals for data lifecycles ranging
-          from multimedia data [[HARDMAN]] to digital libraries [[LIFECYC]].
+          from multimedia data to digital libraries.
           Knud Möller [[MOLLER]] presents a survey of lifecycle models for
           data-centric domains as well as an Abstract Data Lifecycle Model (<abbr
 
@@ -266,10 +281,9 @@
           <li><em>Data Archiving</em>: defines the moment when data no longer
             needs to be available on the Web. </li>
         </ul>
-        <div id="centerImg"> </div>
+        <figure id="centerImg">
         <img src="images/lifecyclesvg.svg" alt="The diagram shows the different phases of the Data on the Web lifecycle"
-
-          width="450">
+          width="450"><figcaption>The different phases of the Data on the Web lifecycle</figcaption></figure>
         <p>As proposed in [[MOLLER]], the data on the Web lifecycle model is an
           evolving one, since there is no restriction for data to pass through
           all phases of the lifecycle before the start of a new iteration,
@@ -289,11 +303,12 @@
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
         Best Practices.</p>
-      <div class="practice">
-        <p><span id="template" class="practicelab">Best Practice Template</span></p>
-        <p class="practicedesc">Short description of the BP</p>
+      <div id="tempPractice">
+        <p><span id="template" class="tempPracticelab">Best Practice Template</span></p>
+        <p class="tempPracticedesc">Short description of the BP</p>
         <section class="axioms">
           <p class="subhead">Why</p>
+          <p>This section answers two crucial questions:</p>
           <ul>
             <li>Why this is unique to publishing or reusing data on the Web ?</li>
             <li>How does this encourages publication or reuse of data on the Web
@@ -302,17 +317,22 @@
         </section>
         <section class="description">
           <p class="subhead">What</p>
-          <p>Full text description goes here. It can be any length but is likely
-            to be no more than a few sentences. Maybe more but no more than the
-            sufficient amount of text to convey the best practice.</p>
+          <p><em>Either</em> as part of the 'Why' section <em>or</em>, if appropriate
+          as a separate 'What' section, a full text description of the problem addressed
+          by the best practice is provided. It can be any length but is likely
+            to be no more than a few sentences.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>What it should do.</p>
+          <p>What it should do. This is the normative part of the best practice and includes
+          one or more [[!RFC2119]] keywords.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Description of how to implement the BP.</p>
+          <p>A description of a possible implementation strategy is provided. This represents the best
+          advice available at the time of writing but specific circumstances and future
+          developments may mean that alternative implementation methods are more appropriate to
+          achieve the intended outcome.</p>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
@@ -321,14 +341,11 @@
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p> Information about the relevance of the BP. It is described by one
+          <p>Information about the relevance of the BP. It is described by one
             or more relevant requirements as documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
-              Data on the Web Best Practices Use Cases &amp; Requirements
-              document</a></p>
+              Data on the Web Best Practices Use Cases &amp; Requirements document</a></p>
         </section>
       </div>
-      <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/104">Tracker Issue 104</a></p><p>Can we say that the evidence section shows the
-        relevance of the BP?</p></div>
     </section>
     <section id="bp-summary"></section>
     <section id="bestPractices">
@@ -341,9 +358,7 @@
         related to one or more requirements from <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
           Data on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
       <section id="metadata">
-        <h3>Best Practices for Metadata</h3>
-        <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/105">Tracker Issue 105</a></p><p> Should we use "Best Practices for Metadata" or just
-          "Metadata"? </p></div>
+        <h3>Metadata</h3>
         <p>Metadata is data about data. It provides additional information about
           data, to help consumers better understand the meaning of data, its
           structure, and to clarify other issues, as for example, license of
@@ -386,9 +401,11 @@
           </section>
           <section class="description">
             <p class="subhead">What</p>
-            <p>As noted above, the provision of metadata is fundamental to data
+          <p>See issue<a href="#issue115">below</a></p>
+
+<!--            <p>As noted above, the provision of metadata is fundamental to data
               on the Web. Metadata is the shop window, the user-manual and the
-              conditions of use.</p>
+              conditions of use.</p> -->
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -405,7 +422,7 @@
             <p>Later best practices provide more implementation guidance but in
               brief:</p>
             <ul>
-              <li>Use DCAT [[!VOCAB-DCAT]] to <strong>describe the dataset as a
+              <li>Use DCAT [[VOCAB-DCAT]] to <strong>describe the dataset as a
                   whole</strong> and the administrative environment in which it
                 was created. This vocabulary reuses much of the Dublin Core
                 Metadata set [[DC-TERMS]] that provides common terms such as
@@ -413,15 +430,12 @@
               <li>Use an appropriate metadata schema to describe the <strong>structure
                   of the dataset</strong>. Examples include:
                 <ul>
-                  <li>Metadata Vocabulary for Tabular Data for <abbr title="Comma Separataed Variables">CSV</abbr>
-                    files [[TABULAR-METADATA]]</li>
-                  <li>Use the Vocabulary of Interlinked Datasets (VoID) for RDF
-                    datasets [[VOID]]</li>
+                  <li>the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separataed Variables">CSV</abbr> files [[TABULAR-METADATA]]</li>
+                  <li>the Vocabulary of Interlinked Datasets (VoID) for RDF datasets [[VOID]]</li>
                 </ul>
               </li>
               <li>Use the <code>dcterms:license</code> or <code>dcterms:rights</code>
-                to link a dataset to license and/or rights information. (@@@Not
-                at all sure this is universally agreed!@@@)</li>
+                to link a dataset to license and/or rights information.</li>
             </ul>
           </section>
           <section class="test">
@@ -436,39 +450,47 @@
           </section>
         </div>
         <!-- end of BP -->
+
+<div class="issue" id="issue115">I don't think the 'What' section adds anything. Hence <a href="https://www.w3.org/2013/dwbp/track/issues/115">Tracker issue 115</a>
+That seeks to remove this section. It would also align it with the (current) plans for Share-PSI Best Practices [<a href="http://www.w3.org/2013/share-psi/bp/cas/">Example</a>].</div>
+
         <!-- begin of BP -->
         <div class="practice">
-          <p><span id="ProvideMetadataForms" class="practicelab"> Provide
-              Metadata in different forms </span></p>
-          <p class="practicedesc"> Metadata should be provided in two forms:
-            human-readable and machine-readable.</p>
+          <p><span id="ProvideMetadataForms" class="practicelab"> Provide Metadata in different formats </span></p>
+          <p class="practicedesc">Metadata should be provided for both humans and machines.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> It is important to provide both forms of metadata in order to
-              reach humans and applications. </p>
+            <p>Metadata can be used by machines, notably search engines,
+            to discover and classify data. Further metadata can be used by machines to process the
+            data once discovered. However, machines typically act on instructions from,
+            and report back to, humans. That is, it will often be a human that reads and makes
+            a variety of assessments based on the metadata.</p>
           </section>
-          <section class="description">
-            <p class="subhead">What</p>
-            <p> </p>
+          <section class="description"><p class="subhead">What</p>
+          <p>See issue <a href="#issue115">above</a></p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p>It <em class="rfc2119">must</em> be possible for humans to read metadata related to a dataset.</p>
+            <p>It <em class="rfc2119">should</em> be possible for computer applications, notably search tools, to locate and process the metadata easily.</p>
+
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Later best practices provide more implementation guidance but in
-              brief:</p>
-            <p> In the case of machine-readable metadata, the use of standard
-              vocabularies should be encouraged as a way of enhancing common
-              semantics. For example, data provenance could be described using
-              PROV-O, a W3C Recommendation that provides a set of classes,
-              properties, and restrictions that can be used to represent and
-              interchange provenance information generated in different systems
-              and under different contexts. </p>
+            <ul>
+              <li>Metadata for humans is most easily provided as part of an HTML Web page.</li>
+              <li>Metadata for machines is best provided either as an alternative 
+              representation of the Web page in a format such as Turtle or JSON-LD (for RDF) or
+              it can be embdedded in the HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].</li></ul>
+              <p>If the multiple formats are published separately, they should be served from the same URL using
+              content negotiation. Maintenance of multiple formats is best achieved by generating each available
+              format on the fly based on a single source of the metadata.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p>Check that a human user can easily read the metadata associated with a dataset. Access the
+            same URL either with a user agent that accepts a more data oriented format, such as RDF, or
+            a tool that extracts the data from an HTML page such as the <a href="http://rdf-translator.appspot.com/">RDF Translator</a>.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -484,7 +506,7 @@
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
-        <h3>Best Practices for Data Identification</h3>
+        <h3>Data Identification</h3>
         <p>The section on identification. </p>
         <!-- begin of BP -->
         <div class="practice">
@@ -533,7 +555,7 @@
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
       <section id="dataFormats">
-        <h3>Best Practices for Data Formats</h3>
+        <h3>Data Formats</h3>
         <p>Best practices on data formats include considerations on making data
           available in multiple open and machine readable formats for example
           RDF and JSON. In addition this section will include guidance on
@@ -703,7 +725,7 @@
       <!-- end of Data Formats -->
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
-        <h3>Best Practices for Data Vocabularies</h3>
+        <h3>Data Vocabularies</h3>
         <p>Datasets often resort to a range of vocabularies in the data they
           contain: data values are entered or captured in a controlled way,
           i.e., for certain positions in a data graph (or column in a
@@ -940,7 +962,7 @@
       <!-- end of Data Vocabularies -->
       <!-- begin of Data Licenses -->
       <section id="licenses">
-        <h3>Best Practices for Data Licenses</h3>
+        <h3>Data Licenses</h3>
         <p>The section on licenses</p>
         <!-- begin of BP -->
         <div class="practice">
@@ -1011,7 +1033,7 @@
       <!-- end of Data Licenses -->
       <!-- begin of Data Provenance -->
       <section id="provenance">
-        <h3>Best Practices for Data Provenance</h3>
+        <h3>Data Provenance</h3>
         <p>The section on provenance</p>
         <!-- begin of BP -->
         <div class="practice">
@@ -1048,7 +1070,7 @@
         <!-- end of Data Provenance -->
         <!-- begin of Data Quality -->
         <section id="quality">
-          <h3>Best Practices for Data Quality</h3>
+          <h3>Data Quality</h3>
           <p>The section on data quality</p>
           <div class="issue">It is important to discuss if the requirements for 
         Data Quality proposed in the Use Cases document are requirements for the 
@@ -1057,14 +1079,14 @@
         <!-- end of Data Quality -->
         <!-- begin of Data Granularity -->
         <section id="granularity">
-          <h3>Best Practices for Data Granularity</h3>
+          <h3>Data Granularity</h3>
           <p>The section on granularity</p>
           <div class="issue"> It is important to discuss the meaning of data granularity. <p><a href="https://www.w3.org/2013/dwbp/track/issues/111">Tracker Issue 111</a></p></div>
         </section>
         <!-- end of Data Granularity -->
         <!-- begin of Sensitive Data -->
         <section id="sensitive">
-          <h3>Best Practices for Sensitive Data</h3>
+          <h3>Sensitive Data</h3>
           <p>The section on data sensitive</p>
           <!-- begin of BP -->
           <div class="practice">
@@ -1163,7 +1185,7 @@
         <!-- end of Data Sensitive -->
         <!-- begin of Data Access -->
         <section id="dataAccess">
-          <h3>Best Practices for Data Access</h3>
+          <h3>Data Access</h3>
           <p>The section on licenses</p>
           <!-- begin of BP -->
           <div class="practice">
@@ -1263,13 +1285,13 @@
         <!-- end of Data Access -->
         <!-- begin of Data Versioning -->
         <section id="dataVersioning">
-          <h3>Best Practices for Data Versioning</h3>
+          <h3>Data Versioning</h3>
            <div class="issue"> In the current version of the Use Cases document there are no requirements for Data Versioning, i.e., Data Versioning was not identified as a challenge. 
 <p><a href="https://www.w3.org/2013/dwbp/track/issues/113">Tracker Issue 113</a></p></div>
         </section>
         <!-- end of Data Versioning -->
         <section id="dataPreservation">
-          <h3>Best Practices for Data Preservation</h3>
+          <h3>Data Preservation</h3>
           <p>Data preservation is a well understood and commonly performed tasks
             for static and self-contained data. This commonly includes the
             following steps:</p>
@@ -1518,7 +1540,7 @@
         <!-- end of Data Preservation -->
         <!-- begin Feedback -->
         <section id="feedback">
-          <h3>Best Practices for Feedback</h3>
+          <h3>Feedback</h3>
           <p>The feedback section</p>
           <div class="issue"> There are no explicit requirements for Feedback. There is one Data Usage requirements that mentions feedback <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-IncorporateFeedback">R-IncorporateFeedback</a> 
 <p><a href="https://www.w3.org/2013/dwbp/track/issues/114">Tracker Issue 114</a></p></div>

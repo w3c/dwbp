@@ -88,6 +88,11 @@ var respecConfig = {
         title: "Unique URIs for File Formats",
         authors: ["Ivan Herman"],
         href: "http://www.w3.org/ns/formats/"
+      },
+      "cURL": {
+        title: "cURL, a command line tool and library for transferring data with URL syntax",
+        authors: ["Daniel Stenberg"],
+        href: "http://curl.haxx.se/"
       }
     }
 };
