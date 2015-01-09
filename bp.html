@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Linux https://github.com/w3c/tidy-html5/tree/c63cc39">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>Data on the Web Best Practices</title>
+    <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common">
+</script> <script class="remove" src="bpconfig.js">
+</script> <style type="text/css">
+#bp-summary ul {
+  list-style-type: none;
+  padding-left: 0;
+  line-height:1.6em;
+  background-color: #FCFAEE;
+}
+
+@media screen and (min-width: 600px) {
+  #bp-summary ul {
+    column-count:2;
+    -moz-column-count:2;
+    -webkit-column-count:2;
+    column-gap: 1em;
+  }
+}
+
+@media screen and (min-width: 900px) {
+    #bp-summary ul {
+    column-count:3;
+    -moz-column-count:3;
+    -webkit-column-count:3;
+  }
+}
+
+.practice, #tempPractice {
+  padding-left: 1em;
+  background-color: #FCFAEE;
+  border: thin solid black;
+}
+
+#tempPractice .tempPracticelab {
+  background-color:#dfffff;
+  position: relative;
+  top: -1.5em;
+  font-weight:bold;
+}
+
+.practice p.practicedesc, #tempPractice p.tempPracticedesc {
+  font-style:italic;
+  border-bottom: thin solid black;
+  position:relative;
+  top:-1.5em;
+  margin: 0 2em -1em 1em;;
+}
+
+.subhead{
+  font-weight:bold;
+}
+
+.practice dl dt #tempPractice dl dt{
+  font-weight:normal;
+}
+
+figure {
+  text-align:center;
+}
+
+figure figcaption {
+  text-align:center;
+  font-style:italic;
+}
+
+  </style>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This document provides best practices related to the publication and
+        usage of data on the Web designed to help support a self-sustaining
+        ecosystem. Data should be discoverable and understandable by humans and
+        machines. Where data is used in some way, whether by the originator of
+        the data or by an external party, such usage should also be discoverable
+        and the efforts of the data publisher recognized. In short, following
+        these best practices will facilitate interaction between publishers and
+        consumers.</p>
+    </section>
+    <section id="sotd">
+      <p>This early version of the document shows its expected scope and future
+        direction. A template is used that shows the what, why and how of each
+        best practice. Comments are sought on the usefulness of this approach
+        and the expected scope of the final document.</p>
+    </section>
+    <section id="intro" class="informative">
+      <h2>Introduction</h2>
+      <p>Data on the Web Best Practices have been developed to encourage and
+        enable the continued expansion of the Web as a medium for the exchange
+        of data. The growth of open data by governments across the world
+        [[OKFN-INDEX]], the increasing publication of research data encouraged
+        by organizations like the Research Data Alliance [[RDA]], the harvesting
+        and analysis of social media, crowd-sourcing of information, the
+        provision of important cultural heritage collections such as at the
+        Bibliothèque nationale de France [[BNF]] and the sustained growth in the
+        Linked Open Data Cloud [[LODC]], provide some examples of this
+        phenomenon.</p>
+      <p>In broad terms, data publishers aim to share data either openly or
+        through a paywall/firewall. Data consumers (who may also be producers
+        themselves) want to be able to find and use data, especially if it is
+        accurate, regularly updated and guaranteed to be available at all times.
+        This creates a fundamental need for a common understanding between data
+        publishers and data consumers. Without this agreement, data publishers'
+        efforts may be incompatible with data consumers' desires.</p>
+      <p>Publishing data on the Web creates new challenges, such as how to
+        represent, describe and make data available in a way that it will be
+        easy to find and to understand. In this context, it becomes crucial to
+        provide guidance to publishers that will improve consistency in the way
+        data is managed, thus promoting the reuse of data and also to foster
+        trust in the data among developers, whatever technology they choose to
+        use, increasing the potential for genuine innovation.</p>
+      <p>This document sets out a series of best practices that will help
+        publishers and consumers face the new challenges and opportunities posed
+        by data on the Web. </p>
+      <p>Best practices cover different aspects related to data publishing and
+        consumption, like data formats, data access, data identification and
+        metadata. In order to delimit the scope and elicit the required features
+        for Data on the Web Best Practices, the <abbr title="Data on the Web Best Practices">DWBP</abbr>
+        working group compiled a set of use cases [[UCR]] that represent
+        scenarios of how data is commonly published on the Web and how it is
+        used. The set of requirements derived from these use cases were used to
+        guide the development of the best practice.</p>
+    </section>
+    <section id="audience" class="informative">
+      <h2>Audience</h2>
+      <p>This document provides best practices to those who publish data on the
+        Web. The best practices are designed to meet the needs of information
+        management staff, developers, and wider groups such as scientists
+        interested in sharing and reusing research data on the Web. Every
+        attempt has been made to make the document as readable and usable as
+        possible while still retaining the accuracy and clarity needed in a
+        technical specification. </p>
+      <p>Readers of this document are expected to be familiar with some
+        fundamental concepts of the architecture of the Web [[!WEBARCH]], such
+        as resources and URIs, as well as a number of data formats. The
+        normative element of each best practice is the <em>intended outcome</em>.
+        Possible implementations are suggested and, where appropriate, these
+        recommend the use of a particular technology such as <abbr title="Comma Separataed Variables">CSV</abbr>,
+        JSON or RDF. A basic knowledge of vocabularies and data models would be
+        helpful to better understand some aspects of this document. </p>
+      <p>This document is not targeted solely at data publishers; others
+        interested on using the published data are encouraged to read it.</p>
+      <p></p>
+    </section>
+    <section id="scope" class="informative">
+      <h2>Scope</h2>
+      <p>This document is concerned solely with best practices that:</p>
+      <ul>
+        <li>are unique to publishing or reusing data on the Web;</li>
+        <li>encourage publication or reuse of data on the Web;</li>
+        <li>can be tested by machines, humans or a combination of the two.</li>
+      </ul>
+      <p>As noted above, whether a best practice has or has not been followed
+        should be judged against the <em>intended outcome</em>, not the
+        specific implementation which is offered as guidance. A best practice is
+        always subject to improvement as we learn and evolve the Web together.</p>
+    </section>
+    <section id="context" class="informative">
+      <h2>Context</h2>
+      <section id="challenges">
+        <h2>Data on the Web Challenges</h2>
+        <p>The openness and flexibility of the Web creates new challenges for
+          data publishers and data consumers. In contrast to conventional
+          databases, for example, where there's is a single data model to
+          represent the data and a database management system (DBMS) to control
+          data access, data on the Web allows for the existence of multiple ways
+          to represent and to access data. Furthermore, publishers and consumers
+          may be unknown to each other and be part of entirely disparate
+          communities with different norms and in-built assumptions so that it
+          becomes essential to provide information about data structure,
+          quality, provenance and any terms of use. The following list
+          summarizes some of the main challenges faced when publishing or
+          consuming data on the Web. These challenges were identified from the <abbr
+            title="Data on the Web Best Practices">DWBP</abbr> Use Cases and
+          Requirements [[UCR]] and are described by one or more questions.</p>
+        <dl>
+          <dt>Metadata</dt>
+          <dd><em>What kind of metadata should be considered when describing
+              data on the Web?<br>
+              How can metadata be provided in a machine readable way?</em></dd>
+          <dt>Data Identification</dt>
+          <dd><em>How can unique identifiers be provided for data resources?<br>
+              How should URIs be designed and managed for persistence?</em></dd>
+          <dt>Data Formats</dt>
+          <dd><em>What kind of data formats should be considered when publishing
+              data on the Web?</em></dd>
+          <dt>Data Vocabularies</dt>
+          <dd><em>How can existing vocabularies be used to provide semantic
+              interoperability?<br>
+              How can a new vocabulary be designed if needed?</em></dd>
+          <dt>Data Licenses</dt>
+          <dd><em>How can data licenses be made machine readable?<br>
+              How can license information about data published on the Web be
+              provided/gathered?</em></dd>
+          <dt>Data Provenance</dt>
+          <dd><em>How can data provenance information about data published on
+              the Web be gathered/provided?</em></dd>
+          <dt>Data Quality</dt>
+          <dd><em>How can data quality information about data on the Web be
+              provided/gathered?</em></dd>
+          <dt>Data Granularity</dt>
+          <dd><em>How can publishers decide what kind of data granularity is
+              most appropriate when publishing data on the Web?</em></dd>
+          <dt>Sensitive Data</dt>
+          <dd><em>How can data be published without infringing a person's right
+              to privacy or an organization's security?</em></dd>
+          <dt>Data Access</dt>
+          <dd><em>What kind of data access should be considered when publishing
+              data on the Web?<br>
+              What requirements should be taken into account when deciding how
+              to make data available on the Web?</em></dd>
+          <dt>Data Versioning</dt>
+          <dd><em>How can different versions of a dataset be tracked and
+              managed?</em></dd>
+          <dt>Data Preservation</dt>
+          <dd><em>How can publishers decide when data on the Web should be
+              archived?</em></dd>
+          <dt>Feedback</dt>
+          <dd><em>How can user feedback about data consumed from the Web be
+              gathered?</em></dd>
+        </dl>
+        <p> Each one of these challenges originated one or more requirements as
+          documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
+            use-cases document</a>. The development of Data on the Web Best
+          practices were guided by these requirements, in such a way that each
+          best practice should have at least one of these requirements as an
+          evidence of its relevance.</p>
+      </section>
+      <section id="lifecycle">
+        <h2>Data on the Web Lifecycle</h2>
+        <p>Literature presents a lot of proposals for data lifecycles ranging
+          from multimedia data to digital libraries.
+          Knud Möller [[MOLLER]] presents a survey of lifecycle models for
+          data-centric domains as well as an Abstract Data Lifecycle Model (<abbr
+
+            title="Abstract Data Lifecycle Model">ADLM</abbr>) comprising a set
+          of phases, features and roles that can be used to classify and compare
+          existing lifecycle models. <abbr title="Abstract Data Lifecycle Model">ADLM</abbr>
+          also provides the basis to construct new lifecycle models for
+          data-centric domains. Following this pattern, a generic lifecycle
+          model for data-centric domains comprises the following main phases: <em>Ontology
+            development</em>, <em>Planning</em>, <em>Creation</em>, <em>Archiving</em>,
+          <em>Refinement</em>, <em>Publication</em>, <em>Access</em>, <em>External
+            use</em>, <em>Feedback</em> and <em>Termination</em>.</p>
+        <p>The Data on the Web lifecycle is an instance of an <abbr title="Abstract Data Lifecycle Model">ADLM</abbr>.
+          In what follows, the <abbr title="Abstract Data Lifecycle Model">ADLM</abbr>
+          phases are revisited and defined according to the data on the Web
+          context. It is important to note that the ontology development phase
+          is not included, since it is considered an independent phase that can
+          take place <i>a priori</i>. The termination phase is also out of
+          scope since it is not possible to make sure that a piece of data was
+          completely removed from the Web. </p>
+        <ul>
+          <li><em>Data Planning</em>: this phase concerns the moment when the
+            intent to publish data on the Web takes a concrete form. It also
+            comprises the selection of data to be published.</li>
+          <li><em>Data Creation</em>: defines the moment when new data is
+            created, i.e, it means that the data did not previously exist on the
+            Web. It may comprise the extraction of data from existing data
+            sources and its transformation to a proper format or structure for
+            publishing on the Web. </li>
+          <li><em>Data Publication</em>: this phase concerns the moment when
+            data is made accessible on the Web.</li>
+          <li><em>Access</em>: denotes the moment in the lifecycle when users
+            gain access to the data available on the Web.</li>
+          <li><em>External use</em>: implies that data was used to perform some
+            further actions like the creation of visualizations or data
+            analysis.</li>
+          <li><em>Feedback</em>: this phase concerns the moment when users
+            comment on the data or metadata they have previously accessed and
+            used.</li>
+          <li><em>Refinement</em>: this phase covers all kinds of activities
+            that make additions or changes to data that already exist on the
+            Web. It also concerns the management of data versioning. </li>
+          <li><em>Data Archiving</em>: defines the moment when data no longer
+            needs to be available on the Web. </li>
+        </ul>
+        <figure id="centerImg">
+        <img src="images/lifecyclesvg.svg" alt="The diagram shows the different phases of the Data on the Web lifecycle"
+          width="450"><figcaption>The different phases of the Data on the Web lifecycle</figcaption></figure>
+        <p>As proposed in [[MOLLER]], the data on the Web lifecycle model is an
+          evolving one, since there is no restriction for data to pass through
+          all phases of the lifecycle before the start of a new iteration,
+          neither a specific point of the lifecyle to begin with.</p>
+        <p>In the data on the Web context, two main roles may be played by
+          actors in the lifecycle: data publisher and data consumer. The data
+          publisher role may be played by several actors who are responsible for
+          performing actions like data and metadata creation, and data
+          publication and archiving. The data consumer are these actors who
+          receive and consume the data. Of course consumers may well also be
+          publishers.</p>
+        <div class="issue"><p><a href="https://www.w3.org/2013/dwbp/track/issues/103">Tracker Issue 103</a></p><p> Should we talk about the different types of data
+          consumers (re-user and end user) as proposed by Makx? </p></div>
+      </section>
+    </section>
+    <section id="bp-template">
+      <h2>Best Practices Template</h2>
+      <p>This section presents the template used to describe Data on the Web
+        Best Practices.</p>
+      <div id="tempPractice">
+        <p><span id="template" class="tempPracticelab">Best Practice Template</span></p>
+        <p class="tempPracticedesc">Short description of the BP</p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>This section answers two crucial questions:</p>
+          <ul>
+            <li>Why this is unique to publishing or reusing data on the Web ?</li>
+            <li>How does this encourages publication or reuse of data on the Web
+              ?</li>
+          </ul>
+        </section>
+        <section class="description">
+          <p class="subhead">What</p>
+          <p><em>Either</em> as part of the 'Why' section <em>or</em>, if appropriate
+          as a separate 'What' section, a full text description of the problem addressed
+          by the best practice is provided. It can be any length but is likely
+            to be no more than a few sentences.</p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p>What it should do. This is the normative part of the best practice and includes
+          one or more [[!RFC2119]] keywords.</p>
+        </section>
+        <section class="how">
+          <p class="subhead">Possible Approach to Implementation</p>
+          <p>A description of a possible implementation strategy is provided. This represents the best
+          advice available at the time of writing but specific circumstances and future
+          developments may mean that alternative implementation methods are more appropriate to
+          achieve the intended outcome.</p>
+        </section>
+        <section class="test">
+          <p class="subhead">How to Test</p>
+          <p>Information on how to test the BP has been met. This might or might
+            not be machine testable.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p>Information about the relevance of the BP. It is described by one
+            or more relevant requirements as documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
+              Data on the Web Best Practices Use Cases &amp; Requirements document</a></p>
+        </section>
+      </div>
+    </section>
+    <section id="bp-summary"></section>
+    <section id="bestPractices">
+      <h2>The Best Practices</h2>
+      <p>This section contains a number of best practices to be used by data
+        publishers in order to help both data publishers and data consumers to
+        overcome the different challenges faced during the 
+        data on the Web lifecycle. One or more best practices were
+        proposed for each one of the previously described challenges. Each BP is
+        related to one or more requirements from <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
+          Data on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
+      <section id="metadata">
+        <h3>Metadata</h3>
+        <p>Metadata is data about data. It provides additional information about
+          data, to help consumers better understand the meaning of data, its
+          structure, and to clarify other issues, as for example, license of
+          use, the organization that generated the data, data quality, data
+          access, the update schedule of datasets, etc.</p>
+        <p>Metadata can be used to help tasks as, for example, dataset discovery
+          and reuse, and can be assigned considering different granularity that
+          goes from a single property of a resource to a whole dataset, or all
+          datasets from a specific organization.</p>
+        <p>Metadata can be of different types. These types can be classified in
+          different taxonomies, with different grouping criterias. For example,
+          a specific taxonomy could define three metadata types according to
+          descriptive, structural and administrative features. Descriptive
+          metadata serves to identify a dataset, structural metadata serves to
+          understand the format that the dataset is distributed and
+          administrative metadata serves to provide information about version,
+          update schedule, etc. A different taxonomy could define metadata types
+          with a scheme according to tasks where metadata are used, for example,
+          discovery and reuse.</p>
+        <p>This document specifies the intended outcomes for each best practice
+          and then gives some guidance on possible implementation methods. In
+          terms of metadata, the particular implementation method will depend on
+          the format of the dataset distribution, for example, metadata
+          describing a CSV file should be provided in a different way than for
+          an RDF dataset. However, the <em>intention</em> is the same
+          irrespective of format.</p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ProvideMetadata" class="practicelab">Provide Metadata</span></p>
+          <p class="practicedesc">Data on the Web must be described by metadata</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <ul>
+              <li>The Web is an open information space; in the absence of a
+                specific context, such a company's internal information system,
+                metadata is essential.</li>
+              <li>Data will not be discoverable or reusable by anyone other than
+                the publisher if insufficient metadata is provided.</li>
+            </ul>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+          <p>See issue<a href="#issue115">below</a></p>
+
+<!--            <p>As noted above, the provision of metadata is fundamental to data
+              on the Web. Metadata is the shop window, the user-manual and the
+              conditions of use.</p> -->
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Consumers <span class="rfc2119">MUST</span> be able to:</p>
+            <ol>
+              <li>discover the data;</li>
+              <li>understand the nature and structure of the data, i.e. what the
+                data describes and how it does it;</li>
+              <li>the origin of the data and under what terms it may be used.</li>
+            </ol>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Later best practices provide more implementation guidance but in
+              brief:</p>
+            <ul>
+              <li>Use DCAT [[VOCAB-DCAT]] to <strong>describe the dataset as a
+                  whole</strong> and the administrative environment in which it
+                was created. This vocabulary reuses much of the Dublin Core
+                Metadata set [[DC-TERMS]] that provides common terms such as
+                title, date, description, creator etc.</li>
+              <li>Use an appropriate metadata schema to describe the <strong>structure
+                  of the dataset</strong>. Examples include:
+                <ul>
+                  <li>the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separataed Variables">CSV</abbr> files [[TABULAR-METADATA]]</li>
+                  <li>the Vocabulary of Interlinked Datasets (VoID) for RDF datasets [[VOID]]</li>
+                </ul>
+              </li>
+              <li>Use the <code>dcterms:license</code> or <code>dcterms:rights</code>
+                to link a dataset to license and/or rights information.</li>
+            </ul>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Test for the presence of metadata associated with the dataset.
+              More detailed tests are suggested for more detailed best practices
+              later in this document.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+
+<div class="issue" id="issue115">I don't think the 'What' section adds anything. Hence <a href="https://www.w3.org/2013/dwbp/track/issues/115">Tracker issue 115</a>
+That seeks to remove this section. It would also align it with the (current) plans for Share-PSI Best Practices [<a href="http://www.w3.org/2013/share-psi/bp/cas/">Example</a>].</div>
+
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ProvideMetadataForms" class="practicelab"> Provide Metadata in different formats </span></p>
+          <p class="practicedesc">Metadata should be provided for both humans and machines.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Metadata can be used by machines, notably search engines,
+            to discover and classify data. Further metadata can be used by machines to process the
+            data once discovered. However, machines typically act on instructions from,
+            and report back to, humans. That is, it will often be a human that reads and makes
+            a variety of assessments based on the metadata.</p>
+          </section>
+          <section class="description"><p class="subhead">What</p>
+          <p>See issue <a href="#issue115">above</a></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It <em class="rfc2119">must</em> be possible for humans to read metadata related to a dataset.</p>
+            <p>It <em class="rfc2119">should</em> be possible for computer applications, notably search tools, to locate and process the metadata easily.</p>
+
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <ul>
+              <li>Metadata for humans is most easily provided as part of an HTML Web page.</li>
+              <li>Metadata for machines is best provided either as an alternative 
+              representation of the Web page in a format such as Turtle or JSON-LD (for RDF) or
+              it can be embdedded in the HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].</li></ul>
+              <p>If the multiple formats are published separately, they should be served from the same URL using
+              content negotiation. Maintenance of multiple formats is best achieved by generating each available
+              format on the fly based on a single source of the metadata.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that a human user can easily read the metadata associated with a dataset. Access the
+            same URL either with a user agent that accepts a more data oriented format, such as RDF, or
+            a tool that extracts the data from an HTML page such as the <a href="http://rdf-translator.appspot.com/">RDF Translator</a>.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <div class="issue"> The meaning of the requirements <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>
+          and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocument">R-MetadataDocument</a>
+          is not clear. Therefore, they were not considered in the current BP. <p><a href="https://www.w3.org/2013/dwbp/track/issues/106">Treacker Issue 106</a></p></div>
+      </section>
+      <!-- end of Metadata -->
+      <!-- begin of Data Identification -->
+      <section id="dataIdentification">
+        <h3>Data Identification</h3>
+        <p>The section on identification. </p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
+              unique identifiers</span></p>
+          <p class="practicedesc">Each data resource should be associated with a
+            unique identifier. </p>
+          <div class="axioms">
+            <p class="subhead">Why</p>
+            <dl>
+              <dt>Why this is unique to publishing data on the Web</dt>
+              <dd>Because the Web is built on links and this is kind of basic
+                stuff</dd>
+              <dt>How this encourages publication or reuse of data on the Web</dt>
+              <dd>A stable reference ensures long term discoverability and
+                citations.</dd>
+            </dl>
+          </div>
+          <div class="description">
+            <p class="subhead">What</p>
+            <p> </p>
+            <p class="subhead">Intended outcome</p>
+            <p>The data resource be discoverable and citable today and in
+              future.</p>
+          </div>
+          <div class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </div>
+          <div class="test">
+            <p class="subhead">How to Test</p>
+            <p>Apply the design rules.</p>
+          </div>
+          <div class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
+          </div>
+        </div>
+        <!-- end of BP -->
+        <div class="issue"> The requirement <a href="http://www.w3.org/TR/dwbp-ucr/#R-MultipleRepresentations">R-MultipleRepresentations</a>
+          was not considered in the current BP. This requirement is similar to
+          the requirement <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a>
+          and maybe it should be removed. <p><a href="https://www.w3.org/2013/dwbp/track/issues/107">Tracker Issue 107</a></p></div>
+      </section>
+      <!-- end of Data Identification -->
+      <!-- begin of Data Formats -->
+      <section id="dataFormats">
+        <h3>Data Formats</h3>
+        <p>Best practices on data formats include considerations on making data
+          available in multiple open and machine readable formats for example
+          RDF and JSON. In addition this section will include guidance on
+          preferred data formats for example preferred formats for date, string
+          and numbers. Guidance will also be provided on expressing data in
+          multiple languages. While mentioned in the use case document as
+          challenge, the best practices document should not make recommendations
+          regarding the formats of source data for example database dumps,
+          spreadsheets. It is expected that data sources for data on the web
+          will continue to be in multiple formats.</p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="MachineReadableFormat" class="practicelab">Provide
+              machine-readable data </span></p>
+          <p class="practicedesc">Data should be available in a machine-readable
+            format that is adequate for its intended or potential use. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="StandardizedFormat" class="practicelab">Provide data in
+              standardized formats </span></p>
+          <p class="practicedesc">Data should be availabe in a standardized
+            format. Through standardization, interoperability is also expected.
+          </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="OpenFormat" class="practicelab">Provide data in open
+              formats </span></p>
+          <p class="practicedesc">Data should be availabe in an open format </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="MultipleFormats" class="practicelab">Provide data in
+              multiple formats </span></p>
+          <p class="practicedesc">Data should be availabe in multiple formats. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="LocaleParameters" class="practicelab">Provide locale
+              parameters </span></p>
+          <p class="practicedesc">Information about locale parameters (date and
+            number formats, language) should be made available</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
+          </section>
+        </div>
+        <div class="issue"> Should <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a> be a requirement for
+          metadata instead of data format ? <p><a href="https://www.w3.org/2013/dwbp/track/issues/108">Tracker Issue 108</a></p></div>
+        <!-- end of BP --> </section>
+      <!-- end of Data Formats -->
+      <!-- begin of Data Vocabularies -->
+      <section id="dataVocabularies">
+        <h3>Data Vocabularies</h3>
+        <p>Datasets often resort to a range of vocabularies in the data they
+          contain: data values are entered or captured in a controlled way,
+          i.e., for certain positions in a data graph (or column in a
+          relationship table), the value used should come with a limited set of
+          pre-existing resources: for example object types, roles of a person,
+          countries in a geographic area, or possible subjects for books. Such
+          vocabularies aim to represent a set of terms and the relationship
+          among them, in order to ensure a level of control, standardization and
+          interoperability in the data. They can also provide a way to easily
+          create richer data. Say, a dataset contain one reference in a data
+          statement to a concept description in several languages. This single
+          statement allows applications to localize their display of their
+          search depending on the language of the user. The vocabularies can
+          also have different forms (e.g. thesaurus, taxonomy, semantic network)
+          and be represented in different formats (e.g. RDF, OWL, JSON, CSV).
+          This section presents best practices for data vocabularies accessible
+          as URI sets on the Web. </p>
+        <p> According to <a href="http://www.w3.org/standards/semanticweb/ontology">
+            W3C </a>, Vocabularies define the concepts and relationships (also
+          referred to as “terms”) used to describe and represent an area of
+          concern. Vocabularies are used to classify the terms that can be used
+          in a particular application, characterize possible relationships, and
+          define possible constraints on using those terms. In practice,
+          vocabularies can be very complex (with several thousands of terms) or
+          very simple (describing one or two concepts only). There is no clear
+          division between what is referred to as “vocabularies” and
+          “ontologies”. The trend is to use the word “ontology” for more
+          complex, and possibly quite formal collection of terms, whereas
+          “vocabulary” is used when such strict formalism is not necessarily
+          used or only in a very loose sense. Vocabularies are the basic
+          building blocks for inference techniques on the Semantic Web. W3C
+          offers different ways for creating Vocabularies on the Web in a
+          standard format, such as: </p>
+        <ol>
+          <li> <a href="http://www.w3.org/standards/techs/rdf#w3c_all"> RDF and
+              RDF Schemas </a>: The Resource Description Framework (RDF) is a
+            general-purpose language for representing information in the Web; </li>
+          <li> <a href="http://www.w3.org/standards/techs/skos#w3c_all"> SKOS </a>:
+            Simple Knowledge Organization System (SKOS) is a common data model
+            for sharing and linking knowledge organization systems via the Web;
+          </li>
+          <li> <a href="http://www.w3.org/standards/techs/owl#w3c_all"> OWL </a>:
+            The Web Ontology Language (OWL) is a semantic markup language for
+            publishing and sharing ontologies on the World Wide Web </li>
+          <li> <a href="http://www.w3.org/standards/techs/rif#w3c_all"> RIF </a>:
+            W3C Rule Interchange Format (RIF) for writing declarative rules and
+            production rules on the Web. </li>
+        </ol>
+        <p> Vocabularies can be of two different types: </p>
+        <ol>
+          <li> Light-weight: annotation-oriented (used for information search),
+            describing the concepts and their relationships. Here is recommended
+            the use of SKOS or RDF and RDF Schema.</li>
+          <li> Heavy-weight: the body of knowledge that describes a given
+            domain, describing the concepts and relationships between them from
+            both perspectives: hierarchy and aggregation/composition. In
+            addition, such heavy-weight descriptions provide the axiomatization
+            of semantics constraints between those concepts and relations. Here
+            is recommended the use of OWL and RIF.</li>
+        </ol>
+        <h4>How to create vocabularies?</h4>
+        <p> Three different approaches may be adopted to create vocabularies: </p>
+        <ol>
+          <li>Top-layer: the whole building process compliant with the
+            conventional software development process </li>
+          <li>Middle-layer: Generic constraints and guidelines which specify
+            major steps </li>
+          <li>Bottom-layer: The most fine-grain guidelines such as those for
+            class identification process, design of URIs, ODP, Anti-Patterns
+            etc.</li>
+        </ol>
+        Some of the Best Practices for the creation of vocabularies are
+        presented in the following.
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="DocumentVocabularies" class="practicelab"> Document
+              vocabularies </span></p>
+          <p class="practicedesc"> Vocabularies should be clearly documented. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> Because a documentation defines what is within the vocabulary in
+              order to be reused or extended; The better is the documentation
+              the higher is possibility of reuse the vocabulary; </p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p> </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p> The vocabulary be understandable by humans;</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> Through the use of Ontology Requirements Specification
+              Documents;</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ShareOpenVocabularies" class="practicelab"> Share
+              vocabularies in an open way </span></p>
+          <p class="practicedesc"> Vocabularies should be shared in an open way
+          </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p></p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p> </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p> </p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary
+              versioning </span></p>
+          <p class="practicedesc"> Vocabularies should include versioning
+            information </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Because it guarantees compatibility over time; Versioning
+              information provides a way to compare different versions of the
+              vocabulary in order to be reused;</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p> </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Humans can make changes in a compatible way and machines can
+              interoperate data consistently; </p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> Apply the versioning policy; </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Apply the versioning policy; </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+        <h4> How to find vocabularies ? </h4>
+        <p> In order to be possible the reuse of vocabularies, it is important
+          to provide ways to find them, when they are available on the Web. The
+          can be done by using different approaches, such as: </p>
+        <ol>
+          <li> Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">
+              Falcons </a> , <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,
+            <a href="http://sindice.com/"> Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,
+            and others; </li>
+          <li> Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,
+            <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;
+          </li>
+          <li> <a href="http://www.w3.org/standards/">W3C Standards</a>; </li>
+          <li> <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset-20111025/">Library
+              Linked Data Incubator Group</a>. </li>
+        </ol>
+        <p> Others include the LOV directory, Prefix.cc, Bioportal (biological
+          domain) and the European Commission's Joinup platform.</p>
+        <h3>How to choose vocabularies?</h3>
+        <p> It is very important to know how to choose the vocabulary to be
+          reused. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
+            Checklist</a> </p>
+        <h3> How to reuse vocabularies ? </h3>
+        <p> In order to provide semantic interoperability between applications,
+          it is important to reuse well-know vocabularies wherever possible.
+          This should be done by defining terms to be shared with meaning and
+          unambiguously.</p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ReusingVocabularies" class="practicelab"> Reuse
+              vocabularies </span></p>
+          <p class="practicedesc"> Existing reference vocabularies should be
+            reused where possible </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> Because it provides a way to support interoperability;</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Machines can automatically search and navigate on the Web; </p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP --> </section>
+      <!-- end of Data Vocabularies -->
+      <!-- begin of Data Licenses -->
+      <section id="licenses">
+        <h3>Data Licenses</h3>
+        <p>The section on licenses</p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span class="practicelab">Provide Data License</span></p>
+          <p class="practicedesc">Data should be associated with a license.</p>
+          <div class="axioms">
+            <p class="subhead">Why</p>
+          </div>
+          <div class="description">
+            <p class="subhead">What</p>
+            <p></p>
+            <p class="subhead">Intended outcome</p>
+            <p>What it should do</p>
+          </div>
+          <div class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </div>
+          <div class="test">
+            <p class="subhead">How to Test</p>
+            <p></p>
+          </div>
+          <div class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant use cases</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a></p>
+          </div>
+        </div>
+        <!-- end of BP -->
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span class="practicelab">Provide machine detectable License</span></p>
+          <p class="practicedesc">A License should be detectable by machines</p>
+          <div class="axioms">
+            <p class="subhead">Why</p>
+            <dl>
+              <dt>Why this is unique to publishing data on the Web</dt>
+              <dd>Because the Web is a network of machines that can do cool
+                stuff if they are given a chance</dd>
+              <dt>How this encourages publication or reuse of data on the Web</dt>
+              <dd>Machines, including search engines, can be set up to
+                automatically harvest data that has an associated license</dd>
+            </dl>
+          </div>
+          <div class="description">
+            <p class="subhead">What</p>
+            <p></p>
+            <p class="subhead">Intended outcome</p>
+            <p>Machines can automatically detect whether a given dataset does or
+              does not carry a license.</p>
+          </div>
+          <div class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Link to a CC license</p>
+          </div>
+          <div class="test">
+            <p class="subhead">How to Test</p>
+            <p>Look for a link element ot HTTP Link Header with a @rel value of
+              <code>license</code> [[RFC4946]]</p>
+          </div>
+          <div class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant use cases</span>: </p>
+          </div>
+        </div>
+        <div class="issue"> There are no requirements for the BP Machine
+          detectable License. <p><a href="https://www.w3.org/2013/dwbp/track/issues/109">Tracker Issue 109</a></p></div>
+        <!-- end of BP --> </section>
+      <!-- end of Data Licenses -->
+      <!-- begin of Data Provenance -->
+      <section id="provenance">
+        <h3>Data Provenance</h3>
+        <p>The section on provenance</p>
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ProvideDataProvenance" class="practicelab">Provide Data
+              Provenance</span></p>
+          <p class="practicedesc">Data provenance information should be
+            available. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p></p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p></p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
+         </section>
+        <!-- end of Data Provenance -->
+        <!-- begin of Data Quality -->
+        <section id="quality">
+          <h3>Data Quality</h3>
+          <p>The section on data quality</p>
+          <div class="issue">It is important to discuss if the requirements for 
+        Data Quality proposed in the Use Cases document are requirements for the 
+        Data Quality Vocabulary instead of BP requirements. <p><a href="https://www.w3.org/2013/dwbp/track/issues/110">Tracker Issue 110</a></p></div>
+        </section>
+        <!-- end of Data Quality -->
+        <!-- begin of Data Granularity -->
+        <section id="granularity">
+          <h3>Data Granularity</h3>
+          <p>The section on granularity</p>
+          <div class="issue"> It is important to discuss the meaning of data granularity. <p><a href="https://www.w3.org/2013/dwbp/track/issues/111">Tracker Issue 111</a></p></div>
+        </section>
+        <!-- end of Data Granularity -->
+        <!-- begin of Sensitive Data -->
+        <section id="sensitive">
+          <h3>Sensitive Data</h3>
+          <p>The section on data sensitive</p>
+          <!-- begin of BP -->
+          <div class="practice">
+            <p><span id="PreservePrivacy" class="practicelab">Preserve person's
+                right to privacy </span></p>
+            <p class="practicedesc">Data should not infringe a person's right to
+              privacy. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a></p>
+            </section>
+          </div>
+          <!-- end of BP -->
+          <!-- begin of BP -->
+          <div class="practice">
+            <p><span id="PreserveSecurity" class="practicelab">Preserve
+                organization's security </span></p>
+            <p class="practicedesc">Data should not infringe an organization's
+              security (local government, national government, business). </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>
+            </section>
+          </div>
+          <!-- end of BP -->
+          <div class="practice">
+            <p><span id="DataUnavailabilityReference" class="practicelab">Provide
+                data unavailability reference </span></p>
+            <p class="practicedesc">References to data that is not open, or is
+              available under different restrictions to the origin of the
+              reference, should provide context by explaining how or by whom the
+              referred to data can be accessed. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a></p>
+            </section>
+          </div>
+          <!-- end of BP --> </section>
+        <!-- end of Data Sensitive -->
+        <!-- begin of Data Access -->
+        <section id="dataAccess">
+          <h3>Data Access</h3>
+          <p>The section on licenses</p>
+          <!-- begin of BP -->
+          <div class="practice">
+            <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
+            <p class="practicedesc">Data should be available for bulk download.
+            </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
+            </section>
+          </div>
+          <!-- end of BP -->
+          <!-- begin of BP -->
+          <div class="practice">
+            <p><span id="AccessRealTime" class="practicelab">Provide real-time
+                access </span></p>
+            <p class="practicedesc">Where data is produced in real-time, it
+              should be available on the Web in real-time. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
+            </section>
+          </div>
+          <!-- end of BP -->
+          <!-- begin of BP -->
+          <div class="practice">
+            <p><span id="AccessUptoDate" class="practicelab">Provide data up to
+                date </span></p>
+            <p class="practicedesc"> Data should be available in an up-to-date
+              manner and the update cycle made explicit. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p></p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p></p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a></p>
+            </section>
+          </div>
+          <!-- end of BP -->
+          <div class="issue"> I am not sure if <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a> is a requirement
+            for Data Access. <p><a href="https://www.w3.org/2013/dwbp/track/issues/112">Tracker Issue 112</a></p></div>
+        </section>
+        <!-- end of Data Access -->
+        <!-- begin of Data Versioning -->
+        <section id="dataVersioning">
+          <h3>Data Versioning</h3>
+           <div class="issue"> In the current version of the Use Cases document there are no requirements for Data Versioning, i.e., Data Versioning was not identified as a challenge. 
+<p><a href="https://www.w3.org/2013/dwbp/track/issues/113">Tracker Issue 113</a></p></div>
+        </section>
+        <!-- end of Data Versioning -->
+        <section id="dataPreservation">
+          <h3>Data Preservation</h3>
+          <p>Data preservation is a well understood and commonly performed tasks
+            for static and self-contained data. This commonly includes the
+            following steps:</p>
+          <ul>
+            <li>Ingest the data and assign a persistent identifier to it</li>
+            <li>Ensure the data is correctly stored and prevent bit rot</li>
+            <li>Provide access to the data and perform format translation if
+              needed</li>
+          </ul>
+          <p>The model most commonly referred to is <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">
+              Open Archival Information System</a>. Many institutions taking
+            care of digital preservation are implementing this model or some
+            variant of it. Web pages can be preserved following the same
+            strategies, considering a web site as a static data set that is
+            self-contained and can be all snap-shoted and preserved at a fixed
+            time. When it comes to Web data some new elements have to be taken
+            into account, namely:</p>
+          <ul>
+            <li>The persistent identifiers (IRI) used across the web are related
+              to live data that can change</li>
+            <li>The meaning of a resource is contextualized by the other
+              resources it is linked to</li>
+            <li>Documents fetched in HTML, RDF of JSON, for instance, are only
+              one of the many possible serialisation of the data they represent</li>
+          </ul>
+          <p>The preservation of Web data should generaly focus on the
+            preservation of the description of entities.</p>
+          <div class="practice">
+            <p><span id="list_resources" class="practicelab">Maintain a list of
+                resources described in a dataset</span></p>
+            <p class="practicedesc">A dataset should be preserved together with
+              a list of all the resources it describes</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <ul>
+                <li>Web data is about the description of resources identified
+                  with a IRI.</li>
+                <li>It is to be expected that queries made by data consumers
+                  will resolve around finding a preserved description about a
+                  particular resource.</li>
+              </ul>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p>Web data is essentially about the description of entities
+                identified by a unique, Web-based, identifier (a URI). Once the
+                data is dumped and sent to a institute specialised in digital
+                preservation the link with the Web is broken (de-referencing)
+                but the role of the URI as a unique identifier still remains. In
+                order to increase the usability of preserved dataset dumps it is
+                relevant to maintain a list of these identifiers.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>A list of resources described in a dataset</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>The list of resources can be created by the data depositor or
+                the digital repository at ingestion time. A dataset dump is
+                scanned for all the subject described and this list is stored
+                separately. For RDF and JSON-LD, this corresponds to all the
+                resources in the "subject" position of statements.</p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Every resource listed in the resource list must have some kind
+                of description in the dataset</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+            </section>
+          </div>
+          <div class="practice">
+            <p><span id="evaluate" class="practicelab">Assess dataset coverage</span></p>
+            <p class="practicedesc">The coverage of a dataset should be assessed
+              prior to its preservation</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <ul>
+                <li>A chunk of Web data is by definition dependent on the rest
+                  of the global graph. This global context influences the
+                  meaning of the description of the resources found in the
+                  dataset.</li>
+                <li>Ideally, the preservation of a particular dataset would
+                  involve preserving all its context. That is the entire Web of
+                  Data.</li>
+              </ul>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p>At ingestion time an evaluation of the linkage of Web data
+                dataset dump to already preserved resources is assessed. The
+                presence of all the vocabularies and target resources in uses is
+                sought in a set of digital archives taking care of preserving
+                Web data. Datasets for which very few of the vocabularies used
+                and/or resources pointed out are already preserved somewhere
+                should be flagged as being at risk.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>An evaluation of the preservation coverage for a given dataset.
+                The outcome of this evaluation should be used to take an
+                informed decision concerning the ingestion, or not, of the
+                dataset</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>The assessement could be performed by the digital preservation
+                institute or the dataset depositor. It essentially consists in
+                checking whether all the resources used are either already
+                preserved somewhere or provided along with the new dataset
+                considered for preservation.</p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Datasets making references to portions of the Web of Data which
+                are not preserved should receive a lower score than those using
+                common resources.</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-VocabReference">R-VocabReference</a></p>
+            </section>
+          </div>
+          <div class="practice">
+            <p><span id="serialisation" class="practicelab">Data dumps should
+                use a trusted serialisation format</span></p>
+            <p class="practicedesc">Data depositors willing to send a datadump
+              for long term preservation should use a well established
+              serialisation</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <ul>
+                <li>Web data is a abtract data model that can be expressed in
+                  different ways (RDF, JSON-LD, ...)</li>
+                <li>Using a well established serialisation of this data
+                  increases its chances of re-use</li>
+              </ul>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p>Institute doing digital preservation are tasked with monitoring
+                file format obsolescence. Datasets which have been acquierd in
+                some format some years ago may have to be converted into another
+                format in order to still be usable with more modern software
+                (see [[ROSENTHAL]]). This tasks can be made more challenge, or
+                even impossible, if non standard serialisation formats are used
+                by data depositors.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>Give preference to Web data serialisation formats available as
+                open standards. For instance those provided by the W3C
+                [[FORMATS]]. </p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <!--<p>Try to open the data dump with different
+            software.</p> -->
+              <p>Try to dereference the URI of the data dump with Content-Type
+                header according to the format you expect to get, using for
+                example [[cURL]]</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-Archive">R-Archive</a></p>
+            </section>
+          </div>
+          <div class="practice">
+            <p><span id="resourcestatus" class="practicelab">Update the status
+                of a URI</span></p>
+            <p class="practicedesc">Preserved datasets should be linked with
+              their "live" counterparts</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <ul>
+                <li>URI dereferencing is a primary interface to Web data</li>
+                <li>Linking preserved datasets with resolving URI inform the
+                  data consumer of the status of these resources</li>
+              </ul>
+            </section>
+            <section class="description">
+              <p class="subhead">What</p>
+              <p>During its live cycle a Web data dataset may undergo several
+                modifications. Although IRIs assigned to things are not expected
+                to change, the description of these resource will evolve over
+                time. There are also some new IRIs that will be put into use,
+                some other that will become deprecated, and some that will get
+                deleted. Along to this evolution several snapshots could be made
+                available for preservation. An example of this is DBpedia which
+                has undergo several releases since its first publication and
+                always use the same IRI for its resources. Every resource is
+                de-referenced to the most up to date description available for
+                it along with a link to preserved descriptions using the
+                protocol Memento (see <a href="http://mementoweb.org/depot/native/dbpedia/">Memento
+                  gateway for DBpedia</a>)</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>A link is maintained between the IRI of a things, the most
+                up-to-date description available for it and preserved
+                descriptions. If the resource does not exist any more the
+                description should say so and refer to the last preserved
+                description that was available for it.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>There is a variety of HTTP status code that could be put into
+                use to relate the IRI with its preserved description. In
+                particular, 200, 404, 410, 303 and 209 can be used for different
+                scenarios:</p>
+              <ul>
+                <li>200 =&gt; there is a new description which contains pointers
+                  to archived description</li>
+                <li>404 =&gt; the resource just died, the URI consumer has to go
+                  find an archive to look for it</li>
+                <li>410 =&gt; dead again but this time it's a controlled process</li>
+                <li>303 =&gt; the description of this URI is no longer served
+                  here but there is a preserved description at a different
+                  location</li>
+                <li>209 =&gt; this resource does not exist any more but we have
+                  some information about it. The description could include a
+                  list of locations having different preserved descriptions over
+                  different times.</li>
+              </ul>
+              Next to the status codes, HTTP header can also be used to relate
+              resources. </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>The presence of relations can be checked with a software
+                looking for links between all the target resources</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
+                <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-PersistentIdentification">
+                  R-PersistentIdentification</a></p>
+            </section>
+          </div>
+        </section>
+        <!-- end of Data Preservation -->
+        <!-- begin Feedback -->
+        <section id="feedback">
+          <h3>Feedback</h3>
+          <p>The feedback section</p>
+          <div class="issue"> There are no explicit requirements for Feedback. There is one Data Usage requirements that mentions feedback <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-IncorporateFeedback">R-IncorporateFeedback</a> 
+<p><a href="https://www.w3.org/2013/dwbp/track/issues/114">Tracker Issue 114</a></p></div>
+        </section>
+        <!-- end Feedback -->
+        <!-- end best practices --> </section>
+      <section id="conclusions">
+        <h2>Conclusions</h2>
+      </section>
+    </section>
+  </body>
+</html>
