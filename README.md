@@ -13,7 +13,7 @@ If you need to have access to this repository, contact <a href="http://philarche
 
 ### Contributing
 
-In order to keep everything synced and updated, you can follow these steps to configure a remote repository for your fork.
+In order to keep everything synced and updated, these steps are recommended to configure a remote repository for your fork.
 
 **Configuring upstream**
 
@@ -25,7 +25,7 @@ If there is only the `origin` repository configured, it's necessary to specify a
 
 After that, the upstream will be listed on the remote list.
 
-This step is need to be run just once.
+This is a one-time setup procedure.
 
 **Keeping the repository synced**
 
