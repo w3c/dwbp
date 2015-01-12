@@ -152,7 +152,7 @@ figure figcaption {
       <h2>Scope</h2>
       <p>This document is concerned solely with best practices that:</p>
       <ul>
-        <li>are unique to publishing or reusing data on the Web;</li>
+        <li>are specifically relevant to data published on the Web;</li>
         <li>encourage publication or reuse of data on the Web;</li>
         <li>can be tested by machines, humans or a combination of the two.</li>
       </ul>
@@ -342,21 +342,22 @@ figure figcaption {
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p>Information about the relevance of the BP. It is described by one
-            or more relevant requirements as documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
-              Data on the Web Best Practices Use Cases &amp; Requirements document</a></p>
+            or more relevant requirements as documented in the 
+            <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best 
+            Practices Use Cases &amp; Requirements document</a></p>
         </section>
       </div>
     </section>
     <section id="bp-summary"></section>
     <section id="bestPractices">
       <h2>The Best Practices</h2>
-      <p>This section contains a number of best practices to be used by data
-        publishers in order to help both data publishers and data consumers to
+      <p>This section contains the best practices to be used by data
+        publishers in order to help them and data consumers to
         overcome the different challenges faced during the 
         data on the Web lifecycle. One or more best practices were
         proposed for each one of the previously described challenges. Each BP is
-        related to one or more requirements from <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
-          Data on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
+        related to one or more requirements from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data 
+        on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
       <section id="metadata">
         <h3>Metadata</h3>
         <p>Metadata is data about data. It provides additional information about
@@ -385,7 +386,7 @@ figure figcaption {
           describing a CSV file should be provided in a different way than for
           an RDF dataset. However, the <em>intention</em> is the same
           irrespective of format.</p>
-        <!-- begin of BP -->
+        <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide Metadata</span></p>
           <p class="practicedesc">Data on the Web must be described by metadata</p>
@@ -402,10 +403,6 @@ figure figcaption {
           <section class="description">
             <p class="subhead">What</p>
           <p>See issue<a href="#issue115">below</a></p>
-
-<!--            <p>As noted above, the provision of metadata is fundamental to data
-              on the Web. Metadata is the shop window, the user-manual and the
-              conditions of use.</p> -->
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -454,7 +451,7 @@ figure figcaption {
 <div class="issue" id="issue115">I don't think the 'What' section adds anything. Hence <a href="https://www.w3.org/2013/dwbp/track/issues/115">Tracker issue 115</a>
 That seeks to remove this section. It would also align it with the (current) plans for Share-PSI Best Practices [<a href="http://www.w3.org/2013/share-psi/bp/cas/">Example</a>].</div>
 
-        <!-- begin of BP -->
+        <!-- begin of Provide Metadata in Different Formats BP -->
         <div class="practice">
           <p><span id="ProvideMetadataForms" class="practicelab"> Provide Metadata in different formats </span></p>
           <p class="practicedesc">Metadata should be provided for both humans and machines.</p>
@@ -499,9 +496,103 @@ That seeks to remove this section. It would also align it with the (current) pla
           </section>
         </div>
         <!-- end of BP -->
-        <div class="issue"> The meaning of the requirements <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>
-          and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocument">R-MetadataDocument</a>
-          is not clear. Therefore, they were not considered in the current BP. <p><a href="https://www.w3.org/2013/dwbp/track/issues/106">Treacker Issue 106</a></p></div>
+
+
+        <!-- begin of Provide Metadata Standardized BP -->
+        <div class="practice">
+          <p><span id="ProvideMetadataStandardized" class="practicelab">Provide Metadata Using Standard Terms</span></p>
+          <p class="practicedesc">Metadata should be provided using standard vocabularies for greater interoperability and discoverability.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The provision of metadata is fundamental to data on the Web. 
+            It is the shop window, the user-manual and the conditions of use. It is
+            possible to provide this information an an infinite number of ways: 
+            <i>maker</i>, <i>author</i>, <i>originator</i>, <i>person responsible</i> 
+            and <i>source</i> are among the many near synonyms for <i>creator</i>. 
+            And of course those examples are all just in a single language. The task of 
+            finding and processing relevant data among the vast amounts available 
+            on the Web, for people and the computer systems they use, is made
+            vastly more achievable if different publishers use the same terms
+            as each other, or rather, use <em>common identifers</em> for the terms used,
+            however those terms are presented to humans. Only in this way can 
+            the same tools and methods be used for multiple tasks.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Metadata <em class="rfc2119">must</em> be provided using standard vocabularies.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Metadata is best provided using RDF vocabularies. Each term in an
+            RDF vocabulary has its own HTTP URI to which labels and descriptions 
+            in multiple langauges can be attached. If labels are not provided
+            in your language, you can add them. If your context demands that
+            a term be specialized, you can create a sub class or sub property
+            but retain the benefits of the original vocabulariy's semantics.</p>
+            <p>Detailed advice on the best practices for the selection, use
+            and extension of vocabularies is provided in Best Practices for 
+            Publishing Linked Data [[LD-BP]].</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that standard vocabularies have been used wherever possible. In particular
+            mark as an error instances where vocabularies such as [[DC-TERMS]] and [[VOCAB-DCAT]]
+            could have been used but were not.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+
+        <!-- begin  Metadata Documenation BP -->
+        <div class="practice">
+          <p><span id="MetadataDocum" class="practicelab">Metadata Should Itself be Documented</span></p>
+          <p class="practicedesc">The metadata vocabularies used, and any lists of allowed values, should be documented.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The use of standardized vocabularies is a crucial step towards interoperability
+            but there is almost always a choice of vocabularies that can be used to achieve a given
+            task. In addition there are often multiple ways of using a single vocabulary.
+            For example, the value of <code>dcterms:spatial</code> should be a URI
+            but those provided by <a href="http://www.geonames.org/">geonames</a>, 
+            <a href="http://dbpedia.org/">dbpedia</a> and 
+            <a href="http://www.wikidata.org/">wikidata</a> are just three possible
+            sources of such URIs. Ensuring that the value of a property is always drawn from
+            a controlled list of allowed values, such as a code list, helps interoperability
+            but it may be that some of the same values occur in multiple
+            lists. While it may be obvious to at least some potential
+            users which vocabularies have been used and how they have been used, 
+            documenting this can often make the policies used more explicit,
+            thereby reducing surprises and increasing confidence among users.</p>
+            <p>Documentation is particularly important where vocabularies have 
+            been created or extended from existing standards 
+            (see <a href="dataVocabularies">Data Vocabularies</a>).</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Vocabularies and controlled lists used to provide metadata <em class="rfc2119">should</em> be documented.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>A description of the metadata used should form part of the overall description of the data.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that the provision of metadata follows a defined pattern or policy. It may be
+            possible to machine-test this using the work of the 
+            <a href="http://www.w3.org/2014/data-shapes/">RDF Data Shapes</a> Working Group.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+
       </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
