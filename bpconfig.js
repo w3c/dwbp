@@ -93,6 +93,26 @@ var respecConfig = {
         title: "cURL, a command line tool and library for transferring data with URL syntax",
         authors: ["Daniel Stenberg"],
         href: "http://curl.haxx.se/"
-      }
+      },
+      "ld-bp":{
+        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
+        "href":"http://www.w3.org/TR/ld-bp/",
+        "title":"Best Practices for Publishing Linked Data",
+        "status":"NOTE",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"ld-bp",
+        "date":"9 January 2014"
+      }, 
+      "ld-glossary":{
+        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Michael Pendleton","Biplav Srivastava"],
+        "href":"http://www.w3.org/TR/ld-glossary/",
+        "title":"Linked Data Glossary",
+        "status":"NOTE",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"ld-glossary",
+        "date":"27 June 2013"
+       }
     }
 };
