@@ -80,6 +80,7 @@ var respecConfig = {
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
       },
+
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
@@ -88,6 +89,18 @@ var respecConfig = {
         title: "Unique URIs for File Formats",
         authors: ["Ivan Herman"],
         href: "http://www.w3.org/ns/formats/"
-      }
+      },
+      "cURL": {
+        title: "cURL, a command line tool and library for transferring data with URL syntax",
+        authors: ["Daniel Stenberg"],
+        href: "http://curl.haxx.se/"
+      },
+     "ZAVERI" : {
+	title: "Quality Assessment for Linked Data: A Survey",
+	authors: ["Amrapali Zaveri", "Anisa Rula", "Andrea Maurino", "Ricardo Pietrobon", "Jens Lehmann", "Sören Auer"],
+	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
+	status: "submitted to Semantic Web Journal"
+     }
+
     }
 };
