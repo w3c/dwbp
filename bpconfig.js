@@ -80,6 +80,7 @@ var respecConfig = {
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
       },
+
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
@@ -94,6 +95,13 @@ var respecConfig = {
         authors: ["Daniel Stenberg"],
         href: "http://curl.haxx.se/"
       },
+     "ZAVERI" : {
+	title: "Quality Assessment for Linked Data: A Survey",
+	authors: ["Amrapali Zaveri", "Anisa Rula", "Andrea Maurino", "Ricardo Pietrobon", "Jens Lehmann", "Sören Auer"],
+	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
+	status: "submitted to Semantic Web Journal"
+     },
+
       "ld-bp":{
         "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
         "href":"http://www.w3.org/TR/ld-bp/",
