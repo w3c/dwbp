@@ -101,6 +101,7 @@ var respecConfig = {
 	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
 	status: "submitted to Semantic Web Journal"
      },
+
       "ld-bp":{
         "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
         "href":"http://www.w3.org/TR/ld-bp/",
