@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<mus!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -152,7 +152,7 @@ figure figcaption {
       <h2>Scope</h2>
       <p>This document is concerned solely with best practices that:</p>
       <ul>
-        <li>are unique to publishing or reusing data on the Web;</li>
+        <li>are specifically relevant to data published on the Web;</li>
         <li>encourage publication or reuse of data on the Web;</li>
         <li>can be tested by machines, humans or a combination of the two.</li>
       </ul>
@@ -342,21 +342,22 @@ figure figcaption {
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p>Information about the relevance of the BP. It is described by one
-            or more relevant requirements as documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
-              Data on the Web Best Practices Use Cases &amp; Requirements document</a></p>
+            or more relevant requirements as documented in the 
+            <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best 
+            Practices Use Cases &amp; Requirements document</a></p>
         </section>
       </div>
     </section>
     <section id="bp-summary"></section>
     <section id="bestPractices">
       <h2>The Best Practices</h2>
-      <p>This section contains a number of best practices to be used by data
-        publishers in order to help both data publishers and data consumers to
+      <p>This section contains the best practices to be used by data
+        publishers in order to help them and data consumers to
         overcome the different challenges faced during the 
         data on the Web lifecycle. One or more best practices were
         proposed for each one of the previously described challenges. Each BP is
-        related to one or more requirements from <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
-          Data on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
+        related to one or more requirements from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data 
+        on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
       <section id="metadata">
         <h3>Metadata</h3>
         <p>Metadata is data about data. It provides additional information about
@@ -382,13 +383,13 @@ figure figcaption {
           and then gives some guidance on possible implementation methods. In
           terms of metadata, the particular implementation method will depend on
           the format of the dataset distribution, for example, metadata
-          describing a CSV file should be provided in a different way than for
+          describing a CSV file <em class="rfc2119">should</em> be provided in a different way than for
           an RDF dataset. However, the <em>intention</em> is the same
           irrespective of format.</p>
-        <!-- begin of BP -->
+        <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide Metadata</span></p>
-          <p class="practicedesc">Data on the Web must be described by metadata</p>
+          <p class="practicedesc">Data on the Web <em class="rfc2119">must</em> be described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <ul>
@@ -402,10 +403,6 @@ figure figcaption {
           <section class="description">
             <p class="subhead">What</p>
           <p>See issue<a href="#issue115">below</a></p>
-
-<!--            <p>As noted above, the provision of metadata is fundamental to data
-              on the Web. Metadata is the shop window, the user-manual and the
-              conditions of use.</p> -->
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -454,10 +451,10 @@ figure figcaption {
 <div class="issue" id="issue115">I don't think the 'What' section adds anything. Hence <a href="https://www.w3.org/2013/dwbp/track/issues/115">Tracker issue 115</a>
 That seeks to remove this section. It would also align it with the (current) plans for Share-PSI Best Practices [<a href="http://www.w3.org/2013/share-psi/bp/cas/">Example</a>].</div>
 
-        <!-- begin of BP -->
+        <!-- begin of Provide Metadata in Different Formats BP -->
         <div class="practice">
           <p><span id="ProvideMetadataForms" class="practicelab"> Provide Metadata in different formats </span></p>
-          <p class="practicedesc">Metadata should be provided for both humans and machines.</p>
+          <p class="practicedesc">Metadata <em class="rfc2119">should</em>d be provided for both humans and machines.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Metadata can be used by machines, notably search engines,
@@ -499,9 +496,103 @@ That seeks to remove this section. It would also align it with the (current) pla
           </section>
         </div>
         <!-- end of BP -->
-        <div class="issue"> The meaning of the requirements <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>
-          and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocument">R-MetadataDocument</a>
-          is not clear. Therefore, they were not considered in the current BP. <p><a href="https://www.w3.org/2013/dwbp/track/issues/106">Treacker Issue 106</a></p></div>
+
+
+        <!-- begin of Provide Metadata Standardized BP -->
+        <div class="practice">
+          <p><span id="ProvideMetadataStandardized" class="practicelab">Provide Metadata Using Standard Terms</span></p>
+          <p class="practicedesc">Metadata <em class="rfc2119">should</em> be provided using standard vocabularies for greater interoperability and discoverability.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The provision of metadata is fundamental to data on the Web. 
+            It is the shop window, the user-manual and the conditions of use. It is
+            possible to provide this information an an infinite number of ways: 
+            <i>maker</i>, <i>author</i>, <i>originator</i>, <i>person responsible</i> 
+            and <i>source</i> are among the many near synonyms for <i>creator</i>. 
+            And of course those examples are all just in a single language. The task of 
+            finding and processing relevant data among the vast amounts available 
+            on the Web, for people and the computer systems they use, is made
+            vastly more achievable if different publishers use the same terms
+            as each other, or rather, use <em>common identifers</em> for the terms used,
+            however those terms are presented to humans. Only in this way can 
+            the same tools and methods be used for multiple tasks.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Metadata <em class="rfc2119">must</em> be provided using standard vocabularies.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Metadata is best provided using RDF vocabularies. Each term in an
+            RDF vocabulary has its own HTTP URI to which labels and descriptions 
+            in multiple langauges can be attached. If labels are not provided
+            in your language, you can add them. If your context demands that
+            a term be specialized, you can create a sub class or sub property
+            but retain the benefits of the original vocabulariy's semantics.</p>
+            <p>Detailed advice on the best practices for the selection, use
+            and extension of vocabularies is provided in Best Practices for 
+            Publishing Linked Data [[LD-BP]].</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that standard vocabularies have been used wherever possible. In particular
+            mark as an error instances where vocabularies such as [[DC-TERMS]] and [[VOCAB-DCAT]]
+            could have been used but were not.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+
+        <!-- begin  Metadata Documenation BP -->
+        <div class="practice">
+          <p><span id="MetadataDocum" class="practicelab">Metadata Should Itself be Documented</span></p>
+          <p class="practicedesc">The metadata vocabularies used, and any lists of allowed values,  <em class="rfc2119">should</em> be documented.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The use of standardized vocabularies is a crucial step towards interoperability
+            but there is almost always a choice of vocabularies that can be used to achieve a given
+            task. In addition there are often multiple ways of using a single vocabulary.
+            For example, the value of <code>dcterms:spatial</code> should be a URI
+            but those provided by <a href="http://www.geonames.org/">geonames</a>, 
+            <a href="http://dbpedia.org/">dbpedia</a> and 
+            <a href="http://www.wikidata.org/">wikidata</a> are just three possible
+            sources of such URIs. Ensuring that the value of a property is always drawn from
+            a controlled list of allowed values, such as a code list, helps interoperability
+            but it may be that some of the same values occur in multiple
+            lists. While it may be obvious to at least some potential
+            users which vocabularies have been used and how they have been used, 
+            documenting this can often make the policies used more explicit,
+            thereby reducing surprises and increasing confidence among users.</p>
+            <p>Documentation is particularly important where vocabularies have 
+            been created or extended from existing standards 
+            (see <a href="dataVocabularies">Data Vocabularies</a>).</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Vocabularies and controlled lists used to provide metadata <em class="rfc2119">should</em> be documented.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>A description of the metadata used should form part of the overall description of the data.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that the provision of metadata follows a defined pattern or policy. It may be
+            possible to machine-test this using the work of the 
+            <a href="http://www.w3.org/2014/data-shapes/">RDF Data Shapes</a> Working Group.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+
       </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
@@ -512,7 +603,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
               unique identifiers</span></p>
-          <p class="practicedesc">Each data resource should be associated with a
+          <p class="practicedesc">Each data resource <em class="rfc2119">should</em> be associated with a
             unique identifier. </p>
           <div class="axioms">
             <p class="subhead">Why</p>
@@ -570,7 +661,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="MachineReadableFormat" class="practicelab">Provide
               machine-readable data </span></p>
-          <p class="practicedesc">Data should be available in a machine-readable
+	  <p class="practicedesc">Data  <em class="rfc2119">should</em> be available in a machine-readable
             format that is adequate for its intended or potential use. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -601,7 +692,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="StandardizedFormat" class="practicelab">Provide data in
               standardized formats </span></p>
-          <p class="practicedesc">Data should be availabe in a standardized
+          <p class="practicedesc">Data  <em class="rfc2119">should</em> be availabe in a standardized
             format. Through standardization, interoperability is also expected.
           </p>
           <section class="axioms">
@@ -633,7 +724,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="OpenFormat" class="practicelab">Provide data in open
               formats </span></p>
-          <p class="practicedesc">Data should be availabe in an open format </p>
+          <p class="practicedesc">Data  <em class="rfc2119">should</em> be availabe in an open format </p>
           <section class="axioms">
             <p class="subhead">Why</p>
           </section>
@@ -663,7 +754,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="MultipleFormats" class="practicelab">Provide data in
               multiple formats </span></p>
-          <p class="practicedesc">Data should be availabe in multiple formats. </p>
+          <p class="practicedesc">Data  <em class="rfc2119">should</em> be availabe in multiple formats. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
           </section>
@@ -694,7 +785,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <p><span id="LocaleParameters" class="practicelab">Provide locale
               parameters </span></p>
           <p class="practicedesc">Information about locale parameters (date and
-            number formats, language) should be made available</p>
+            number formats, language)  <em class="rfc2119">should</em> be made available</p>
           <section class="axioms">
             <p class="subhead">Why</p>
           </section>
@@ -719,7 +810,7 @@ That seeks to remove this section. It would also align it with the (current) pla
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
           </section>
         </div>
-        <div class="issue"> Should <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a> be a requirement for
+        <div class="issue">  <em class="rfc2119">should</em> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a> be a requirement for
           metadata instead of data format ? <p><a href="https://www.w3.org/2013/dwbp/track/issues/108">Tracker Issue 108</a></p></div>
         <!-- end of BP --> </section>
       <!-- end of Data Formats -->
@@ -803,7 +894,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="DocumentVocabularies" class="practicelab"> Document
               vocabularies </span></p>
-          <p class="practicedesc"> Vocabularies should be clearly documented. </p>
+          <p class="practicedesc"> Vocabularies  <em class="rfc2119">should</em> be clearly documented. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Because a documentation defines what is within the vocabulary in
@@ -838,7 +929,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="ShareOpenVocabularies" class="practicelab"> Share
               vocabularies in an open way </span></p>
-          <p class="practicedesc"> Vocabularies should be shared in an open way
+          <p class="practicedesc"> Vocabularies  <em class="rfc2119">should</em> be shared in an open way
           </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -871,7 +962,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary
               versioning </span></p>
-          <p class="practicedesc"> Vocabularies should include versioning
+          <p class="practicedesc"> Vocabularies  <em class="rfc2119">should</em> include versioning
             information </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -928,13 +1019,13 @@ That seeks to remove this section. It would also align it with the (current) pla
         <h3> How to reuse vocabularies ? </h3>
         <p> In order to provide semantic interoperability between applications,
           it is important to reuse well-know vocabularies wherever possible.
-          This should be done by defining terms to be shared with meaning and
+          This  <em class="rfc2119">should</em> be done by defining terms to be shared with meaning and
           unambiguously.</p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span id="ReusingVocabularies" class="practicelab"> Reuse
               vocabularies </span></p>
-          <p class="practicedesc"> Existing reference vocabularies should be
+          <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em> be
             reused where possible </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -967,7 +1058,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide Data License</span></p>
-          <p class="practicedesc">Data should be associated with a license.</p>
+          <p class="practicedesc">Data  <em class="rfc2119">should</em> be associated with a license.</p>
           <div class="axioms">
             <p class="subhead">Why</p>
           </div>
@@ -994,7 +1085,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide machine detectable License</span></p>
-          <p class="practicedesc">A License should be detectable by machines</p>
+          <p class="practicedesc">A License <em class="rfc2119">should</em> be detectable by machines</p>
           <div class="axioms">
             <p class="subhead">Why</p>
             <dl>
@@ -1059,7 +1150,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         <div class="practice">
           <p><span id="ProvideDataProvenance" class="practicelab">Provide Data
               Provenance</span></p>
-          <p class="practicedesc">Data provenance information should be
+          <p class="practicedesc">Data provenance information  <em class="rfc2119">should</em> be
             available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1106,7 +1197,8 @@ That seeks to remove this section. It would also align it with the (current) pla
 	 <!-- begin of BP -->
  	<div class="practice">
         <p><span id="DocumentDataQuality" class="practicelab">Document Data Quality</span></p>
-        <p class="practicedesc">Provide information about Data Quality</p>
+        <p class="practicedesc">Data Quality information  <em class="rfc2119">should</em> be
+            available. </p></p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <ul>
@@ -1117,9 +1209,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         </section>
         <section class="description">
           <p class="subhead">What</p>
-          <p>	As noted above, quality affects the reusability of data. Information about quality should be included
-	 	in dataset metadata since it is precious to assess  if data   fit in with specific purpose. This is pivotal
-	    	in the web context, where the reuse of data can be even for purposes not originally planned by providers. </p>
+          <p>	As noted above, quality affects the reusability of data. Information about quality <em class="rfc2119">should</em> be included in dataset metadata since it is precious to assess  if data   fit in with specific purpose. This is pivotal in the web context, where the reuse of data can be even for purposes not originally planned by providers. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -1130,10 +1220,7 @@ That seeks to remove this section. It would also align it with the (current) pla
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p> Depending on application domain, information pertaining to the quality can relies on specific quality metrics
-	     or feedback-opinion and specific quality metadata fields should be explicitly included in the metadata vocabularies adopted by catalogs.
-	     Independently from domain-specific peculiarities, quality of data should be documented and known quality issues
-	     should be explicitly stated in metadata. </p>
+         <p> Depending on application domain, information pertaining to the quality can relies on specific quality metrics or feedback-opinion and  specific quality metadata fields might or not be explicitly included in the metadata vocabularies adopted by catalogs. Independently from domain-specific peculiarities, quality of data <em class="rfc2119">should</em> be documented and  known quality issues  should be explicitly stated in metadata. </p>
    	<p> The definition of a  Quality Vocabulary  is included in the activity of the DWBP group 
 	    in order to support in the implementation of this best practice. The Quality Vocabulary is foreseen as
 	    an extension to DCAT to cover the quality of the data, how frequently is it updated, whether it accepts user corrections, 
@@ -1177,7 +1264,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <div class="practice">
             <p><span id="PreservePrivacy" class="practicelab">Preserve person's
                 right to privacy </span></p>
-            <p class="practicedesc">Data should not infringe a person's right to
+            <p class="practicedesc">Data <em class="rfc2119">should</em> not infringe a person's right to
               privacy. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1208,7 +1295,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <div class="practice">
             <p><span id="PreserveSecurity" class="practicelab">Preserve
                 organization's security </span></p>
-            <p class="practicedesc">Data should not infringe an organization's
+            <p class="practicedesc">Data <em class="rfc2119">should</em> not infringe an organization's
               security (local government, national government, business). </p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1240,7 +1327,7 @@ That seeks to remove this section. It would also align it with the (current) pla
                 data unavailability reference </span></p>
             <p class="practicedesc">References to data that is not open, or is
               available under different restrictions to the origin of the
-              reference, should provide context by explaining how or by whom the
+              reference, <em class="rfc2119">should</em> provide context by explaining how or by whom the
               referred to data can be accessed. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1275,7 +1362,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <!-- begin of BP -->
           <div class="practice">
             <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
-            <p class="practicedesc">Data should be available for bulk download.
+            <p class="practicedesc">Data <em class="rfc2119">should</em> be available for bulk download.
             </p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1307,7 +1394,7 @@ That seeks to remove this section. It would also align it with the (current) pla
             <p><span id="AccessRealTime" class="practicelab">Provide real-time
                 access </span></p>
             <p class="practicedesc">Where data is produced in real-time, it
-              should be available on the Web in real-time. </p>
+               <em class="rfc2119">should</em> be available on the Web in real-time. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
             </section>
@@ -1337,7 +1424,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <div class="practice">
             <p><span id="AccessUptoDate" class="practicelab">Provide data up to
                 date </span></p>
-            <p class="practicedesc"> Data should be available in an up-to-date
+            <p class="practicedesc"> Data <em class="rfc2119">should</em> be available in an up-to-date
               manner and the update cycle made explicit. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1443,7 +1530,7 @@ That seeks to remove this section. It would also align it with the (current) pla
             </section>
             <section class="test">
               <p class="subhead">How to Test</p>
-              <p>Every resource listed in the resource list must have some kind
+              <p>Every resource listed in the resource list <em class="rfc2119">must</em> have some kind
                 of description in the dataset</p>
             </section>
             <section class="ucr">
@@ -1480,7 +1567,7 @@ That seeks to remove this section. It would also align it with the (current) pla
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p>An evaluation of the preservation coverage for a given dataset.
-                The outcome of this evaluation should be used to take an
+                The outcome of this evaluation <em class="rfc2119">should</em> be used to take an
                 informed decision concerning the ingestion, or not, of the
                 dataset</p>
             </section>
@@ -1495,7 +1582,7 @@ That seeks to remove this section. It would also align it with the (current) pla
             <section class="test">
               <p class="subhead">How to Test</p>
               <p>Datasets making references to portions of the Web of Data which
-                are not preserved should receive a lower score than those using
+                are not preserved <em class="rfc2119">should</em> receive a lower score than those using
                 common resources.</p>
             </section>
             <section class="ucr">
@@ -1504,10 +1591,10 @@ That seeks to remove this section. It would also align it with the (current) pla
             </section>
           </div>
           <div class="practice">
-            <p><span id="serialisation" class="practicelab">Data dumps should
+            <p><span id="serialisation" class="practicelab">Data dumps <em class="rfc2119">should</em>
                 use a trusted serialisation format</span></p>
             <p class="practicedesc">Data depositors willing to send a datadump
-              for long term preservation should use a well established
+              for long term preservation <em class="rfc2119">should</em> use a well established
               serialisation</p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1553,7 +1640,7 @@ That seeks to remove this section. It would also align it with the (current) pla
           <div class="practice">
             <p><span id="resourcestatus" class="practicelab">Update the status
                 of a URI</span></p>
-            <p class="practicedesc">Preserved datasets should be linked with
+            <p class="practicedesc">Preserved datasets <em class="rfc2119">should</em> be linked with
               their "live" counterparts</p>
             <section class="axioms">
               <p class="subhead">Why</p>
@@ -1584,7 +1671,7 @@ That seeks to remove this section. It would also align it with the (current) pla
               <p>A link is maintained between the IRI of a things, the most
                 up-to-date description available for it and preserved
                 descriptions. If the resource does not exist any more the
-                description should say so and refer to the last preserved
+                description <em class="rfc2119">should</em> say so and refer to the last preserved
                 description that was available for it.</p>
             </section>
             <section class="how">
