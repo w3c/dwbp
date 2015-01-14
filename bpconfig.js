@@ -106,6 +106,12 @@ var respecConfig = {
 	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
 	status: "submitted to Semantic Web Journal"
      },
+      "RICHARDSON": {
+        title: "RESTful Web Services: Web services for the real world",
+        authors: ["Leonard Richardson", "Sam Ruby"],
+        date: "2007",
+        status: "O'Reilly Media"
+      },
 
       "ld-bp":{
         "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
