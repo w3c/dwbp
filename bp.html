@@ -738,7 +738,46 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
           </section>
         </div>
-        <!-- end of BP --> </section>
+        <!-- end of BP --> 
+      <!-- begin Locale Parameters BP -->
+        <div class="practice">
+          <p><span id="LocaleParametersMetadata" class="practicelab">Provide
+              locale parameters </span></p>
+          <p class="practicedesc">Information about locale parameters (date, time, and number formats, language) <em class="rfc2119">should</em> be made available. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Some data fields differ subtly but significantly with changes in locale. Providing information 
+              about the locality for which the data is currently published aids data users in interpreting its meaning. 
+              Date, time, and number formats can have very different meanings, despite similar appearances. 
+              Making the language explicit allows users to determine how readily they can work with 
+              the data and may enable automated translation services.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Users working with the data in a locale that differs from that in which it was originally 
+              published <em class="rfc2119">should</em> be able to interpret the meaning of the data accurately. 
+              Errors in dates, times, and numbers will be avoided.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Provide locale metadata for date, time, and number fields, and include the language in which 
+              the data is published in the dataset metadata. Where an international format specification exists, 
+              e.g., ISO 8601 for dates and times, use it. </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Check that the metadata for the dataset itself includes the language in which it is published and that all 
+              numeric, date, and time fields have locale metadata provided either with each field or as a general rule. </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
+          </section>
+        </div>
+        <!-- end of Locale Parameters BP -->
+      </section>
+      
+      
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
