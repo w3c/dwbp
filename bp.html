@@ -1223,15 +1223,8 @@ figure figcaption {
       <!-- begin of Data Licenses -->
       <section id="licenses">
         <h3>Data Licenses</h3>
-        <p>Licenses are useful piece of information very useful to be attached
-          to data on the Web. According to the type of license adopted by the
-          publisher, there might be more or less restrictions on sharing and
-          reusing data. In the context of the Web of Data, the license of a
-          dataset can be specified within the data, or outside of it, in a
-          separate document linking the data. However, in line with the Linked
-          Data principles, licenses for such datasets <em class="rfc2119">should</em>
-          be specified in RDF, for instance through the Dublin Core vocabulary
-          [[DC-TERMS]] </p>
+        <p>License is a piece of information very useful to be attached to data on the Web.  As defined by [[DC-TERMS]], a license is a legal document giving official permission to do something with the data to which it is associated.  According to the type of license adopted by the publisher, there might be more or less restrictions on sharing and reusing data. In the context of the Web of Data, the license of a dataset can be specified within the data, or outside of it, in a separate document linking the data. However, in line with the Linked Data principles, licenses for such datasets <em class="rfc2119">should</em> be specified in RDF, for instance through the Dublin Core vocabulary [[DC-TERMS]]
+</p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide Data License</span></p>
@@ -1243,47 +1236,25 @@ figure figcaption {
               when reusing data by consumers or other publishers. </p>
           </div>
           <div class="description">
-            <p class="subhead">What</p>
-            <p> As defined by [[DC-TERMS]], a license is a legal document giving
-              official permission to do something with the data to which it is
-              associated.</p>
             <p class="subhead">Intended outcome</p>
-            <p>Consumers <em class="rfc2119">must</em> be able to: </p>
-            <ol>
-              <li> Discover the permission for reusing any piece of data; </li>
-              <li> Understand the nature of the license, i.e. what are the
-                restrictions applied to the license attached to the data; </li>
-              <li> Quickly understand if the data is open for reuse. </li>
-            </ol>
-            <p></p>
-            <p>Additionally, if a publisher adds a dataset to a catalog, such as
-              the Data Hub, it is considered best practice to make sure which
-              license applied to the dataset within that catalog. This gives
-              people searching the catalog a quick and easy way of seeing that
-              they will be able to reuse the dataset. </p>
+            <p>Consumers <em class="rfc2119">must</em> be able to:
+              <ol>
+            <li> Discover the permission for reusing any piece of data; </li>
+            <li> Understand the nature of the license, i.e. what are the restrictions applied to the license attached to the data; </li>
+            <li> Quickly understand if the data is open for reuse. </li>
+          </ol> </p>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Data license should be clearly state either in the data itself
-              or in an external document linked to the data. Depending on the
-              formats used to publish the data, publishers can: </p>
-            <ol>
-              <li>Provide a URL or link to the document with the copyright
-                statements.</li>
-              <li>Use a property such as dct:license at the metadata level of
-                the data in RDF or RDFa. Some other properties includes <code>http://creativecommons.org/ns#license,
-                  http://schema.org/license</code>, or <code>http://www.w3.org/1999/xhtml/vocab#license</code>.
-              </li>
-              For open data licensing, more guides can be found at
-              [[ODI-LICENSING]]
-              <p></p>
-            </ol>
+            <p> Data license <em class="rfc2119">should</em> be clearly stated either in the data itself or in an external document linked to the data. </p>
+ 	    <ol>
+	    <li>Depending on the formats used to publish the data, publishers <em class="rfc2119">should</em> provide a URL or link to the document with the copyright statements.</li>  
+	  
+ 	  <li> If a publisher adds a dataset to a catalog, such as the Data Hub, publisher <em class="rfc2119">should</em> make sure which license applied to the dataset within that catalog. This gives people searching the catalog a quick and easy way of seeing that they will be able to reuse the dataset. </li>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
-            <p> Test the presence of license can be done by parsing the data
-              looking for <code>dcterms:license</code> property, or any
-              vocabulary describing the rights associated with a dataset. </p>
+            <p> Humans can check the presence of license looking for URL or link to the document with the copyright is provided.</p>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
@@ -1294,37 +1265,37 @@ figure figcaption {
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide machine detectable License</span></p>
-          <p class="practicedesc">A License <em class="rfc2119">should</em> be
-            detectable by machines</p>
+          <p class="practicedesc">A License <em class="rfc2119">should</em> be detectable by machines</p>
           <div class="axioms">
             <p class="subhead">Why</p>
-            <dl>
-              <dt>Why this is unique to publishing data on the Web</dt>
-              <dd>Because the Web is a network of machines that can do cool
-                stuff if they are given a chance</dd>
-              <dt>How this encourages publication or reuse of data on the Web</dt>
-              <dd>Machines, including search engines, can be set up to
-                automatically harvest data that has an associated license</dd>
-            </dl>
+   	   <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataForms">Provide metadata in different formats</a>,  which  requires  machine readable metadata.  By means of machine-readable licenses, machines, including search engines, can be set up to automatically harvest data that has an associated license.
           </div>
           <div class="description">
-            <p class="subhead">What</p>
             <p class="subhead">Intended outcome</p>
-            <p>Machines can automatically detect whether a given dataset does or
+            <p>Machines <em class="rfc2119">should</em> be able to automatically detect whether a given dataset does or
               does not carry a license.</p>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Link to a CC license</p>
+            <p> Publisher <em class="rfc2119">should</em> link license to data by exploiting one or more among the following approaches: </p>
+              <ol>
+           	 <li> Insert the reference to a license  in a property such as <code>dct:license</code> at the metadata level of the data in RDF or RDFa.
+		      Alternative properties which can be considered includes <code>http://creativecommons.org/ns#license</code>, <code>http://schema.org/license</code>, or <code>http://www.w3.org/1999/xhtml/vocab#license</code>.  </li>
+		 <li> Provide a  HTTP Link Header with a <code>@rel</code> value of license [[RFC4946]] </li>
+              </ol>
+  	  <p> For open data licensing, more guides can be found at [[ODI-LICENSING]]. </p>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
-            <p>Look for a link element ot HTTP Link Header with a @rel value of
-              <code>license</code> [[RFC4946]]</p>
+            <p> The test  for the presence of detectable  license can be done by <p>
+  		<ol>
+            	<li> parsing the data looking for <code>dcterms:license</code> property, or any vocabulary describing the rights associated with a dataset; </li>
+ 	    	<li> looking for a link element or HTTP Link Header with a <code>@rel</code>  value of license  [[RFC4946]].</li>
+ 		<ol>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant use cases</span>: </p>
+            <p><span>Relevant use cases</span>:  <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a> and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>   </p>
           </div>
         </div>
         <div class="issue"> There are no requirements for the BP Machine
@@ -1332,7 +1303,7 @@ figure figcaption {
           <p><a href="https://www.w3.org/2013/dwbp/track/issues/109">Tracker
               Issue 109</a></p>
         </div>
-        <!-- end of BP --> </section>
+      </section>
       <!-- end of Data Licenses -->
       <!-- begin of Data Provenance -->
       <section id="provenance">
