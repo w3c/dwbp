@@ -1812,20 +1812,16 @@ figure figcaption {
         <div class="practice">
           <p><span id="list_resources" class="practicelab">Maintain a list of
               resources described in a dataset</span></p>
-          <p class="practicedesc">A dataset should be preserved together with a
+            <p class="practicedesc">A dataset <em class="rfc2119">should</em> be preserved together with a
             list of all the resources it describes</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>Web data is about the description of resources identified with
-                a IRI.</li>
-              <li>It is to be expected that queries made by data consumers will
+            <p>
+              Web data is about the description of resources identified with
+                a IRI.It is to be expected that queries made by data consumers will
                 resolve around finding a preserved description about a
-                particular resource.</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+                particular resource.
+            </p>
             <p>Web data is essentially about the description of entities
               identified by a unique, Web-based, identifier (a URI). Once the
               data is dumped and sent to a institute specialised in digital
@@ -1836,7 +1832,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>A list of resources described in a dataset</p>
+            <p>It <em class="rfc2119">should</em> be possible to look for a preserved dataset based on the resources contained in it.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1853,26 +1849,22 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
           </section>
         </div>
         <div class="practice">
           <p><span id="evaluate" class="practicelab">Assess dataset coverage</span></p>
-          <p class="practicedesc">The coverage of a dataset should be assessed
+            <p class="practicedesc">The coverage of a dataset <em class="rfc2119">should</em> be assessed
             prior to its preservation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>A chunk of Web data is by definition dependent on the rest of
+            <p>A chunk of Web data is by definition dependent on the rest of
                 the global graph. This global context influences the meaning of
-                the description of the resources found in the dataset.</li>
-              <li>Ideally, the preservation of a particular dataset would
+                the description of the resources found in the dataset.
+              Ideally, the preservation of a particular dataset would
                 involve preserving all its context. That is the entire Web of
-                Data.</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+                Data.
+            </p>
             <p>At ingestion time an evaluation of the linkage of Web data
               dataset dump to already preserved resources is assessed. The
               presence of all the vocabularies and target resources in uses is
@@ -1904,26 +1896,22 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-VocabReference">R-VocabReference</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></p>
           </section>
         </div>
         <div class="practice">
-          <p><span id="serialisation" class="practicelab">Data dumps <em class="rfc2119">should</em>
+          <p><span id="serialisation" class="practicelab">Preserved data dumps must
               use a trusted serialisation format</span></p>
           <p class="practicedesc">Data depositors willing to send a datadump for
-            long term preservation <em class="rfc2119">should</em> use a well
+            long term preservation <em class="rfc2119">must</em> use a well
             established serialisation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>Web data is a abtract data model that can be expressed in
-                different ways (RDF, JSON-LD, ...)</li>
-              <li>Using a well established serialisation of this data increases
-                its chances of re-use</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p>Web data is a abtract data model that can be expressed in
+                different ways (RDF, JSON-LD, ...).
+              Using a well established serialisation of this data increases
+                its chances of re-use.
+            </p>
             <p>Institute doing digital preservation are tasked with monitoring
               file format obsolescence. Datasets which have been acquired in
               some format some years ago may have to be converted into another
@@ -1934,6 +1922,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+              <p>The dataset can still be read and loaded into a data base even after the support for the software that produced it dropped.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1951,7 +1940,7 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-Archive">R-Archive</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-Archive">R-Archive</a></p>
           </section>
         </div>
         <div class="practice">
@@ -1961,14 +1950,10 @@ figure figcaption {
             be linked with their "live" counterparts</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>URI dereferencing is a primary interface to Web data</li>
-              <li>Linking preserved datasets with resolving URI inform the data
-                consumer of the status of these resources</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p>URI dereferencing is a primary interface to Web data.
+              Linking preserved datasets with resolving URI inform the data
+                consumer of the status of these resources.
+            </p>
             <p>During its live cycle a Web data dataset may undergo several
               modifications. Although IRIs assigned to things are not expected
               to change, the description of these resource will evolve over
@@ -2017,8 +2002,8 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
-              <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-PersistentIdentification">
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">
                 R-PersistentIdentification</a></p>
           </section>
         </div>
