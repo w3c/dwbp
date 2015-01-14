@@ -74,14 +74,14 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the publication and
-        usage of data on the Web designed to help support a self-sustaining
-        ecosystem. Data should be discoverable and understandable by humans and
-        machines. Where data is used in some way, whether by the originator of
-        the data or by an external party, such usage should also be discoverable
-        and the efforts of the data publisher recognized. In short, following
-        these best practices will facilitate interaction between publishers and
-        consumers.</p>
+      <p>This document provides best practices related to the
+        publication and usage of data on the Web designed to help support a
+        self-sustaining ecosystem. Data should be discoverable and
+        understandable by humans and machines. Where data is used in some way,
+        whether by the originator of the data or by an external party, such
+        usage should also be discoverable and the efforts of the data publisher
+        recognized. In short, following these best practices will facilitate
+        interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
       <p>This early version of the document shows its expected scope and future
@@ -1191,8 +1191,7 @@ figure figcaption {
           separate document linking the data. However, in line with the Linked
           Data principles, licenses for such datasets <em class="rfc2119">should</em>
           be specified in RDF, for instance through the Dublin Core vocabulary
-          [[DC-TERMS]]
-        </p>
+          [[DC-TERMS]] </p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide Data License</span></p>
@@ -1573,26 +1572,70 @@ figure figcaption {
       <!-- begin of Data Access -->
       <section id="dataAccess">
         <h3>Data Access</h3>
-        <p>The section on licenses</p>
-        <!-- begin of BP -->
+        <p>Providing an easy access to data on the Web enable both humans and
+          machines to take advantage of the benefits of sharing data on top of
+          the Web infrastructure. By default, the web offers access using
+          Hypertext Transfer Protocol (HTTP) methods. This provides access to
+          data at an atomic transaction level. However, when data is distributed
+          across multiple files or requires more sophisticated retrieval methods
+          different approaches can be adopted to enable data access, including:
+          bulk download and APIs (Application Programming Interfaces). </p>
+        <p>One approach is packaging data in bulk using non-proprietary file
+          formats(for example zip files or tar files). Using this approach, bulk
+          data is generally pre-processed server side where multiple files or
+          directory trees of files are provided as one downloadable file. When
+          bulk data is being retrieved from non-file system solutions, depending
+          on the data user communities, data publisher should offer APIs to
+          support a series of retrieval operations representing a single
+          transaction.</p>
+        <p>For data that is streaming to the web in “real time” or “near real
+          time”, data publishers must publish data or use APIs to enable
+          immediate access to data, allowing access to critical time sensitive
+          data, such as emergency information, weather forecasting data, or
+          published system metrics. For all data on the web, APIs should be
+          available to allow third parties to automatically search and retrieve
+          data published on the Web. </p>
+        <p> This section provides some BP to be followed by data publishers in
+          order to enable easy data access for data consumers.</p>
+        <!-- begin of BP Bulk Access-->
         <div class="practice">
           <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
           <p class="practicedesc">Data <em class="rfc2119">should</em> be
             available for bulk download. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Bulk access provides a simple way of publishing data encouraging
+              data publishers to release full datasets and enabling data
+              consumers to download large amounts of data at once.
+            </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> It <em class="rfc2119">should</em> be possible for consumers to
+              download data on the web in bulk. Data publishers <em class="rfc2119">should</em>
+              provide a way either through bulk file formats or APIs for
+              consumers to access this type of data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <ol>
+              <li> Create a collection of data files, archive the collection
+                using a zip or tar and compress if possible. <br>
+                Create a README file describing the contents of the bulk file. <br>
+                Make the bulk file available on the Web. </li>
+              <li> Create a database or SPARQL endpoint and populate with data.
+                <br>
+                Create REST service that relies upon the HTTP GET method as a
+                wrapper around a database API that performs a complex database
+                retrieval transaction. </li>
+            </ol>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
+            <ul>
+              <li> Try to download the files. </li>
+              <li> Try to use REST service. </li>
+            </ul>
             <p> </p>
           </section>
           <section class="ucr">
@@ -1600,8 +1643,8 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of BP Bulk Access -->
+        <!-- begin of BP Access Real-time-->
         <div class="practice">
           <p><span id="AccessRealTime" class="practicelab">Provide real-time
               access </span></p>
@@ -1609,55 +1652,88 @@ figure figcaption {
             be available on the Web in real-time. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Providing real-time access data enables access to critical time
+              sensitive data whenever is required, encouraging the development
+              of real-time based applications. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> Data <em class="rfc2119">should</em> be available at real time
+              or near real time, where real-time means a range from milliseconds
+              to a few seconds after the data creation, and near real time is a
+              predetermined delay for expected data delivery. </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Implement a Web API to enable data access either using a live
+              streaming data source or mockup a synthetic data source to
+              simulate real or near real time data. A mockup could be as simple
+              as a looping script that reads data from one file and populates
+              the “real time” source. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <ul>
+              <li>Write test client to use real-time access API. </li>
+              <li> Start or setup real-time data source that provides a real
+                time data date/time stamp.</li>
+              <li> Log real time data date/time stamp and record corresponding
+                test client date/time stamp.</li>
+              <li> Verify time difference between each successful access attempt
+                and the real time data date/time stamp.</li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of BP Access Real-time-->
+        <!-- begin of BP Access Up to date -->
         <div class="practice">
           <p><span id="AccessUptoDate" class="practicelab">Provide data up to
               date </span></p>
-          <p class="practicedesc"> Data <em class="rfc2119">should</em> be
+          <p class="practicedesc"> Data <em class="rfc2119">must</em> be
             available in an up-to-date manner and the update cycle made
             explicit. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Data on the Web availability should closely coincide with data
+              provided at creation time, collection time, or after it has been
+              processed or changed. Carefully synchronizing data publication to
+              the update cycle encourages data consumer confidence and reuse.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> When new data is provided or data is updated, it <em class="rfc2119">must</em>
+              be published to coincide with the data changes.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Implement an API to enable data access. <br>
+              When data is provided by bulk access, new files with new data
+              should be provided as soon as additional data is created or
+              updated. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p> Write test standard operating procedure for data publisher to
+              keep test data on web site up to date.</p>
+            <p> Following standard operating procedure:</p>
+            <ul>
+              <li> Write test client to access published data. </li>
+              <li> Access data and save first copy locally. </li>
+              <li> Publish an updated version of data.</li>
+              <li> Access data and save second copy locally.</li>
+              <li> Compare first copy to second copy to verify change.</li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a></p>
           </section>
         </div>
-        <!-- end of BP -->
+        <!-- end of BP Access Up to date-->
         <div class="issue"> I am not sure if <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a>
           is a requirement for Data Access.
           <p><a href="https://www.w3.org/2013/dwbp/track/issues/112">Tracker
@@ -1684,11 +1760,10 @@ figure figcaption {
         <p>The model most commonly referred to is <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">
             Open Archival Information System</a>. Many institutions taking care
           of digital preservation are implementing this model or some variant of
-          it. Web pages can be preserved following the same
-          strategies, considering a web site as a static data set that is
-          self-contained and can be all snap-shoted and preserved at a fixed
-          time. When it comes to Web data some new elements have to be taken
-          into account, namely:</p>
+          it. Web pages can be preserved following the same strategies,
+          considering a web site as a static data set that is self-contained and
+          can be all snap-shoted and preserved at a fixed time. When it comes to
+          Web data some new elements have to be taken into account, namely:</p>
         <ul>
           <li>The persistent identifiers (IRI) used across the web are related
             to live data that can change</li>
@@ -1917,53 +1992,88 @@ figure figcaption {
       <!-- begin Feedback -->
       <section id="feedback">
         <h3>Feedback</h3>
-        <p>Publishing data on the Web enables data sharing on a large scale, providing data access to a wide range of audiences with different levels of expertise.  Data publishers want to ensure that the data published is meeting the data consumer needs and user feedback is crucial.
-         Feedback has benefits for both data publishers and data consumers, helping data publishers to improve the integrity of their published data, as well as to encourage the publication of new data.  Feedback allows data consumers to have a voice describing usage experiences (e.g. applications using data), preferences and needs.   
-         When possible, feedback should also be publicly available for other data consumers to examine.
-         Making feedback publicly available, allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed.</p>
-        <p> From a user interface perspective there are different ways to gather feedback from data consumers, including site registration, contact forms, quality ratings selection,  surveys and comment boxes for blogging. From a machine perspective the data publisher can also record metrics on data usage or information about specific applications consumers are currently relying upon.
-          Feedback such as this establishes a line of communication channel between data publishers and data consumers.  In order to quantify and analyze usage feedback, it should be recorded in a machine-readable format.Blogs and other publicly available feedback should be displayed in a human-readable form through the user interface. </p>
-        <p> This section provides some BP to be followed by data publishers in order to enable data consumers to provide feedback about the consumed data. This feedback can be for humans or machines. </p> 
-
+        <p>Publishing data on the Web enables data sharing on a large scale,
+          providing data access to a wide range of audiences with different
+          levels of expertise. Data publishers want to ensure that the data
+          published is meeting the data consumer needs and user feedback is
+          crucial. Feedback has benefits for both data publishers and data
+          consumers, helping data publishers to improve the integrity of their
+          published data, as well as to encourage the publication of new data.
+          Feedback allows data consumers to have a voice describing usage
+          experiences (e.g. applications using data), preferences and needs.
+          When possible, feedback should also be publicly available for other
+          data consumers to examine. Making feedback publicly available, allows
+          users to become aware of other data consumers, supports a
+          collaborative environment, and allows user community experiences,
+          concerns or questions are currently being addressed.</p>
+        <p> From a user interface perspective there are different ways to gather
+          feedback from data consumers, including site registration, contact
+          forms, quality ratings selection, surveys and comment boxes for
+          blogging. From a machine perspective the data publisher can also
+          record metrics on data usage or information about specific
+          applications consumers are currently relying upon. Feedback such as
+          this establishes a line of communication channel between data
+          publishers and data consumers. In order to quantify and analyze usage
+          feedback, it should be recorded in a machine-readable format.Blogs and
+          other publicly available feedback should be displayed in a
+          human-readable form through the user interface. </p>
+        <p> This section provides some BP to be followed by data publishers in
+          order to enable data consumers to provide feedback about the consumed
+          data. This feedback can be for humans or machines. </p>
         <!-- begin of BP Gather Feedback -->
         <div class="practice">
-          <p><span id="GatherFeedback" class="practicelab">Gather feedback from data consumers </span></p>
-          <p class="practicedesc"> Data consumers <em class="rfc2119">should</em> have a way of sharing feedback and rating data.</p>
+          <p><span id="GatherFeedback" class="practicelab">Gather feedback from
+              data consumers </span></p>
+          <p class="practicedesc"> Data consumers <em class="rfc2119">should</em>
+            have a way of sharing feedback and rating data.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Providing feedback contributes to improve the quality of published data, may encourage publication of new data, 
-              helps data publishers understand data consumers needs better, and when feedback is made publicly available 
-              enhances the consumers collaborative experience.
-            </p>
+            <p>Providing feedback contributes to improve the quality of
+              published data, may encourage publication of new data, helps data
+              publishers understand data consumers needs better, and when
+              feedback is made publicly available enhances the consumers
+              collaborative experience. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Data consumers <em class="rfc2119">should</em> be able to provide feedback and rate data in both human and machine-readable formats. 
-              If feedback is made Web accessible then the feedback <em class="rfc2119">must</em> provide a URL reference to the corresponding dataset.</p>
+            <p>Data consumers <em class="rfc2119">should</em> be able to
+              provide feedback and rate data in both human and machine-readable
+              formats. If feedback is made Web accessible then the feedback <em
+
+                class="rfc2119">must</em> provide a URL reference to the
+              corresponding dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Provide data consumers including but not limited to: registration form, contact form, point and click data quality rating buttons, or a comment box for blogging.</p>
-            <p> Collect feedback in machine-readable formats to represent the feedback and use a vocabulary to capture the semantics of the feedback information. The definition of a Data Usage Vocabulary is included in the activity of the DWBP group 
-              in order to support in the implementation of this best practice. </p>
-            
+            <p>Provide data consumers including but not limited to: registration
+              form, contact form, point and click data quality rating buttons,
+              or a comment box for blogging.</p>
+            <p> Collect feedback in machine-readable formats to represent the
+              feedback and use a vocabulary to capture the semantics of the
+              feedback information. The definition of a Data Usage Vocabulary is
+              included in the activity of the DWBP group in order to support in
+              the implementation of this best practice. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <ul>
-              <li>Demonstrate using an HTML form how feedback can be collected from data consumers. </li>
-              <li> Verify that the feedback is persistently stored.  If the feedback is made publicly available verify that a URL links back to the published data being referenced.</li>
-              <li> Check that the feedback format conforms to a known machine-readable format specification in current use among anticipated data users. </li>
-            </ul>  
+              <li>Demonstrate using an HTML form how feedback can be collected
+                from data consumers. </li>
+              <li> Verify that the feedback is persistently stored. If the
+                feedback is made publicly available verify that a URL links back
+                to the published data being referenced.</li>
+              <li> Check that the feedback format conforms to a known
+                machine-readable format specification in current use among
+                anticipated data users. </li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
           </section>
         </div>
-        <!-- end of BP Gather Feedback -->
-        
-      </section>
+        <!-- end of BP Gather Feedback --> </section>
       <!-- end Feedback -->
       <!-- end best practices --> </section>
     <section id="conclusions">
