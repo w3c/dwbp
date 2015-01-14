@@ -1183,8 +1183,16 @@ figure figcaption {
       <!-- begin of Data Licenses -->
       <section id="licenses">
         <h3>Data Licenses</h3>
-        <p>Licenses are useful piece of information very useful to be attached to data on the Web. According to the type of license adopted by the publisher, there might be more or less restrictions on sharing and reusing data. In the context of the Web of Data, the license of a dataset can be specified within the data, or outside of it, in a separate document linking the data. However, in line with the Linked Data principles, licenses for such datasets <em class="rfc2119">should</em> be specified in RDF, for instance through the Dublin Core vocabulary [[DC-TERMS]]
-</p>
+        <p>Licenses are useful piece of information very useful to be attached
+          to data on the Web. According to the type of license adopted by the
+          publisher, there might be more or less restrictions on sharing and
+          reusing data. In the context of the Web of Data, the license of a
+          dataset can be specified within the data, or outside of it, in a
+          separate document linking the data. However, in line with the Linked
+          Data principles, licenses for such datasets <em class="rfc2119">should</em>
+          be specified in RDF, for instance through the Dublin Core vocabulary
+          [[DC-TERMS]]
+        </p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide Data License</span></p>
@@ -1192,34 +1200,51 @@ figure figcaption {
             associated with a license.</p>
           <div class="axioms">
             <p class="subhead">Why</p>
-            <p> Licenses are essential to determine what are the permissions when reusing data by  consumers or other publishers. </p>
+            <p> Licenses are essential to determine what are the permissions
+              when reusing data by consumers or other publishers. </p>
           </div>
           <div class="description">
             <p class="subhead">What</p>
-            <p> As defined by [[DC-TERMS]], a license is a legal document giving official permission to do something with the data to which it is associated.</p>
+            <p> As defined by [[DC-TERMS]], a license is a legal document giving
+              official permission to do something with the data to which it is
+              associated.</p>
             <p class="subhead">Intended outcome</p>
-            <p>Consumers <em class="rfc2119">must</em> be able to:
-              <ol>
-            <li> Discover the permission for reusing any piece of data; </li>
-            <li> Understand the nature of the license, i.e. what are the restrictions applied to the license attached to the data; </li>
-            <li> Quickly understand if the data is open for reuse. </li>
-          </ol> </p>
-
-       <p>Additionally, if a publisher adds a dataset to a catalog, such as the Data Hub, it is considered best practice to make sure which license applied to the dataset within that catalog. This gives people searching the catalog a quick and easy way of seeing that they will be able to reuse the dataset. </p>
-
+            <p>Consumers <em class="rfc2119">must</em> be able to: </p>
+            <ol>
+              <li> Discover the permission for reusing any piece of data; </li>
+              <li> Understand the nature of the license, i.e. what are the
+                restrictions applied to the license attached to the data; </li>
+              <li> Quickly understand if the data is open for reuse. </li>
+            </ol>
+            <p></p>
+            <p>Additionally, if a publisher adds a dataset to a catalog, such as
+              the Data Hub, it is considered best practice to make sure which
+              license applied to the dataset within that catalog. This gives
+              people searching the catalog a quick and easy way of seeing that
+              they will be able to reuse the dataset. </p>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Data license should be clearly state either in the data itself or in an external document linked to the data. Depending on the formats used to publish the data, publishers can:
-              <ol>
-  <li>Provide a URL or link to the document with the copyright statements.</li>
-  <li>Use a property such as dct:license at the metadata level of the data in RDF or RDFa. Some other properties includes <code>http://creativecommons.org/ns#license,  http://schema.org/license</code>, or <code>http://www.w3.org/1999/xhtml/vocab#license</code>. </li>
-    For open data licensing, more guides can be found at [[ODI-LICENSING]]
-                 </p>
+            <p> Data license should be clearly state either in the data itself
+              or in an external document linked to the data. Depending on the
+              formats used to publish the data, publishers can: </p>
+            <ol>
+              <li>Provide a URL or link to the document with the copyright
+                statements.</li>
+              <li>Use a property such as dct:license at the metadata level of
+                the data in RDF or RDFa. Some other properties includes <code>http://creativecommons.org/ns#license,
+                  http://schema.org/license</code>, or <code>http://www.w3.org/1999/xhtml/vocab#license</code>.
+              </li>
+              For open data licensing, more guides can be found at
+              [[ODI-LICENSING]]
+              <p></p>
+            </ol>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
-            <p> Test the presence of license can be done by parsing the data looking for <code>dcterms:license</code> property, or any vocabulary describing the rights associated with a dataset. </p>
+            <p> Test the presence of license can be done by parsing the data
+              looking for <code>dcterms:license</code> property, or any
+              vocabulary describing the rights associated with a dataset. </p>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
@@ -1291,9 +1316,10 @@ figure figcaption {
           integrity and credibility of the data being shared. Data publishers in
           turn need to be aware of the needs of prospective data user
           communities to know how much provenance detail is appropriate. </p>
-        <p>Fortunately, the W3C community offers the Provenance Ontology [[PROV-O]]
-          so that data publishers can formally describe data provenance and
-          methodologies so that data user can query and use provenance. </p>
+        <p>Fortunately, the W3C community offers the Provenance Ontology
+          [[PROV-O]] so that data publishers can formally describe data
+          provenance and methodologies so that data user can query and use
+          provenance. </p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span id="ProvideDataProvenance" class="practicelab">Provide Data
@@ -1302,30 +1328,39 @@ figure figcaption {
             be available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Without accessible data provenance data users will not know the origin or history of the published data.</p>
+            <p>Without accessible data provenance data users will not know the
+              origin or history of the published data.</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
-            <p>Data provenance is metadata that corresponds to data.  Data provenance relies upon existing vocabularies
-               that make provenance easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
+            <p>Data provenance is metadata that corresponds to data. Data
+              provenance relies upon existing vocabularies that make provenance
+              easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>If data is published with data provenance, then the data provenance <em class="rfc2119">must</em> provide a URL reference to the published data.</p>
+            <p>If data is published with data provenance, then the data
+              provenance <em class="rfc2119">must</em> provide a URL reference
+              to the published data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Data provenance can be published in a number of ways:</p>
             <ul>
-              <li>Use the Provenance Ontology [[PROV-O]] to describe data provenance.</li>
-              <li>Use an appropriate level of detail that will be meaningful to the intended audience. </li>
-              <li>Write the data provenance in either a machine readable form such as Turtle or RDF/XML or embed 
-                  provenance in an HTML page using [[JSON-LD]], or [[HTML-RDFA]] </li>
+              <li>Use the Provenance Ontology [[PROV-O]] to describe data
+                provenance.</li>
+              <li>Use an appropriate level of detail that will be meaningful to
+                the intended audience. </li>
+              <li>Write the data provenance in either a machine readable form
+                such as Turtle or RDF/XML or embed provenance in an HTML page
+                using [[JSON-LD]], or [[HTML-RDFA]] </li>
               <li>Verify that the data provenance references published data</li>
+            </ul>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Use a [[PROV-O]] validator or inspect the provenance in the HTML page. </p>
+            <p>Use a [[PROV-O]] validator or inspect the provenance in the HTML
+              page. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1633,7 +1668,6 @@ figure figcaption {
       <!-- begin of Data Versioning -->
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
-        
       </section>
       <!-- end of Data Versioning -->
       <section id="dataPreservation">
@@ -1650,10 +1684,11 @@ figure figcaption {
         <p>The model most commonly referred to is <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">
             Open Archival Information System</a>. Many institutions taking care
           of digital preservation are implementing this model or some variant of
-          it. Web pages can be preserved following the same strategies,
-          considering a web site as a static data set that is self-contained and
-          can be all snap-shoted and preserved at a fixed time. When it comes to
-          Web data some new elements have to be taken into account, namely:</p>
+          it. Web pages can be preserved following the same
+          strategies, considering a web site as a static data set that is
+          self-contained and can be all snap-shoted and preserved at a fixed
+          time. When it comes to Web data some new elements have to be taken
+          into account, namely:</p>
         <ul>
           <li>The persistent identifiers (IRI) used across the web are related
             to live data that can change</li>
@@ -1882,8 +1917,52 @@ figure figcaption {
       <!-- begin Feedback -->
       <section id="feedback">
         <h3>Feedback</h3>
-        <p>The feedback section</p>
-       
+        <p>Publishing data on the Web enables data sharing on a large scale, providing data access to a wide range of audiences with different levels of expertise.  Data publishers want to ensure that the data published is meeting the data consumer needs and user feedback is crucial.
+         Feedback has benefits for both data publishers and data consumers, helping data publishers to improve the integrity of their published data, as well as to encourage the publication of new data.  Feedback allows data consumers to have a voice describing usage experiences (e.g. applications using data), preferences and needs.   
+         When possible, feedback should also be publicly available for other data consumers to examine.
+         Making feedback publicly available, allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed.</p>
+        <p> From a user interface perspective there are different ways to gather feedback from data consumers, including site registration, contact forms, quality ratings selection,  surveys and comment boxes for blogging. From a machine perspective the data publisher can also record metrics on data usage or information about specific applications consumers are currently relying upon.
+          Feedback such as this establishes a line of communication channel between data publishers and data consumers.  In order to quantify and analyze usage feedback, it should be recorded in a machine-readable format.Blogs and other publicly available feedback should be displayed in a human-readable form through the user interface. </p>
+        <p> This section provides some BP to be followed by data publishers in order to enable data consumers to provide feedback about the consumed data. This feedback can be for humans or machines. </p> 
+
+        <!-- begin of BP Gather Feedback -->
+        <div class="practice">
+          <p><span id="GatherFeedback" class="practicelab">Gather feedback from data consumers </span></p>
+          <p class="practicedesc"> Data consumers <em class="rfc2119">should</em> have a way of sharing feedback and rating data.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Providing feedback contributes to improve the quality of published data, may encourage publication of new data, 
+              helps data publishers understand data consumers needs better, and when feedback is made publicly available 
+              enhances the consumers collaborative experience.
+            </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Data consumers <em class="rfc2119">should</em> be able to provide feedback and rate data in both human and machine-readable formats. 
+              If feedback is made Web accessible then the feedback <em class="rfc2119">must</em> provide a URL reference to the corresponding dataset.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Provide data consumers including but not limited to: registration form, contact form, point and click data quality rating buttons, or a comment box for blogging.</p>
+            <p> Collect feedback in machine-readable formats to represent the feedback and use a vocabulary to capture the semantics of the feedback information. The definition of a Data Usage Vocabulary is included in the activity of the DWBP group 
+              in order to support in the implementation of this best practice. </p>
+            
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <ul>
+              <li>Demonstrate using an HTML form how feedback can be collected from data consumers. </li>
+              <li> Verify that the feedback is persistently stored.  If the feedback is made publicly available verify that a URL links back to the published data being referenced.</li>
+              <li> Check that the feedback format conforms to a known machine-readable format specification in current use among anticipated data users. </li>
+            </ul>  
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
+          </section>
+        </div>
+        <!-- end of BP Gather Feedback -->
+        
       </section>
       <!-- end Feedback -->
       <!-- end best practices --> </section>
