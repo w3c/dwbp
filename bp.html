@@ -424,7 +424,7 @@ figure figcaption {
               <li>Use an appropriate metadata schema to describe the <strong>structure
                   of the dataset</strong>. Examples include:
                 <ul>
-                  <li>the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separataed Variables">CSV</abbr>
+                  <li>the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separated Variables">CSV</abbr>
                     files [[TABULAR-METADATA]]</li>
                   <li>the Vocabulary of Interlinked Datasets (VoID) for RDF
                     datasets [[VOID]]</li>
@@ -1291,7 +1291,7 @@ figure figcaption {
           integrity and credibility of the data being shared. Data publishers in
           turn need to be aware of the needs of prospective data user
           communities to know how much provenance detail is appropriate. </p>
-        <p>Fortunately, the W3C community offers a provenance vocabulary <a href="%E2%80%9Chttp://www.w3.org/TR/2013/REC-prov-o-20130430/%E2%80%9D">PROV</a>
+        <p>Fortunately, the W3C community offers the Provenance Ontology [[PROV-O]]
           so that data publishers can formally describe data provenance and
           methodologies so that data user can query and use provenance. </p>
         <!-- begin of BP -->
@@ -1302,19 +1302,30 @@ figure figcaption {
             be available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p>Without accessible data provenance data users will not know the origin or history of the published data.</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
+            <p>Data provenance is metadata that corresponds to data.  Data provenance relies upon existing vocabularies
+               that make provenance easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p>If data is published with data provenance, then the data provenance <em class="rfc2119">must</em> provide a URL reference to the published data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p>Data provenance can be published in a number of ways:</p>
+            <ul>
+              <li>Use the Provenance Ontology [[PROV-O]] to describe data provenance.</li>
+              <li>Use an appropriate level of detail that will be meaningful to the intended audience. </li>
+              <li>Write the data provenance in either a machine readable form such as Turtle or RDF/XML or embed 
+                  provenance in an HTML page using [[JSON-LD]], or [[HTML-RDFA]] </li>
+              <li>Verify that the data provenance references published data</li>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p>Use a [[PROV-O]] validator or inspect the provenance in the HTML page. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
