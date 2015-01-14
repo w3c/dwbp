@@ -95,6 +95,11 @@ var respecConfig = {
         authors: ["Daniel Stenberg"],
         href: "http://curl.haxx.se/"
       },
+      "ODI-LICENSING": {
+        title: "Publisher's Guide to Open Data Licensing",
+        authors: ["Open Data Institute"],
+        href: "http://theodi.org/guides/publishers-guide-open-data-licensing"
+      },
      "ZAVERI" : {
 	title: "Quality Assessment for Linked Data: A Survey",
 	authors: ["Amrapali Zaveri", "Anisa Rula", "Andrea Maurino", "Ricardo Pietrobon", "Jens Lehmann", "Sören Auer"],

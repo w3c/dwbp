@@ -1183,7 +1183,8 @@ figure figcaption {
       <!-- begin of Data Licenses -->
       <section id="licenses">
         <h3>Data Licenses</h3>
-        <p>The section on licenses</p>
+        <p>Licenses are useful piece of information very useful to be attached to data on the Web. According to the type of license adopted by the publisher, there might be more or less restrictions on sharing and reusing data. In the context of the Web of Data, the license of a dataset can be specified within the data, or outside of it, in a separate document linking the data. However, in line with the Linked Data principles, licenses for such datasets <em class="rfc2119">should</em> be specified in RDF, for instance through the Dublin Core vocabulary [[DCTERMS]]
+</p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span class="practicelab">Provide Data License</span></p>
@@ -1191,17 +1192,34 @@ figure figcaption {
             associated with a license.</p>
           <div class="axioms">
             <p class="subhead">Why</p>
+            <p> Licenses are essential to determine what are the permissions when reusing data by  consumers or other publishers. </p>
           </div>
           <div class="description">
             <p class="subhead">What</p>
+            <p> As defined by [[DCTERMS]], a license is a legal document giving official permission to do something with the data to which it is associated.</p>
             <p class="subhead">Intended outcome</p>
-            <p>What it should do</p>
+            <p>Consumers <em class="rfc2119">must</em> be able to:
+              <ol>
+            <li> Discover the permission for reusing any piece of data; </li>
+            <li> Understand the nature of the license, i.e. what are the restrictions applied to the license attached to the data; </li>
+            <li> Quickly understand if the data is open for reuse. </li>
+          </ol> </p>
+
+       <p>Additionally, if a publisher adds a dataset to a catalog, such as the Data Hub, it is considered best practice to make sure which license applied to the dataset within that catalog. This gives people searching the catalog a quick and easy way of seeing that they will be able to reuse the dataset. </p>
+
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Data license should be clearly state either in the data itself or in an external document linked to the data. Depending on the formats used to publish the data, publishers can:
+              <ol>
+  <li>Provide a URL or link to the document with the copyright statements.</li>
+  <li>Use a property such as dct:license at the metadata level of the data in RDF or RDFa. Some other properties includes <code>http://creativecommons.org/ns#license,  http://schema.org/license</code>, or <code>http://www.w3.org/1999/xhtml/vocab#license</code>. </li>
+    For open data licensing, more guides can be found at [[ODI-LICENSING]]
+                 </p>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
+            <p> Test the presence of license can be done by parsing the data looking for <code>dcterms:license</code> property, or any vocabulary describing the rights associated with a dataset. </p>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
