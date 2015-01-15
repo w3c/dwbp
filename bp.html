@@ -844,93 +844,78 @@ figure figcaption {
           regarding the formats of source data for example database dumps,
           spreadsheets. It is expected that data sources for data on the web
           will continue to be in multiple formats.</p>
-        <!-- begin of BP -->
+        <!-- begin of Machine-Readable Standardized Format BP -->
         <div class="practice">
-          <p><span id="MachineReadableFormat" class="practicelab">Provide
-              machine-readable data </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            available in a machine-readable format that is adequate for its
+          <p><span id="MachineReadableStandardizedFormat" class="practicelab">Use machine-readable standardized formats </span></p>
+          <p class="practicedesc">Data <em class="rfc2119">must</em> be
+            available in a machine-readable standardized format that is adequate for its
             intended or potential use. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p> As data becomes more ubiquitous, and datasets become larger and more complex, processing by computers becomes ever more crucial. 
+              Posting data in a format that is not machine readable places severe limitations on the continuing usefulness of the data. 
+              Using nonstandard formats is costly and inefficient, and the data may lose meaning as it is transformed. On the other hand, 
+              standardized formats enable interoperability as well as future uses, such as remixing or visualization, many of which cannot be anticipated when the data is first published.</p>
           </section>
-          <section class="description">
-            <p class="subhead">What</p>
-          </section>
+         
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> A machine <em class="rfc2119">must</em> be able to:
+              <ol>
+                <li> Open and read the data using commonly available software packages. </li>
+                <li> Process the data. </li>
+                <li> Store the data for future use.</li>
+              </ol>
+            </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p>Consider which formats potential users of the data are most likely to have the necessary tools to parse. proprietary or 
+              (preferably) non-proprietary formats, including but not limited to MS Excel, CSV, NetCDF, XML, JSON and RDF. 
+              Standard data types as well as the use of standard data vocabularies will better enable machines to process the data.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p> Check that the format conforms to a known machine-readable format specification in current use among anticipated data users. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a>, 
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of Machine-Readable Standardized FormatBP -->
+        
+        <!-- begin of Open Format BP -->
         <div class="practice">
-          <p><span id="StandardizedFormat" class="practicelab">Provide data in
-              standardized formats </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            availabe in a standardized format. Through standardization,
-            interoperability is also expected. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></p>
-          </section>
-        </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
-        <div class="practice">
-          <p><span id="OpenFormat" class="practicelab">Provide data in open
+          <p><span id="OpenFormat" class="practicelab">Use open
               formats </span></p>
           <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            availabe in an open format </p>
+            availabe in a nonproprietary format. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Open formats are usable by anyone. Proprietary formats may be difficult or impractical for some data users to view or parse. 
+              Thus, the use of open formats increases the possibilities for use and reuse of data.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> Any person who wants to use or reuse the data <em class="rfc2119">should</em> be able to do so without investment in proprietary software.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Make data available in open formats including but not limited to CSV, Turtle, NetCDF and JSON.</p>
           </section>
           <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> </p>
+            <p class="subhead">How to Test</p>         
+            <p> Check if it is possible to read, process, and store the data without using any proprietary software package. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of Open Formats BP -->
+        <!-- begin of Multiple Formats BP -->
         <div class="practice">
           <p><span id="MultipleFormats" class="practicelab">Provide data in
               multiple formats </span></p>
@@ -938,60 +923,33 @@ figure figcaption {
             availabe in multiple formats. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p> Providing data in more than one format reduces costs incurred in data transformation. It also minimizes the possibility 
+              of introducing errors in the process of transformation. If many users would need to transform the data into a specific format, 
+              publishing the data in that format from the beginning saves time and money and prevents errors many times over. 
+              Lastly it increases the number of tools and applications that can process the data.</p>
           </section>
-          <section class="description">
-            <p class="subhead">What</p>
-          </section>
+          
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> Users <em class="rfc2119">should</em> be able to work with the data without transforming it. More users will attempt to use the data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Consider the formats most likely to be needed by intended users, and consider alternatives that are likely to be useful 
+              in the future. Data publishers must balance the effort required to make the data available in many formats, but providing 
+              at least one alternative will greatly increase the usability of the data.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p> Check that the complete dataset is available in more than one format.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
-        <div class="practice">
-          <p><span id="LocaleParameters" class="practicelab">Provide locale
-              parameters </span></p>
-          <p class="practicedesc">Information about locale parameters (date and
-            number formats, language) <em class="rfc2119">should</em> be made
-            available</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
-          </section>
-        </div>
-        <div class="issue"> <em class="rfc2119">should</em> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>
-          be a requirement for metadata instead of data format ?
-          <p><a href="https://www.w3.org/2013/dwbp/track/issues/108">Tracker
-              Issue 108</a></p>
-        </div>
-        <!-- end of BP --> </section>
+        <!-- end of Multiple Formats BP -->
+       </section>
       <!-- end of Data Formats -->
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
