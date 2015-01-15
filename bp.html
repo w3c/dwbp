@@ -987,78 +987,37 @@ figure figcaption {
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
         <p>Datasets often resort to a range of vocabularies in the data they
-          contain: data values are entered or captured in a controlled way,
-          i.e., for certain positions in a data graph (or column in a
-          relationship table), the value used should come with a limited set of
+          contain: data is entered or captured in a controlled way,
+          i.e., positions in a data graph (or column in a
+          relationship table) are explicitly defined, the name of a person, the
+	subject of a book, a relationship “knows” between two persons. Additionally,
+	for certain positions, the values used should come from a limited set of
           pre-existing resources: for example object types, roles of a person,
           countries in a geographic area, or possible subjects for books. Such
-          vocabularies aim to represent a set of terms and the relationship
-          among them, in order to ensure a level of control, standardization and
+          vocabularies ensure a level of control, standardization and
           interoperability in the data. They can also provide a way to easily
-          create richer data. Say, a dataset contain one reference in a data
-          statement to a concept description in several languages. This single
-          statement allows applications to localize their display of their
-          search depending on the language of the user. The vocabularies can
-          also have different forms (e.g. thesaurus, taxonomy, semantic network)
-          and be represented in different formats (e.g. RDF, OWL, JSON, CSV).
-          This section presents best practices for data vocabularies accessible
-          as URI sets on the Web. </p>
-        <p> According to <a href="http://www.w3.org/standards/semanticweb/ontology">
-            W3C </a>, Vocabularies define the concepts and relationships (also
+          create richer data. Say, a dataset contains a reference to a concept
+	described in several languages. This reference allows applications to localize their display of their
+          search depending on the language of the user.</p>
+        <p>According to W3C, <a href="http://www.w3.org/standards/semanticweb/ontology">vocabularies</a>
+	define the concepts and relationships (also
           referred to as “terms”) used to describe and represent an area of
           concern. Vocabularies are used to classify the terms that can be used
           in a particular application, characterize possible relationships, and
-          define possible constraints on using those terms. In practice,
-          vocabularies can be very complex (with several thousands of terms) or
-          very simple (describing one or two concepts only). There is no clear
-          division between what is referred to as “vocabularies” and
-          “ontologies”. The trend is to use the word “ontology” for more
-          complex, and possibly quite formal collection of terms, whereas
-          “vocabulary” is used when such strict formalism is not necessarily
-          used or only in a very loose sense. Vocabularies are the basic
-          building blocks for inference techniques on the Semantic Web. W3C
-          offers different ways for creating Vocabularies on the Web in a
-          standard format, such as: </p>
-        <ol>
-          <li> <a href="http://www.w3.org/standards/techs/rdf#w3c_all"> RDF and
-              RDF Schemas </a>: The Resource Description Framework (RDF) is a
-            general-purpose language for representing information in the Web; </li>
-          <li> <a href="http://www.w3.org/standards/techs/skos#w3c_all"> SKOS </a>:
-            Simple Knowledge Organization System (SKOS) is a common data model
-            for sharing and linking knowledge organization systems via the Web;
-          </li>
-          <li> <a href="http://www.w3.org/standards/techs/owl#w3c_all"> OWL </a>:
-            The Web Ontology Language (OWL) is a semantic markup language for
-            publishing and sharing ontologies on the World Wide Web </li>
-          <li> <a href="http://www.w3.org/standards/techs/rif#w3c_all"> RIF </a>:
-            W3C Rule Interchange Format (RIF) for writing declarative rules and
-            production rules on the Web. </li>
-        </ol>
-        <p> Vocabularies can be of two different types: </p>
-        <ol>
-          <li> Light-weight: annotation-oriented (used for information search),
-            describing the concepts and their relationships. Here is recommended
-            the use of SKOS or RDF and RDF Schema.</li>
-          <li> Heavy-weight: the body of knowledge that describes a given
-            domain, describing the concepts and relationships between them from
-            both perspectives: hierarchy and aggregation/composition. In
-            addition, such heavy-weight descriptions provide the axiomatization
-            of semantics constraints between those concepts and relations. Here
-            is recommended the use of OWL and RIF.</li>
-        </ol>
-        <h4>How to create vocabularies?</h4>
-        <p> Three different approaches may be adopted to create vocabularies: </p>
-        <ol>
-          <li>Top-layer: the whole building process compliant with the
-            conventional software development process </li>
-          <li>Middle-layer: Generic constraints and guidelines which specify
-            major steps </li>
-          <li>Bottom-layer: The most fine-grain guidelines such as those for
-            class identification process, design of URIs, ODP, Anti-Patterns
-            etc.</li>
-        </ol>
-        Some of the Best Practices for the creation of vocabularies are
-        presented in the following.
+          define possible constraints on using those terms. Several categories of vocabularies have been coined, e.g., ontology, controlled vocabularies, thesaurus, taxonomy, semantic network.</p>
+	<p>There is no strict division between the artefacts refered to by these names. “Ontology” tends however to denote the vocabularies of
+classes and properties that structure the descriptions of resources in (linked) datasets.
+In relational databases, these correspond to the names of tables and columns; in XML, they correspond to the elements defined by an XML Schema.
+Ontologies are the key building blocks for inference techniques on the Semantic Web.
+The first means offered by W3C for creating (“light-weight”) ontologies is the <a href="http://www.w3.org/standards/techs/rdf#w3c_all">RDF Schema</a> language.
+It is possible to define more complex (“heavy-weight”) ontologies with advanced axioms using languages such as The Web Ontology Language
+<a href="http://www.w3.org/standards/techs/owl#w3c_all">OWL</a>.
+<p>On the other hand, “controlled vocabularies”, “concept schemes”, “knowledge organization systems” enumerate and define resources that can be employed in the descriptions made with ontologies. A concept from a thesaurus, say, “architecture”, will for example be used in the subject field for a book description (where “subject” has been defined in an ontology for books). For defining the terms in these vocabularies, complex formalisms are most often not needed. Simpler models have thus been proposed to represent and exchange them on the web, such as W3C's Simple Knowledge Organization System (<a href="http://www.w3.org/standards/techs/skos#w3c_all">SKOS</a>).</p>
+
+        <p>This section presents
+	best practices for data vocabularies accessible as URI sets on the Web, which are applicable to any kind of vocabulary:</p>
+
+	
         <!-- begin of BP -->
         <div class="practice">
           <p><span id="DocumentVocabularies" class="practicelab"> Document
@@ -1067,9 +1026,8 @@ figure figcaption {
             be clearly documented. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Because a documentation defines what is within the vocabulary in
-              order to be reused or extended; The better is the documentation
-              the higher is possibility of reuse the vocabulary; </p>
+            <p> Because a documentation defines what is within the vocabulary; The better is the documentation
+              the higher is possibility of reuse the vocabulary and the datasets built with it; </p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
@@ -1077,12 +1035,11 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> The vocabulary be understandable by humans;</p>
+            <p> The vocabulary is understandable by humans;</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Through the use of Ontology Requirements Specification
-              Documents;</p>
+            <p> The vocabulary is published together with human-readable web-pages, as detailed in the recipes for serving vocabularies with HTML documents in the <a href="http://www.w3.org/TR/swbp-vocab-pub/">Best Practice Recipes for Publishing RDF Vocabularies</a>. Elements from the vocabulary are defined with attributes containing human-understandable labels and definitions, such as rdfs:label, rdfs:comment, dc:description, skos:prefLabel, skos:altLabel, skos:note, skos:definition, skos:example, etc.;</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1103,6 +1060,7 @@ figure figcaption {
             be shared in an open way </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+	  <p>To increase the usage of a data vocabulary and to help better understand the relationship of one data vocabulary to another.</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
@@ -1110,11 +1068,13 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> </p>
+            <p>To have the data vocabulary known and freely available to anyone interested in using it.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> </p>
+            <p>Provide the vocabulary under an open license such as <a href="http://xmlns.com/foaf/spec/">FOAF</a>'s <a href="http://creativecommons.org/licenses/by/1.0/">Creative Commons Attribution License</a>. Create entries for the vocabulary in repositories such as <a href="http://lov.okfn.org/">LOV</a>, 
+<a href="http://prefix.cc">Prefix.cc</a>, 
+<a href="http://bioportal.bioontology.org/">Bioportal</a> or <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup<a/>.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1154,11 +1114,72 @@ figure figcaption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Apply the versioning policy; </p>
+            <p> Different versions of a vocabulary can be easily identified; </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+	        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ReusingVocabularies" class="practicelab"> Reuse
+              vocabularies </span></p>
+          <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em>
+            be reused where possible </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> Because it provides a way to support interoperability and reduces redundancies between vocabularies which helps data creation and re-use;</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Datasets (and vocabularies) use as much as possible the same core vocabularies; </p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of BP -->
+	        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="NotOverformalizeVocabularies" class="practicelab">Do not overformalize vocabularies</span></p>
+          <p class="practicedesc">When creating or re-using a vocabulary for an application, a data publisher <em class="rfc2119">should</em> try to avoid
+            using a knowledge representation language that is unnecessarily complex for the application at hand.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Unnecessarily complex vocabularies cost more efforts to produce and are less likely to be re-used in other datasets. Resources that are equiped with a strong, formal semantics are less clear (harder to understand) for any data re-user. It will hamper comparing and linking across datasets. Highly formalized data is harder to exploit by inference engines: using an OWL class in a position where a SKOS concept is enough or using OWL classes with complex OWL axioms raises the formal complexity of the data (cf. <a href="http://www.w3.org/TR/owl2-profiles/">OWL Profiles</a>).</p>
+          </section>
+          <section class="description">
+            <p class="subhead">What</p>
+            <p> </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>The data is not more complex to produce and re-use than what is necessary;</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Identify the “role” played by the vocabulary for the datasets, say, providing classes and properties used to type resources and provide the predicates for RDF statements, as opposed to providing simple concepts or codes that are used for representing attributes of the resources described in a dataset. Represent vocabularies simpler data models, e.g. SKOS, as opposed to formal ontology languages like OWL, when simpler models are enough. See for example <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">Concept schemes and code lists</a> are used in the RDF Data Cube recommendation</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Applying an inference engine does not produce too many statements that are unnecessary for an application.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>
             </p>
           </section>
         </div>
@@ -1179,46 +1200,15 @@ figure figcaption {
           <li> <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset-20111025/">Library
               Linked Data Incubator Group</a>. </li>
         </ol>
-        <p> Others include the LOV directory, Prefix.cc, Bioportal (biological
-          domain) and the European Commission's Joinup platform.</p>
         <h3>How to choose vocabularies?</h3>
         <p> It is very important to know how to choose the vocabulary to be
           reused. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
             Checklist</a> </p>
-        <h3> How to reuse vocabularies ? </h3>
-        <p> In order to provide semantic interoperability between applications,
-          it is important to reuse well-know vocabularies wherever possible.
-          This <em class="rfc2119">should</em> be done by defining terms to be
-          shared with meaning and unambiguously.</p>
-        <!-- begin of BP -->
-        <div class="practice">
-          <p><span id="ReusingVocabularies" class="practicelab"> Reuse
-              vocabularies </span></p>
-          <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em>
-            be reused where possible </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p> Because it provides a way to support interoperability;</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Machines can automatically search and navigate on the Web; </p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p> </p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
-            </p>
-          </section>
+        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
+            Checklist</a> from the Best Practices for Publishing Linked Data overlaps quite a lot with the best practices from this section.
+	  Should we clarify the difference in positioning? Is there one?
         </div>
-        <!-- end of BP --> </section>
+      </section>
       <!-- end of Data Vocabularies -->
       <!-- begin of Data Licenses -->
       <section id="licenses">
@@ -1251,6 +1241,8 @@ figure figcaption {
 	    <li>Depending on the formats used to publish the data, publishers <em class="rfc2119">should</em> provide a URL or link to the document with the copyright statements.</li>  
 	  
  	  <li> If a publisher adds a dataset to a catalog, such as the Data Hub, publisher <em class="rfc2119">should</em> make sure which license applied to the dataset within that catalog. This gives people searching the catalog a quick and easy way of seeing that they will be able to reuse the dataset. </li>
+ </ol>
+
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
@@ -1291,7 +1283,7 @@ figure figcaption {
   		<ol>
             	<li> parsing the data looking for <code>dcterms:license</code> property, or any vocabulary describing the rights associated with a dataset; </li>
  	    	<li> looking for a link element or HTTP Link Header with a <code>@rel</code>  value of license  [[RFC4946]].</li>
- 		<ol>
+ 		</ol>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
@@ -1492,7 +1484,23 @@ figure figcaption {
       <!-- begin of Sensitive Data -->
       <section id="sensitive">
         <h3>Sensitive Data</h3>
-        <p>The section on data sensitive</p>
+        <p>Sensitive data is any designated data or metadata that is used in limited 
+           ways and/or intended for limited audiences. Sensitive data may include 
+           personal data, corporate, or government data and mishandling of published
+           sensitive data may lead to damages to individuals or organizations.  </p>
+        <p>To support best practices for publishing sensitive data, data publishers
+           <em class="rfc2119">should</em> identify all sensitive data, assess the  
+           exposure risk, determine the intended usage, data user audience and any 
+           related usage policies, obtain appropriate approval, and determine the
+           appropriate security measures needed to taken to protect the data.  
+           Appropriate security measures <em class=“rfc2119”>should</em> also account
+           for secure authentication and use of HTTPS.
+           </p>
+        <p>At times, because of sharing policies sensitive data may not be available 
+           in part or in its entirety. Data unavailability represent gaps that 
+           may effect the overall analysis of data sets.  To account for unavailable
+           data, data publishers <em class="rfc2119">should</em> publish information
+           about unavoidable data gaps.</p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span id="PreservePrivacy" class="practicelab">Preserve person's
@@ -1501,9 +1509,22 @@ figure figcaption {
             infringe a person's right to privacy. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p>Data publishers <em class="rfc2119">should</em> preserve the privacy of 
+               individuals where the release of personal information would endanger safety 
+               (unintended accidents) or security (deliberate attack).  Privacy information
+               might include:  Full name, home address, mail address, national identification 
+               number, IP address (in some cases), vehicle registration plate number, 
+               driver's license number, face, fingerprints, or handwriting, credit card numbers, 
+               digital identity, date of birth, birthplace, genetic information, telephone number, 
+               login name, screen name, nickname</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
+          <p>Data publishers <em class="rfc2119">should</em> identify all personal data, 
+             assess the exposure risk, determine the intended usage, data user audience and any 
+             related usage policies, obtain appropriate approval, and determine the
+             appropriate security measures needed to taken to protect the data including
+             secure authentication and use of HTTPS.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>

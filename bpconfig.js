@@ -34,6 +34,8 @@ var respecConfig = {
       },
       {
         value: "Ghislain A. Atemezing"
+      },
+      { value: "Eric G. Stephan"
       }]
     }],
     wg: "Data on the Web Best Practices Working Group",
