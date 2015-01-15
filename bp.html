@@ -175,7 +175,8 @@ figure figcaption {
           becomes essential to provide information about data structure,
           quality, provenance and any terms of use. The following list
           summarizes some of the main challenges faced when publishing or
-          consuming data on the Web. These challenges were identified from the <abbr
+          consuming data on the Web. These challenges were identified from the <abbr
+
             title="Data on the Web Best Practices">DWBP</abbr> Use Cases and
           Requirements [[UCR]] and are described by one or more questions.</p>
         <dl>
@@ -278,7 +279,8 @@ figure figcaption {
           <li><em>Data Archiving</em>: defines the moment when data no longer
             needs to be available on the Web. </li>
         </ul>
-        <figure id="centerImg"> <img src="images/lifecyclesvg.svg" alt="The diagram shows the different phases of the Data on the Web lifecycle"
+        <figure id="centerImg"> <img src="images/lifecyclesvg.svg" alt="The diagram shows the different phases of the Data on the Web lifecycle"
+
             width="450"><figcaption>The different phases of the Data on the Web
             lifecycle</figcaption></figure>
         <p>As proposed in [[MOLLER]], the data on the Web lifecycle model is an
@@ -300,7 +302,7 @@ figure figcaption {
         Best Practices.</p>
       <div id="tempPractice">
         <p><span id="template" class="tempPracticelab">Best Practice Template</span></p>
-        <p class="tempPracticedesc">Short description of the BP</p>
+        <p class="tempPracticedesc">Short description of the BP.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>This section answers two crucial questions:</p>
@@ -346,7 +348,8 @@ figure figcaption {
         in order to help them and data consumers to overcome the different
         challenges faced during the data on the Web lifecycle. One or more best
         practices were proposed for each one of the previously described
-        challenges. Each BP is related to one or more requirements from the <a
+        challenges. Each BP is related to one or more requirements from the <a
+
           href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best Practices
           Use Cases &amp; Requirements document.</a></p>
       <section id="metadata">
@@ -381,7 +384,7 @@ figure figcaption {
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Data on the Web <em class="rfc2119">must</em>
-            be described by metadata</p>
+            be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The Web is an open information space; in the absence of a
@@ -390,18 +393,15 @@ figure figcaption {
               by anyone other than the publisher if insufficient metadata is
               provided.</p>
           </section>
-          <section class="description">
-            <p class="subhead">What</p>
-            <p>See issue<a href="#issue115">below</a></p>
-          </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Consumers <span class="rfc2119">MUST</span> be able to:</p>
+            <p>Data consumers <span class="rfc2119">MUST</span> be able to:</p>
             <ol>
               <li>discover the data;</li>
               <li>understand the nature and structure of the data, i.e. what the
                 data describes and how it does it;</li>
-              <li>the origin of the data and under what terms it may be used.</li>
+              <li>find out the origin of the data and under what terms it may be
+                used.</li>
             </ol>
           </section>
           <section class="how">
@@ -441,16 +441,13 @@ figure figcaption {
           </section>
         </div>
         <!-- end of BP -->
-        <div class="issue" id="issue115">I don't think the 'What' section adds
-          anything. Hence <a href="https://www.w3.org/2013/dwbp/track/issues/115">Tracker
-            issue 115</a> That seeks to remove this section. It would also align
-          it with the (current) plans for Share-PSI Best Practices [<a href="http://www.w3.org/2013/share-psi/bp/cas/">Example</a>].</div>
+       
         <!-- begin of Provide Metadata in Different Formats BP -->
         <div class="practice">
           <p><span id="ProvideMetadataForms" class="practicelab"> Provide
-              metadata in different formats </span></p>
+              metadata in different formats. </span></p>
           <p class="practicedesc">Metadata <em class="rfc2119">should</em> be
-            provided for both humans and machines.</p>
+            provided for both humans and machines</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Metadata can be used by machines, notably search engines, to
@@ -460,28 +457,24 @@ figure figcaption {
               That is, it will often be a human that reads and makes a variety
               of assessments based on the metadata.</p>
           </section>
-          <section class="description">
-            <p class="subhead">What</p>
-            <p>See issue <a href="#issue115">above</a></p>
-          </section>
+      
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It <em class="rfc2119">must</em> be possible for humans to read
+            <p> Humans <em class="rfc2119">must</em> be able to read
               metadata related to a dataset.</p>
-            <p>It <em class="rfc2119">should</em> be possible for computer
-              applications, notably search tools, to locate and process the
+            <p> Computer applications, notably search tools, <em class="rfc2119">should</em> be able to locate and process the
               metadata easily.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <ul>
+            <ol>
               <li>Metadata for humans is most easily provided as part of an HTML
                 Web page.</li>
               <li>Metadata for machines is best provided either as an
                 alternative representation of the Web page in a format such as
                 Turtle or JSON-LD (for RDF) or it can be embdedded in the HTML
                 page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].</li>
-            </ul>
+            </ol>
             <p>If the multiple formats are published separately, they should be
               served from the same URL using content negotiation. Maintenance of
               multiple formats is best achieved by generating each available
@@ -500,6 +493,12 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a></p>
           </section>
         </div>
+        <div class="issue"> <p> Bernadette: Should we have requirements to evidence that metadata should also be available for humans?</p> 
+        
+          <p><a href="https://www.w3.org/2013/dwbp/track/issues/121">Tracker
+              Issue 121</a></p>
+        </div>
+        
         <!-- end of BP -->
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
@@ -554,6 +553,11 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
           </section>
         </div>
+        <div class="issue"> <p> Bernadette: The intended outcome of this BP should be reviewed. I think the intended outcome should reflect what do we expect to be possible when the BP is applied. </p>
+           <p> The approach to implementation should also be reviewed. I suggest to remove the first paragraph.</p>
+           <p><a href="https://www.w3.org/2013/dwbp/track/issues/122">Tracker
+              Issue 122</a></p>
+        </div>
         <!-- end of BP -->
         <!-- begin  Metadata Documentation BP -->
         <div class="practice">
@@ -604,6 +608,10 @@ figure figcaption {
             </p>
           </section>
         </div>
+        <div class="issue"> <p> Bernadette: I suggest to remove this BP. I think this BP is redundant with Document vocabularies Best Practice and Provide metadata in different formats BP.</p>
+        <p><a href="https://www.w3.org/2013/dwbp/track/issues/120">Tracker
+              Issue 120</a></p>
+        </div>
         <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
         <div class="practice">
@@ -613,8 +621,7 @@ figure figcaption {
             be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-                Metadata</a></p>
+            
             <p>In order to be discoverable on the Web, typically through a
               search engine or a data portal's own search function, it is
               essential to provide the kind of information that such tools need
@@ -622,11 +629,12 @@ figure figcaption {
               or lesser extent, can be processed and its content 'understood,' a
               dataset must be described and it's that description that forms the
               basis of any classification, or indexing.</p>
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
+                Metadata</a> best practice. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Datasets <em class="rfc2119">must</em> be discoverable using
-              search tools.</p>
+            <p> Search tools <em class="rfc2119">must</em> be able to discover datasets.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -658,7 +666,8 @@ figure figcaption {
               and check that the dataset is discoverable as expected since that
               is the intended outcome. However, a more structured test would be
               to ensure that the basic metadata fields listed above are filled.
-              It may be possible to machine-test this using the work of the <a
+              It may be possible to machine-test this using the work of the <a
+
                 href="http://www.w3.org/2014/data-shapes/">RDF Data Shapes</a>
               Working Group.</p>
           </section>
@@ -674,18 +683,20 @@ figure figcaption {
         <div class="practice">
           <p><span id="AdministrativeMetadata" class="practicelab">Provide
               administrative metadata</span></p>
-          <p class="practicedesc">The origin and terms of use of a dataset <em
+          <p class="practicedesc">The origin and terms of use of a dataset <em
+
               class="rfc2119">must</em> be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-                Metadata</a></p>
+            
             <p>Once a potential user has <a href="#DiscoveryMetadata">discovered</a>
               a dataset, the next questions are ones such as: do I trust it? Am
               I allowed to use it? Will it be updated? Who is maintaining it?
               And so on. The more information that is provided, the better able
               a potential user will be to decide whether he/she will actually
               use the data or not.</p>
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
+                Metadata</a> best practice </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -717,8 +728,9 @@ figure figcaption {
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>More detailed tests are provided for <a href="#licenses">Data
-                Licenses</a>, <a href="#provenance">Data Provenance</a> and <a
-                href="#quality">Data Quality</a>. Apart from a human check that
+                Licenses</a>, <a href="#provenance">Data Provenance</a>, <a
+
+                href="#quality">Data Quality</a> and <a href="#feedback">Feedback</a>. Apart from a human check that
               other administrative data has been provided, it may be possible to
               machine-test this using the work of the <a href="http://www.w3.org/2014/data-shapes/">RDF
                 Data Shapes</a> Working Group.</p>
@@ -734,7 +746,7 @@ figure figcaption {
         <!-- begin Locale Parameters BP -->
         <div class="practice">
           <p><span id="LocaleParametersMetadata" class="practicelab">Provide
-              locale parameters </span></p>
+              locale parameters metadata </span></p>
           <p class="practicedesc">Information about locale parameters (date,
             time, and number formats, language) <em class="rfc2119">should</em>
             be made available. </p>
@@ -747,6 +759,8 @@ figure figcaption {
               meanings, despite similar appearances. Making the language
               explicit allows users to determine how readily they can work with
               the data and may enable automated translation services.</p>
+             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
+                Metadata</a> best practice </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -771,7 +785,7 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
           </section>
         </div>
         <!-- end of Locale Parameters BP --> </section>
@@ -1202,7 +1216,8 @@ figure figcaption {
               comparing and linking across datasets. Highly formalized data is
               harder to exploit by inference engines: using an OWL class in a
               position where a SKOS concept is enough or using OWL classes with
-              complex OWL axioms raises the formal complexity of the data (cf. <a
+              complex OWL axioms raises the formal complexity of the data (cf. <a
+
                 href="http://www.w3.org/TR/owl2-profiles/">OWL Profiles</a>).</p>
           </section>
           <section class="description">
@@ -2208,7 +2223,8 @@ figure figcaption {
             <p class="subhead">Intended Outcome</p>
             <p>Data consumers <em class="rfc2119">should</em> be able to
               provide feedback and rate data in both human and machine-readable
-              formats. If feedback is made Web accessible then the feedback <em
+              formats. If feedback is made Web accessible then the feedback <em
+
                 class="rfc2119">must</em> provide a URL reference to the
               corresponding dataset.</p>
           </section>
