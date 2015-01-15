@@ -1398,13 +1398,13 @@ figure figcaption {
           an appropriate level of detail about its origin. The data publishers
           may not necessarily be the data provider and so collecting and
           conveying this corresponding metadata is particularly important.
-          Without provenance, data users have no inherent way to trust the
+          Without provenance, consumers have no inherent way to trust the
           integrity and credibility of the data being shared. Data publishers in
-          turn need to be aware of the needs of prospective data user
+          turn need to be aware of the needs of prospective consumer
           communities to know how much provenance detail is appropriate. </p>
         <p>Fortunately, the W3C community offers the Provenance Ontology
           [[PROV-O]] so that data publishers can formally describe data
-          provenance and methodologies so that data user can query and use
+          provenance and methodologies so that consumers can query and use
           provenance. </p>
         <!-- begin of Provide Data Provenance BP -->
         <div class="practice">
@@ -1414,7 +1414,7 @@ figure figcaption {
             be available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Without accessible data provenance data users will not know the
+            <p>Without accessible data provenance, consumers will not know the
               origin or history of the published data.</p>
             <p>Data provenance is metadata that corresponds to data. Data
               provenance relies upon existing vocabularies that make provenance
@@ -1635,7 +1635,7 @@ figure figcaption {
             compliance. </p>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Write test plan for reviewing and validating data.</p>
+            <p>Write test plan for reviewing, curating and vetting data prior to publication.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1681,26 +1681,44 @@ figure figcaption {
             explaining how or by whom the referred to data can be accessed. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p>Publishing on-line documentation about unavailable data due to sensitivity issues provides a means for 
+               publishers to identify knowledge gaps to consumer communities with a contextual explanation.</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
+            <p></p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p>For consumer human usage, data publishers <em class="rfc2119">should</em> publish an HTML 
+               document that explains data unavailibility.  From a consumer machine usage perspective, 
+               the Web HTML file could contain Turtle or JSON-LD (for RDF) or it can be embdedded in the 
+               HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].  
+            </p>   
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p>
+            <ul>
+                <li>Download a set of data</li>
+                <li>Open Web page explaining data unavailability</li>
+                <li>Write REST client to extract unavailability from web page</li>
+                <li>Determine: Is the explanation sufficient and consistent?
+            </ul>
+            </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a></p>
           </section>
         </div>
-        <!-- end of BP --> </section>
+        <!-- end of BP -->
+
+      </section>
+
       <!-- end of Data Sensitive -->
       <!-- begin of Data Access -->
       <section id="dataAccess">
