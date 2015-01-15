@@ -74,14 +74,14 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the publication and
-        usage of data on the Web designed to help support a self-sustaining
-        ecosystem. Data should be discoverable and understandable by humans and
-        machines. Where data is used in some way, whether by the originator of
-        the data or by an external party, such usage should also be discoverable
-        and the efforts of the data publisher recognized. In short, following
-        these best practices will facilitate interaction between publishers and
-        consumers.</p>
+      <p>This document provides best practices related to the
+        publication and usage of data on the Web designed to help support a
+        self-sustaining ecosystem. Data should be discoverable and
+        understandable by humans and machines. Where data is used in some way,
+        whether by the originator of the data or by an external party, such
+        usage should also be discoverable and the efforts of the data publisher
+        recognized. In short, following these best practices will facilitate
+        interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
       <p>This early version of the document shows its expected scope and future
@@ -421,15 +421,16 @@ figure figcaption {
                 was created. This vocabulary reuses much of the Dublin Core
                 Metadata set [[DC-TERMS]] that provides common terms such as
                 title, date, description, creator etc.</li>
+              <li>For RDF datasets, use Vocabulary of Interlinked Datasets (VoID)
+                  [[VOID]] to <strong>describe the dataset as a
+                  whole</strong> and the administrative environment in which it
+                was created. As DCAT, VoID uses Dublin Core Metadata set
+                to describe the dataset. It can also describe patterns of the URIs used
+                to access the resources and how multiple datasets 
+                are related and can be used together.</li>
               <li>Use an appropriate metadata schema to describe the <strong>structure
-                  of the dataset</strong>. Examples include:
-                <ul>
-                  <li>the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separated Variables">CSV</abbr>
-                    files [[TABULAR-METADATA]]</li>
-                  <li>the Vocabulary of Interlinked Datasets (VoID) for RDF
-                    datasets [[VOID]]</li>
-                </ul>
-              </li>
+                  of the dataset</strong> as, for example, the Metadata Vocabulary for Tabular Data for <abbr title="Comma Separated Variables">CSV</abbr>
+                    files [[TABULAR-METADATA]].</li>
               <li>Use the <code>dcterms:license</code> or <code>dcterms:rights</code>
                 to link a dataset to license and/or rights information.</li>
             </ul>
@@ -538,7 +539,7 @@ figure figcaption {
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Metadata is best provided using RDF vocabularies. Each term in an
               RDF vocabulary has its own HTTP URI to which labels and
-              descriptions in multiple langauges can be attached. If labels are
+              descriptions in multiple languages can be attached. If labels are
               not provided in your language, you can add them. If your context
               demands that a term be specialized, you can create a sub class or
               sub property but retain the benefits of the original vocabulariy's
@@ -615,7 +616,7 @@ figure figcaption {
           <p><span id="DiscoveryMetadata" class="practicelab">Provide discovery
               metadata</span></p>
           <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
-            be described my metadata.</p>
+            be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
@@ -645,7 +646,7 @@ figure figcaption {
               <li>The <strong>title</strong> and a <strong>description</strong>
                 of the data.</li>
               <li>The <strong>format(s)</strong> in which the data be
-                downloaded e.g. XML, CSV, TSV, JSON, JSON-LD, RDF/XML, Turtle,
+                downloaded (e.g. XML, CSV, TSV, JSON, JSON-LD, RDF/XML, Turtle,
                 N-Triples etc.)</li>
               <li>Any <strong>variants</strong> (e.g. different human-language
                 translations) of data.</li>
@@ -682,7 +683,7 @@ figure figcaption {
               administrative metadata</span></p>
           <p class="practicedesc">The origin and terms of use of a dataset <em
 
-              class="rfc2119">must</em> be described my metadata.</p>
+              class="rfc2119">must</em> be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
@@ -738,7 +739,46 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
           </section>
         </div>
-        <!-- end of BP --> </section>
+        <!-- end of BP --> 
+      <!-- begin Locale Parameters BP -->
+        <div class="practice">
+          <p><span id="LocaleParametersMetadata" class="practicelab">Provide
+              locale parameters </span></p>
+          <p class="practicedesc">Information about locale parameters (date, time, and number formats, language) <em class="rfc2119">should</em> be made available. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Some data fields differ subtly but significantly with changes in locale. Providing information 
+              about the locality for which the data is currently published aids data users in interpreting its meaning. 
+              Date, time, and number formats can have very different meanings, despite similar appearances. 
+              Making the language explicit allows users to determine how readily they can work with 
+              the data and may enable automated translation services.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Users working with the data in a locale that differs from that in which it was originally 
+              published <em class="rfc2119">should</em> be able to interpret the meaning of the data accurately. 
+              Errors in dates, times, and numbers will be avoided.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Provide locale metadata for date, time, and number fields, and include the language in which 
+              the data is published in the dataset metadata. Where an international format specification exists, 
+              e.g., ISO 8601 for dates and times, use it. </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Check that the metadata for the dataset itself includes the language in which it is published and that all 
+              numeric, date, and time fields have locale metadata provided either with each field or as a general rule. </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></p>
+          </section>
+        </div>
+        <!-- end of Locale Parameters BP -->
+      </section>
+      
+      
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
@@ -1192,7 +1232,8 @@ figure figcaption {
             associated with a license.</p>
           <div class="axioms">
             <p class="subhead">Why</p>
-            <p> Licenses are essential to determine what are the permissions when reusing data by  consumers or other publishers. </p>
+            <p> Licenses are essential to determine what are the permissions
+              when reusing data by consumers or other publishers. </p>
           </div>
           <div class="description">
             <p class="subhead">Intended outcome</p>
@@ -1285,9 +1326,10 @@ figure figcaption {
           integrity and credibility of the data being shared. Data publishers in
           turn need to be aware of the needs of prospective data user
           communities to know how much provenance detail is appropriate. </p>
-        <p>Fortunately, the W3C community offers the Provenance Ontology [[PROV-O]]
-          so that data publishers can formally describe data provenance and
-          methodologies so that data user can query and use provenance. </p>
+        <p>Fortunately, the W3C community offers the Provenance Ontology
+          [[PROV-O]] so that data publishers can formally describe data
+          provenance and methodologies so that data user can query and use
+          provenance. </p>
         <!-- begin of BP -->
         <div class="practice">
           <p><span id="ProvideDataProvenance" class="practicelab">Provide Data
@@ -1296,30 +1338,39 @@ figure figcaption {
             be available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Without accessible data provenance data users will not know the origin or history of the published data.</p>
+            <p>Without accessible data provenance data users will not know the
+              origin or history of the published data.</p>
           </section>
           <section class="description">
             <p class="subhead">What</p>
-            <p>Data provenance is metadata that corresponds to data.  Data provenance relies upon existing vocabularies
-               that make provenance easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
+            <p>Data provenance is metadata that corresponds to data. Data
+              provenance relies upon existing vocabularies that make provenance
+              easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>If data is published with data provenance, then the data provenance <em class="rfc2119">must</em> provide a URL reference to the published data.</p>
+            <p>If data is published with data provenance, then the data
+              provenance <em class="rfc2119">must</em> provide a URL reference
+              to the published data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Data provenance can be published in a number of ways:</p>
             <ul>
-              <li>Use the Provenance Ontology [[PROV-O]] to describe data provenance.</li>
-              <li>Use an appropriate level of detail that will be meaningful to the intended audience. </li>
-              <li>Write the data provenance in either a machine readable form such as Turtle or RDF/XML or embed 
-                  provenance in an HTML page using [[JSON-LD]], or [[HTML-RDFA]] </li>
+              <li>Use the Provenance Ontology [[PROV-O]] to describe data
+                provenance.</li>
+              <li>Use an appropriate level of detail that will be meaningful to
+                the intended audience. </li>
+              <li>Write the data provenance in either a machine readable form
+                such as Turtle or RDF/XML or embed provenance in an HTML page
+                using [[JSON-LD]], or [[HTML-RDFA]] </li>
               <li>Verify that the data provenance references published data</li>
+            </ul>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Use a [[PROV-O]] validator or inspect the provenance in the HTML page. </p>
+            <p>Use a [[PROV-O]] validator or inspect the provenance in the HTML
+              page. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1532,26 +1583,70 @@ figure figcaption {
       <!-- begin of Data Access -->
       <section id="dataAccess">
         <h3>Data Access</h3>
-        <p>The section on licenses</p>
-        <!-- begin of BP -->
+        <p>Providing an easy access to data on the Web enable both humans and
+          machines to take advantage of the benefits of sharing data on top of
+          the Web infrastructure. By default, the web offers access using
+          Hypertext Transfer Protocol (HTTP) methods. This provides access to
+          data at an atomic transaction level. However, when data is distributed
+          across multiple files or requires more sophisticated retrieval methods
+          different approaches can be adopted to enable data access, including:
+          bulk download and APIs (Application Programming Interfaces). </p>
+        <p>One approach is packaging data in bulk using non-proprietary file
+          formats(for example zip files or tar files). Using this approach, bulk
+          data is generally pre-processed server side where multiple files or
+          directory trees of files are provided as one downloadable file. When
+          bulk data is being retrieved from non-file system solutions, depending
+          on the data user communities, data publisher should offer APIs to
+          support a series of retrieval operations representing a single
+          transaction.</p>
+        <p>For data that is streaming to the web in “real time” or “near real
+          time”, data publishers must publish data or use APIs to enable
+          immediate access to data, allowing access to critical time sensitive
+          data, such as emergency information, weather forecasting data, or
+          published system metrics. For all data on the web, APIs should be
+          available to allow third parties to automatically search and retrieve
+          data published on the Web. </p>
+        <p> This section provides some BP to be followed by data publishers in
+          order to enable easy data access for data consumers.</p>
+        <!-- begin of BP Bulk Access-->
         <div class="practice">
           <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
           <p class="practicedesc">Data <em class="rfc2119">should</em> be
             available for bulk download. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Bulk access provides a simple way of publishing data encouraging
+              data publishers to release full datasets and enabling data
+              consumers to download large amounts of data at once.
+            </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> It <em class="rfc2119">should</em> be possible for consumers to
+              download data on the web in bulk. Data publishers <em class="rfc2119">should</em>
+              provide a way either through bulk file formats or APIs for
+              consumers to access this type of data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <ol>
+              <li> Create a collection of data files, archive the collection
+                using a zip or tar and compress if possible. <br>
+                Create a README file describing the contents of the bulk file. <br>
+                Make the bulk file available on the Web. </li>
+              <li> Create a database or SPARQL endpoint and populate with data.
+                <br>
+                Create REST service that relies upon the HTTP GET method as a
+                wrapper around a database API that performs a complex database
+                retrieval transaction. </li>
+            </ol>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
+            <ul>
+              <li> Try to download the files. </li>
+              <li> Try to use REST service. </li>
+            </ul>
             <p> </p>
           </section>
           <section class="ucr">
@@ -1559,8 +1654,42 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of BP Bulk Access -->
+	<!-- begin of BP Bulk Access 2-->
+		  <div class="practice">
+		    <p><span id="BulkAccess2" class="practicelab">Follow REST principles when designing APIs</span></p>
+		    <p class="practicedesc">Where there is data accessible throught an API, this application programming interface <em class="rfc2119">should</em> follow REST (Representational State Transfer) architectural approaches. </p>
+		    <section class="axioms">
+		      <p class="subhead">Why</p>
+			<p>Considering RESTful architectural aspects when designing an APIs can guarantee easier development, use of pre existing infrastructure (web), shorter learning curve for developers that want to access data on web applications. Also, Its a way to assure sustainability because "the technologies that make up this foundation include the Hypertext Transfer Protocol (HTTP), Uniform Resource Identifier (URI), markup languages such as HTML and XML, and web-friendly formats"[[RICHARDSON]]. Furthermore it can mitigate the use of specific clients or the need of UDDI use (Universal Description, Discovery and Integration).</p>
+			 </section>
+		    <section class="description">
+		      <p class="subhead">What</p>
+		      <p> APIs are frequently constructed over different approaches, like SOAP, for example. For data on the Web context, the architecture of the web itself described at the documentation of REST architectural style, offers the same entry for humans and machines to access data. If humans already have access to data in URLs, it can be also structured for offering multiple representations for formats and use content negotiation between applications easily, for example. 
+			</p>
+		    </section>
+		    <section class="outcome">
+		      <p class="subhead">Intended Outcome</p>
+			<ul>
+			<li> It <em class="rfc2119">should</em> be possible for machines to negotiate content using URLs.
+	  		<li> It <em class="rfc2119">should</em> be possible for developers to access data using browser as a client.
+		 </ul>
+		    </section>
+		    <section class="how">
+		      <p class="subhead">Possible Approach to Implementation</p>
+		      <p></p>
+		    </section>
+		    <section class="test">
+		      <p class="subhead">How to Test</p>
+		      <p>Use API testing tools to compare benefits of implementing RESTful design.</p>
+		    </section>
+		    <section class="ucr">
+		      <p class="subhead">Evidence</p>
+		      <p><span>Relevant requirements</span>: <a href="https://w3c.github.io/dwbp/usecasesv1.html#R-AccessBulk">R-AccessBulk</a></p>
+		    </section>
+		  </div>
+		  <!-- end of BP BulkAccess 2--> 
+        <!-- begin of BP Access Real-time-->
         <div class="practice">
           <p><span id="AccessRealTime" class="practicelab">Provide real-time
               access </span></p>
@@ -1568,66 +1697,94 @@ figure figcaption {
             be available on the Web in real-time. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Providing real-time access data enables access to critical time
+              sensitive data whenever is required, encouraging the development
+              of real-time based applications. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> Data <em class="rfc2119">should</em> be available at real time
+              or near real time, where real-time means a range from milliseconds
+              to a few seconds after the data creation, and near real time is a
+              predetermined delay for expected data delivery. </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Implement a Web API to enable data access either using a live
+              streaming data source or mockup a synthetic data source to
+              simulate real or near real time data. A mockup could be as simple
+              as a looping script that reads data from one file and populates
+              the “real time” source. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <ul>
+              <li>Write test client to use real-time access API. </li>
+              <li> Start or setup real-time data source that provides a real
+                time data date/time stamp.</li>
+              <li> Log real time data date/time stamp and record corresponding
+                test client date/time stamp.</li>
+              <li> Verify time difference between each successful access attempt
+                and the real time data date/time stamp.</li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of BP -->
+        <!-- end of BP Access Real-time-->
+        <!-- begin of BP Access Up to date -->
         <div class="practice">
           <p><span id="AccessUptoDate" class="practicelab">Provide data up to
               date </span></p>
-          <p class="practicedesc"> Data <em class="rfc2119">should</em> be
+          <p class="practicedesc"> Data <em class="rfc2119">must</em> be
             available in an up-to-date manner and the update cycle made
             explicit. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p> Data on the Web availability should closely coincide with data
+              provided at creation time, collection time, or after it has been
+              processed or changed. Carefully synchronizing data publication to
+              the update cycle encourages data consumer confidence and reuse.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> When new data is provided or data is updated, it <em class="rfc2119">must</em>
+              be published to coincide with the data changes.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p> Implement an API to enable data access. <br>
+              When data is provided by bulk access, new files with new data
+              should be provided as soon as additional data is created or
+              updated. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> </p>
+            <p> Write test standard operating procedure for data publisher to
+              keep test data on web site up to date.</p>
+            <p> Following standard operating procedure:</p>
+            <ul>
+              <li> Write test client to access published data. </li>
+              <li> Access data and save first copy locally. </li>
+              <li> Publish an updated version of data.</li>
+              <li> Access data and save second copy locally.</li>
+              <li> Compare first copy to second copy to verify change.</li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a></p>
           </section>
         </div>
-        <!-- end of BP -->
-        <div class="issue"> I am not sure if <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a>
-          is a requirement for Data Access.
-          <p><a href="https://www.w3.org/2013/dwbp/track/issues/112">Tracker
-              Issue 112</a></p>
-        </div>
+        <!-- end of BP Access Up to date-->
+       
       </section>
       <!-- end of Data Access -->
       <!-- begin of Data Versioning -->
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
-        
       </section>
       <!-- end of Data Versioning -->
       <section id="dataPreservation">
@@ -1661,20 +1818,16 @@ figure figcaption {
         <div class="practice">
           <p><span id="list_resources" class="practicelab">Maintain a list of
               resources described in a dataset</span></p>
-          <p class="practicedesc">A dataset should be preserved together with a
+            <p class="practicedesc">A dataset <em class="rfc2119">should</em> be preserved together with a
             list of all the resources it describes</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>Web data is about the description of resources identified with
-                a IRI.</li>
-              <li>It is to be expected that queries made by data consumers will
+            <p>
+              Web data is about the description of resources identified with
+                a IRI.It is to be expected that queries made by data consumers will
                 resolve around finding a preserved description about a
-                particular resource.</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+                particular resource.
+            </p>
             <p>Web data is essentially about the description of entities
               identified by a unique, Web-based, identifier (a URI). Once the
               data is dumped and sent to a institute specialised in digital
@@ -1685,7 +1838,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>A list of resources described in a dataset</p>
+            <p>It <em class="rfc2119">should</em> be possible to look for a preserved dataset based on the resources contained in it.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1702,26 +1855,22 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
           </section>
         </div>
         <div class="practice">
           <p><span id="evaluate" class="practicelab">Assess dataset coverage</span></p>
-          <p class="practicedesc">The coverage of a dataset should be assessed
+            <p class="practicedesc">The coverage of a dataset <em class="rfc2119">should</em> be assessed
             prior to its preservation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>A chunk of Web data is by definition dependent on the rest of
+            <p>A chunk of Web data is by definition dependent on the rest of
                 the global graph. This global context influences the meaning of
-                the description of the resources found in the dataset.</li>
-              <li>Ideally, the preservation of a particular dataset would
+                the description of the resources found in the dataset.
+              Ideally, the preservation of a particular dataset would
                 involve preserving all its context. That is the entire Web of
-                Data.</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+                Data.
+            </p>
             <p>At ingestion time an evaluation of the linkage of Web data
               dataset dump to already preserved resources is assessed. The
               presence of all the vocabularies and target resources in uses is
@@ -1753,28 +1902,24 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-VocabReference">R-VocabReference</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></p>
           </section>
         </div>
         <div class="practice">
-          <p><span id="serialisation" class="practicelab">Data dumps <em class="rfc2119">should</em>
+          <p><span id="serialisation" class="practicelab">Preserved data dumps must
               use a trusted serialisation format</span></p>
           <p class="practicedesc">Data depositors willing to send a datadump for
-            long term preservation <em class="rfc2119">should</em> use a well
+            long term preservation <em class="rfc2119">must</em> use a well
             established serialisation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>Web data is a abtract data model that can be expressed in
-                different ways (RDF, JSON-LD, ...)</li>
-              <li>Using a well established serialisation of this data increases
-                its chances of re-use</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p>Web data is a abtract data model that can be expressed in
+                different ways (RDF, JSON-LD, ...).
+              Using a well established serialisation of this data increases
+                its chances of re-use.
+            </p>
             <p>Institute doing digital preservation are tasked with monitoring
-              file format obsolescence. Datasets which have been acquierd in
+              file format obsolescence. Datasets which have been acquired in
               some format some years ago may have to be converted into another
               format in order to still be usable with more modern software (see
               [[ROSENTHAL]]). This tasks can be made more challenge, or even
@@ -1783,6 +1928,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+              <p>The dataset can still be read and loaded into a data base even after the support for the software that produced it dropped.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1800,7 +1946,7 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-Archive">R-Archive</a></p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-Archive">R-Archive</a></p>
           </section>
         </div>
         <div class="practice">
@@ -1810,14 +1956,10 @@ figure figcaption {
             be linked with their "live" counterparts</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <ul>
-              <li>URI dereferencing is a primary interface to Web data</li>
-              <li>Linking preserved datasets with resolving URI inform the data
-                consumer of the status of these resources</li>
-            </ul>
-          </section>
-          <section class="description">
-            <p class="subhead">What</p>
+            <p>URI dereferencing is a primary interface to Web data.
+              Linking preserved datasets with resolving URI inform the data
+                consumer of the status of these resources.
+            </p>
             <p>During its live cycle a Web data dataset may undergo several
               modifications. Although IRIs assigned to things are not expected
               to change, the description of these resource will evolve over
@@ -1866,8 +2008,8 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://w3c.github.io/dwbp/usecasesv1.html#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
-              <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-PersistentIdentification">
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">
                 R-PersistentIdentification</a></p>
           </section>
         </div>
@@ -1876,9 +2018,88 @@ figure figcaption {
       <!-- begin Feedback -->
       <section id="feedback">
         <h3>Feedback</h3>
-        <p>The feedback section</p>
-       
-      </section>
+        <p>Publishing data on the Web enables data sharing on a large scale,
+          providing data access to a wide range of audiences with different
+          levels of expertise. Data publishers want to ensure that the data
+          published is meeting the data consumer needs and user feedback is
+          crucial. Feedback has benefits for both data publishers and data
+          consumers, helping data publishers to improve the integrity of their
+          published data, as well as to encourage the publication of new data.
+          Feedback allows data consumers to have a voice describing usage
+          experiences (e.g. applications using data), preferences and needs.
+          When possible, feedback should also be publicly available for other
+          data consumers to examine. Making feedback publicly available, allows
+          users to become aware of other data consumers, supports a
+          collaborative environment, and allows user community experiences,
+          concerns or questions are currently being addressed.</p>
+        <p> From a user interface perspective there are different ways to gather
+          feedback from data consumers, including site registration, contact
+          forms, quality ratings selection, surveys and comment boxes for
+          blogging. From a machine perspective the data publisher can also
+          record metrics on data usage or information about specific
+          applications consumers are currently relying upon. Feedback such as
+          this establishes a line of communication channel between data
+          publishers and data consumers. In order to quantify and analyze usage
+          feedback, it should be recorded in a machine-readable format.Blogs and
+          other publicly available feedback should be displayed in a
+          human-readable form through the user interface. </p>
+        <p> This section provides some BP to be followed by data publishers in
+          order to enable data consumers to provide feedback about the consumed
+          data. This feedback can be for humans or machines. </p>
+        <!-- begin of BP Gather Feedback -->
+        <div class="practice">
+          <p><span id="GatherFeedback" class="practicelab">Gather feedback from
+              data consumers </span></p>
+          <p class="practicedesc"> Data consumers <em class="rfc2119">should</em>
+            have a way of sharing feedback and rating data.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Providing feedback contributes to improve the quality of
+              published data, may encourage publication of new data, helps data
+              publishers understand data consumers needs better, and when
+              feedback is made publicly available enhances the consumers
+              collaborative experience. </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Data consumers <em class="rfc2119">should</em> be able to
+              provide feedback and rate data in both human and machine-readable
+              formats. If feedback is made Web accessible then the feedback <em
+
+                class="rfc2119">must</em> provide a URL reference to the
+              corresponding dataset.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Provide data consumers including but not limited to: registration
+              form, contact form, point and click data quality rating buttons,
+              or a comment box for blogging.</p>
+            <p> Collect feedback in machine-readable formats to represent the
+              feedback and use a vocabulary to capture the semantics of the
+              feedback information. The definition of a Data Usage Vocabulary is
+              included in the activity of the DWBP group in order to support in
+              the implementation of this best practice. </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <ul>
+              <li>Demonstrate using an HTML form how feedback can be collected
+                from data consumers. </li>
+              <li> Verify that the feedback is persistently stored. If the
+                feedback is made publicly available verify that a URL links back
+                to the published data being referenced.</li>
+              <li> Check that the feedback format conforms to a known
+                machine-readable format specification in current use among
+                anticipated data users. </li>
+            </ul>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
+          </section>
+        </div>
+        <!-- end of BP Gather Feedback --> </section>
       <!-- end Feedback -->
       <!-- end best practices --> </section>
     <section id="conclusions">
