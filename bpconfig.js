@@ -1,4 +1,4 @@
-var respecConfig = {
+﻿var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
     //publishDate:  "2014-03-27",
@@ -11,7 +11,7 @@ var respecConfig = {
     editors: [
     {
       name: "Bernadette Farias Lóscio",
-      company: "Centro de Informática - Universidade Federal de Pernambuco, Brazil",
+      company: "CIn - UFPE, Brazil",
       companyURL: "http://www.cin.ufpe.br/"
     }, {
 			name: "Caroline Burle",
@@ -26,16 +26,41 @@ var respecConfig = {
     {
       key: "Contributors",
       data: [
+      { 
+        value: "Annette Greiner"
+      },
+      { 
+        value: "Antoine Isaac"
+      },      
+      { 
+        value: "Carlos Laufer"
+      },
       {
         value: "Christophe Guéret"
       },
-      {
-        value: "Phil Archer"
+      { 
+        value: "Eric G. Stephan"
       },
+      { 
+        value: "Eric Kauz"
+      },      
       {
         value: "Ghislain A. Atemezing"
       },
-      { value: "Eric G. Stephan"
+      { 
+        value: "Ig Ibert Bittencourt"
+      },   
+      {
+        value: "Phil Archer"
+      },
+      { 
+        value: "Riccardo Albertoni"
+      },
+      { 
+        value: "Sumit Purohit"
+      },   
+      { 
+        value: "Yasodara Córdova"
       }]
     }],
     wg: "Data on the Web Best Practices Working Group",
