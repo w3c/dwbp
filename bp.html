@@ -204,9 +204,9 @@ figure figcaption {
           <dt>Data Quality</dt>
           <dd><em>How can data quality information about data on the Web be
               provided/gathered?</em></dd>
-          <dt>Data Granularity</dt>
+          <!--<dt>Data Granularity</dt>
           <dd><em>How can publishers decide what kind of data granularity is
-              most appropriate when publishing data on the Web?</em></dd>
+            most appropriate when publishing data on the Web?</em></dd> -->
           <dt>Sensitive Data</dt>
           <dd><em>How can data be published without infringing a person's right
               to privacy or an organization's security?</em></dd>
@@ -597,8 +597,7 @@ figure figcaption {
               documenting this can often make the policies used more explicit,
               thereby reducing surprises and increasing confidence among users.</p>
             <p>Documentation is particularly important where vocabularies have
-              been created or extended from existing standards (see <a href="dataVocabularies">Data
-                Vocabularies</a>).</p>
+              been created or extended from existing standards (see <a href="dataVocabularies">Data Vocabularies</a>).</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -831,6 +830,9 @@ figure figcaption {
           basic identification and comparison processes by the different stakeholders 
           in a reliable way. These will be essential pre-conditions for proper data 
           management and to facilitate reuse.</span></p>
+        <div class="issue">
+          <p>It's needed to include the the BPs for this section</p>
+        </div>
         <!-- begin of BP 
         <div class="practice">
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
@@ -865,7 +867,7 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </div>
-        </div>
+        </div> -->
         <!-- end of BP --> </section>
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
@@ -1139,7 +1141,7 @@ figure figcaption {
         </div>
         <!-- end of Share Open Vocabularies BP -->
         <!-- begin of BP -->
-        <!--<div class="practice">
+        <div class="practice">
           <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary              versioning </span></p>
           <p class="practicedesc"> Vocabularies <em class="rfc2119">should</em>            include versioning information </p>
           <section class="axioms">            <p class="subhead">Why</p>
@@ -1156,9 +1158,10 @@ figure figcaption {
           </section>          <section class="ucr">
             <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>
             </p>          </section>
-        </div>         <!-- end of BP -->
+          </div>         
+          <!-- end of BP -->
         <!-- begin of Reuse Vocabularies BP -->
-        <!-- <div class="practice">
+        <div class="practice">
           <p><span id="ReusingVocabularies" class="practicelab"> Reuse              vocabularies </span></p>
           <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em>            be reused where possible </p>
           <section class="axioms">            <p class="subhead">Why</p>
@@ -1173,7 +1176,8 @@ figure figcaption {
           </section>          <section class="ucr">
             <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
             </p>          </section>
-        </div>        <!-- end of BP -->
+          </div>
+          <!-- end of BP -->
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
           <p><span id="NotOverformalizeVocabularies" class="practicelab">Do not
@@ -1555,6 +1559,7 @@ figure figcaption {
             </div>
        
       </section>
+      <!-- 
       <!-- end of Data Quality -->
       <!-- begin of Data Granularity -->
       <section id="granularity">
@@ -1563,6 +1568,7 @@ figure figcaption {
         
       </section>
       <!-- end of Data Granularity -->
+      -->
       <!-- begin of Sensitive Data -->
       <section id="sensitive">
         <h3>Sensitive Data</h3>
@@ -1949,8 +1955,7 @@ figure figcaption {
         <h3>Data Versioning</h3>
         <!-- begin of provide Versioning Info BP -->
         <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Provide
-              Versioning Information</span></p>
+          <p><span id="provideVersioningInfo" class="practicelab">Provide versioning information</span></p>
           <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
             be assigned a version number or, at a minimum, a version date, and
             that identifier <em class="rfc2119">should</em> be distributed with
@@ -1974,12 +1979,8 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Include a version number in the metadata for the dataset. The
-              numbering scheme could be multipart, each part representing a
-              level of difference from the previous version. For example, a
-              change from 1.0 to 1.1 could reflect only changes to data values,
-              while a change from 1.0 to 2.0 could reflect changes to the
-              schema. Also provide a description of what has changed since the
+            <p>Include a version number in the metadata for the dataset. The [[SchemaVer]] can be used as numbering scheme for version of the dataset.</p>
+            </p>Also provide a description of what has changed since the
               previous version. If the data is made available through an API,
               the URI used to request the latest version of the data should not
               change as the versions change, but it should be possible to

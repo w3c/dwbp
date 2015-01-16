@@ -139,6 +139,12 @@
         date: "2007",
         status: "O'Reilly Media"
       },
+      "SchemaVer": {
+        title: "Introducing SchemaVer for semantic versioning of schemas",
+        authors: ["Alex Dean"],
+        date: "2014",
+        href: "http://snowplowanalytics.com/blog/2014/05/13/introducing-schemaver-for-semantic-versioning-of-schemas/"
+      },
 
       "ld-bp":{
         "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
