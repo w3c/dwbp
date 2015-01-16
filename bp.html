@@ -827,38 +827,49 @@ figure figcaption {
           system of identification will be required to enable data persistency and
           reuse, being a crucial element for the process of data sharing and 
           connecting.</p> 
-          <p>Just by adopting a common identification system we are making possible 
-          basic identification and comparison processes by the different stakeholders 
-          in a reliable way. These will be essential pre-conditions for proper data 
-          management and to facilitate reuse.</span></p>
-        <!-- begin of BP 
+           <!-- begin of Unique Identifiers BP -->
         <div class="practice">
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
               unique identifiers</span></p>
           <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
-            be identified by a persistent HTTP IRI. </p>
+            be clearly associated with an unique identifier that represents it. </p>
           <div class="axioms">
             <p class="subhead">Why</p>
-            <p>The architecture of the World Wide Web [[WEBARCH]] is based on
-              links between resources based on globally unique identifers. They
-              can identify people, places and concepts just as much as the more
-              familiar URL identifiers for Web pages, images etc. HTTP IRIs, the
-              internationalized version of URIs, themsleves a super-set of URLs,
-              are a fundamental aspect of the Web.</p>
-            <p>IRIs should not change over time so that references remain valid.</p>
+            <p>Just by adopting a common identification system we are making possible basic data identification and comparison processes by the different stakeholders in a reliable way. These will be essential pre-conditions for proper data management and to facilitate reuse.</p>
           </div>
           <div class="description">
-            <p class="subhead">What</p>
-            <p> </p>
             <p class="subhead">Intended outcome</p>
-            <p>Data <em class="rfc2119">must</em> be discoverable and citable.</p>
+            <p>A number of basic requirements <em class="rfc2119">should</em> be fulfilled during the definition of an identification system:</p>
+	    <ol>
+		<li>Ensure that any data resource can be identified by its unique identifier.</li>
+		<li>The resource identifier needs to remain persistent along time, regardless the status of the associated resource.</li>
+		<li>Use always a consistent and uniform, but also flexible and extensible, structure for the composition of identifiers.</li>
+		<li>Identifiers should remain as much neutral as possible (technically, idiomatically, culturally, semantically, etc.)<li>
+	   </ol>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+	     <p>The architecture of the World Wide Web [[WEBARCH]] is based on
+              links between resources based on a single global identification system for this purpose: the 
+		[[URI]]. URIs are a cornerstone of Web architecture, providing identification 
+		for people, places or concepts that is common across the Web.</p>
+	    <p>Some best practices to adopt while using URIs as a data identification system are:</p> 
+		<ul>
+		<li>Associate every data resource with an unique identifier using a representational URI.</li>
+		<li>Use the HTTP protocol to ensure that the resolution of any URI on the Web is possible.</li>
+		<li>When someone looks up an identifier URI, provide always useful information or metadata.</li>
+		<li>Build standard URIs that follow a well-defined and extensible scheme or pattern to provide consistency and uniformity.</li>
+		<li>Avoid broken URIs. In the event that a resource has been modified or deleted, 
+		those changes must be communicated using the appropriate [[HTTP status codes]]. 
+		If the resource has change location HTTP 3XX codes should be used, 
+		whereas if the resource has been deleted a HTTP 410 code will be used. <li>
+		<li>Do not expose information on the technical implementation of the resources represented by the URI. 
+		Any information about the underlying technology should be omitted (e.g. file extensions).</li>
+		</ul>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
-            <p>Apply the design rules.</p>
+            <p>Verify that there is a documented scheme of web identifiers for the data in question. For any of the existing identifiers test that the associated data can always be retrieved by means of its identifier and in a technologically neutral way.</p>
           </div>
           <div class="ucr">
             <p class="subhead">Evidence</p>
@@ -866,7 +877,7 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </div>
         </div>
-        <!-- end of BP --> </section>
+        <!-- end of Unique Identifiers BP --> </section>
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
       <section id="dataFormats">
