@@ -296,9 +296,8 @@ figure figcaption {
       </section>
     </section>
     <div class="issue">
-      <p> Should we Include a section to present a glossary
-        with definitions (or link to existing definitions) of the main terms
-        used in the doc ? </p>
+      <p> Should we Include a section to present a glossary with definitions (or
+        link to existing definitions) of the main terms used in the doc ? </p>
       <p><a href="https://www.w3.org/2013/dwbp/track/issues/52">Tracker Issue 52</a></p>
     </div>
     <section id="bp-template">
@@ -358,10 +357,7 @@ figure figcaption {
           href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best Practices
           Use Cases &amp; Requirements document.</a></p>
       <!-- <div class="issue">
-        <p> Bernadette: Include a paragraph to explain the relation between DWBP
-          and Best Practices for Publishing Linked Data.</p>
-        <p><a href="https://www.w3.org/2013/dwbp/track/issues/125">Tracker Issue
-            125</a></p>
+        <p> Bernadette: Include a paragraph to explain the relation between DWBP          and Best Practices for Publishing Linked Data.</p>        <p><a href="https://www.w3.org/2013/dwbp/track/issues/125">Tracker Issue            125</a></p>
       </div> -->
       <section id="metadata">
         <h3>Metadata</h3>
@@ -621,8 +617,9 @@ figure figcaption {
           </section>
         </div>
         <div class="issue">
-          <p> Bernadette: This BP must be reviewed. It is redundant with Document vocabularies BP and Provide metadata in
-            different formats BP.</p>
+          <p> Bernadette: This BP must be reviewed. It is redundant with
+            Document vocabularies BP and Provide metadata in different formats
+            BP.</p>
           <p><a href="https://www.w3.org/2013/dwbp/track/issues/120">Tracker
               Issue 120</a></p>
         </div>
@@ -803,13 +800,8 @@ figure figcaption {
         </div>
         <!-- end of Locale Parameters BP -->
         <!--<div class="issue">
-          <p> Bernadette: Review the specialization hierarchy between Provide
-            Metadata BP and other BP. Provide Data Provenance BP, Provide Data
-            License BP and Provide Data Quality information BP should be a
-            specialization of Provide Metadata BP or Provide Administrative
-            Metadata BP? ). </p>
-        </div> -->
-      </section>
+          <p> Bernadette: Review the specialization hierarchy between Provide            Metadata BP and other BP. Provide Data Provenance BP, Provide Data            License BP and Provide Data Quality information BP should be a            specialization of Provide Metadata BP or Provide Administrative
+            Metadata BP? ). </p>        </div> --> </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
@@ -825,27 +817,55 @@ figure figcaption {
           possible basic identification and comparison processes by the
           different stakeholders in a reliable way. These will be essential
           pre-conditions for proper data management and to facilitate reuse.</p>
-        <div class="issue">
-          <p>It's needed to include the the BPs for this section</p>
+        
+        <!-- begin of BP -->
+        <div class="practice">
+          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
+              unique identifiers</span></p>
+          <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
+            be identified by a persistent HTTP IRI. </p>
+          <div class="axioms">
+            <p class="subhead">Why</p>
+            <p>The architecture of the World Wide Web [[WEBARCH]] is based on
+              links between resources based on globally unique identifers. They
+              can identify people, places and concepts just as much as the more
+              familiar URL identifiers for Web pages, images etc. HTTP IRIs, the
+              internationalized version of URIs, themsleves a super-set of URLs,
+              are a fundamental aspect of the Web.</p>
+            <p>IRIs should not change over time so that references remain valid.</p>
+          </div>
+          <div class="description">
+            
+            <p class="subhead">Intended outcome</p>
+            <p>Data <em class="rfc2119">must</em> be discoverable and citable.</p>
+          </div>
+          <div class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> A Uniform Resource Identifier (URI) is a compact sequence of characters that identifies an abstract or physical resource
+              [[!RFC3986]]. One should aim for compact mnemonic URI: human and machine friendly. The function of URI is to identify and it 
+              does not need to carry sematics, though mnemonics: is recommended. </p>
+
+             <p> Internationalized Resource Identifiers (IRIs) [[!RFC3987]] should be used when needed. 
+               The use of URI or IRIs depents on the intended audience. For global a audience one should use language and 
+               cultural neutral URIs; for local a audience one could use IRIs.</p>
+            
+            <pre title="URI and IRIs" class="highlight example">
+              http://example.com/ä¸­å›½                  # For Chinese speaker: good mnemonic - non-Chinese speakers: bad mnemonic
+              http://example.com/china                 # For Chinese speaker: acceptable - non-Chinese speakers: better
+            </pre>
+            
+          </div>
+          <div class="test">
+            <p class="subhead">How to Test</p>
+            <p>Apply the design rules.</p>
+          </div>
+          <div class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
+          </div>
         </div>
-        <!-- begin of BP 
-        <div class="practice">          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
-              unique identifiers</span></p>          <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
-            be identified by a persistent HTTP IRI. </p>          <div class="axioms">
-            <p class="subhead">Why</p>            <p>The architecture of the World Wide Web [[WEBARCH]] is based on
-              links between resources based on globally unique identifers. They              can identify people, places and concepts just as much as the more
-              familiar URL identifiers for Web pages, images etc. HTTP IRIs, the              internationalized version of URIs, themsleves a super-set of URLs,
-              are a fundamental aspect of the Web.</p>            <p>IRIs should not change over time so that references remain valid.</p>
-          </div>          <div class="description">
-            <p class="subhead">What</p>            <p> </p>
-            <p class="subhead">Intended outcome</p>            <p>Data <em class="rfc2119">must</em> be discoverable and citable.</p>
-          </div>          <div class="how">
-            <p class="subhead">Possible Approach to Implementation</p>          </div>
-          <div class="test">            <p class="subhead">How to Test</p>
-            <p>Apply the design rules.</p>          </div>
-          <div class="ucr">            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,              <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
-          </div>        </div> -->
+       
         <!-- end of BP --> </section>
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
@@ -889,7 +909,6 @@ figure figcaption {
               <li> Process the data. </li>
               <li> Store the data for future use.</li>
             </ol>
-            <p></p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1309,7 +1328,6 @@ figure figcaption {
                 restrictions applied to the license attached to the data; </li>
               <li> Quickly understand if the data is open for reuse. </li>
             </ol>
-            <p></p>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1564,9 +1582,7 @@ figure figcaption {
       <!-- end of Data Quality -->
       <!-- begin of Data Granularity -->
       <!-- 
-      <section id="granularity">        <h3>Data Granularity</h3>
-        <p>The section on granularity</p>        
-      </section>      -->
+      <section id="granularity">        <h3>Data Granularity</h3>        <p>The section on granularity</p>              </section>      -->
       <!-- end of Data Granularity -->
       <!-- begin of Sensitive Data -->
       <section id="sensitive">
@@ -1690,7 +1706,6 @@ figure figcaption {
           </section>
           <section class="description">
             <p class="subhead">What</p>
-            <p></p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -1716,7 +1731,6 @@ figure figcaption {
               <li>Write REST client to extract unavailability from web page</li>
               <li>Determine: Is the explanation sufficient and consistent? </li>
             </ul>
-            <p></p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1842,7 +1856,6 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p></p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1981,14 +1994,11 @@ figure figcaption {
             <p>Include a version number in the metadata for the dataset. The
               [[SchemaVer]] can be used as numbering scheme for version of the
               dataset.</p>
-            <p></p>
             Also provide a description of what has changed since the previous
             version. If the data is made available through an API, the URI used
             to request the latest version of the data should not change as the
             versions change, but it should be possible to request a specific
-            version through the API.
-            <p></p>
-          </section>
+            version through the API. </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Check that a unique version number or date is provided with the
@@ -2416,5 +2426,6 @@ figure figcaption {
     <section id="conclusions">
       <h2>Conclusions</h2>
     </section>
+    
   </body>
 </html>
