@@ -823,7 +823,7 @@ figure figcaption {
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
               unique identifiers</span></p>
           <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
-            be identified by a persistent HTTP IRI. </p>
+            be clearly associated with an unique identifier that represents it. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The architecture of the World Wide Web [[WEBARCH]] is based on
@@ -833,30 +833,54 @@ figure figcaption {
               internationalized version of URIs, themsleves a super-set of URLs,
               are a fundamental aspect of the Web.</p>
             <p>IRIs should not change over time so that references remain valid.</p>
+            <p>Just by adopting a common identification system we are making possible basic data identification and comparison processes by the different stakeholders in a reliable way. These will be essential pre-conditions for proper data management and to facilitate reuse.</p>
           </section>
           <section class="outcome">  
             <p class="subhead">Intended Outcome</p>
             <p>Data <em class="rfc2119">must</em> be discoverable and citable.</p>
+            <p>A number of basic requirements <em class="rfc2119">should</em> be fulfilled during the definition of an identification system:</p>
+            <ol>
+              <li>Ensure that any data resource can be identified by its unique identifier.</li>
+              <li>The resource identifier needs to remain persistent along time, regardless the status of the associated resource.</li>
+              <li>Use always a consistent and uniform, but also flexible and extensible, structure for the composition of identifiers.</li>
+              <li>Identifiers should remain as much neutral as possible (technically, idiomatically, culturally, semantically, etc.)</li>
+            </ol>
+            
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> A Uniform Resource Identifier (URI) is a compact sequence of characters that identifies an abstract or physical resource
+            <p>The architecture of the World Wide Web [[WEBARCH]] is based on
+              links between resources based on a single global identification system for this purpose: the [[URI]]. A Uniform Resource Identifier (URI) is a compact sequence of characters that identifies an abstract or physical resource
               [[!RFC3986]]. One should aim for compact mnemonic URI: human and machine friendly. The function of URI is to identify and it 
               does not need to carry sematics, though mnemonics: is recommended. </p>
 
              <p> Internationalized Resource Identifiers (IRIs) [[!RFC3987]] should be used when needed. 
-               The use of URI or IRIs depents on the intended audience. For global a audience one should use language and 
+               The use of URI or IRIs depends on the intended audience. For global a audience one should use language and 
                cultural neutral URIs; for local a audience one could use IRIs.</p>
             
             <pre title="URI and IRIs" class="highlight example">
               http://example.com/ä¸­å›½                  # For Chinese speaker: good mnemonic - non-Chinese speakers: bad mnemonic
               http://example.com/china                 # For Chinese speaker: acceptable - non-Chinese speakers: better
             </pre>
+            <p>Some best practices to adopt while using URIs as a data identification system are:</p> 
+        		<ul>
+              <li>Associate every data resource with an unique identifier using a representational URI.</li>
+              <li>Use the HTTP protocol to ensure that the resolution of any URI on the Web is possible.</li>
+              <li>When someone looks up an identifier URI, provide always useful information or metadata.</li>
+              <li>Build standard URIs that follow a well-defined and extensible scheme or pattern to provide consistency and uniformity.</li>
+              <li>Avoid broken URIs. In the event that a resource has been modified or deleted, 
+                  those changes must be communicated using the appropriate [[HTTP status codes]]. 
+                  If the resource has change location HTTP 3XX codes should be used, 
+                whereas if the resource has been deleted a HTTP 410 code will be used.</li>
+              <li>Do not expose information on the technical implementation of the resources represented by the URI. 
+                  Any information about the underlying technology should be omitted (e.g. file extensions).</li>
+            </ul>
             
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Apply the design rules.</p>
+            <p>Check that there is a documented scheme of web identifiers for the data in question. For any of the existing identifiers test that the associated data can always be retrieved by means of its identifier and in a technologically neutral way.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
