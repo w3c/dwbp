@@ -1908,6 +1908,25 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p>Design always RESTful APIs using HTTP and good pragmatic REST principles. 
+            There is no unique agreed set of principles for REST APIs, some are implicitly 
+            defined by the HTTP standard and others have emerged on a consensus base or even 
+            are still under discussion. The following are a set of rules widely adopted so far:</p>
+            <ul>
+              <li>Use hierarchical, readable and technology agnostic Uniform Resource Identifiers 
+              (URIs) to address resources in a consisten way.</li>
+              <li>Use the URI path to convey your Resources and Collections model.</li>
+              <li>Use nouns but no verbs (except for Controllers that does not involve resources). 
+              Use HTTP verbs instead to operate on the Collections and Resources.</li>
+              <li>Use standard HTTP methods accordingly to their expected default behavior. 
+              GET method and query parameters should not alter the state.</li>
+              <li>Use HTTP headers to provide metadata and for the serialization of formats. 
+              Support multiple formats.</li>
+              <li>Use HTTP status codes (including error codes) accordingly to their original purpose.</li>
+              <li>Simplify associations. Use query parameters to hide complexity and provide filtering, 
+              sorting, field selection and paging for collections.</li>
+              <li>Version your API. Never release an API without a version and make the version mandatory.</li>
+          </ul>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
