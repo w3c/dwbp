@@ -31,6 +31,9 @@
       },
       { 
         value: "Antoine Isaac"
+      },
+      {
+        value: "Carlos Iglesias"
       },      
       { 
         value: "Carlos Laufer"
