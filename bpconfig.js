@@ -1,4 +1,4 @@
-var respecConfig = {
+﻿var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
     //publishDate:  "2014-03-27",
@@ -11,7 +11,7 @@ var respecConfig = {
     editors: [
     {
       name: "Bernadette Farias Lóscio",
-      company: "Centro de Informática - Universidade Federal de Pernambuco, Brazil",
+      company: "CIn - UFPE, Brazil",
       companyURL: "http://www.cin.ufpe.br/"
     }, {
 			name: "Caroline Burle",
@@ -26,14 +26,41 @@ var respecConfig = {
     {
       key: "Contributors",
       data: [
+      { 
+        value: "Annette Greiner"
+      },
+      { 
+        value: "Antoine Isaac"
+      },      
+      { 
+        value: "Carlos Laufer"
+      },
       {
         value: "Christophe Guéret"
       },
+      { 
+        value: "Eric G. Stephan"
+      },
+      { 
+        value: "Eric Kauz"
+      },      
+      {
+        value: "Ghislain A. Atemezing"
+      },
+      { 
+        value: "Ig Ibert Bittencourt"
+      },   
       {
         value: "Phil Archer"
       },
-      {
-        value: "Ghislain A. Atemezing"
+      { 
+        value: "Riccardo Albertoni"
+      },
+      { 
+        value: "Sumit Purohit"
+      },   
+      { 
+        value: "Yasodara Córdova"
       }]
     }],
     wg: "Data on the Web Best Practices Working Group",
@@ -80,6 +107,7 @@ var respecConfig = {
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
       },
+
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
@@ -93,6 +121,50 @@ var respecConfig = {
         title: "cURL, a command line tool and library for transferring data with URL syntax",
         authors: ["Daniel Stenberg"],
         href: "http://curl.haxx.se/"
-      }
+      },
+      "ODI-LICENSING": {
+        title: "Publisher's Guide to Open Data Licensing",
+        authors: ["Open Data Institute"],
+        href: "http://theodi.org/guides/publishers-guide-open-data-licensing"
+      },
+     "ZAVERI" : {
+	title: "Quality Assessment for Linked Data: A Survey",
+	authors: ["Amrapali Zaveri", "Anisa Rula", "Andrea Maurino", "Ricardo Pietrobon", "Jens Lehmann", "Sören Auer"],
+	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
+	status: "submitted to Semantic Web Journal"
+     },
+      "RICHARDSON": {
+        title: "RESTful Web Services: Web services for the real world",
+        authors: ["Leonard Richardson", "Sam Ruby"],
+        date: "2007",
+        status: "O'Reilly Media"
+      },
+      "SchemaVer": {
+        title: "Introducing SchemaVer for semantic versioning of schemas",
+        authors: ["Alex Dean"],
+        date: "2014",
+        href: "http://snowplowanalytics.com/blog/2014/05/13/introducing-schemaver-for-semantic-versioning-of-schemas/"
+      },
+
+      "ld-bp":{
+        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
+        "href":"http://www.w3.org/TR/ld-bp/",
+        "title":"Best Practices for Publishing Linked Data",
+        "status":"NOTE",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"ld-bp",
+        "date":"9 January 2014"
+      }, 
+      "ld-glossary":{
+        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Michael Pendleton","Biplav Srivastava"],
+        "href":"http://www.w3.org/TR/ld-glossary/",
+        "title":"Linked Data Glossary",
+        "status":"NOTE",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"ld-glossary",
+        "date":"27 June 2013"
+       }
     }
 };
