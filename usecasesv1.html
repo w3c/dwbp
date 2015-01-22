@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>Data on the Web Best Practices Use Cases &amp; Requirements</title>
     <!--[if lt IE 9]>
   <script src="http://www.w3.org/2008/site/js/html5shiv.js"></script>  <![endif]-->
-    <script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"></script>
     <script class="remove">
       var respecConfig = {
 
@@ -97,7 +97,9 @@
 
       };
     </script>
-    <link rel="stylesheet" href="http://www.w3.org/TR/2014/WD-dwbp-ucr-20140605/localstyles.css" />
+    <link href="http://www.w3.org/TR/2014/WD-dwbp-ucr-20140605/localstyles.css"
+
+      rel="stylesheet" />
     <style type="text/css">
     caption {
       caption-side:bottom;
@@ -154,7 +156,6 @@
         <li>Is the requirement testable?</li>
       </ol>
       <p>Only requirements meeting those three criteria have been included.</p>
-      
     </section>
     <section>
       <h2 id="use-cases">Use Cases</h2>
@@ -170,8 +171,8 @@
         abstracted in such a way that a requirement motivates the creation of
         one or more best practices.</p>
       <!-- ASO: Airborne Snow Observatory -->
-      <section id="UC-ASO" typeof="bibo:Chapter" resource="#UC-ASO" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-ASO">ASO: Airborne Snow
+      <section rel="bibo:Chapter" resource="#UC-ASO" typeof="bibo:Chapter" id="UC-ASO">
+        <h3 id="h3_UC-ASO" role="heading" aria-level="2">ASO: Airborne Snow
           Observatory</h3>
         <p class="contributor">(Contributed by Lewis John McGibbney, NASA Jet
           Propulsion Laboratory/California Institute of Technology)<br />
@@ -303,37 +304,38 @@
         </p>
       </section>
       <!-- BBC -->
-      <section id="UC-BBC" typeof="bibo:Chapter" resource="#UC-BBC" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-BBC">BBC</h3>
+      <section rel="bibo:Chapter" resource="#UC-BBC" typeof="bibo:Chapter" id="UC-BBC">
+        <h3 id="h3_UC-BBC" role="heading" aria-level="2">BBC</h3>
         <p class="contributor"><strong>Contributors: </strong>Ghislain
           Atemezing (EURECOM)</p>
         <p><strong>URL: </strong><a href="http://www.bbc.co.uk/ontologies">http://www.bbc.co.uk/ontologies</a></p>
-        <p><strong>Overview:</strong> the BBC provides a <a href="http://www.bbc.co.uk/ontologies">list of the ontologies</a>
-          they implement and use for their Linked Data platform.
-          The site provides access to the ontologies the BBC is using to support
-          its audience using their applications, such as <a href="http://www.bbc.co.uk/sport">BBC Sport</a>
-          or <a href="http://www.bbc.co.uk/education">BBC Education</a>.
-          Each ontology has a short description with metadata
-          information, an introduction, sample data, an ontology diagram and
-          the terms used in the ontology. The metadata includes
-          6 fields that are generally filled: mailto authors, created data, version (current
-          version number), prior version (decimal), license (a link to the
-          license) and a link for downloading the RDF version. For example, see
-          the description of the “<a href="http://www.bbc.co.uk/ontologies/coreconcepts">Core concepts ontology</a>.”
-          However, this metadata that is available in the HTML page is NOT
-          present in a machine-readable format, i.e. in the ontology itself.</p>
-          <p><strong>Versioning:</strong> each ontology uses a decimal notation for the version and the URL for accessing
-          each version file of the ontology is constructed as
-          {BASE-URI}/{ONTO-PREFIX}/{VERSION}.ttl; where {BASE-URI} is 
-          <a href="http://www.bbc.co.uk/ontologies/">http://www.bbc.co.uk/ontologies/</a>.
-          For example: the file of version 1.9 of the “core concepts” ontology is
-          located at <a href="http://www.bbc.co.uk/ontologies/coreconcepts/1.9.ttl">http://www.bbc.co.uk/ontologies/coreconcepts/1.9.ttl</a>.
+        <p><strong>Overview:</strong> the BBC provides a <a href="http://www.bbc.co.uk/ontologies">list
+            of the ontologies</a> they implement and use for their Linked Data
+          platform. The site provides access to the ontologies the BBC is using
+          to support its audience using their applications, such as <a href="http://www.bbc.co.uk/sport">BBC
+            Sport</a> or <a href="http://www.bbc.co.uk/education">BBC Education</a>.
+          Each ontology has a short description with metadata information, an
+          introduction, sample data, an ontology diagram and the terms used in
+          the ontology. The metadata includes 6 fields that are generally
+          filled: mailto authors, created data, version (current version
+          number), prior version (decimal), license (a link to the license) and
+          a link for downloading the RDF version. For example, see the
+          description of the “<a href="http://www.bbc.co.uk/ontologies/coreconcepts">Core
+            concepts ontology</a>.” However, this metadata that is available in
+          the HTML page is NOT present in a machine-readable format, i.e. in the
+          ontology itself.</p>
+        <p><strong>Versioning:</strong> each ontology uses a decimal notation
+          for the version and the URL for accessing each version file of the
+          ontology is constructed as {BASE-URI}/{ONTO-PREFIX}/{VERSION}.ttl;
+          where {BASE-URI} is <a href="http://www.bbc.co.uk/ontologies/">http://www.bbc.co.uk/ontologies/</a>.
+          For example: the file of version 1.9 of the “core concepts” ontology
+          is located at <a href="http://www.bbc.co.uk/ontologies/coreconcepts/1.9.ttl">http://www.bbc.co.uk/ontologies/coreconcepts/1.9.ttl</a>.
           However, between different versions, the URI of the ontology used is
           the same and is of the form : {BASE-URI}/{ONTO-PREFIX}/.</p>
         <p><strong>Elements:</strong></p>
         <ul>
-          <li><strong>Domains:</strong>vocabulary catalog, versioning,
-            metadata </li>
+          <li><strong>Domains:</strong>vocabulary catalog, versioning, metadata
+          </li>
           <li><strong>Obligation/motivation:</strong> Provide a unique point of
             vocabularies built within BBC </li>
           <li><strong>Usage:</strong> The site provides access to the ontologies
@@ -363,14 +365,13 @@
             ontology. </li>
         </ul>
         <p><strong>Requires</strong> <a href="#R-MetadataDocum">R-MetadataDocum</a>,
-          <a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>, 
-          <a href="#R-FormatMultiple">R-FormatMultiple</a>,
-          <a href="#R-MetadataStandardized">R-MetadataStandardized</a>
-          and <a href="#R-VocabVersion%20">R-VocabVersion </a>.</p>
+          <a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>, <a href="#R-FormatMultiple">R-FormatMultiple</a>,
+          <a href="#R-MetadataStandardized">R-MetadataStandardized</a> and <a href="#R-VocabVersion%20">R-VocabVersion
+            </a>.</p>
       </section>
       <!-- Bio2RDF -->
-      <section id="UC-Bio2RDF" typeof="bibo:Chapter" resource="#UC-Bio2RDF" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-Bio2RDF">Bio2RDF</h3>
+      <section rel="bibo:Chapter" resource="#UC-Bio2RDF" typeof="bibo:Chapter" id="UC-Bio2RDF">
+        <h3 id="h3_UC-Bio2RDF" role="heading" aria-level="2">Bio2RDF</h3>
         <p class="contributor">(Contributed by Carlos Laufer)<br />
           URL: <a href="http://bio2rdf.org/">http://bio2rdf.org/</a></p>
         <p> <a href="http://bio2rdf.org/">Bio2RDF</a><sup><a href="#bio1">1</a></sup>
@@ -509,10 +510,10 @@
           and <a href="#R-VocabReference">R-VocabReference</a> .</p>
       </section>
       <!-- Building Eye -->
-      <section id="UC-BuildingEye" typeof="bibo:Chapter" resource="#UC-BuildingEye"
+      <section rel="bibo:Chapter" resource="#UC-BuildingEye" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-BuildingEye">BuildingEye:
+        id="UC-BuildingEye">
+        <h3 id="h3_UC-BuildingEye" role="heading" aria-level="2">BuildingEye:
           SME use of public data</h3>
         <p class="contributor">(Contributed by Deirdre Lee)<br />
           URL: <a href="http://mypp.ie/">http://mypp.ie/</a></p>
@@ -575,10 +576,10 @@
           <a href="R-SensitiveSecurity">R-SensitiveSecurity</a> and <a href="#R-VocabDocum">R-VocabDocum</a>.</p>
       </section>
       <!-- Dados Gov BR -->
-      <section id="UC-DadosGovBr" typeof="bibo:Chapter" resource="#UC-DadosGovBr"
+      <section rel="bibo:Chapter" resource="#UC-DadosGovBr" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DadosGovBr">Dados.gov.br</h3>
+        id="UC-DadosGovBr">
+        <h3 id="h3_UC-DadosGovBr" role="heading" aria-level="2">Dados.gov.br</h3>
         <p class="contributor">(Contributed by Yasodara)<br />
           URL: <a href="http://dados.gov.br/">http://dados.gov.br/</a></p>
         <p> Dados.gov.br is the open data portal of Brazil's Federal Government.
@@ -621,17 +622,16 @@
           <a href="#R-DataLifecyclePrivacy">R-DataLifecyclePrivacy</a>, <a href="#R-DataLifecycleStage">R-DataLifecycleStage</a>,
           <a href="#R-DataMissingIncomplete">R-DataMissingIncomplete</a>, <a href="#R-FormatStandardized">R-FormatStandardized</a>,
           <a href="#R-LicenseAvailable">R-LicenseAvailable</a>, <a href="#R-MetadataAvailable">R-MetadataAvailable</a>,
-          <a href="#R-GeographicalContext">R-GeographicalContext</a>,
-          <a href="#R-MetadataDocum">R-MetadataDocum</a>, <a href="#R-ProvAvailable">R-ProvAvailable</a>,
-          <a href="#R-QualityOpinions">R-QualityOpinions</a>, <a href="#R-UsageFeedback">R-UsageFeedback</a>,
-          <a href="#R-VocabReference">R-VocabReference</a> and <a href="#R-VocabVersion">R-VocabVersion</a>.</p>
+          <a href="#R-GeographicalContext">R-GeographicalContext</a>, <a href="#R-MetadataDocum">R-MetadataDocum</a>,
+          <a href="#R-ProvAvailable">R-ProvAvailable</a>, <a href="#R-QualityOpinions">R-QualityOpinions</a>,
+          <a href="#R-UsageFeedback">R-UsageFeedback</a>, <a href="#R-VocabReference">R-VocabReference</a>
+          and <a href="#R-VocabVersion">R-VocabVersion</a>.</p>
       </section>
-
       <!-- Digital Archiving -->
-      <section id="UC-DigitalArchiving" typeof="bibo:Chapter" resource="#UC-DigitalArchiving"
+      <section rel="bibo:Chapter" resource="#UC-DigitalArchiving" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DigitalArchiving">Digital
+        id="UC-DigitalArchiving">
+        <h3 id="h3_UC-DigitalArchiving" role="heading" aria-level="2">Digital
           archiving of Linked Data</h3>
         <p class="contributor">(Contributed by Christophe Guéret)<br />
           URL: <a href="http://dans.knaw.nl/">http://dans.knaw.nl/</a></p>
@@ -682,10 +682,10 @@
           .</p>
       </section>
       <!-- Dutch Base registers -->
-      <section id="UC-DutchBasicReg" rel="bibo:Chapter" resource="#h3_UC-DutchBasicReg"
+      <section typeof="bibo:Chapter" resource="#h3_UC-DutchBasicReg" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-DutchBasicReg">Dutch Base
+        id="UC-DutchBasicReg">
+        <h3 id="h3_UC-DutchBasicReg" role="heading" aria-level="2">Dutch Base
           Registers</h3>
         <p class="contributor">(Contributed by Christophe Guéret)<br />
           URL: <a href="http://www.e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties">http://www.e-overheid.nl/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties</a></p>
@@ -739,12 +739,11 @@
           <a href="#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a>
           and <a href="#R-VocabReference">R-VocabReference</a> .</p>
       </section>
-
       <!-- GS1 Digital -->
-      <section id="UC-GS1Digital" typeof="bibo:Chapter" resource="#UC-GS1Digital"
+      <section rel="bibo:Chapter" resource="#UC-GS1Digital" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-GS1Digital">GS1 Digital</h3>
+        id="UC-GS1Digital">
+        <h3 id="h3_UC-GS1Digital" role="heading" aria-level="2">GS1 Digital</h3>
         <p class="contributor">(Contributed by Mark Harrison (University of
           Cambridge) &amp; Eric Kauz (GS1) )<br />
           URL: <a href="http://www.gs1.org/digital">http://www.gs1.org/digital</a></p>
@@ -908,8 +907,8 @@
           and <a href="#R-ProvAvailable">R-ProvAvailable</a> .</p>
       </section>
       <!-- ISOGEO Story -->
-      <section id="UC-ISOGeo" typeof="bibo:Chapter" resource="#UC-ISOGeo" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-ISOGeo">ISO GEO Story</h3>
+      <section rel="bibo:Chapter" resource="#UC-ISOGeo" typeof="bibo:Chapter" id="UC-ISOGeo">
+        <h3 id="h3_UC-ISOGeo" role="heading" aria-level="2">ISO GEO Story</h3>
         <p class="contributor">(Contributed by Ghislain Atemezing)</p>
         <p> ISO GEO manages catalog records of geographic information in XML
           that conform to ISO-19139, a French adaptation of ISO-19115 (<a href="ISO-19139-Isogeo-set.zip">data
@@ -948,10 +947,10 @@
         </p>
       </section>
       <!-- The Land Portal -->
-      <section id="UC-LandPortal" rel="bibo:Chapter" resource="#h3_UC-LandPortal"
+      <section typeof="bibo:Chapter" resource="#h3_UC-LandPortal" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-LandPortal">The Land Portal</h3>
+        id="UC-LandPortal">
+        <h3 id="h3_UC-LandPortal" role="heading" aria-level="2">The Land Portal</h3>
         <p class="contributor">(Contributed by Carlos Iglesias)<br />
           URL: <a href="http://landportal.info/">http://landportal.info/</a></p>
         <p>The IFAD Land Portal platform has been completely rebuilt as an Open
@@ -1028,8 +1027,8 @@
           <a href="#R-VocabReference">R-VocabReference</a> and <a href="#R-VocabVersion">R-VocabVersion</a>.</p>
       </section>
       <!-- LA Times Reporting -->
-      <section id="UC-LATimes" typeof="bibo:Chapter" resource="#UC-LATimes" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-LATimes">LA Times' Reporting
+      <section rel="bibo:Chapter" resource="#UC-LATimes" typeof="bibo:Chapter" id="UC-LATimes">
+        <h3 id="h3_UC-LATimes" role="heading" aria-level="2">LA Times' Reporting
           of Ron Galperin's Infographic</h3>
         <p class="contributor">(Contributed by Phil Archer )<br />
           URL: <a href="http://articles.latimes.com/2014/mar/27/local/la-me-ln-gender-wage-gap-city-government-20140327">http://articles.latimes.com/2014/mar/27/local/la-me-ln-gender-wage-gap-city-government-20140327</a></p>
@@ -1095,29 +1094,29 @@
           <a href="#R-FormatMultiple">R-FormatMultiple</a>, <a href="#R-FormatOpen">R-FormatOpen</a>,
           <a href="#R-GeographicalContext">R-GeographicalContext</a>, <a href="#R-LicenseAvailable">R-LicenseAvailable</a>,
           <a href="#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="#R-MetadataStandardized">R-MetadataStandardized</a>,
-          <a href="#R-QualityMetrics">R-QualityMetrics</a>, <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a> and
-          <a href="#R-TrackDataUsage">R-TrackDataUsage</a>. </p>
+          <a href="#R-QualityMetrics">R-QualityMetrics</a>, <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a>
+          and <a href="#R-TrackDataUsage">R-TrackDataUsage</a>. </p>
       </section>
       <!-- LusTRE: Linked Thesaurus fRamework for Environment -->
-      <section id="UC-LuSTRE" typeof="bibo:Chapter" resource="#UC-LuSTRE" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-LuSTRE">LusTRE: Linked
+      <section rel="bibo:Chapter" resource="#UC-LuSTRE" typeof="bibo:Chapter" id="UC-LuSTRE">
+        <h3 id="h3_UC-LuSTRE" role="heading" aria-level="2">LusTRE: Linked
           Thesaurus fRamework for Environment</h3>
         <p class="contributor">(Contributed by Riccardo Albertoni, CNR-IMATI,
           Genoa, Italy)<br />
           URL: <a href="http://linkeddata.ge.imati.cnr.it/">http://linkeddata.ge.imati.cnr.it/</a></p>
-        <p>LusTRE is a framework that combines existing 
-          thesauri to support the management of environmental resources. It
-          considers the heterogeneity in scope and levels of abstraction of
-          existing environmental thesauri as an asset when managing
-          environmental data, thus it exploits Linked Data 
-          (<abbr title="Simple Knowledge Organisation System">SKOS</abbr>, 
+        <p>LusTRE is a framework that combines existing thesauri to support the
+          management of environmental resources. It considers the heterogeneity
+          in scope and levels of abstraction of existing environmental thesauri
+          as an asset when managing environmental data, thus it exploits Linked
+          Data (<abbr title="Simple Knowledge Organisation System">SKOS</abbr>,
           <abbr title="Resource Description Framework">RDF</abbr> etc.) in order
-          to provide a multi-thesauri solution for 
-          <abbr title="Infrastructure for Spatial Information in the European Community"><a href="http://inspire.ec.europa.eu/">INSPIRE</a></abbr> 
-          data themes related to nature conservation.</p>
-        <p>LusTRE is intended to support metadata compilation and
-          data/service discovery according to ISO 19115/19119. The development
-          of LusTRE includes:</p>
+          to provide a multi-thesauri solution for <abbr title="Infrastructure for Spatial Information in the European Community"><a
+
+              href="http://inspire.ec.europa.eu/">INSPIRE</a></abbr> data themes
+          related to nature conservation.</p>
+        <p>LusTRE is intended to support metadata compilation and data/service
+          discovery according to ISO 19115/19119. The development of LusTRE
+          includes:</p>
         <ul style="list-style-type:lower-roman">
           <li>a review of existing environmental thesauri and their
             characteristics in term of multilingualism, openness and quality;</li>
@@ -1166,8 +1165,8 @@
             that format.</li>
           <li><strong>Rate of change:</strong> Depends on the thesaurus, in
             average it is a low rate of Change.</li>
-          <li><strong>Data lifespan:</strong> Beyond the lifespan of eENVPlus project
-            (2013 – 2015).</li>
+          <li><strong>Data lifespan:</strong> Beyond the lifespan of eENVPlus
+            project (2013 – 2015).</li>
           <li><strong>Potential audience:</strong> Public administrations
             involved in the cataloguing of geographical information and Spatial
             Data Infrastructure. Decision makers searching in Spatial Data
@@ -1197,13 +1196,12 @@
           <a href="#R-VocabDocum">R-VocabDocum</a>, <a href="#R-VocabOpen">R-VocabOpen</a>,
           <a href="#R-VocabReference">R-VocabReference</a> and <a href="#R-VocabVersion">R-VocabVersion</a>
           .</p>
-        
       </section>
       <!-- Machine readable licences -->
-      <section id="UC-MachReadIntLicenses" typeof="bibo:Chapter" resource="#UC-MachReadIntLicenses"
+      <section rel="bibo:Chapter" resource="#UC-MachReadIntLicenses" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-MachReadIntLicenses">Machine-readability
+        id="UC-MachReadIntLicenses">
+        <h3 id="h3_UC-MachReadIntLicenses" role="heading" aria-level="2">Machine-readability
           and Interoperability of Licenses</h3>
         <p class="contributor">(Contributed by Deirdre Lee, based on <a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2014Mar/0189.html">post
             by Leigh Dodds</a>)</p>
@@ -1230,8 +1228,8 @@
           Group's <a href="http://www.w3.org/2013/05/odbp-charter#noscope">charter</a>.</p>
       </section>
       <!-- MSI -->
-      <section id="UC-MSI" typeof="bibo:Chapter" resource="#UC-MSI" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-MSI">Mass Spectrometry
+      <section rel="bibo:Chapter" resource="#UC-MSI" typeof="bibo:Chapter" id="UC-MSI">
+        <h3 id="h3_UC-MSI" role="heading" aria-level="2">Mass Spectrometry
           Imaging (MSI)</h3>
         <p class="contributor">(Contributed by Annette Greiner, Lawrence
           Berkeley National Laboratory, California)<br />
@@ -1304,10 +1302,9 @@
           <a href="#R-MetadataDocum">R-MetadataDocum</a>, <a href="#R-MetadataMachineRead">R-MetadataMachineRead</a>
           and <a href="#R-SensitiveSecurity">R-SensitiveSecurity</a> .</p>
       </section>
-
       <!-- OKFN Transport -->
-      <section id="UC-OKFNTransportWG" typeof="bibo:Chapter" resource="#ref" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-OKFNTransportWG">OKFN
+      <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="UC-OKFNTransportWG">
+        <h3 id="h3_UC-OKFNTransportWG" role="heading" aria-level="2">OKFN
           Transport WG</h3>
         <p class="contributor">(Contributed by Deirdre Lee based on the <a href="http://www.scribd.com/doc/111890372/Helsinki-Open-Transport-Data-Manifesto">2012
             ePSI Open Transport Data Manifesto</a>)</p>
@@ -1383,10 +1380,10 @@
           <a href="#R-VocabOpen">R-VocabOpen</a>, .</p>
       </section>
       <!-- Open City Pipeline -->
-      <section id="UC-OpenCityDataPipeline" typeof="bibo:Chapter" resource="#UC-OpenCityDataPipeline"
+      <section rel="bibo:Chapter" resource="#UC-OpenCityDataPipeline" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-OpenCityDataPipeline">Open
+        id="UC-OpenCityDataPipeline">
+        <h3 id="h3_UC-OpenCityDataPipeline" role="heading" aria-level="2">Open
           City Data Pipeline</h3>
         <p class="contributor">(Contributed by Deirdre Lee, based on a <a href="https://ai.wu.ac.at/%7Epolleres/presentations/20140319CityDataPipeline_EDF2014_Polleres.pdf">presentation
             by Axel Polleres</a> at <a href="http://2014.data-forum.eu/"><abbr
@@ -1398,9 +1395,10 @@
           assumption of open data is that “Added value comes from comparable
           open datasets being combined.” Open data needs stronger standards to
           be useful, in particular for industrial uptake. Industrial usage has
-          different requirements than that of an application-building hobbyist or civil society so it's
-          important to think how open data can be used by industry at the time
-          of publication. The Open City Data Pipeline project has developed a data pipeline to:</p>
+          different requirements than that of an application-building hobbyist
+          or civil society so it's important to think how open data can be used
+          by industry at the time of publication. The Open City Data Pipeline
+          project has developed a data pipeline to:</p>
         <ol>
           <li>(semi-)automatically collect and integrate various open data
             sources in different formats;</li>
@@ -1463,16 +1461,16 @@
         <p><strong>Requires:</strong> <a href="#R-DataMissingIncomplete">R-DataMissingIncomplete</a>,
           <a href="#R-DataProductionContext">R-DataProductionContext</a>, <a href="#R-FormatMachineRead">R-FormatMachineRead</a>,
           <a href="#R-FormatOpen">R-FormatOpen</a>, <a href="#R-FormatStandardized">R-FormatStandardized</a>,
-          <a href="#R-FormatLocalize">R-FormatLocalize</a>,
-          <a href="#R-GeographicalContext">R-GeographicalContext</a>, <a href="#R-LicenseAvailable">R-LicenseAvailable</a>,
-          <a href="#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="#R-MetadataStandardized">R-MetadataStandardized</a>,
-          <a href="#R-QualityComparable">R-QualityComparable</a>, <a href="#R-QualityCompleteness">R-QualityCompleteness</a>,
-          <a href="#R-VocabDocum">R-VocabDocum</a>, <a href="#R-VocabOpen">R-VocabOpen</a>
-          and <a href="#R-VocabReference">R-VocabReference</a> .</p>
+          <a href="#R-FormatLocalize">R-FormatLocalize</a>, <a href="#R-GeographicalContext">R-GeographicalContext</a>,
+          <a href="#R-LicenseAvailable">R-LicenseAvailable</a>, <a href="#R-MetadataAvailable">R-MetadataAvailable</a>,
+          <a href="#R-MetadataStandardized">R-MetadataStandardized</a>, <a href="#R-QualityComparable">R-QualityComparable</a>,
+          <a href="#R-QualityCompleteness">R-QualityCompleteness</a>, <a href="#R-VocabDocum">R-VocabDocum</a>,
+          <a href="#R-VocabOpen">R-VocabOpen</a> and <a href="#R-VocabReference">R-VocabReference</a>
+          .</p>
       </section>
       <!-- OEFS -->
-      <section id="UC-OEFS" typeof="bibo:Chapter" resource="#UC-UEFS" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-OEFS">Open Experimental
+      <section rel="bibo:Chapter" resource="#UC-UEFS" typeof="bibo:Chapter" id="UC-OEFS">
+        <h3 id="h3_UC-OEFS" role="heading" aria-level="2">Open Experimental
           Field Studies</h3>
         <p class="contributor">(Contributed by Eric Stephan)</p>
         <p>In 2013 the United States Whitehouse published an executive order on
@@ -1566,12 +1564,12 @@
           <a href="#R-DataProductionContext">R-DataProductionContext</a>, <a href="#R-FormatMachineRead">R-FormatMachineRead</a>,
           <a href="#R-FormatMultiple">R-FormatMultiple</a>, <a href="#R-FormatStandardized">R-FormatStandardized</a>,
           <a href="#R-TrackDataUsage">R-TrackDataUsage</a>, <a href="#R-UsageFeedback">R-UsageFeedback</a>,
-          <a href="#R-VocabOpen">R-VocabOpen</a>, <a href="#R-VocabReference">R-VocabReference</a> and
-          <a href="#R-UsageFeedback">R-UsageFeedback</a>.</p>
+          <a href="#R-VocabOpen">R-VocabOpen</a>, <a href="#R-VocabReference">R-VocabReference</a>
+          and <a href="#R-UsageFeedback">R-UsageFeedback</a>.</p>
       </section>
       <!-- RDESC -->
-      <section id="UC-RDESC" typeof="bibo:Chapter" resource="#UC-RDESC" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-RDESC">Resource Discovery
+      <section rel="bibo:Chapter" resource="#UC-RDESC" typeof="bibo:Chapter" id="UC-RDESC">
+        <h3 id="h3_UC-RDESC" role="heading" aria-level="2">Resource Discovery
           for Extreme Scale Collaboration (RDESC)</h3>
         <p class="contributor">(Contributed by Sumit Purohit)<br />
           URL: <a href="http://rdesc.org/">http://rdesc.org/</a></p>
@@ -1579,19 +1577,22 @@
           searching and discovering scientific resources used in collaborative
           science. For the purpose of capturing semantic context, RDESC adopts
           sets of existing ontologies where possible such as <a href="http://xmlns.com/foaf/spec/"><abbr
+
               title="Friend of a Friend">FOAF</abbr></a>, <a href="http://bibliontology.com/"><abbr
+
               title="The Bibliographic Ontology">BIBO</abbr></a> and <a href="http://schema.org">schema.org</a>.
           RDESC also introduced new concepts in order to provide a semantically
           integrated view of the data. Such concepts have two distinct
-          functions. The first is to preserve the semantics of the source that are
-          more specific than what already existed in the ontology. The second is
-          to provide broad categorization of existing concepts as it becomes
-          clear that concepts are forming general groups. These generalizations
-          enable users to work with concepts they understand, rather than
-          needing to understand the semantics of many different systems. It
-          strives to provide a lightweight enough framework to be used as a
-          component in any software system such as desktop user environments or
-          dashboards but also be scalable to millions of resources.</p>
+          functions. The first is to preserve the semantics of the source that
+          are more specific than what already existed in the ontology. The
+          second is to provide broad categorization of existing concepts as it
+          becomes clear that concepts are forming general groups. These
+          generalizations enable users to work with concepts they understand,
+          rather than needing to understand the semantics of many different
+          systems. It strives to provide a lightweight enough framework to be
+          used as a component in any software system such as desktop user
+          environments or dashboards but also be scalable to millions of
+          resources.</p>
         <p><strong>Elements</strong></p>
         <ul>
           <li><strong>Domains:</strong>
@@ -1671,10 +1672,10 @@
           <a href="#R-VocabReference">R-VocabReference</a> and <a href="#R-UsageFeedback">R-UsageFeedback</a>.</p>
       </section>
       <!-- Recife -->
-      <section id="UC-RecifeOpenData" typeof="bibo:Chapter" resource="#UC-RecifeOpenData"
+      <section rel="bibo:Chapter" resource="#UC-RecifeOpenData" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-RecifeOpenData">Recife Open
+        id="UC-RecifeOpenData">
+        <h3 id="h3_UC-RecifeOpenData" role="heading" aria-level="2">Recife Open
           Data Portal</h3>
         <p class="contributor">(Contributed by Bernadette Lóscio )<br />
           URL: <a href="http://dados.recife.pe.gov.br/">http://dados.recife.pe.gov.br/</a></p>
@@ -1731,14 +1732,15 @@
           and <a href="#R-VocabReference">R-VocabReference</a>.</p>
       </section>
       <!-- Violence map -->
-      <section id="UC-RetratoDaViolencia" typeof="bibo:Chapter" resource="#UC-RetratoDaViolencia"
+      <section rel="bibo:Chapter" resource="#UC-RetratoDaViolencia" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-RetratoDaViolencia">Retrato
+        id="UC-RetratoDaViolencia">
+        <h3 id="h3_UC-RetratoDaViolencia" role="heading" aria-level="2">Retrato
           da Violência (Violence Map)</h3>
         <p class="contributor">(Contributed by Yasodara )<br />
           URL: <a href="https://github.com/dataviz/retrato-da-violencia.org">https://github.com/dataviz/retrato-da-violencia.org</a></p>
-        <p><a href="http://retratodaviolencia.org/">This</a> is a data visualization made in 2012 by <a href="http://vitorbaptista.com/">Vitor
+        <p><a href="http://retratodaviolencia.org/">This</a> is a data
+          visualization made in 2012 by <a href="http://vitorbaptista.com/">Vitor
             Batista</a> , <a href="http://leotartari.com/">Léo tartari</a> and
           <a href="http://tbueno.com/">Thiago Bueno</a> for a <abbr title="World Wide Web Consortium">W3C</abbr>
           Brazil Office challenge about data from Rio Grande do Sul (a brazilian
@@ -1771,8 +1773,10 @@
           .</p>
       </section>
       <!-- Share-PSI Samos -->
-      <section id="UC-SharePSI" typeof="bibo:Chapter" resource="#UC-SharePSI" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-SharePSI">Share-PSI 2.0:
+      <section rel="bibo:Chapter" resource="#UC-SharePSI" typeof="bibo:Chapter"
+
+        id="UC-SharePSI">
+        <h3 id="h3_UC-SharePSI" role="heading" aria-level="2">Share-PSI 2.0:
           Uses of Open Data Within Government for Innovation and Efficiency</h3>
         <p class="contributor">(Contributed by Phil Archer on behalf of
           Share-PSI 2.0)<br />
@@ -1807,8 +1811,8 @@
           .</p>
       </section>
       <!-- Tabulae -->
-      <section id="UC-Tabulae" typeof="bibo:Chapter" resource="#UC-Tabulae" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-Tabulae">Tabulae - how to
+      <section rel="bibo:Chapter" resource="#UC-Tabulae" typeof="bibo:Chapter" id="UC-Tabulae">
+        <h3 id="h3_UC-Tabulae" role="heading" aria-level="2">Tabulae - how to
           get value out of data</h3>
         <p class="contributor">(Contributed by Luis Polo )<br />
           URL: <a href="http://www.tabulaeapp.com/">http://www.tabulaeapp.com/</a></p>
@@ -1877,10 +1881,10 @@
           .</p>
       </section>
       <!-- UK ORDF -->
-      <section id="UC-UKOpenResearchForum" typeof="bibo:Chapter" resource="#UC-UKOpenResearchForum"
+      <section rel="bibo:Chapter" resource="#UC-UKOpenResearchForum" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-UKOpenResearchForum">UK Open
+        id="UC-UKOpenResearchForum">
+        <h3 id="h3_UC-UKOpenResearchForum" role="heading" aria-level="2">UK Open
           Research Data Forum</h3>
         <p class="contributor">(Contributed by Phil Archer)<br />
           URL: <a href="http://www.researchinfonet.org/wp-content/uploads/2014/07/Joint-statement-of-principles-June-2014.pdf">http://www.researchinfonet.org/wp-content/uploads/2014/07/Joint-statement-of-principles-June-2014.pdf</a>
@@ -1973,10 +1977,10 @@
           and <a href="#R-UniqueIdentifier">R-UniqueIdentifier</a> .</p>
       </section>
       <!-- Uruguay -->
-      <section id="UC-UruguayOpenData" typeof="bibo:Chapter" resource="#UC-UruguayOpenData"
+      <section rel="bibo:Chapter" resource="#UC-UruguayOpenData" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-UruguayOpenData">Uruguay
+        id="UC-UruguayOpenData">
+        <h3 id="h3_UC-UruguayOpenData" role="heading" aria-level="2">Uruguay
           Open Data Catalog</h3>
         <p class="contributor">(Contributed by AGESIC )<br />
           URL: <a href="http://datauy.org/">http://datauy.org/</a></p>
@@ -2042,10 +2046,10 @@
           <a href="#R-VocabReference">R-VocabReference</a> and <a href="#R-TrackDataUsage">R-TrackDataUsage</a>.</p>
       </section>
       <!-- Web Observatory -->
-      <section id="UC-WebObservatory" typeof="bibo:Chapter" resource="#UC-WebObservatory"
+      <section rel="bibo:Chapter" resource="#UC-WebObservatory" typeof="bibo:Chapter"
 
-        rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-WebObservatory">Web
+        id="UC-WebObservatory">
+        <h3 id="h3_UC-WebObservatory" role="heading" aria-level="2">Web
           Observatory </h3>
         <p class="contributor"><strong>Contributors: </strong>Adriano C.
           Machado Pereira, Adriano Veloso, Gisele Pappa, Wagner Meira Jr. </p>
@@ -2068,10 +2072,10 @@
           Federal do Rio Grande do Sul (UFRGS). The INWEB researchers use a set
           of new techniques related to information recovery, data mining and
           data visualization to understand and summarize what the media and
-          users are talking about on the Web. This provides the fundamental basis for
-          an evaluation of the impact of the Olympic Campaigns and how users react to
-          news and discussions. One new feature in this project is the
-          possibility to see the propagation of the Tweets. </p>
+          users are talking about on the Web. This provides the fundamental
+          basis for an evaluation of the impact of the Olympic Campaigns and how
+          users react to news and discussions. One new feature in this project
+          is the possibility to see the propagation of the Tweets. </p>
         <p><strong>Elements:</strong></p>
         <ul>
           <li><strong>Domains:</strong> Different contexts or domains, related
@@ -2112,10 +2116,10 @@
             </a> .</p>
       </section>
       <!-- Wind Characterisation -->
-      <section id="UC-WindCharacterizationScientificStudy" typeof="bibo:Chapter"
+      <section rel="bibo:Chapter" resource="#UC-WindCharacterizationScientificStudy"
 
-        resource="#UC-WindCharacterizationScientificStudy" rel="bibo:Chapter">
-        <h3 aria-level="2" role="heading" id="h3_UC-WindCharacterizationScientificStudy">Wind
+        typeof="bibo:Chapter" id="UC-WindCharacterizationScientificStudy">
+        <h3 id="h3_UC-WindCharacterizationScientificStudy" role="heading" aria-level="2">Wind
           Characterization Scientific Study</h3>
         <p class="contributor">(Contributed by Eric Stephan)</p>
         <p>This use case describes a data management facility being constructed
@@ -2127,10 +2131,11 @@
           located on an offshore platform. This raw data is collected by the
           Data Management Facility and processed into a standardized NetCDF
           format. Both the raw measurements and processed data are archived in
-          the <abbr title="Pacific Northwest National Laboratory">PNNL</abbr> Institutional Computing (PIC) petascale computing facility.
-          The DMF will record all processing history, quality assurance work,
-          problem reporting, and maintenance activities for both instrumentation
-          and data. All datasets, instrumentation, and activities are cataloged
+          the <abbr title="Pacific Northwest National Laboratory">PNNL</abbr>
+          Institutional Computing (PIC) petascale computing facility. The DMF
+          will record all processing history, quality assurance work, problem
+          reporting, and maintenance activities for both instrumentation and
+          data. All datasets, instrumentation, and activities are cataloged
           providing a seamless knowledge representation of the scientific study.
           The DMF catalog relies on linked open vocabularies and domain
           vocabularies to make the study data searchable. Scientists will be
@@ -2147,8 +2152,8 @@
       </section>
     </section>
     <!-- end use cases -->
-    <section id="general-challenges" rel="bibo:Chapter" resource="#challenges" typeof="bibo:Chapter">
-      <h2 role="heading" aria-level="1" id="challenges">General Challenges</h2>
+    <section typeof="bibo:Chapter" resource="#challenges" rel="bibo:Chapter" id="general-challenges">
+      <h2 id="challenges" aria-level="1" role="heading">General Challenges</h2>
       <p>The use cases presented in the previous section illustrate a number of
         challenges faced by data publishers and data consumers. These challenges
         show that some guidance is required on specifc areas and therefore best
@@ -2158,8 +2163,8 @@
         Qaulity and Data Usage motivated the definition of specifc requirements
         for the Quality and Granularity Description Vocabulary and the Data
         Usage Vocabulary. </p>
-      <section typeof="bibo:Chapter" resource="#openclosed" rel="bibo:Chapter">
-        <h3 id="openclosed" aria-level="2" role="heading">A Word on Open and
+      <section rel="bibo:Chapter" resource="#openclosed" typeof="bibo:Chapter">
+        <h3 role="heading" aria-level="2" id="openclosed">A Word on Open and
           Closed Data</h3>
         <p>The Open Knowledge Foundation <a href="http://opendefinition.org/">defines
             open data</a> most succinctly as <em>data that can be freely used,
@@ -2214,8 +2219,8 @@
           and <a href="#R-SensitiveSecurity">R-SensitiveSecurity</a> as being
           of particular relevance to closed data.</p>
       </section>
-      <section typeof="bibo:Chapter" resource="#reqsByTheme" rel="bibo:Chapter">
-        <h3 id="reqsByTheme" aria-level="2" role="heading">Requirements by
+      <section rel="bibo:Chapter" resource="#reqsByTheme" typeof="bibo:Chapter">
+        <h3 role="heading" aria-level="2" id="reqsByTheme">Requirements by
           Challenge</h3>
         <p>The table below groups the reqirements derived from the use cases
           according to the challenges faced by producers and users of data on
@@ -2236,6 +2241,12 @@
 
                   href="#R-AccessRealTime">R-AccessRealTime</a>, <a href="#R-AccessUptodate">R-AccessUptodate</a>,
                 <a href="#R-APIDocumented">R-APIDocumented</a> </td>
+            </tr>
+            <tr>
+              <td>Data Enrichment</td>
+              <td> <a href="#h4_can-req-enrichment">Requirements for Data Enrichment </a>
+              </td>
+              <td> <a href="#R-DataEnrichment">R-DataEnrichment</a> </td>
             </tr>
             <tr>
               <td>Data Formats</td>
@@ -2348,17 +2359,15 @@
         </table>
       </section>
     </section>
-    <section id="requirements-1" rel="bibo:Chapter" resource="#requirements" typeof="bibo:Chapter">
-      <h2 role="heading" aria-level="1" id="requirements">Requirements</h2>
-      <section id="requirements-for-data-on-the-web-best-practices" rel="bibo:Chapter"
-
-        resource="#req1" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req1">Requirements for Data on the
+    <section typeof="bibo:Chapter" resource="#requirements" rel="bibo:Chapter" id="requirements-1">
+      <h2 id="requirements" aria-level="1" role="heading">Requirements</h2>
+      <section typeof="bibo:Chapter" resource="#req1" rel="bibo:Chapter" id="requirements-for-data-on-the-web-best-practices">
+        <h3 id="req1" aria-level="2" role="heading">Requirements for Data on the
           Web Best Practices </h3>
-        <section id="requirements-for-data-access" rel="bibo:Chapter" resource="#h4_can-req-access"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-access" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-access">Requirements
+          id="requirements-for-data-access">
+          <h4 id="h4_can-req-access" aria-level="3" role="heading">Requirements
             for Data Access</h4>
           <dl>
             <dt id="R-AccessBulk">R-AccessBulk</dt>
@@ -2414,12 +2423,28 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-formats" rel="bibo:Chapter" resource="#h4_can-req-Formats"
+         <section typeof="bibo:Chapter" resource="#h4_can-req-enrichment" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-Formats">Requirements
+          id="requirements-for-data-enrichment">
+          <h4 id="h4_can-req-enrichment" aria-level="3" role="heading">Requirements
+            for Data Enrichment</h4>
+          <dl>
+             <dt id="R-DataEnrichment">R-DataEnrichment</dt>
+            <dd>
+              <p id="_R-DataEnrichment"><em>It should be possible to perform some data enrichment tasks in order to aggregate value to data, therefore providing more value for user applications and services.</em></p>
+              <p> <strong>Motivation:</strong><a href="#UC-ISOGeo">ISOGeo</a>, 
+                <a href="#UC-LandPortal">LandPortal</a>, <a href="#UC-LuSTRE">LuSTRE</a>, 
+                <a href="#UC-MSI">MSI</a>, <a href="#UC-WebObservatory">WebObservatory</a>
+              </p>
+            </dd>
+          </dl>
+        </section>
+        <section typeof="bibo:Chapter" resource="#h4_can-req-Formats" rel="bibo:Chapter"
+
+          id="requirements-for-data-formats">
+          <h4 id="h4_can-req-Formats" aria-level="3" role="heading">Requirements
             for Data Formats</h4>
-                    <dl>
+          <dl>
             <dt id="R-FormatLocalize">R-FormatLocalize</dt>
             <dd>
               <p id="_R-FormatLocalize"><em>Information about locale parameters
@@ -2483,10 +2508,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-identification" rel="bibo:Chapter" resource="#h4_can-req-identification"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-identification" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-identification">Requirements
+          id="requirements-for-data-identification">
+          <h4 id="h4_can-req-identification" aria-level="3" role="heading">Requirements
             for Data Identification</h4>
           <dl>
             <dt id="R-UniqueIdentifier">R-UniqueIdentifier</dt>
@@ -2501,10 +2526,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-selection" rel="bibo:Chapter" resource="#h4_can-req-selection"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-selection" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-selection">Requirements
+          id="requirements-for-data-selection">
+          <h4 id="h4_can-req-selection" aria-level="3" role="heading">Requirements
             for Data Selection</h4>
           <dl>
             <dt id="R-DataIrreproducibility">R-DataIrreproducibility</dt>
@@ -2512,14 +2537,7 @@
               <p><em>Data should be designated if it is irreproducible.</em></p>
               <p> </p>
               <p><strong>Motivation:</strong> <a href="#UC-ASO">ASO</a>, <a href="#UC-OpenExperimentalFieldStudies">OpenExperimentalFieldStudies</a></p>
-              <div class="issue">
-                <p>This is a new requirement that needs discussion and
-                  agreement, including whether this is the right place for it. <a
-
-                    href="https://www.w3.org/2013/dwbp/track/issues/86">Issue-86</a></p>
-                <p>Dee: To be discussed for later version of doc.</p>
-              </div>
-            </dd>
+                          </dd>
             <dt id="R-DataLifecyclePrivacy">R-DataLifecyclePrivacy</dt>
             <dd>
               <p id="_R-DataLifecyclePrivacy"><em>Preliminary steps in the data
@@ -2535,21 +2553,13 @@
               <p><em>Data should be identified by a designated lifecycle stage</em></p>
               <p><strong>Motivation:</strong><a href="#UC-DadosGovBr">DadosGovBr</a>,
                 <a href="#UC-OpenExperimentalFieldStudies">OpenExperimentalFieldStudies</a></p>
-              <div class="issue">
-                <p>This is a new requirement that needs discussion and
-                  agreement, including whether this is the right place for it. <a
-
-                    href="https://www.w3.org/2013/dwbp/track/issues/85">Issue-85</a></p>
-                <p>Dee: To be discussed for later version of doc.</p>
-              </div>
-            </dd>
-           
+                         </dd>
           </dl>
         </section>
-        <section id="requirements-for-data-vocabularies" rel="bibo:Chapter" resource="#h4_can-req-vocabularies"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-vocabularies" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-vocabularies">Requirements
+          id="requirements-for-data-vocabularies">
+          <h4 id="h4_can-req-vocabularies" aria-level="3" role="heading">Requirements
             for Data Vocabularies</h4>
           <dl>
             <dt id="R-VocabDocum">R-VocabDocum</dt>
@@ -2603,10 +2613,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-industry-reuse" rel="bibo:Chapter" resource="#h4_can-req-industry-reuse"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-industry-reuse" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-industry-reuse">Requirements
+          id="requirements-for-industry-reuse">
+          <h4 id="h4_can-req-industry-reuse" aria-level="3" role="heading">Requirements
             for Industry Reuse</h4>
           <p>Note: SLAs are a form of metadata and so inherit metadata
             requirements</p>
@@ -2622,10 +2632,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-licenses" rel="bibo:Chapter" resource="#h4_can-req-licenses"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-licenses" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-licenses">Requirements
+          id="requirements-for-licenses">
+          <h4 id="h4_can-req-licenses" aria-level="3" role="heading">Requirements
             for Licenses</h4>
           <p>Note: Licenses are a form of metadata and so inherit metadata
             requirements.</p>
@@ -2650,10 +2660,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-metadata" rel="bibo:Chapter" resource="#h4_can-req-metadata"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-metadata" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-metadata">Requirements
+          id="requirements-for-metadata">
+          <h4 id="h4_can-req-metadata" aria-level="3" role="heading">Requirements
             for Metadata</h4>
           <dl>
             <dt id="R-DataProductionContext">R-DataProductionContext</dt>
@@ -2668,7 +2678,6 @@
                 <a href="#UC-OpenCityDataPipeline">OpenCityDataPipeline</a>, <a
 
                   href="#UC-OpenExperimenatlFieldStudies">OpenExperimenatlFieldStudies</a></p>
-             
             </dd>
             <dt id="R-GeographicalContext">R-GeographicalContext</dt>
             <dd>
@@ -2683,7 +2692,7 @@
                   Location</a>, <a href="http://www.w3.org/2013/share-psi/workshop/samos/report#fire">Share-PSI
                   Emergency Response )</a> </p>
             </dd>
-                        <dt id="R-MetadataAvailable">R-MetadataAvailable</dt>
+            <dt id="R-MetadataAvailable">R-MetadataAvailable</dt>
             <dd>
               <p id="_R-MetadataAvailable"><em>Metadata should be available</em></p>
               <p><strong>Motivation:</strong> <a href="#UC-ASO">ASO</a>, <a href="#UC-BuildingEye">BuildingEye</a>,
@@ -2734,10 +2743,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-preservation" rel="bibo:Chapter" resource="#h4_can-req-preservation"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-preservation" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-Preservation">Requirements
+          id="requirements-for-preservation">
+          <h4 id="h4_can-req-Preservation" aria-level="3" role="heading">Requirements
             for Preservation</h4>
           <dl>
             <dt id="R-PersistentIdentification">R-PersistentIdentification</dt>
@@ -2755,10 +2764,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-provenance" rel="bibo:Chapter" resource="#h4_can-req-provenance"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-provenance" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-provenance">Requirements
+          id="requirements-for-provenance">
+          <h4 id="h4_can-req-provenance" aria-level="3" role="heading">Requirements
             for Provenance</h4>
           <p>Note: Provenance data is a form of metadata and so inherits
             metadata requirements.</p>
@@ -2787,10 +2796,10 @@
             </dd>
           </dl>
         </section>
-        <section id="requirements-for-sensitive-data" rel="bibo:Chapter" resource="#h4_can-req-sensitive"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-sensitive" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-sensitive">Requirements
+          id="requirements-for-sensitive-data">
+          <h4 id="h4_can-req-sensitive" aria-level="3" role="heading">Requirements
             for Sensitive Data</h4>
           <dl>
             <dt id="R-SensitivePrivacy">R-SensitivePrivacy</dt>
@@ -2819,15 +2828,13 @@
           </dl>
         </section>
       </section>
-      <section id="requirements-for-quality-and-granularity-description-vocabulary"
-
-        rel="bibo:Chapter" resource="#req2" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req2">Requirements for Quality and
+      <section typeof="bibo:Chapter" resource="#req2" rel="bibo:Chapter" id="requirements-for-quality-and-granularity-description-vocabulary">
+        <h3 id="req2" aria-level="2" role="heading">Requirements for Quality and
           Granularity Description Vocabulary</h3>
-        <section id="requirements-for-data-quality" rel="bibo:Chapter" resource="#h4_can-req-quality"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-quality" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-quality"> <span class="secno">4.2.1
+          id="requirements-for-data-quality">
+          <h4 id="h4_can-req-quality" aria-level="3" role="heading"> <span class="secno">4.2.1
               </span>Requirements for Data Quality</h4>
           <dl>
             <dt id="R-DataMissingIncomplete">R-DataMissingIncomplete</dt>
@@ -2888,12 +2895,11 @@
                   France ) </a> </p>
             </dd>
           </dl>
-       
         </section>
-        <section id="requirements-for-data-granularity" rel="bibo:Chapter" resource="#h4_can-req-granularity"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-granularity" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-granularity">Requirements
+          id="requirements-for-data-granularity">
+          <h4 id="h4_can-req-granularity" aria-level="3" role="heading">Requirements
             for Data Granularity</h4>
           <dl>
             <dt id="R-GranularityLevels">R-GranularityLevels</dt>
@@ -2909,15 +2915,13 @@
           </dl>
         </section>
       </section>
-      <section id="requirements-for-data-usage-description-vocabulary" rel="bibo:Chapter"
-
-        resource="#req3" typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="req3">Requirements for Data Usage
+      <section typeof="bibo:Chapter" resource="#req3" rel="bibo:Chapter" id="requirements-for-data-usage-description-vocabulary">
+        <h3 id="req3" aria-level="2" role="heading">Requirements for Data Usage
           Description Vocabulary</h3>
-        <section id="requirements-for-data-usage" rel="bibo:Chapter" resource="#h4_can-req-usage"
+        <section typeof="bibo:Chapter" resource="#h4_can-req-usage" rel="bibo:Chapter"
 
-          typeof="bibo:Chapter">
-          <h4 role="heading" aria-level="3" id="h4_can-req-usage">Requirements
+          id="requirements-for-data-usage">
+          <h4 id="h4_can-req-usage" aria-level="3" role="heading">Requirements
             for Data Usage</h4>
           <dl>
             <dt id="R-Citable">R-Citable</dt>
@@ -2954,97 +2958,95 @@
                   Feedback</a>, <a href="http://www.w3.org/2013/share-psi/workshop/samos/report#feedback2">Share-PSI
                   Feedback 2</a>, <a href="http://www.w3.org/2013/share-psi/workshop/samos/report#france">Share-PSI
                   France ) </a></p>
-              
             </dd>
-            
           </dl>
         </section>
       </section>
     </section>
-    <section id="reading-material-1" rel="bibo:Chapter" resource="#reading-material"
+    <section typeof="bibo:Chapter" resource="#reading-material" rel="bibo:Chapter"
 
-      typeof="bibo:Chapter">
-      <h2 role="heading" aria-level="1" id="reading-material">Reading Material</h2>
-      <section id="general-resources-1" rel="bibo:Chapter" resource="#general-resources"
+      id="reading-material-1">
+      <h2 id="reading-material" aria-level="1" role="heading">Reading Material</h2>
+      <section typeof="bibo:Chapter" resource="#general-resources" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="general-resources">General
+        id="general-resources-1">
+        <h3 id="general-resources" aria-level="2" role="heading">General
           Resources</h3>
         <ul>
-          <li><a href="http://www.w3.org/TR/ld-glossary/" class="external text">Government
+          <li><a class="external text" href="http://www.w3.org/TR/ld-glossary/">Government
               Linked Data (GLD) Glossary of Terms</a></li>
-          <li><a href="http://lov.okfn.org/dataset/lov/" class="external text">Open
+          <li><a class="external text" href="http://lov.okfn.org/dataset/lov/">Open
               Knowledge Foundation (OKFN) Linked Open Vocabulary Browser</a></li>
-          <li><a href="http://www.w3.org/TR/ld-bp/" class="external text">Best
+          <li><a class="external text" href="http://www.w3.org/TR/ld-bp/">Best
               Practices for Publishing Linked Data</a></li>
-          <li><a href="http://philarcher.org/diary/2013/uripersistence/" class="external text">
+          <li><a class="external text" href="http://philarcher.org/diary/2013/uripersistence/">
               10 Rules for Persistent URIs</a></li>
-          <li><a href="http://www.w3.org/2012/ldp/" class="external text">Linked
+          <li><a class="external text" href="http://www.w3.org/2012/ldp/">Linked
               Data Platform Working Group</a></li>
-          <li>The <a href="http://www.prelida.eu/" class="external text">PRELIDA</a>
+          <li>The <a class="external text" href="http://www.prelida.eu/">PRELIDA</a>
             and <a href="http://www.diachron-fp7.eu/">Diachron</a> projects are
             concerned with preserving <abbr title="Linked Open Data">LOD</abbr></li>
         </ul>
       </section>
-      <section id="relevant-vocabularies" rel="bibo:Chapter" resource="#relevant-vocabs"
+      <section typeof="bibo:Chapter" resource="#relevant-vocabs" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="relevant-vocabs">Relevant
+        id="relevant-vocabularies">
+        <h3 id="relevant-vocabs" aria-level="2" role="heading">Relevant
           Vocabularies</h3>
         <ul>
-          <li><a href="http://www.w3.org/TR/vocab-org/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-org/">The
               Organization Ontology (ORG)</a></li>
-          <li><a href="http://www.w3.org/TR/vocab-dcat/" class="external text">Data
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-dcat/">Data
               Catalog Vocabulary(DCAT)</a></li>
-          <li><a href="http://www.w3.org/TR/vocab-data-cube/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/vocab-data-cube/">The
               RDF Data Cube Vocabulary (QB)</a></li>
-          <li><a href="http://www.w3.org/TR/prov-o/" class="external text">The
+          <li><a class="external text" href="http://www.w3.org/TR/prov-o/">The
               Provenance (PROV) Ontology</a></li>
-          <li><a href="http://www.w3.org/TR/skos-reference/" class="external text">Simple
+          <li><a class="external text" href="http://www.w3.org/TR/skos-reference/">Simple
               Knowledge Organization System Reference (SKOS)</a></li>
         </ul>
       </section>
-      <section id="communities-of-interest-1" rel="bibo:Chapter" resource="#communities-of-interest"
+      <section typeof="bibo:Chapter" resource="#communities-of-interest" rel="bibo:Chapter"
 
-        typeof="bibo:Chapter">
-        <h3 role="heading" aria-level="2" id="communities-of-interest">Communities
+        id="communities-of-interest-1">
+        <h3 id="communities-of-interest" aria-level="2" role="heading">Communities
           of Interest</h3>
         <ul>
-          <li><a href="http://www.w3.org/2013/data/" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2013/data/"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Data Activity</a></li>
-          <li><a href="http://www.w3.org/2013/05/lcsv-charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2013/05/lcsv-charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Comma Separated
               Values (CSV) On the Web Working Group</a>
             <ul>
-              <li><a href="http://www.w3.org/TR/csvw-ucr/" class="external text">CSV
+              <li><a class="external text" href="http://www.w3.org/TR/csvw-ucr/">CSV
                   On the Web Use Cases</a></li>
             </ul>
           </li>
-          <li><a href="http://www.w3.org/2011/gld/charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2011/gld/charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Government Linked
               Data Working Group</a> (This WG is now closed but in some respects
             is the forerunner of the DWBP)</li>
-          <li><a href="http://www.w3.org/2011/07/privacy-ig-charter.html" class="external text"><abbr
+          <li><a class="external text" href="http://www.w3.org/2011/07/privacy-ig-charter.html"><abbr
 
                 title="World Wide Web Consortium">W3C</abbr> Privacy on the
               Web(PING) Working Group</a></li>
         </ul>
       </section>
     </section>
-    <section rel="bibo:Chapter" resource="#acknowledgements" typeof="bibo:Chapter"
+    <section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements"
 
-      class="appendix" id="acknowledgements">
-      <h2 id="h2_acknowledgements" role="heading" aria-level="1">Acknowledgements</h2>
+      rel="bibo:Chapter">
+      <h2 aria-level="1" role="heading" id="h2_acknowledgements">Acknowledgements</h2>
       <p>The editors wish to thank all those who have contributed use cases or
         commented on those provided by others.</p>
     </section>
-    <section rel="bibo:Chapter" resource="#change-history" typeof="bibo:Chapter"
+    <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history"
 
-      class="appendix" id="change-history">
-      <h2 id="h2_change-history" role="heading" aria-level="1">Change history</h2>
+      rel="bibo:Chapter">
+      <h2 aria-level="1" role="heading" id="h2_change-history">Change history</h2>
       <ul>
         <li>Tracking Data Use cases extended to include Ordnance Survey</li>
         <li>RDESC use case added</li>
