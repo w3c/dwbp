@@ -306,14 +306,13 @@ figure figcaption {
         Best Practices.</p>
       <div id="tempPractice">
         <p><span id="template" class="tempPracticelab">Best Practice Template</span></p>
-        <p class="tempPracticedesc">Short description of the BP.</p>
+        <p class="tempPracticedesc">Short description of the BP, including the relevant RFC2119 keyword(s) from the Intended Outcome</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>This section answers two crucial questions:</p>
           <ul>
-            <li>Why this is unique to publishing or reusing data on the Web ?</li>
-            <li>How does this encourages publication or reuse of data on the Web
-              ?</li>
+            <li>Why this is unique to publishing or reusing data on the Web? </li>
+            <li>How does this encourages publication or reuse of data on the Web? </li>
           </ul>
         </section>
         <section class="description">A full text description of the problem
@@ -378,13 +377,13 @@ figure figcaption {
           version, update schedule etc. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and reuse.</p>
-        <p>This document specifies the intended outcomes for each best practice
+        <!--<p>This document specifies the intended outcomes for each best practice
           and then gives some guidance on possible implementation methods. In
           terms of metadata, the particular implementation method might depend
           on the dataset distribution, for example, metadata describing a CSV
           file <em class="rfc2119">should</em> be provided in a different way
           than for an RDF dataset. However, the <em>intention</em> is the same
-          irrespective of data format.</p>
+          irrespective of data format.</p> -->
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
@@ -430,8 +429,6 @@ figure figcaption {
                   of the dataset</strong> as, for example, the Metadata
                 Vocabulary for Tabular Data for <abbr title="Comma Separated Variables">CSV</abbr>
                 files [[TABULAR-METADATA]].</li>
-              <li>Use the <code>dcterms:license</code> or <code>dcterms:rights</code>
-                to link a dataset to license and/or rights information.</li>
             </ul>
           </section>
           <section class="test">
@@ -502,7 +499,7 @@ figure figcaption {
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="ProvideMetadataStandardized" class="practicelab">Use
-              standard terms to describe metadata</span></p>
+              standard terms to provide metadata</span></p>
           <p class="practicedesc">Metadata <em class="rfc2119">should</em> be
             provided using standard vocabularies for greater interoperability
             and discoverability.</p>
@@ -524,9 +521,11 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Metadata <em class="rfc2119">must</em> be provided using
+            <p>Metadata <em class="rfc2119">should</em> be provided using
               standard vocabularies.</p>
           </section>
+<div class="issue">MUST or SHOULD? <a href="https://www.w3.org/2013/dwbp/track/issues/133">Issue-133</a>. This
+issue could readily be applied to all BPs.</div>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Metadata is best provided using RDF vocabularies. Each term in an
@@ -593,15 +592,15 @@ figure figcaption {
             <p class="subhead">Why</p>
             <p>In order to be discoverable on the Web, typically through a
               search engine or a data portal's own search function, it is
-              essential to provide the kind of information that such tools need
-              explicitly. Unlike a natural language document that, to a greater
+              essential to provide the kind of information that such tools need. 
+              Unlike a natural language document that, to a greater
               or lesser extent, can be processed and its content 'understood,' a
               dataset must be described and it's that description that forms the
               basis of any classification, or indexing.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Search tools <em class="rfc2119">must</em> be able to discover
+            <p>User agents <em class="rfc2119">must</em> be able to discover
               datasets.</p>
           </section>
           <section class="how">
@@ -621,7 +620,7 @@ figure figcaption {
               <li>Any <strong>variants</strong> (e.g. different human-language
                 translations) of data.</li>
               <li><strong>Access mechanisms</strong> though which the data be
-                accessed, e.g. SPARQL endpoints, Linked Data Platform, REST
+                accessed, e.g. SPARQL endpoints, Linked Data Platform [[LDP]], REST
                 interfaces, SOAP-based web services, etc. (see <a href="#access">Data
                   Access</a>). </li>
             </ul>
