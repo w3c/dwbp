@@ -24,14 +24,6 @@
   }
 }
 
-@media screen and (min-width: 900px) {
-    #bp-summary ul {
-    column-count:2;
-    -moz-column-count:2;
-    -webkit-column-count:2;
-  }
-}
-
 .practice, #tempPractice {
   padding-left: 1em;
   background-color: #FCFAEE;
@@ -84,6 +76,7 @@ figure figcaption {
         consumers.</p>
     </section>
     <section id="sotd">
+
       <p>This early version of the document shows its expected scope and future
         direction. A template is used that shows the what, why and how of each
         best practice. Comments are sought on the usefulness of this approach
@@ -91,6 +84,25 @@ figure figcaption {
     </section>
     <section id="intro" class="informative">
       <h2>Introduction</h2>
+<div class="note">
+<p>This is the first working draft of this document to be formally published and
+all text is explicitly open to review. In this first
+version, more than 30 best practices are proposed and more than 25
+requirements have been addressed. However, there are still many ongoing
+discussions in the group about important subjects, like terminology
+and scope. The group is still working towards consensus on the meaning
+and application of some important terms including: vocabulary,
+metadata, data model, data format, schema and dataset. Other important
+issues relate to the definition of best practices for vocabularies. For example
+it is not clear if providing advice to data publishers to create and reuse
+vocabularies is in the scope of the <abbr title="Data on the Web Best Practices">DWBP</abbr>. 
+Likewise, there is not yet consensus on whether data preservation is in scope.
+The Working Group is therefore particularly keen to receive comments to ensure
+that its future work is relevant, useful and comprehensive. Please send comments 
+to <a href="mailto:public-dwbp-wg@w3.org">public-dwbp-wg@w3.org</a> 
+(<a href="mailto:public-dwbp-wg-request@w3.org?subject=subscribe">subscribe</a>, 
+<a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/">archives</a>).</p>
+</div>
       <p>Data on the Web Best Practices have been developed to encourage and
         enable the continued expansion of the Web as a medium for the exchange
         of data. The growth of open data by governments across the world
@@ -225,7 +237,7 @@ figure figcaption {
               gathered?</em></dd>
         </dl>
         <p> Each one of these challenges originated one or more requirements as
-          documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html#R-UniqueIdentifier">the
+          documented in <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">the
             use-cases document</a>. The development of Data on the Web Best
           practices were guided by these requirements, in such a way that each
           best practice should have at least one of these requirements as an
@@ -491,8 +503,8 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead,
-                </a> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></p>
           </section>
         </div>
         <!-- end of BP -->
@@ -552,34 +564,6 @@ issue could readily be applied to all BPs.</div>
           </section>
         </div>
         <!-- end of BP -->
-        <!-- begin  Metadata Documentation BP
-        <div class="practice">          <p><span id="MetadataDocum" class="practicelab">Document metadata </span></p>
-          <p class="practicedesc">The metadata vocabularies used, and any lists            of allowed values, <em class="rfc2119">should</em> be documented.</p>
-          <section class="axioms">            <p class="subhead">Why</p>
-            <p>The use of standardized vocabularies is a crucial step towards              interoperability but there is almost always a choice of
-              vocabularies that can be used to achieve a given task. In addition              there are often multiple ways of using a single vocabulary. For
-              example, the value of <code>dcterms:spatial</code> should be a              URI but those provided by <a href="http://www.geonames.org/">geonames</a>,
-              <a href="http://dbpedia.org/">dbpedia</a> and <a href="http://www.wikidata.org/">wikidata</a>              are just three possible sources of such URIs. Ensuring that the
-              value of a property is always drawn from a controlled list of              allowed values, such as a code list, helps interoperability but it
-              may be that some of the same values occur in multiple lists. While              it may be obvious to at least some potential users which
-              vocabularies have been used and how they have been used,              documenting this can often make the policies used more explicit,
-              thereby reducing surprises and increasing confidence among users.</p>            <p>Documentation is particularly important where vocabularies have
-              been created or extended from existing standards (see <a href="dataVocabularies">Data                Vocabularies</a>).</p>
-          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>Vocabularies and controlled lists used to provide metadata <em class="rfc2119">should</em>
-              be documented.</p>          </section>
-          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>
-            <p>A description of the metadata used should form part of the              overall description of the data.</p>
-          </section>          <section class="test">
-            <p class="subhead">How to Test</p>            <p>Check that the provision of metadata follows a defined pattern or
-              policy. It may be possible to machine-test this using the work of              the <a href="http://www.w3.org/2014/data-shapes/">RDF Data Shapes</a>
-              Working Group.</p>          </section>
-          <section class="ucr">            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>            </p>
-          </section>        </div>
-        <!-- <div class="issue">          <p> Bernadette: This BP must be reviewed. It is redundant with            Document vocabularies BP and Provide metadata in different formats
-            BP.</p>          <p><a href="https://www.w3.org/2013/dwbp/track/issues/120">Tracker              Issue 120</a></p>        </div> -->
-        <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
         <div class="practice">
           <p><span id="DiscoveryMetadata" class="practicelab">Provide discovery
@@ -587,7 +571,7 @@ issue could readily be applied to all BPs.</div>
           <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
             be described by metadata.</p>
           <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-              Metadata</a> best practice. </p>
+              Metadata</a>. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>In order to be discoverable on the Web, typically through a
@@ -654,7 +638,7 @@ issue could readily be applied to all BPs.</div>
 
               class="rfc2119">must</em> be described by metadata.</p>
           <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-              Metadata</a> best practice </p>
+              Metadata</a>.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Once a potential user has <a href="#DiscoveryMetadata">discovered</a>
@@ -716,7 +700,7 @@ issue could readily be applied to all BPs.</div>
             time, and number formats, language) <em class="rfc2119">should</em>
             be made available. </p>
           <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-              Metadata</a> best practice </p>
+              Metadata</a>.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Some data fields differ subtly but significantly with changes in
@@ -756,43 +740,42 @@ issue could readily be applied to all BPs.</div>
         </div>
         <!-- end of Locale Parameters BP -->
         <!--<div class="issue">
-          <p> Bernadette: Review the specialization hierarchy between Provide            Metadata BP and other BP. Provide Data Provenance BP, Provide Data            License BP and Provide Data Quality information BP should be a            specialization of Provide Metadata BP or Provide Administrative            Metadata BP? ). </p>        </div> -->
       </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
         <h3>Data Identification</h3>
         <p>Identifiers are simple conventions of labels that allow us to
-          distinguish what is being identified from any other thing. Identifiers
-          have being extensively used in every information system, making
-          possible to refer to any particular element. On the web, a friendly
+          distinguish what is being identified from anything else. Identifiers
+          have being extensively used in every information system, making it
+          possible to refer to any particular element. On the Web, a friendly
           and uniform system of identification will be required to enable data
           persistency and reuse, being a crucial element for the process of data
           sharing and connecting.</p>
         <p>Just by adopting a common identification system we are making
           possible basic identification and comparison processes by the
-          different stakeholders in a reliable way. These will be essential
+          different stakeholders in a reliable way. These are essential
           pre-conditions for proper data management and to facilitate reuse.</p>
         <!-- begin of Data Identification BP -->
         <div class="practice">
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
               unique identifiers</span></p>
           <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
-            be clearly associated with an unique identifier that represents it.
+            be clearly associated with an unique identifier.
           </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The architecture of the World Wide Web [[WEBARCH]] is based on
-              links between resources based on globally unique identifers. They
+              links between resources based on globally unique identifiers. They
               can identify people, places and concepts just as much as the more
-              familiar URL identifiers for Web pages, images etc. HTTP IRIs, the
-              internationalized version of URIs, themsleves a super-set of URLs,
-              are a fundamental aspect of the Web.</p>
+              familiar <abbr title="Uniform Resource Location">URL</abbr> identifiers for Web pages, images etc. 
+              HTTP <abbr title="Internationalized Resource Identifier">IRI</abbr>s, the
+              internationalized version of <abbr title="Uniform Resource Identifier">URI</abbr>s, 
+              themsleves a super-set of URLs, are a fundamental aspect of the Web.</p>
             <p>IRIs should not change over time so that references remain valid.</p>
-            <p>Just by adopting a common identification system we are making
-              possible basic data identification and comparison processes by the
-              different stakeholders in a reliable way. These will be essential
-              pre-conditions for proper data management and to facilitate reuse.</p>
+            <p>Adopting a common identification system enables basic data identification and 
+              comparison processes by any stakeholder in a reliable way. They are an essential
+              pre-condition for proper data management and reuse.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -802,11 +785,11 @@ issue could readily be applied to all BPs.</div>
             <ol>
               <li>Ensure that any data resource can be identified by its unique
                 identifier.</li>
-              <li>The resource identifier needs to remain persistent along time,
-                regardless the status of the associated resource.</li>
-              <li>Use always a consistent and uniform, but also flexible and
+              <li>The resource identifier needs to remain persistent through time,
+                regardless of the status of the associated resource.</li>
+              <li>Always use a consistent and uniform, but also flexible and
                 extensible, structure for the composition of identifiers.</li>
-              <li>Identifiers should remain as much neutral as possible
+              <li>Identifiers should remain as neutral as possible
                 (technically, idiomatically, culturally, semantically, etc.)</li>
             </ol>
           </section>
@@ -818,30 +801,30 @@ issue could readily be applied to all BPs.</div>
               (URI) is a compact sequence of characters that identifies an
               abstract or physical resource [[!RFC3986]]. One should aim for
               compact mnemonic URI: human and machine friendly. The function of
-              URI is to identify and it does not need to carry sematics, though
-              mnemonics: is recommended. </p>
-            <p> Internationalized Resource Identifiers (IRIs) [[!RFC3987]]
+              URI is to identify and it does not carry sematics, though
+              mnemonics are recommended. </p>
+            <p>Internationalized Resource Identifiers (IRIs) [[!RFC3987]]
               should be used when needed. The use of URI or IRIs depends on the
               intended audience. For global a audience one should use language
               and cultural neutral URIs; for local a audience one could use
               IRIs.</p>
-            <pre title="URI and IRIs" class="highlight example">              http://example.com/ä¸­å›½                  # For Chinese speaker: good mnemonic - non-Chinese speakers: bad mnemonic
+            <pre title="URI and IRIs" class="highlight example">              http://example.com/中国                  # For Chinese speaker: good mnemonic - non-Chinese speakers: bad mnemonic
               http://example.com/china                 # For Chinese speaker: acceptable - non-Chinese speakers: better
             </pre>
             <p>Some best practices to adopt while using URIs as a data
-              identification system are:</p>
+              identification system:</p>
             <ul>
               <li>Associate every data resource with an unique identifier using
                 a representational URI.</li>
               <li>Use the HTTP protocol to ensure that the resolution of any URI
                 on the Web is possible.</li>
-              <li>When someone looks up an identifier URI, provide always useful
+              <li>When someone looks up an identifier URI, always provide useful
                 information or metadata.</li>
               <li>Build standard URIs that follow a well-defined and extensible
                 scheme or pattern to provide consistency and uniformity.</li>
               <li>Avoid broken URIs. In the event that a resource has been
                 modified or deleted, those changes must be communicated using
-                the appropriate [[HTTP status codes]]. If the resource has
+                the appropriate [[RFC7231]]. If the resource has
                 change location HTTP 3XX codes should be used, whereas if the
                 resource has been deleted a HTTP 410 code will be used.</li>
               <li>Do not expose information on the technical implementation of
@@ -868,14 +851,14 @@ issue could readily be applied to all BPs.</div>
       <!-- begin of Data Formats -->
       <section id="dataFormats">
         <h3>Data Formats</h3>
-        <p>Best practices on data formats include considerations on making data
-          available in multiple open and machine readable formats for example
-          RDF and JSON. In addition this section will include guidance on
+        <p>Best practices related to data formats include those concerning making data
+          available in multiple open and machine readable formats (for example
+          RDF and JSON). In addition this section includes guidance on
           preferred data formats for example preferred formats for date, string
           and numbers. Guidance will also be provided on expressing data in
-          multiple languages. While mentioned in the use case document as
-          challenge, the best practices document should not make recommendations
-          regarding the formats of source data for example database dumps,
+          multiple languages. While mentioned in the use case document as a
+          challenge, the best practices document does not make recommendations
+          regarding the formats of source data, for example, database dumps,
           spreadsheets. It is expected that data sources for data on the Web
           will continue to be in multiple data formats.</p>
         <!-- begin of Machine-Readable Standardized Format BP -->
@@ -884,14 +867,14 @@ issue could readily be applied to all BPs.</div>
               machine-readable standardized data formats </span></p>
           <p class="practicedesc">Data <em class="rfc2119">must</em> be
             available in a machine-readable standardized data format that is
-            adequate for its intended or potential use. </p>
+            adequate for its intended or potential use.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> As data becomes more ubiquitous, and datasets become larger and
+            <p>As data becomes more ubiquitous, and datasets become larger and
               more complex, processing by computers becomes ever more crucial.
               Posting data in a format that is not machine readable places
               severe limitations on the continuing usefulness of the data. Using
-              nonstandard data formats is costly and inefficient, and the data
+              non-standard data formats is costly and inefficient, and the data
               may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
@@ -901,18 +884,17 @@ issue could readily be applied to all BPs.</div>
             <p class="subhead">Intended Outcome</p>
             <p> A machine <em class="rfc2119">must</em> be able to: </p>
             <ol>
-              <li> Open and read the data using commonly available software
+              <li>Open and read the data using commonly available software
                 packages. </li>
-              <li> Process the data. </li>
-              <li> Store the data for future use.</li>
+              <li>Process the data. </li>
+              <li>Store the data for future use.</li>
             </ol>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Consider which data formats potential users of the data are most
-              likely to have the necessary tools to parse proprietary or
-              (preferably) non-proprietary data formats, including but not
-              limited to CSV, NetCDF, XML, JSON and RDF. Standard data
+              likely to have the necessary tools to parse. Non-proprietary data formats include,
+              but are not limited to, CSV, NetCDF, XML, JSON and RDF. Standard data
               formats as well as the use of standard data vocabularies will
               better enable machines to process the data.</p>
           </section>
@@ -1057,25 +1039,25 @@ issue could readily be applied to all BPs.</div>
         <div class="practice">
           <p><span id="DocumentVocabularies" class="practicelab"> Document
               vocabularies </span></p>
-          <p class="practicedesc"> Vocabularies <em class="rfc2119">should</em>
-            be clearly documented. </p>
+          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
+            be clearly documented.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> A documentation defines what is within the vocabulary and the
-              better is the documentation the higher is possibility of reuse the
-              vocabulary and the datasets built with it. </p>
+            <p>Documentation defines what is within the vocabulary and the
+              better the documentation the higher the possibility of reuse the
+              vocabulary and the datasets built with it.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Humans <em class="rfc2119">should</em> be able to understand
-              the vocabulary. </p>
+            <p>Humans <em class="rfc2119">should</em> be able to understand
+              the vocabulary.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> A vocabulary may be published together with human-readable Web
+            <p>A vocabulary may be published together with human-readable Web
               pages, as detailed in the recipes for serving vocabularies with
               HTML documents in the <a href="http://www.w3.org/TR/swbp-vocab-pub/">Best
-                Practice Recipes for Publishing RDF Vocabularies</a>. Elements
+              Practice Recipes for Publishing RDF Vocabularies</a>. Elements
               from the vocabulary are defined with attributes containing
               human-understandable labels and definitions, such as rdfs:label,
               rdfs:comment, dc:description, skos:prefLabel, skos:altLabel,
@@ -1117,20 +1099,17 @@ issue could readily be applied to all BPs.</div>
                 Commons Attribution License</a>. Create entries for the
               vocabulary in repositories such as <a href="http://lov.okfn.org/">LOV</a>,
               <a href="http://prefix.cc">Prefix.cc</a>, <a href="http://bioportal.bioontology.org/">Bioportal</a>
-              or <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a><a>.</a></p>
-            <a> </a></section>
-          <a>
+              or <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a>.</p>
+            </section>
             <section class="test">
               <p class="subhead">How to Test</p>
               <p> Check that an open license is available looking for URL or
                 link to the document where the copyright is provided. </p>
             </section>
           </a>
-          <section class="ucr"><a>
-              <p class="subhead">Evidence</p>
-            </a>
-            <p><a><span>Relevant requirements</span>: </a><a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a>
-            </p>
+          <section class="ucr"><p class="subhead">Evidence</p>
+
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></p>
           </section>
         </div>
         <!-- end of Share Open Vocabularies BP -->
@@ -1604,9 +1583,9 @@ issue could readily be applied to all BPs.</div>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p> Information about the relevance of the BP is described by
-              requirements documented in <a href="http://w3c.github.io/dwbp/usecasesv1.html">the
+              requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
                 Data on the Web Best Practices Use Cases &amp; Requirements
-                document</a>: <a href="https://w3c.github.io/dwbp/usecasesv1.html#h4_can-req-quality">Requirements
+                document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#h4_can-req-quality">Requirements
                 for Data Quality</a></p>
           </section>
           <!-- end of Provide Data Quality BP --> </div>
@@ -1900,7 +1879,7 @@ issue could readily be applied to all BPs.</div>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="https://w3c.github.io/dwbp/usecasesv1.html#R-AccessBulk">R-AccessBulk</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
           </section>
         </div>
         <!-- end of BP BulkAccess 2-->
