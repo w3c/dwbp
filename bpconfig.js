@@ -53,6 +53,9 @@
       { 
         value: "Ig Ibert Bittencourt"
       },   
+      { 
+        value: "João Paulo"
+      },   
       {
         value: "Phil Archer"
       },
