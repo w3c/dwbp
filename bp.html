@@ -993,23 +993,18 @@ figure figcaption {
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
-	 <div class="issue">The section needs terminological discussion on whether &quot;vocabularies&quot;, which
+	 <div class="issue">The section needs terminological discussion on whether we keep &quot;vocabularies&quot;, which
 	   could be replaced by &quot;data models&quot; or &quot;schemas&quot; and whether we should remove &quot;controlled vocabularies&quot; from the picture. 
         </div>
-        <p>Datasets often resort to a range of vocabularies in the data they
-          contain: data is entered or captured in a controlled way, i.e.,
-          positions in a data graph (or column in a relationship table) are
-          explicitly defined, the name of a person, the subject of a book, a
-          relationship “knows” between two persons. Additionally, for certain
-          positions, the values used should come from a limited set of
-          pre-existing resources: for example object types, roles of a person,
-          countries in a geographic area, or possible subjects for books. Such
-          vocabularies ensure a level of control, standardization and
-          interoperability in the data. They can also provide a way to easily
-          create richer data. Say, a dataset contains a reference to a concept
-          described in several languages. This reference allows applications to
-          localize their display of their search depending on the language of
-          the user.</p>
+	<p>Data is often represented in a structured and controlled way, making reference to a
+	range of vocabularies, e.g. by defining types of nodes and links in a data graph or
+	types of values for columns in a table, such as the subject of a book, or a relationship “knows” between two persons.
+	Additionally, the values used may come from a limited set of pre-existing values or resources:
+	for example object types, roles of a person, countries in a geographic area, or possible subjects for books.
+	Such vocabularies ensure a level of control, standardization and interoperability in the data. They can also provide
+	a way to easily create richer data. Say, a dataset contains a reference to a concept described in several languages.
+	This reference allows applications to localize their display of their search depending on the language of the user.
+	</p>
         <p>According to W3C, <a href="http://www.w3.org/standards/semanticweb/ontology">vocabularies</a>
           define the concepts and relationships (also referred to as “terms”)
           used to describe and represent an area of concern. Vocabularies are
@@ -1024,21 +1019,21 @@ figure figcaption {
           (linked) datasets. In relational databases, these correspond to the
           names of tables and columns; in XML, they correspond to the elements
           defined by an XML Schema. Ontologies are the key building blocks for
-          inference techniques on the Semantic Web. The first means offered by
-          W3C for creating (“light-weight”) ontologies is the <a href="http://www.w3.org/standards/techs/rdf#w3c_all">RDF
-            Schema</a> language. It is possible to define more complex
-          (“heavy-weight”) ontologies with advanced axioms using languages such
-          as The Web Ontology Language <a href="http://www.w3.org/standards/techs/owl#w3c_all">OWL</a>.
+          inference techniques on the Semantic Web. The first means offered by W3C
+for creating ontologies is the <a href="http://www.w3.org/standards/techs/rdf#w3c_all">RDF
+            Schema</a> language. It is possible to define more expressive ontologies with
+additional axioms using languages such as those in The Web Ontology Language
+<a href="http://www.w3.org/standards/techs/owl#w3c_all">OWL</a> family.
         </p>
         <p>On the other hand, “controlled vocabularies”, “concept schemes”,
           “knowledge organization systems” enumerate and define resources that
-          can be employed in the descriptions made with ontologies. A concept
+          can be employed in the descriptions made with the former kind of vocabulary. A concept
           from a thesaurus, say, “architecture”, will for example be used in the
           subject field for a book description (where “subject” has been defined
           in an ontology for books). For defining the terms in these
           vocabularies, complex formalisms are most often not needed. Simpler
-          models have thus been proposed to represent and exchange them on the
-          web, such as W3C's Simple Knowledge Organization System (<a href="http://www.w3.org/standards/techs/skos#w3c_all">SKOS</a>).</p>
+          models have thus been proposed to represent and exchange them, such as the <a href="http://www.niso.org/schemas/iso25964/"ISO 25964 data model</a> or
+          W3C's Simple Knowledge Organization System (<a href="http://www.w3.org/standards/techs/skos#w3c_all">SKOS</a>).</p>
         <p>This section presents best practices for data vocabularies accessible
           as URI sets on the Web, which are applicable to any kind of
           vocabulary.</p>
@@ -1068,11 +1063,12 @@ figure figcaption {
               from the vocabulary are defined with attributes containing
               human-understandable labels and definitions, such as rdfs:label,
               rdfs:comment, dc:description, skos:prefLabel, skos:altLabel,
-              skos:note, skos:definition, skos:example, etc.;</p>
+              skos:note, skos:definition, skos:example, etc.. Documentation may benefit
+	  from the additional presence of vidual documentation such as the UML-style diagram of the <a href="http://www.w3.org/TR/vocab-org/">W3C Organization Ontology</a></p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that a human user can understand the documentation
+            <p>Check that a human user can understand the documentation
               associated with a vocabulary. </p>
           </section>
           <section class="ucr">
@@ -1240,47 +1236,43 @@ figure figcaption {
         <!-- end of BP -->
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
-          <p><span id="NotOverformalizeVocabularies" class="practicelab">Do not
-              overformalize vocabularies</span></p>
+          <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
           <p class="practicedesc">When creating or re-using a vocabulary for an
-            application, a data publisher <em class="rfc2119">should</em> try
-            to avoid using a knowledge representation language that is
-            unnecessarily complex for the application at hand.</p>
+            application, a data publisher <em class="rfc2119">should</em> opt for a level of formal semantics that fit data and applications.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Unnecessarily complex vocabularies cost more efforts to produce
-              and are less likely to be re-used in other datasets. Resources
-              that are equiped with a strong, formal semantics are less clear
-              (harder to understand) for any data re-user. It will hamper
-              comparing and linking across datasets. Highly formalized data is
-              harder to exploit by inference engines: using an OWL class in a
-              position where a SKOS concept is enough or using OWL classes with
-              complex OWL axioms raises the formal complexity of the data (cf. <a
-
-                href="http://www.w3.org/TR/owl2-profiles/">OWL Profiles</a>).</p>
+            <p>Formal semantics may help one to establish precise specifications, which support establishing
+	  the intended meaning of the vocabulary and the performance of complex tasks such as reasoning. On the other hand, complex vocabularies
+	  cost more efforts to produce and understand, which could hamper their re-use, as well as the comparison and linking of datasets exploiting them.
+          Highly formalized data is also harder to exploit by inference engines: for example, using an OWL class in a
+              position where a SKOS concept is enough, or using OWL classes with
+              complex OWL axioms raises the formal complexity of the data according to the <a
+             href="http://www.w3.org/TR/owl2-profiles/">OWL Profiles</a>. Data producers should therefore seek to
+	  identify the right level of formalization for particular domains, audiences and tasks,
+	  and maybe offer different formalization levels when one size does not fit all.</p>	  
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>The data <em class="rfc2119">should</em> not be more complex to
-              produce and re-use than what is necessary;</p>
+            <p>The data supports all application cases but <em class="rfc2119">should</em> not be more complex to
+              produce and re-use than necessary;</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Identify the “role” played by the vocabulary for the datasets,
+            <p>Identify the &quot;role&quot; played by the vocabulary for the datasets,
               say, providing classes and properties used to type resources and
-              provide the predicates for RDF statements, as opposed to providing
+              provide the predicates for RDF statements, or elements in an XML Schema, as opposed to providing
               simple concepts or codes that are used for representing attributes
-              of the resources described in a dataset. Represent vocabularies
-              simpler data models, e.g. SKOS, as opposed to formal ontology
-              languages like OWL, when simpler models are enough. See for
-              example <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">Concept
+              of the resources described in a dataset. When simpler models are enough to convey the necessary semantics, represent vocabularies
+              using them. For instance, for Linked Data, SKOS may be prefered for simple vocabularies as opposed to formal ontology
+              languages like OWL; see for
+              example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
                 schemes and code lists</a> are used in the RDF Data Cube
-              recommendation</p>
+              recommendation.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Applying an inference engine does not produce too many statements
-              that are unnecessary for an application.</p>
+            <p>For formal knowledge representation languages, applying an inference engine on top of the data that uses a given vocabulary does not produce too many statements
+              that are unnecessary for target applications.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1289,6 +1281,9 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>
             </p>
           </section>
+        </div>
+	<div class="issue"> The best practice on not overformalizing above should be re-written in a more technology-neutral way.
+	  The wording should also be more explicit about recignizing the value of formalization, when well applied.
         </div>
         <!-- end of Not Over formalize Vocabularies BP -->
         <h3>How to choose vocabularies?</h3>
