@@ -56,6 +56,9 @@
       { 
         value: "João Paulo Almeida"
       },   
+      { 
+        value: "Manuel Tomas Carrasco"
+      },  
       {
         value: "Phil Archer"
       },
