@@ -1,7 +1,7 @@
-﻿var respecConfig = {
+var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-    //publishDate:  "2014-03-27",
+    publishDate:  "2015-01-29",
     //previousPublishDate: "2014-03-27",
     //previousMaturity: "FPWD",
     //previousURI: "http://www.w3.org/TR/2014/WD-tabular-data-model-20140327/",
@@ -174,6 +174,69 @@
         "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
         "id":"ld-glossary",
         "date":"27 June 2013"
+       }, 
+      "ISO-25964":{
+        "authors":["Stella Dextre Clarke et al"],
+        "href":"http://www.niso.org/schemas/iso25964/",
+        "title":"ISO 25964 – the international standard for thesauri and interoperability with other vocabularies",
+        "publisher":"ISO/NISO",
+        "id":"ISO 25964"
+       }, 
+      "ORG":{
+        "authors":["Dave Reynolds"],
+        "href":"http://www.w3.org/TR/vocab-org/",
+        "title":"The Organization Ontology",
+        "status":"W3C Recommendation",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"vocab-org",
+        "date":"16 January 2014"
+       }, 
+      "QB":{
+        "authors":["Richard Cyganiak","Dave Reynolds"],
+        "href":"http://www.w3.org/TR/vocab-data-cube/",
+        "title":"The RDF Data Cube Vocabulary",
+        "status":"W3C Recommendation",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
+        "id":"vocab-data-cube",
+        "date":"16 January 2014"
+       }, 
+      "ccREL":{
+        "authors":["Hal Abelson","Ben Adida","Mike Linksvayer","Nathan Yergler"],
+        "href":"http://www.w3.org/Submission/ccREL/",
+        "title":"ccREL: The Creative Commons Rights Expression Language",
+        "status":"W3C Member Submission",
+        "publisher":"W3C/Creative Commons",
+        "date":"1 May 2008"
+       }, 
+      "ODRL":{
+        "authors":["Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten"],
+        "href":"http://www.w3.org/community/odrl/two/model/",
+        "title":"ODRL Version 2.0 Core Model",
+        "status":"W3C Community Group Specification",
+        "publisher":"W3C",
+        "date":"24 April 2012"
+       }, 
+      "ODRS":{
+        "authors":["Leigh Dodds"],
+        "href":"http://schema.theodi.org/odrs/",
+        "title":"Open Data Rights Statement Vocabulary",
+        "publisher":"The Open Data Institute",
+        "date":"29 July 2013"
+       }, 
+      "SCHEMA-ORG":{
+        "href":"http://schema.org/",
+        "title":"Schema.org"
+       }, 
+      "PROV-IMP":{
+        "authors":["Trung Dong Huynh","Paul Groth","Stephan Zednik"],
+        "href":"http://www.w3.org/TR/prov-implementations/",
+        "title":"PROV Implementation Report",
+        "status":"W3C Working Group Note",
+        "publisher":"W3C",
+        "deliveredBy":[{"url":"http://www.w3.org/2011/prov/","shortname":"prov"}],
+        "date":"30 April 2013"
        }
     }
 };
