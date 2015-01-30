@@ -1,0 +1,203 @@
+
+
+
+        <!-- begin of list of resources BP -->
+        <div class="practice">
+          <p><span id="list_resources" class="practicelab">Maintain a list of
+              resources described in a dataset</span></p>
+          <p class="practicedesc">A dataset <em class="rfc2119">should</em> be
+            preserved together with a list of all the resources it describes</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+<!--            <p>Web data is about the description of resources identified with a
+              URI. It is to be expected that queries made by data consumers will
+              resolve around finding a preserved description about a particular
+              resource. </p>-->
+            <p>data on the Web is essentially about the description of entities
+              identified by a unique, Web-based, identifier (a URI). Once the
+              data is dumped and sent to an institute specialised in digital
+              preservation the link with the Web is broken (de-referencing) but
+              the role of the URI as a unique identifier still remains. In order
+              to increase the usability of preserved dataset dumps it is
+              relevant to maintain a list of these identifiers.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It <em class="rfc2119">should</em> be possible to look for a
+              preserved dataset based on the resources contained in it.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>The list of resources can be created by the data depositor or the
+              digital repository at ingestion time. A dataset dump is scanned
+              for all the subject described and this list is stored separately.
+              For RDF and JSON-LD, this corresponds to all the resources in the
+              "subject" position of statements.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Every resource listed in the resource list must
+              have some kind of description in the dataset</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+          </section>
+        </div>
+        <!-- end of list of resources BP -->
+        <!-- begin of assess dataset BP -->
+        <div class="practice">
+          <p><span id="evaluate" class="practicelab">Assess dataset coverage</span></p>
+          <p class="practicedesc">The coverage of a dataset <em class="rfc2119">should</em>
+            be assessed prior to its preservation</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>A chunk of Web data is by definition dependent on the rest of the
+              global graph. This global context influences the meaning of the
+              description of the resources found in the dataset. Ideally, the
+              preservation of a particular dataset would involve preserving all
+              its context. That is the entire Web of Data. </p>
+            <p>At ingestion time an evaluation of the linkage of Web data
+              dataset dump to already preserved resources is assessed. The
+              presence of all the vocabularies and target resources in uses is
+              sought in a set of digital archives taking care of preserving Web
+              data. Datasets for which very few of the vocabularies used and/or
+              resources pointed out are already preserved somewhere should be
+              flagged as being at risk.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It <em class="rfc2119">should</em> be done an evaluation of the preservation
+              coverage for a given dataset.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>The assessement could be performed by the digital preservation
+              institute or the dataset depositor. It essentially consists in
+              checking whether all the resources used are either already
+              preserved somewhere or provided along with the new dataset
+              considered for preservation.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Datasets making references to portions of the Web of Data which
+              are not preserved <em class="rfc2119">should</em> receive a lower
+              score than those using common resources.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></p>
+          </section>
+        </div>
+        <!-- end of assess dataset BP -->
+        <!-- begin of serialisation BP -->
+        <div class="practice">
+          <p><span id="serialisation" class="practicelab">Use a trusted
+              serialisation format for preserved data dumps</span></p>
+          <p class="practicedesc">Data depositors willing to send a datadump for
+            long term preservation <em class="rfc2119">must</em> use a well
+            established serialisation</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Web data is a abtract data model that can be expressed in
+              different ways (RDF, JSON-LD, ...). Using a well established
+              serialisation of this data increases its chances of re-use. </p>
+            <p>Institute doing digital preservation are tasked with monitoring
+              file format obsolescence. Datasets which have been acquired in
+              some format some years ago may have to be converted into another
+              format in order to still be usable with more modern software (see
+              [[ROSENTHAL]]). This tasks can be made more challenge, or even
+              impossible, if non standard serialisation formats are used by data
+              depositors.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It <em class="rfc2119">should</em> be possible to read and load the dataset into a database even its software is no longer supported.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Give preference to Web data serialisation formats available as
+              open standards. For instance those provided by the W3C
+              [[FORMATS]]. </p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <!--<p>Try to open the data dump with different
+            software.</p> -->
+            <p>Try to dereference the URI of the data dump with Content-Type
+              header according to the format you expect to get, using for
+              example [[cURL]]</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-Archive">R-Archive</a></p>
+          </section>
+        </div>
+        <!-- end of serialisation BP -->
+        <!-- begin of resource status BP -->
+        <div class="practice">
+          <p><span id="resourcestatus" class="practicelab">Update the status of a URI</span></p>
+          <p class="practicedesc">Preserved datasets <em class="rfc2119">should</em>
+            be linked with their "live" counterparts</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>URI dereferencing is a primary interface to data on the Web. Linking
+              preserved datasets with the original URI inform the data consumer of
+              the status of these resources. </p>
+            <p>During its life cycle a dataset may undergo several
+              modifications. Although URIs assigned to things are not expected
+              to change, the description of these resource will evolve over
+              time. <!--There are also some new IRIs that will be put into use, some
+              other that will become deprecated, and some that will get deleted. -->
+              During this evolution, several snapshots could be made available
+              for preservation. An example of this is <a href="http://debpedia.org">DBpedia</a> which has undergone
+              several releases since its first publication and always uses the
+              same URI for its resources. Every resource is de-referenced to the
+              most up to date description available for it along with a link to
+              preserved descriptions using the Memento protocol [[RFC7809]] 
+              (see <a href="http://mementoweb.org/depot/native/dbpedia/">Memento
+              gateway for DBpedia</a>).</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>A link is maintained between the URI of a resource, the most
+              up-to-date description available for it, and preserved
+              descriptions. If the resource does not exist any more the
+              description <em class="rfc2119">should</em> say so and refer to
+              the last preserved description that was available.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>There is a variety of HTTP status codes that could be put into use
+              to relate the URI with its preserved description. In particular,
+              200, 410 and 303 can be used for different scenarios:</p>
+            <ul>
+              <li>200 =&gt; there is a new description which contains pointers
+                to archived description</li>
+<!--              <li>404 =&gt; the resource just died, the URI consumer has to go
+                find an archive to look for it</li> -->
+              <li>410 =&gt; the resource is no longer available but it has been removed under a controlled process cf. 404 which simply states that something is not available.</li>
+              <li>303 =&gt; the resource identified by this URI is no longer served here
+                but there is a preserved description at a different location.</li>
+<!--              <li>209 =&gt; this resource does not exist any more but we have
+                some information about it. The description could include a list
+                of locations having different preserved descriptions over
+                different times.</li> -->
+            </ul>
+            <p>In addition to the status codes, HTTP Link headers can also be used to relate
+            resources to preserved descriptions.</p> </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that de-referencing the URI of a preserved dataset returns information
+            about its current status and availability.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">
+                R-PersistentIdentification</a></p>
+          </section>
+        </div>
+        <!-- end of resource status BP -->
+    
+
