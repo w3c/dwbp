@@ -237,6 +237,23 @@ var respecConfig = {
         "publisher":"W3C",
         "deliveredBy":[{"url":"http://www.w3.org/2011/prov/","shortname":"prov"}],
         "date":"30 April 2013"
+       }, 
+      "RFC7809":{
+        "authors":["H. Van de Sompel","M.L. Nelson ","R.D. Sanderson"],
+        "href":"http://www.mementoweb.org/guide/rfc/",
+        "title":"HTTP Framework for Time-Based Access to Resource States -- Memento",
+        "status":"Independent Submission (Informational)",
+        "publisher":"IETF",
+        "date":"December 2013"
+       }, 
+      "OAIS":{
+        "authors":["ISO/TC 20/SC 13"],
+        "href":"http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=57284",
+        "title":"Space data and information transfer systems -- Open archival information system (OAIS) -- Reference model",
+        "status":"ISO Standard",
+        "publisher":"ISO",
+        "id":"ISO 14721:2012",
+        "date":"21 August 2012"
        }
     }
 };
