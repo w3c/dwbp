@@ -1928,9 +1928,13 @@ This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</
             be available on the Web in real-time. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Providing real-time access data enables access to critical time
-              sensitive data, encouraging the development
-              of real-time based applications. </p>
+            <p> The presence of real-time data on the web enables access to 
+              critical time sensitive data, and encourages the development
+              of real-time web applications.  Real-time access is dependent on
+              real-time data producers making their data readily available to
+              the data publisher.  In addition to making pubished data accessible, 
+              data publishers may provide additional information describing
+              data gaps, data errors and anomolies, and publication delays.                </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -1941,23 +1945,32 @@ This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Implement a Web API to enable data access either using a live
-              streaming data source or mockup a synthetic data source to
-              simulate real or near real time data. A mockup could be as simple
-              as a looping script that reads data from one file and populates
-              the “real time” source. </p>
+            <p>Real-time data accessibility may be achieved through two means:  
+               <ul>
+               <li> Push - as data is produced the producers communicates data
+                   to the data publisher either by disseminating data to 
+                   the publisher or making storage available accessible to the
+                   data producer.</li>
+               <li>On-Demand (Pull) - available real-time data is made available
+                   upon request. In this case, data publishers will provide 
+                   an API to facilitate these read-only requests.</li>
+               </ul>
+               In addition to data access, to ensure credibility providing 
+               access to error conditions, anomolies, and instrument "house
+               keeping" data enhance real-time applications ability to 
+               interpret and convey real-time data quality to consumers.
+              </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <ul>
-              <li>Write test client to use real-time access API. </li>
-              <li>Start or setup real-time data source that provides a real
-                time data date/time stamp.</li>
-              <li>Log real time data date/time stamp and record corresponding
-                test client date/time stamp.</li>
-              <li>Verify time difference between each successful access attempt
-                and the real time data date/time stamp.</li>
-            </ul>
+            To adequately test real time data access, data will need to tracked
+            from the time it is initially collected to the time it is published
+            and accessed.  Using provenance [[PROV-O]] can be used to describe 
+            these activities.  Caution should be used when analyzing real-time 
+            access for systems that consist of multiple computer systems.  For
+            example, tests that rely on wall clock time stamps may reflect 
+            inconsistences between the individual computer systems as opposed 
+            to data publication time latency.
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
