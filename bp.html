@@ -1797,9 +1797,12 @@ This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</
             available for bulk download. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Bulk access provides a simple way of publishing data encouraging
-              data publishers to release full datasets and enabling data
-              consumers to download large amounts of data at once. </p>
+            <p>When web data is distributed across many URLs and logically 
+               organized as one container, accessing the data in bulk is 
+               useful.  Bulk access provides a consistent means to handle the 
+               data as one container. Without it, individually accessing data 
+               is cumbersome leading to inconsistent approaches to handling the 
+               container.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -1810,20 +1813,29 @@ This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <ol>
-              <li>Create a collection of data files, archive the collection
-                using a zip or tar and compress if possible.</li>
-              <li>Create a README file describing the contents of the bulk file.</li>
-              <li>Make the bulk file available on the Web. </li>
-<!--              <li>Create a database or SPARQL endpoint and populate with data.</li> -->
-              <li>Where appropriate, create REST service that relies upon the HTTP GET method as a
-                wrapper around a database API that performs a complex database
-                retrieval transaction. </li>
-            </ol>
+            <p>Depending on the nature of the data and consumer needs possible 
+               approaches could include:</p>
+            <ul>
+              <li>Preprocessing a copy of the data in compressed archive format 
+                  where the data more easily accessible as one URL.   This is particularly 
+                  useful for handling data that changes infrequently or on a scheduled
+                  basis.</li>
+              <li>Hosting an API such as a REST or SOAP service that dynamically retrieves 
+                  individual data and returns a bulk container.  This approach is useful
+                  when for capturing a snapshot of the data.  The API can also be useful
+                  for consumers to customize what they want included or excluded. </li>
+              <li>Hosting a database, web page, or SPARQL endpoint that contains discoverable 
+                  metadata [[VOCAB-DCAT]] describing the container and data URLs associated with 
+                  the container.</li>
+            </ul>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that data can be downloaded in bulk.</p>
+            <p class="subhead"></p>
+            <p>Humans can retreive copies of preprocessed bulk data through existing tools
+               such as a browser.  Clients can test bulk access through an API or queries 
+               to web resources with discoverable metadata about the bulk data.
+               </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
