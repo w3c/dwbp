@@ -815,7 +815,82 @@ figure figcaption {
         </div>
         <!-- end of machine detectable license BP --> </section>
       <!-- end of Data Licenses -->
-        
+        <!-- begin of Data Provenance -->
+      <section id="provenance">
+        <h3>Data Provenance</h3>
+        <p>Provenance originates from the French term provenir (to come from),
+          which is used to describe the curation process of artwork as art is
+          passed from owner to owner. Data provenance, in a similar way, is
+          metadata, that allows data providers to pass details about the data
+          history to data users. Provenance becomes particularly important when
+          data is shared between collaborators who might not have direct contact
+          with one another either due to proximity or because the published data
+          outlives the lifespan of the data provider projects or organizations.</p>
+        <p>The Web brings together business, engineering, and scientific
+          communities creating collaborative opportunities that were previously
+          unimaginable. The challenge in publishing data on the Web is providing
+          an appropriate level of detail about its origin. The data publishers
+          may not necessarily be the data provider and so collecting and
+          conveying this corresponding metadata is particularly important.
+          Without provenance, consumers have no inherent way to trust the
+          integrity and credibility of the data being shared. Data publishers in
+          turn need to be aware of the needs of prospective consumer communities
+          to know how much provenance detail is appropriate. </p>
+        <p>To meet this need, the W3C community offers the Provenance Ontology
+          [[PROV-O]] so that data publishers can formally describe data
+          provenance and methodologies so that consumers can query and use
+          provenance information. </p>
+        <!-- begin of Provide Data Provenance BP -->
+        <div class="practice">
+          <p><span id="ProvideDataProvenance" class="practicelab">Provide data
+              provenance</span></p>
+          <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
+            be available. </p>
+          <p> This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
+              metadata</a> best practice. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Without accessible data provenance, consumers will not know the
+              origin or history of the published data.</p>
+            <p>Data provenance is metadata that corresponds to data. Data
+              provenance relies upon existing vocabularies that make provenance
+              easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Data published on the Web <em class="rfc2119">should</em>
+              include, or link to, provenance information.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Data provenance can be published in a number of ways:</p>
+            <ol>
+              <li>Use the Provenance Ontology [[PROV-O]] to describe data
+                provenance.</li>
+              <li>Use an appropriate level of detail that will be meaningful to
+                the intended audience. </li>
+              <li>Write the data provenance in either a machine readable form
+                such as Turtle or RDF/XML or embed provenance in an HTML page
+                using [[JSON-LD]], or [[HTML-RDFA]] </li>
+              <li>Verify that the data provenance references published data</li>
+            </ol>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>The PROV Implementation Report [[PROV-IMP]] lists a number of
+              validator tools that can be used to test for the presence of
+              provenance information provided using [[PROV-O]].</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of Provide Data Provenance BP --> </section>
+      <!-- end of Data Provenance -->
+     
        <!-- begin of Data Quality -->
       <section id="quality">
         <h3>Data Quality</h3>
@@ -1455,82 +1530,7 @@ figure figcaption {
               Issue-124</a></p>        </div> --> </section>
       <!-- end of Data Vocabularies -->
      
-      <!-- begin of Data Provenance -->
-      <section id="provenance">
-        <h3>Data Provenance</h3>
-        <p>Provenance originates from the French term provenir (to come from),
-          which is used to describe the curation process of artwork as art is
-          passed from owner to owner. Data provenance, in a similar way, is
-          metadata, that allows data providers to pass details about the data
-          history to data users. Provenance becomes particularly important when
-          data is shared between collaborators who might not have direct contact
-          with one another either due to proximity or because the published data
-          outlives the lifespan of the data provider projects or organizations.</p>
-        <p>The Web brings together business, engineering, and scientific
-          communities creating collaborative opportunities that were previously
-          unimaginable. The challenge in publishing data on the Web is providing
-          an appropriate level of detail about its origin. The data publishers
-          may not necessarily be the data provider and so collecting and
-          conveying this corresponding metadata is particularly important.
-          Without provenance, consumers have no inherent way to trust the
-          integrity and credibility of the data being shared. Data publishers in
-          turn need to be aware of the needs of prospective consumer communities
-          to know how much provenance detail is appropriate. </p>
-        <p>To meet this need, the W3C community offers the Provenance Ontology
-          [[PROV-O]] so that data publishers can formally describe data
-          provenance and methodologies so that consumers can query and use
-          provenance information. </p>
-        <!-- begin of Provide Data Provenance BP -->
-        <div class="practice">
-          <p><span id="ProvideDataProvenance" class="practicelab">Provide data
-              provenance</span></p>
-          <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
-            be available. </p>
-          <p> This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-              metadata</a> best practice. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Without accessible data provenance, consumers will not know the
-              origin or history of the published data.</p>
-            <p>Data provenance is metadata that corresponds to data. Data
-              provenance relies upon existing vocabularies that make provenance
-              easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Data published on the Web <em class="rfc2119">should</em>
-              include, or link to, provenance information.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Data provenance can be published in a number of ways:</p>
-            <ol>
-              <li>Use the Provenance Ontology [[PROV-O]] to describe data
-                provenance.</li>
-              <li>Use an appropriate level of detail that will be meaningful to
-                the intended audience. </li>
-              <li>Write the data provenance in either a machine readable form
-                such as Turtle or RDF/XML or embed provenance in an HTML page
-                using [[JSON-LD]], or [[HTML-RDFA]] </li>
-              <li>Verify that the data provenance references published data</li>
-            </ol>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>The PROV Implementation Report [[PROV-IMP]] lists a number of
-              validator tools that can be used to test for the presence of
-              provenance information provided using [[PROV-O]].</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>
-            </p>
-          </section>
-        </div>
-        <!-- end of Provide Data Provenance BP --> </section>
-      <!-- end of Data Provenance -->
-     
+      
       <!-- begin of Data Granularity -->
       <!-- 
       <section id="granularity">        <h3>Data Granularity</h3>        <p>The section on granularity</p>              </section>      -->
