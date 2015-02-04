@@ -695,7 +695,84 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
           </section>
         </div>
-        <!-- end of Locale Parameters BP --> </section>
+        <!-- end of Locale Parameters BP --> 
+       <!-- begin of Data Quality -->
+      <section id="quality">
+        <h3>Data Quality</h3>
+        <p>Data quality is commonly defined as “fitness for use” for a specific
+          application or use case. It can affect the potentiality of the
+          application that use data, as a consequence, its inclusion in the data
+          publishing and consumption pipelines is of primary importance.</p>
+        <p>Usually, the assessment of quality involves different kinds of
+          quality dimensions, each representing groups of characteristics that
+          are relevant to publishers and consumers. Measures and metrics are
+          defined to assess the quality for each dimension. There are heuristics
+          designed to fit specific assessment situations that rely on quality
+          indicators, namely, pieces of data content, pieces of data
+          meta-information, and human ratings that give indications about the
+          suitability of data for some intended use.</p>
+        <p>Dimensions and metrics to adopt might largely depend on the specific
+          application scenario, or even on the data domain. A systematic review
+          of dimensions, metrics adopted in the context of Linked Open Data can
+          be found in the recent literature (e.g., see [[ZAVERI]]). </p>
+        <!-- begin of Provide Data Quality BP -->
+        <div class="practice">
+          <p><span id="ProvideDataQuality" class="practicelab">Provide data
+              quality information</span></p>
+          <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
+            be available. </p>
+          <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
+              Metadata</a> best practice. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Data quality might seriously affect the suitability of data for
+              specific applications, including applications very different from
+              the purpose for which it was originally generated. Documenting
+              data quality significantly eases the process of data selection,
+              increasing the chances of re-use.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p> Information about the quality of the data <em class="rfc2119">should</em>
+              be provided for humans. Ideally it is also made available in
+              machine readable manner for processing by applications.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Depending on the application domain, information pertaining to
+              the quality may rely on specific quality metrics or
+              feedback-opinion. Specific quality metadata fields may or may not
+              be explicitly included in the metadata vocabularies adopted by
+              catalogs. Independently from domain-specific peculiarities, the
+              quality of data should be documented and known quality issues
+              should be explicitly stated in metadata. </p>
+            <!--            <p>The definition of a Quality Vocabulary is included in the
+              activity of the DWBP group in order to support in the              implementation of this best practice. The Quality Vocabulary is
+              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,
+              persistence commitments etc. When used by publishers, this              vocabulary will foster trust in the data amongst developers. </p> -->
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check whether the metadata explicitly includes a description of
+              the quality of the data.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p>Information about the relevance of the BP is described by
+              requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
+                Data on the Web Best Practices Use Cases &amp; Requirements
+                document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
+                for Data Quality</a></p>
+          </section>
+          <!-- end of Provide Data Quality BP --> </div>
+        <div class="issue"> Should we provide more specific/ detailed strategies
+          on how to attach quality info in metadata apart from the use of the
+          data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
+            Issue-116</a> </div>
+      </section>
+      <!-- end of Data Quality -->
+      
+      </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
@@ -1451,81 +1528,7 @@ figure figcaption {
         </div>
         <!-- end of Provide Data Provenance BP --> </section>
       <!-- end of Data Provenance -->
-      <!-- begin of Data Quality -->
-      <section id="quality">
-        <h3>Data Quality</h3>
-        <p>Data quality is commonly defined as “fitness for use” for a specific
-          application or use case. It can affect the potentiality of the
-          application that use data, as a consequence, its inclusion in the data
-          publishing and consumption pipelines is of primary importance.</p>
-        <p>Usually, the assessment of quality involves different kinds of
-          quality dimensions, each representing groups of characteristics that
-          are relevant to publishers and consumers. Measures and metrics are
-          defined to assess the quality for each dimension. There are heuristics
-          designed to fit specific assessment situations that rely on quality
-          indicators, namely, pieces of data content, pieces of data
-          meta-information, and human ratings that give indications about the
-          suitability of data for some intended use.</p>
-        <p>Dimensions and metrics to adopt might largely depend on the specific
-          application scenario, or even on the data domain. A systematic review
-          of dimensions, metrics adopted in the context of Linked Open Data can
-          be found in the recent literature (e.g., see [[ZAVERI]]). </p>
-        <!-- begin of Provide Data Quality BP -->
-        <div class="practice">
-          <p><span id="ProvideDataQuality" class="practicelab">Provide data
-              quality information</span></p>
-          <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
-            be available. </p>
-          <p>This best practice is a specialization of the higher level <a href="#ProvideMetadata">Provide
-              Metadata</a> best practice. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Data quality might seriously affect the suitability of data for
-              specific applications, including applications very different from
-              the purpose for which it was originally generated. Documenting
-              data quality significantly eases the process of data selection,
-              increasing the chances of re-use.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p> Information about the quality of the data <em class="rfc2119">should</em>
-              be provided for humans. Ideally it is also made available in
-              machine readable manner for processing by applications.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Depending on the application domain, information pertaining to
-              the quality may rely on specific quality metrics or
-              feedback-opinion. Specific quality metadata fields may or may not
-              be explicitly included in the metadata vocabularies adopted by
-              catalogs. Independently from domain-specific peculiarities, the
-              quality of data should be documented and known quality issues
-              should be explicitly stated in metadata. </p>
-            <!--            <p>The definition of a Quality Vocabulary is included in the
-              activity of the DWBP group in order to support in the              implementation of this best practice. The Quality Vocabulary is
-              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,
-              persistence commitments etc. When used by publishers, this              vocabulary will foster trust in the data amongst developers. </p> -->
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check whether the metadata explicitly includes a description of
-              the quality of the data.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p>Information about the relevance of the BP is described by
-              requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
-                Data on the Web Best Practices Use Cases &amp; Requirements
-                document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
-                for Data Quality</a></p>
-          </section>
-          <!-- end of Provide Data Quality BP --> </div>
-        <div class="issue"> Should we provide more specific/ detailed strategies
-          on how to attach quality info in metadata apart from the use of the
-          data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
-            Issue-116</a> </div>
-      </section>
-      <!-- end of Data Quality -->
+     
       <!-- begin of Data Granularity -->
       <!-- 
       <section id="granularity">        <h3>Data Granularity</h3>        <p>The section on granularity</p>              </section>      -->
