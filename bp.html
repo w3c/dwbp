@@ -9,7 +9,7 @@
 </script> <script class="remove" src="bpconfig.js">
 </script> <style type="text/css">
 
-#bp-summary ul {
+#bp-summary ol {
   list-style-type: none;
   padding-left: 0;
   line-height:1.6em;
@@ -17,7 +17,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  #bp-summary ul {
+  #bp-summary ol {
     column-count:2;
     -moz-column-count:2;
     -webkit-column-count:2;
@@ -67,14 +67,14 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the
-        publication and usage of data on the Web designed to help support a
-        self-sustaining ecosystem. Data should be discoverable and
-        understandable by humans and machines. Where data is used in some way,
-        whether by the originator of the data or by an external party, such
-        usage should also be discoverable and the efforts of the data publisher
-        recognized. In short, following these best practices will facilitate
-        interaction between publishers and consumers.</p>
+      <p>This document provides best practices related to the publication and
+        usage of data on the Web designed to help support a self-sustaining
+        ecosystem. Data should be discoverable and understandable by humans and
+        machines. Where data is used in some way, whether by the originator of
+        the data or by an external party, such usage should also be discoverable
+        and the efforts of the data publisher recognized. In short, following
+        these best practices will facilitate interaction between publishers and
+        consumers.</p>
     </section>
     <section id="sotd">
       <p>This early version of the document shows its expected scope and future
@@ -90,16 +90,18 @@ figure figcaption {
           version, 29 best practices are proposed and more than 25 requirements
           have been addressed. However, there are still many ongoing discussions
           in the group about important subjects, like terminology and scope. The
-          group is still working towards consensus on the meaning and
-          application of some important terms including: vocabulary, metadata,
-          data model, data format, schema and dataset. Other important issues
-          relate to the definition of best practices for vocabularies. For
-          example it is not clear if providing advice to data publishers to
-          create and re-use vocabularies is in the scope of the <abbr title="Data on the Web Best Practices">DWBP</abbr>.
-          Likewise, there is not yet consensus on whether data preservation is
-          in scope. The Working Group is therefore particularly keen to receive
-          comments to ensure that its future work is relevant, useful and
-          comprehensive. Please send comments to <a href="mailto:public-dwbp-wg@w3.org">public-dwbp-wg@w3.org</a>
+          group is still working towards consensus on the meaning
+          and application of some important terms including:
+          vocabulary, metadata, data model, data format, schema and dataset.
+          Other important issues relate to the definition of best practices for
+          vocabularies. For example it is not clear if providing advice to data
+          publishers to create and re-use vocabularies is in the scope of the <abbr
+
+            title="Data on the Web Best Practices">DWBP</abbr>. Likewise, there
+          is not yet consensus on whether data preservation is in scope. The
+          Working Group is therefore particularly keen to receive comments to
+          ensure that its future work is relevant, useful and comprehensive.
+          Please send comments to <a href="mailto:public-dwbp-wg@w3.org">public-dwbp-wg@w3.org</a>
           (<a href="mailto:public-dwbp-wg-request@w3.org?subject=subscribe">subscribe</a>,
           <a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/">archives</a>).</p>
       </div>
@@ -145,8 +147,7 @@ figure figcaption {
         practices for data on the web in formats such as CSV and JSON. The Best
         Practices related to the use of vocabularies incorporate practices that
         stem from Best Practices for Publishing Linked Data where appropriate.<!-- While
-        that document was published in its final version by the Government Linked        Data Working Group as a Working Group Note, the charter of the Data on
-        the Web Best Practices (DWBP) Working Group advances that this document        should be published ultimately as a W3C Recommendation.--></p>
+        that document was published in its final version by the Government Linked        Data Working Group as a Working Group Note, the charter of the Data on        the Web Best Practices (DWBP) Working Group advances that this document        should be published ultimately as a W3C Recommendation.--></p>
     </section>
     <section id="conformance"> </section>
     <section id="audience" class="informative">
@@ -183,76 +184,73 @@ figure figcaption {
     </section>
     <!--<section id="context" class="informative">
       <h2>Context</h2> -->
-      <section id="challenges">
-        <h2>Data on the Web Challenges</h2>
-        <p>The openness and flexibility of the Web creates new challenges for
-          data publishers and data consumers. In contrast to conventional
-          databases, for example, where there's is a single data model to
-          represent the data and a database management system (DBMS) to control
-          data access, data on the Web allows for the existence of multiple ways
-          to represent and to access data. Furthermore, publishers and consumers
-          may be unknown to each other and be part of entirely disparate
-          communities with different norms and in-built assumptions so that it
-          becomes essential to provide information about data structure,
-          quality, provenance and any terms of use. The following list
-          summarizes some of the main challenges faced when publishing or
-          consuming data on the Web. These challenges were identified from the <abbr
-
-            title="Data on the Web Best Practices">DWBP</abbr> Use Cases and
-          Requirements [[UCR]] and are described by one or more questions.</p>
-        <dl>
-          <dt>Metadata</dt>
-          <dd><em>What kind of metadata should be considered when describing
-              data on the Web?<br>
-              How can metadata be provided in a machine readable way?</em></dd>
-          <dt>Data Identification</dt>
-          <dd><em>How can unique identifiers be provided for data resources?<br>
-              How should URIs be designed and managed for persistence?</em></dd>
-          <dt>Data Formats</dt>
-          <dd><em>What kind of data formats should be considered when publishing
-              data on the Web?</em></dd>
-          <dt>Data Vocabularies</dt>
-          <dd><em>How can existing vocabularies be used to provide semantic
-              interoperability?<br>
-              How can a new vocabulary be designed if needed?</em></dd>
-          <dt>Data Licenses</dt>
-          <dd><em>How can data licenses be made machine readable?<br>
-              How can license information about data published on the Web be
-              provided/gathered?</em></dd>
-          <dt>Data Provenance</dt>
-          <dd><em>How can data provenance information about data published on
-              the Web be gathered/provided?</em></dd>
-          <dt>Data Quality</dt>
-          <dd><em>How can data quality information about data on the Web be
-              provided/gathered?</em></dd>
-          <!--<dt>Data Granularity</dt>
+    <section id="challenges">
+      <h2>Data on the Web Challenges</h2>
+      <p>The openness and flexibility of the Web creates new challenges for data
+        publishers and data consumers. In contrast to conventional databases,
+        for example, where there's is a single data model to represent the data
+        and a database management system (DBMS) to control data access, data on
+        the Web allows for the existence of multiple ways to represent and to
+        access data. Furthermore, publishers and consumers may be unknown to
+        each other and be part of entirely disparate communities with different
+        norms and in-built assumptions so that it becomes essential to provide
+        information about data structure, quality, provenance and any terms of
+        use. The following list summarizes some of the main challenges faced
+        when publishing or consuming data on the Web. These challenges were
+        identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
+        Use Cases and Requirements [[UCR]] and are described by one or more
+        questions.</p>
+      <dl>
+        <dt>Metadata</dt>
+        <dd><em>What kind of metadata should be considered when describing data
+            on the Web?<br>
+            How can metadata be provided in a machine readable way?</em></dd>
+        <dt>Data Identification</dt>
+        <dd><em>How can unique identifiers be provided for data resources?<br>
+            How should URIs be designed and managed for persistence?</em></dd>
+        <dt>Data Formats</dt>
+        <dd><em>What kind of data formats should be considered when publishing
+            data on the Web?</em></dd>
+        <dt>Data Vocabularies</dt>
+        <dd><em>How can existing vocabularies be used to provide semantic
+            interoperability?<br>
+            How can a new vocabulary be designed if needed?</em></dd>
+        <dt>Data Licenses</dt>
+        <dd><em>How can data licenses be made machine readable?<br>
+            How can license information about data published on the Web be
+            provided/gathered?</em></dd>
+        <dt>Data Provenance</dt>
+        <dd><em>How can data provenance information about data published on the
+            Web be gathered/provided?</em></dd>
+        <dt>Data Quality</dt>
+        <dd><em>How can data quality information about data on the Web be
+            provided/gathered?</em></dd>
+        <!--<dt>Data Granularity</dt>
           <dd><em>How can publishers decide what kind of data granularity is            most appropriate when publishing data on the Web?</em></dd> -->
-          <dt>Sensitive Data</dt>
-          <dd><em>How can data be published without infringing a person's right
-              to privacy or an organization's security?</em></dd>
-          <dt>Data Access</dt>
-          <dd><em>What kind of data access should be considered when publishing
-              data on the Web?<br>
-              What requirements should be taken into account when deciding how
-              to make data available on the Web?</em></dd>
-          <dt>Data Versioning</dt>
-          <dd><em>How can different versions of a dataset be tracked and
-              managed?</em></dd>
-          <dt>Data Preservation</dt>
-          <dd><em>How can publishers decide when data on the Web should be
-              archived?</em></dd>
-          <dt>Feedback</dt>
-          <dd><em>How can user feedback about data consumed from the Web be
-              gathered?</em></dd>
-        </dl>
-        <p> Each one of these challenges originated one or more requirements as
-          documented in <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">the
-            use-cases document</a>. The development of Data on the Web Best
-          Practices were guided by these requirements, in such a way that each
-          best practice should have at least one of these requirements as an
-          evidence of its relevance.</p>
-      <!-- </section>--> 
-    </section>
+        <dt>Sensitive Data</dt>
+        <dd><em>How can data be published without infringing a person's right to
+            privacy or an organization's security?</em></dd>
+        <dt>Data Access</dt>
+        <dd><em>What kind of data access should be considered when publishing
+            data on the Web?<br>
+            What requirements should be taken into account when deciding how to
+            make data available on the Web?</em></dd>
+        <dt>Data Versioning</dt>
+        <dd><em>How can different versions of a dataset be tracked and managed?</em></dd>
+        <dt>Data Preservation</dt>
+        <dd><em>How can publishers decide when data on the Web should be
+            archived?</em></dd>
+        <dt>Feedback</dt>
+        <dd><em>How can user feedback about data consumed from the Web be
+            gathered?</em></dd>
+      </dl>
+      <p> Each one of these challenges originated one or more requirements as
+        documented in <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">the
+          use-cases document</a>. The development of Data on the Web Best
+        Practices were guided by these requirements, in such a way that each
+        best practice should have at least one of these requirements as an
+        evidence of its relevance.</p>
+      <!-- </section>--> </section>
     <div class="issue"> Should we include a section to present a glossary with
       definitions (or link to existing definitions) of the main terms used in
       the doc ? <a href="https://www.w3.org/2013/dwbp/track/issues/134">Issue-134</a>
@@ -303,8 +301,7 @@ figure figcaption {
         </section>
       </div>
       <div class="issue">Is this the correct template? Where exactly should the
-        normative statement be?
-        This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</div>
+        normative statement be? This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</div>
     </section>
     <section id="bp-summary"></section>
     <section id="bestPractices">
@@ -344,56 +341,52 @@ figure figcaption {
           version, update schedule etc. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and re-use.</p>
-        <p> The Web is an open information space; in the absence of a
-              specific context, such a company's internal information system,
-              metadata is essential. Data will not be discoverable or reusable
-              by anyone other than the publisher if insufficient metadata is
-              provided.</p>
+        <p> The Web is an open information space; in the absence of a specific
+          context, such a company's internal information system, metadata is
+          essential. Data will not be discoverable or reusable by anyone other
+          than the publisher if insufficient metadata is provided.</p>
         <p>Data consumers must be able to:</p>
-            <ol>
-              <li>discover the data;</li>
-              <li>understand the nature and structure of the data, i.e. what the
-                data describes and how it does it;</li>
-              <li>find out the origin of the data and under what terms it may be
-                used.</li>
-            </ol>
-        <p> Not just data consumers should be able to read the metadata, but also machines should 
-          be able to automatically process the metadata associated to a given dataset. It is also important that 
-          standard terms are used when specfying metadata to help the automatic processing of metadata 
-          as well as to improve data interoperability . </p>
-        <p> This section presents best practices to help data publishers to face challenges related to metadata. 
-          Initially, general best practices are presented (Provide metadata documentation, Provide
-              metadata for machines and Use standard terms to define metadata), then best practices concerning 
-          specific kinds of metadata are proposed. These specific best practices are specializations of the more general best practices.
-        </p>
-
-        
+        <ol>
+          <li>discover the data;</li>
+          <li>understand the nature and structure of the data, i.e. what the
+            data describes and how it does it;</li>
+          <li>find out the origin of the data and under what terms it may be
+            used.</li>
+        </ol>
+        <p> Not just data consumers should be able to read the metadata, but
+          also machines should be able to automatically process the metadata
+          associated to a given dataset. It is also important that standard
+          terms are used when specfying metadata to help the automatic
+          processing of metadata as well as to improve data interoperability . </p>
+        <p> This section presents best practices to help data publishers to face
+          challenges related to metadata. Initially, general best practices are
+          presented (Provide metadata documentation, Provide metadata for
+          machines and Use standard terms to define metadata), then best
+          practices concerning specific kinds of metadata are proposed. These
+          specific best practices are specializations of the more general best
+          practices. </p>
         <!-- begin of Document Metadata BP -->
         <div class="practice">
           <p><span id="DocumentMetadata" class="practicelab"> Document metadata</span></p>
-          <p class="practicedesc">Metadata documentation should be
-            published together with the data </p>
+          <p class="practicedesc">Metadata documentation should be published
+            together with the data </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Documenting metadata is fundamental when publishing data on the Web. 
-              Given that data publishers and data consumers may be unkown to each other, 
-              becomes essential to provide information that helps data consumers to understand 
-              the data as well as other important aspects that describes a dataset.  </p>
+            <p>Documenting metadata is fundamental when publishing data on the
+              Web. Given that data publishers and data consumers may be unkown
+              to each other, becomes essential to provide information that helps
+              data consumers to understand the data as well as other important
+              aspects that describes a dataset. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> It <em class="rfc2119">must</em> be possible for data consumers
               to read metadata that describes a dataset.</p>
-            
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            
-            Metadata for humans is most easily provided as part of an HTML
-                Web page.
-              
-            
-             </section>
+            Metadata for humans is most easily provided as part of an HTML Web
+            page. </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Check that a human user can easily read the metadata associated
@@ -401,19 +394,18 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: 
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></p>
           </section>
         </div>
-        
-        <div class="issue"> Should we mention multilingualism in BP <em>Document metadata</em>? This issue applies to
-          all BPs about providing documentation for humans. <a href="https://www.w3.org/2013/dwbp/track/issues/142">Issue-142</a>
+        <div class="issue"> Should we mention multilingualism in BP <em>Document
+            metadata</em>? This issue applies to all BPs about providing
+          documentation for humans. <a href="https://www.w3.org/2013/dwbp/track/issues/142">Issue-142</a>
         </div>
         <!-- end of BP -->
         <!-- begin of Provide Metadata in machine-readable formats BP -->
         <div class="practice">
-          <p><span id="ProvideMetadataMachine" class="practicelab">Use machine-readable formats to provide
-              metadata  </span></p>
+          <p><span id="ProvideMetadataMachine" class="practicelab">Use
+              machine-readable formats to provide metadata </span></p>
           <p class="practicedesc">Metadata in machine-readable formats should be
             published together with the data</p>
           <section class="axioms">
@@ -424,20 +416,16 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            
             <p> It <em class="rfc2119">should</em> be possible for computer
               applications, notably search tools, to locate and process the
               metadata easily.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            
-                Metadata for machines is best provided either as an
-                alternative representation of the Web page in a serialization
-                format such as Turtle or JSON-LD (for RDF) or it can be embedded
-                in the HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or
-                [[Microdata]].
-            
+            Metadata for machines is best provided either as an alternative
+            representation of the Web page in a serialization format such as
+            Turtle or JSON-LD (for RDF) or it can be embedded in the HTML page,
+            again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
             <p>If the multiple formats are published separately, they should be
               served from the same URL using content negotiation. Maintenance of
               multiple formats is best achieved by generating each available
@@ -445,25 +433,24 @@ figure figcaption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Access the same URL either with a user agent that
-              accepts a more data oriented format, such as RDF, or a tool that
-              extracts the data from an HTML page such as the <a href="http://rdf-translator.appspot.com/">RDF
+            <p> Access the same URL either with a user agent that accepts a more
+              data oriented format, such as RDF, or a tool that extracts the
+              data from an HTML page such as the <a href="http://rdf-translator.appspot.com/">RDF
                 Translator</a>.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a> </p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
+            </p>
           </section>
         </div>
-       
-     
         <!-- end of BP -->
-        
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="ProvideMetadataStandardized" class="practicelab">Use
               standard terms to define metadata</span></p>
-          <p class="practicedesc"> Standard terms should be used for metadata definition.</p>
+          <p class="practicedesc"> Standard terms should be used for metadata
+            definition.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The provision of metadata is fundamental to data on the Web. It
@@ -513,354 +500,355 @@ figure figcaption {
           </section>
         </div>
         <!-- end of BP -->
-        
         <section id="discovery">
-        <h3>Data Discovery</h3>
-          
-        <!-- begin Discovery Metadata BP -->
-        <div class="practice">
-          <p><span id="DiscoveryMetadata" class="practicelab">Provide discovery
-              metadata</span></p>
-          <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
-            be described by metadata.</p>
-          <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">
-              Provide metadata for machines</a>. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>In order to be discoverable on the Web, typically through a
-              search engine or a data portal's own search function, it is
-              essential to provide the kind of information that such tools need.
-              Unlike a natural language document that, to a greater or lesser
-              extent, can be processed and its content 'understood,' a dataset
-              must be described and it's that description that forms the basis
-              of any classification, or indexing.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>User agents <em class="rfc2119">must</em> be able to discover
-              datasets.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>The vocabulary recommended by W3C is the Data Catalog Vocabulary
-              [[VOCAB-DCAT]].</p>
-            <p>This provides a framework in which datasets can be described as
-              abstract entities with one or more distributions, that is, means
-              of accessing the data. This might be through one or more downloads
-              or APIs. Aspects covered include:</p>
-            <ul>
-              <li>The <strong>title</strong> and a <strong>description</strong>
-                of the data.</li>
-              <li>The <strong>data format(s)</strong> in which the data could
-                be downloaded (e.g. XML, CSV, TSV, JSON, JSON-LD, RDF/XML,
-                Turtle, N-Triples etc.)</li>
-              <li>Any <strong>variants</strong> (e.g. different human-language
-                translations) of data.</li>
-              <li><strong>Access mechanisms</strong> though which the data be
-                accessed, e.g. SPARQL endpoints, Linked Data Platform [[LDP]],
-                REST interfaces, SOAP-based web services, etc. (see <a href="#access">Data
-                  Access</a>). </li>
-            </ul>
-            <!--<p>See also <a href="#AdministrativeMetadata">Provide
-                Administrative Metadata</a></p> -->
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>A human test might simply be to use an appropriate search tool
-              and check that the dataset is discoverable as expected since that
-              is the intended outcome. However, a more structured test would be
-              to ensure that the basic metadata fields listed above are filled.
-              It may be possible to machine-test this using the work of the <a
-
-                href="http://www.w3.org/2014/data-shapes/">RDF Data Shapes</a>
-              Working Group.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
-          </section>
-        </div>
-        <!-- end of BP -->
-        
-        <!-- begin Locale Parameters BP -->
-        <div class="practice">
-          <p><span id="LocaleParametersMetadata" class="practicelab">Provide
-              locale parameters metadata </span></p>
-          <p class="practicedesc">Information about locale parameters (date,
-            time, and number formats, language) <em class="rfc2119">should</em>
-            be made available. </p>
-          <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide metadata for machines</a>.</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Some data fields differ subtly but significantly with changes in
-              locale. Providing information about the locality for which the
-              data is currently published aids data users in interpreting its
-              meaning. Date, time, and number formats can have very different
-              meanings, despite similar appearances. Making the language
-              explicit allows users to determine how readily they can work with
-              the data and may enable automated translation services.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>It <em class="rfc2119">should</em> be possible for data
-              consumers to interpret the meaning of dates, times and numbers
-              accurately by referring to locale information.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Provide locale metadata for date, time, and number fields, and
-              include the language in which the data is published in the dataset
-              metadata. Where an international format specification exists,
-              e.g., ISO 8601 for dates and times, use it. </p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              language in which it is published and that all numeric, date, and
-              time fields have locale metadata provided either with each field
-              or as a general rule. </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
-          </section>
-        </div>
-        <!-- end of Locale Parameters BP -->
-          
-        </section>
-         <!-- begin of Data Licenses -->
-      <section id="licenses">
-        <h3>Data Licenses</h3>
-        <p>A license is a very useful piece of information to be attached to
-          data on the Web. As defined by the Dublin Core Metadata Initiative, a
-          license is a legal document giving official permission to do something
-          with the data with which it is associated. According to the type of
-          license adopted by the publisher, there might be more or fewer
-          restrictions on sharing and re-using data. In the context of data on
-          the Web, the license of a dataset can be specified within the data, or
-          outside of it, in a separate document to which it is linked.
-          <!--However, in line with the Linked
-          Data principles, licenses for such datasets should          be specified in RDF, for instance through the Dublin Core vocabulary
-          [[DC-TERMS]].</p> -->
-          <!-- begin of Provide Data License BP --> </p>
-        
-        <!-- begin of machine detectable license BP -->
-        <div class="practice">
-          <p><span class="practicelab">Provide data license </span></p>
-          <p class="practicedesc"> Data license information should be
-            available </p>
-           <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
-                metadata for  machines</a>. </p>
-          <div class="axioms">
-            <p class="subhead">Why</p>
-            <p>The presence of license information is essential for assessing
-              the usability of data. User agents, including search tools, may
-              use the presence/absence of license information as a trigger for
-              inclusion or exclusion of data presented to a potential consumer.
-              Even though the license may be presented in natural language,
-              where data links to the URL of a well known license, the user
-              agent may be able to present the well known features to the
-              potential consumer.</p>
-           
+          <h3>Data Discovery</h3>
+          <!-- begin Discovery Metadata BP -->
+          <div class="practice">
+            <p><span id="DiscoveryMetadata" class="practicelab">Provide
+                discovery metadata</span></p>
+            <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
+              be described by metadata.</p>
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">
+                Provide metadata for machines</a>. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>In order to be discoverable on the Web, typically through a
+                search engine or a data portal's own search function, it is
+                essential to provide the kind of information that such tools
+                need. Unlike a natural language document that, to a greater or
+                lesser extent, can be processed and its content 'understood,' a
+                dataset must be described and it's that description that forms
+                the basis of any classification, or indexing.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>User agents <em class="rfc2119">must</em> be able to discover
+                datasets.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>The vocabulary recommended by W3C is the Data Catalog
+                Vocabulary [[VOCAB-DCAT]].</p>
+              <p>This provides a framework in which datasets can be described as
+                abstract entities with one or more distributions, that is, means
+                of accessing the data. This might be through one or more
+                downloads or APIs. Aspects covered include:</p>
+              <ul>
+                <li>The <strong>title</strong> and a <strong>description</strong>
+                  of the data.</li>
+                <li>The <strong>data format(s)</strong> in which the data could
+                  be downloaded (e.g. XML, CSV, TSV, JSON, JSON-LD, RDF/XML,
+                  Turtle, N-Triples etc.)</li>
+                <li>Any <strong>variants</strong> (e.g. different
+                  human-language translations) of data.</li>
+                <li><strong>Access mechanisms</strong> though which the data be
+                  accessed, e.g. SPARQL endpoints, Linked Data Platform [[LDP]],
+                  REST interfaces, SOAP-based web services, etc. (see <a href="#access">Data
+                    Access</a>). </li>
+              </ul>
+              <!--<p>See also <a href="#AdministrativeMetadata">Provide
+                Administrative Metadata</a></p> --> </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>A human test might simply be to use an appropriate search tool
+                and check that the dataset is discoverable as expected since
+                that is the intended outcome. However, a more structured test
+                would be to ensure that the basic metadata fields listed above
+                are filled. It may be possible to machine-test this using the
+                work of the <a href="http://www.w3.org/2014/data-shapes/">RDF
+                  Data Shapes</a> Working Group.</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
+            </section>
           </div>
-          <div class="description">
-            <p class="subhead">Intended outcome</p>
-            <p>Machines <em class="rfc2119">should</em> be able to
-              automatically detect whether a given dataset does or does not
-              carry a license.</p>
+          </section>
+          <!-- end of BP -->
+          <!-- begin Locale Parameters BP -->
+          <section id="localeparameters">
+          <h3>Locale Parameters</h3>
+          <div class="practice">
+            <p><span id="LocaleParametersMetadata" class="practicelab">Provide
+                locale parameters metadata </span></p>
+            <p class="practicedesc">Information about locale parameters (date,
+              time, and number formats, language) <em class="rfc2119">should</em>
+              be made available. </p>
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
+                metadata for machines</a>.</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>Some data fields differ subtly but significantly with changes
+                in locale. Providing information about the locality for which
+                the data is currently published aids data users in interpreting
+                its meaning. Date, time, and number formats can have very
+                different meanings, despite similar appearances. Making the
+                language explicit allows users to determine how readily they can
+                work with the data and may enable automated translation
+                services.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>It <em class="rfc2119">should</em> be possible for data
+                consumers to interpret the meaning of dates, times and numbers
+                accurately by referring to locale information.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>Provide locale metadata for date, time, and number fields, and
+                include the language in which the data is published in the
+                dataset metadata. Where an international format specification
+                exists, e.g., ISO 8601 for dates and times, use it. </p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p> Check that the metadata for the dataset itself includes the
+                language in which it is published and that all numeric, date,
+                and time fields have locale metadata provided either with each
+                field or as a general rule. </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
+            </section>
           </div>
-          <div class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>There are several well known vocabularies that include properties
-              for linking to a license. These include Dublin Core [[DC-TERMS]],
-              Creative Commons [[CC-ABOUT]], schema.org [[SCHEMA-ORG]] and XHTML
-              [[XHTML-VOCAB]]. There are also a number of machine readable
-              rights languages, including The Creative Commons Rights Expression
-              Language [[ccREL]], the Open Data Rights Language [[ODRL]] and the
-              Open Data Rights Statement Vocabulary [[ODRS]].</p>
-            <p>Links to the license can be provided from the data itself, from
-              an HTML page that describes the data (via a Link element), or via
-              an HTTP Link Header, the latter two with a <code>@rel</code>
-              value of <code>license</code>. </p>
-            <p>Further information about open data licensing can be found in the
-              Publisher's Guide to Open Data Licensing, published by the Open
-              Data Institute [[ODI-LICENSING]]. </p>
+          </section>
+          <!-- end of Locale Parameters BP --> 
+        <!-- begin of Data Licenses -->
+        <section id="licenses">
+          <h3>Data Licenses</h3>
+          <p>A license is a very useful piece of information to be attached to
+            data on the Web. As defined by the Dublin Core Metadata Initiative,
+            a license is a legal document giving official permission to do
+            something with the data with which it is associated. According to
+            the type of license adopted by the publisher, there might be more or
+            fewer restrictions on sharing and re-using data. In the context of
+            data on the Web, the license of a dataset can be specified within
+            the data, or outside of it, in a separate document to which it is
+            linked.
+            <!--However, in line with the Linked
+          Data principles, licenses for such datasets should          be specified in RDF, for instance through the Dublin Core vocabulary          [[DC-TERMS]].</p> -->
+            <!-- begin of Provide Data License BP --> </p>
+          <!-- begin of machine detectable license BP -->
+          <div class="practice">
+            <p><span class="practicelab">Provide data license </span></p>
+            <p class="practicedesc"> Data license information should be
+              available </p>
+            <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
+                metadata for machines</a>. </p>
+            <div class="axioms">
+              <p class="subhead">Why</p>
+              <p>The presence of license information is essential for assessing
+                the usability of data. User agents, including search tools, may
+                use the presence/absence of license information as a trigger for
+                inclusion or exclusion of data presented to a potential
+                consumer. Even though the license may be presented in natural
+                language, where data links to the URL of a well known license,
+                the user agent may be able to present the well known features to
+                the potential consumer.</p>
+            </div>
+            <div class="description">
+              <p class="subhead">Intended outcome</p>
+              <p>Machines <em class="rfc2119">should</em> be able to
+                automatically detect whether a given dataset does or does not
+                carry a license.</p>
+            </div>
+            <div class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>There are several well known vocabularies that include
+                properties for linking to a license. These include Dublin Core
+                [[DC-TERMS]], Creative Commons [[CC-ABOUT]], schema.org
+                [[SCHEMA-ORG]] and XHTML [[XHTML-VOCAB]]. There are also a
+                number of machine readable rights languages, including The
+                Creative Commons Rights Expression Language [[ccREL]], the Open
+                Data Rights Language [[ODRL]] and the Open Data Rights Statement
+                Vocabulary [[ODRS]].</p>
+              <p>Links to the license can be provided from the data itself, from
+                an HTML page that describes the data (via a Link element), or
+                via an HTTP Link Header, the latter two with a <code>@rel</code>
+                value of <code>license</code>. </p>
+              <p>Further information about open data licensing can be found in
+                the Publisher's Guide to Open Data Licensing, published by the
+                Open Data Institute [[ODI-LICENSING]]. </p>
+            </div>
+            <div class="test">
+              <p class="subhead">How to Test</p>
+              <p>Check for the presence of one or more of:</p>
+              <p></p>
+              <ol>
+                <li>the presence of an RDF predicate;</li>
+                <li>an HTML Link element;</li>
+                <li>an HTTP Link header;</li>
+              </ol>
+              <p>that links the dataset, or the description of the dataset, to a
+                license document.</p>
+            </div>
+            <div class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant use cases</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a>
+                and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
+              </p>
+            </div>
           </div>
-          <div class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check for the presence of one or more of:</p>
-            <p></p>
-            <ol>
-              <li>the presence of an RDF predicate;</li>
-              <li>an HTML Link element;</li>
-              <li>an HTTP Link header;</li>
-            </ol>
-            <p>that links the dataset, or the description of the dataset, to a
-              license document.</p>
-          </div>
-          <div class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant use cases</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a>
-              and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
-            </p>
-          </div>
-        </div>
-        <!-- end of machine detectable license BP --> </section>
-      <!-- end of Data Licenses -->
+          <!-- end of machine detectable license BP --> </section>
+        <!-- end of Data Licenses -->
         <!-- begin of Data Provenance -->
-      <section id="provenance">
-        <h3>Data Provenance</h3>
-        <p>Provenance originates from the French term provenir (to come from),
-          which is used to describe the curation process of artwork as art is
-          passed from owner to owner. Data provenance, in a similar way, is
-          metadata, that allows data providers to pass details about the data
-          history to data users. Provenance becomes particularly important when
-          data is shared between collaborators who might not have direct contact
-          with one another either due to proximity or because the published data
-          outlives the lifespan of the data provider projects or organizations.</p>
-        <p>The Web brings together business, engineering, and scientific
-          communities creating collaborative opportunities that were previously
-          unimaginable. The challenge in publishing data on the Web is providing
-          an appropriate level of detail about its origin. The data publishers
-          may not necessarily be the data provider and so collecting and
-          conveying this corresponding metadata is particularly important.
-          Without provenance, consumers have no inherent way to trust the
-          integrity and credibility of the data being shared. Data publishers in
-          turn need to be aware of the needs of prospective consumer communities
-          to know how much provenance detail is appropriate. </p>
-        <p>To meet this need, the W3C community offers the Provenance Ontology
-          [[PROV-O]] so that data publishers can formally describe data
-          provenance and methodologies so that consumers can query and use
-          provenance information. </p>
-        <!-- begin of Provide Data Provenance BP -->
-        <div class="practice">
-          <p><span id="ProvideDataProvenance" class="practicelab">Provide data
-              provenance</span></p>
-          <p class="practicedesc">Data provenance information should
-            be available  </p>
-          <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide metadata for machines</a> . </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Without accessible data provenance, consumers will not know the
-              origin or history of the published data.</p>
-            <p>Data provenance is metadata that corresponds to data. Data
-              provenance relies upon existing vocabularies that make provenance
-              easily identifiable such as the Provenance Ontology [[PROV-O]].</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Data published on the Web <em class="rfc2119">should</em>
-              include, or link to, provenance information.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Data provenance can be published in a number of ways:</p>
-            <ol>
-              <li>Use the Provenance Ontology [[PROV-O]] to describe data
-                provenance.</li>
-              <li>Use an appropriate level of detail that will be meaningful to
-                the intended audience. </li>
-              <li>Write the data provenance in either a machine readable form
-                such as Turtle or RDF/XML or embed provenance in an HTML page
-                using [[JSON-LD]], or [[HTML-RDFA]] </li>
-              <li>Verify that the data provenance references published data</li>
-            </ol>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>The PROV Implementation Report [[PROV-IMP]] lists a number of
-              validator tools that can be used to test for the presence of
-              provenance information provided using [[PROV-O]].</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>
+        <section id="provenance">
+          <h3>Data Provenance</h3>
+          <p>Provenance originates from the French term provenir (to come from),
+            which is used to describe the curation process of artwork as art is
+            passed from owner to owner. Data provenance, in a similar way, is
+            metadata, that allows data providers to pass details about the data
+            history to data users. Provenance becomes particularly important
+            when data is shared between collaborators who might not have direct
+            contact with one another either due to proximity or because the
+            published data outlives the lifespan of the data provider projects
+            or organizations.</p>
+          <p>The Web brings together business, engineering, and scientific
+            communities creating collaborative opportunities that were
+            previously unimaginable. The challenge in publishing data on the Web
+            is providing an appropriate level of detail about its origin. The
+            data publishers may not necessarily be the data provider and so
+            collecting and conveying this corresponding metadata is particularly
+            important. Without provenance, consumers have no inherent way to
+            trust the integrity and credibility of the data being shared. Data
+            publishers in turn need to be aware of the needs of prospective
+            consumer communities to know how much provenance detail is
+            appropriate. </p>
+          <p>To meet this need, the W3C community offers the Provenance Ontology
+            [[PROV-O]] so that data publishers can formally describe data
+            provenance and methodologies so that consumers can query and use
+            provenance information. </p>
+          <!-- begin of Provide Data Provenance BP -->
+          <div class="practice">
+            <p><span id="ProvideDataProvenance" class="practicelab">Provide data
+                provenance</span></p>
+            <p class="practicedesc">Data provenance information should be
+              available </p>
+            <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
+                metadata for machines</a> . </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>Without accessible data provenance, consumers will not know the
+                origin or history of the published data.</p>
+              <p>Data provenance is metadata that corresponds to data. Data
+                provenance relies upon existing vocabularies that make
+                provenance easily identifiable such as the Provenance Ontology
+                [[PROV-O]].</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>Data published on the Web <em class="rfc2119">should</em>
+                include, or link to, provenance information.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>Data provenance can be published in a number of ways:</p>
+              <ol>
+                <li>Use the Provenance Ontology [[PROV-O]] to describe data
+                  provenance.</li>
+                <li>Use an appropriate level of detail that will be meaningful
+                  to the intended audience. </li>
+                <li>Write the data provenance in either a machine readable form
+                  such as Turtle or RDF/XML or embed provenance in an HTML page
+                  using [[JSON-LD]], or [[HTML-RDFA]] </li>
+                <li>Verify that the data provenance references published data</li>
+              </ol>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>The PROV Implementation Report [[PROV-IMP]] lists a number of
+                validator tools that can be used to test for the presence of
+                provenance information provided using [[PROV-O]].</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>
+              </p>
+            </section>
+          </div>
+          <!-- end of Provide Data Provenance BP --> </section>
+        <!-- end of Data Provenance -->
+        <!-- begin of Data Quality -->
+        <section id="quality">
+          <h3>Data Quality</h3>
+          <p>Data quality is commonly defined as “fitness for use” for a
+            specific application or use case. It can affect the potentiality of
+            the application that use data, as a consequence, its inclusion in
+            the data publishing and consumption pipelines is of primary
+            importance.</p>
+          <p>Usually, the assessment of quality involves different kinds of
+            quality dimensions, each representing groups of characteristics that
+            are relevant to publishers and consumers. Measures and metrics are
+            defined to assess the quality for each dimension. There are
+            heuristics designed to fit specific assessment situations that rely
+            on quality indicators, namely, pieces of data content, pieces of
+            data meta-information, and human ratings that give indications about
+            the suitability of data for some intended use.</p>
+          <p>Dimensions and metrics to adopt might largely depend on the
+            specific application scenario, or even on the data domain. A
+            systematic review of dimensions, metrics adopted in the context of
+            Linked Open Data can be found in the recent literature (e.g., see
+            [[ZAVERI]]). </p>
+          <!-- begin of Provide Data Quality BP -->
+          <div class="practice">
+            <p><span id="ProvideDataQuality" class="practicelab">Provide data
+                quality information</span></p>
+            <p class="practicedesc">Data Quality information should be available
             </p>
-          </section>
-        </div>
-        <!-- end of Provide Data Provenance BP --> </section>
-      <!-- end of Data Provenance -->
-     
-       <!-- begin of Data Quality -->
-      <section id="quality">
-        <h3>Data Quality</h3>
-        <p>Data quality is commonly defined as “fitness for use” for a specific
-          application or use case. It can affect the potentiality of the
-          application that use data, as a consequence, its inclusion in the data
-          publishing and consumption pipelines is of primary importance.</p>
-        <p>Usually, the assessment of quality involves different kinds of
-          quality dimensions, each representing groups of characteristics that
-          are relevant to publishers and consumers. Measures and metrics are
-          defined to assess the quality for each dimension. There are heuristics
-          designed to fit specific assessment situations that rely on quality
-          indicators, namely, pieces of data content, pieces of data
-          meta-information, and human ratings that give indications about the
-          suitability of data for some intended use.</p>
-        <p>Dimensions and metrics to adopt might largely depend on the specific
-          application scenario, or even on the data domain. A systematic review
-          of dimensions, metrics adopted in the context of Linked Open Data can
-          be found in the recent literature (e.g., see [[ZAVERI]]). </p>
-        <!-- begin of Provide Data Quality BP -->
-        <div class="practice">
-          <p><span id="ProvideDataQuality" class="practicelab">Provide data
-              quality information</span></p>
-          <p class="practicedesc">Data Quality information should
-            be available  </p>
-          <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide metadata for machines</a> . </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Data quality might seriously affect the suitability of data for
-              specific applications, including applications very different from
-              the purpose for which it was originally generated. Documenting
-              data quality significantly eases the process of data selection,
-              increasing the chances of re-use.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p> Information about the quality of the data <em class="rfc2119">should</em>
-              be provided for humans. Ideally it is also made available in
-              machine readable manner for processing by applications.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Depending on the application domain, information pertaining to
-              the quality may rely on specific quality metrics or
-              feedback-opinion. Specific quality metadata fields may or may not
-              be explicitly included in the metadata vocabularies adopted by
-              catalogs. Independently from domain-specific peculiarities, the
-              quality of data should be documented and known quality issues
-              should be explicitly stated in metadata. </p>
-            <!--            <p>The definition of a Quality Vocabulary is included in the
-              activity of the DWBP group in order to support in the              implementation of this best practice. The Quality Vocabulary is
-              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
+                metadata for machines</a> . </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>Data quality might seriously affect the suitability of data for
+                specific applications, including applications very different
+                from the purpose for which it was originally generated.
+                Documenting data quality significantly eases the process of data
+                selection, increasing the chances of re-use.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p> Information about the quality of the data <em class="rfc2119">should</em>
+                be provided for humans. Ideally it is also made available in
+                machine readable manner for processing by applications.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>Depending on the application domain, information pertaining to
+                the quality may rely on specific quality metrics or
+                feedback-opinion. Specific quality metadata fields may or may
+                not be explicitly included in the metadata vocabularies adopted
+                by catalogs. Independently from domain-specific peculiarities,
+                the quality of data should be documented and known quality
+                issues should be explicitly stated in metadata. </p>
+              <!--            <p>The definition of a Quality Vocabulary is included in the
+              activity of the DWBP group in order to support in the              implementation of this best practice. The Quality Vocabulary is              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,
               persistence commitments etc. When used by publishers, this              vocabulary will foster trust in the data amongst developers. </p> -->
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check whether the metadata explicitly includes a description of
-              the quality of the data.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p>Information about the relevance of the BP is described by
-              requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
-                Data on the Web Best Practices Use Cases &amp; Requirements
-                document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
-                for Data Quality</a></p>
-          </section>
-          <!-- end of Provide Data Quality BP --> </div>
-        <div class="issue"> Should we provide more specific/ detailed strategies
-          on how to attach quality info in metadata apart from the use of the
-          data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
-            Issue-116</a> </div>
-      </section>
-      <!-- end of Data Quality -->
-      
-      </section>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Check whether the metadata explicitly includes a description of
+                the quality of the data.</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p>Information about the relevance of the BP is described by
+                requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
+                  Data on the Web Best Practices Use Cases &amp; Requirements
+                  document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
+                  for Data Quality</a></p>
+            </section>
+            <!-- end of Provide Data Quality BP --> </div>
+          <div class="issue"> Should we provide more specific/ detailed
+            strategies on how to attach quality info in metadata apart from the
+            use of the data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
+              Issue-116</a> </div>
+        </section>
+        <!-- end of Data Quality --> </section>
       <!-- end of Metadata -->
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
@@ -1307,20 +1295,13 @@ figure figcaption {
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <!--
-            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any
-              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find
-              any, there are several criteria that we <em class="rfc2119">should</em>              consider to assess the suitability of re-using that vocabulary for
-              our use case:</p>            <ul>
-              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been
-                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should
-                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the
-                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is
-                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary <em class="rfc2119">should</em>
-                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>
-              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies <em class="rfc2119">should</em>
-                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,
-                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer
-                enhanced reusability.</li>            </ul> -->
+            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find
+              any, there are several criteria that we <em class="rfc2119">should</em>              consider to assess the suitability of re-using that vocabulary for              our use case:</p>            <ul>
+              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should
+                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is
+                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary <em class="rfc2119">should</em>                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>
+              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies <em class="rfc2119">should</em>                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,
+                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer                enhanced reusability.</li>            </ul> -->
             <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
                 Vocabularies</a> section of the W3C Best Practices for
               Publishing Linked Data [[LD-BP]] provides guidance on the
@@ -1331,18 +1312,12 @@ figure figcaption {
             <p>Check that terms used do not replicate those defined by
               vocabularies in common use within the same domain.</p>
             <!--
-            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>
-            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">
-                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,
-                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,
-                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a
-                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>
-              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library
-                  Linked Data Incubator Group report</a>. </li>            </ol>
-            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as
-              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,
-              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,
-              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative
+            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">
+                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,
+                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>
+              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library                  Linked Data Incubator Group report</a>. </li>            </ol>
+            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,
+              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative
                 Commons Rights Expression Language</a>, are re-used instead of              re-defined.</p> -->
           </section>
           <section class="ucr">
@@ -1416,14 +1391,10 @@ figure figcaption {
           a more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
         <!-- end of Not Over formalize Vocabularies BP -->
         <!--        <h3>How to choose vocabularies?</h3>
-        <p> It is very important to know how to choose the vocabulary to be          re-used. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
-            Checklist</a> </p>        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
-            Checklist</a> from the Best Practices for Publishing Linked Data          overlaps quite a lot with the best practices from this section. Should
-          we clarify the difference in positioning? Is there one?          <a href="https://www.w3.org/2013/dwbp/track/issues/124">
+        <p> It is very important to know how to choose the vocabulary to be          re-used. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> </p>        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary
+            Checklist</a> from the Best Practices for Publishing Linked Data          overlaps quite a lot with the best practices from this section. Should          we clarify the difference in positioning? Is there one?          <a href="https://www.w3.org/2013/dwbp/track/issues/124">
               Issue-124</a></p>        </div> --> </section>
       <!-- end of Data Vocabularies -->
-     
-      
       <!-- begin of Data Granularity -->
       <!-- 
       <section id="granularity">        <h3>Data Granularity</h3>        <p>The section on granularity</p>              </section>      -->
