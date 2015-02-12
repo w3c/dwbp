@@ -24,6 +24,8 @@
     column-gap: 1em;
   }
 }
+    
+
 
 .practice, #tempPractice {
   padding-left: 1em;
@@ -62,6 +64,8 @@ figure figcaption {
   text-align:center;
   font-style:italic;
 }
+    
+    
 
   </style>
   </head>
@@ -204,7 +208,7 @@ figure figcaption {
             on the Web?<br>
             How can metadata be provided in a machine readable way?</em></dd>
         <dt>Data Identification</dt>
-        <dd><em>How can unique identifiers be provided for data resources?<br>
+        <dd><em>How can unique re-use be provided for data resources?<br>
             How should URIs be designed and managed for persistence?</em></dd>
         <dt>Data Formats</dt>
         <dd><em>What kind of data formats should be considered when publishing
@@ -275,8 +279,7 @@ figure figcaption {
           length but is likely to be no more than a few sentences. </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>What it should do. This is the normative part of the best practice
-            and includes one or more [[!RFC2119]] keywords.</p>
+          <p>What it should be possible to do when a data publisher follows the best practice. </p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -301,7 +304,43 @@ figure figcaption {
       <div class="issue">Is this the correct template? Where exactly should the
         normative statement be? This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</div>
     </section>
-    <section id="bp-summary"></section>
+    <section id="bp-summary"> </section>
+    
+    <!-- <section id="summary">
+      <h2>Best Practices Summary</h2>
+      <ul style="list-style: none;">
+      <li>  Best Practice: Document metadata </li>
+      <li> Best Practice: Use machine-readable formats to provide metadata </li>
+      <li> Best Practice: Use standard terms to define metadata </li>
+      <li> Best Practice: Provide discovery metadata </li>
+      <li> Best Practice: Provide locale parameters metadata </li>
+      <li> Best Practice: Provide data license information </li>
+      <li> Best Practice: Provide data provenance information </li>
+      <li> Best Practice: Provide data quality information </li>
+      <li> Best Practice: Provide versioning information </li>
+      <li> Best Practice: Provide version history </li>
+      <li> Best Practice: Use unique re-use </li>
+      <li> Best Practice: Use machine-readable standardized data formats </li>
+      <li> Best Practice: Use open data formats </li>
+      <li> Best Practice: Provide data in multiple formats </li>
+      <li> Best Practice: Document vocabularies </li>
+      <li> Best Practice: Share vocabularies in an open way </li>
+      <li> Best Practice: Vocabulary versioning </li>
+      <li> Best Practice: Re-use vocabularies </li>
+      <li> Best Practice: Choose the right formalization level </li>
+      <li> Best Practice: Preserve people's right to privacy </li>
+      <li> Best Practice: Provide data unavailability reference </li>
+      <li> Best Practice: Provide bulk download </li>
+      <li> Best Practice: Follow REST principles when designing APIs </li>
+      <li> Best Practice: Provide real-time access </li>
+      <li> Best Practice: Provide data up to date </li>
+      <li> Best Practice: Maintain separate versions for a data API </li> 
+      <li> Best Practice: Gather feedback from data consumers </li>
+     </ul>
+     
+    </section> -->
+   
+    
     <section id="bestPractices">
       <h2>The Best Practices</h2>
       <p>This section contains the best practices to be used by data publishers
@@ -460,7 +499,7 @@ figure figcaption {
               relevant data among the vast amounts available on the Web, for
               people and the computer systems they use, is made substantially
               more achievable if different publishers use the same terms as each
-              other, or rather, use <em>common identifiers</em> for the terms
+              other, or rather, use <em>common re-use</em> for the terms
               used, however those terms are presented to humans. Only in this
               way can the same tools and methods be used for multiple tasks.</p>
           </section>
@@ -629,7 +668,7 @@ figure figcaption {
             <!-- begin of Provide Data License BP --> </p>
           <!-- begin of machine detectable license BP -->
           <div class="practice">
-            <p><span class="practicelab">Provide data license </span></p>
+            <p><span class="practicelab">Provide data license information</span></p>
             <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
               be available </p>
             <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
@@ -719,7 +758,7 @@ figure figcaption {
           <!-- begin of Provide Data Provenance BP -->
           <div class="practice">
             <p><span id="ProvideDataProvenance" class="practicelab">Provide data
-                provenance</span></p>
+                provenance information</span></p>
             <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
               be available </p>
             <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
@@ -972,8 +1011,8 @@ figure figcaption {
         
         <!-- begin of Data Identification BP -->
         <div class="practice">
-          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
-              unique identifiers</span></p>
+          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Use
+              unique re-use</span></p>
           <p class="practicedesc">Data and datasets <em class="rfc2119">must</em>
             be associated with a unique identifier. </p>
           <section class="axioms">
@@ -1389,7 +1428,7 @@ figure figcaption {
         <!-- end of BP -->
         <!-- begin of re-use Vocabularies BP -->
         <div class="practice">
-          <p><span id="re-usingVocabularies" class="practicelab">re-use
+          <p><span id="re-usingVocabularies" class="practicelab">Re-use
               vocabularies</span></p>
           <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em>
             be re-used where possible </p>
@@ -1832,7 +1871,7 @@ figure figcaption {
             <p class="subhead">How to Test</p>
             To adequately test real time data access, data will need to tracked
             from the time it is initially collected to the time it is published
-            and accessed. Using provenance [[PROV-O]] can be used to describe
+            and accessed. [[PROV-O]] can be used to describe
             these activities. Caution should be used when analyzing real-time
             access for systems that consist of multiple computer systems. For
             example, tests that rely on wall clock time stamps may reflect
@@ -1962,7 +2001,7 @@ figure figcaption {
           shot at a fixed time. When preserving data on the Web some new
           elements have to be taken into account:</p>
         <ul>
-          <li>the persistent identifiers (URIs) used across the Web may be
+          <li>the persistent re-use (URIs) used across the Web may be
             related to live data that can change;</li>
           <li>the meaning of a resource is contextualized by the other resources
             it is linked to;</li>
