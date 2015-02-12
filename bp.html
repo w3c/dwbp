@@ -9,7 +9,7 @@
 </script> <script class="remove" src="bpconfig.js">
 </script> <style type="text/css">
 
-#bp-summary ol {
+#bp-summary ul {
   list-style-type: none;
   padding-left: 0;
   line-height:1.6em;
@@ -17,7 +17,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  #bp-summary ol {
+  #bp-summary ul {
     column-count:2;
     -moz-column-count:2;
     -webkit-column-count:2;
@@ -868,34 +868,29 @@ figure figcaption {
         <div class="practice">
           <p><span id="ProvideUniqueIdentifiers" class="practicelab">Provide
               unique identifiers</span></p>
-          <p class="practicedesc">Each data resource <em class="rfc2119">must</em>
-            be clearly associated with an unique identifier. </p>
+          <p class="practicedesc">Data and datasets <em class="rfc2119">must</em>
+            be associated with a unique identifier. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The architecture of the World Wide Web [[WEBARCH]] is based on
-              links between resources based on globally unique identifiers. They
-              can identify people, places and concepts just as much as the more
-              familiar <abbr title="Uniform Resource Location">URL</abbr>
-              identifiers for Web pages, images etc. HTTP <abbr title="Internationalized Resource Identifier">IRI</abbr>s,
-              the internationalized version of <abbr title="Uniform Resource Identifier">URI</abbr>s,
-              themselves a super-set of URLs, are a fundamental aspect of the
-              Web.</p>
-            <p>IRIs should not change over time so that references remain valid.</p>
             <p>Adopting a common identification system enables basic data
               identification and comparison processes by any stakeholder in a
               reliable way. They are an essential pre-condition for proper data
               management and re-use.</p>
+            <p> Unique identifiers must be provided in different levels of granularity, e.g. not just datasets as a whole,
+but also parts of datasets as far as these parts are likely to be
+interesting by themselves for direct access and re-use.
+</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Data <em class="rfc2119">must</em> be discoverable and citable.</p>
+            <p>Data and datasets <em class="rfc2119">must</em> be discoverable and citable.</p>
             <p>A number of basic requirements <em class="rfc2119">should</em>
               be fulfilled during the definition of an identification system:</p>
             <ol>
-              <li>Ensure that any data resource can be identified by its unique
+              <li>Ensure that data and datasets can be identified by its unique
                 identifier.</li>
-              <li>The resource identifier needs to remain persistent through
-                time, regardless of the status of the associated resource.</li>
+              <li>The unique identifier needs to remain persistent through
+                time, regardless of the status of the associated resource (data or dataset).</li>
               <li>Always use a consistent and uniform, but also flexible and
                 extensible, structure for the composition of identifiers.</li>
               <li>Identifiers should remain as neutral as possible (technically,
@@ -904,10 +899,19 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+             <p>The architecture of the World Wide Web [[WEBARCH]] is based on
+              links between resources based on globally unique identifiers. They
+              can identify people, places and concepts just as much as the more
+              familiar <abbr title="Uniform Resource Location">URL</abbr>
+              identifiers for Web pages, images etc. HTTP <abbr title="Internationalized Resource Identifier">IRI</abbr>s,
+              the internationalized version of <abbr title="Uniform Resource Identifier">URI</abbr>s,
+              themselves a super-set of URLs, are a fundamental aspect of the
+              Web.</p>
+            
             <p>Internationalized Resource Identifiers (IRIs) [[!RFC3987]] should
               be used when needed. The use of URI or IRIs depends on the
-              intended audience. For global a audience one should use language
-              and cultural neutral URIs; for local a audience one could use
+              intended audience. For global audience one should use language
+              and cultural neutral URIs; for local audience one could use
               IRIs.</p>
             <pre title="URI and IRIs" class="highlight example">              http://example.com/中国                  # For Chinese speaker: good mnemonic - non-Chinese speakers: bad mnemonic
               http://example.com/china                 # For Chinese speaker: acceptable - non-Chinese speakers: better
