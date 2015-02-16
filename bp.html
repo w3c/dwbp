@@ -292,7 +292,8 @@ figure figcaption {
           length but is likely to be no more than a few sentences. </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>What it should be possible to do when a data publisher follows the best practice. </p>
+          <p>What it should be possible to do when a data publisher follows the
+            best practice. </p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -317,11 +318,7 @@ figure figcaption {
       <div class="issue">Is this the correct template? Where exactly should the
         normative statement be? This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</div>
     </section>
-   <section id="bp-summary"> </section>
-    
-   
-   
-    
+    <section id="bp-summary"> </section>
     <section id="bestPractices">
       <h2>The Best Practices</h2>
       <p>This section contains the best practices to be used by data publishers
@@ -385,12 +382,13 @@ figure figcaption {
           practices. </p>
         <!-- begin of Document Metadata BP -->
         <div class="practice">
-          <p><span id="DocumentMetadata" class="practicelab"> Document metadata</span></p>
-          <p class="practicedesc">Metadata documentation <em class="rfc2119">must</em>
+          <p><span id="DocumentMetadata" class="practicelab"> Document data</span></p>
+          <p class="practicedesc">A metadata document <em class="rfc2119">must</em>
             be published together with the data </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Documenting metadata is fundamental when publishing data on the
+            <p>Providing information about data, i.e. metadata, in a way that data consumers
+              may understand is fundamental when publishing data on the
               Web. Given that data publishers and data consumers may be unkown
               to each other, becomes essential to provide information that helps
               data consumers to understand the data as well as other important
@@ -435,7 +433,8 @@ figure figcaption {
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> It should be possible for computer applications, notably search
-              tools, to locate and process the metadata easily, which makes it human readable metadata, machine readability metadata.</p>
+              tools, to locate and process the metadata easily, which makes it
+              human readable metadata, machine readability metadata.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -480,9 +479,9 @@ figure figcaption {
               relevant data among the vast amounts available on the Web, for
               people and the computer systems they use, is made substantially
               more achievable if different publishers use the same terms as each
-              other, or rather, use <em>common re-use</em> for the terms
-              used, however those terms are presented to humans. Only in this
-              way can the same tools and methods be used for multiple tasks.</p>
+              other, or rather, use <em>common re-use</em> for the terms used,
+              however those terms are presented to humans. Only in this way can
+              the same tools and methods be used for multiple tasks.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -518,6 +517,15 @@ figure figcaption {
         <!-- end of BP -->
         <section id="discovery">
           <h3>Data Discovery</h3>
+          
+          In order to be discoverable on the Web, typically through a
+                search engine or a data portal's own search function, it is
+                essential to provide the kind of information that such tools
+                need. Unlike a natural language document that, to a greater or
+                lesser extent, can be processed and its content 'understood,' a
+                dataset must be described and it's that description that forms
+                the basis of any classification, or indexing.
+          
           <!-- begin Discovery Metadata BP -->
           <div class="practice">
             <p><span id="DiscoveryMetadata" class="practicelab">Provide
@@ -528,13 +536,7 @@ figure figcaption {
                 Provide metadata for machines</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
-              <p>In order to be discoverable on the Web, typically through a
-                search engine or a data portal's own search function, it is
-                essential to provide the kind of information that such tools
-                need. Unlike a natural language document that, to a greater or
-                lesser extent, can be processed and its content 'understood,' a
-                dataset must be described and it's that description that forms
-                the basis of any classification, or indexing.</p>
+              <p>Explicitly providing  data discovery information allows user agents to automatically discover datasets available on the Web. </p>
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
@@ -585,6 +587,18 @@ figure figcaption {
         <!-- begin Locale Parameters BP -->
         <section id="localeparameters">
           <h3>Locale Parameters</h3>
+          
+         <p> A locale is a set of parameters that defines specific data aspects, such as language and formatting used for numeric values 
+         and dates. When publishing data on the Web is important to provide such information in order to improve the common understanding between 
+           data publishers and data consumers. Some data fields may differ subtly but significantly with changes
+                in locale, for example. Providing information about the locality for which
+                the data is currently published aids data users in interpreting
+                its meaning. Date, time, and number formats can have very
+                different meanings, despite similar appearances. Making the
+                language explicit allows users to determine how readily they can
+                work with the data and may enable automated translation
+                services. </p>
+          
           <div class="practice">
             <p><span id="LocaleParametersMetadata" class="practicelab">Provide
                 locale parameters metadata </span></p>
@@ -595,14 +609,8 @@ figure figcaption {
                 metadata for machines</a>.</p>
             <section class="axioms">
               <p class="subhead">Why</p>
-              <p>Some data fields differ subtly but significantly with changes
-                in locale. Providing information about the locality for which
-                the data is currently published aids data users in interpreting
-                its meaning. Date, time, and number formats can have very
-                different meanings, despite similar appearances. Making the
-                language explicit allows users to determine how readily they can
-                work with the data and may enable automated translation
-                services.</p>
+              <p> Providing locale parameters helps data consumers to understand and to manipulate the data, improving the re-use of the data.
+                </p>
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
@@ -649,7 +657,8 @@ figure figcaption {
             <!-- begin of Provide Data License BP --> </p>
           <!-- begin of machine detectable license BP -->
           <div class="practice">
-            <p><span id="ProvideDataLicense" class="practicelab">Provide data license information</span></p>
+            <p><span id="ProvideDataLicense" class="practicelab">Provide data
+                license information</span></p>
             <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
               be available </p>
             <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
@@ -731,9 +740,8 @@ figure figcaption {
             publishers in turn need to be aware of the needs of prospective
             consumer communities to know how much provenance detail is
             appropriate. </p>
-         <!-- <p>To meet this need, the W3C community offers the Provenance Ontology
-            [[PROV-O]] so that data publishers can formally describe data
-            provenance and methodologies so that consumers can query and use
+          <!-- <p>To meet this need, the W3C community offers the Provenance Ontology
+            [[PROV-O]] so that data publishers can formally describe data            provenance and methodologies so that consumers can query and use
             provenance information. </p> -->
           <!-- begin of Provide Data Provenance BP -->
           <div class="practice">
@@ -860,124 +868,125 @@ figure figcaption {
             use of the data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
               Issue-116</a> </div>
         </section>
-        <!-- end of Data Quality --> 
-      
-      <!-- begin of Data Versioning -->
-      <section id="dataVersioning">
-        <h3>Data Versioning</h3>
-        <p>Data on the web often changes over time. Many datasets are updated on
-          a scheduled basis, such as census data or funding data that changes
-          every fiscal year. Other datasets are changed as improvements in
-          collecting the data make updates worthwhile. Still other data changes
-          in real time or near real time. All these types of data need a
-          consistent, informative approach to versioning, so that data consumers
-          can understand and work with the changing data. The following best
-          practices address issues that arise in tracking and managing different
-          versions of datasets.</p>
-        <!-- begin of provide Versioning Info BP -->
-        <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Provide
-              versioning information</span></p>
-          <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
-            be assigned a version number or, at a minimum, a version date, and
-            that identifier <em class="rfc2119">should</em> be distributed with
-            the data. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Version information makes a dataset uniquely identifiable.
-              Uniqueness enables consumers to determine how the data changes
-              across time and whether they are working with the latest version
-              of a dataset. Good versioning helps them to determine when to
-              update to a newer version. Explicit versioning allows for
-              repeatability in research, enables comparisons, and prevents
-              confusion. Using version numbers that follow a standardized
-              approach can also set consumer expectations about how the versions
-              differ.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for data
-              consumers to easily determine which version of the data they are
-              working with.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Providing version information is a topic of <a href="https://lists.w3.org/Archives/Public/public-vocabs/2015Jan/0120.html"
+        <!-- end of Data Quality -->
+        <!-- begin of Data Versioning -->
+        <section id="dataVersioning">
+          <h3>Data Versioning</h3>
+          <p>Data on the web often changes over time. Many datasets are updated
+            on a scheduled basis, such as census data or funding data that
+            changes every fiscal year. Other datasets are changed as
+            improvements in collecting the data make updates worthwhile. Still
+            other data changes in real time or near real time. All these types
+            of data need a consistent, informative approach to versioning, so
+            that data consumers can understand and work with the changing data.
+            The following best practices address issues that arise in tracking
+            and managing different versions of datasets.</p>
+          <!-- begin of provide Versioning Info BP -->
+          <div class="practice">
+            <p><span id="provideVersioningInfo" class="practicelab">Provide
+                versioning information</span></p>
+            <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
+              be assigned a version number or, at a minimum, a version date, and
+              that identifier <em class="rfc2119">should</em> be distributed
+              with the data. </p>
+            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Provide
+                metadata for machines</a>. </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>Version information makes a dataset uniquely identifiable.
+                Uniqueness enables consumers to determine how the data changes
+                across time and whether they are working with the latest version
+                of a dataset. Good versioning helps them to determine when to
+                update to a newer version. Explicit versioning allows for
+                repeatability in research, enables comparisons, and prevents
+                confusion. Using version numbers that follow a standardized
+                approach can also set consumer expectations about how the
+                versions differ.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>It should be possible for data consumers to easily determine
+                which version of the data they are working with.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <!-- <p>Providing version information is a topic of <a href="https://lists.w3.org/Archives/Public/public-vocabs/2015Jan/0120.html"
 
-                title="A versioning model for schema.org">much debate</a>. The
-              precise method adopted will vary according to the context but
-              there are some basic guidelines that can be followed.</p>
-            <p>Include a version number in the metadata for the dataset. Use a
-              consistent numbering scheme with a meaningful approach to
-              incrementing digits, such as [[SchemaVer]]. Also provide a
-              description of what has changed since the previous version. The
-              Web Ontology Language provides a number of annotation properties
-              for version information [[OWL2-QUICK-REFERENCE]] and the
-              Provenance Ontology [[PROV-O]] defines several types of link
-              between versions.</p>
-            <p>If the data is made available through an API, the URI used to
-              request the latest version of the data should not change as the
-              versions change, but it should be possible to request a specific
-              version through the API. See <a href="#VersioningVocabularies">Vocabulary
-                versioning</a> for more on assigning stable URIs for the 'latest
-              version' and for each snapshot.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check that a unique version number or date is provided with the
-              metadata describing the dataset.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
-          </section>
-        </div>
-        <!-- end of provide Versioning Info BP -->
-        <div class="issue"> Should we use SchemaVer on the Implementation of the
-          Provide Versioning Information BP? <a href="https://www.w3.org/2013/dwbp/track/issues/127">
-            Issue-127</a> </div>
-        <!-- begin of provide version history BP -->
-        <div class="practice">
-          <p><span id="provideVersionHistory" class="practicelab">Provide
-              version history</span></p>
-          <p class="practicedesc">It is <em class="rfc2119">recommended</em>
-            that a version history be made available for versioned data.</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>In creating applications that use data, it can be helpful to
-              understand the variability of that data over time. Interpreting
-              the data is also enhanced by an understanding of its dynamics.
-              Determining how the various versions of a dataset differ from each
-              other is typically very laborious unless a summary of the
-              differences is provided.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for data
-              consumers to understand how the data typically changes from
-              version to version and how any two specific versions differ.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Provide a list of published versions and a description for each
-              version that explains how it differs from the previous version. An
-              API can expose a version history with a single dedicated URL that
-              retrieves the latest version of the complete history.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check that a list of published versions is available, and that
-              each version is described.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
-          </section>
-        </div>
-        <!-- end of provide version history BP -->
-       
-         </section>
-      <!-- end of Metadata -->  </section>
+                  title="A versioning model for schema.org">much debate</a>. --> 
+              <p> The precise method adopted for providing versioning information may vary according to the context, however
+                there are some basic guidelines that can be followed, for example: </p>
+                <ul> 
+                  <li> Include a version number as part of the metadata for the dataset. </li>
+                  <li> Use a consistent numbering scheme with a meaningful approach to
+                    incrementing digits, such as [[SchemaVer]]. </li> 
+                  <li> Provide a
+                description of what has changed since the previous version. The
+                Web Ontology Language provides a number of annotation properties
+                for version information [[OWL2-QUICK-REFERENCE]] and the
+                Provenance Ontology [[PROV-O]] defines several types of link
+                    between versions. </li>
+              <li>If the data is made available through an API, the URI used to
+                request the latest version of the data should not change as the
+                versions change, but it should be possible to request a specific
+                version through the API. <!--See <a href="#VersioningVocabularies">Vocabulary
+                  versioning</a> for more on assigning stable URIs for the
+                'latest version' and for each snapshot.</p> --> </li>
+              </ul>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Check that a unique version number or date is provided with the
+                metadata describing the dataset.</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
+            </section>
+          </div>
+          <!-- end of provide Versioning Info BP -->
+          <div class="issue"> Should we use SchemaVer on the Implementation of
+            the Provide Versioning Information BP? <a href="https://www.w3.org/2013/dwbp/track/issues/127">
+              Issue-127</a> </div>
+          <!-- begin of provide version history BP -->
+          <div class="practice">
+            <p><span id="provideVersionHistory" class="practicelab">Provide
+                version history</span></p>
+            <p class="practicedesc">It is <em class="rfc2119">recommended</em>
+              that a version history be made available for versioned data.</p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>In creating applications that use data, it can be helpful to
+                understand the variability of that data over time. Interpreting
+                the data is also enhanced by an understanding of its dynamics.
+                Determining how the various versions of a dataset differ from
+                each other is typically very laborious unless a summary of the
+                differences is provided.</p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>It should be possible for data consumers to understand how the
+                data typically changes from version to version and how any two
+                specific versions differ.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p>Provide a list of published versions and a description for each
+                version that explains how it differs from the previous version.
+                An API can expose a version history with a single dedicated URL
+                that retrieves the latest version of the complete history.</p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Check that a list of published versions is available, and that
+                each version is described.</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
+            </section>
+          </div>
+          <!-- end of provide version history BP --> </section>
+        <!-- end of Metadata --> </section>
       <!-- begin of Data Identification -->
       <section id="dataIdentification">
         <h3>Data Identification</h3>
@@ -988,11 +997,10 @@ figure figcaption {
           and uniform system of identification will be required to enable data
           persistency and re-use, being a crucial element for the process of
           data sharing and connecting.</p>
-        
         <!-- begin of Data Identification BP -->
         <div class="practice">
-          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Use
-              unique identifiers</span></p>
+          <p><span id="ProvideUniqueIdentifiers" class="practicelab">Use unique
+              identifiers</span></p>
           <p class="practicedesc">Data and datasets <em class="rfc2119">must</em>
             be associated with a unique identifier. </p>
           <section class="axioms">
@@ -1002,17 +1010,15 @@ figure figcaption {
               reliable way. They are an essential pre-condition for proper data
               management and re-use.</p>
             <p> Unique identifiers must be provided in different levels of
-              granularity, e.g. not just datasets as a whole,
-              but also parts of datasets as far as these parts are likely to be
-              interesting by themselves for direct access and re-use.
-            </p>
+              granularity, e.g. not just datasets as a whole, but also parts of
+              datasets as far as these parts are likely to be interesting by
+              themselves for direct access and re-use. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Data and datasets must be discoverable
-              and citable.</p>
-            <p>A number of basic requirements should
-              be fulfilled during the definition of an identification system:</p>
+            <p>Data and datasets must be discoverable and citable.</p>
+            <p>A number of basic requirements should be fulfilled during the
+              definition of an identification system:</p>
             <ol>
               <li>Ensure that data and datasets can be identified by its unique
                 identifier.</li>
@@ -1066,7 +1072,6 @@ figure figcaption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-           
             <p>Check that there is a documented scheme of Web identifiers for
               the data in question. For any of the existing identifiers test
               that the associated data can always be retrieved by means of its
@@ -1086,7 +1091,17 @@ figure figcaption {
       <!-- begin of Data Formats -->
       <section id="dataFormats">
         <h3>Data Formats</h3>
-        <p>The formats in which data is made available to consumers are a key aspect of making that data usable. The best, most flexible access mechanism in the world is pointless unless it serves data in formats that enable use and reuse. Below we detail best practices in selecting formats for your data, both at the level of files and that of individual fields. W3C encourages use of formats that can be used by the widest possible audience and processed most readily by computing systems. Source formats, such as database dumps or spreadsheets, used to generate the final published format, are out of scope. This document is concerned with what is actually published rather than internal systems used to generate the published data.</p>
+        <p>The formats in which data is made available to consumers are a key
+          aspect of making that data usable. The best, most flexible access
+          mechanism in the world is pointless unless it serves data in formats
+          that enable use and reuse. Below we detail best practices in selecting
+          formats for your data, both at the level of files and that of
+          individual fields. W3C encourages use of formats that can be used by
+          the widest possible audience and processed most readily by computing
+          systems. Source formats, such as database dumps or spreadsheets, used
+          to generate the final published format, are out of scope. This
+          document is concerned with what is actually published rather than
+          internal systems used to generate the published data.</p>
         <!-- begin of Machine-Readable Standardized Format BP -->
         <div class="practice">
           <p><span id="MachineReadableStandardizedFormat" class="practicelab">Use
@@ -1113,13 +1128,13 @@ figure figcaption {
               with the data and is authorized to do so must be able to do so
               with computational tools typically available in the relevant
               domain.</p>
-            <p> A machine must be able to: </p>
+            <!--<p> A machine must be able to: </p>
             <ol>
               <li>Open and read the data using commonly available software
                 packages. </li>
               <li>Process the data. </li>
               <li>Store the data for future use.</li>
-            </ol>
+            </ol> -->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1159,9 +1174,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for any person
-              who wants to use or re-use the data to do so without investment in
-              proprietary software.</p>
+            <p>It should be possible for any person who wants to use or re-use
+              the data to do so without investment in proprietary software.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1197,8 +1211,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It should be possible for data
-              consumers to work with the data without transforming it.</p>
+            <p> It should be possible for data consumers to work with the data
+              without transforming it.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1290,8 +1304,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>The vocabulary should be
-              human-readable.</p>
+            <p>The vocabulary should be human-readable.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1332,8 +1345,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>The vocabulary should be available for
-              data consumers to use or re-use it.</p>
+            <p>The vocabulary should be available for data consumers to use or
+              re-use it.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1370,8 +1383,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It must be possible to identify changes
-              to a vocabulary over time.</p>
+            <p>It must be possible to identify changes to a vocabulary over
+              time.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1410,16 +1423,13 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Datasets (and vocabularies) should
-              re-use use core vocabularies.</p>
+            <p>Datasets (and vocabularies) should re-use use core vocabularies.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <!--
-            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find              any, there are several criteria that we <em class="rfc2119">should</em>              consider to assess the suitability of re-using that vocabulary for              our use case:</p>            <ul>
-              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is
-                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary <em class="rfc2119">should</em>                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies <em class="rfc2119">should</em>                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,
-                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer                enhanced reusability.</li>            </ul> -->
+            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find              any, there are several criteria that we <em class="rfc2119">should</em>              consider to assess the suitability of re-using that vocabulary for              our use case:</p>            <ul>              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is
+                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary <em class="rfc2119">should</em>                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies <em class="rfc2119">should</em>                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer                enhanced reusability.</li>            </ul> -->
             <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
                 Vocabularies</a> section of the W3C Best Practices for
               Publishing Linked Data [[LD-BP]] provides guidance on the
@@ -1430,10 +1440,8 @@ figure figcaption {
             <p>Check that terms used do not replicate those defined by
               vocabularies in common use within the same domain.</p>
             <!--
-            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,
-                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library                  Linked Data Incubator Group report</a>. </li>            </ol>
-            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative
-                Commons Rights Expression Language</a>, are re-used instead of              re-defined.</p> -->
+            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library                  Linked Data Incubator Group report</a>. </li>            </ol>
+            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative                Commons Rights Expression Language</a>, are re-used instead of              re-defined.</p> -->
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1468,8 +1476,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>The data supports all application cases but should
-                not be more complex to produce and re-use than necessary;</p>
+            <p>The data supports all application cases but should not be more
+              complex to produce and re-use than necessary;</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1506,8 +1514,8 @@ figure figcaption {
           a more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
         <!-- end of Not Over formalize Vocabularies BP -->
         <!--        <h3>How to choose vocabularies?</h3>
-        <p> It is very important to know how to choose the vocabulary to be          re-used. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> </p>        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> from the Best Practices for Publishing Linked Data          overlaps quite a lot with the best practices from this section. Should          we clarify the difference in positioning? Is there one?          <a href="https://www.w3.org/2013/dwbp/track/issues/124">
-              Issue-124</a></p>        </div> --> </section>
+        <p> It is very important to know how to choose the vocabulary to be          re-used. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> </p>        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> from the Best Practices for Publishing Linked Data          overlaps quite a lot with the best practices from this section. Should          we clarify the difference in positioning? Is there one?          <a href="https://www.w3.org/2013/dwbp/track/issues/124">              Issue-124</a></p>        </div> -->
+      </section>
       <!-- end of Data Vocabularies -->
       <!-- begin of Data Granularity -->
       <!-- 
@@ -1560,8 +1568,8 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Data that can identify an individual person must
-                not be published without their consent.</p>
+            <p>Data that can identify an individual person must not be published
+              without their consent.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1609,9 +1617,9 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Publishers should provide information
-              about data that is referred to from the current dataset but that
-              is unavailable or only available under different conditions.</p>
+            <p>Publishers should provide information about data that is referred
+              to from the current dataset but that is unavailable or only
+              available under different conditions.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1660,7 +1668,7 @@ figure figcaption {
           time”, data publishers must publish data or use APIs to enable
           immediate access to data, allowing access to critical time sensitive
           data, such as emergency information, weather forecasting data, or
-          published system metrics. For all data on the Web, APIs should be
+          published system metrics. In general, APIs should be
           available to allow third parties to automatically search and retrieve
           data published on the Web. </p>
         <!-- begin of BP Bulk Access-->
@@ -1678,10 +1686,9 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It should be possible to download data
-              on the Web in bulk. Data publishers should
-              provide a way either through bulk file formats or APIs for
-              consumers to access this type of data.</p>
+            <p> It should be possible to download data on the Web in bulk. Data
+              publishers should provide a way either through bulk file formats
+              or APIs for consumers to access this type of data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1745,11 +1752,10 @@ figure figcaption {
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <ul>
-              <li>It should be possible for machines
-                to access data in a variety of formats from the same URI through
-                content negotiation.</li>
-              <li> It should be possible for data
-                consumers to access data using browser as a client. </li>
+              <li>It should be possible for machines to access data in a variety
+                of formats from the same URI through content negotiation.</li>
+              <li> It should be possible for data consumers to access data using
+                browser as a client. </li>
             </ul>
           </section>
           <section class="how">
@@ -1816,10 +1822,10 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Data should be available at real time
-              or near real time, where real-time means a range from milliseconds
-              to a few seconds after the data creation, and near real time is a
-              predetermined delay for expected data delivery. </p>
+            <p>Data should be available at real time or near real time, where
+              real-time means a range from milliseconds to a few seconds after
+              the data creation, and near real time is a predetermined delay for
+              expected data delivery. </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1842,12 +1848,12 @@ figure figcaption {
             <p class="subhead">How to Test</p>
             To adequately test real time data access, data will need to tracked
             from the time it is initially collected to the time it is published
-            and accessed. [[PROV-O]] can be used to describe
-            these activities. Caution should be used when analyzing real-time
-            access for systems that consist of multiple computer systems. For
-            example, tests that rely on wall clock time stamps may reflect
-            inconsistences between the individual computer systems as opposed to
-            data publication time latency. </section>
+            and accessed. [[PROV-O]] can be used to describe these activities.
+            Caution should be used when analyzing real-time access for systems
+            that consist of multiple computer systems. For example, tests that
+            rely on wall clock time stamps may reflect inconsistences between
+            the individual computer systems as opposed to data publication time
+            latency. </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
@@ -1866,12 +1872,13 @@ figure figcaption {
             <p>Data on the Web availability should closely coincide with data
               provided at creation time, collection time, or after it has been
               processed or changed. Carefully synchronizing data publication to
-              the update frequency encourages data consumer confidence and re-use.</p>
+              the update frequency encourages data consumer confidence and
+              re-use.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>When new data is provided or data is updated, it must
-              be published to coincide with the data changes.</p>
+            <p>When new data is provided or data is updated, it must be
+              published to coincide with the data changes.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1897,8 +1904,7 @@ figure figcaption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a></p>
           </section>
         </div>
-        
-         <!-- begin of versions For API BP -->
+        <!-- begin of versions For API BP -->
         <div class="practice">
           <p><span id="versionsForAPI" class="practicelab">Maintain separate
               versions for a data API</span></p>
@@ -1917,12 +1923,11 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for developers to
-              transition easily from one version of the API to another.
-              Applications that are impractical to transition should
-              continue to work. The API version should not
-              be updated when data versions are updated, only when the API
-              itself changes, and that should be infrequent.</p>
+            <p>It should be possible for developers to transition easily from
+              one version of the API to another. Applications that are
+              impractical to transition should continue to work. The API version
+              should not be updated when data versions are updated, only when
+              the API itself changes, and that should be infrequent.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1948,10 +1953,8 @@ figure figcaption {
           </section>
         </div>
         <!-- end of versions For API BP --> </section>
-    
-        <!-- end of BP Access Up to date-->
+      <!-- end of BP Access Up to date-->
       <!-- end of Data Access -->
-      
       <!-- begin of Data Preservation -->
       <section id="dataPreservation">
         <h3>Data Preservation</h3>
@@ -1972,8 +1975,8 @@ figure figcaption {
           shot at a fixed time. When preserving data on the Web some new
           elements have to be taken into account:</p>
         <ul>
-          <li>the persistent re-use (URIs) used across the Web may be
-            related to live data that can change;</li>
+          <li>the persistent re-use (URIs) used across the Web may be related to
+            live data that can change;</li>
           <li>the meaning of a resource is contextualized by the other resources
             it is linked to;</li>
           <li>documents fetched in HTML, RDF of JSON, for instance, are only one
@@ -2034,11 +2037,10 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for data
-              consumers to provide feedback and rate data in both human and
-              machine-readable formats. The feedback should
-              be Web accessible and it should provide
-              a URL reference to the corresponding dataset.</p>
+            <p>It should be possible for data consumers to provide feedback and
+              rate data in both human and machine-readable formats. The feedback
+              should be Web accessible and it should provide a URL reference to
+              the corresponding dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
