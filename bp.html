@@ -617,8 +617,12 @@ figure figcaption {
                <p> Locale parameters metadata should include the following information: </p>
               <ul>
                 <li>The language(s) of the dataset.</li>
-                <li>The Formats used for numeric values, dates and time. </li> 
-              </ul> 
+                <li>The formats used for numeric values, dates and time. </li> 
+              </ul>
+              
+              <p> The information above should be included both in 
+                the human understandable and the machine understandable versions of the metadata. </p>
+              
               <p> The machine understandable version of the discovery metadata may be provided according to the vocabulary
                 recommended by W3C to describe datasets, i.e. the Data Catalog
                 Vocabulary [[VOCAB-DCAT]].</p>
@@ -660,59 +664,77 @@ figure figcaption {
             <!--However, in line with the Linked
           Data principles, licenses for such datasets should          be specified in RDF, for instance through the Dublin Core vocabulary          [[DC-TERMS]].</p> -->
             <!-- begin of Provide Data License BP --> </p>
-          <!-- begin of machine detectable license BP -->
+         <!-- begin of machine detectable license BP -->
           <div class="practice">
             <p><span id="ProvideDataLicense" class="practicelab">Provide data
-                license information</span></p>
+                license metadata</span></p>
             <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
-              be available </p>
-            <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-                machine-readable formats to provide metadata</a>. </p>
+              be described by metadata </p>
             <div class="axioms">
               <p class="subhead">Why</p>
-              <p>The presence of license information is essential for assessing
-                the usability of data. User agents, including search tools, may
+              <p>The presence of license information is essential for data consumers to assess
+                the usability of data. User agents, for example, may
                 use the presence/absence of license information as a trigger for
                 inclusion or exclusion of data presented to a potential
-                consumer. Even though the license may be presented in natural
+                consumer. </p>
+                
+                <!--Even though the license may be presented in natural
                 language, where data links to the URL of a well known license,
                 the user agent may be able to present the well known features to
-                the potential consumer.</p>
+                the potential consumer.--> 
             </div>
             <div class="description">
               <p class="subhead">Intended outcome</p>
-              <p>Machines should be able to automatically detect whether a given
-                dataset does or does not carry a license.</p>
+              <p>It should be possible for humans to understand possible restrictions placed on the use of the dataset.</p>
+              <p>It should be possible for machines to automatically detect the data license of the dataset.</p>
+             
             </div>
             <div class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p>There are several well known vocabularies that include
-                properties for linking to a license. These include Dublin Core
-                [[DC-TERMS]], Creative Commons [[CC-ABOUT]], schema.org
-                [[SCHEMA-ORG]] and XHTML [[XHTML-VOCAB]]. There are also a
-                number of machine readable rights languages, including The
-                Creative Commons Rights Expression Language [[ccREL]], the Open
-                Data Rights Language [[ODRL]] and the Open Data Rights Statement
-                Vocabulary [[ODRS]].</p>
-              <p>Links to the license can be provided from the data itself, from
+              <p> The information about data license should be included both in 
+                the human understandable and the machine understandable versions of the metadata.</p>
+              <p>The machine understandable version of the data license metadata may be provided using one of the 
+                following vocabularies that include properties for linking to a license:
+                <ul>
+                  <li> Dublin Core [[DC-TERMS]]</li>
+                  <li> Creative Commons [[CC-ABOUT]] </li>
+                  <li> schema.org [[SCHEMA-ORG]]</li>
+                  <li> XHTML [[XHTML-VOCAB]]</li>
+                </ul>
+                
+                There are also a number of machine readable rights languages, including:
+                <ul>
+                  <li> The Creative Commons Rights Expression Language [[ccREL]]</li>
+                  <li> The Open Data Rights Language [[ODRL]]</li>
+                  <li> The Open Data Rights Statement Vocabulary [[ODRS]].</li> 
+                </ul>
+              </p>
+              <!-- <p>Links to the license can be provided from the data itself, from
                 an HTML page that describes the data (via a Link element), or
                 via an HTTP Link Header, the latter two with a <code>@rel</code>
-                value of <code>license</code>. </p>
-              <p>Further information about open data licensing can be found in
+                value of <code>license</code>. </p>  
+              Further information about open data licensing can be found in
                 the Publisher's Guide to Open Data Licensing, published by the
-                Open Data Institute [[ODI-LICENSING]]. </p>
+                Open Data Institute [[ODI-LICENSING]]. -->
             </div>
             <div class="test">
               <p class="subhead">How to Test</p>
-              <p>Check for the presence of one or more of:</p>
-              <p></p>
+             
+              <p> Check that the metadata for the dataset itself includes the
+                data license information. </p>
+              <p> Check if a user agent can automatically detect the data licence of the dataset.</p>
+             
+              <!-- <p>Check for the presence of one or more of:</p>
               <ol>
                 <li>the presence of an RDF predicate;</li>
                 <li>an HTML Link element;</li>
                 <li>an HTTP Link header;</li>
               </ol>
               <p>that links the dataset to a license and/or rights information.</p>
-            </div>
+              <div class="issue"> I think we should have a standard way to test
+                the presence of machine readable metadata. This test is very
+                different from the one proposed for the discovery metadata. </div>
+            </div> -->
             <div class="ucr">
               <p class="subhead">Evidence</p>
               <p><span>Relevant use cases</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a>
