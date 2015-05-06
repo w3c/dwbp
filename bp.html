@@ -380,8 +380,7 @@ figure figcaption {
             DCAT (when necessary DCAT should be extended). </p>
           <p> specific metadata BP consist of filling specific DCAT properties.
           </p>
-          <p> maybe, instead of providing metadata for both human users and
-            computer applications, a new property may be created (ex:
+          <p> I'd like to suggest the creation of a new property  (ex:
             dcat:documentation) to link a dataset to a page or a file that
             provides the dataset documentation in a human understandable format.
           </p>
@@ -439,6 +438,9 @@ figure figcaption {
             <p class="subhead">How to Test</p>
             <p>For <em>human understandable metadata</em>, check that a human
               user can understand the metadata associated with a dataset. </p>
+            <div class="issue"> Or should be checked if a metadata file is available?>
+            </div>
+            
             <p>For <em>machine readable metadata</em>, access the same URL
               either with a user agent that accepts a more data oriented format
               or a tool that extracts the data from an HTML page.<a href="http://rdf-translator.appspot.com/"><br>
@@ -510,50 +512,48 @@ figure figcaption {
                 discovery metadata</span></p>
             <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
               be described by metadata.</p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">
-                Use machine-readable formats to provide metadata</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
-              <p>Explicitly providing data discovery information allows user
-                agents to automatically discover datasets available on the Web.
-              </p>
+              <p>Explicitly providing dataset discovery information allows user
+                agents to automatically discover datasets available on the Web
+                and it allows humans to understand the nature of the
+                dataset.&nbsp; </p>
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
-              <p>User agents must be able to discover datasets.</p>
+              <p>It should be possible for humans to understand the nature of
+                the dataset.</p>
+              <p>It should be possible&nbsp; for user agents be able to
+                automatically discover the dataset.</p>
             </section>
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p>The vocabulary recommended by W3C is the Data Catalog
-                Vocabulary [[VOCAB-DCAT]].</p>
-              <p>This provides a framework in which datasets can be described as
-                abstract entities with one or more distributions, that is, means
-                of accessing the data. This might be through one or more
-                downloads or APIs. Aspects covered include:</p>
+              <p>Discovery metadata may be provided according to the vocabulary
+                recommended by W3C to describe datasets, i.e. the Data Catalog
+                Vocabulary [[VOCAB-DCAT]]. This provides a framework in which
+                datasets can be described as abstract entities, aspects covered
+                include: </p>
               <ul>
                 <li>The <strong>title</strong> and a <strong>description</strong>
-                  of the data.</li>
+                  of the dataset.</li>
                 <li>The <strong>data format(s)</strong> in which the data could
-                  be downloaded (e.g. XML, CSV, TSV, JSON, JSON-LD, RDF/XML,
-                  Turtle, N-Triples etc.)</li>
+                  be downloaded </li>
                 <li>Any <strong>variants</strong> (e.g. different
                   human-language translations) of data.</li>
-                <li><strong>Access mechanisms</strong> though which the data be
-                  accessed, e.g. SPARQL endpoints, Linked Data Platform [[LDP]],
-                  REST interfaces, SOAP-based web services, etc. (see <a href="#access">Data
-                    Access</a>). </li>
+                <li><strong>Access mechanisms</strong> through which the data be
+                  accessed (see <a href="#access">Data Access</a>). </li>
               </ul>
               <!--<p>See also <a href="#AdministrativeMetadata">Provide
                 Administrative Metadata</a></p> --> </section>
             <section class="test">
               <p class="subhead">How to Test</p>
-              <p>A human test might simply be to use an appropriate search tool
+              <p>A manual test might simply be to use an appropriate search tool
                 and check that the dataset is discoverable as expected since
                 that is the intended outcome. However, a more structured test
                 would be to ensure that the basic metadata fields listed above
-                are filled. It may be possible to machine-test this using the
-                work of the <a href="http://www.w3.org/2014/data-shapes/">RDF
-                  Data Shapes</a> Working Group.</p>
+                are filled. </p>
+              <div class="issue"> I think we should have a standard way to test
+                the presence of machine readable metadata. </div>
             </section>
             <section class="ucr">
               <p class="subhead">Evidence</p>
@@ -563,6 +563,9 @@ figure figcaption {
             </section>
           </div>
         </section>
+        <div class="example">
+          <p> Example </p>
+        </div>
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
         <section id="localeparameters">
