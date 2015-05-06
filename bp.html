@@ -411,12 +411,12 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            Possible approaches to provide <em>human understandable metadata</em><br>
+            Possible approaches to provide <em>human understandable metadata:</em><br>
             <ul>
               <li>to provide metadata as part of an HTML Web page</li>
               <li>to provide metadata as a separate text file</li>
             </ul>
-            Possible approaches to provide <em>machine readable metadata</em><br>
+            Possible approaches to provide <em>machine readable metadata:</em><br>
             <ul>
               <li> machine readable metadata may be provided in a serialization
                 format such as Turtle and JSON, or it can be embedded in the
@@ -528,7 +528,7 @@ figure figcaption {
             </section>
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p> Discovery metadata should cover the following aspects: </p>
+              <p> Discovery metadata should include the following information: </p>
               <ul>
                 <li>The <strong>title</strong> and a <strong>description</strong>
                   of the dataset.</li>
@@ -592,19 +592,19 @@ figure figcaption {
             despite similar appearances. Making the language explicit allows
             users to determine how readily they can work with the data and may
             enable automated translation services. </p>
-          <div class="practice">
+        <div class="practice">
             <p><span id="LocaleParametersMetadata" class="practicelab">Provide
                 locale parameters metadata </span></p>
             <p class="practicedesc">Information about locale parameters (date,
               time, and number formats, language) <em class="rfc2119">should</em>
               be made available. </p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-                machine-readable formats to provide metadata</a>.</p>
             <section class="axioms">
               <p class="subhead">Why</p>
-              <p> Providing locale parameters helps data consumers to understand
+              <p> Providing locale parameters helps data consumers, i.e., human users and computer
+              applications, to understand
                 and to manipulate the data, improving the re-use of the data. </p>
             </section>
+           
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p>It should be possible for data consumers to interpret the
@@ -613,10 +613,19 @@ figure figcaption {
             </section>
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p>Provide locale metadata for date, time, and number fields, and
-                include the language in which the data is published in the
-                dataset metadata. Where an international format specification
-                exists, e.g., ISO 8601 for dates and times, use it. </p>
+              
+               <p> Locale parameters metadata should include the following information: </p>
+              <ul>
+                <li>The language(s) of the dataset.</li>
+                <li>The Formats used for numeric values, dates and time. </li> 
+              </ul> 
+              <p> The machine understandable version of the discovery metadata may be provided according to the vocabulary
+                recommended by W3C to describe datasets, i.e. the Data Catalog
+                Vocabulary [[VOCAB-DCAT]].</p>
+               <div class="issue"> DCAT has a property to describe language, but there are no properties to describe date, time and numeric formats.
+              Which vocabulary should be used to provide this type of metadata?
+              </div>
+              
             </section>
             <section class="test">
               <p class="subhead">How to Test</p>
@@ -633,6 +642,9 @@ figure figcaption {
           </div>
         </section>
         <!-- end of Locale Parameters BP -->
+        <div class="example">
+          <p> Example </p>
+        </div>
         <!-- begin of Data Licenses -->
         <section id="licenses">
           <h3>Data Licenses</h3>
