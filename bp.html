@@ -84,14 +84,14 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the
-        publication and usage of data on the Web designed to help support a
-        self-sustaining ecosystem. Data should be discoverable and
-        understandable by humans and machines. Where data is used in some way,
-        whether by the originator of the data or by an external party, such
-        usage should also be discoverable and the efforts of the data publisher
-        recognized. In short, following these best practices will facilitate
-        interaction between publishers and consumers.</p>
+      <p>This document provides best practices related to the publication and
+        usage of data on the Web designed to help support a self-sustaining
+        ecosystem. Data should be discoverable and understandable by humans and
+        machines. Where data is used in some way, whether by the originator of
+        the data or by an external party, such usage should also be discoverable
+        and the efforts of the data publisher recognized. In short, following
+        these best practices will facilitate interaction between publishers and
+        consumers.</p>
     </section>
     <section id="sotd">
       <p>This early version of the document shows its expected scope and future
@@ -159,9 +159,10 @@ figure figcaption {
         more general purpose than the practices suggested in Best Practices for
         Publishing Linked Data [[LD-BP]] since it is domain-independent and
         whilst it recommends the use of Linked Data, it also promotes best
-        practices for data on the web in formats such as [[CSV]] and [[JSON]]. The Best
-        Practices related to the use of vocabularies incorporate practices that
-        stem from Best Practices for Publishing Linked Data where appropriate.<!-- While
+        practices for data on the web in formats such as [[CSV]] and [[JSON]].
+        The Best Practices related to the use of vocabularies incorporate
+        practices that stem from Best Practices for Publishing Linked Data where
+        appropriate.<!-- While
         that document was published in its final version by the Government Linked        Data Working Group as a Working Group Note, the charter of the Data on        the Web Best Practices (DWBP) Working Group advances that this document        should be published ultimately as a W3C Recommendation.--></p>
     </section>
     <section id="conformance"> </section>
@@ -375,47 +376,92 @@ figure figcaption {
           processing of metadata as well as to improve data interoperability . </p>
         <p> This section presents best practices to help data publishers to face
           challenges related to metadata. Initially, general best practices are
-          presented (Document data, Use
-              machine-readable formats to provide metadata and Use standard terms to define metadata), then best
-          practices concerning specific kinds of metadata are proposed. These
-          specific best practices are specializations of the more general best
-          practices. </p>
-        <!-- begin of Document Metadata BP -->
+          presented (Document data, Use machine-readable formats to provide
+          metadata and Use standard terms to define metadata), then
+          best practices concerning specific kinds of metadata are proposed.
+          These specific best practices are specializations of the more general
+          best practices. </p>
+        
+        <div class="issue">
+          <p> If we're gonna consider dcat:dataset as our
+            definition, then all metadata should be provided according to the
+            properties defined by DCAT. discovery metadata (dct:title,
+            dct:description, dct:keyword), versioning (dct:issued), locale
+            (dct:language), license (dct:license, dct:rights) </p>
+          <p> each dataset must have a dataset description defined according to
+            DCAT (when necessary DCAT should be extended). </p>
+          <p> specific metadata BP consist of filling specific DCAT properties.
+          </p>
+          <p> maybe, instead of providing metadata for both human users and
+            computer applications, a new property may be created (ex:
+            dcat:documentation) to link a dataset to a page or a file that
+            provides the dataset documentation in a human understandable format.
+          </p>
+        </div>
+        
+       <!-- begin of Provide Metadata BP -->
         <div class="practice">
-          <p><span id="DocumentMetadata" class="practicelab"> Document data</span></p>
-          <p class="practicedesc">A metadata document <em class="rfc2119">must</em>
-            be published together with the data </p>
+          <p><span id="ProvideMetadata" class="practicelab"> Provide metadata</span></p>
+          <p class="practicedesc">Metadata <em class="rfc2119">must</em> be
+            provided for both human users and computer applications</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Providing information about data, i.e. metadata, in a way that
-              data consumers may understand is fundamental when publishing data
-              on the Web. Given that data publishers and data consumers may be
-              unknown to each other, becomes essential to provide information
-              that helps data consumers to understand the data as well as other
-              important aspects that describes a dataset. </p>
+            <p>Providing metadata is a fundamental requirement when publishing
+              data on the Web because data publishers and data consumers may be
+              unkown to each other. Then, it is essential to provide information
+              that helps data consumers, i.e., human users and computer
+              applications, to understand the data as well as other important
+              aspects that describes a dataset.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It must be possible for data consumers to read metadata that
-              describes a dataset, which makes it human readable metadata.</p>
+            <p> It must be possible for humans to understand the metadata that
+              describes a dataset, which makes it <span style="font-style: italic;">human
+                understandable metadata</span>.</p>
+            <p>It should be possible for computer applications, notably user
+              agents, to process the metadata, which makes it <span style="font-style: italic;">machine
+                readable metadata</span>.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            Metadata for humans is most easily provided as part of an HTML Web
-            page. </section>
+            Possible approaches to provide <em>human understandable metadata</em><br>
+            <ul>
+              <li>to provide metadata as part of an HTML Web page</li>
+              <li>to provide metadata as a separate text file</li>
+            </ul>
+            Possible approaches to provide <em>machine readable metadata</em><br>
+            <ul>
+              <li> machine readable metadata may be provided in a serialization
+                format such as Turtle and JSON, or it can be embedded in the
+                HTML page using [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
+                If multiple formats are published separately, they should be
+                served from the same URL using content negotiation. Maintenance
+                of multiple formats is best achieved by generating each
+                available format on the fly based on a single source of the
+                metadata.</li>
+            </ul>
+            <div class="issue"> Should different types of metadata (ex:
+              discovery, licenses...) be provided together in a single file (one
+              for human users and one for computer applications) or in separate
+              files ? Is this relevant? </div>
+            <div class="issue"> How to mention multilingualism? <a href="https://www.w3.org/2013/dwbp/track/issues/142">Issue-142</a>
+            </div>
+          </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that a human user can easily read the metadata associated
-              with a dataset. </p>
+            <p>For <em>human understandable metadata</em>, check that a human
+              user can understand the metadata associated with a dataset. </p>
+            <p>For <em>machine readable metadata</em>, access the same URL
+              either with a user agent that accepts a more data oriented format
+              or a tool that extracts the data from an HTML page.<a href="http://rdf-translator.appspot.com/"><br>
+              </a></p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable,
+                </a><a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum,
+                </a><a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a></p>
           </section>
-        </div>
-        <div class="issue"> Should we mention multilingualism in BP <em>Document
-            data</em>? This issue applies to all BPs about providing
-          documentation for humans. <a href="https://www.w3.org/2013/dwbp/track/issues/142">Issue-142</a>
         </div>
         <!-- end of BP -->
         <!-- begin of Provide Metadata in machine-readable formats BP -->
@@ -440,8 +486,8 @@ figure figcaption {
             <p class="subhead">Possible Approach to Implementation</p>
             Metadata for machines is best provided either as an alternative
             representation of the Web page in a serialization format such as
-            Turtle or [[JSON-LD]] (for [[RDF]]) or it can be embedded in the HTML page,
-            again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
+            Turtle or [[JSON-LD]] (for [[RDF]]) or it can be embedded in the
+            HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
             <p>If the multiple formats are published separately, they should be
               served from the same URL using content negotiation. Maintenance of
               multiple formats is best achieved by generating each available
@@ -606,7 +652,7 @@ figure figcaption {
               time, and number formats, language) <em class="rfc2119">should</em>
               be made available. </p>
             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-              machine-readable formats to provide metadata</a>.</p>
+                machine-readable formats to provide metadata</a>.</p>
             <section class="axioms">
               <p class="subhead">Why</p>
               <p> Providing locale parameters helps data consumers to understand
@@ -662,7 +708,7 @@ figure figcaption {
             <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
               be available </p>
             <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-              machine-readable formats to provide metadata</a>. </p>
+                machine-readable formats to provide metadata</a>. </p>
             <div class="axioms">
               <p class="subhead">Why</p>
               <p>The presence of license information is essential for assessing
@@ -749,7 +795,7 @@ figure figcaption {
             <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
               be available </p>
             <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-              machine-readable formats to provide metadata</a>. </p>
+                machine-readable formats to provide metadata</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>Without accessible data provenance, consumers will not know the
@@ -821,7 +867,7 @@ figure figcaption {
             <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
               be available </p>
             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-              machine-readable formats to provide metadata</a>. </p>
+                machine-readable formats to provide metadata</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>Data quality might seriously affect the suitability of data for
@@ -885,23 +931,22 @@ figure figcaption {
             <p><span id="provideVersioningInfo" class="practicelab">Provide
                 versioning information</span></p>
             <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
-              be assigned a unique version number or, at a minimum, a unique version date, and
-              that unique identifier <em class="rfc2119">should</em> be distributed
-              with the data in the form of metadata. </p>
+              be assigned a unique version number or, at a minimum, a unique
+              version date, and that unique identifier <em class="rfc2119">should</em>
+              be distributed with the data in the form of metadata. </p>
             <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-              machine-readable formats to provide metadata</a>. </p>
+                machine-readable formats to provide metadata</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>Version information makes a dataset uniquely identifiable.
-                Uniqueness can be used by data consumers to determine how data has changed
-                over time and to determine specifically which version of a dataset
-                they are working with. 
-                Good data versioning enables consumers to understand if a newer version
-                of a dataset is available. Explicit versioning allows for
-                repeatability in research, enables comparisons, and prevents
-                confusion. Using unique version numbers that follow a standardized
-                approach can also set consumer expectations about how the
-                versions differ.</p>
+                Uniqueness can be used by data consumers to determine how data
+                has changed over time and to determine specifically which
+                version of a dataset they are working with. Good data versioning
+                enables consumers to understand if a newer version of a dataset
+                is available. Explicit versioning allows for repeatability in
+                research, enables comparisons, and prevents confusion. Using
+                unique version numbers that follow a standardized approach can
+                also set consumer expectations about how the versions differ.</p>
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
@@ -916,8 +961,8 @@ figure figcaption {
                 information may vary according to the context, however there are
                 some basic guidelines that can be followed, for example: </p>
               <ul>
-                <li> Include a unique version number as part of the metadata for the
-                  dataset. </li>
+                <li> Include a unique version number as part of the metadata for
+                  the dataset. </li>
                 <li> Use a consistent numbering scheme with a meaningful
                   approach to incrementing digits, such as [[SchemaVer]]. </li>
                 <li> Provide a description of what has changed since the
@@ -1122,8 +1167,7 @@ figure figcaption {
               with computational tools typically available in the relevant
               domain.</p>
             <!--<p> A machine must be able to: </p>
-            <ol>              <li>Open and read the data using commonly available software
-                packages. </li>              <li>Process the data. </li>
+            <ol>              <li>Open and read the data using commonly available software                packages. </li>              <li>Process the data. </li>
               <li>Store the data for future use.</li>            </ol> --> </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1377,15 +1421,17 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>A vocabulary may be given a unique identifier for 'the latest version'
-              that remains stable over time, even as the vocabulary evolves. In
-              addition, each version of the vocabulary has its own unique identifier.
-              URI versioning for W3C documents provides examples. The latest version of this
-              document is always found at <a href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>
+            <p>A vocabulary may be given a unique identifier for 'the latest
+              version' that remains stable over time, even as the vocabulary
+              evolves. In addition, each version of the vocabulary has its own
+              unique identifier. URI versioning for W3C documents provides
+              examples. The latest version of this document is always found at <a
+
+                href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>
               but individual versions such as <a href="http://www.w3.org/TR/2015/WD-dwbp-20150224/">http://www.w3.org/TR/2015/WD-dwbp-20150224/</a>
-              each have their own URL as well so that
-              an initial effort can be made towards understanding, characterizing and tracking data evolution 
-              and specific versions pointed to if required.</p>
+              each have their own URL as well so that an initial effort can be
+              made towards understanding, characterizing and tracking data
+              evolution and specific versions pointed to if required.</p>
             <p>Several vocabularies, including OWL [[OWL2-OVERVIEW]] and
               schema.org [[SCHEMA-ORG]], include properties for version numbers.</p>
           </section>
@@ -1593,7 +1639,7 @@ figure figcaption {
             available under different restrictions to the origin of the
             reference, <em class="rfc2119">should</em> provide context by
             explaining how or by whom the referred to data can be accessed. </p>
-         <!-- <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataHumanMachine">Provide
+          <!-- <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataHumanMachine">Provide
               metadata for both humans and machines</a> best practice. </p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
