@@ -464,103 +464,49 @@ figure figcaption {
           </section>
         </div>
         <!-- end of BP -->
-        <!-- begin of Provide Metadata in machine-readable formats BP -->
-        <div class="practice">
-          <p><span id="ProvideMetadataMachine" class="practicelab">Use
-              machine-readable formats to provide metadata </span></p>
-          <p class="practicedesc">Metadata in machine-readable formats <em class="rfc2119">must</em>
-            be published together with the data</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Metadata can be used by machines, notably search engines, to
-              discover and classify data. Further metadata can be used by
-              machines to process the data once discovered. </p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p> It should be possible for computer applications, notably search
-              tools, to locate and process the metadata easily, which makes it
-              human readable metadata, machine readability metadata.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            Metadata for machines is best provided either as an alternative
-            representation of the Web page in a serialization format such as
-            Turtle or [[JSON-LD]] (for [[RDF]]) or it can be embedded in the
-            HTML page, again as [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
-            <p>If the multiple formats are published separately, they should be
-              served from the same URL using content negotiation. Maintenance of
-              multiple formats is best achieved by generating each available
-              format on the fly based on a single source of the metadata.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> Access the same URL either with a user agent that accepts a more
-              data oriented format, such as [[RDF]], or a tool that extracts the
-              data from an HTML page such as the <a href="http://rdf-translator.appspot.com/">RDF
-                Translator</a>.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
-            </p>
-          </section>
-        </div>
-        <!-- end of BP -->
-        <!-- begin of Provide Metadata Standardized BP -->
+       
+       <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="ProvideMetadataStandardized" class="practicelab">Use
               standard terms to define metadata</span></p>
-          <p class="practicedesc"> Standard terms <em class="rfc2119">should</em>
-            be used for metadata definition.</p>
+          <p class="practicedesc"> Standard terms (vocabularies) <em class="rfc2119">should</em>
+            be used to provide machine readable metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The provision of metadata is fundamental to data on the Web. It
-              is the shop window, the user-manual and the conditions of use. It
-              is possible to provide this information an an infinite number of
-              ways: <i>maker</i>, <i>author</i>, <i>originator</i>, <i>person
-                responsible</i> and <i>source</i> are among the many near
-              synonyms for <i>creator</i>. And of course those examples are all
-              just in a single language. The task of finding and processing
-              relevant data among the vast amounts available on the Web, for
-              people and the computer systems they use, is made substantially
-              more achievable if different publishers use the same terms as each
-              other, or rather, use <em>common re-use</em> for the terms used,
-              however those terms are presented to humans. Only in this way can
-              the same tools and methods be used for multiple tasks.</p>
+            <p>The task of finding and processing relevant data among the vast
+              amounts available on the Web is made substantially more achievable
+              if different publishers use the same terms as each other, or
+              rather, <em>re-use</em> standard terms when defining machine
+              readable metadata. This may help tools and methods to be used for
+              multiple tasks.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Metadata should be provided using standard vocabularies.</p>
+            <p>It should be possible for machines, notably user agents, to
+              identify the presence of standard terms and to easily process the
+              metadata.</p>
           </section>
-          <div class="issue">MUST or SHOULD? <a href="https://www.w3.org/2013/dwbp/track/issues/133">Issue-133</a>.
-            This issue could readily be applied to all BPs.</div>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Metadata is best provided using RDF vocabularies. Each term in an
-              RDF vocabulary has its own HTTP URI to which labels and
-              descriptions in multiple languages can be attached. If labels are
-              not provided in your language, you can add them. If your context
-              demands that a term be specialized, you can create a sub class or
-              sub property but retain the benefits of the original vocabulary's
-              semantics.</p>
-            <p>Detailed advice on the best practices for the selection, use and
-              extension of vocabularies is provided in Best Practices for
-              Publishing Linked Data [[LD-BP]].</p>
+            <p>Best Practices for Publishing Linked Data [[LD-BP]] provides
+              a&nbsp; detailed advice on how to select, use and extend standard
+              vocabularies.</p>
           </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
+          <section class="test"><span style="font-weight: bold;">How to Test </span>
             <p>Check that standard vocabularies have been used wherever
               possible. In particular mark as an error instances where
-              vocabularies such as [[DC-TERMS]] and [[VOCAB-DCAT]] could have
-              been used but were not.</p>
+              vocabularies such as [DC-TERMS] and [VOCAB-DCAT] could have been
+              used but were not.</p>
           </section>
+          <div class="issue"> Is it really an error if a standard vocabulary was
+            not used? How people will know which vocabularies should be used?</div>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
           </section>
         </div>
         <!-- end of BP -->
+        
         <section id="discovery">
           <h3>Data Discovery</h3>
           In order to be discoverable on the Web, typically through a search
