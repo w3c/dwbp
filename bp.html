@@ -713,7 +713,7 @@ figure figcaption {
           <p>Provenance originates from the French term "provenir" (to come
             from), which is used to describe the curation process of artwork as
             art is passed from owner to owner. Data provenance, in a similar
-            way, is metadata, that allows data providers to pass details about
+            way, is metadata that allows data providers to pass details about
             the data history to data users. Provenance becomes particularly
             important when data is shared between collaborators who might not
             have direct contact with one another either due to proximity or
@@ -737,42 +737,52 @@ figure figcaption {
             <p><span id="ProvideDataProvenance" class="practicelab">Provide data
                 provenance information</span></p>
             <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
-              be available </p>
-            <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-                machine-readable formats to provide metadata</a>. </p>
+              should be described by metadata </p>
             <section class="axioms">
               <p class="subhead">Why</p>
-              <p>Without accessible data provenance, consumers will not know the
+              <p>Without accessible data provenance, data consumers will not know the
                 origin or history of the published data.</p>
-              <p>Data provenance is metadata that corresponds to data. Data
+              <!-- <p>Data provenance is metadata that corresponds to data. Data
                 provenance relies upon existing vocabularies that make
                 provenance easily identifiable such as the Provenance Ontology
-                [[PROV-O]].</p>
+                [[PROV-O]].</p> -->
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
-              <p>Data published on the Web should include, or link to,
-                provenance information.</p>
+              <!--<p>Data published on the Web should include, or link to,
+                provenance information.</p> -->
+              <p>It should be possible for humans to know the
+                origin or history of the dataset.</p>
+              <p>It should be possible for machines to automatically process the
+                 provenance information about the dataset.</p>
             </section>
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p>Data provenance can be published in a number of ways:</p>
+              <p> The information about data provenance should be included both in
+                the human understandable and the machine understandable versions
+                of the metadata.</p>
+              <p>The machine understandable version of the data provenance may be provided according to the ontology recommended by W3C
+                to describe provenance information, i.e., the Provenance Ontology [[PROV-O]]. </p>
+              
+              
+              <!--
               <ol>
-                <li>Use the Provenance Ontology [[PROV-O]] to describe data
-                  provenance.</li>
                 <li>Use an appropriate level of detail that will be meaningful
                   to the intended audience. </li>
                 <li>Write the data provenance in either a machine readable form
                   such as Turtle or RDF/XML or embed provenance in an HTML page
                   using [[JSON-LD]], or [[HTML-RDFA]] </li>
                 <li>Verify that the data provenance references published data</li>
-              </ol>
+              </ol> -->
             </section>
             <section class="test">
               <p class="subhead">How to Test</p>
-              <p>The PROV Implementation Report [[PROV-IMP]] lists a number of
+               <p> Check that the metadata for the dataset itself includes the provenance information about the dataset.</p>
+               <p> Check if a computer application can automatically process the provenance information about the dataset. </p>
+              
+              <!--<p>The PROV Implementation Report [[PROV-IMP]] lists a number of
                 validator tools that can be used to test for the presence of
-                provenance information provided using [[PROV-O]].</p>
+                provenance information provided using [[PROV-O]].</p> -->
             </section>
             <section class="ucr">
               <p class="subhead">Evidence</p>
@@ -799,49 +809,62 @@ figure figcaption {
             on quality indicators, namely, pieces of data content, pieces of
             data meta-information, and human ratings that give indications about
             the suitability of data for some intended use.</p>
-          <p>Dimensions and metrics to adopt might largely depend on the
+          <!--<p>Dimensions and metrics to adopt might largely depend on the
             specific application scenario, or even on the data domain. A
             systematic review of dimensions, metrics adopted in the context of
             Linked Open Data can be found in the recent literature (e.g., see
-            [[ZAVERI]]). </p>
+            [[ZAVERI]]). </p> -->
           <!-- begin of Provide Data Quality BP -->
           <div class="practice">
             <p><span id="ProvideDataQuality" class="practicelab">Provide data
                 quality information</span></p>
             <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
               be available </p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-                machine-readable formats to provide metadata</a>. </p>
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>Data quality might seriously affect the suitability of data for
                 specific applications, including applications very different
                 from the purpose for which it was originally generated.
-                Documenting data quality significantly eases the process of data
-                selection, increasing the chances of re-use.</p>
+                Documenting data quality significantly eases the process of datasets
+                selection, increasing the chances of re-use.
+              Independently from domain-specific peculiarities,
+                the quality of data should be documented and known quality
+                issues should be explicitly stated in metadata.</p>
             </section>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
-              <p> Information about the quality of the data should be provided
+              <p>It should be possible for humans to have access to information that describes the quality of the dataset.</p>
+              <p>It should be possible for machines to automatically process the
+                quality information about the dataset.</p>
+              <!--<p> Information about the quality of the data should be provided
                 for humans. Ideally it is also made available in machine
                 readable manner for processing by applications.</p>
-            </section>
+            </section> -->
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
-              <p>Depending on the application domain, information pertaining to
+              <!-- <p>Depending on the application domain, information pertaining to
                 the quality may rely on specific quality metrics or
                 feedback-opinion. Specific quality metadata fields may or may
                 not be explicitly included in the metadata vocabularies adopted
                 by catalogs. Independently from domain-specific peculiarities,
                 the quality of data should be documented and known quality
-                issues should be explicitly stated in metadata. </p>
+                issues should be explicitly stated in metadata. </p> -->
               <!--            <p>The definition of a Quality Vocabulary is included in the
               activity of the DWBP group in order to support in the              implementation of this best practice. The Quality Vocabulary is              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,              persistence commitments etc. When used by publishers, this              vocabulary will foster trust in the data amongst developers. </p> -->
-            </section>
+            
+              <p> The information about the quality of the dataset should be included both in
+                the human understandable and the machine understandable versions
+                of the metadata.</p>
+              <p>The machine understandable version of the dataset quality metadata may be provided according to the vocabulary that is being 
+                developed by the DWBP working group , i.e., the  Data Quality and Granularity vocabulary [[PROV-O]]. </p>
+              
+              </section>
             <section class="test">
               <p class="subhead">How to Test</p>
-              <p>Check whether the metadata explicitly includes a description of
-                the quality of the data.</p>
+              <p> Check that the metadata for the dataset itself includes quality information about the dataset.</p>
+               <p> Check if a computer application can automatically process the quality information about the dataset. </p>
+              <!--<p>Check whether the metadata explicitly includes a description of
+                the quality of the data.</p> -->
             </section>
             <section class="ucr">
               <p class="subhead">Evidence</p>
