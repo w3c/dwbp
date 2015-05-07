@@ -874,11 +874,11 @@ figure figcaption {
                   document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
                   for Data Quality</a></p>
             </section>
-            <!-- end of Provide Data Quality BP --> </div>
-          <div class="issue"> Should we provide more specific/ detailed
+            <!-- end of Provide Data Quality BP --> 
+          <!--<div class="issue"> Should we provide more specific/ detailed
             strategies on how to attach quality info in metadata apart from the
             use of the data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">
-              Issue-116</a> </div>
+Issue-116</a> </div> --> </section>
         </section>
         <!-- end of Data Quality -->
         <!-- begin of Data Versioning -->
@@ -897,12 +897,12 @@ figure figcaption {
           <div class="practice">
             <p><span id="provideVersioningInfo" class="practicelab">Provide
                 versioning information</span></p>
-            <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
+            <p class="practicedesc">Information about dataset versioning  <em class="rfc2119">should</em> be described by metadata. </p>
+            <!-- <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
               be assigned a unique version number or, at a minimum, a unique
               version date, and that unique identifier <em class="rfc2119">should</em>
-              be distributed with the data in the form of metadata. </p>
-            <p>This best practice is a specialization of the higher level <a href="#ProvideMetadataMachine">Use
-                machine-readable formats to provide metadata</a>. </p>
+              be distributed with the data in the form of metadata. </p> -->
+            
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>Version information makes a dataset uniquely identifiable.
@@ -924,6 +924,13 @@ figure figcaption {
               <p class="subhead">Possible Approach to Implementation</p>
               <!-- <p>Providing version information is a topic of <a href="https://lists.w3.org/Archives/Public/public-vocabs/2015Jan/0120.html"
                   title="A versioning model for schema.org">much debate</a>. -->
+              <p> The information about the version of the dataset should be included both in
+                the human understandable and the machine understandable versions
+                of the metadata.</p>
+              <p>The Web Ontology Language provides a number
+                  of annotation properties for version information
+                  [[OWL2-QUICK-REFERENCE]] and the Provenance Ontology
+                  [[PROV-O]] defines several types of link between versions.</p>
               <p> The precise method adopted for providing versioning
                 information may vary according to the context, however there are
                 some basic guidelines that can be followed, for example: </p>
@@ -933,10 +940,7 @@ figure figcaption {
                 <li> Use a consistent numbering scheme with a meaningful
                   approach to incrementing digits, such as [[SchemaVer]]. </li>
                 <li> Provide a description of what has changed since the
-                  previous version. The Web Ontology Language provides a number
-                  of annotation properties for version information
-                  [[OWL2-QUICK-REFERENCE]] and the Provenance Ontology
-                  [[PROV-O]] defines several types of link between versions. </li>
+                  previous version.  </li>
                 <li>If the data is made available through an API, the URI used
                   to request the latest version of the data should not change as
                   the versions change, but it should be possible to request a
@@ -962,7 +966,10 @@ figure figcaption {
             <p><span id="provideVersionHistory" class="practicelab">Provide
                 version history</span></p>
             <p class="practicedesc">A version history <em class="rfc2119">should</em>
-              be available for versioned data.</p>
+              be described by metadata.</p>
+            
+            <!-- <p class="practicedesc">A version history <em class="rfc2119">should</em>
+              be available for versioned data.</p> -->
             <section class="axioms">
               <p class="subhead">Why</p>
               <p>In creating applications that use data, it can be helpful to
@@ -984,6 +991,7 @@ figure figcaption {
                 version that explains how it differs from the previous version.
                 An API can expose a version history with a single dedicated URL
                 that retrieves the latest version of the complete history.</p>
+           <div class="issue"> Wchich vocabulary should be used to describe the versioning history?</div>
             </section>
             <section class="test">
               <p class="subhead">How to Test</p>
