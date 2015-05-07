@@ -348,7 +348,7 @@ figure figcaption {
         </div>
        
        When necessary RDF examples will be used to show the result of the application of some best practices. 
-        All RDF examples in this document are written in Turtle syntax [[turtle]]. 
+         RDF examples in this document are written in Turtle syntax [[turtle]] and [[json-ld]]. 
       
       </section>  
         
@@ -564,27 +564,31 @@ figure figcaption {
           </div>
         </section>
         <div class="example">
-          <p> Example           
+          <p> The example below shows how to use DCAT to provide the machine readable <strong> discovery </strong> metadata for the timetable dataset (dataset-001).           
           <pre>  &nbsp;:dataset-001
        a dcat:Dataset&nbsp;;
        dct:title "Bus timetable of MyCity"&nbsp;;
        dcat:keyword "transport","mobility" ,"bus"&nbsp;;
        dct:issued "2015-05-05"&nbsp;;
        dct:modified "2015-05-05"&nbsp;;
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt; ;
-       dct:temporal &lt;http://reference.data.gov.uk/id/quarter/2006-Q1&gt; ;
-       dct:spatial &lt;http://www.geonames.org/6695072&gt; ;
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
        dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-W&gt; &nbsp;;       
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;       
        .
 </pre>
-            </p>
+            </p> 
           <p> The following paragraph was extracted from the DCAT specification (to review): 
   In order to express frequency of update in the example above, we chose to use an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented Guidelines</a> developed as part 
-of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary efforts. Additionally, we chose to describe the spatial and temporal coverage of the example dataset using URIs from <a href="http://www.geonames.org/">Geonames</a> and <a href="http://reference.data.gov.uk/id/interval">the Interval dataset</a> from data.gov.uk, respectively. A contact point is also provided where comments and feedback about the dataset can be sent. Further details about the contact point, such as email 
+of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary efforts. Additionally, we chose to describe the spatial and 
+            temporal coverage of the example dataset using URIs from <a href="http://www.geonames.org/">Geonames</a> and <a href="http://reference.data.gov.uk/id/interval">the Interval dataset</a> from data.gov.uk, respectively. A contact point is also provided where comments and feedback about the dataset can be sent. Further details about the contact point, such as email 
   address or telephone number, can be provided using VCard [<cite><a href="#bib-vcard-rdf" class="bibref">vcard-rdf</a></cite>]. </p>
 
         </div>
+        
+       
+        
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
         <section id="localeparameters">
@@ -653,7 +657,23 @@ of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary e
         </section>
         <!-- end of Locale Parameters BP -->
         <div class="example">
-          <p> Example </p>
+          <p> <p> The example below shows the machine readable metadata for dataset-001 with the inclusion of the  <strong> locale parameters </strong> metadata.           
+          <pre>  &nbsp;:dataset-001
+       a dcat:Dataset&nbsp;;
+       dct:title "Bus timetable of MyCity"&nbsp;;
+       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
+       dct:issued "2015-05-05"&nbsp;;
+       dct:modified "2015-05-05"&nbsp;;
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;; 
+       <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;</strong>      
+       .
+</pre>
+            <div class="issue"> to include date and numbers formats! </div>
+            </p> </p>
         </div>
         <!-- begin of Data Licenses -->
         <section id="licenses">
