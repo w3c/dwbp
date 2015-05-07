@@ -335,6 +335,23 @@ figure figcaption {
       <div class="issue">Some sections of the document have a technological
         bias. <a href="https://www.w3.org/2013/dwbp/track/issues/144">
           Issue-144</a> </div>
+      <section id="basicExample">
+        <h3>Example</h3>
+         <p> This example serves as a basis for elaboration that will be described in subsequent sections. It helps to illustrate how best
+        practices can be applied </p>
+      
+         <div class="example">
+          <p> John works for the Transport Agency of MyCity and he is
+        in charge of the publication of data on the Web about bus timetables as
+            well as real time data about the traffic of the city. John decides to create two datasets:
+            one for the bus timetables and other one for the real time traffic data. </p>
+        </div>
+       
+       When necessary RDF examples will be used to show the result of the application of some best practices. 
+        All RDF examples in this document are written in Turtle syntax [[turtle]]. 
+      
+      </section>  
+        
       <section id="metadata">
         <h3>Metadata</h3>
         <p>The Web is an open information space, where the absence of a specific
@@ -507,6 +524,7 @@ figure figcaption {
                 <li>The <strong>date of publication</strong> of the dataset. </li>
                 <li> The <strong>entity responsible (publisher)</strong> for
                   making the dataset available.</li>
+                <li> The <strong> contact point </strong> of the dataset.</li>
                 <li> The <strong>spatial coverage </strong> of the dataset.</li>
                 <li> The <strong> temporal period </strong> that the dataset
                   covers.</li>
@@ -546,7 +564,26 @@ figure figcaption {
           </div>
         </section>
         <div class="example">
-          <p> Example </p>
+          <p> Example           
+          <pre>  &nbsp;:dataset-001
+       a dcat:Dataset&nbsp;;
+       dct:title "Bus timetable of MyCity"&nbsp;;
+       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
+       dct:issued "2015-05-05"&nbsp;;
+       dct:modified "2015-05-05"&nbsp;;
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt; ;
+       dct:temporal &lt;http://reference.data.gov.uk/id/quarter/2006-Q1&gt; ;
+       dct:spatial &lt;http://www.geonames.org/6695072&gt; ;
+       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-W&gt; &nbsp;;       
+       .
+</pre>
+            </p>
+          <p> The following paragraph was extracted from the DCAT specification (to review): 
+  In order to express frequency of update in the example above, we chose to use an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented Guidelines</a> developed as part 
+of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary efforts. Additionally, we chose to describe the spatial and temporal coverage of the example dataset using URIs from <a href="http://www.geonames.org/">Geonames</a> and <a href="http://reference.data.gov.uk/id/interval">the Interval dataset</a> from data.gov.uk, respectively. A contact point is also provided where comments and feedback about the dataset can be sent. Further details about the contact point, such as email 
+  address or telephone number, can be provided using VCard [<cite><a href="#bib-vcard-rdf" class="bibref">vcard-rdf</a></cite>]. </p>
+
         </div>
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
