@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2013-12-17",
+		publishDate : "2015-05-XX",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -52,10 +52,16 @@
 
 		editors : [
 				{
-					name : "Bart van Leeuwen",
-					url : "mailto:bart@netage.nl",
-					company : "netage, The Netherlands",
-					companyURL : "http://www.netage.nl/"
+					name : "Riccardo Albertoni",
+					url : "mailto:riccardo.albertoni@ge.imati.cnr.it",
+					company : "CNR - Consiglio Nazionale delle Ricerche, Italy",
+					companyURL : "http://www.cnr.it/"
+				},
+				{
+					name : "Christophe Gu&eacute;ret",
+					url : "mailto:c.d.m.gueret@vu.nl",
+					company : "Free University Amsterdam and DANS, The Netherlands",
+					companyURL : "http://www.vu.nl/"
 				},
 				{
 					name : "Antoine Isaac",
@@ -79,14 +85,16 @@
 				href : "https://www.w3.org/2013/dwbp/wiki/Data_quality_notes"
 			} ]
 		}, {
-			key : "Contributors",
+			key : "Contributors @@TODO: add affiliations@@",
 			data : [ {
 				value : "Phil Archer"
 			}, {
 				value : "Makx Dekkers"
 			}, {
 				value : "Jeremy Debattista"
-			} ]
+			}, {
+				value : "Deirdre Lee"
+			}]
 		} ],
 
 		// authors, add as many as you like.
@@ -207,20 +215,29 @@ pre {
 			these properties an instance of a <a
 				href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
 			or <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
-			can be related to three different classes:
+			can be related to four different classes:
 		<ul>
-			<li><a href="#">duv:Feedback</a> represents a feedback given
+			<li><a href="#">dqv:Feedback</a> represents a feedback given
 				about the dataset or its distribution.</li>
 			<li><a href="http://purl.org/dc/terms/Standard">dcterms:Standard</a>
 				represents standard the dataset or its distribution conforms to.</li>
 			<li><a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
 				represents an entity involved in describing the provenance of the
 				dataset or distribution.</li>
-			<li><a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a>
+			<li><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a>
+				or <a href="http://purl.org/linked-data/cube#Observation">db:Observation</a>
 				represents a set of metrics values providing quantitative or
 				qualitative information about the dataset or distribution.</li>
 		</ul>
 		</p>
+		<div class="note">
+			<p>
+				We may want to consider the existing class <a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a>
+		  or a new class <a href="#">dqv:QualityMetadata</a> 
+				to represent a set of statements (metrics values) providing quantitative or
+				qualitative information about the dataset or distribution.
+			</p>
+		</div>
 		<div class="note">
 			<p>
 				We may want to consider a revision of DCAT to make <a
@@ -243,7 +260,9 @@ pre {
 				drawing.
 			</figcaption>
 		</figure>
-		<h3>Metrics</h3>
+	</section>
+	<section class="informative">
+		<h2>Dimensions and metrics hints</h2>
 		<p>This section gathers relevant quality dimensions and ideas for
 			corresponding metrics</p>
 		<p>Sources:</p>
@@ -252,7 +271,7 @@ pre {
 			<li>http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578</li>
 			<li>https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary</li>
 		</ul>
-		<h4>Availability</h4>
+		<h3>Availability</h3>
 		<p>
 			<em>Can the data be accessed now and over time ?</em>
 		</p>
@@ -276,7 +295,7 @@ pre {
 		</ul>
 		<p>Other questions that come to mind: how do we indicate that the
 			dataset is expected to be available 'for the foreseeable future?'</p>
-		<h4>Processability</h4>
+		<h3>Processability</h3>
 		<p>
 			<em>Is the data machine readable ?</em>
 		</p>
@@ -287,7 +306,7 @@ pre {
 			<li>Links to metadata standards used and data model/schema to
 				enable automatic processing</li>
 		</ul>
-		<h4>Accuracy/Consistency/Relevance</h4>
+		<h3>Accuracy/Consistency/Relevance</h3>
 		<p>
 			<em>Does this data include an appropriate amount of non
 				contradicting data correctly representing the real world entity or
@@ -296,16 +315,18 @@ pre {
 		<p>It might be useful to include some information about the
 			context (e.g. why was the data created and what purpose is it
 			supposed to serve).</p>
-		<h4>Completeness</h4>
+		<h3>Completeness</h3>
 		<p><em>Does the data include all data items representing the entity or event ?</em></p>
-		<h4>Conformance</h4>
+		<h3>Conformance</h3>
 		<p><em>Is the data following accepted standards ?</em></p>
-		<h4>Credibility</h4>
+		<h3>Credibility</h3>
 		<p><em>Is the data based on trustworthy sources ?</em></p>
 		<p>This is described using the provenance vocabulary PROV-O</p>
-		<h4>Timeliness</h4>
+		<h3>Timeliness</h3>
 		<p><em>Is the data representing the actual situation and it is published soon enough ?</em></p>
-		<h3>Example Usages</h3>
+	</section>
+	<section id="examples" class="informative">	
+		<h2>Example Usage</h2>
 		<h4>Express that a dataset received an ODI certificate</h4>
 		<p></p>
 		<pre></pre>
@@ -314,6 +335,7 @@ pre {
 		<pre></pre>
 	</section>
 	<section id="requirements" class="informative">
+		<h2>Requirements</h2>
 		<p>
 			The <a href="http://www.w3.org/TR/dwbp-ucr/">UCR document</a> lists
 			relevant <a
