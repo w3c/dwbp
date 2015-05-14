@@ -77,8 +77,27 @@ figure figcaption {
     column-gap: 1em;
     background-color: #FCFAEE;
  }
-    
-    
+
+  .expand{
+    display:block;
+    cursor: pointer;
+  }
+  .expand:hover {
+    color: #3D3D3D;
+  }
+  .expand:before {
+    font-weight: bold;
+    content: "\25C6  Example (click to expand or collapse):";
+  }
+  .expand + input{
+    display:none;
+  }
+  .expand + input + *{
+    display:none;
+  }
+  .expand + input:checked + *{
+    display:block;
+  }
 
   </style>
   </head>
@@ -538,25 +557,9 @@ figure figcaption {
                 [[VOCAB-DCAT]]. This provides a framework in which datasets can
                 be described as abstract entities. </p>
               <!--<p>See also <a href="#AdministrativeMetadata">Provide
-                Administrative Metadata</a></p> --> </section>
-            <section class="test">
-              <p class="subhead">How to Test</p>
-              <!-- <p>A manual test might simply be to use an appropriate search tool
-                and check that the dataset is discoverable as expected since                that is the intended outcome. However, a more structured test
-                would be to ensure that the basic metadata fields listed above                are filled. </p> -->
-              <p> Check that the metadata for the dataset itself includes the
-                overall features of the dataset.</p>
-              <p> Check if a user agent can automatically discover the dataset.
-              </p>
-            </section>
-            <section class="ucr">
-              <p class="subhead">Evidence</p>
-              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>,
-                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
-                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
-            </section>
-          </div>
-        </section>
+                Administrative Metadata</a></p> --> 
+          <label class="expand" for="example-DiscoveryMetadata"></label>
+          <input id="example-DiscoveryMetadata" type="checkbox">
         <div class="example">
           <p> The example below shows how to use DCAT to provide the machine
             readable <strong> discovery </strong> metadata for the timetable
@@ -589,6 +592,26 @@ figure figcaption {
 
                 class="bibref">vcard-rdf</a></cite>]. </p>
         </div>
+
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <!-- <p>A manual test might simply be to use an appropriate search tool
+                and check that the dataset is discoverable as expected since                that is the intended outcome. However, a more structured test
+                would be to ensure that the basic metadata fields listed above                are filled. </p> -->
+              <p> Check that the metadata for the dataset itself includes the
+                overall features of the dataset.</p>
+              <p> Check if a user agent can automatically discover the dataset.
+              </p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
+                <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
+            </section>
+          </div>
+        </section>
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
         <section id="localeparameters">
