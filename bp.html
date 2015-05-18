@@ -90,7 +90,7 @@ figure figcaption {
   }
   .expand:before {
     font-weight: bold;
-    content: "\25C6  Example (click to expand or collapse):";
+    content: "\25C6  Example (click to expand or collapse)";
   }
   .expand + input{
     display:none;
@@ -106,14 +106,14 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the publication and
-        usage of data on the Web designed to help support a self-sustaining
-        ecosystem. Data should be discoverable and understandable by humans and
-        machines. Where data is used in some way, whether by the originator of
-        the data or by an external party, such usage should also be discoverable
-        and the efforts of the data publisher recognized. In short, following
-        these best practices will facilitate interaction between publishers and
-        consumers.</p>
+      <p>This document provides best practices related to the
+        publication and usage of data on the Web designed to help support a
+        self-sustaining ecosystem. Data should be discoverable and
+        understandable by humans and machines. Where data is used in some way,
+        whether by the originator of the data or by an external party, such
+        usage should also be discoverable and the efforts of the data publisher
+        recognized. In short, following these best practices will facilitate
+        interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
       <p>This early version of the document shows its expected scope and future
@@ -179,17 +179,17 @@ figure figcaption {
         made to make the document as readable and usable as possible while still
         retaining the accuracy and clarity needed in a technical specification.</p>
       <p>Readers of this document are expected to be familiar with some
-        fundamental concepts of the architecture of the Web [[WEBARCH]], such
-        as resources and URIs, as well as a number of data formats. The
-        normative element of each best practice is the <em>intended outcome</em>.
+        fundamental concepts of the architecture of the Web [[WEBARCH]], such as
+        resources and URIs, as well as a number of data formats. The normative
+        element of each best practice is the <em>intended outcome</em>.
         Possible implementations are suggested and, where appropriate, these
         recommend the use of a particular technology such as <abbr title="Comma Separataed Variables">CSV</abbr>,
         JSON or RDF. A basic knowledge of vocabularies and data models would be
         helpful to better understand some aspects of this document. </p>
-<div class="issue">
-<p>Which section of a BP is normative, and whether the use of RFC2119 keywords is appropriate, is
-<a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p></div>
-
+      <div class="issue">
+        <p>Which section of a BP is normative, and whether the use of RFC2119
+          keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>
+      </div>
     </section>
     <section id="scope" class="informative">
       <h2>Scope</h2>
@@ -206,19 +206,20 @@ figure figcaption {
     </section>
     <section id="context" class="informative">
       <h2>Context</h2>
-      <p>In general, publishing data on the Web means publishing datasets 
-        in order to share them with multiple users. For this document,
-        as defined by [[DCAT]], "a dataset is a collection of data, available
-        for access or download in one or more formats". By data, "we mean known
-        facts that can be recorded and that have implicit meaning" [[Navathe]].</p>
-      <p>In order to deal with changes over time, multiple versions may be created 
-        for a single dataset. In the
-        same way, to meet the requirements of different users, a single dataset
-        may be available in different data formats or distributions. Again quoting the DCAT specification, a
-        Distribution "Represents a specific available form of a dataset. Each dataset 
-        might be available in different forms, these forms might represent different 
-        formats of the dataset or different endpoints. Examples of distributions include 
-        a downloadable CSV file, an API or an RSS feed" [[DCAT]]</p>
+      <p>In general, publishing data on the Web means publishing datasets in
+        order to share them with multiple users. For this document, as defined
+        by [[DCAT]], "a dataset is a collection of data, available for access or
+        download in one or more formats". By data, "we mean known facts that can
+        be recorded and that have implicit meaning" [[Navathe]].</p>
+      <p>In order to deal with changes over time, multiple versions may be
+        created for a single dataset. In the same way, to meet the requirements
+        of different users, a single dataset may be available in different data
+        formats or distributions. Again quoting the DCAT specification, a
+        Distribution "Represents a specific available form of a dataset. Each
+        dataset might be available in different forms, these forms might
+        represent different formats of the dataset or different endpoints.
+        Examples of distributions include a downloadable CSV file, an API or an
+        RSS feed" [[DCAT]]</p>
       <p> To illustrate these concepts let us consider a simple example: a
         dataset that collects data about weekly weather forecast for MyCity. The
         following figure shows the relation between the dataset (Dataset001) and
@@ -228,13 +229,13 @@ figure figcaption {
         distributions: one in CSV and one in JSON. For example, the version
         Dataset001_W1 has two distributions: Dataset001_W1_csv and
         Dataset001_W1_json. </p>
-      <figure id="contextDiagram">
-        <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset." src="images/DWBP_Context.svg">
-        <figcaption>Diagram showing the relationships between Dataset, Versions and Distributions</figcaption>
-      </figure>
+      <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."
 
+          src="images/DWBP_Context.svg"> <figcaption>Diagram showing the
+          relationships between Dataset, Versions and Distributions</figcaption>
+      </figure>
     </section>
-    <section id="challenges">
+    <section id="challenges" class="informative">
       <h2>Data on the Web Challenges</h2>
       <p>The openness and flexibility of the Web creates new challenges for data
         publishers and data consumers. In contrast to conventional databases,
@@ -319,7 +320,7 @@ figure figcaption {
         <h3>Example</h3>
         <p> This example serves as a basis for elaboration that will be
           described in subsequent sections. It helps to illustrate how best
-          practices can be applied </p>
+          practices may be applied. </p>
         <div class="example">
           <p> John works for the Transport Agency of MyCity and he is in charge
             of the publication of data on the Web about bus timetables as well
@@ -330,17 +331,21 @@ figure figcaption {
         When necessary RDF examples will be used to show the result of the
         application of some best practices. RDF examples in this document are
         written in Turtle syntax [[TURTLE]] and [[JSON-LD]]. </section>
+      <div class="issue">
+        <p> In this current version, examples are presented just in Turtle syntax. </p>
+      </div>
+      
       <section id="metadata">
         <h3>Metadata</h3>
         <p>The Web is an open information space, where the absence of a specific
-          context, such a company's internal information system, means that 
-          the provision of metadata is a fundamental requirement. Data will not be discoverable or
-          reusable by anyone other than the publisher if insufficient metadata
-          is provided. Metadata provides additional information that helps data
-          consumers better understand the meaning of data, its structure, and to
-          clarify other issues, such as rights and license terms, the
-          organization that generated the data, data quality, data access
-          methods and the update schedule of datasets. <br>
+          context, such a company's internal information system, means that the
+          provision of metadata is a fundamental requirement. Data will not be
+          discoverable or reusable by anyone other than the publisher if
+          insufficient metadata is provided. Metadata provides additional
+          information that helps data consumers better understand the meaning of
+          data, its structure, and to clarify other issues, such as rights and
+          license terms, the organization that generated the data, data quality,
+          data access methods and the update schedule of datasets. <br>
         </p>
         Metadata can be used to help tasks such as dataset discovery and re-use,
         and can be assigned considering different levels of granularity from a
@@ -375,14 +380,14 @@ figure figcaption {
             <p class="subhead">Intended Outcome</p>
             <p> It must be possible for humans to understand the metadata that
               describes a dataset, which makes it <span style="font-style: italic;">human
-                understandable metadata</span>.</p>
+                readable metadata</span>.</p>
             <p>It should be possible for computer applications, notably user
               agents, to process the metadata, which makes it <span style="font-style: italic;">machine
                 readable metadata</span>.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            Possible approaches to provide <em>human understandable metadata:</em><br>
+            Possible approaches to provide <em>human readable metadata:</em><br>
             <ul>
               <li>to provide metadata as part of an HTML Web page</li>
               <li>to provide metadata as a separate text file</li>
@@ -398,13 +403,16 @@ figure figcaption {
                 available format on the fly based on a single source of the
                 metadata.</li>
             </ul>
+            <label class="expand" for="example-ProvideMetadata"></label>
+            <input id="example-ProvideMetadata" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>For <em>human understandable metadata</em>, check that a human
+            <p>For <em>human readable metadata</em>, check that a human
               user can understand the metadata associated with a dataset. </p>
-            <div class="issue"> Or should be checked if a metadata file is
-              available? </div>
             <p>For <em>machine readable metadata</em>, access the same URL
               either with a user agent that accepts a more data oriented format
               or a tool that extracts the data from an HTML page.<a href="http://rdf-translator.appspot.com/"><br>
@@ -450,11 +458,11 @@ figure figcaption {
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
           <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
-            be described by metadata.</p>
+            be described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Explicitly providing dataset descriptive information allows user
-              agents to automatically discover datasavailable on the Web and it
+              agents to automatically discover datasets available on the Web and it
               allows humans to understand the nature of the dataset.&nbsp; </p>
           </section>
           <section class="outcome">
@@ -586,15 +594,15 @@ figure figcaption {
               provided according to the vocabulary recommended by W3C to
               describe datasets, i.e. the Data Catalog Vocabulary
               [[VOCAB-DCAT]].</p>
-            
-            <label class="expand" for="example-LocaleParameters"></label>
-            <input id="example-LocaleParameters" type="checkbox">
+            <label class="expand" for="example-LocaleParameters"></label> <input
+
+              id="example-LocaleParameters" type="checkbox">
             <div class="example">
-          <p> </p>
-          <p> The example below shows the machine readable metadata for
-            dataset-001 with the inclusion of the <strong> locale parameters </strong>
-            metadata. </p>
-          <pre>  &nbsp;:dataset-001
+              <p> </p>
+              <p> The example below shows the machine readable metadata for
+                dataset-001 with the inclusion of the <strong> locale
+                  parameters </strong> metadata. </p>
+              <pre>  &nbsp;:dataset-001
        a dcat:Dataset&nbsp;;
        dct:title "Bus timetable of MyCity"&nbsp;;
        dcat:keyword "transport","mobility" ,"bus"&nbsp;;
@@ -608,15 +616,13 @@ figure figcaption {
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;</strong>      
        .
 </pre>
-          <div class="issue"> to include date and numbers formats! </div>
-          <p></p>
-           <div class="issue"> DCAT has a property to describe language, but
-              there are no properties to describe date, time and numeric
-              formats. Which vocabulary should be used to provide this type of
-              metadata? </div>
-        </div>
-            
-           
+              <div class="issue"> to include date and numbers formats! </div>
+              <p></p>
+              <div class="issue"> DCAT has a property to describe language, but
+                there are no properties to describe date, time and numeric
+                formats. Which vocabulary should be used to provide this type of
+                metadata? </div>
+            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -631,8 +637,41 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
           </section>
         </div>
-        <!-- end of Locale Parameters BP -->
-        
+        <!-- end of Locale Parameters BP --> 
+      
+      <!-- begin of Provide Structural Metadata -->
+        <div class="practice">
+          <p><span id="StructuralMetadata" class="practicelab">Provide structural metadata </span>  </p>
+          <p class="practicedesc"> Information about the schema and internal structure of a dataset must be described by metadata</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> Providing information about the internal structure of a dataset can be helpful when exploring or querying the dataset. 
+              Besides, structural metadata provides information that helps to understand the meaning of the data. </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It should be possible for humans to understand the internal structure or schema of the dataset. </p>
+            <p> It should be possible for user agents be able to automatically process the structural metadata about the dataset.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p></p>
+            <label class="expand" for="example-StructuralMetadata"></label>
+            <input id="example-StructuralMetadata" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
+          </section>
+          <section class="test"><span style="font-weight: bold;">How to Test </span>
+            <p> Check that the metadata for the dataset itself includes structural information about the dataset. </p>
+            <p> Check if a user agent can automatically process the structural information about the dataset.</p>                          
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
+          </section>
+        </div>
+        <!-- end of BP -->
       </section>
       <!-- begin of Data Licenses -->
       <section id="licenses">
@@ -692,6 +731,11 @@ figure figcaption {
             <p></p>
             <!-- <p>Links to the license can be provided from the data itself, from
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
+          <label class="expand" for="example-DataLicense"></label>
+            <input id="example-DataLicense" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
@@ -710,15 +754,10 @@ figure figcaption {
           </div>
           <!-- end of machine detectable license BP --> </div>
       </section>
-<!--      <div class="issue">
-        <p> I am not sure of how to define data licence metadata. In DCAT,
-          licence is defined as a property of distribution. However, in our BP
-          we just mention datasets. Should we also consider distributions? </p>
-      </div>-->
+      <!--      <div class="issue">
+        <p> I am not sure of how to define data licence metadata. In DCAT,          licence is defined as a property of distribution. However, in our BP          we just mention datasets. Should we also consider distributions? </p>      </div>-->
       <!--      <div class="example">
-          <p> </p>          <p> The example below shows the machine readable metadata for            dataset-001 with the inclusion of the <strong> data licence </strong>            metadata. </p>          <pre>  &nbsp;:dataset-001       a dcat:Dataset&nbsp;;       dct:title "Bus timetable of MyCity"&nbsp;;       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
-       dct:issued "2015-05-05"&nbsp;;       dct:modified "2015-05-05"&nbsp;;       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;       dct:spatial &lt;http://www.geonames.org/3399415&gt;;       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;
-       <strong>dct:licence &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; &nbsp;;</strong><http://creativecommons.org/licenses/by-sa/3.0/>       .</pre>                 </div> -->
+          <p> </p>          <p> The example below shows the machine readable metadata for            dataset-001 with the inclusion of the <strong> data licence </strong>            metadata. </p>          <pre>  &nbsp;:dataset-001       a dcat:Dataset&nbsp;;       dct:title "Bus timetable of MyCity"&nbsp;;       dcat:keyword "transport","mobility" ,"bus"&nbsp;;       dct:issued "2015-05-05"&nbsp;;       dct:modified "2015-05-05"&nbsp;;       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;       dct:spatial &lt;http://www.geonames.org/3399415&gt;;       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;       <strong>dct:licence &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; &nbsp;;</strong><http://creativecommons.org/licenses/by-sa/3.0/>       .</pre>                 </div> -->
       <!-- end of Data Licenses -->
       <!-- begin of Data Provenance -->
       <section id="provenance">
@@ -773,13 +812,14 @@ figure figcaption {
             </p>
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
-            <label class="expand" for="example-DataProvenance"></label>
-            <input id="example-DataProvenance" type="checkbox">
+            <label class="expand" for="example-DataProvenance"></label> <input
+
+              id="example-DataProvenance" type="checkbox">
             <div class="example">
-          <p> The example below shows the machine readable metadata for
-            dataset-001 with the inclusion of the <strong> provenance </strong>
-            metadata. </p>
-          <pre>  &nbsp;:dataset-001
+              <p> The example below shows the machine readable metadata for
+                dataset-001 with the inclusion of the <strong> provenance </strong>
+                metadata. </p>
+              <pre>  &nbsp;:dataset-001
        a dcat:Dataset&nbsp;, prov:Entity;
        dct:title "Bus timetable of MyCity"&nbsp;;
        dcat:keyword "transport","mobility" ,"bus"&nbsp;;
@@ -805,7 +845,6 @@ figure figcaption {
        foaf:name "Transport Agency of Mycity";
        .
 </mailto:john@mycitytransport.org></pre> </div>
-          
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -823,7 +862,6 @@ figure figcaption {
             </p>
           </section>
         </div>
-        
         <!-- end of Provide Data Provenance BP --> </section>
       <!-- end of Data Provenance -->
       <!-- begin of Data Quality -->
@@ -880,6 +918,11 @@ figure figcaption {
               the <abbr title="Data on the Web Best Practices">DWBP</abbr>
               working group , i.e., the Data Quality and Granularity vocabulary.
             </p>
+            <label class="expand" for="example-Quality"></label>
+            <input id="example-Quality" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -975,6 +1018,11 @@ figure figcaption {
               properties for version information [[OWL2-QUICK-REFERENCE]] and
               the Provenance Ontology [[PROV-O]] defines several types of link
               between versions.</p>
+            <label class="expand" for="example-Versioning"></label>
+            <input id="example-Versioning" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1111,6 +1159,11 @@ figure figcaption {
                 the underlying technology should be omitted (e.g. file
                 extensions).</li>
             </ul>
+            <label class="expand" for="example-Identification"></label>
+            <input id="example-Identification" type="checkbox">
+            <div class="example">
+              <p>to be done </p>
+            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2002,17 +2055,15 @@ figure figcaption {
       <!-- begin of Data Preservation -->
       <section id="dataPreservation">
         <h3>Data Preservation</h3>
-        This section describes best practices related to <a href="http://w3c.github.io/dwbp/glossary.html#data-preservation-1">data preservation</a>.
-        Albeit being a closely related topic <a href="http://w3c.github.io/dwbp/glossary.html#data-archiving-1data">archiving</a> is considered
-        out of scope for this group and therefore not covered here.
+        This section describes best practices related to <a href="http://w3c.github.io/dwbp/glossary.html#data-preservation-1">data
+          preservation</a>. Albeit being a closely related topic <a href="http://w3c.github.io/dwbp/glossary.html#data-archiving-1data">archiving</a>
+        is considered out of scope for this group and therefore not covered
+        here.
         <!--
-        <p>Data preservation is a well understood and commonly performed task          for static and self-contained data. This commonly includes the          following steps:</p>        <ul>          <li>ingest the data and assign a persistent identifier to it;</li>          <li>ensure the data is correctly stored and prevent bit rot;</li>          <li>provide access to the data and perform format translation if            needed.</li>        </ul>        <p>The model most commonly referred to is the Open Archival Information          System [[OAIS]]. Many digital preservation institutions are          implementing this model or some variant of it. Web pages can be          preserved following the same strategies, considering a Web site as a          static data set that is self-contained and can be preserved as a snap          shot at a fixed time. When preserving data on the Web some new          elements have to be taken into account:</p>
-        <ul>          <li>the persistent re-use (URIs) used across the Web may be related to            live data that can change;</li>          <li>the meaning of a resource is contextualized by the other resources            it is linked to;</li>          <li>documents fetched in HTML, RDF/XML of JSON, for instance, are only            one of the many possible serializations of the data they represent.</li>        </ul>        <p>The preservation of Web data should generally focus on the          preservation of the description of entities.</p>        -->
+        <p>Data preservation is a well understood and commonly performed task          for static and self-contained data. This commonly includes the          following steps:</p>        <ul>          <li>ingest the data and assign a persistent identifier to it;</li>          <li>ensure the data is correctly stored and prevent bit rot;</li>          <li>provide access to the data and perform format translation if            needed.</li>        </ul>        <p>The model most commonly referred to is the Open Archival Information          System [[OAIS]]. Many digital preservation institutions are          implementing this model or some variant of it. Web pages can be          preserved following the same strategies, considering a Web site as a          static data set that is self-contained and can be preserved as a snap          shot at a fixed time. When preserving data on the Web some new          elements have to be taken into account:</p>        <ul>          <li>the persistent re-use (URIs) used across the Web may be related to            live data that can change;</li>          <li>the meaning of a resource is contextualized by the other resources            it is linked to;</li>          <li>documents fetched in HTML, RDF/XML of JSON, for instance, are only            one of the many possible serializations of the data they represent.</li>        </ul>        <p>The preservation of Web data should generally focus on the          preservation of the description of entities.</p>        -->
         <!-- begin of list of resources BP -->
         <!--
-        <div class="practice">          <p><span id="list_resources" class="practicelab">Maintain a list of              resources described in a dataset</span></p>          <p class="practicedesc">A dataset <em class="rfc2119">should</em> be            preserved together with a list of all the resources it describes</p>          <section class="axioms">            <p class="subhead">Why</p>            <p>data on the Web is essentially about the description of entities              identified by a unique, Web-based, identifier (a URI). Once the              data is dumped and sent to an institute specialised in digital              preservation the link with the Web is broken (de-referencing) but              the role of the URI as a unique identifier still remains. In order              to increase the usability of preserved dataset dumps it is              relevant to maintain a list of these identifiers.</p>          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>It <em class="rfc2119">should</em> be possible to look for a              preserved dataset based on the resources contained in it.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>The list of resources can be created by the data depositor or the              digital repository at ingestion time. A dataset dump is scanned              for all the subject described and this list is stored separately.              For RDF and JSON-LD, this corresponds to all the resources in the              "subject" position of statements.</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p>Every resource listed in the resource list must              have some kind of description in the dataset</p>
-          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>          </section>        </div>-->
+        <div class="practice">          <p><span id="list_resources" class="practicelab">Maintain a list of              resources described in a dataset</span></p>          <p class="practicedesc">A dataset <em class="rfc2119">should</em> be            preserved together with a list of all the resources it describes</p>          <section class="axioms">            <p class="subhead">Why</p>            <p>data on the Web is essentially about the description of entities              identified by a unique, Web-based, identifier (a URI). Once the              data is dumped and sent to an institute specialised in digital              preservation the link with the Web is broken (de-referencing) but              the role of the URI as a unique identifier still remains. In order              to increase the usability of preserved dataset dumps it is              relevant to maintain a list of these identifiers.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It <em class="rfc2119">should</em> be possible to look for a              preserved dataset based on the resources contained in it.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>The list of resources can be created by the data depositor or the              digital repository at ingestion time. A dataset dump is scanned              for all the subject described and this list is stored separately.              For RDF and JSON-LD, this corresponds to all the resources in the              "subject" position of statements.</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p>Every resource listed in the resource list must              have some kind of description in the dataset</p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>          </section>        </div>-->
         <!-- end of list of resources BP -->
         <!-- begin of assess dataset BP -->
         <div class="practice">
