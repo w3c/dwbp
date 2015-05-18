@@ -24,8 +24,6 @@
     column-gap: 1em;
   }
 }
-    
-
 
 .practice, #tempPractice {
   padding-left: 1em;
@@ -58,6 +56,11 @@
 
 figure {
   text-align:center;
+}
+
+figure#contextDiagram {
+  width:60%;
+  margin:0 auto;
 }
 
 figure figcaption {
@@ -120,25 +123,6 @@ figure figcaption {
     </section>
     <section id="intro" class="informative">
       <h2>Introduction</h2>
-      <div class="note">
-        <p>This is the first working draft of this document to be formally
-          published and all text is explicitly open to review. In this first
-          version, 29 best practices are proposed and more than 25 requirements
-          have been addressed. However, there are still many ongoing discussions
-          in the group about important subjects, like terminology and scope. The
-          group is still working towards consensus on the meaning and
-          application of some important terms including: vocabulary,
-          metadata, data model, data format, schema and dataset. Other important
-          issues relate to the definition of best practices for vocabularies.
-          For example it is not clear if providing advice to data publishers to
-          create and re-use vocabularies is in the scope of the <abbr title="Data on the Web Best Practices">DWBP</abbr>.
-          Likewise, there is not yet consensus on whether data preservation is
-          in scope. The Working Group is therefore particularly keen to receive
-          comments to ensure that its future work is relevant, useful and
-          comprehensive. Please send comments to <a href="mailto:public-dwbp-wg@w3.org">public-dwbp-wg@w3.org</a>
-          (<a href="mailto:public-dwbp-wg-request@w3.org?subject=subscribe">subscribe</a>,
-          <a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/">archives</a>).</p>
-      </div>
       <p>The best practices described below have been developed to encourage and
         enable the continued expansion of the Web as a medium for the exchange
         of data. The growth of open data by governments across the world
@@ -173,7 +157,7 @@ figure figcaption {
         working group compiled a set of use cases [[UCR]] that represent
         scenarios of how data is commonly published on the Web and how it is
         used. The set of requirements derived from these use cases were used to
-        guide the development of the best practice.</p>
+        guide the development of the best practices.</p>
       <p>The Best Practices proposed in this document are intended to serve a
         more general purpose than the practices suggested in Best Practices for
         Publishing Linked Data [[LD-BP]] since it is domain-independent and
@@ -181,8 +165,7 @@ figure figcaption {
         practices for data on the web in formats such as [[CSV]] and [[JSON]].
         The Best Practices related to the use of vocabularies incorporate
         practices that stem from Best Practices for Publishing Linked Data where
-        appropriate.<!-- While
-        that document was published in its final version by the Government Linked        Data Working Group as a Working Group Note, the charter of the Data on        the Web Best Practices (DWBP) Working Group advances that this document        should be published ultimately as a W3C Recommendation.--></p>
+        appropriate.</p>
     </section>
     <section id="conformance"> </section>
     <section id="audience" class="informative">
@@ -196,13 +179,17 @@ figure figcaption {
         made to make the document as readable and usable as possible while still
         retaining the accuracy and clarity needed in a technical specification.</p>
       <p>Readers of this document are expected to be familiar with some
-        fundamental concepts of the architecture of the Web [[!WEBARCH]], such
+        fundamental concepts of the architecture of the Web [[WEBARCH]], such
         as resources and URIs, as well as a number of data formats. The
         normative element of each best practice is the <em>intended outcome</em>.
         Possible implementations are suggested and, where appropriate, these
         recommend the use of a particular technology such as <abbr title="Comma Separataed Variables">CSV</abbr>,
         JSON or RDF. A basic knowledge of vocabularies and data models would be
         helpful to better understand some aspects of this document. </p>
+<div class="issue">
+<p>Which section of a BP is normative, and whether the use of RFC2119 keywords is appropriate, is
+<a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p></div>
+
     </section>
     <section id="scope" class="informative">
       <h2>Scope</h2>
@@ -219,29 +206,34 @@ figure figcaption {
     </section>
     <section id="context" class="informative">
       <h2>Context</h2>
-      <p> In general, publishing data on the Web means to publish datasets on
-        the Web in order to share data with multiple users. For this document,
+      <p>In general, publishing data on the Web means publishing datasets 
+        in order to share them with multiple users. For this document,
         as defined by [[DCAT]], "a dataset is a collection of data, available
         for access or download in one or more formats". By data, "we mean known
         facts that can be recorded and that have implicit meaning" [[Navathe]].</p>
-      <p> In order to deal with data changes and to keep different data
-        versions, multiple versions may be created for a single dataset. In the
+      <p>In order to deal with changes over time, multiple versions may be created 
+        for a single dataset. In the
         same way, to meet the requirements of different users, a single dataset
-        may be available in different data formats. The publication of a dataset
-        in a specific data format (ex: csv or json) is called distribution. </p>
+        may be available in different data formats or distributions. Again quoting the DCAT specification, a
+        Distribution "Represents a specific available form of a dataset. Each dataset 
+        might be available in different forms, these forms might represent different 
+        formats of the dataset or different endpoints. Examples of distributions include 
+        a downloadable CSV file, an API or an RSS feed" [[DCAT]]</p>
       <p> To illustrate these concepts let us consider a simple example: a
-        dataset that collects data about weekly weather forecast of MyCity. The
+        dataset that collects data about weekly weather forecast for MyCity. The
         following figure shows the relation between the dataset (Dataset001) and
         its different versions (Dataset001_W1, Dataset001_W2, Dataset001_W3 and
         Dataset001_W4), where each version corresponds to the weather forecast
         of a week of May 2015. Each dataset version has two different
-        distributions: one in csv and one in json. For example, the version
+        distributions: one in CSV and one in JSON. For example, the version
         Dataset001_W1 has two distributions: Dataset001_W1_csv and
         Dataset001_W1_json. </p>
-      <p></p>
-      <img alt="Dataset, Versions and Distributions" src="images/DWBP_Context.svg"
+      <figure id="contextDiagram">
+        <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset." src="images/DWBP_Context.svg">
+        <figcaption>Diagram showing the relationships between Dataset, Versions and Distributions</figcaption>
+      </figure>
 
-        height="50%" width="50%"> </section>
+    </section>
     <section id="challenges">
       <h2>Data on the Web Challenges</h2>
       <p>The openness and flexibility of the Web creates new challenges for data
@@ -258,7 +250,7 @@ figure figcaption {
         identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
         Use Cases and Requirements [[UCR]] and are described by one or more
         questions. As presented in the diagram, each one of these challenges is
-        addressed by one or more best practice.</p>
+        addressed by one or more best practices.</p>
       <img alt="Data on the Web Challenges" src="images/DW_Challenges.svg">
       <p> Each one of these challenges originated one or more requirements as
         documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
@@ -267,8 +259,6 @@ figure figcaption {
         best practice should have at least one of these requirements as an
         evidence of its relevance.</p>
     </section>
-    <!-- <div class="issue"> Should we include a section to present a glossary with
-      definitions (or link to existing definitions) of the main terms used in      the doc ? <a href="https://www.w3.org/2013/dwbp/track/issues/134">Issue-134</a>    </div> -->
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -314,8 +304,6 @@ figure figcaption {
               on the Web Best Practices Use Cases &amp; Requirements document</a></p>
         </section>
       </div>
-      <!-- <div class="issue">Is this the correct template? Where exactly should the
-        normative statement be? This is <a href="https://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a>.</div> -->
     </section>
     <section id="bp-summary"> </section>
     <section id="bestPractices">
@@ -327,12 +315,6 @@ figure figcaption {
         described challenges. Each BP is related to one or more requirements
         from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best
           Practices Use Cases &amp; Requirements document.</a></p>
-      <div class="issue"> Do we over-use RFC2119? Is it used correctly? This
-        issue may be applied to all BPs. <a href="https://www.w3.org/2013/dwbp/track/issues/135">
-          Issue-135</a> </div>
-      <div class="issue">Some sections of the document have a technological
-        bias. <a href="https://www.w3.org/2013/dwbp/track/issues/144">
-          Issue-144</a> </div>
       <section id="basicExample">
         <h3>Example</h3>
         <p> This example serves as a basis for elaboration that will be
@@ -351,8 +333,8 @@ figure figcaption {
       <section id="metadata">
         <h3>Metadata</h3>
         <p>The Web is an open information space, where the absence of a specific
-          context, such a company's internal information system, becomes
-          metadata a fundamental requirement. Data will not be discoverable or
+          context, such a company's internal information system, means that 
+          the provision of metadata is a fundamental requirement. Data will not be discoverable or
           reusable by anyone other than the publisher if insufficient metadata
           is provided. Metadata provides additional information that helps data
           consumers better understand the meaning of data, its structure, and to
@@ -416,8 +398,6 @@ figure figcaption {
                 available format on the fly based on a single source of the
                 metadata.</li>
             </ul>
-            <div class="issue"> How to mention multilingualism? <a href="https://www.w3.org/2013/dwbp/track/issues/142">Issue-142</a>
-            </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -730,11 +710,11 @@ figure figcaption {
           </div>
           <!-- end of machine detectable license BP --> </div>
       </section>
-      <div class="issue">
+<!--      <div class="issue">
         <p> I am not sure of how to define data licence metadata. In DCAT,
           licence is defined as a property of distribution. However, in our BP
           we just mention datasets. Should we also consider distributions? </p>
-      </div>
+      </div>-->
       <!--      <div class="example">
           <p> </p>          <p> The example below shows the machine readable metadata for            dataset-001 with the inclusion of the <strong> data licence </strong>            metadata. </p>          <pre>  &nbsp;:dataset-001       a dcat:Dataset&nbsp;;       dct:title "Bus timetable of MyCity"&nbsp;;       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
        dct:issued "2015-05-05"&nbsp;;       dct:modified "2015-05-05"&nbsp;;       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;       dct:spatial &lt;http://www.geonames.org/3399415&gt;;       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;

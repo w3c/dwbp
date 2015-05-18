@@ -254,6 +254,20 @@ var respecConfig = {
         "publisher":"ISO",
         "id":"ISO 14721:2012",
         "date":"21 August 2012"
+       }, 
+      "DCAT":{
+        "authors":["Fadi Maali", "John Erickson"],
+        "href":"http://www.w3.org/TR/vocab-dcat/",
+        "title":"Data Catalog Vocabulary (DCAT)",
+        "status":"W3C Recommendation",
+        "date":"16 January 2014"
+       }, 
+      "CSV":{
+        "authors":["Y. Shafranovich"],
+        "href":"https://www.ietf.org/rfc/rfc4180.txt",
+        "title":"Common Format and MIME Type for Comma-Separated Values (CSV) Files",
+        "status":"RFC 4180",
+        "date":"October 2005"
        }
     }
 };
