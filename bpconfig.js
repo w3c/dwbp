@@ -1,4 +1,4 @@
-var respecConfig = {
+﻿var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
     publishDate:  "2015-01-29",
@@ -268,6 +268,12 @@ var respecConfig = {
         "title":"Common Format and MIME Type for Comma-Separated Values (CSV) Files",
         "status":"RFC 4180",
         "date":"October 2005"
-       }
+       },
+      "NAVATHE": {
+        title: "Fundamentals of Database Systems",
+        authors: ["Ramez Elmasri", "Shamkant B. Navathe"],
+        date: "2010",
+        status: "Addison Wesley"
+      }
     }
 };
