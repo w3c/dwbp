@@ -269,7 +269,7 @@
         "status":"RFC 4180",
         "date":"October 2005"
        },
-      "NAVATHE": {
+      "Navathe": {
         title: "Fundamentals of Database Systems",
         authors: ["Ramez Elmasri", "Shamkant B. Navathe"],
         date: "2010",
