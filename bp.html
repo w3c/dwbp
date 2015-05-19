@@ -1006,15 +1006,8 @@ figure figcaption {
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li>Use <a href="http://www.mementoweb.org/">Memento</a> to
-                relate the different versions to each other. An example of this
-                is <a href="http://debpedia.org">DBpedia</a> which has
-                undergone several releases since its first publication and
-                always uses the same URI for its resources. Every resource is
-                de-referenced to the most up to date description available for
-                it along with a link to preserved descriptions using the Memento
-                protocol ([[RFC7809]]) for the <a href="http://mementoweb.org/depot/native/dbpedia/">Memento
-                  gateway of DBpedia</a>.</li>
+              <li>Use the <a href="http://www.mementoweb.org/guide/howto">Memento</a> protocol, or components thereof,
+                to declare that a given resource is versioned and express its relation to other versions.</li>
             </ul>
             <p>The Web Ontology Language provides a number of annotation
               properties for version information [[OWL2-QUICK-REFERENCE]] and
@@ -1023,7 +1016,9 @@ figure figcaption {
             <label class="expand" for="example-Versioning"></label>
             <input id="example-Versioning" type="checkbox">
             <div class="example">
-              <p>to be done </p>
+              <p>to be completed</p>
+            <p><em>Using Memento</em></p>
+            <p>A query for the headers of a resource such as dbpedia:Paris using <pre>curl -L -I http://dbpedia.org/resource/Paris</pre> shows <pre>http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre> as part of the links with a "timegate" relation. This timegate itself points to the latest memento of the web representation of the resource with a "last memento" relation:<pre>http://dbpedia.mementodepot.org/memento/20120515/http://dbpedia.org/page/Paris</pre> A query for a particular datetime will point to the closest memento available:<pre>curl -H "Accept-Datetime: Sat, 16 Jun 2012 00:00:00 GMT" -L -I http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre></p>
             </div>
           </section>
           <section class="test">
