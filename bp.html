@@ -328,6 +328,12 @@ figure figcaption {
             as real time data about the traffic of the city. John decides to
             create two datasets: one for the bus timetables and other one for
             the real time traffic data. </p>
+          <p> Some requirements that should be addressed:</p>
+          <ul>
+            <li> The dataset for bus timetables must be available in two languages: english and spanish; </li>
+            <li> Both datasets must be available in csv and json-ld formats; </li>
+            
+          </ul>
         </div>
         When necessary RDF examples will be used to show the result of the
         application of some best practices. RDF examples in this document are
@@ -379,9 +385,9 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It must be possible for humans to understand the metadata that
-              describes a dataset, which makes it <span style="font-style: italic;">human
-                readable metadata</span>.</p>
+            <p> It must be possible for humans to understand the metadata, which
+              makes it <span style="font-style: italic;">human readable
+                metadata</span>.</p>
             <p>It should be possible for computer applications, notably user
               agents, to process the metadata, which makes it <span style="font-style: italic;">machine
                 readable metadata</span>.</p>
@@ -403,8 +409,10 @@ figure figcaption {
                 of multiple formats is best achieved by generating each
                 available format on the fly based on a single source of the
                 metadata.</li>
-              <li> when defining machine readable metadata, reusing existing standard terms and 
-                popular vocabularies are strongly recommended. For example, Dublin Core Metadata (DCMI) terms [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] should 
+              <li> when defining machine readable metadata, reusing existing
+                standard terms and popular vocabularies are strongly
+                recommended. For example, Dublin Core Metadata (DCMI) terms
+                [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] should
                 be used to provide descriptive metadata (see Section <a href="#dataVocabularies"></a>.</li>
             </ul>
             <label class="expand" for="example-ProvideMetadata"></label> <input
@@ -431,7 +439,6 @@ figure figcaption {
           </section>
         </div>
         <!-- end of BP -->
-        
         <!-- begin Discovery Metadata BP -->
         <div class="practice">
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
@@ -482,15 +489,15 @@ figure figcaption {
                 Administrative Metadata</a></p> --> <label class="expand" for="example-DiscoveryMetadata"></label>
             <input id="example-DiscoveryMetadata" type="checkbox">
             <div class="example">
-              <p> The example below shows how to use [[VOCAB-DCAT]] to provide the machine
-                readable <strong> discovery </strong> metadata for the
-                timetable dataset (dataset-001). </p>
+              <p> The example below shows how to use [[VOCAB-DCAT]] to provide
+                the machine readable <strong> discovery </strong> metadata for
+                the timetable dataset (dataset-001). </p>
               <pre>  &nbsp;:dataset-001
        a dcat:Dataset&nbsp;;
        dct:title "Bus timetable of MyCity"&nbsp;;
        dcat:keyword "transport","mobility" ,"bus"&nbsp;;
-       dct:issued "2015-05-05"&nbsp;;
-       dct:modified "2015-05-05"&nbsp;;
+       dct:issued "2015-05-05"^^xsd:date'&nbsp;;
+       dct:modified "2015-05-05"^^xsd:date'&nbsp;;
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
@@ -591,10 +598,15 @@ figure figcaption {
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
        dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;; 
-       <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;</strong>      
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;&nbsp;; 
+       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt;&nbsp;;</strong>
+       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/spa&gt;&nbsp;;</strong>
        .
 </pre>
+              <p> To declare the languages the dataset is published in use dct:language.
+                If the dataset is available in mutiple languages, use multiple values for this property [[VOCAB-DCAT].
+                As proposed in Dataset Descriptions from HCLS Community [[HCLS]] values were taken from the Lexvo.org Ontology [[Lexvo]].
+              </p>
               <div class="issue"> to include date and numbers formats! </div>
               <p></p>
               <div class="issue"> DCAT has a property to describe language, but
@@ -622,10 +634,10 @@ figure figcaption {
           <p><span id="StructuralMetadata" class="practicelab">Provide
               structural metadata </span> </p>
           <p class="practicedesc"> Information about the schema and internal
-            structure of a dataset must be described by metadata</p>
+            structure of a distribution must be described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Providing information about the internal structure of a dataset
+            <p> Providing information about the internal structure of a distribution
               can be helpful when exploring or querying the dataset. Besides,
               structural metadata provides information that helps to understand
               the meaning of the data. </p>
@@ -633,13 +645,22 @@ figure figcaption {
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p>It should be possible for humans to understand the internal
-              structure or schema of the dataset. </p>
+              structure or schema of a distribution. </p>
             <p> It should be possible for user agents be able to automatically
-              process the structural metadata about the dataset.</p>
+              process the structural metadata about a distribution.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p></p>
+            <p> Structural metadata is available according to the format of a specific distribution and it may be 
+              provided within separate documents or embedded into the document. For more details see the links below.    
+            <ul>
+              <li> Tabular data: see  <a href="http://www.w3.org/TR/2015/WD-tabular-data-model-20150416/#locating-metadata"> Model for Tabular Data and Metadata on the Web </a> </li> 
+              <li> JSON-LD: see <a href="http://www.w3.org/TR/json-ld/"> JSON-LD 1.0 </a> </li>
+              <li> XML: see <a href="http://www.w3.org/XML/Schema"> XML Schema </a> </li>
+            </ul> 
+              
+              
+            </p>
             <label class="expand" for="example-StructuralMetadata"></label> <input
 
               id="example-StructuralMetadata" type="checkbox">
@@ -649,10 +670,10 @@ figure figcaption {
             <p></p>
           </section>
           <section class="test"><span style="font-weight: bold;">How to Test </span>
-            <p> Check that the metadata for the dataset itself includes
-              structural information about the dataset. </p>
+            <p> Check that the distribution itself includes
+              structural information about the data organization. </p>
             <p> Check if a user agent can automatically process the structural
-              information about the dataset.</p>
+              information about the distribution.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -679,7 +700,7 @@ figure figcaption {
           <p><span id="DataLicense" class="practicelab">Provide data license
               information</span></p>
           <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
-            be described by metadata </p>
+            be available </p>
           <div class="axioms">
             <p class="subhead">Why</p>
             <p>The presence of license information is essential for data
@@ -693,9 +714,9 @@ figure figcaption {
           <div class="description">
             <p class="subhead">Intended outcome</p>
             <p>It should be possible for humans to understand possible
-              restrictions placed on the use of the dataset.</p>
+              restrictions placed on the use of a distribution.</p>
             <p>It should be possible for machines to automatically detect the
-              data license of the dataset.</p>
+              data license of a distribution.</p>
           </div>
           <div class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -722,7 +743,17 @@ figure figcaption {
 
               type="checkbox">
             <div class="example">
-              <p>to be done </p>
+              <p>
+               <p> The example below shows the machine readable metadata for
+                 :dataset-001-csv with the inclusion of the <strong> data license </strong> information. </p>
+              <pre>  &nbsp;:dataset-001-csv
+       a dcat:Distribution&nbsp;;
+       dcat:mediaType "text/csv";
+       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       .
+</pre>
+              
+              </p>
             </div>
           </div>
           <div class="test">
@@ -1398,7 +1429,6 @@ figure figcaption {
           as URI sets on the Web, which are applicable to any kind of
           vocabulary.</p>
         <!-- begin of Document Vocabularies BP -->
-        
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="MetadataStandardized" class="practicelab">Use
@@ -1443,7 +1473,6 @@ figure figcaption {
           </section>
         </div>
         <!-- end of BP -->
-        
         <div class="practice">
           <p><span id="DocumentVocabularies" class="practicelab"> Document
               vocabularies </span></p>
