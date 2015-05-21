@@ -270,10 +270,21 @@
         "date":"October 2005"
        },
       "Navathe": {
-        title: "Fundamentals of Database Systems",
-        authors: ["Ramez Elmasri", "Shamkant B. Navathe"],
-        date: "2010",
-        status: "Addison Wesley"
-      }
+ 	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        
+	"title": "Fundamentals of Database Systems",
+        "date": "2010",
+        "publisher": "Addison Wesley"
+      },
+      "HCLS": {
+        authors: ["Alasdair J.G. Gray", "Joachim Baran", "M. Scott Marshall", "Michel Dumontier"],
+	title: "Dataset Descriptions: HCLS Community Profile",
+ 	"href":"http://www.w3.org/TR/vocab-dcat/", 
+        "publisher": "W3C"
+      },
+      "Lexvo": {
+	title: "Lexvo.org",
+ 	"href":"http://www.lexvo.org/" 
+       
+      },
     }
 };
