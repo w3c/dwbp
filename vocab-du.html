@@ -824,6 +824,37 @@ associations between resources.</td>
   </tbody>
 </table>
 
+ <p>An example duv:Application </p>
+
+        <pre class="example">
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+
+:xyplotter
+  a duv:Application;
+  rdfs:label "2dplotter" ;
+  duv:consumes :dataset-03312004 ;
+.
+
+:dataset-Jan-Mar-2004-csv 
+        a dcat:Distribution .
+
+:dataset-03312004
+         a dcat:Dataset ;
+          dct:title "Mars Quarterly Temperature Plot" ; 
+          dcat:distribution :dataset-Jan-Mar-2004-csv ;
+.
+
+          </pre>
+ <p>
+
+
 <h4 role="heading" aria-level="3" id="Property:dataset_title">Property: title</h4>
 <table class="definition">
   <thead><tr>
