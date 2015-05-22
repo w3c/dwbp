@@ -822,17 +822,17 @@ curate
 
               href="#Class:_Dataset"></a></td> -->
         </tr>
-        <tr>
+        <!--<tr>
           <td>Sub Class Of</td>
           <td><a href="http://xmlns.com/foaf/spec/#term_Agent"></a><a href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</a></td>
-        </tr>
-        <tr>
+        </tr> -->
+        <tr> 
           <td>Label</td>
           <td>Agent</td>
         </tr>
       </tbody>
     </table>
-    <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
+    <!--<h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
       title</h4>
     <table class="definition">
       <thead>
@@ -871,7 +871,7 @@ curate
           <td><span style="text-decoration: underline;">rdfs:Literal</span></td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
       develops</h4>
@@ -902,7 +902,7 @@ curate
         </tr>
       </tbody>
     </table>
-    <p>An example duv:Application </p>
+    <p>An example foaf:Agent and duv:Application </p>
     <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -910,21 +910,18 @@ curate
 @prefix :     &lt;http://example.org#&gt; .
 
 :laufer
-   a duv:Person  ;
-   foaf:givenName "Laufer"  ;
-   foaf:mbox &lt;mailto:laufer@example.org&gt; ;
+a foaf:Agent, foaf:Person;
+   foaf:givenName "Laufer";
+   foaf:mbox &lt;mailto:laufer@example.org&gt;
+   duv:develops :xyplotter;
 .
 
 :xyplotter
   a duv:Application;
   rdfs:label "2dplotter" ;
   duv:developedBy :laufer ; 
-.
-
-
-          </pre>
-    <p>
-    </p>
+.          </pre>
+    
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h3 role="heading" aria-level="2" id="Class:_Catalog"><br>
     </h3>
@@ -1032,17 +1029,18 @@ curate
 
 :xyplotter
   a duv:Application;
-  rdfs:label "2dplotter" ;
-  duv:consumes :dataset-03312004 ;
+  rdfs:label "2dplotter";
+  duv:consumes :dataset-03312004;
 .
 
 :dataset-Jan-Mar-2004-csv 
-        a dcat:Distribution .
+  a dcat:Distribution;
+.
 
 :dataset-03312004
-         a dcat:Dataset ;
-          dct:title "Mars Quarterly Temperature Plot" ; 
-          dcat:distribution :dataset-Jan-Mar-2004-csv ;
+  a dcat:Dataset;
+  dct:title "Mars Quarterly Temperature Plot"; 
+  dcat:distribution :dataset-Jan-Mar-2004-csv;
 .
 
           </pre>
@@ -1412,9 +1410,9 @@ curate
         </tr>
       </tbody>
     </table>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
+    <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h3 role="heading" aria-level="2" id="Class:_Catalog"><br>
-    </h3>
+    </h3> -->
     <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
       hasCitingEntity</h4>
     <table class="definition">
