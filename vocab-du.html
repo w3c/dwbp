@@ -918,34 +918,6 @@ associations between resources.</td>
   </tbody>
 </table>
 <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
-<h3 role="heading" aria-level="2" id="Class:_Catalog"><br>
-</h3>
-<h3 role="heading" aria-level="2" id="Class:_Catalog"><br>
-<span class="secno"></span></h3>
-<h3 role="heading" aria-level="2" id="Class:_Catalog"><span class="secno">8.4 </span>Class: Comment</h3>
-<p><a href="vocab-duv.html#Property:catalog_update_date"><br>
-</a></p>
-<table class="definition">
-  <thead><tr>
-    <th>RDF Class:</th>
-    <th><span style="text-decoration: underline;">duv:Comment</span></th>
-  </tr>
-  </thead> <tbody>
-    <tr>
-      <td class="prop">Definition</td>
-      <td>&nbsp;A comment made in the dataset review.</td>
-    </tr>
-    <tr>
-      <td class="prop">rdfs:isDefinedBy</td>
-      <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
-    </tr>
-    <tr>
-      <td>Label</td>
-      <td>Comment</td>
-    </tr>
-  </tbody>
-</table>
-<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
 <h3 role="heading" aria-level="2" id="Class:_Catalog"><span class="secno">8.5 </span>Class: Dataset</h3>
 <p><a href="vocab-duv.html#Property:catalog_update_date"><br>
 </a></p>
@@ -1112,8 +1084,7 @@ in cases of plagiarism).</td>
   </thead> <tbody>
     <tr>
       <td class="prop">Definition</td>
-      <td>&nbsp;Information or instructions related to the
-usage of the dataset.&nbsp;</td>
+      <td>&nbsp;Information or instructions related to the usage of the dataset.&nbsp;</td>
     </tr>
     <tr>
       <td class="prop">rdfs:isDefinedBy</td>
@@ -1126,7 +1097,7 @@ usage of the dataset.&nbsp;</td>
   </tbody>
 </table>
 <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
-<h4 role="heading" aria-level="3" id="Property:dataset_title">Property: consume</h4>
+<h4 role="heading" aria-level="3" id="Property:dataset_title">Property: consumes</h4>
 <table class="definition">
   <thead><tr>
     <th>RDF Property:</th>
@@ -1149,34 +1120,6 @@ consumed." </td>
     <tr>
       <td>rdfs:isDefinedBy</td>
       <td>http://www.w3c.org/ns/duv</td>
-    </tr>
-  </tbody>
-</table>
-
-
-<h3 role="heading" aria-level="2" id="Class:_Catalog"><span class="secno">8.8 </span>Class: Feedback</h3>
-<table class="definition">
-  <thead><tr>
-    <th>RDF Class:</th>
-    <th><span style="text-decoration: underline;">duv:Feedback</span></th>
-  </tr>
-  </thead> <tbody>
-    <tr>
-      <td class="prop">Definition</td>
-      <td>&nbsp;Feedback on the review. Expresses whether the
-review was useful or not.</td>
-    </tr>
-    <tr>
-      <td class="prop">rdfs:isDefinedBy</td>
-      <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
-    </tr>
-    <tr>
-      <td>Label</td>
-      <td>Feedback</td>
-    </tr>
-    <tr>
-      <td>rdfs:subClassOf</td>
-      <td><a href="http://vocab.org/review/terms.html#Feedback"> rev:Feedback</td>
     </tr>
   </tbody>
 </table>
@@ -1318,6 +1261,34 @@ citation.</td>
     </tr>
   </tbody>
 </table>
+ <p>An example duv:Rating </p>
+
+        <pre class="example">
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix duv:  <http://www.w3.org/ns/duv#> .
+@prefix oa:   <http://www.w3.org/ns/oa#>  .
+@prefix :     <http://example.org#> .
+
+
+
+:dataset-03312004
+          a dcat:Dataset ;
+          dct:title "Mars Quarterly Temperature Plot" ;
+.
+
+
+:comment1
+         a duv:Feedback ;
+         oa:hasRating "3 Star" ;
+         oa:hsBody "Linked Data Rating" ;
+         oa:hasTarget :dataset-03312004 ;
+.
+
+          </pre>
 <h3 role="heading" aria-level="2" id="Class:_Catalog_record"><span class="secno">8.10</span>Class: Citation</h3>
 <p><a href="#Property:record_update_date"><br>
 </a></p>
@@ -1370,6 +1341,43 @@ citation.</td>
     </tr>
   </tbody>
 </table>
+
+ <p>An example duv:Feedback </p>
+
+        <pre class="example">
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix duv:  <http://www.w3.org/ns/duv#> .
+@prefix oa:   <http://www.w3.org/ns/oa#>  .
+@prefix :     <http://example.org#> .
+
+
+
+:laufer
+   a duv:Person  ;
+   foaf:givenName "Laufer"  ;
+   foaf:mbox &lt;mailto:laufer@example.org&gt; ;
+.
+
+:dataset-03312004
+          a dcat:Dataset ;
+          dct:title "Mars Quarterly Temperature Plot" ; 
+.
+
+
+:comment1
+         a duv:Feedback ;
+         oa:hasBody "Written in MS-DOS text format." ;
+         oa:hasTarget :dataset-03312004 ;
+         oa:annotatedBy :laufer ;
+.
+
+          </pre>
+
+
 <h4 role="heading" aria-level="3" id="Property:dataset_title">Property: has_rating</h4>
 <table class="definition">
   <thead><tr>
@@ -1383,7 +1391,7 @@ citation.</td>
     </tr>
     <tr>
       <td class="prop">Range</td>
-      <td><span style="text-decoration: underline;"><a href="">duv:rating</a></span></td>
+      <td><span style="text-decoration: underline;"><a href="">duv:Rating</a></span></td>
     </tr>
     <tr>
       <td>Label</td>
@@ -1444,20 +1452,20 @@ citation.</td>
 </table>
 
 
-<h3 role="heading" aria-level="2" id="Class:_Dataset"><span class="secno">8.13 </span>Class: WebThings</h3>
+<h3 role="heading" aria-level="2" id="Class:_Dataset"><span class="secno">8.13 </span>Class: WebThing</h3>
 <table class="definition">
   <thead><tr>
     <th>RDF Class:</th>
-    <th><a href="http://www.w3.org/ns/dcat#Dataset">duv:Webthings</a></th>
+    <th>duv:WebThing</th>
   </tr>
   </thead> <tbody>
     <tr>
       <td class="prop">Definition</td>
-      <td> </td>
+      <td>A Web of Things (WoT) device, sensor, or hardware on the web that consumes a dataset.</td>
     </tr>
     <tr>
       <td class="prop">Sub class of:</td>
-      <td><a href="http://vocab.org/review/terms.html#Feedback"></a></td>
+      <td><a href="http://www.w3.org/ns/duv#Experience">duv:Experience</a></td>
     </tr>
     <tr>
       <td class="prop">rdfs:isDefinedBy</td>
@@ -1465,10 +1473,37 @@ citation.</td>
     </tr>
     <tr>
       <td>Label</td>
-      <td>WebThings</td>
+      <td>WebThing</td>
     </tr>
   </tbody>
 </table>
+        <pre class="example">
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+
+:insitu-measurement-data-logger
+  a duv:WebThing;
+  rdfs:label "surface meteorology data logger" ;
+  duv:consumes :configfile ;
+.
+
+:configfile-csv
+        a dcat:Distribution .
+
+:configfile
+         a dcat:Dataset ;
+          dct:title "configuration settings" ;
+          dcat:distribution :configfile-csv ;
+.
+
+          </pre>
+ <p>
 
 
 <h2 id="h2_acknowledgements" role="heading" aria-level="1"><span class="secno">A. </span>Acknowledgements</h2>
