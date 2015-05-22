@@ -1,39 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html prefix="dcat: http://www.w3.org/ns/dcat#
+	dct: http://purl.org/dc/terms/"
+	lang="en">
 <head>
 	<title>DWBP - Examples</title>
-
 	<meta charset='utf-8'>
 	<meta content="width=device-width,initial-scale=1" name="viewport">
-	<script src='http://www.w3.org/Tools/respec/respec-w3c-common'
-	async class='remove'></script>
-	<script class='remove'>
-	var respecConfig = {
-		specStatus: "WG-NOTE",
-		shortName:  "dwbp",
-		editors: [
-		{
-			name: "Bernadette Farias Lóscio",
-			company: "CIn - UFPE, Brazil",
-			companyURL: "http://www.cin.ufpe.br/"
-		}, {
-			name: "Caroline Burle",
-			company: "NIC.br, Brazil",
-			companyURL: "http://nic.br/",
-		}, {
-			name: "Newton Calegari",
-			company: "NIC.br, Brazil",
-			companyURL: "http://nic.br/",
-		}],
-		noRecTrack:  true,
-		previousMaturity: null,
-		previousPublishDate:  null,
-		wg:           "Data on the Web Best Practices Working Group",
-		wgURI:        "https://www.w3.org/2013/dwbp",
-		wgPublicList: "public-dwbp-wg",
-		wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/68239/status",
-	};
-	</script>
 	<style type="text/css">
+	.container {
+		font-family: sans-serif;
+		width: 968px;
+		margin: 0 auto;
+	}
 	.dataset-description {
 		background-color: transparent;
 		border-collapse: collapse;
@@ -42,9 +20,7 @@
 	}
 
 	.dataset-description td {
-		padding-left: 2px;
-		padding-top: 4px;
-		padding-bottom: 4px;
+		padding: 6px 3px 6px 3px;
 	}
 
 	.dataset-description td:first-child {
@@ -59,22 +35,49 @@
 	.dataset-description tr:nth-child(odd) {
 		background-color: #FFFFFF;
 	}
+	div.example {
+		padding: 0.5em;
+		border-left: 0.5em solid #E0CB52;
+		border-color: #E0CB52;
+		background: none repeat scroll 0% 0% #FCFAEE;
+	}
+	a {
+		color: #00C;
+		text-decoration: none;
+	}
+	a[href]:hover {
+		background: none repeat scroll 0% 0% #FFA;	
+	}
 	</style>
 </head>
 <body>
-	<section id="sotd"></section>
+	<div class="container">
+	<h1>Example of Dataset - Human-readable</h1>
 	<section id="abstract">
-		<p>This is the human readable version of example used in the DWBP document.</p>
+		<p>This is the human-readable version of example used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
 	</section>
 
-	<section>
-		<h1>Example of Dataset - Human Readable</h1>
+	<section typeof="dcat:Dataset">
+		<p>The dataset description is based on following example:</p>
+
+		<div class="example">
+			<p> John works for the Transport Agency of MyCity and he is in charge
+			of the publication of data on the Web about bus timetables as well
+			as real time data about the traffic of the city. John decides to
+			create two datasets: one for the bus timetables and other one for
+			the real time traffic data. </p>
+			<p> Some requirements that should be addressed:</p>
+			<ul>
+				<li> The dataset for bus timetables must be available in two languages: english and portuguese; </li>
+				<li> Both datasets must be available in csv and json-ld formats; </li>
+			</ul>
+		</div>
 
 		<h2>Dataset description</h2>
 		<table class="dataset-description">
 			<tr>
 				<td>Title</td>
-				<td>Bus timetable of MyCity</td>
+				<td property="dct:title">Bus timetable of MyCity</td>
 			</tr>
 <!-- 			<tr>
 				<td>Description</td>
@@ -87,38 +90,39 @@
 				</tr> -->
 				<tr>
 					<td>Keywords</td>
-					<td>transport,mobility ,bus</td>
+					<td property="dcat:keyword">transport, mobility, bus</td>
 				</tr>
 				<tr>
 					<td>Publication date</td>
-					<td>2015-05-05</td>
+					<td property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</td>
 				</tr>
 				<tr>
 					<td>Last modification</td>
-					<td>2015-05-05</td>
+					<td property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</td>
 				</tr>
 				<tr>
 					<td>Publisher</td>
-					<td>Transport Agency MyCity</td>
+					<td property="dct:publisher">Transport Agency MyCity</td>
 				</tr>
 				<tr>
 					<td>Contact point</td>
-					<td>pagina de contato</td>
+					<td><a property="dcat:contactPoint" href="http://example.org/transport-agency/contact">http://example.org/transport-agency/contact</a></td>
 				</tr>
 				<tr>
 					<td>Period that the dataset covers</td>
-					<td>The British calendar year of 2014</td>
+					<td><a property="dct:temporal" href="http://reference.data.gov.uk/id/year/2014" >The British calendar year of 2014</a></td>
 				</tr>
 				<tr>
 					<td>Spatial coverage</td>
-					<td>Fortaleza, Brazil</td>
+					<td><a propert="dct:spatial" href="http://www.geonames.org/3399415">Fortaleza, Brazil</a></td>
 				</tr>
 				<tr>
 					<td>Frequency at the dataset is published</td>
-					<td>Annual</td>
+					<td><a property="dct:accrualPeriodicity" href="http://purl.org/linked-data/sdmx/2009/code#freq-A">Annual</a></td>
 				</tr>
 			</table>
 		</section>
+	</div>
 
 	</body>
 	</html>
