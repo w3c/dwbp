@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-05-21",
+		publishDate : "2015-05-27",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -179,6 +179,9 @@ pre {
 	color: black;
 	background-color: #f9f9f9;
 	line-height: 1.1em;
+}
+
+pre red { color: red;
 }
 </style>
 </head>
@@ -433,12 +436,138 @@ pre {
 	</section>
 	<section id="examples" class="informative">	
 		<h2>Example Usage</h2>
+		
+Let's consider a dataset myDataset, and its distribution myDatasetDistribution,
+<pre>@prefix dcat:  &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix :      &lt;http://example.org#&gt; .
+
+:myDataset 
+	a  dcat:Dataset;
+	dct:title "My immaginary dataset"; 
+	dcat:distribution :myDatasetDistribution
+	.
+
+:myDatasetDistribution
+	a  dcat:Distribution;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
+       	dct:title "CSV distribution of imaginary dataset" ;
+       	dcat:mediaType "text/csv" ;
+       	dcat:byteSize "87120"^^xsd:decimal 
+	.
+</pre>
+
+
 		<h4>Express that a dataset received an ODI certificate</h4>
 		<p></p>
 		<pre></pre>
 		<h4>Document the provenance of a dataset</h4>
-		<p></p>
-		<pre></pre>
+		<p>An automated quality checker has provided an  assessment for myDatasetDistribution.</p>
+<pre>
+@prefix dcat:  &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix prov:  &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix dqv:   &lt;http://www.w3.org/ns/dqv#&gt; .
+@prefix :      &lt;http://example.org#&gt; .
+
+#myDatasetDistribution has some quality measures
+:myDatasetDistribution
+	a  prov:Entity ;
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+
+# myQualityMetadata has been created by qualityChecker and it is the result of the qualityChecking activity 
+:myQualityMetadata 
+	a dqv:QualityMetadata, prov:Entity ;
+	prov:wasAttributedTo :qualityChecker ;
+	prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy :qualityChecking 
+	.
+
+# qualityChecker is a service computing some quality metrics 	
+:qualityChecker
+	a prov:SoftwareAgent, prov:Entity ;   
+	rdfs:label "a quality assessment service"^^xsd:string
+	<red>#?? we should probably suggest to add more info about the services</red>
+	.
+
+# the qualityChecking is the activity that has generated myQualityMetadata starting from  MyDatasetDistribution    
+:qualityChecking
+	a prov:Activity;
+	rdfs:label "the activity of checking quality"^^xsd:string;
+   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime;
+   	prov:wasAssociatedWith :qualityChecker;
+   	prov:used              :myDatasetDistribution;
+   	prov:generated         :myQualityMetadata;
+   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime
+	.
+	 
+</pre>
+
+	<p> The result of metrics deployed in the previous assessment  are stored in the myQualityMetadata graph </p>
+<pre>
+@prefix dcat:  &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix prov:  &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix dqv:   &lt;http://www.w3.org/ns/dqv#&gt; .
+@prefix daq:   &lt;http://purl.org/eis/vocab/daq#&gt; .
+@prefix :      &lt;http://example.org#&gt; .
+
+# myQualityMatadata is a graph 
+<red># we are assuming dqv:QualityMetadata is an extension of daq:QualityGraph,
+# otherwise we should probably define a proper qb:DataStructureDefinition </red>
+ 
+:myQualityMetadata {
+
+	:measure1 
+		a dqv:QualityMeasure ;
+		<red># when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
+		# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?? </red> 
+		daq:computedOn :myDatasetDistribution ;
+		daq:metric :cvsAvailabilityMetric ;
+		daq:value "1.0"^^xsd:double 
+	.
+     	
+ 	:measure2
+	a dqv:QualityMeasure ;
+		<red># is  dqv:hasQualityMeasure likely to be the inverse of daq:computedOn, 
+		#when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset ?? </red> 
+		daq:computedOn :myDatasetDistribution ;
+		daq:metric :csvConsistency ;
+		daq:value "0.5"^^xsd:double 
+	.
+
+
+:cvsAvailabilityMetric 
+	a daq:Metric ;
+	<red> #assuming dqv:hasDimension is the inverse of daq:hasMetric</red>
+	dqv:hasDimension :availabity
+	.
+
+
+:csvConsistency
+	a daq:Metric 
+	<red> #assuming dqv:hasDimension is the inverse of daq:hasMetric</red>
+	dqv:hasDimension :consistency
+	.
+	
+:availabity
+	a daq:Dimension 
+	<red> #assuming dqv:hasCategory is the inverse of daq:hasDimension</red>
+	dqv:hasCategory :category1
+	.
+
+:consistency
+	a daq:Dimension 
+	<red> #assuming dqv:hasCategory is the inverse of daq:hasDimension</red>
+	dqv:hasCategory :category2
+	.
+
+<red># Categories and  dimensions might be more extensively defined, for example, 
+# by grounding these dimension and metrics in section Dimensions and metrics hints.
+# Alternatively, we can assume any quality framework is free to define its own dimensions and categories</red>
+}
+
+
+</pre>
+ 
 	</section>
 	<section id="requirements" class="informative">
 		<h2>Requirements</h2>
