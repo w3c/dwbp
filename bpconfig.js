@@ -81,6 +81,10 @@
     noLegacyStyle: false,
 
     localBiblio: {
+    	"CC-VOCAB" : {
+    		title : "Creative Commons Rights Expression Language",
+    		href : "http://creativecommons.org/ns"
+    	},
      "MOLLER": {
       title: "Lifecycle models of data-centric systems and domains: The abstract data lifecycle model",
       href: "http://www.semantic-web-journal.net/content/lifecycle-models-data-centric-systems-and-domains",
