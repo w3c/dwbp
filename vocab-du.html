@@ -401,7 +401,10 @@ margin-bottom: 0;
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="duvrequirements"><!--OddPage--></section>
     <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">6.
       </span>DUV Requirements</h2>
-    <p> R-Citable: It should be possible to cite data on the Web</p>
+    <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: normal; font-variant: normal; font-weight: bold; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">R-Citable</span></p>
+<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;" dir="ltr"><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">It should be possible to cite data on the Web</p></span>
+<p>
+</p>
     <table style="width: 985px; height: 142px;" border="1">
       <tbody>
         <tr>
@@ -477,6 +480,45 @@ is
         </tr>
       </tbody>
     </table>
+    <p>Example duv:Citation </p>
+    <p>A 2-dimensional plot of daily average surface temperature observations taken over one quarter.  The :dataset-03312013 
+       is identified by a digital object identifier (DOI).  A technical report :paperA also identified by a DOI
+       cites the dataset.   </p>
+    <pre class="example">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
+@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
+@prefix cito: &lt;http://purl.org/spar/cito#&gt; .
+@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix : &lt;http://example.org#&gt; .
+
+:dataset-03312013
+    a dcat:Dataset;
+    dc:identifier "doi:10.1038/ex2158";
+    dct:title "Mars Quarterly Temperature Plot"@en ;
+    dct:alternative "Qtrly Temp Plot"@en;
+    dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
+    dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime ;
+    dct:creator "Laufer" ;
+    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    dcat:keyword "Mars";
+    dct:language &lt;http://www.lexvo.org/page/iso639-3/eng&gt; ;
+    cito:isCitedAsDataSourceBy :paperA ; 
+.
+
+
+:paperA 
+         a duv:Citation;
+         dc:identifier "doi:20.1055/ex7758";
+         dct:title "Mars Weather Technical Report"@en ;
+         cito:hasCitingEntity :dataset-03312004;
+.
+
+</pre>
     <section id="vocabulary-overview" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
 
       class="informative">
@@ -485,24 +527,17 @@ is
         <p id="docs-internal-guid-93be5c09-4eb4-eb35-8c94-676ae4f9ee04" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"
 
           dir="ltr"><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: normal; font-variant: normal; font-weight: bold; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">R-TrackDataUsage</span></p>
-        <p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;" dir="ltr"><span
-
-            style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">It
-should
-            be possible to track the usage of data. </span><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">Capability
-of
-            tracking data usage can help enhancing reputation of the datasets.
-            Records of data usage shows all the successful outcome of the data
+        <p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;" dir="ltr"><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">It should be possible to track the usage of data. </span><p></p><span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">Capability of tracking data usage can help enhancing reputation of the datasets.  Records of data usage shows all the successful outcome of the data
             usage and all the entities associated with it such as the person,
             organisation, application, research projects that has used these
             datasets. It increases trust in the data. It also provides provence
             about how data versions over the time.</span></p>
         <br>
-        <table style="width: 80%;" border="1">
+        <table style="width: 985px; height: 142px;" border="1">
           <tbody>
             <tr>
               <td>Use Case</td>
-              <td> R-Citable Benefits </td>
+              <td> R-TrackDataUsage Benefits </td>
             </tr>
             <tr>
               <td><b style="font-weight: normal;"><a id="docs-internal-guid-93be5c09-4eb8-d207-bfb0-4b2d649d318a"
@@ -637,6 +672,83 @@ openness
             </tr>
           </tbody>
         </table>
+    <p>An example foaf:Agent and duv:Application </p>
+    <pre class="example">
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+:laufer
+a foaf:Agent, foaf:Person;
+   foaf:givenName "Laufer";
+   foaf:mbox &lt;mailto:laufer@example.org&gt;
+   duv:develops :xyplotter;
+.
+
+:xyplotter
+  a duv:Application;
+  rdfs:label "2dplotter" ;
+  duv:developedBy :laufer ; 
+.          </pre>
+
+    <p>An example duv:Application </p>
+    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+
+:xyplotter
+  a duv:Application;
+  rdfs:label "2dplotter";
+  duv:consumes :dataset-03312004;
+.
+
+:dataset-Jan-Mar-2004-csv 
+  a dcat:Distribution;
+.
+
+:dataset-03312004
+  a dcat:Dataset;
+  dct:title "Mars Quarterly Temperature Plot"; 
+  dcat:distribution :dataset-Jan-Mar-2004-csv;
+.
+
+          </pre>
+
+    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+
+:insitu-measurement-data-logger
+  a duv:WebThing;
+  rdfs:label "surface meteorology data logger" ;
+  duv:consumes :configfile ;
+.
+
+:configfile-csv
+        a dcat:Distribution .
+
+:configfile
+         a dcat:Dataset ;
+          dct:title "configuration settings" ;
+          dcat:distribution :configfile-csv ;
+.
+</pre>
+
+<p></p>
+
+
       </b></h2>
     <b style="font-weight: normal;">
       <p id="docs-internal-guid-93be5c09-4ebb-3039-7b13-01b5f428b05b" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"
@@ -655,11 +767,11 @@ feedback
         should &nbsp;have a review mechanism to incorporate submitted
         corrections.</span><br>
       <br>
-      <table style="width: 80%;" border="1">
+      <table style="width: 985px; height: 142px;" border="1">
         <tbody>
           <tr>
             <td>Use Case</td>
-            <td> R-Citable Benefits </td>
+            <td> R-UsageFeedback Benefits </td>
           </tr>
           <tr>
             <td><b style="font-weight: normal;"><a id="docs-internal-guid-93be5c09-4ebb-e9a9-5666-33d593cf34a0"
@@ -770,6 +882,30 @@ curate
           </tr>
         </tbody>
       </table>
+    <p>An example duv:Rating </p>
+    <pre class="example">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
+@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
+@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix : &lt;http://example.org#&gt; .
+
+:dataset-03312004
+          a dcat:Dataset;
+          dct:title "Mars Quarterly Temperature Plot";
+.
+
+:comment1
+         a duv:Feedback;
+         oa:hasRating "3 Star";
+         oa:hsBody "Linked Data Rating";
+         oa:hasTarget :dataset-03312004;
+.
+</pre>
+
     </b>
     <h2 role="heading" aria-level="1" id="overview"><span class="secno">7. </span>Vocabulary
       Overview</h2>
@@ -902,25 +1038,7 @@ curate
         </tr>
       </tbody>
     </table>
-    <p>An example foaf:Agent and duv:Application </p>
-    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
 
-:laufer
-a foaf:Agent, foaf:Person;
-   foaf:givenName "Laufer";
-   foaf:mbox &lt;mailto:laufer@example.org&gt;
-   duv:develops :xyplotter;
-.
-
-:xyplotter
-  a duv:Application;
-  rdfs:label "2dplotter" ;
-  duv:developedBy :laufer ; 
-.          </pre>
     
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <!-- <h3 role="heading" aria-level="2" id="Class:_Catalog"><br>
@@ -1017,33 +1135,6 @@ a foaf:Agent, foaf:Person;
         </tr>
       </tbody>
     </table>
-    <p>An example duv:Application </p>
-    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-
-:xyplotter
-  a duv:Application;
-  rdfs:label "2dplotter";
-  duv:consumes :dataset-03312004;
-.
-
-:dataset-Jan-Mar-2004-csv 
-  a dcat:Distribution;
-.
-
-:dataset-03312004
-  a dcat:Dataset;
-  dct:title "Mars Quarterly Temperature Plot"; 
-  dcat:distribution :dataset-Jan-Mar-2004-csv;
-.
-
-          </pre>
     <p>
     </p>
     <h4 role="heading" aria-level="3" id="Property:application_title">Property:
@@ -1475,29 +1566,6 @@ a foaf:Agent, foaf:Person;
         </tr>
       </tbody>
     </table>
-    <p>An example duv:Rating </p>
-    <pre class="example">@prefix rdf:  <http: www.w3.org="" 1999="" 02="" 22-rdf-syntax-ns#=""> .
-@prefix foaf: <http: xmlns.com="" foaf="" 0.1=""> .
-@prefix rdfs: <http: www.w3.org="" 2000="" 01="" rdf-schema#=""> .
-@prefix dcat: <http: www.w3.org="" ns="" dcat#=""> .
-@prefix dct:  <http: purl.org="" dc="" terms=""> .
-@prefix duv:  <http: www.w3.org="" ns="" duv#=""> .
-@prefix oa:   <http: www.w3.org="" ns="" oa#="">  .
-@prefix :     <http: example.org#=""> .
-
-:dataset-03312004
-          a dcat:Dataset;
-          dct:title "Mars Quarterly Temperature Plot";
-.
-
-:comment1
-         a duv:Feedback;
-         oa:hasRating "3 Star";
-         oa:hsBody "Linked Data Rating";
-         oa:hasTarget :dataset-03312004;
-.
-         </http:></http:></http:></http:></http:></http:></http:></http:>
-</pre>
     <h3 role="heading" aria-level="2" id="Class:_Citation"><span class="secno">8.10
         </span>Class: Citation</h3>
     <!-- <p><a href="#Property:record_update_date"><br>
@@ -1528,17 +1596,6 @@ a foaf:Agent, foaf:Person;
         </tr>
       </tbody>
     </table>
-    <p>An example duv:Citation </p>
-    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix cito: &lt;http://purl.org/spar/cito#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-TODO
-
-          </pre>
     <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
       hasCitingEntity</h4>
     <table class="definition">
@@ -1601,15 +1658,15 @@ TODO
       </tbody>
     </table>
     <p>An example duv:Feedback </p>
-    <pre class="example">@prefix rdf:  <http: www.w3.org="" 1999="" 02="" 22-rdf-syntax-ns#=""> .
-@prefix foaf: <http: xmlns.com="" foaf="" 0.1=""> .
-@prefix rdfs: <http: www.w3.org="" 2000="" 01="" rdf-schema#=""> .
-@prefix dcat: <http: www.w3.org="" ns="" dcat#=""> .
-@prefix dct:  <http: purl.org="" dc="" terms=""> .
-@prefix duv:  <http: www.w3.org="" ns="" duv#=""> .
-@prefix oa:   <http: www.w3.org="" ns="" oa#="">  .
-@prefix :     <http: example.org#=""> .
-
+    <pre class="example">
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
+@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
+@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix : &lt;http://example.org#&gt; .
 
 
 :laufer
@@ -1835,30 +1892,7 @@ TODO
         </tr>
       </tbody>
     </table>
-    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
 
-
-:insitu-measurement-data-logger
-  a duv:WebThing;
-  rdfs:label "surface meteorology data logger" ;
-  duv:consumes :configfile ;
-.
-
-:configfile-csv
-        a dcat:Distribution .
-
-:configfile
-         a dcat:Dataset ;
-          dct:title "configuration settings" ;
-          dcat:distribution :configfile-csv ;
-.
-</pre>
     <p>
     </p>
     <h2 id="h2_acknowledgements" role="heading" aria-level="1"><span class="secno">A.
