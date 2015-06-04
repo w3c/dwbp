@@ -243,8 +243,8 @@ margin-bottom: 0;
             </span>Scope</a></li>
       <li class="tocline"><a class="tocxref" href="#relationship_vocabularies"><span class="secno">5.
             </span>Relationship to other Vocabularies</a></li>
-      <li class="tocline"><a class="tocxref" href="#scenarios"><span class="secno">6.
-            </span>Scenarious</a></li>
+      <li class="tocline"><a class="tocxref" href="#examples"><span class="secno">6.
+            </span>Examples</a></li>
       <li class="tocline"><a class="tocxref" href="#vocabulary-overview"><span class="secno">7.</span>
           DUV Requirements</a></li>
       <li class="tocline"><a class="tocxref" href="#duvRequirements"><span class="secno">8.
@@ -405,9 +405,67 @@ margin-bottom: 0;
     <p> Both the Citation Typing Ontology (CiTO) and Dublin Core vocabularies are used to describe citations and 
       references between datasets and cited sources. </p>
     
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="scenarious"><!--OddPage--></section>
+    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="examples"><!--OddPage--></section>
     <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">5.
-        </span>Scenarious</h2>
+        </span>Examples</h2>
+    <p> This section shows some examples to illustrate the application of the Dataset Usage Vocabulary.</p>
+    <p> Example 1: A 2-D plot application developed by Laufer can be used to create temperature plots and consumes 
+      temperature readings from a dataset to produce the plot. A data logger used to provide temperature readings 
+      uses a configuration file for operation of the data logger. </p>
+    
+    <pre class="example">
+@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix :     &lt;http://example.org#&gt; .
+
+:laufer
+a foaf:Agent, foaf:Person;
+   foaf:givenName "Laufer";
+   foaf:mbox &lt;mailto:laufer@example.org&gt;
+   duv:develops :xyplotter;
+.
+
+:xyplotter
+  a duv:Application;
+  rdfs:label "2dplotter" ;
+  duv:consumes :dataset-03312004
+  duv:developedBy :laufer ;
+.
+
+:insitu-measurement-data-logger
+  a duv:WebThing;
+  rdfs:label "surface meteorology data logger" ;
+  duv:consumes :configfile ;
+.
+
+:configfile-csv
+  a dcat:Distribution;
+.
+
+:configfile
+  a dcat:Dataset ;
+  dct:title "configuration settings" ;
+  dcat:distribution :configfile-csv ;
+.
+
+
+:dataset-Jan-Mar-2004-csv 
+  a dcat:Distribution;
+.
+
+:dataset-03312004
+  a dcat:Dataset;
+  dct:title "Mars Quarterly Temperature Plot"; 
+  dcat:distribution :dataset-Jan-Mar-2004-csv;
+.
+
+ </pre>
+
+    
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="duvrequirements"><!--OddPage--></section>
     <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">6.
       </span>DUV Requirements</h2>
