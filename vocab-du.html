@@ -409,7 +409,7 @@ margin-bottom: 0;
     <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">5.
         </span>Examples</h2>
     <p> This section shows some examples to illustrate the application of the Dataset Usage Vocabulary.</p>
-    <p> Example 1: A 2-D plot application developed by Laufer can be used to create temperature plots and consumes 
+    <p> Example 1 - Usage: A 2-D plot application developed by Laufer can be used to create temperature plots and consumes 
       temperature readings from a dataset to produce the plot. A data logger used to provide temperature readings 
       uses a configuration file for operation of the data logger. </p>
     
@@ -452,7 +452,6 @@ a foaf:Agent, foaf:Person;
   dcat:distribution :configfile-csv ;
 .
 
-
 :dataset-Jan-Mar-2004-csv 
   a dcat:Distribution;
 .
@@ -462,10 +461,10 @@ a foaf:Agent, foaf:Person;
   dct:title "Mars Quarterly Temperature Plot"; 
   dcat:distribution :dataset-Jan-Mar-2004-csv;
 .
-</pre>
+  </pre>
     
-     <p> Example 2: Laufer provides feedback about the temperature readings dataset. </p>
- <pre class="example">
+  <p> Example 2 - Feedback: Laufer provides feedback about the temperature readings dataset. </p>
+  <pre class="example">
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -474,7 +473,6 @@ a foaf:Agent, foaf:Person;
 @prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
 @prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
 @prefix : &lt;http://example.org#&gt; .
-
 
 :laufer
    a duv:Person  ;
@@ -487,7 +485,6 @@ a foaf:Agent, foaf:Person;
    dct:title "Mars Quarterly Temperature Plot" ; 
 .
 
-
 :comment1
    a duv:Feedback ;
    oa:hasBody "Written in MS-DOS text format." ;
@@ -495,16 +492,50 @@ a foaf:Agent, foaf:Person;
    oa:annotatedBy :laufer ;
 .
 
-
 :comment2
    a duv:Feedback;
    oa:hasRating "3 Star";
    oa:hasBody "Linked Data Rating";
    oa:hasTarget :dataset-03312004;
 .
- </pre>
+  </pre>
 
+  <p>Example 3 - Citation: A technical report :paperA identified by a
+      DOI cites the dataset. The :dataset-03312013 is also identified by a digital
+      object identifier (DOI).</p>
+  <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
+@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
+@prefix cito: &lt;http://purl.org/spar/cito#&gt; .
+@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix : &lt;http://example.org#&gt; .
 
+:dataset-03312013
+    a dcat:Dataset;
+    dc:identifier "doi:10.1038/ex2158";
+    dct:title "Mars Quarterly Temperature Plot"@en ;
+    dct:alternative "Qtrly Temp Plot"@en;
+    dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
+    dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime ;
+    dct:creator "Laufer" ;
+    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    dcat:keyword "Mars";
+    dct:language &lt;http://www.lexvo.org/page/iso639-3/eng&gt; ;
+    cito:isCitedAsDataSourceBy :paperA ; 
+.
+
+:paperA 
+         a duv:Citation;
+         dc:identifier "doi:20.1055/ex7758";
+         dct:title "Mars Weather Technical Report"@en ;
+         cito:hasCitingEntity :dataset-03312004;
+.
+
+</pre>
 
     
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="duvrequirements"><!--OddPage--></section>
@@ -590,45 +621,7 @@ is
         </tr>
       </tbody>
     </table>
-    <p>Example duv:Citation </p>
-    <p>A 2-dimensional plot of daily average surface temperature observations
-      taken over one quarter. The :dataset-03312013 is identified by a digital
-      object identifier (DOI). A technical report :paperA also identified by a
-      DOI cites the dataset. </p>
-    <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
-@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
-@prefix cito: &lt;http://purl.org/spar/cito#&gt; .
-@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix : &lt;http://example.org#&gt; .
-
-:dataset-03312013
-    a dcat:Dataset;
-    dc:identifier "doi:10.1038/ex2158";
-    dct:title "Mars Quarterly Temperature Plot"@en ;
-    dct:alternative "Qtrly Temp Plot"@en;
-    dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
-    dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime ;
-    dct:creator "Laufer" ;
-    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    dcat:keyword "Mars";
-    dct:language &lt;http://www.lexvo.org/page/iso639-3/eng&gt; ;
-    cito:isCitedAsDataSourceBy :paperA ; 
-.
-
-
-:paperA 
-         a duv:Citation;
-         dc:identifier "doi:20.1055/ex7758";
-         dct:title "Mars Weather Technical Report"@en ;
-         cito:hasCitingEntity :dataset-03312004;
-.
-
-</pre>
+    
     <section id="vocabulary-overview" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
 
       class="informative">
