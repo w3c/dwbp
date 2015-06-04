@@ -622,10 +622,7 @@ is
       </tbody>
     </table>
     
-    <section id="vocabulary-overview" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
-
-      class="informative">
-      <!--OddPage--></section>
+    
     <h2 role="heading" aria-level="1" id="overview"><b style="font-weight: normal;">
         <p id="docs-internal-guid-93be5c09-4eb4-eb35-8c94-676ae4f9ee04" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"
 
@@ -772,77 +769,8 @@ openness
             </tr>
           </tbody>
         </table>
-        <p>An example foaf:Agent and duv:Application </p>
-        <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
+        
 
-:laufer
-a foaf:Agent, foaf:Person;
-   foaf:givenName "Laufer";
-   foaf:mbox &lt;mailto:laufer@example.org&gt;
-   duv:develops :xyplotter;
-.
-
-:xyplotter
-  a duv:Application;
-  rdfs:label "2dplotter" ;
-  duv:developedBy :laufer ; 
-.          </pre>
-        <p>An example duv:Application </p>
-        <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-
-:xyplotter
-  a duv:Application;
-  rdfs:label "2dplotter";
-  duv:consumes :dataset-03312004;
-.
-
-:dataset-Jan-Mar-2004-csv 
-  a dcat:Distribution;
-.
-
-:dataset-03312004
-  a dcat:Dataset;
-  dct:title "Mars Quarterly Temperature Plot"; 
-  dcat:distribution :dataset-Jan-Mar-2004-csv;
-.
-
-          </pre>
-        <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-
-:insitu-measurement-data-logger
-  a duv:WebThing;
-  rdfs:label "surface meteorology data logger" ;
-  duv:consumes :configfile ;
-.
-
-:configfile-csv
-        a dcat:Distribution .
-
-:configfile
-         a dcat:Dataset ;
-          dct:title "configuration settings" ;
-          dcat:distribution :configfile-csv ;
-.
-</pre>
-        <p></p>
       </b></h2>
     <b style="font-weight: normal;">
       <p id="docs-internal-guid-93be5c09-4ebb-3039-7b13-01b5f428b05b" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"
@@ -966,28 +894,7 @@ curate
           </tr>
         </tbody>
       </table>
-      <p>An example duv:Rating </p>
-      <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
-@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
-@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix : &lt;http://example.org#&gt; .
-
-:dataset-03312004
-          a dcat:Dataset;
-          dct:title "Mars Quarterly Temperature Plot";
-.
-
-:comment1
-         a duv:Feedback;
-         oa:hasRating "3 Star";
-         oa:hsBody "Linked Data Rating";
-         oa:hasTarget :dataset-03312004;
-.
-</pre> </b>
+       </b>
     <h2 role="heading" aria-level="1" id="overview"><span class="secno">7. </span>Vocabulary
       Overview</h2>
     <p><em>This section is non-normative.</em></p>
