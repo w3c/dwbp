@@ -195,7 +195,8 @@ pre red { color: red;
 	<section id="toc"></section>
 	<section class="informative">
 		<h2 id="intro">Introduction</h2>
-		<p>This is foreseen as an extension to DCAT [[vocab-dcat]] to
+		<p>The Data on the Web Best Practices <a href="http://www.w3.org/TR/dwbp/">Working Draft</a> has pointed out the relevance of <a href="http://www.w3.org/TR/dwbp/#quality">publishing information about the quality of data published on the web</a>.
+Accordingly, the <a href"Data on the Web Best Practices Working Group">Data on the Web Best Practices Working Group</a> has been chartered to create a vocabulary for expressing data quality. The Data Quality Vocabulary (DQV) presented in this document is foreseen as an extension to DCAT [[vocab-dcat]] to
 			cover the quality of the data, how frequently is it updated, whether
 			it accepts user corrections, persistence commitments etc. When used
 			by publishers, this vocabulary will foster trust in the data amongst
@@ -211,6 +212,14 @@ This is why next to rather expected constructs like quality measures, the Data Q
 	<section id="conformance"></section>
  	<section> 
 	<h2 id="namespaces">Namespaces</h2>
+    <p>The namespace for DQV is provisionally set as <code>http://www.w3.org/ns/dqv#</code>.
+DQV, however, seeks to re-use elements froming from other vocabularies, following the <a href="http://www.w3.org/TR/dwbp/#dataVocabularies">best practices for data vocabularies<a/> identified by the Data on the Web Best Practices Working Group.</p>
+		<div class="issue">
+			<p>
+			The Working Group is considering to put all new classes and properties (together with the ones of the <a href="http://www.w3.org/ns/duv#">Data Usage Vocabulary</a>) in the <a href="http://www.w3.org/ns/dcat#">DCAT</a> namespace.</a>
+			</p>
+		</div>
+<p>The table below indicates the full list of namespaces and prefixes used in this document.</p>
    	<table id="namespaces">
 		<thead><tr>
     			<th>Prefix</th>
@@ -258,11 +267,7 @@ This is why next to rather expected constructs like quality measures, the Data Q
 		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.</a>
 			</p>
 		</div>
-		<div class="issue">
-			<p>
-			We can put all new classes and properties (together with the <a href="http://www.w3.org/ns/duv#">DUV</a> ones) in the <a href="http://www.w3.org/ns/dcat#">DCAT</a> namespace.</a>
-			</p>
-		</div>
+
 	</section>
 
 	<section>
@@ -284,7 +289,7 @@ This is why next to rather expected constructs like quality measures, the Data Q
 			<li><a href="#">dqv:QualityAnnotation</a> represents feedbacks and quality certificates given
 				about the dataset or its distribution.</li>
 			<li><a href="http://purl.org/dc/terms/Standard">dcterms:Standard</a>
-				represents standard the dataset or its distribution conforms to.</li>
+				represents a standard the dataset or its distribution conforms to.</li>
 			<li><a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
 				represents an entity involved in the provenance of the
 				dataset or distribution.</li>
@@ -301,6 +306,8 @@ This is why next to rather expected constructs like quality measures, the Data Q
 				Data model showing the main relevant classes and their relations.
 			</figcaption>
 		</figure>
+	<p><em>N.B.: "graph containment refers the the inclusion of quality statements in (RDF) graphs, e.g. for capturing the provenance of quality statements (see later <a href="http://w3c.github.io/dwbp/vocab-dqg.html#document-the-provenance-of-the-quality-metadata">example</a>)</em>
+	</p>
 
 	<div class="issue">
 			<p>
@@ -344,7 +351,9 @@ This is why next to rather expected constructs like quality measures, the Data Q
 	</div>
 	<div class="issue">
 			<p>
-			 dqv:QualityAnnotation is a subclasses of  <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a> which  should have a <a href="http://www.w3.org/ns/oa#d4e555">oa:Motivation</a>    
+			 dqv:QualityAnnotation is foreseen as a subclasse of  <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a>. The instances of this class should have a
+	  <a href="http://www.w3.org/ns/oa#d4e230">oa:motivatedBy</a> statement with a an instance of <a href="http://www.w3.org/ns/oa#d4e555">oa:Motivation</a>, which reflects a quality assessment purpose.
+	  We plan to define is as <a href="#">dqv:qualityAssessment</a>.
 			</p>
 	</div>
 	<div class="issue">
@@ -354,18 +363,19 @@ This is why next to rather expected constructs like quality measures, the Data Q
 			</p>
 	</div>
 	</div>
+	</section>
+	
 	<section id="vocabulary specification" class="informative">
-		<h3>Vocabulary specification</h3>
+		<h2>Vocabulary specification</h2>
 		<div class="note">
 			<p>
-			We will include later tables with classes and properties specification. 
+			We will include later tables with specification of individual classes and properties. 
 			</p>
 		</div>
 
 	</section>
 
-	</section>
-	
+
 	<section id="examples" class="informative">	
 		<h2>Example Usage</h2>
 This section shows some examples to illustrate the application of the Dataset Quality Vocabulary.  
@@ -464,6 +474,7 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	.
 
 <red># The graph contains the rest of the statements presented in the previous example.</red>
+
 }
 
 # myQualityMetadata has been created by: qualityChecker and it is the result of the :qualityChecking activity 
