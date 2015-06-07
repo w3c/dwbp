@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-06-05",
+		publishDate : "2015-06-08",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -332,12 +332,6 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 	</div>
 	<div class="issue">
 			<p>
-				There could be an explicit link (such as dqv:hasqualityMetadata) between the instance of
-	 dcat:Dataset (or dcat:Distribution) and the instance of dqv:QualityMetadata so as not to rely only on graph containment for finding the provenance of quality metadata. 
-			</p>
-	</div>
-	<div class="issue">
-			<p>
 				We may want to consider a revision of DCAT to make <a
 					href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
 				and <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
@@ -356,25 +350,113 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 	  We plan to define is as <a href="#">dqv:qualityAssessment</a>.
 			</p>
 	</div>
-	<div class="issue">
+
+	</div>
+	</section>
+	
+	<section id="vocabulary specification">
+		<h2>Vocabulary specification</h2>
+		<div class="note">
+			<p>
+			This section is work in progress. We will include later more tables with specification of individual classes and properties. 
+			</p>
+		</div>
+
+
+		<section id="QualityMeasure">	
+		<h3>Class: Quality Measure</h3>
+		
+		<p>DQV defines quality measures as specific instances of DAQ observations, adapting the <a href="http://eis-bonn.github.io/Luzzu/papers/ldow2014.pdf">DAQ quality metrics framework</a>:</p>
+		<ul>
+		  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
+		  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+		</ul>
+		<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
+		</p>
+
+		<p>The following property should be used on this class: <a href="#Property:hasMetric">daq:metric</a>. The following property may be used for this class: <a href="#Property:dataSet">qb:dataSet</a>.</p>
+		<table class="definition">
+		  <thead><tr><th>RDF Class:</th><th><a href="#">dqv:QualityMeasure</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</td></tr>
+		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    <tr><td class="prop">Subclass of:</td><td> <a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a>
+		      (itself a subclass of <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>)</td></tr>
+		  </tbody>
+		</table>
+
+		<div class="issue">
 			<p>
 			There might be no need for a subclass link between <a href="#">dqv:QualityMeasure</a> and <a href="#">daq:Observation</a>.
 	  I.e., we could re-use <a href="#">daq:Observation</a> directly. 
 			</p>
-	</div>
-	</div>
-	</section>
-	
-	<section id="vocabulary specification" class="informative">
-		<h2>Vocabulary specification</h2>
-		<div class="note">
+		</div>
+
+		<section>
+		<h4 role="heading" aria-level="3" id="Property:hasMetric">Property: metric</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/eis/vocab/daq#metric">daq:metric</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Indicates the metric being observed.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+
+		<section>
+		<h4 role="heading" aria-level="3" id="Property:measure_dataSet">Property: measure dataset</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Indicates the data set of which this observation is a part.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
+		  </tbody>
+		</table>
+		</section>
+		
+		</section>
+
+		<section id="Metric">	
+		<h3>Class: Metric</h3>
+
+		<p>The following properties should be used on this class: <a href="#Property:hasDimension">dqv:hasDimension</a>.</p>
+		<table class="definition">
+		  <thead><tr><th>RDF Class:</th><th><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension.</td></tr>
+		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		  </tbody>
+		</table>
+
+		<div class="issue">
 			<p>
-			We will include later tables with specification of individual classes and properties. 
+			Do we want to keep the same occurrence constraints as defined in DAQ (for example, that every metric should belong to exactly one dimension)?
+		  In this specific case this may be demanding too much on quality data publishers:
+		  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions. 
 			</p>
 		</div>
 
-	</section>
+		<section>
+		<h4 role="heading" aria-level="3" id="Property:hasDimension">Property: dimension</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#">dqv:hasDimension</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Represents the dimension a metric allows a measurement of.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Dimension">daq:Dimension</a></td></tr>
+		    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+		
+		</section>
 
+	</section>
 
 	<section id="examples" class="informative">	
 		<h2>Example Usage</h2>
@@ -542,6 +624,7 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 			<li><a href="http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578"<a>http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578</a></li>
 			<li><a href="https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary"<a>https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary</a></li>
 		</ul>
+
 	    <section>
         <h3>Statistics</h3>
 	        <p>The following table gives example on statistics that can be computed on a dataset and interpreted as quality indicators by the data consumer. Some of them can be relevant for the dimensions listed in the rest of this section. The properties come from the <a href="https://github.com/jiemakel/aether/raw/master/void-ext.ttl">VoID extension</a> created for the <a href="http://jiemakel.github.io/aether/">Aether tool</a>.</p>
