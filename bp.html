@@ -133,13 +133,13 @@ figure figcaption {
         Bibliothèque nationale de France [[BNF]] and the sustained growth in the
         Linked Open Data Cloud [[LODC]], provide some examples of this
         phenomenon.</p>
-      <p>In broad terms, data publishers aim to share data either openly
-        or with controlled access. Data consumers (who may also be
-        producers themselves) want to be able to find and use data, especially
-        if it is accurate, regularly updated and guaranteed to be available at
-        all times. This creates a fundamental need for a common understanding
-        between data publishers and data consumers. Without this agreement, data
-        publishers' efforts may be incompatible with data consumers' desires.</p>
+      <p>In broad terms, data publishers aim to share data either openly or with
+        controlled access. Data consumers (who may also be producers themselves)
+        want to be able to find and use data, especially if it is accurate,
+        regularly updated and guaranteed to be available at all times. This
+        creates a fundamental need for a common understanding between data
+        publishers and data consumers. Without this agreement, data publishers'
+        efforts may be incompatible with data consumers' desires.</p>
       <p>Publishing data on the Web creates new challenges, such as how to
         represent, describe and make data available in a way that it will be
         easy to find and to understand. In this context, it becomes crucial to
@@ -186,7 +186,6 @@ figure figcaption {
         recommend the use of a particular technology such as <abbr title="Comma Separataed Variables">CSV</abbr>,
         JSON or RDF. A basic knowledge of vocabularies and data models would be
         helpful to better understand some aspects of this document. </p>
-      
     </section>
     <section id="scope" class="informative">
       <h2>Scope</h2>
@@ -307,8 +306,6 @@ figure figcaption {
         <p>Which section of a BP is normative, and whether the use of RFC2119
           keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>
       </div>
-     
-      
     </section>
     <section id="bp-summary"> </section>
     <section id="bestPractices">
@@ -1129,20 +1126,46 @@ figure figcaption {
       <!-- begin of Data Identification -->
       <section id="DataIdentification">
         <h3>Data Identification</h3>
-        <p>Identifiers are simple conventions of labels that allow us to
-          distinguish what is being identified from anything else. Identifiers
-          have being extensively used in every information system, making it
-          possible to refer to any particular element. On the Web, a friendly
-          and uniform system of identification will be required to enable data
-          persistency and re-use, being a crucial element for the process of
-          data sharing and connecting.</p>
+        <p>Identifiers are simple conventions of labels that allow us to distinguish what is being identified from anything else. 
+          Identifiers are used extensively in every information system, making it possible to refer to any particular element. The Web 
+          is predicated on a uniform system of identifiers that are globally unique and can be looked up by dereferencing them over the
+          Internet. There are three terms in common use for these identifiers and, although they are often used interchangeably,
+          there are differences.</p>
+        <ul>
+          <li> URL (Uniform Resource Locator) is the location of a resource on the Web. URLs are a subset of URIs.</li>
+          <li> URI (Uniform Resource Identifier) is an identifier for anything including those not available over the Internet such 
+            as people, buildings and mountains. There are many URI schemes, not all of which can be looked up over the Internet. 
+            For example, doi:10.1103/PhysRevD.89.032002 is as URI but cannot be looked up (directly) 
+            on the Internet. For data on the Web, only HTTP(s) URIs are relevant. 
+            HTTP URIs are a subset of URIs which are a subset of IRIs.</li>
+          <li> IRI (Internationalized Resource Identifier) are conceptually identical to URIs but allow the use of non-ASCII 
+            characters to which URIs are limited.</li>
+        </ul>
+        <p> Of these three, the term URL is by far the most commonly used. The term URI, and even more so, IRI, may cause confusion 
+          among some audiences, however, in the context of data on the Web, URI is more appropriate since data points and datasets 
+          very often refer to real world objects and phenomena. The term IRI is used where necessary.</p>
+        <p> Data discovery, usage and citation on the Web depends fundamentally on the use of HTTP (or HTTPS) URIs. </p>
+        <p> It is perhaps worth emphasizing some key points about URIs in the current context.</p>
+        <ol>
+          <li> URIs are 'dumb strings', that is, they carry no semantics. Their function is purely to identify a resource.</li>
+          <li> Although the previous point is accurate, it would be perverse for a URI such as http://example.com/datset.csv to return 
+            anything other than a CSV file. Human readability is helpful.</li>
+          <li> When de-referenced (looked up), a single URI may offer the same resource in more than one format. http://example.com/dataset may 
+            offer the same data in, say, CSV, JSON and XML. The server returns the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
+            
+             content negotiation </a>.</li>
+          <li> One URI may redirect to another.</li>
+          <li> De-referencing a URI triggers a computer program to run on a server so that the URI acts as a call to an API. The server may therefore do something 
+            as simple as return a single, static file, or it may carry out complex processing. Precisely what processing is carried out, 
+            i.e. the software on the server, is completely independent of the URI itself.</li>
+        </ol>
         <!-- begin of Data Identification BP -->
         <div class="practice">
           <p><span id="UniqueIdentifiers" class="practicelab">Use unique
               identifiers</span></p>
           <p class="practicedesc">Data, datasets and the different dataset
-            versions <em class="rfc2119">must</em> be associated with a unique
-            identifier. </p>
+            versions <em class="rfc2119">must</em> be associated
+            with a unique identifier. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Adopting a common identification system enables basic data
@@ -1386,12 +1409,17 @@ figure figcaption {
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
-        <div class="issue"> There is a discussion going on in the group if the creation (and publication) of vocabularies is in the scope of the DWBP document.</div>
+        <div class="issue"> There is a discussion going on in the group if the
+          creation (and publication) of vocabularies is in the scope of the DWBP
+          document.</div>
         <div class="issue">The section needs terminological discussion on
-          whether we keep "vocabularies", which could be replaced by "data          models" or "schemas" and whether we should remove "controlled
-          vocabularies" from the picture. <a href="https://www.w3.org/2013/dwbp/track/issues/134">Issue-134</a>        </div>
-        <div class="issue">A big part of the section (starting by the section          name) is biased towards linked data technology. It should be completed
-          with other references and alternative implementation approaches. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div> 
+          whether we keep "vocabularies", which could be replaced by "data
+          models" or "schemas" and whether we should remove "controlled
+          vocabularies" from the picture. <a href="https://www.w3.org/2013/dwbp/track/issues/134">Issue-134</a>
+        </div>
+        <div class="issue">A big part of the section (starting by the section
+          name) is biased towards linked data technology. It should be completed
+          with other references and alternative implementation approaches. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
         <p>Data is often represented in a structured and controlled way, making
           reference to a range of vocabularies, for example, by defining types
           of nodes and links in a data graph or types of values for columns in a
@@ -1481,68 +1509,127 @@ figure figcaption {
           </section>
         </div>
         <!-- begin of Document Vocabularies -->
-        <div class="practice">          <p><span id="DocumentVocabularies" class="practicelab"> Document
-              vocabularies </span></p>          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
-            be clearly documented.</p>          <section class="axioms">
-            <p class="subhead">Why</p>            <p>Documentation defines what is within the vocabulary and the
-              better the documentation the higher the possibility of re-use the              vocabulary and the datasets built with it.</p>
-          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>The vocabulary should be human-readable.</p>
-          </section>          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>            <p>A vocabulary may be published together with human-readable Web
-              pages, as detailed in the recipes for serving vocabularies with              HTML documents in the Best Practice Recipes for Publishing RDF
-              Vocabularies [[SWBP-VOCAB-PUB]]. Elements from the vocabulary are              defined with attributes containing human-understandable labels and
-              definitions, such as rdfs:label, rdfs:comment, dc:description,              skos:prefLabel, skos:altLabel, skos:note, skos:definition,
-              skos:example, etc.. Documentation may benefit from the additional              presence of visual documentation such as the UML-style diagram of
-              the W3C Organization Ontology [[ORG]]</p>          </section>
-          <section class="test">            <p class="subhead">How to Test</p>
-            <p>Check that a human user can understand the documentation              associated with a vocabulary. </p>
-          </section>          <section class="ucr">
-            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>
-            </p>          </section>
-        </div>        <!-- end of Document Vocabularies BP -->
-        <!-- begin of Share Open Vocabularies BP --> 
-        <div class="practice">          <p><span id="ShareOpenVocabularies" class="practicelab"> Share
-              vocabularies in an open way </span></p>          <p class="practicedesc"> Vocabularies <em class="rfc2119">should</em>
-            be shared in an open way </p>          <section class="axioms">
-            <p class="subhead">Why</p>            <p> Sharing vocabularies in an open way may increase the usage of a
-              data vocabulary and help to understand the relationships among              different vocabularies.</p>
-          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>The vocabulary should be available for data consumers to use or
-              re-use it.</p>          </section>
-          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Provide the vocabulary under an open license such as Creative              Commons Attribution License CC-BY [[CC-ABOUT]]. Create entries for
+        <div class="practice">
+          <p><span id="DocumentVocabularies" class="practicelab"> Document
+              vocabularies </span></p>
+          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
+            be clearly documented.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Documentation defines what is within the vocabulary and the
+              better the documentation the higher the possibility of re-use the
+              vocabulary and the datasets built with it.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>The vocabulary should be human-readable.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>A vocabulary may be published together with human-readable Web
+              pages, as detailed in the recipes for serving vocabularies with
+              HTML documents in the Best Practice Recipes for Publishing RDF
+              Vocabularies [[SWBP-VOCAB-PUB]]. Elements from the vocabulary are
+              defined with attributes containing human-understandable labels and
+              definitions, such as rdfs:label, rdfs:comment, dc:description,
+              skos:prefLabel, skos:altLabel, skos:note, skos:definition,
+              skos:example, etc.. Documentation may benefit from the additional
+              presence of visual documentation such as the UML-style diagram of
+              the W3C Organization Ontology [[ORG]]</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that a human user can understand the documentation
+              associated with a vocabulary. </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>
+            </p>
+          </section>
+        </div>
+        <!-- end of Document Vocabularies BP -->
+        <!-- begin of Share Open Vocabularies BP -->
+        <div class="practice">
+          <p><span id="ShareOpenVocabularies" class="practicelab"> Share
+              vocabularies in an open way </span></p>
+          <p class="practicedesc"> Vocabularies <em class="rfc2119">should</em>
+            be shared in an open way </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> Sharing vocabularies in an open way may increase the usage of a
+              data vocabulary and help to understand the relationships among
+              different vocabularies.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>The vocabulary should be available for data consumers to use or
+              re-use it.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Provide the vocabulary under an open license such as Creative
+              Commons Attribution License CC-BY [[CC-ABOUT]]. Create entries for
               the vocabulary in repositories such as <a href="http://lov.okfn.org/"><abbr
-                  title="Linked Open Vocabularies">LOV</abbr></a>, <a href="http://prefix.cc">Prefix.cc</a>,              <a href="http://bioportal.bioontology.org/">Bioportal</a> and the
-              European Commission's <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a>.</p>          </section>
-          <section class="test">            <p class="subhead">How to Test</p>
-            <p> Check that an open license is available looking for URL or link              to the document where the copyright is provided. </p>
-          </section>          <section class="ucr">
-            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></p>
-          </section>        </div>
+
+                  title="Linked Open Vocabularies">LOV</abbr></a>, <a href="http://prefix.cc">Prefix.cc</a>,
+              <a href="http://bioportal.bioontology.org/">Bioportal</a> and the
+              European Commission's <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a>.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Check that an open license is available looking for URL or link
+              to the document where the copyright is provided. </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></p>
+          </section>
+        </div>
         <!-- end of Share Open Vocabularies BP -->
         <!-- begin of Versioning Vocabularies BP -->
-        <div class="practice">          <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary
-              versioning </span></p>          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
-            include versioning information </p>          <section class="axioms">
-            <p class="subhead">Why</p>            <p>Versioning information guarantees compatibility over time by
-              providing a way to compare different versions as the vocabulary              evolves.</p>
-          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>It should be possible to identify changes to a vocabulary over
-              time.</p>          </section>
-          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>
-            <p>A vocabulary may be given a unique identifier for 'the latest              version' that remains stable over time, even as the vocabulary
-              evolves. In addition, each version of the vocabulary has its own              unique identifier. URI versioning for W3C documents provides
+        <div class="practice">
+          <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary
+              versioning </span></p>
+          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
+            include versioning information </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Versioning information guarantees compatibility over time by
+              providing a way to compare different versions as the vocabulary
+              evolves.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>It should be possible to identify changes to a vocabulary over
+              time.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>A vocabulary may be given a unique identifier for 'the latest
+              version' that remains stable over time, even as the vocabulary
+              evolves. In addition, each version of the vocabulary has its own
+              unique identifier. URI versioning for W3C documents provides
               examples. The latest version of this document is always found at <a
-                href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>              but individual versions such as <a href="http://www.w3.org/TR/2015/WD-dwbp-20150224/">http://www.w3.org/TR/2015/WD-dwbp-20150224/</a>
-              each have their own URL as well so that an initial effort can be              made towards understanding, characterizing and tracking data
-              evolution and specific versions pointed to if required.</p>            <p>Several vocabularies, including OWL [[OWL2-OVERVIEW]] and
-              schema.org [[SCHEMA-ORG]], include properties for version numbers.</p>          </section>
-          <section class="test">            <p class="subhead">How to Test</p>
-            <p> Different versions of a vocabulary can be easily identified; </p>          </section>
-          <section class="ucr">            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>            </p>
-          </section>        </div>
+
+                href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>
+              but individual versions such as <a href="http://www.w3.org/TR/2015/WD-dwbp-20150224/">http://www.w3.org/TR/2015/WD-dwbp-20150224/</a>
+              each have their own URL as well so that an initial effort can be
+              made towards understanding, characterizing and tracking data
+              evolution and specific versions pointed to if required.</p>
+            <p>Several vocabularies, including OWL [[OWL2-OVERVIEW]] and
+              schema.org [[SCHEMA-ORG]], include properties for version numbers.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Different versions of a vocabulary can be easily identified; </p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>
+            </p>
+          </section>
+        </div>
         <!-- end of BP -->
         <!-- begin of re-use Vocabularies BP -->
         <div class="practice">
@@ -1583,72 +1670,87 @@ figure figcaption {
         </div>
         <!-- end of BP -->
         <!-- begin of Used vocabularies information BP
-        <div class="practice">
-          <p><span id="UsedVocabularies" class="practicelab"> Provide
-              information about vocabularies used to trepresent the data</span></p>
-          <p class="practicedesc">Information about vocabularies used to
-            represent the data <em class="rfc2119">should</em> be available</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p></p>
-            <p></p>
-            <section class="outcome">
-              <p class="subhead">Intended Outcome</p>
-              <p></p>
-              <p></p>
-            </section>
-            <section class="how">
-              <p class="subhead">Possible Approach to Implementation</p>
-              <p></p>
-              <p></p>
-              <p> </p>
-            </section>
-            <section class="test"><span style="font-weight: bold;">How to Test </span>
-              <p></p>
-              <p></p>
-              <section class="ucr">
-                <p class="subhead">Evidence</p>
-              </section>
-            </section>
-          </section>
-          <div class="issue">
-            <p> Is this BP relevant just for RDF datasets or vocabularies may be
-              used to represent data in other formats (ex: csv)? </p>
-          </div>
+        <div class="practice">          <p><span id="UsedVocabularies" class="practicelab"> Provide
+              information about vocabularies used to trepresent the data</span></p>          <p class="practicedesc">Information about vocabularies used to
+            represent the data <em class="rfc2119">should</em> be available</p>          <section class="axioms">
+            <p class="subhead">Why</p>            <p></p>
+            <p></p>            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>              <p></p>
+              <p></p>            </section>
+            <section class="how">              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>              <p></p>
+              <p> </p>            </section>
+            <section class="test"><span style="font-weight: bold;">How to Test </span>              <p></p>
+              <p></p>              <section class="ucr">
+                <p class="subhead">Evidence</p>              </section>
+            </section>          </section>
+          <div class="issue">            <p> Is this BP relevant just for RDF datasets or vocabularies may be
+              used to represent data in other formats (ex: csv)? </p>          </div>
         </div> -->
         <!-- end of BP -->
-        <!-- begin of Not Over formalize Vocabularies BP --> 
-        <div class="practice">          <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
-              the right formalization level</span></p>          <p class="practicedesc">When creating or re-using a vocabulary for an
-            application, a data publisher <em class="rfc2119">should</em> opt            for a level of formal semantics that fit data and applications.</p>
-          <section class="axioms">            <p class="subhead">Why</p>
-            <p>Formal semantics may help one to establish precise specifications              that support establishing the intended meaning of the vocabulary
-              and the performance of complex tasks such as reasoning. On the              other hand, complex vocabularies require more effort to produce
-              and understand, which could hamper their re-use, as well as the              comparison and linking of datasets exploiting them. Highly
-              formalized data is also harder to exploit by inference engines:              for example, using an OWL class in a position where a SKOS concept
-              is enough, or using OWL classes with complex OWL axioms raises the              formal complexity of the data according to the OWL Profiles
-              [[OWL2-PROFILES]]. Data producers should therefore seek to              identify the right level of formalization for particular domains,
-              audiences and tasks, and maybe offer different formalization              levels when one size does not fit all.</p>
-          </section>          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>            <p>The data supports all application cases but should not be more
-              complex to produce and re-use than necessary;</p>          </section>
-          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Identify the "role" played by the vocabulary for the datasets,              say, providing classes and properties used to type resources and
-              provide the predicates for RDF statements, or elements in an XML              Schema, as opposed to providing simple concepts or codes that are
-              used for representing attributes of the resources described in a              dataset. When simpler models are enough to convey the necessary
-              semantics, represent vocabularies using them. For instance, for              Linked Data, SKOS may be preferred for simple vocabularies as
-              opposed to formal ontology languages like OWL; see for example how              <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
-                schemes and code lists</a> are used in the RDF Data Cube              Recommendation [[QB]].</p>
-          </section>          <section class="test">
-            <p class="subhead">How to Test</p>            <p>For formal knowledge representation languages, applying an
-              inference engine on top of the data that uses a given vocabulary              does not produce too many statements that are unnecessary for
-              target applications.</p>          </section>
-          <section class="ucr">            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>,              <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>            </p>
-          </section>        </div>
-        <div class="issue">The best practice on formalization above (especially          sections "Intended outcome" and "How to test") should be re-written in
-          a more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>        <!-- end of Not Over formalize Vocabularies BP -->
+        <!-- begin of Not Over formalize Vocabularies BP -->
+        <div class="practice">
+          <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
+              the right formalization level</span></p>
+          <p class="practicedesc">When creating or re-using a vocabulary for an
+            application, a data publisher <em class="rfc2119">should</em> opt
+            for a level of formal semantics that fit data and applications.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Formal semantics may help one to establish precise specifications
+              that support establishing the intended meaning of the vocabulary
+              and the performance of complex tasks such as reasoning. On the
+              other hand, complex vocabularies require more effort to produce
+              and understand, which could hamper their re-use, as well as the
+              comparison and linking of datasets exploiting them. Highly
+              formalized data is also harder to exploit by inference engines:
+              for example, using an OWL class in a position where a SKOS concept
+              is enough, or using OWL classes with complex OWL axioms raises the
+              formal complexity of the data according to the OWL Profiles
+              [[OWL2-PROFILES]]. Data producers should therefore seek to
+              identify the right level of formalization for particular domains,
+              audiences and tasks, and maybe offer different formalization
+              levels when one size does not fit all.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>The data supports all application cases but should not be more
+              complex to produce and re-use than necessary;</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>Identify the "role" played by the vocabulary for the datasets,
+              say, providing classes and properties used to type resources and
+              provide the predicates for RDF statements, or elements in an XML
+              Schema, as opposed to providing simple concepts or codes that are
+              used for representing attributes of the resources described in a
+              dataset. When simpler models are enough to convey the necessary
+              semantics, represent vocabularies using them. For instance, for
+              Linked Data, SKOS may be preferred for simple vocabularies as
+              opposed to formal ontology languages like OWL; see for example how
+              <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
+                schemes and code lists</a> are used in the RDF Data Cube
+              Recommendation [[QB]].</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>For formal knowledge representation languages, applying an
+              inference engine on top of the data that uses a given vocabulary
+              does not produce too many statements that are unnecessary for
+              target applications.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>
+            </p>
+          </section>
+        </div>
+        <div class="issue">The best practice on formalization above (especially
+          sections "Intended outcome" and "How to test") should be re-written in
+          a more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
+        <!-- end of Not Over formalize Vocabularies BP -->
         <!--        <h3>How to choose vocabularies?</h3>
         <p> It is very important to know how to choose the vocabulary to be          re-used. For doing this, see <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> </p>        <div class="issue"> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabulary            Checklist</a> from the Best Practices for Publishing Linked Data          overlaps quite a lot with the best practices from this section. Should          we clarify the difference in positioning? Is there one?          <a href="https://www.w3.org/2013/dwbp/track/issues/124">              Issue-124</a></p>        </div> -->
       </section>
@@ -2409,31 +2511,36 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
           </section>
         </div>
-        <!-- end of BP Gather Feedback --> 
-      
-       <!-- begin of BP Information about Feedback -->
+        <!-- end of BP Gather Feedback -->
+        <!-- begin of BP Information about Feedback -->
         <div class="practice">
-          <p><span id="FeedbackInformation" class="practicelab"> Provide information about feedback </span></p>
-          <p class="practicedesc"> Information about feedback   <em class="rfc2119">should</em>
+          <p><span id="FeedbackInformation" class="practicelab"> Provide
+              information about feedback </span></p>
+          <p class="practicedesc"> Information about feedback <em class="rfc2119">should</em>
             be provided.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Sharing information about feedback allows data consumers to be aware of feedback given by other consumers. </p>
+            <p>Sharing information about feedback allows data consumers to be
+              aware of feedback given by other consumers. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for humans to have access to information that describes feedback 
-              on a dataset given by one or more data consumers. </p>
-            <p>It should be possible for machines to automatically process feedback information about a dataset.</p>
+            <p>It should be possible for humans to have access to information
+              that describes feedback on a dataset given by one or more data
+              consumers. </p>
+            <p>It should be possible for machines to automatically process
+              feedback information about a dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The machine readable version of the feedback metadata may be provided according 
-              to the vocabulary that is being developed by the DWBP working group , i.e., the Dataset Usage Vocabulary.</p>
-            
-              <!-- The definition of a Data Usage Vocabulary is
+            <p>The machine readable version of the feedback metadata may be
+              provided according to the vocabulary that is being developed by
+              the DWBP working group , i.e., the Dataset Usage Vocabulary.</p>
+            <!-- The definition of a Data Usage Vocabulary is
               included in the activity of the DWBP group in order to support in              the implementation of this best practice. -->
-            <label class="expand" for="example-GatherFeedback"></label> <input id="example-GatherFeedback" type="checkbox">
+            <label class="expand" for="example-GatherFeedback"></label> <input
+
+              id="example-GatherFeedback" type="checkbox">
             <div class="example">
               <p>to be done </p>
             </div>
@@ -2441,10 +2548,11 @@ figure figcaption {
           <section class="test">
             <p class="subhead">How to Test</p>
             <ul>
-              <li>Check that the metadata for the dataset itself includes feedback information about the dataset.</li>
-              <li>Check if a computer application can automatically process feedback information about the dataset.
-              </li>
-              </ul>
+              <li>Check that the metadata for the dataset itself includes
+                feedback information about the dataset.</li>
+              <li>Check if a computer application can automatically process
+                feedback information about the dataset. </li>
+            </ul>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2452,61 +2560,63 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
           </section>
         </div>
-        <!-- end of BP Gather Feedback -->
-      </section>
+        <!-- end of BP Gather Feedback --> </section>
       <!-- end Feedback -->
-
       <!-- begin enrichment -->
       <section id="enrichment">
         <h3>Data Enrichment</h3>
-
-
-        <p>Data enrichment refers to a set of processes that can be used to enhance, refine or
-          otherwise improve raw or previously processed data. This idea and other similar
-          concepts contribute to making data a valuable asset for almost any modern
-          business or enterprise. It also shows the common imperative of proactively
-          using this data in various ways.</p>
-
-          <p>This section provides some advice to be followed by data publishers in order to enable data
-            consumers to enrich data.</p>
-
-
-          <!-- begin of BP Data Enrichment -->
-          <div class="practice">
-            <p><span id="EnrichData" class="practicelab">Enrich data by generating new metadata.</span></p>
-            <p class="practicedesc">Data <em class="rfc2119">should</em> be enriched whenever possible,
-              generating richer metadata to represent and describe it.</p>
-              <section class="axioms">
-                <p class="subhead">Why</p>
-                <p>There is a large number of intelligent techniques 
-                  that can be used to enrich raw or previously treated data and to extract new metadata from it, making data an even more valuable asset. 
-                  These methods include those focused on data categorization, entity recognition, sentiment analysis, topification, among others. 
-                  Providing new and richer metadata may help data consumers to  better understand the data they are dealing with.</p>
-                </section>
-                <section class="outcome">
-                  <p class="subhead">Intended Outcome</p>
-                  <p>Describe a dataset using richer sets of metadata, which can be readable by humans.</p>
-                </section>
-                <section class="how">
-                  <p class="subhead"> Possible Approach to Implementation</p>
-                  <p>
-                    The implementation depends on what types of metadata should be produced. They require the implementation of methods 
-                    for data categorization, disambiguation, sentiment analysis, among others, according to the suggestions described in 
-                    <a href="enrichment.html">Data Enrichment Technical Note</a>. After new metadata is extracted, it can be provided as part of an HTML Web page or any open data format.</p>
-                  </section>
-                  <section class="test">
-                    <p class="subhead">How to test</p>
-                    <p>Check whether the metadata being extracted by the techniques are in accordance with human-knowledge and can be readable by humans.</p>
-                  </section>
-                  <section class="ucr">
-                    <p class="subhead">Evidence</p>
-                    <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataEnrichment">R-DataEnrichment</a></p>
-                  </section>
-                </div>
-                <!-- end of BP Data Enrichment -->
-              </section><!-- end Enrichment -->
-
-
+        <p>Data enrichment refers to a set of processes that can be used to
+          enhance, refine or otherwise improve raw or previously processed data.
+          This idea and other similar concepts contribute to making data a
+          valuable asset for almost any modern business or enterprise. It also
+          shows the common imperative of proactively using this data in various
+          ways.</p>
+        <p>This section provides some advice to be followed by data publishers
+          in order to enable data consumers to enrich data.</p>
+        <!-- begin of BP Data Enrichment -->
+        <div class="practice">
+          <p><span id="EnrichData" class="practicelab">Enrich data by generating
+              new metadata.</span></p>
+          <p class="practicedesc">Data <em class="rfc2119">should</em> be
+            enriched whenever possible, generating richer metadata to represent
+            and describe it.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>There is a large number of intelligent techniques that can be
+              used to enrich raw or previously treated data and to extract new
+              metadata from it, making data an even more valuable asset. These
+              methods include those focused on data categorization, entity
+              recognition, sentiment analysis, topification, among others.
+              Providing new and richer metadata may help data consumers to
+              better understand the data they are dealing with.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Describe a dataset using richer sets of metadata, which can be
+              readable by humans.</p>
+          </section>
+          <section class="how">
+            <p class="subhead"> Possible Approach to Implementation</p>
+            <p> The implementation depends on what types of metadata should be
+              produced. They require the implementation of methods for data
+              categorization, disambiguation, sentiment analysis, among others,
+              according to the suggestions described in <a href="enrichment.html">Data
+                Enrichment Technical Note</a>. After new metadata is extracted,
+              it can be provided as part of an HTML Web page or any open data
+              format.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to test</p>
+            <p>Check whether the metadata being extracted by the techniques are
+              in accordance with human-knowledge and can be readable by humans.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataEnrichment">R-DataEnrichment</a></p>
+          </section>
+        </div>
+        <!-- end of BP Data Enrichment --> </section>
+      <!-- end Enrichment -->
       <!-- end best practices --> </section>
     <section id="conclusions">
       <h2>Conclusions</h2>
