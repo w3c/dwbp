@@ -1209,8 +1209,51 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </section>
         </div>
-        <!-- <div class="issue"> Should we change the title of BP <em>Provide unique
-            identifiers?</em> <a href="https://www.w3.org/2013/dwbp/track/issues/145">            Issue-145</a> </div> -->
+        <div class="practice">
+          <p><span id="UniqueIdentifiers" class="practicelab">Assign URIs to dataset versions and series</span></p>
+          <p class="practicedesc">URIs <em class="rfc2119">should</em> be assigned to individual versions of datasets as well as the overall series.
+             </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>Like documents, many datasets fall into natural series or groups. For example:</p>
+            <ul>
+              <li>noon temperature readings in central London 1850 to the present day;</li>
+              <li>today's noon temperature in London;</li>
+              <li>the temperature in London at noon on 3rd June 2015.</li>
+            </ul>
+            <p> In different circumstances, it will be appropriate to refer separately to each of these examples (and many like them).
+</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p> It should be possible to refer to a specific version of a dataset and to concepts such as a 'dataset series' and 'the latest version.'
+</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p> The W3C provides a good example of how to do this. The (persistent) URI for this document is http://www.w3.org/TR/2015/WD-dwbp-20150224/. The URI for the 'latest version' of this document is http://www.w3.org/TR/dwbp. At the time of publication, these two URIs both resolve to this document.
+              However, when the next version of this document is published, the 'latest version' URI will be changed to point to that. </p>
+          <label class="expand" for="example-DataIdentificationVersion"></label> <input
+
+              id="example-DataIdentificationVersion" type="checkbox">
+            <div class="example">
+              <p>To complete the London temperature example, one might imagine URIs as follows: </p>
+  <pre>  http://weather.example.com/temperature/UK/London/noon
+  http://weather.example.com/temperature/UK/London/noon/today
+  http://weather.example.com/temperature/UK/London/noon/2015-06-03  </pre>
+            </div>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p> Check that each version of a dataset has its own URI, and that logical groups of datasets are also identifiable.
+ </p> </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
+          </section>
+        </div>
+        
         <!-- end of Data Identification BP --> </section>
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
