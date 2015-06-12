@@ -213,10 +213,11 @@ This is why next to rather expected constructs like quality measures, the Data Q
  	<section> 
 	<h2 id="namespaces">Namespaces</h2>
     <p>The namespace for DQV is provisionally set as <code>http://www.w3.org/ns/dqv#</code>.
-DQV, however, seeks to re-use elements froming from other vocabularies, following the <a href="http://www.w3.org/TR/dwbp/#dataVocabularies">best practices for data vocabularies</a> identified by the Data on the Web Best Practices Working Group.</p>
+DQV, however, seeks to re-use elements  from other vocabularies, following the <a href="http://www.w3.org/TR/dwbp/#dataVocabularies">best practices for data vocabularies</a> identified by the Data on the Web Best Practices Working Group.</p>
 		<div class="issue">
 			<p>
-			The Working Group is considering to put all new classes and properties (together with the ones of the <a href="http://www.w3.org/ns/duv#">Data Usage Vocabulary</a>) in the <a href="http://www.w3.org/ns/dcat#">DCAT</a> namespace.</a>
+			The Working Group is considering to put all new classes and properties (together with the ones of the <a href="http://www.w3.org/ns/duv#">Data Usage Vocabulary</a>) in the <a href="http://www.w3.org/ns/dcat#">DCAT</a> namespace.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/179">Issue-179</a>)</a>
 			</p>
 		</div>
 <p>The table below indicates the full list of namespaces and prefixes used in this document.</p>
@@ -264,7 +265,8 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 				Are we actually allowed by W3C to re-use elements from <a
 					href="http://purl.org/eis/vocab/daq#">DAQ</a>?
 				This vocabulary is not a community standard and its guarantee of sustainability may be judged not good enough.
-		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.</a>
+		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.
+		(<a href="https://www.w3.org/2013/dwbp/track/issues/180">Issue-180</a>)
 			</p>
 		</div>
 
@@ -312,7 +314,7 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 	<div class="issue">
 			<p>
                                 What is the relation between  <a href="#">duv:Feedback</a> and <a href="#">dqv:UserFeedback</a>? (<a
-					href="https://www.w3.org/2013/dwbp/track/issues/165">Issue-165</a>).
+					href="https://www.w3.org/2013/dwbp/track/issues/165">Issue-165</a>)
 			</p>
 	</div>
 	<div class="issue">
@@ -320,14 +322,17 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 				Should we have only the existing class <a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a>
 		  or keep the new class <a href="#">dqv:QualityMetadata</a> 
 				to represent a set of statements providing quantitative and/or
-				qualitative information about the dataset or distribution. One could be a sub-class of the other.
+				qualitative information about the dataset or distribution. One could be a sub-class of the other. (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/181">Issue-181</a>)
 			</p>
 	</div>
 	<div class="issue">
 			<p>
 			The label of <a href="#">daq:QualityGraph</a> does not fit well with the current model.
 	  DAQ graphs are meant to contain measures.
-	  In our context a "quality graph" has a wider scope: actually the role of representing overall quality graphs is currently played by <a href="#">dqv:QualityMetadata</a>.  
+	  In our context a "quality graph" has a wider scope: actually the role of representing overall quality graphs is currently played by <a href="#">dqv:QualityMetadata</a>.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/182">Issue-182</a>)
+ 
 			</p>
 	</div>
 	<div class="issue">
@@ -335,19 +340,23 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 				We may want to consider a revision of DCAT to make <a
 					href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
 				and <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
-				subclasses of <a href="#">prov:Entity</a>
+				subclasses of <a href="#">prov:Entity</a>. (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/183">Issue-183</a>)
+
 			</p>
 	</div>
 	<div class="issue">
 			<p>
-				Is an <a href="#">dqv:ServiceLevelAgreement</a> a kind of certificate, or a standard? 
+				Is an <a href="#">dqv:ServiceLevelAgreement</a> a kind of certificate, or a standard? (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/184">Issue-184</a>) 
 			</p>
 	</div>
 	<div class="issue">
 			<p>
 			 dqv:QualityAnnotation is foreseen as a subclass of  <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a>. The instances of this class should have a
 	  <a href="http://www.w3.org/ns/oa#d4e230">oa:motivatedBy</a> statement with a an instance of <a href="http://www.w3.org/ns/oa#d4e555">oa:Motivation</a>, which reflects a quality assessment purpose.
-	  We plan to define is as <a href="#">dqv:qualityAssessment</a>.
+	  We plan to define is as <a href="#">dqv:qualityAssessment</a>. (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/185">Issue-185</a>) 
 			</p>
 	</div>
 
@@ -388,7 +397,8 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 		<div class="issue">
 			<p>
 			There might be no need for a subclass link between <a href="#">dqv:QualityMeasure</a> and <a href="#">daq:Observation</a>.
-	  I.e., we could re-use <a href="#">daq:Observation</a> directly. 
+	  I.e., we could re-use <a href="#">daq:Observation</a> directly.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/186">Issue-186</a>) 
 			</p>
 		</div>
 
@@ -435,7 +445,8 @@ DQV, however, seeks to re-use elements froming from other vocabularies, followin
 			<p>
 			Do we want to keep the same occurrence constraints as defined in DAQ (for example, that every metric should belong to exactly one dimension)?
 		  In this specific case this may be demanding too much on quality data publishers:
-		  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions. 
+		  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/187">Issue-187</a>) 
 			</p>
 		</div>
 
@@ -600,7 +611,9 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 		<h3>Express the quality of a linkset</h3>
 		<p></p>
 	<div class="issue">
-		<p>This section will be completed by examples coming from <a href="http://purl.oclc.org/net/LDQWorkshop2015.pdf">Riccardo's work</a> on measuring the quality of linksets between SKOS concept schemes, from the perspective of adding multilingual labels to these schemes. On the web, linksets are an especially interesting case of datasets! we could also add examples from <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.</p>
+		<p>This section will be completed by examples coming from <a href="http://purl.oclc.org/net/LDQWorkshop2015.pdf">Riccardo's work</a> on measuring the quality of linksets between SKOS concept schemes, from the perspective of adding multilingual labels to these schemes. On the web, linksets are an especially interesting case of datasets! we could also add examples from <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/188">Issue-188</a>) 
+</p>
 	</div>
 		<pre></pre>
 </section>
@@ -672,7 +685,8 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 			<p>The Aether <a href="http://jiemakel.github.io/aether/">VoID extension</a> represents statistics as direct statements
 	    that have a dataset as subject and an integer as object. This pattern, which can be expected to be rather common, is different from
 	    the pattern that DQV inherits from DAQ (see <a href="http://w3c.github.io/dwbp/vocab-dqg.html#express-a-quality-assessment-with-quality-metrics">examples</a>).
-	    This document will probably have to explain how the different patterns can be reconciled, if indeed both should exist alongside.
+	    This document will probably have to explain how the different patterns can be reconciled, if indeed both should exist alongside.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/189">Issue-189</a>) 
 			</p>
 	 </div>
 </section>
@@ -800,11 +814,12 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 					and extrinsic metadata</a> may help making choices here. For example,
 				DQV could be defined wrt. intrinsic properties of the datasets, not
 				extrinsinc properties (let alone properties of the metadata for a
-				dataset!)
+				dataset!)  (<a href="https://www.w3.org/2013/dwbp/track/issues/190">Issue-190</a>) 
 			</p>
+
 		</div>
 		<div class="issue">
-		<p>Backward compatibility with DAQ and Data Cube: DAQ exploits Data Cube to make metric results consumable by visualisers such as CubeViz (see <a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">Jeremy's paper</a>). This may be useful to preserve in DQV.</p>
+		<p>Backward compatibility with DAQ and Data Cube: DAQ exploits Data Cube to make metric results consumable by visualisers such as CubeViz (see <a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">Jeremy's paper</a>). This may be useful to preserve in DQV. (<a href="https://www.w3.org/2013/dwbp/track/issues/191">Issue-191</a>) </p>
 	</div>
 
 	</section>
