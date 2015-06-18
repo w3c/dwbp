@@ -116,8 +116,8 @@ figure figcaption {
         consumers.</p>
     </section>
     <section id="sotd">
-      <p>This early version of the document shows its expected scope and future
-        direction. A template is used that shows the what, why and how of each
+      <p>This version of the document shows its expected scope and future
+        direction. A template is used to show the "what", "why" and "how" of each
         best practice. Comments are sought on the usefulness of this approach
         and the expected scope of the final document.</p>
     </section>
@@ -197,7 +197,7 @@ figure figcaption {
       </ul>
       <p>As noted above, whether a best practice has or has not been followed
         should be judged against the <em>intended outcome</em>, not the
-        specific implementation which is offered as guidance. A best practice is
+        <em>possible approach to implementation</em> which is offered as guidance. A best practice is
         always subject to improvement as we learn and evolve the Web together.</p>
     </section>
     <section id="context" class="informative">
@@ -209,7 +209,7 @@ figure figcaption {
         be recorded and that have implicit meaning" [[Navathe]]. To meet the
         requirements of different users, a single dataset may be available in
         different data formats or distributions. Again quoting the DCAT
-        specification, a Distribution "Represents a specific available form of a
+        specification, a distribution "Represents a specific available form of a
         dataset. Each dataset might be available in different forms, these forms
         might represent different formats of the dataset or different endpoints.
         Examples of distributions include a downloadable CSV file, an API or an
@@ -623,7 +623,7 @@ figure figcaption {
           <p><span id="StructuralMetadata" class="practicelab">Provide
               structural metadata </span> </p>
           <p class="practicedesc"> Information about the schema and internal
-            structure of a distribution must be described by metadata</p>
+            structure of a distribution <em class="rfc2119">must</em> be described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Providing information about the internal structure of a
@@ -970,7 +970,7 @@ figure figcaption {
           every fiscal year. Other datasets are changed as improvements in
           collecting the data make updates worthwhile. Still other data changes
           in real time or near real time. All these types of data need a
-          consistent, informative approach to versioning, so that data consumers
+          consistent, informative approach to versioning, so data consumers
           can understand and work with the changing data. </p>
         <p>In order to deal with changes over time, multiple versions may be
           created for a single dataset. To illustrate this let us consider a
@@ -1140,8 +1140,6 @@ figure figcaption {
           use for these identifiers and, although they are often used
           interchangeably, there are differences.</p>
         <ul>
-          <li> URL (Uniform Resource Locator) is the location of a resource on
-            the Web. URLs are a subset of URIs.</li>
           <li> URI (Uniform Resource Identifier) is an identifier for anything
             including those not available over the Internet such as people,
             buildings and mountains. There are many URI schemes, not all of
@@ -1153,6 +1151,8 @@ figure figcaption {
           <li> IRI (Internationalized Resource Identifier) are conceptually
             identical to URIs but allow the use of non-ASCII characters to which
             URIs are limited.</li>
+          <li> URL (Uniform Resource Locator) is the location of a resource on
+            the Web. URLs are a subset of URIs.</li>            
         </ul>
         <p> Of these three, the term URL is by far the most commonly used. The
           term URI, and even more so, IRI, may cause confusion among some
@@ -1366,9 +1366,7 @@ figure figcaption {
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Consider which data formats potential users of the data are most
-              likely to have the necessary tools to parse. Non-proprietary data
-              formats include, but are not limited to, CSV, NetCDF, XML, JSON
-              and RDF. Standard data formats as well as the use of standard data
+              likely to have the necessary tools to parse. Formats suggestion are shown in the <a href="#OpenFormat"></a>. Standard data formats as well as the use of standard data
               vocabularies will better enable machines to process the data.</p>
             <label class="expand" for="example-MachineDataFormat"></label> <input
 
@@ -1389,8 +1387,7 @@ figure figcaption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></p>
           </section>
         </div>
-        <div class="issue"> Should we use machine-readable standardized data
-          formats BP be split in two? <a href="https://www.w3.org/2013/dwbp/track/issues/138">
+        <div class="issue"> Should the <a href="MachineReadableStandardizedFormat"></a> be split in two? <a href="https://www.w3.org/2013/dwbp/track/issues/138">
             Issue-138</a> </div>
         <!-- end of Machine-Readable Standardized FormatBP -->
         <!-- begin of Open Format BP -->
@@ -1414,7 +1411,7 @@ figure figcaption {
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p> Make data available in open data formats including but not
-              limited to CSV, XML, Turtle, NetCDF and JSON.</p>
+              limited to CSV, XML, Turtle, NetCDF, JSON and RDF.</p>
             <label class="expand" for="example-NonproprietaryDataFormat"></label>
             <input id="example-NonproprietaryDataFormat" type="checkbox">
             <div class="example">
@@ -1564,14 +1561,14 @@ figure figcaption {
               <p>An approach to implementation is the case of a vocabulary
                 developed within a Working Group or a standardized body such as
                 the W3C.</p>
-              <p>The Open Geospatial Consortium (OGC) could defines the notion
+              <p>The Open Geospatial Consortium (OGC) could define the notion
                 of <em>granularity</em> for geospatial datasets, while [DCAT]
                 vocabulary provides a vocabulary reusing the same notion applied
-                to catalogs on the Web</p>
+                to catalogs on the Web.</p>
               <p> </p>
             </section>
             <section class="test"><span style="font-weight: bold;">How to Test </span>
-              <p>Check that the terms to be used is defined in a standard
+              <p>Check that the terms to be used are defined in a standard
                 organization/working group of body such as IETF, OGC, W3C, etc.</p>
               <p></p>
               <section class="ucr">
@@ -1595,7 +1592,7 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>The vocabulary should be human-readable.</p>
+            <p>The description of the vocabulary must be human-readable.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1972,7 +1969,7 @@ figure figcaption {
           bulk download and <abbr title="Application Programming Interfaces">API</abbr>s.
           </p>
         <p>One approach is packaging data in bulk using non-proprietary file
-          formats(for example zip files or tar files). Using this approach, bulk
+          formats (for example tar files). Using this approach, bulk
           data is generally pre-processed server side where multiple files or
           directory trees of files are provided as one downloadable file. When
           bulk data is being retrieved from non-file system solutions, depending
@@ -2030,6 +2027,7 @@ figure figcaption {
                 discoverable metadata [[VOCAB-DCAT]] describing the container
                 and data URLs associated with the container.</li>
             </ul>
+            
             <label class="expand" for="example-BulkDownload"></label> <input id="example-BulkDownload"
 
               type="checkbox">
