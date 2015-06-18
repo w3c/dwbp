@@ -206,30 +206,14 @@ figure figcaption {
         order to share them with multiple users. For this document, as defined
         by [[DCAT]], "a dataset is a collection of data, available for access or
         download in one or more formats". By data, "we mean known facts that can
-        be recorded and that have implicit meaning" [[Navathe]].</p>
-      <p>In order to deal with changes over time, multiple versions may be
-        created for a single dataset. In the same way, to meet the requirements
-        of different users, a single dataset may be available in different data
-        formats or distributions. Again quoting the DCAT specification, a
-        Distribution "Represents a specific available form of a dataset. Each
-        dataset might be available in different forms, these forms might
-        represent different formats of the dataset or different endpoints.
+        be recorded and that have implicit meaning" [[Navathe]]. To meet the
+        requirements of different users, a single dataset may be available in
+        different data formats or distributions. Again quoting the DCAT
+        specification, a Distribution "Represents a specific available form of a
+        dataset. Each dataset might be available in different forms, these forms
+        might represent different formats of the dataset or different endpoints.
         Examples of distributions include a downloadable CSV file, an API or an
         RSS feed" [[VOCAB-DCAT]]</p>
-      <p> To illustrate these concepts let us consider a simple example: a
-        dataset that collects data about weekly weather forecast for MyCity. The
-        following figure shows the relation between the dataset (Dataset001) and
-        its different versions (Dataset001_W1, Dataset001_W2, Dataset001_W3 and
-        Dataset001_W4), where each version corresponds to the weather forecast
-        of a week of May 2015. Each dataset version has two different
-        distributions: one in CSV and one in JSON. For example, the version
-        Dataset001_W1 has two distributions: Dataset001_W1_csv and
-        Dataset001_W1_json. </p>
-      <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."
-
-          src="images/DWBP_Context.svg"> <figcaption>Diagram showing the
-          relationships between Dataset, Versions and Distributions</figcaption>
-      </figure>
     </section>
     <section id="challenges" class="informative">
       <h2>Data on the Web Challenges</h2>
@@ -814,7 +798,7 @@ figure figcaption {
           <p><span id="DataProvenance" class="practicelab">Provide data
               provenance information</span></p>
           <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
-            should be described by metadata </p>
+            should be available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Without accessible data provenance, data consumers will not know
@@ -913,7 +897,7 @@ figure figcaption {
           <p><span id="DataQuality" class="practicelab">Provide data quality
               information</span></p>
           <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
-            be described by metadata </p>
+            be available.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Data quality might seriously affect the suitability of data for
@@ -977,21 +961,43 @@ figure figcaption {
       <!-- begin of Data Versioning -->
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
-        <p>Data on the web often changes over time. Many datasets are updated on
+         <div class="issue"> This section provides an initial idea of how we are planning to deal with versioning. 
+        We're keen to hear comments about our proposal to represent the relationship between a dataset and its different versions 
+           as well as the use of <a href="http://pav-ontology.github.io/pav/"> PAV </a> ontology as a solution to track dataset 
+           versioning. <a href="https://www.w3.org/2013/dwbp/track/issues/192">Issue-192</a> </div>
+        <p>Data on the Web often changes over time. Many datasets are updated on
           a scheduled basis, such as census data or funding data that changes
           every fiscal year. Other datasets are changed as improvements in
           collecting the data make updates worthwhile. Still other data changes
           in real time or near real time. All these types of data need a
           consistent, informative approach to versioning, so that data consumers
-          can understand and work with the changing data. The following best
-          practices address issues that arise in tracking and managing different
-          versions of datasets.</p>
+          can understand and work with the changing data. </p>
+        <p>In order to deal with changes over time, multiple versions may be
+          created for a single dataset. To illustrate this let us consider a
+          simple example: a dataset that collects data about weekly weather
+          forecast for MyCity. The following figure shows the relation between
+          the dataset (Dataset001) and its different versions (Dataset001_W1,
+          Dataset001_W2, Dataset001_W3 and Dataset001_W4), where each version
+          corresponds to the weather forecast of a week of May 2015. Each
+          dataset version has two different distributions: one in CSV and one in
+          JSON. For example, the version Dataset001_W1 has two distributions:
+          Dataset001_W1_csv and Dataset001_W1_json. </p>
+        <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."
+
+            src="file:///C:/Users/Berna&amp;Danny/Documents/GitHub/dwbp/images/DWBP_Context.svg">
+          <figcaption>Diagram showing the relationships between Dataset,
+            Versions and Distributions</figcaption> </figure>
+        <p>The following best practices address issues that arise in tracking
+          and managing different versions of datasets.</p>
+       
+        <p><br>
+        </p>
         <!-- begin of provide Versioning Info BP -->
         <div class="practice">
           <p><span id="VersioningInfo" class="practicelab">Provide versioning
               information</span></p>
           <p class="practicedesc">Information about dataset versioning <em class="rfc2119">should</em>
-            be described by metadata. </p>
+            be available.</p>
           <!-- <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
               be assigned a unique version number or, at a minimum, a unique              version date, and that unique identifier <em class="rfc2119">should</em>              be distributed with the data in the form of metadata. </p> -->
           <section class="axioms">
@@ -1078,7 +1084,7 @@ figure figcaption {
           <p><span id="VersionHistory" class="practicelab">Provide version
               history</span></p>
           <p class="practicedesc">A version history <em class="rfc2119">should</em>
-            be described by metadata.</p>
+            be available.</p>
           <!-- <p class="practicedesc">A version history <em class="rfc2119">should</em>
               be available for versioned data.</p> -->
           <section class="axioms">
@@ -1126,83 +1132,128 @@ figure figcaption {
       <!-- begin of Data Identification -->
       <section id="DataIdentification">
         <h3>Data Identification</h3>
-        <p>Identifiers are simple conventions of labels that allow us to distinguish what is being identified from anything else. 
-          Identifiers are used extensively in every information system, making it possible to refer to any particular element. The Web 
-          is predicated on a uniform system of identifiers that are globally unique and can be looked up by dereferencing them over the
-          Internet. There are three terms in common use for these identifiers and, although they are often used interchangeably,
-          there are differences.</p>
+        <p>Identifiers are simple conventions of labels that allow us to
+          distinguish what is being identified from anything else. Identifiers
+          are used extensively in every information system, making it possible
+          to refer to any particular element. The Web is predicated on a uniform
+          system of identifiers that are globally unique and can be looked up by
+          dereferencing them over the Internet. There are three terms in common
+          use for these identifiers and, although they are often used
+          interchangeably, there are differences.</p>
         <ul>
-          <li> URL (Uniform Resource Locator) is the location of a resource on the Web. URLs are a subset of URIs.</li>
-          <li> URI (Uniform Resource Identifier) is an identifier for anything including those not available over the Internet such 
-            as people, buildings and mountains. There are many URI schemes, not all of which can be looked up over the Internet. 
-            For example, doi:10.1103/PhysRevD.89.032002 is as URI but cannot be looked up (directly) 
-            on the Internet. For data on the Web, only HTTP(s) URIs are relevant. 
-            HTTP URIs are a subset of URIs which are a subset of IRIs.</li>
-          <li> IRI (Internationalized Resource Identifier) are conceptually identical to URIs but allow the use of non-ASCII 
-            characters to which URIs are limited.</li>
+          <li> URL (Uniform Resource Locator) is the location of a resource on
+            the Web. URLs are a subset of URIs.</li>
+          <li> URI (Uniform Resource Identifier) is an identifier for anything
+            including those not available over the Internet such as people,
+            buildings and mountains. There are many URI schemes, not all of
+            which can be looked up over the Internet. For example,
+            doi:10.1103/PhysRevD.89.032002 is as URI but cannot be looked up
+            (directly) on the Internet. For data on the Web, only HTTP(s) URIs
+            are relevant. HTTP URIs are a subset of URIs which are a subset of
+            IRIs.</li>
+          <li> IRI (Internationalized Resource Identifier) are conceptually
+            identical to URIs but allow the use of non-ASCII characters to which
+            URIs are limited.</li>
         </ul>
-        <p> Of these three, the term URL is by far the most commonly used. The term URI, and even more so, IRI, may cause confusion 
-          among some audiences, however, in the context of data on the Web, URI is more appropriate since data points and datasets 
-          very often refer to real world objects and phenomena. The term IRI is used where necessary.</p>
-        <p> Data discovery, usage and citation on the Web depends fundamentally on the use of HTTP (or HTTPS) URIs. </p>
-        <p> It is perhaps worth emphasizing some key points about URIs in the current context.</p>
+        <p> Of these three, the term URL is by far the most commonly used. The
+          term URI, and even more so, IRI, may cause confusion among some
+          audiences, however, in the context of data on the Web, URI is more
+          appropriate since data points and datasets very often refer to real
+          world objects and phenomena. The term IRI is used where necessary.</p>
+        <p> Data discovery, usage and citation on the Web depends fundamentally
+          on the use of HTTP (or HTTPS) URIs. </p>
+        <p> It is perhaps worth emphasizing some key points about URIs in the
+          current context.</p>
         <ol>
-          <li> URIs are 'dumb strings', that is, they carry no semantics. Their function is purely to identify a resource.</li>
-          <li> Although the previous point is accurate, it would be perverse for a URI such as http://example.com/datset.csv to return 
-            anything other than a CSV file. Human readability is helpful.</li>
-          <li> When de-referenced (looked up), a single URI may offer the same resource in more than one format. http://example.com/dataset may 
-            offer the same data in, say, CSV, JSON and XML. The server returns the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
-            
-             content negotiation </a>.</li>
+          <li> URIs are 'dumb strings', that is, they carry no semantics. Their
+            function is purely to identify a resource.</li>
+          <li> Although the previous point is accurate, it would be perverse for
+            a URI such as http://example.com/datset.csv to return anything other
+            than a CSV file. Human readability is helpful.</li>
+          <li> When de-referenced (looked up), a single URI may offer the same
+            resource in more than one format. http://example.com/dataset may
+            offer the same data in, say, CSV, JSON and XML. The server returns
+            the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
+              content negotiation </a>.</li>
           <li> One URI may redirect to another.</li>
-          <li> De-referencing a URI triggers a computer program to run on a server so that the URI acts as a call to an API. The server may therefore do something 
-            as simple as return a single, static file, or it may carry out complex processing. Precisely what processing is carried out, 
-            i.e. the software on the server, is completely independent of the URI itself.</li>
+          <li> De-referencing a URI triggers a computer program to run on a
+            server so that the URI acts as a call to an API. The server may
+            therefore do something as simple as return a single, static file, or
+            it may carry out complex processing. Precisely what processing is
+            carried out, i.e. the software on the server, is completely
+            independent of the URI itself.</li>
         </ol>
         <!-- begin of Data Identification BP -->
         <div class="practice">
-          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent URIs as identifiers</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be identified by a persistent URI. </p>
+          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent
+              URIs as identifiers</span></p>
+          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be
+            identified by a persistent URI. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Adopting a common identification system enables basic data identification and comparison processes 
-              by any stakeholder in a reliable way. They are an essential pre-condition for proper data management and re-use.</p>
+            <p>Adopting a common identification system enables basic data
+              identification and comparison processes by any stakeholder in a
+              reliable way. They are an essential pre-condition for proper data
+              management and re-use.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Datasets or information about datasets, must be discoverable and citable through time, 
-              regardless of the status, availability or format of the data.</p>
+            <p> Datasets or information about datasets, must be discoverable and
+              citable through time, regardless of the status, availability or
+              format of the data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> To be persistent, URIs must be designed as such, backed up by organizational commitments. 
-              There have been a <a href="http://philarcher.org/diary/2013/uripersistence/#recs">number of articles 
-              written on this topic</a> and the following summarizes many of the key points made.</p>
+            <p> To be persistent, URIs must be designed as such, backed up by
+              organizational commitments. There have been a <a href="http://philarcher.org/diary/2013/uripersistence/#recs">number
+                of articles written on this topic</a> and the following
+              summarizes many of the key points made.</p>
             <ul>
-              <li>Follow a pattern (e.g. http://{domain}/{type}/{concept}/{reference}) </li>
-              <li>Re-use existing identifiers (e.g. http://education.data.gov.uk/id/school/<strong>123457</strong>)</li>
-              <li>Link multiple representations (e.g. http://data.example.org/doc/foo/bar.rdf and http://data.example.org/doc/foo/bar.html) </li>
-              <li>Implement 303 redirects for real-world objects (e.g. http://www.example.com/id/alice_brown and http://www.example.com/doc/alice_brown)</li>
-              <li>Use a dedicated service (i.e. independent of the data originator)</li>
-              <li>Avoid stating ownership (e.g. http://education.data.gov.uk/ministryofeducation/id/school/123456)</li>
-              <li>Avoid version numbers (e.g. http://education.data.gov.uk/doc/school/v01/123456)</li>
-              <li>Avoid using auto-increment (e.g. http://education.data.gov.uk/id/school/123456 and e.g. http://education.data.gov.uk/id/school/123457)</li>
-              <li>Avoid query strings (e.g. http://education.data.gov.uk/doc/school?id=123456)</li>
-              <li>Avoid file extensions (http://education.data.gov.uk/doc/schools/123456.csv)</li>
+              <li>Follow a pattern (e.g.
+                http://{domain}/{type}/{concept}/{reference}) </li>
+              <li>Re-use existing identifiers (e.g.
+                http://education.data.gov.uk/id/school/<strong>123457</strong>)</li>
+              <li>Link multiple representations (e.g.
+                http://data.example.org/doc/foo/bar.rdf and
+                http://data.example.org/doc/foo/bar.html) </li>
+              <li>Implement 303 redirects for real-world objects (e.g.
+                http://www.example.com/id/alice_brown and
+                http://www.example.com/doc/alice_brown)</li>
+              <li>Use a dedicated service (i.e. independent of the data
+                originator)</li>
+              <li>Avoid stating ownership (e.g.
+                http://education.data.gov.uk/ministryofeducation/id/school/123456)</li>
+              <li>Avoid version numbers (e.g.
+                http://education.data.gov.uk/doc/school/v01/123456)</li>
+              <li>Avoid using auto-increment (e.g.
+                http://education.data.gov.uk/id/school/123456 and e.g.
+                http://education.data.gov.uk/id/school/123457)</li>
+              <li>Avoid query strings (e.g.
+                http://education.data.gov.uk/doc/school?id=123456)</li>
+              <li>Avoid file extensions
+                (http://education.data.gov.uk/doc/schools/123456.csv)</li>
             </ul>
-            <p> Where a data publisher is unable or unwilling to manage its URI space directly for persistence, an alternative 
-              approach is to use a redirection service such as <a href="http://purl.org/">purl.org </a>. This provides persistent URIs that can be redirected as
-              required so that the eventual location can be ephemeral. The <a href = "http://www.purlz.org/">software behind such services </a>
-            is freely available so 
-              that it can be installed and managed locally if required. </p>
-            <p> Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a> offer a similar alternative. These identifiers are defined independently of any Web 
-              technology but can be appended to a 'URI stub.' DOIs are an important part of the digital infrastructure for research 
-              data and and libraries. </p>
+            <p> Where a data publisher is unable or unwilling to manage its URI
+              space directly for persistence, an alternative approach is to use
+              a redirection service such as <a href="http://purl.org/">purl.org
+              </a>. This provides persistent URIs that can be redirected as
+              required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
+                behind such services </a> is freely available so that it can be
+              installed and managed locally if required. </p>
+            <p> Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
+              offer a similar alternative. These identifiers are defined
+              independently of any Web technology but can be appended to a 'URI
+              stub.' DOIs are an important part of the digital infrastructure
+              for research data and and libraries. </p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that each dataset in question is identified using a URI that has been assigned under a controlled process as set out in the previous section. Ideally, the relevant Web site includes a description of
-              the process and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
+            <p>Check that each dataset in question is identified using a URI
+              that has been assigned under a controlled process as set out in
+              the previous section. Ideally, the relevant Web site includes a
+              description of the process and a credible pledge of persistence
+              should the publisher no longer be able to maintain the URI space
+              themselves.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1211,50 +1262,63 @@ figure figcaption {
           </section>
         </div>
         <div class="practice">
-          <p><span id="UniqueIdentifiers" class="practicelab">Assign URIs to dataset versions and series</span></p>
-          <p class="practicedesc">URIs <em class="rfc2119">should</em> be assigned to individual versions of datasets as well as the overall series.
-             </p>
+          <p><span id="UniqueIdentifiers" class="practicelab">Assign URIs to
+              dataset versions and series</span></p>
+          <p class="practicedesc">URIs <em class="rfc2119">should</em> be
+            assigned to individual versions of datasets as well as the overall
+            series. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Like documents, many datasets fall into natural series or groups. For example:</p>
+            <p>Like documents, many datasets fall into natural series or groups.
+              For example:</p>
             <ul>
-              <li>noon temperature readings in central London 1850 to the present day;</li>
+              <li>noon temperature readings in central London 1850 to the
+                present day;</li>
               <li>today's noon temperature in London;</li>
               <li>the temperature in London at noon on 3rd June 2015.</li>
             </ul>
-            <p> In different circumstances, it will be appropriate to refer separately to each of these examples (and many like them).
-</p>
+            <p> In different circumstances, it will be appropriate to refer
+              separately to each of these examples (and many like them).
+            </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It should be possible to refer to a specific version of a dataset and to concepts such as a 'dataset series' and 'the latest version.'
-</p>
+            <p> It should be possible to refer to a specific version of a
+              dataset and to concepts such as a 'dataset series' and 'the latest
+              version.'
+            </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> The W3C provides a good example of how to do this. The (persistent) URI for this document is http://www.w3.org/TR/2015/WD-dwbp-20150224/. The URI for the 'latest version' of this document is http://www.w3.org/TR/dwbp. At the time of publication, these two URIs both resolve to this document.
-              However, when the next version of this document is published, the 'latest version' URI will be changed to point to that. </p>
-          <label class="expand" for="example-DataIdentificationVersion"></label> <input
-
-              id="example-DataIdentificationVersion" type="checkbox">
+            <p> The W3C provides a good example of how to do this. The
+              (persistent) URI for this document is
+              http://www.w3.org/TR/2015/WD-dwbp-20150224/. The URI for the
+              'latest version' of this document is http://www.w3.org/TR/dwbp. At
+              the time of publication, these two URIs both resolve to this
+              document. However, when the next version of this document is
+              published, the 'latest version' URI will be changed to point to
+              that. </p>
+            <label class="expand" for="example-DataIdentificationVersion"></label>
+            <input id="example-DataIdentificationVersion" type="checkbox">
             <div class="example">
-              <p>To complete the London temperature example, one might imagine URIs as follows: </p>
-  <pre>  http://weather.example.com/temperature/UK/London/noon
+              <p>To complete the London temperature example, one might imagine
+                URIs as follows: </p>
+              <pre>  http://weather.example.com/temperature/UK/London/noon
   http://weather.example.com/temperature/UK/London/noon/today
   http://weather.example.com/temperature/UK/London/noon/2015-06-03  </pre>
             </div>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that each version of a dataset has its own URI, and that logical groups of datasets are also identifiable.
- </p> </section>
+            <p> Check that each version of a dataset has its own URI, and that
+              logical groups of datasets are also identifiable. </p>
+          </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </section>
         </div>
-        
         <!-- end of Data Identification BP --> </section>
       <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
@@ -1680,22 +1744,14 @@ figure figcaption {
         </div>
         <!-- end of BP -->
         <!-- begin of Used vocabularies information BP
-        <div class="practice">          <p><span id="UsedVocabularies" class="practicelab"> Provide
-              information about vocabularies used to trepresent the data</span></p>          <p class="practicedesc">Information about vocabularies used to
-            represent the data <em class="rfc2119">should</em> be available</p>          <section class="axioms">
-            <p class="subhead">Why</p>            <p></p>
-            <p></p>            <section class="outcome">
-              <p class="subhead">Intended Outcome</p>              <p></p>
-              <p></p>            </section>
-            <section class="how">              <p class="subhead">Possible Approach to Implementation</p>
-              <p></p>              <p></p>
-              <p> </p>            </section>
-            <section class="test"><span style="font-weight: bold;">How to Test </span>              <p></p>
-              <p></p>              <section class="ucr">
-                <p class="subhead">Evidence</p>              </section>
-            </section>          </section>
-          <div class="issue">            <p> Is this BP relevant just for RDF datasets or vocabularies may be
-              used to represent data in other formats (ex: csv)? </p>          </div>
+        <div class="practice">          <p><span id="UsedVocabularies" class="practicelab"> Provide              information about vocabularies used to trepresent the data</span></p>          <p class="practicedesc">Information about vocabularies used to
+            represent the data <em class="rfc2119">should</em> be available</p>          <section class="axioms">            <p class="subhead">Why</p>            <p></p>
+            <p></p>            <section class="outcome">              <p class="subhead">Intended Outcome</p>              <p></p>
+              <p></p>            </section>            <section class="how">              <p class="subhead">Possible Approach to Implementation</p>
+              <p></p>              <p></p>              <p> </p>            </section>
+            <section class="test"><span style="font-weight: bold;">How to Test </span>              <p></p>              <p></p>              <section class="ucr">
+                <p class="subhead">Evidence</p>              </section>            </section>          </section>
+          <div class="issue">            <p> Is this BP relevant just for RDF datasets or vocabularies may be              used to represent data in other formats (ex: csv)? </p>          </div>
         </div> -->
         <!-- end of BP -->
         <!-- begin of Not Over formalize Vocabularies BP -->
