@@ -1,217 +1,211 @@
 <!DOCTYPE html>
-<html typeof="bibo:Document w3p:REC" about="" property="dcterms:language" content="en"
-
-  lang="en">
+<html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Data on the Web Best Practices: Dataset Usage Vocabulary</title>
-    <meta name="description" content="A vocabulary to describe how datasets are used by humans and machines as well as to describe consumer feedback">
-    <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common">
-  </script>
+    <title>Data on the Web Best Practices: Data Quality Vocabulary</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
     <script class="remove">
-var respecConfig = {
-specStatus: "ED",
-shortName: "dwbp-duv",
-//publishDate: "2014-03-27",
-//previousPublishDate: "2014-07-01",
-previousMaturity: "WD",
-//previousURI: "http://www.w3.org/TR/2014/...",
-edDraftURI: "http://w3c.github.io/dwbp/vocab-du.html",
-// lcEnd: "3000-01-01",
-// crEnd: "3000-01-01",
-editors: [{
-name: "Bernadette Farias L&oacute;scio",
-company: "CIn - UFPE, Brazil",
-companyURL: "http://www.cin.ufpe.br/"
-},{
-name: "Eric G. Stephan",
-company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
-}, {
-name: "Sumit Purohit",
-company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
-}],
-wg: "Data on the Web Working Group",
-noRecTrack: true,
-wgURI: "http://www.w3.org/2013/dwbp/",
-wgPublicList: "public-dwbp-wg",
-wgPatentURI: "http://www.w3.org/2004/01/pp-impl/68238/status",
-otherLinks: [{
-key: "Repository",
-data: [{
-value: "We are on Github",
-href: "https://github.com/w3c/dwbp"
-}, {
-value: "File a bug",
-href: "https://github.com/w3c/dwbp"
-}]
-}, {
-key: "Changes",
-data: [{
-value: "Diff to previous version",
-href: "diff-xxx.html"
-}, {
-value: "Commit history",
-href: "https://github.com/w3c/dwbp/commits/gh-pages"
-}]
-}],
-};
-  </script><!--[if lt IE 9]>
-<script src="http://www.w3.org/2008/site/js/html5shiv.js"></script> <![endif]-->
+	var respecConfig = {
+
+		// specification status (e.g. WD, LC, WG-NOTE, etc.). If in doubt use ED.
+		specStatus : "ED",
+		//specStatus:           "CR",
+
+		// the specification's short name, as in http://www.w3.org/TR/short-name/
+		shortName : "dwbp-dqvocab",
+
+		// if your specification has a subtitle that goes below the main
+		// formal title, define it here
+		// subtitle   :  "an excellent document",
+
+		// if you wish the publication date to be other than today, set this
+		publishDate : "2015-06-08",
+		// prEnd:        "2014-01-12",
+		// lcEnd:        "2013-11-26", 
+		// crEnd:        "2013-11-26",
+
+		// if the specification's copyright date is a range of years, specify
+		// the start date here:
+		copyrightStart : "2014",
+
+		// if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+		// and its maturity status
+		//previousPublishDate:  "2013-11-05", 
+		//previousPublishDate:  "2013-08-01",
+		//previousMaturity:  "CR",
+		//previousMaturity:  "CR",
+
+		// if there a publicly available Editor's Draft, this is the link
+		// edDraftURI:           "https://",
+
+		// if this is a LCWD, uncomment and set the end of its review period
+		// lcEnd: "2013-09-06",
+
+		// if there is an earler version of this specification at the Recommendation level,
+		// set this to the shortname of that version. This is optional and not usually
+		// necessary.
+		//          prevRecShortname: "rdf-concepts",
+
+		// editors, add as many as you like
+		// only "name" is required
+
+		editors : [
+				{
+					name : "Riccardo Albertoni",
+					url : "mailto:riccardo.albertoni@ge.imati.cnr.it",
+					company : "CNR - Consiglio Nazionale delle Ricerche, Italy",
+					companyURL : "http://www.cnr.it/"
+				},
+				{
+					name : "Christophe Gu&eacute;ret",
+					url : "mailto:c.d.m.gueret@vu.nl",
+					company : "Free University Amsterdam and DANS, The Netherlands",
+					companyURL : "http://www.vu.nl/"
+				},
+				{
+					name : "Antoine Isaac",
+					url : "mailto:aisaac@few.vu.nl",
+					company : "Free University Amsterdam and Europeana, The Netherlands",
+					companyURL : "http://www.vu.nl/"
+				},
+
+		],
+
+		otherLinks : [ {
+			key : "Other locations",
+			data : [ {
+				value : "Github repository",
+				href : "https://github.com/w3c/dwbp"
+			}, {
+				value : "File a bug",
+				href : "https://github.com/w3c/dwbp"
+			}, {
+				value : "Wiki pages",
+				href : "https://www.w3.org/2013/dwbp/wiki/Data_quality_notes"
+			} ]
+		}, {
+			key : "Contributors @@TODO: add affiliations@@",
+			data : [{
+				value : "Jeremy Debattista"
+			}, {
+				value : "Makx Dekkers"
+			}, {
+				value : "Deirdre Lee"
+			}]
+		} ],
+
+		// authors, add as many as you like.
+		// This is optional, uncomment if you have authors as well as editors.
+		// only "name" is required. Same format as editors.
+
+		//authors:  [
+		//    { name: "Your Name", url: "http://example.org/",
+		//      company: "Your Company", companyURL: "http://example.com/" },
+		//],
+
+		// name of the WG
+		wg : "Data on the Web Best Practices Working Group",
+
+		// URI of the public WG page
+		wgURI : "http://www.w3.org/2013/dwbp/",
+
+		// name (WITHOUT the @w3.org) of the public mailing to which comments are due
+		wgPublicList : "public-dwbp-comments",
+
+		// URI of the patent status for this WG, for Rec-track documents
+		// !!!! IMPORTANT !!!!
+		// This is important for Rec-track documents, do not copy a patent URI from a random
+		// document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+		// Team Contact.
+		//  wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/47663/status",
+
+		// if this parameter is set to true, ReSpec.js will embed various RDFa attributes
+		// throughout the generated specification. The triples generated use vocabulary items
+		// from the dcterms, foaf, and bibo. The parameter defaults to false.
+		doRDFa : "1.1",
+
+		//alternateFormats : [ {
+		//	uri : "diff-20131105.html",
+		//	label : "diff to previous version"
+		//} ],
+
+		// implementationReportURI: "http://www.w3.org/2011/gld/wiki/DCAT_Implementations",
+		maxTocLevel : 2,
+
+	};
+</script>
     <style type="text/css">
 table {
-border-collapse:collapse;
+	border-collapse: collapse;
 }
+
 td, th {
-border:1px solid black;
-padding:1em;
-} table#namespaces td {
-font-family: monospace;
+	border: 1px solid black;
+	padding: 1em;
 }
+
+table#namespaces td {
+	font-family: monospace;
+}
+
 table.definition {
-width:100%;
+	width: 100%;
 }
+
 table.definition td.prop {
-width:10em;
+	width: 10em;
 }
-/* .editorsnote::before {
-content: "Editor's Note";
-display: block;
-width: 150px;
-background: #F30023;
-color: #fff;
-margin: -1.5em 0 0.5em 0;
-font-weight: bold;
-border: 1px solid #cff6d9;
-padding: 3px 1em;
-}
-.editorsnote {
-margin: 1em 0em 1em 1em;
-padding: 1em;
-border: 2px solid #cff6d9;
-} */
+/*  .editorsnote::before {
+    content:    "Editor's Note";
+    display:    block;
+  	width:      150px;
+    background: #F30023;
+    color:  #fff;
+    margin: -1.5em 0 0.5em 0;
+    font-weight:    bold;
+    border: 1px solid #cff6d9;
+    padding:    3px 1em;
+  }
+  .editorsnote {
+    margin: 1em 0em 1em 1em;
+    padding:    1em;
+    border: 2px solid #cff6d9;
+  } */
 pre {
-padding: 1em;
-border: 1px dashed #2f6fab;
-color: black;
-background-color: #f9f9f9;
-line-height: 1.1em;
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
 }
-  </style>
-    <style>/*****************************************************************
-* ReSpec 3 CSS
-* Robin Berjon - http://berjon.com/
-*****************************************************************/
-/* --- INLINES --- */
-em.rfc2119 { text-transform: lowercase;
-font-variant: small-caps;
-font-style: normal;
-color: #900;
+
+pre red { color: red;
 }
-h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
-h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
-border: none;
-}
-dfn {
-font-weight: bold;
-}
-a.internalDFN {
-color: inherit;
-border-bottom: 1px solid #99c;
-text-decoration: none;
-}
-a.externalDFN {
-color: inherit;
-border-bottom: 1px dotted #ccc;
-text-decoration: none;
-}
-a.bibref {
-text-decoration: none;
-}
-cite .bibref {
-font-style: normal;
-}
-code {
-color: #ff4500;
-}
-/* --- TOC --- */
-.toc a, .tof a {
-text-decoration: none;
-}
-a .secno, a .figno {
-color: #000;
-}
-ul.tof, ol.tof {
-list-style: none outside none;
-}
-.caption {
-margin-top: 0.5em;
-font-style: italic;
-}
-/* --- TABLE --- */
-table.simple {
-border-spacing: 0;
-border-collapse: collapse;
-border-bottom: 3px solid #005a9c;
-}
-.simple th {
-background: #005a9c;
-color: #fff;
-padding: 3px 5px;
-text-align: left;
-}
-.simple th[scope="row"] {
-background: inherit;
-color: inherit;
-border-top: 1px solid #ddd;
-}
-.simple td {
-padding: 3px 10px;
-border-top: 1px solid #ddd;
-}
-.simple tr:nth-child(even) {
-background: #f0f6ff;
-}
-/* --- DL --- */
-.section dd > p:first-child {
-margin-top: 0;
-}
-.section dd > p:last-child {
-margin-bottom: 0;
-}
-.section dd {
-margin-bottom: 1em;
-}
-.section dl.attrs dd, .section dl.eldef dd {
-margin-bottom: 0;
-}
-  </style>
-    <link href="https://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet">
-    <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+</style>
   </head>
-  <body class="h-entry" role="document" id="respecDocument"> <br>
-    <h2 id="h2_abstract" role="heading" aria-level="1">Abstract</h2>
+
+<body>   
+    <section id="abstract">
+
     <p> Datasets published on the web are accessed and experienced by consumers
       in a variety of ways, but little information about these experiences is
-      typically conveyed. Dataset publishers many times lack feedback from
-      consumers about how datasets are used. Consumers lack an effective way to
-      discuss experiences with fellow collaborators and explore referencing
-      material citing the dataset. Datasets as defined by DCAT are a collection
-      of data, published or curated by a single agent, and available for access
-      or download in one or more formats. The Dataset Usage Vocabulary (DUV) is
-      used to describe consumer experiences, citations, and feedback about the
-      dataset from the human perspective. </p>
+      typically conveyed. Dataset publishers many times lack
+      feedback from consumers about how datasets are used. Consumers
+      lack an effective way to discuss experiences with fellow collaborators and
+      explore referencing material citing the dataset. Datasets as defined by
+      DCAT are a collection of data, published or curated by a single agent, and
+      available for access or download in one or more formats. The Dataset Usage
+      Vocabulary (DUV) is used to describe consumer experiences, citations, and
+      feedback about the dataset from the human perspective. </p>
     <p>By specifying a number of foundational concepts used to collect dataset
       consumer feedback, experiences, and cite references associated with a
       dataset, APIs can be written to support collaboration across the web by
       structurally publishing consumer opinions and experiences, and provide a
       means for data consumers and producers advertise and search for published
       open dataset usage. </p>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="sotd"
+  </section>
+    <section id="sotd">
 
-      class="introductory"></section>
-    <h2 id="h2_sotd" role="heading" aria-level="1">Status of This Document</h2>
     <p> This is a draft document which may be merged into another document or
       eventually make its way into being a standalone Working Draft. This
       document was published by the Data on the Web Best Practices Working Group
@@ -229,8 +223,9 @@ margin-bottom: 0;
       Claim(s) must disclose the information in accordance with section 6 of the
       W3C Patent Policy. This document is governed by the 1 August 2014 W3C
       Process Document. </p>
+      </section>
     <section id="toc"></section>
-    <h2 id="h2_toc" role="heading" aria-level="1" class="introductory">Table of
+    <!--<h2 id="h2_toc" role="heading" aria-level="1" class="introductory">Table of
       Contents</h2>
     <ul id="respecContents" role="directory" class="toc">
       <li class="tocline"><a class="tocxref" href="#introduction"><span class="secno">1.
@@ -268,12 +263,11 @@ margin-bottom: 0;
                 class="secno">C.2 </span>Informative references</a></li>
         </ul>
       </li>
-    </ul>
-    <section id="introduction" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"
+    </ul> -->
 
-      class="informative">
-      <!--OddPage--></section>
-    <h2 role="heading" aria-level="1" id="intro"><span class="secno">1. </span>Introduction</h2>
+    <section id="intro" class="informative">
+      
+    <h2> Introduction</h2>
     <p> This vocabulary is meant to fill a niche that helps standardize the way
       web published dataset usage be conveyed and shared. At this time is no
       clear standard way to describe dataset usage on the Web. Without a means
@@ -282,9 +276,10 @@ margin-bottom: 0;
       the Web is more difficult. This vocabulary also recommends and requires
       data publishers to provide a mechanism of receiving data usage from data
       consumers in the form of feedback,citation and data correction. </p>
-    <section id="namespaces-1" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter">
-      <!--OddPage--></section>
-    <h2 role="heading" aria-level="1" id="ns"><span class="secno">2. </span>Namespaces</h2>
+    </section>
+    <section id="namespaces-1">
+     
+    <h2> Namespaces</h2>
     <p>The namespace for DCAT is <code>http://www.w3.org/ns/dcat#</code>.
       However, it should be noted that DCAT makes extensive use of terms from
       other vocabularies, in particular <a href="http://dublincore.org/documents/dcmi-terms/">Dublin
@@ -361,25 +356,25 @@ margin-bottom: 0;
         </tr>
       </tbody>
     </table>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="audience"><!--OddPage--></section>
-    <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">3.
-      </span>Audience</h2>
+  </section>
+    <section id="audience">
+    <h2> Audience</h2>
     <p>The DUV is intended for data producers and publishers interested in
       tracking, sharing, and persisting consumer dataset usage. It is also
       intended for collaborators who require an exchange medium to advertise and
       interactively convey dataset usage. </p>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="scope"><!--OddPage--></section>
-    <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">4.
-      </span>Scope</h2>
+  </section>
+    <section id="scope">
+    <h2> Scope</h2>
     <p> The scope of DUV is defined by the Data on the Web Best Practices (DWBP)
       Use Case document based on the data usage requirements about datasets.
       These requirements include: citing data on the Web, tracking the usage of
       data, sharing feedback and rating data. These requirements were derived
       from fourteen real world use cases examples provided in the use case
       document. </p>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="relationship_vocabularies"><!--OddPage--></section>
-    <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">5.
-      </span>Relationship to other Vocabularies</h2>
+  </section>
+    <section id="relationship_vocabularies">
+    <h2> Relationship to other Vocabularies</h2>
     <p> The DUV is a “glue” vocabulary reusing and extending existing vocabulary
       classes and properties to support citation, feedback, and usage. This
       section provides our rationale and approach for vocabulary selection and
@@ -403,15 +398,15 @@ margin-bottom: 0;
       to pass details about the data history to data users. Properties
       associated with prov:Activity provide relationships (prov:used,
       prov:hasGenerated) from a historical perspective using past tense forms of
-      words and phrases. The duv:Application and duv:WebThing reuses these
+      words and phrases. The developed and duv:WebThing reuses these
       properties by creating subProperties from Prov-O to describe usage from a
       present tense perspective. </p>
     <p> Both the Citation Typing Ontology (CiTO) and Dublin Core vocabularies
       are used to describe citations and references between datasets and cited
       sources. </p>
-    <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="examples"><!--OddPage--></section>
-    <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">6.
-      </span>Examples</h2>
+  </section> 
+    <section id="examples">
+    <h2> Examples</h2>
     <p> This section shows some examples to illustrate the application of the
       Dataset Usage Vocabulary.</p>
     <p> Example 1 - Usage: A 2-D plot application developed by Laufer can be
@@ -538,38 +533,43 @@ a foaf:Agent, foaf:Person;
 .
 
 </pre>
+  </section>
     <h2 role="heading" aria-level="1" id="overview"><span class="secno">7. </span>Vocabulary
       Overview</h2>
     <p><em>This section is non-normative.</em></p>
-    <p>
-    This section depicts the vocabulary as a conceptual model.  Shaded boxes are used to identify each class.  
-    Labeled open arrows identify example properties between the classes.  Unlabeled shaded arrows are used 
-    to show inheritance with the parent class identified by the arrow head.</p>
-    <p>The classes duv:Application, duv:WebThing, and prov:Activity are used to convey dataset usage.  The classes duv:Citation, bibo:Document, cito:CitationAct are used to represent citation.  The classes duv:Feedback,
-oa:Annotation, duv:Rating are used to represent feedback.</p>
+    <p> This section depicts the vocabulary as a conceptual model. Shaded boxes
+      are used to identify each class. Labeled open arrows identify example
+      properties between the classes. Unlabeled shaded arrows are used to show
+      inheritance with the parent class identified by the arrow head.</p>
+    <p>The classes duv:Application, duv:WebThing, and prov:Activity are used to
+      convey dataset usage. The classes duv:Citation, bibo:Document,
+      cito:CitationAct are used to represent citation. The classes duv:Feedback,
+      oa:Annotation, duv:Rating are used to represent feedback.</p>
     <section id="vocabulary-specification" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h2 role="heading" aria-level="1" id="vocab-spec"><span style="font-size: 11pt; line-height: 115%; font-family: &quot;Calibri&quot;,&quot;sans-serif&quot;;"><!--[if gte vml 1]><v:shapetype
- id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f"> <v:stroke joinstyle="miter"/> <v:formulas>  <v:f eqn="if lineDrawn pixelLineWidth 0"/>  <v:f eqn="sum @0 1 0"/>  <v:f eqn="sum 0 0 @1"/>  <v:f eqn="prod @2 1 2"/>
-  <v:f eqn="prod @3 21600 pixelWidth"/>  <v:f eqn="prod @3 21600 pixelHeight"/>  <v:f eqn="sum @0 0 1"/>  <v:f eqn="prod @6 1 2"/>  <v:f eqn="prod @7 21600 pixelWidth"/>  <v:f eqn="sum @8 21600 0"/>  <v:f eqn="prod @7 21600 pixelHeight"/>  <v:f eqn="sum @10 21600 0"/>
- </v:formulas> <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/> <o:lock v:ext="edit" aspectratio="t"/></v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:465.75pt; height:267.75pt;mso-position-horizontal-relative:char; mso-position-vertical-relative:line'> <v:imagedata src="file:///C:\Users\puro755\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png"  o:title=""/>
-</v:shape><![endif]--><!--[if !vml]--><img src="./images/vocab-overview.png" v:shapes="_x0000_i1025"
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f"> <v:stroke joinstyle="miter"/> <v:formulas>  <v:f eqn="if lineDrawn pixelLineWidth 0"/>  <v:f eqn="sum @0 1 0"/>  <v:f eqn="sum 0 0 @1"/>  <v:f eqn="prod @2 1 2"/>  <v:f eqn="prod @3 21600 pixelWidth"/>  <v:f eqn="prod @3 21600 pixelHeight"/>  <v:f eqn="sum @0 0 1"/>  <v:f eqn="prod @6 1 2"/>  <v:f eqn="prod @7 21600 pixelWidth"/>  <v:f eqn="sum @8 21600 0"/>  <v:f eqn="prod @7 21600 pixelHeight"/>  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas> <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/> <o:lock v:ext="edit" aspectratio="t"/></v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:465.75pt; height:267.75pt;mso-position-horizontal-relative:char; mso-position-vertical-relative:line'> <v:imagedata src="file:///C:\Users\puro755\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png"  o:title=""/></v:shape><![endif]--><!--[if !vml]--><img
 
-          border="1" height="490" width="788"><!--[endif]--></span><br>
+          src="./images/vocab-overview.png" v:shapes="_x0000_i1025" border="1" height="490"
+
+          width="788"><!--[endif]--></span><br>
       <span class="secno"></span></h2>
+    
+    <div class="issue"> Should usage be specified at the Dataset or Distribution level? 
+      <a href="http://www.w3.org/2013/dwbp/track/issues/169"> Issue-169 </a> </div>
     <h2 role="heading" aria-level="1" id="vocab-spec"><span class="secno">8. </span>Vocabulary
       specification</h2>
+    
     <p> </p>
-    <section id="class-agent" rel="bibo:Chapter" resource="#ref"  typeof="bibo:Chapter">
+    <section id="class-agent" rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter">
     </section>
     <h3 role="heading" aria-level="2" id="Class:_Agent"><span class="secno">8.1
       </span>Class:&nbsp;Agent</h3>
-    <!-- <p><a href="#Property:catalog_update_date"><br>
-      </a></p> -->
     <table class="definition">
       <thead>
         <tr>
           <th>RDF Class:</th>
-          <th><a href="http://www.w3.org/ns/dcat#Catalog">foaf:Agent</a></th>
+          <th><a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></th>
         </tr>
       </thead>
       <tbody>
@@ -593,16 +593,11 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
       </tbody>
     </table>
     <!--<h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      title</h4>    <table class="definition">      <thead>        <tr>
-          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">dc:title</span></th>        </tr>      </thead>
-      <tbody>        <tr>          <td class="prop">Definition</td>          <td>A name given to the Agent</td>
-        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;">rdfs:Literal</span></td>
-        </tr>      </tbody>    </table>    <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      description</h4>    <table class="definition">      <thead>        <tr>
-          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">dct:description</span></th>        </tr>      </thead>
-      <tbody>        <tr>          <td class="prop">Definition</td>          <td>A free-text account of the Agent</td>
-        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;">rdfs:Literal</span></td>
-        </tr>      </tbody>    </table> -->
+      title</h4>    <table class="definition">      <thead>        <tr>          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">dc:title</span></th>        </tr>      </thead>
+      <tbody>        <tr>          <td class="prop">Definition</td>          <td>A name given to the Agent</td>        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;">rdfs:Literal</span></td>
+        </tr>      </tbody>    </table>    <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:      description</h4>    <table class="definition">      <thead>        <tr>
+          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">dct:description</span></th>        </tr>      </thead>      <tbody>        <tr>          <td class="prop">Definition</td>          <td>A free-text account of the Agent</td>
+        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;">rdfs:Literal</span></td>        </tr>      </tbody>    </table> -->
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h4 role="heading" aria-level="3" id="Property:develops">Property: develops</h4>
     <table class="definition">
@@ -710,7 +705,7 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
       <thead>
         <tr>
           <th>RDF Class:</th>
-          <th><span style="text-decoration: underline;">duv:Application</span></th>
+          <th><span style="text-decoration: underline;">developed</span></th>
         </tr>
       </thead>
       <tbody>
@@ -725,6 +720,7 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
+    <div class="issue"> Should we use Software or earl:Software instead of developed? <a href="http://www.w3.org/2013/dwbp/track/issues/170"> Issue-170 </a> </div>
     <p> </p>
     <h4 role="heading" aria-level="3" id="Property:application_title">Property:
       title</h4>
@@ -794,6 +790,7 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
+    <div class="issue"> Should dct:creator or doap:developer be used instead of duv:developedBy? <a href="http://www.w3.org/2013/dwbp/track/issues/171"> Issue-171 </a></div>
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h4 role="heading" aria-level="3" id="Property:consumes">Property: consumes</h4>
     <table class="definition">
@@ -821,7 +818,10 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
           <td>http://www.w3c.org/ns/duv</td>
         </tr>
       </tbody>
+      
     </table>
+    <div class="issue"> Should duv:consumes be used instead of duv:consumed? Should we be able to reify Consumption?
+        <a href="http://www.w3.org/2013/dwbp/track/issues/177"> Issue-177 </a></div>
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h4 role="heading" aria-level="3" id="Property:generates">Property:
       generates</h4>
@@ -1063,35 +1063,24 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
     </table>
     <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section> -->
     <!-- <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      annotatedby</h4>    <table class="definition">      <thead>        <tr>
-          <th>RDF Property:</th>          <th><a href="http://purl.org/dc/terms/title"></a><a href="http://www.w3.org/ns/oa#annotatedBy">oa:annotatedby</a></th>        </tr>      </thead>
-      <tbody>        <tr>          <td class="prop">Definition</td>          <td>Feedback resource that identifies the agent responsible for
-            creating the Annotation."</td>        </tr>        <tr>          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">duv:Agent</a></td>        </tr>        <tr>          <td>Label</td>
-          <td>annotatedBy</td>        </tr>      </tbody>    </table>-->
+      annotatedby</h4>    <table class="definition">      <thead>        <tr>          <th>RDF Property:</th>          <th><a href="http://purl.org/dc/terms/title"></a><a href="http://www.w3.org/ns/oa#annotatedBy">oa:annotatedby</a></th>        </tr>      </thead>
+      <tbody>        <tr>          <td class="prop">Definition</td>          <td>Feedback resource that identifies the agent responsible for            creating the Annotation."</td>        </tr>        <tr>          <td class="prop">Range</td>
+          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">duv:Agent</a></td>        </tr>        <tr>          <td>Label</td>          <td>annotatedBy</td>        </tr>      </tbody>    </table>-->
     <!--<section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section> -->
     <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h3 role="heading" aria-level="2" id="Class:_Catalog"><br>    </h3> -->
     <!-- <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      hasCitingEntity</h4>    <table class="definition">      <thead>        <tr>
-          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:hasCitingEntity</span></th>        </tr>      </thead>
-      <tbody>        <tr>          <td class="prop">Definition</td>          <td>The citation act relates to the entity containing that citation.</td>
-        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;"><a href="http://www.w3.org/2000/01/rdf-schema#Literal">dcat:Dataset</a></span></td>
-        </tr>        <tr>          <td>Label</td>          <td>has citing entity</td>
-        </tr>        <tr>          <td>rdfs:isDefinedBy</td>          <td>http://www.w3c.org/ns/duv</td>
-        </tr>        <tr>          <td>rdfs:subPropertyOf</td>          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>
-        </tr>      </tbody>    </table> -->
+      hasCitingEntity</h4>    <table class="definition">      <thead>        <tr>          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:hasCitingEntity</span></th>        </tr>      </thead>
+      <tbody>        <tr>          <td class="prop">Definition</td>          <td>The citation act relates to the entity containing that citation.</td>        </tr>        <tr>          <td class="prop">Range</td>          <td><span style="text-decoration: underline;"><a href="http://www.w3.org/2000/01/rdf-schema#Literal">dcat:Dataset</a></span></td>
+        </tr>        <tr>          <td>Label</td>          <td>has citing entity</td>        </tr>        <tr>          <td>rdfs:isDefinedBy</td>          <td>http://www.w3c.org/ns/duv</td>
+        </tr>        <tr>          <td>rdfs:subPropertyOf</td>          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>        </tr>      </tbody>    </table> -->
     <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h3 role="heading" aria-level="2" id="Class:_Catalog"><br>    </h3> -->
     <!-- <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      retains</h4>    <table class="definition">      <thead>        <tr>
-          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:retains</span></th>        </tr>      </thead>
-      <tbody>        <tr>          <td class="prop">Definition</td>          <td>The citation act relates to the entity containing that
-            citation.</td>        </tr>        <tr>          <td class="prop">Range</td>
-          <td><span style="text-decoration: underline;"><a href="http://www.w3.org/TR/prov-o/#Bundle">prov:Bundle</a></span></td>        </tr>        <tr>          <td>Label</td>
-          <td>retains</td>        </tr>        <tr>          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>        </tr>        <tr>          <td>rdfs:subPropertyOf</td>
-          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>        </tr>      </tbody>    </table> -->
+      retains</h4>    <table class="definition">      <thead>        <tr>          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:retains</span></th>        </tr>      </thead>
+      <tbody>        <tr>          <td class="prop">Definition</td>          <td>The citation act relates to the entity containing that            citation.</td>        </tr>        <tr>          <td class="prop">Range</td>
+          <td><span style="text-decoration: underline;"><a href="http://www.w3.org/TR/prov-o/#Bundle">prov:Bundle</a></span></td>        </tr>        <tr>          <td>Label</td>          <td>retains</td>        </tr>        <tr>          <td>rdfs:isDefinedBy</td>
+          <td>http://www.w3c.org/ns/duv</td>        </tr>        <tr>          <td>rdfs:subPropertyOf</td>          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>        </tr>      </tbody>    </table> -->
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
     <h3 role="heading" aria-level="2" id="Class:_Rating"><span class="secno">8.7
       </span>Class: Rating</h3>
@@ -1147,6 +1136,8 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
+    <div class="issue"> The use of cito:CitationAct and duv:Citation is under evaluation. 
+      <a href="http://www.w3.org/2013/dwbp/track/issues/173"> Issue-173 </a></div>
     <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
       hasCitingEntity</h4>
     <table class="definition">
@@ -1208,7 +1199,8 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
-    
+    <div class="issue"> The definition of duv:Feedback needs to be reviewed because it is not clear if it should be a subclass 
+      of oa:Annotation or just an instance of oa:Motivation. <a href="http://www.w3.org/2013/dwbp/track/issues/178"> Issue-178 </a> </div>
     <h4 role="heading" aria-level="3" id="Property:endorses">Property: endorses</h4>
     <table class="definition">
       <thead>
@@ -1296,6 +1288,7 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
+    <div class="issue"> The meaning of duv:retains needs to be clarified and more examples will be provided. <a href="http://www.w3.org/2013/dwbp/track/issues/174"> Issue-174 </a> </div>
     <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
       has_rating</h4>
     <table class="definition">
@@ -1378,7 +1371,6 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
     </table>
     <h3 role="heading" aria-level="2" id="Class:_WebThing"><span class="secno">8.11
         </span>Class: WebThing</h3>
-
     <table class="definition">
       <thead>
         <tr>
@@ -1406,6 +1398,8 @@ oa:Annotation, duv:Rating are used to represent feedback.</p>
         </tr>
       </tbody>
     </table>
+    <div class="issue">Should prov:SoftwareAgent be used instead of Application/WebOfThing? 
+      <a href="http://www.w3.org/2013/dwbp/track/issues/176"> Issue-176 </a> </div>
     <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter" id="duvrequirements"><!--OddPage--></section>
     <h2 id="h2_conformance" role="heading" aria-level="1"><span class="secno">9.
       </span>DUV Requirements</h2>
