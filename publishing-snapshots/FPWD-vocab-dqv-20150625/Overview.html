@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head><meta lang="" property="dc:language" content="en">
+<title>Data Quality Vocabulary</title>
+<meta charset="utf-8">
+<link href="localstyles.css" rel="stylesheet">
+<link href="https://www.w3.org/StyleSheets/TR/W3C-WD" rel="stylesheet">
+<!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+<body class="h-entry" role="document" id="respecDocument">
+<div class="head" role="contentinfo" id="respecHeader">
+  <p><a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Data Quality Vocabulary</h1>
+  
+  <h2 id="w3c-first-public-working-draft-25-june-2015"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-06-25">25 June 2015</time></h2>
+  <dl>
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/">http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/vocab-dqv/">http://www.w3.org/TR/vocab-dqv/</a></dd>
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="http://w3c.github.io/dwbp/vocab-dqg.html">http://w3c.github.io/dwbp/vocab-dqg.html</a></dd>
+    <dt>Editors:</dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Riccardo Albertoni"><a class="u-url url p-name fn" property="foaf:homepage" href="mailto:riccardo.albertoni@ge.imati.cnr.it">Riccardo Albertoni</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.cnr.it/">CNR - Consiglio Nazionale delle Ricerche, Italy</a></span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Christophe Guéret"><a class="u-url url p-name fn" property="foaf:homepage" href="mailto:c.d.m.gueret@vu.nl">Christophe Guéret</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.vu.nl/">Free University Amsterdam and DANS, The Netherlands</a></span>
+<span property="rdf:rest" resource="_:editor2"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor2"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Antoine Isaac"><a class="u-url url p-name fn" property="foaf:homepage" href="mailto:aisaac@few.vu.nl">Antoine Isaac</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.vu.nl/">Free University Amsterdam and Europeana, The Netherlands</a></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+        
+          <dt>Other locations:</dt>
+                  <dd><a href="https://github.com/w3c/dwbp">Github repository</a></dd>
+                  <dd><a href="https://github.com/w3c/dwbp">File a bug</a></dd>
+                  <dd><a href="https://www.w3.org/2013/dwbp/wiki/Data_quality_notes">Wiki pages</a></dd>
+          <dt>Contributors</dt>
+                  <dd>Jeremy Debattista, <a href="http://www.iais.fraunhofer.de/">Fraunhofer IAIS</a></dd>
+                  <dd>Makx Dekkers, <a href="http://ami-consult.com/">AMI Consult</a></dd>
+                  <dd>Deirdre Lee, <a href="http://derilinx.com/">Derilinx</a></dd>
+  </dl>
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2014-2015
+        
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
+        
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+        
+        rules apply.
+      </p>
+    
+  
+  <hr>
+</div>
+	<section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+		<p>This document provides a framework in which the quality of a dataset can be described, whether by the
+    dataset publisher or by a broader community of users. It does not provide a formal, complete definition of quality,
+    rather, it sets out a consistent means by which information can be provided such that a potential user of a dataset
+    can make his/her own judgement about its fitness for purpose.</p>
+	</section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+  
+    
+      
+        <p>
+          <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
+        </p>
+        
+        
+		<p>This is an early draft of the DQV. Its publication is designed to provoke
+    comment on the overall direction foreseen as much as the specific details.</p>
+	
+        
+        <p>
+          This document was published by the <a href="http://www.w3.org/2013/dwbp/">Data on the Web Best Practices Working Group</a> as a First Public Working Draft.
+          
+          
+            If you wish to make comments regarding this document, please send them to 
+            <a href="mailto:public-dwbp-comments@w3.org">public-dwbp-comments@w3.org</a> 
+            (<a href="mailto:public-dwbp-comments-request@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/public-dwbp-comments/">archives</a>).
+          
+          
+          
+          
+          
+            
+            All comments are welcome.
+            
+          
+        </p>
+        
+        
+        
+          <p>
+            Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+            Membership. This is a draft document and may be updated, replaced or obsoleted by other
+            documents at any time. It is inappropriate to cite this document as other than work in
+            progress.
+          </p>
+        
+        
+        
+        <p>
+          
+            This document was produced by a group operating under the 
+            <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+          
+          
+            The group does not expect this document to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+          
+          
+            
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="" rel="disclosure">public list of any patent
+              disclosures</a> 
+            
+            made in connection with the deliverables of the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual knowledge of a patent
+            which the individual believes contains
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+          
+        </p>
+        
+          <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2014/Process-20140801/">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+          </p>
+        
+        
+      
+    
+  
+</section>
+	
+	<section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a></li><li class="tocline"><a href="#namespaces-1" class="tocxref"><span class="secno">3. </span>Namespaces</a></li><li class="tocline"><a href="#vocabulary-overview" class="tocxref"><span class="secno">4. </span>Vocabulary Overview</a></li><li class="tocline"><a href="#vocabulary specification" class="tocxref"><span class="secno">5. </span>Vocabulary specification</a><ul class="toc"><li class="tocline"><a href="#QualityMeasure" class="tocxref"><span class="secno">5.1 </span>Class: Quality Measure</a><ul class="toc"></ul></li><li class="tocline"><a href="#Metric" class="tocxref"><span class="secno">5.2 </span>Class: Metric</a><ul class="toc"></ul></li></ul></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">6. </span>Example Usage</a><ul class="toc"><li class="tocline"><a href="#express-a-quality-assessment-with-quality-metrics" class="tocxref"><span class="secno">6.1 </span>Express a quality assessment with quality metrics</a></li><li class="tocline"><a href="#document-the-provenance-of-the-quality-metadata" class="tocxref"><span class="secno">6.2 </span>Document the provenance of the quality metadata</a></li><li class="tocline"><a href="#document-the-provenance-of-a-dataset" class="tocxref"><span class="secno">6.3 </span>Document the provenance of a dataset</a></li><li class="tocline"><a href="#express-that-a-dataset-received-an-odi-certificate" class="tocxref"><span class="secno">6.4 </span>Express that a dataset received an ODI certificate</a></li><li class="tocline"><a href="#express-the-quality-of-a-linkset" class="tocxref"><span class="secno">6.5 </span>Express the quality of a linkset</a></li></ul></li><li class="tocline"><a href="#dimensions-and-metrics-hints" class="tocxref"><span class="secno">7. </span>Dimensions and metrics hints</a><ul class="toc"><li class="tocline"><a href="#statistics" class="tocxref"><span class="secno">7.1 </span>Statistics</a></li><li class="tocline"><a href="#availability" class="tocxref"><span class="secno">7.2 </span>Availability</a></li><li class="tocline"><a href="#processability" class="tocxref"><span class="secno">7.3 </span>Processability</a></li><li class="tocline"><a href="#accuracy" class="tocxref"><span class="secno">7.4 </span>Accuracy</a></li><li class="tocline"><a href="#consistency" class="tocxref"><span class="secno">7.5 </span>Consistency</a></li><li class="tocline"><a href="#relevance" class="tocxref"><span class="secno">7.6 </span>Relevance</a></li><li class="tocline"><a href="#completeness" class="tocxref"><span class="secno">7.7 </span>Completeness</a></li><li class="tocline"><a href="#conformance-1" class="tocxref"><span class="secno">7.8 </span>Conformance</a></li><li class="tocline"><a href="#credibility" class="tocxref"><span class="secno">7.9 </span>Credibility</a></li><li class="tocline"><a href="#timeliness" class="tocxref"><span class="secno">7.10 </span>Timeliness</a></li></ul></li><li class="tocline"><a href="#requirements" class="tocxref"><span class="secno">8. </span>Requirements</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">B.2 </span>Informative references</a></li></ul></li></ul></section>
+	<section class="informative" id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+		<!--OddPage--><h2 id="intro" resource="#intro"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2><p><em>This section is non-normative.</em></p>
+		<p>The <a href="http://www.w3.org/TR/dwbp/">Data on the Web Best Practices</a> 
+      points out the relevance of <a href="http://www.w3.org/TR/dwbp/#quality">publishing information 
+      about the quality of data published on the Web</a>.
+      Accordingly, the <a href="http://www.w3.org/2013/dwbp/">Data on the Web Best Practices Working Group</a> has been 
+      chartered to create a vocabulary for expressing data quality. The Data Quality Vocabulary (DQV) presented 
+      in this document is foreseen as an extension to DCAT [<cite><a class="bibref" href="#bib-vocab-dcat">vocab-dcat</a></cite>] to
+			cover the quality of the data, how frequently is it updated, whether
+			it accepts user corrections, persistence commitments etc. When used
+			by publishers, this vocabulary will foster trust in the data amongst
+			developers.</p>
+<p>This vocabulary does not seek to determine what "quality" means. We believe that 
+quality lies in the eye of the beholder; that there is no objective, ideal definition of it.
+Some datasets will be judged as low-quality resources by some data consumers, while they will perfectly fit others' needs.
+Accordingly, we attach a lot of importance to allowing many actors to assess the quality 
+of datasets and publish their annotations, certificates and opinions about a dataset.
+A dataset's publisher should publish metadata that helps data consumers determine whether they can use the dataset to their benefit.
+However, publishers should not be the only ones to have a say on the quality of data published 
+in an open environment like the Web. Certification agencies, data aggregators and data consumers can
+make relevant quality assessments too.</p>
+<p>We want to stimulate this by making it easier to publish, exchange and consume quality 
+metadata, for every step of a dataset's lifecycle.
+This is why next to rather expected constructs, like quality measures, the Data Quality Vocabulary 
+puts a lot of emphasis on feedback, annotation, agreements and the provenance of the metadata.</p>
+	</section>
+	<section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span></h2>
+<p>
+  As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
+  and notes in this specification are non-normative. Everything else in this specification is
+  normative.
+</p>
+
+</section>
+ 	<section id="namespaces-1" typeof="bibo:Chapter" resource="#namespaces-1" property="bibo:hasPart"> 
+	<!--OddPage--><h2 id="namespaces" resource="#namespaces"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Namespaces</span></h2>
+    <p>The namespace for DQV is provisionally set as <code>http://www.w3.org/ns/dqv#</code>.
+DQV, however, seeks to re-use elements  from other vocabularies, following the <a href="http://www.w3.org/TR/dwbp/#dataVocabularies">best practices for data vocabularies</a> identified by the Data on the Web Best Practices Working Group.</p>
+		<div class="issue" id="issue-1"><div class="issue-title" aria-level="3" role="heading" id="h-issue1"><span>Issue 1</span></div><div class="">
+			<p>
+			The Working Group is considering putting all new classes and properties (together with the 
+      ones of the <a href="http://www.w3.org/TR/vocab-duv/">Dataset Usage Vocabulary</a>) in the 
+      <a href="http://www.w3.org/ns/dcat#">DCAT namespace</a>.  (<a href="/2013/dwbp/track/issues/179">Issue-179</a>).</p>
+		</div></div>
+<p>The table below indicates the full list of namespaces and prefixes used in this document.</p>
+   	<table id="namespaces">
+		<thead><tr>
+    			<th>Prefix</th>
+    			<th>Namespace</th>
+  		</tr>
+  		</thead> 
+		<tbody>
+		<tr>
+      			<td>daq</td>
+      			<td>http://purl.org/eis/vocab/daq#</td>
+    		</tr>
+		<tr>
+      			<td>dcat</td>
+      			<td>http://www.w3.org/ns/dcat#</td>
+    		</tr>
+    		<tr>
+      			<td>dcterms</td>
+      			<td>http://purl.org/dc/terms/</td>
+    		</tr>
+		<tr>
+      			<td>dqv</td>
+      			<td>http://www.w3.org/ns/dqv#</td>
+    		</tr>
+
+    		<tr>
+      			<td>duv</td>
+      			<td>http://www.w3.org/ns/duv#</td>
+    		</tr>
+    		<tr>
+      			<td>oa</td>
+      			<td>http://www.w3.org/ns/oa#</td>
+    		</tr>
+    		<tr>
+      			<td>prov</td>
+      			<td>http://www.w3.org/ns/prov#</td>
+    		</tr>
+		
+  		</tbody>
+		</table>
+		<div class="issue" id="issue-2"><div class="issue-title" aria-level="3" role="heading" id="h-issue2"><span>Issue 2</span></div><div class="">
+			<p>Are we actually allowed by <abbr title="World Wide Web Consortium">W3C</abbr> to re-use elements from <a href="http://purl.org/eis/vocab/daq#">DAQ</a>?
+				This vocabulary is not a community standard and its guarantee of sustainability may be judged not good enough.
+		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.
+		(<a href="https://www.w3.org/2013/dwbp/track/issues/180">Issue-180</a>).</p>
+		</div></div>
+	</section>
+
+	<section id="vocabulary-overview" typeof="bibo:Chapter" resource="#vocabulary-overview" property="bibo:hasPart">
+		<!--OddPage--><h2 id="model" resource="#model"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Vocabulary Overview</span></h2>
+		<p>The following vocabulary is based on DCAT [<cite><a class="bibref" href="#bib-vocab-dcat">vocab-dcat</a></cite>] that
+			it extends with a number of additional properties and classes
+			suitable for expressing the quality of a dataset.</p>
+		<p>
+			The quality of a given dataset or distribution is assessed via a
+			number of observed properties. For instance, one may consider a
+			dataset to be of high quality because it complies with a specific
+			standard while for other use cases the quality of the data will
+			depend on its level of interlinking with other datasets. To express
+			these properties an instance of a <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
+			or <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
+			can be related to four different classes:</p>
+		<ul>
+			<li><a href="#">dqv:QualityAnnotation</a> represents feedback and quality certificates given
+				about the dataset or a distribution of it.</li>
+			<li><a href="http://purl.org/dc/terms/Standard">dcterms:Standard</a>
+				represents a standard the dataset or its distribution conforms to.</li>
+			<li><a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
+				represents an entity involved in the provenance of the
+				dataset or distribution.</li>
+			<li><a href="#">dqv:QualityMeasure</a>
+				represents a metric value providing quantitative or
+				qualitative information about the dataset or distribution.</li>
+		</ul>
+		<figure id="fig-data-model-showing-the-main-relevant-classes-and-their-relations.-n.b.-graph-containment-refers-to-the-inclusion-of-quality-statements-in-rdf-graphs-e.g.-for-capturing-the-provenance-of-quality-statements-see-later-example-.x">
+			<a href="DataQuality.svg"><img src="DataQuality.svg" style="width:100%" alt=""></a>
+			<figcaption>Fig. <span class="figno">1</span> <span class="fig-title">Data model showing the main relevant classes and their relations. <br>
+      <span style="font-size:smaller">N.B. "graph containment" refers to the inclusion of quality statements in (RDF) graphs, e.g. 
+  for capturing the provenance of quality statements (see later <a href="#document-the-provenance-of-the-quality-metadata">example</a>).</span></span></figcaption>
+		</figure>
+
+	<div class="issue" id="issue-3"><div class="issue-title" aria-level="3" role="heading" id="h-issue3"><span>Issue 3</span></div><div class="">
+			<p>What is the relation between  <code>duv:Feedback</code> and <code>dqv:UserFeedback</code>? (<a href="https://www.w3.org/2013/dwbp/track/issues/165">Issue-165</a>).</p>
+	</div></div>
+	<div class="issue" id="issue-4"><div class="issue-title" aria-level="3" role="heading" id="h-issue4"><span>Issue 4</span></div><div class="">
+			<p>Should we have only the existing class <a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a>
+		  or keep the new class <code>dqv:QualityMetadata</code> 
+				to represent a set of statements providing quantitative and/or
+				qualitative information about the dataset or distribution. One could be a sub-class of the other. (<a href="https://www.w3.org/2013/dwbp/track/issues/181">Issue-181</a>)
+			</p>
+	</div></div>
+	<div class="issue" id="issue-5"><div class="issue-title" aria-level="3" role="heading" id="h-issue5"><span>Issue 5</span></div><div class="">
+			<p>The label of <code>daq:QualityGraph</code> does not fit well with the current model.
+	  DAQ graphs are meant to contain measures.
+	  In our context a "quality graph" has a wider scope: actually the role of representing overall quality graphs is currently played by <a href="#">dqv:QualityMetadata</a>.  (<a href="https://www.w3.org/2013/dwbp/track/issues/182">Issue-182</a>)
+ 
+			</p>
+	</div></div>
+	<div class="issue" id="issue-6"><div class="issue-title" aria-level="3" role="heading" id="h-issue6"><span>Issue 6</span></div><div class="">
+			<p>
+				We may want to consider a revision of DCAT to make <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
+				and <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
+				subclasses of <a href="#">prov:Entity</a>. (<a href="https://www.w3.org/2013/dwbp/track/issues/183">Issue-183</a>)
+
+			</p>
+	</div></div>
+	<div class="issue" id="issue-7"><div class="issue-title" aria-level="3" role="heading" id="h-issue7"><span>Issue 7</span></div><div class="">
+			<p>
+				Is a <code>dqv:ServiceLevelAgreement</code> a kind of certificate, or a standard? (<a href="https://www.w3.org/2013/dwbp/track/issues/184">Issue-184</a>) 
+			</p>
+	</div></div>
+	<div class="issue" id="issue-8"><div class="issue-title" aria-level="3" role="heading" id="h-issue8"><span>Issue 8</span></div><div class="">
+			<p><code>dqv:QualityAnnotation</code> is foreseen as a subclass of  
+    <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a>. The instances of this class should have a
+	  <a href="http://www.w3.org/ns/oa#d4e230">oa:motivatedBy</a> statement with a an instance of 
+    <a href="http://www.w3.org/ns/oa#d4e555">oa:Motivation</a>, which reflects a quality assessment purpose.
+	  We plan to define is as <a href="#">dqv:qualityAssessment</a>. (<a href="https://www.w3.org/2013/dwbp/track/issues/185">Issue-185</a>) 
+			</p>
+	</div></div>
+
+	
+	</section>
+	
+	<section id="vocabulary specification" typeof="bibo:Chapter" resource="#vocabulary specification" property="bibo:hasPart">
+		<!--OddPage--><h2 id="h-vocabulary-specification" resource="#h-vocabulary-specification"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>Vocabulary specification</span></h2>
+		<div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><div class="">
+			<p>This section is work in progress. We will include later more tables with specification of individual classes and properties.</p>
+		</div></div>
+
+
+		<section id="QualityMeasure" typeof="bibo:Chapter" resource="#QualityMeasure" property="bibo:hasPart">	
+		<h3 id="h-qualitymeasure" resource="#h-qualitymeasure"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>Class: Quality Measure</span></h3>
+		
+		<p>DQV defines quality measures as specific instances of DAQ observations, adapting the 
+    <a href="http://eis-bonn.github.io/Luzzu/papers/ldow2014.pdf">DAQ quality metrics framework</a>:</p>
+		<ul>
+		  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
+		  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+		</ul>
+		<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of 
+    literals with language tags" and "number of different language tags".</p>
+
+		<p>The following property should be used on this class: 
+    <a href="#Property:hasMetric">daq:metric</a>. The following property may be used for this class: 
+    <a href="#Property:dataSet">qb:dataSet</a>.</p>
+		<table class="definition">
+		  <thead><tr><th>RDF Class:</th><th><a href="#">dqv:QualityMeasure</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</td></tr>
+		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    <tr><td class="prop">Subclass of:</td><td> <a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a>
+		      (itself a subclass of <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>)</td></tr>
+		  </tbody>
+		</table>
+
+		<div class="issue" id="issue-9"><div class="issue-title" aria-level="4" role="heading" id="h-issue9"><span>Issue 9</span></div><div class="">
+			<p>
+			There might be no need for a subclass link between <a href="#">dqv:QualityMeasure</a> and <a href="#">daq:Observation</a>.
+	  I.e., we could re-use <a href="#">daq:Observation</a> directly.  (<a href="https://www.w3.org/2013/dwbp/track/issues/186">Issue-186</a>) 
+			</p>
+		</div></div>
+
+		<section id="property-metric" typeof="bibo:Chapter" resource="#property-metric" property="bibo:hasPart">
+		<h4 role="heading" aria-level="3" id="Property:hasMetric" resource="#Property:hasMetric"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.1 </span>Property: metric</span></h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/eis/vocab/daq#metric">daq:metric</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Indicates the metric being observed.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+
+		<section id="property-measure-dataset" typeof="bibo:Chapter" resource="#property-measure-dataset" property="bibo:hasPart">
+		<h4 role="heading" aria-level="3" id="Property:measure_dataSet" resource="#Property:measure_dataSet"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1.2 </span>Property: measure dataset</span></h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Indicates the data set of which this observation is a part.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
+		  </tbody>
+		</table>
+		</section>
+		
+		</section>
+
+		<section id="Metric" typeof="bibo:Chapter" resource="#Metric" property="bibo:hasPart">	
+		<h3 id="h-metric" resource="#h-metric"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Class: Metric</span></h3>
+
+		<p>The following properties should be used on this class: <a href="#Property:hasDimension">dqv:hasDimension</a>.</p>
+		<table class="definition">
+		  <thead><tr><th>RDF Class:</th><th><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension.</td></tr>
+		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		  </tbody>
+		</table>
+
+		<div class="issue" id="issue-10"><div class="issue-title" aria-level="4" role="heading" id="h-issue10"><span>Issue 10</span></div><div class="">
+			<p>
+			Do we want to keep the same occurrence constraints as defined in DAQ (for example, that every metric should belong to exactly one dimension)?
+		  In this specific case this may be demanding too much on quality data publishers:
+		  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions.  (<a href="https://www.w3.org/2013/dwbp/track/issues/187">Issue-187</a>) 
+			</p>
+		</div></div>
+
+		<section id="property-dimension" typeof="bibo:Chapter" resource="#property-dimension" property="bibo:hasPart">
+		<h4 role="heading" aria-level="3" id="Property:hasDimension" resource="#Property:hasDimension"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2.1 </span>Property: dimension</span></h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#">dqv:hasDimension</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Represents the dimension a metric allows a measurement of.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Dimension">daq:Dimension</a></td></tr>
+		    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+		
+		</section>
+
+	</section>
+
+	<section id="examples" class="informative" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">	
+		<!--OddPage--><h2 id="h-examples" resource="#h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>Example Usage</span></h2><p><em>This section is non-normative.</em></p>
+This section shows some examples to illustrate the application of the Dataset Quality Vocabulary.  
+<div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note2"><span>Note</span></div><div class="">
+			<p>
+			This section is still work in progress. Further examples will be provided as soon as some of the pending issues are resolved.    
+			</p>
+		</div></div>
+
+<p><em>NB: in the remainder of this section, the prefix "<code>:</code>" refers to <code>http://example.org/</code></em></p>
+<section id="express-a-quality-assessment-with-quality-metrics" typeof="bibo:Chapter" resource="#express-a-quality-assessment-with-quality-metrics" property="bibo:hasPart">
+		<h3 id="h-express-a-quality-assessment-with-quality-metrics" resource="#h-express-a-quality-assessment-with-quality-metrics"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.1 </span>Express a quality assessment with quality metrics</span></h3>
+Let us consider a dataset <code>myDataset</code>, and its distribution <code>myDatasetDistribution</code>,
+<pre>:myDataset 
+	a  dcat:Dataset ;
+	dct:title "My dataset" ; 
+	dcat:distribution :myDatasetDistribution
+	.
+
+:myDatasetDistribution
+	a  dcat:Distribution ;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
+       	dct:title "CSV distribution of dataset" ;
+       	dcat:mediaType "text/csv" ;
+       	dcat:byteSize "87120"^^xsd:decimal 
+	.
+</pre>
+
+<p>An automated quality checker has provided a quality assessment with two (CSV) quality measures for <code>myDatasetDistribution</code>.</p>
+
+<pre>:myDatasetDistribution
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+
+:measure1 
+	a dqv:QualityMeasure ;
+	<red># when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
+	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
+        # In any case we could remove this statement. </red> 
+	daq:computedOn :myDatasetDistribution ;
+	daq:metric :cvsAvailabilityMetric ;
+	daq:value "1.0"^^xsd:double 
+	.
+     	
+:measure2
+	a dqv:QualityMeasure ;
+	<red># when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
+	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
+        # In any case we could remove this statement. </red> 
+	daq:computedOn :myDatasetDistribution ;
+	daq:metric :csvConsistencyMetric ;
+	daq:value "0.5"^^xsd:double 
+	.
+
+:cvsAvailabilityMetric 
+	a daq:Metric ;
+	dqv:hasDimension :availabity
+	.
+
+:csvConsistencyMetric
+	a daq:Metric ; 
+	dqv:hasDimension :consistency
+	.
+	
+:availabity
+	a daq:Dimension ; 
+	dqv:hasCategory :category1;
+	.
+
+:consistency
+	a daq:Dimension ;
+	dqv:hasCategory :category2
+	.
+
+<red># Categories and  dimensions might be more extensively defined, for example, 
+# by grounding them in the section 'Dimensions and metrics hints'.
+# However, any quality framework is free to define its own dimensions and categories.</red>
+</pre>
+</section>
+<section id="document-the-provenance-of-the-quality-metadata" typeof="bibo:Chapter" resource="#document-the-provenance-of-the-quality-metadata" property="bibo:hasPart">
+<h3 id="h-document-the-provenance-of-the-quality-metadata" resource="#h-document-the-provenance-of-the-quality-metadata"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.2 </span>Document the provenance of the quality metadata</span></h3>
+
+<p>The result of metrics obtained in the previous assessment are stored in the <code>myQualityMetadata</code> graph.</p>
+
+<pre># myQualityMatadata is a graph 
+<red># we are assuming dqv:QualityMetadata is an extension of daq:QualityGraph,
+# otherwise we should probably define a proper qb:DataStructureDefinition </red>
+
+:myQualityMetadata {
+
+:myDatasetDistribution
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+
+<red># The graph contains the rest of the statements presented in the previous example.</red>
+
+}
+
+# myQualityMetadata has been created by: qualityChecker and it is the result of the :qualityChecking activity 
+:myQualityMetadata 
+	a dqv:QualityMetadata ;
+	prov:wasAttributedTo :qualityChecker ;
+	prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy :qualityChecking 
+	.
+
+# qualityChecker is a service computing some quality metrics 	
+:qualityChecker
+	a prov:SoftwareAgent ;   
+	rdfs:label "a quality assessment service"^^xsd:string
+	<red># We should probably suggest to add more info about the services</red>
+	.
+
+# the qualityChecking is the activity that has generated myQualityMetadata starting from  MyDatasetDistribution    
+:qualityChecking
+	a prov:Activity;
+	rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
+   	prov:wasAssociatedWith :qualityChecker;
+   	prov:used              :myDatasetDistribution;
+   	prov:generated         :myQualityMetadata;
+   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime
+   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime;
+	. 
+</pre>
+</section>
+<section id="document-the-provenance-of-a-dataset" typeof="bibo:Chapter" resource="#document-the-provenance-of-a-dataset" property="bibo:hasPart">
+ 		<h3 id="h-document-the-provenance-of-a-dataset" resource="#h-document-the-provenance-of-a-dataset"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.3 </span>Document the provenance of a dataset</span></h3>
+
+	<p>Statements similar to the ones applied to the resource <code>myQualityMetadata</code> above can be applied to the resource <code>myDataset</code> to indicate the provenance of the dataset. I.e., a dataset can be generated by a specific software agent, be generated at a certain time, etc. The <a href="http://www.w3.org/TR/hcls-dataset/">HCLS Community Profile</a> for describing datasets provide further examples.</p>
+</section>
+<section id="express-that-a-dataset-received-an-odi-certificate" typeof="bibo:Chapter" resource="#express-that-a-dataset-received-an-odi-certificate" property="bibo:hasPart">
+		<h3 id="h-express-that-a-dataset-received-an-odi-certificate" resource="#h-express-that-a-dataset-received-an-odi-certificate"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.4 </span>Express that a dataset received an ODI certificate</span></h3>
+		<p></p>
+		<pre></pre>
+</section>
+<section id="express-the-quality-of-a-linkset" typeof="bibo:Chapter" resource="#express-the-quality-of-a-linkset" property="bibo:hasPart">
+		<h3 id="h-express-the-quality-of-a-linkset" resource="#h-express-the-quality-of-a-linkset"><span property="xhv:role" resource="xhv:heading"><span class="secno">6.5 </span>Express the quality of a linkset</span></h3>
+		<p></p>
+	<div class="issue" id="issue-11"><div class="issue-title" aria-level="4" role="heading" id="h-issue11"><span>Issue 11</span></div><div class="">
+		<p>This section will be completed by examples coming from <a href="http://purl.oclc.org/net/LDQWorkshop2015.pdf">Riccardo's work</a> on measuring the quality of linksets between SKOS concept schemes, from the perspective of adding multilingual labels to these schemes. On the web, linksets are an especially interesting case of datasets! we could also add examples from <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.  (<a href="https://www.w3.org/2013/dwbp/track/issues/188">Issue-188</a>) 
+</p>
+	</div></div>
+		<pre></pre>
+</section>
+</section>
+
+<section class="informative" id="dimensions-and-metrics-hints" typeof="bibo:Chapter" resource="#dimensions-and-metrics-hints" property="bibo:hasPart">
+		<!--OddPage--><h2 id="h-dimensions-and-metrics-hints" resource="#h-dimensions-and-metrics-hints"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Dimensions and metrics hints</span></h2><p><em>This section is non-normative.</em></p>
+	<div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note3"><span>Note</span></div><div class="">
+			<p>
+			This section will be refined, especially considering public feedback.   
+			</p>
+		</div></div>
+		<p>This section gathers relevant quality dimensions and ideas for corresponding metrics, which might be eventually represented as instances
+		 of <a href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq#Dimension">daq:Dimension</a> and <a href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq#Metric">daq:Metric</a>. The goal is not to define a normative list of dimensions and metrics,
+		 rather, the section provides a set of examples starting from  use cases included in the
+		 <a href="http://www.w3.org/TR/dwbp-ucr/">Use Cases &amp; Requirements document</a>
+		  and from the following sources:
+		</p>
+			<ul>
+			<li><a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Apr/0023.html" <a="">http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Apr/0023.html</a></li>
+			<li><a href="http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578" <a="">http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578</a></li>
+			<li><a href="https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary" <a="">https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary</a></li>
+		</ul>
+
+	    <section id="statistics" typeof="bibo:Chapter" resource="#statistics" property="bibo:hasPart">
+        <h3 id="h-statistics" resource="#h-statistics"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.1 </span>Statistics</span></h3>
+	        <p>The following table gives example on statistics that can be computed on a dataset and interpreted as quality indicators by the data consumer. Some of them can be relevant for the dimensions listed in the rest of this section. The properties come from the <a href="https://github.com/jiemakel/aether/raw/master/void-ext.ttl">VoID extension</a> created for the <a href="http://jiemakel.github.io/aether/">Aether tool</a>.</p>
+   	    <table>
+		<thead><tr>
+    			<th>Observation</th>
+    			<th>Suggested term</th>
+  		</tr>
+  		</thead> 
+		<tbody>
+		<!--tr>
+            <td>Number of distinct blank nodes used in the dataset</td>
+            <td>http://ldf.fi/void-ext#distinctBlankNodes</td>
+        </tr-->
+		<tr>
+            <td>Number of distinct external resources linked to</td>
+            <td>http://ldf.fi/void-ext#distinctIRIReferenceObjects</td>
+        </tr>
+		<!--tr>
+            <td>Number of distinct external resources described</td>
+            <td>http://ldf.fi/void-ext#distinctIRIReferenceSubjects</td>
+        </tr-->
+		<tr>
+            <td>Number of distinct external resources used (including schema terms)</td>
+            <td>http://ldf.fi/void-ext#distinctIRIReferences</td>
+        </tr>
+		<tr>
+            <td>Number of distinct literals</td>
+            <td>http://ldf.fi/void-ext#distinctLiterals</td>
+        </tr>
+		<tr>
+            <td>Number of languages used</td>
+            <td>http://ldf.fi/void-ext#languages</td>
+        </tr>
+        </tbody>
+        </table>
+ <div class="issue" id="issue-12"><div class="issue-title" aria-level="4" role="heading" id="h-issue12"><span>Issue 12</span></div><div class="">
+			<p>
+				Are statistics about a dataset a kind of quality info we need to include in the data quality vocabulary? (<a href="https://www.w3.org/2013/dwbp/track/issues/164">Issue-164</a>)
+			</p>
+	 </div></div>
+
+	  <div class="issue" id="issue-13"><div class="issue-title" aria-level="4" role="heading" id="h-issue13"><span>Issue 13</span></div><div class="">
+			<p>The Aether <a href="http://jiemakel.github.io/aether/">VoID extension</a> represents statistics as direct statements
+	    that have a dataset as subject and an integer as object. This pattern, which can be expected to be rather common, is different from
+	    the pattern that DQV inherits from DAQ (see <a href="http://w3c.github.io/dwbp/vocab-dqg.html#express-a-quality-assessment-with-quality-metrics">examples</a>).
+	    This document will probably have to explain how the different patterns can be reconciled, if indeed both should exist alongside.  (<a href="https://www.w3.org/2013/dwbp/track/issues/189">Issue-189</a>) 
+			</p>
+	 </div></div>
+</section>
+        <section id="availability" typeof="bibo:Chapter" resource="#availability" property="bibo:hasPart">
+		<h3 id="h-availability" resource="#h-availability"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.2 </span>Availability</span></h3>
+		<p>
+			<em>Can the data be accessed now and over time?</em>
+		</p>
+		<ul>
+			<li>Yes/no, maybe with explanation why the data is not available
+				(privacy, security, archived, lost, not yet captured etc.)</li>
+			<li>Open/restricted/registration, again possibly with
+				explanation</li>
+			<li>For access/re-use</li>
+			<li>Indication of persistence and longevity</li>
+		</ul>
+		<p>Since a dcat:Dataset is an abstract thing, it might be
+			available at any point in time, past present or future. We already
+			have dcterms:issued so two properties come to mind:</p>
+		<ul>
+			<li>dcat:verifiedAvailableOn {date} (the last time
+				someone/something checked that the dataset was accessible, probably
+				applies to a dcat:Distribution, not dcat:Dataset)</li>
+			<li>dcat:availableUntilAtLeast {date} (Potentially a data on
+				which the dataset is expected to be withdrawn)</li>
+		</ul>
+		<p>Other questions that come to mind: how do we indicate that the
+			dataset is expected to be available 'for the foreseeable future?'</p>
+	</section>
+	<section id="processability" typeof="bibo:Chapter" resource="#processability" property="bibo:hasPart">
+		<h3 id="h-processability" resource="#h-processability"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.3 </span>Processability</span></h3>
+		<p>
+			<em>Is the data machine readable ?</em>
+		</p>
+		<p></p><ul>
+			<li>Level on the 5-star scale (although there were opinions that
+				it is dangerous to attach value to the linking because the data
+				might be good but link to ‘bad’ data)</li>
+			<li>Links to metadata standards used and data model/schema to
+				enable automatic processing</li>
+		</ul>
+		<p></p>
+	</section>
+	<section id="accuracy" typeof="bibo:Chapter" resource="#accuracy" property="bibo:hasPart">
+		<h3 id="h-accuracy" resource="#h-accuracy"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.4 </span>Accuracy</span></h3>
+		<p>
+			<em>is the data correctly representing the real-world entity or event?</em>
+		</p>
+	</section>
+	<section id="consistency" typeof="bibo:Chapter" resource="#consistency" property="bibo:hasPart">
+		<h3 id="h-consistency" resource="#h-consistency"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.5 </span>Consistency</span></h3>
+		<p>
+			<em>Is the data not containing contradictions?</em>
+		</p>
+		<p><em>Can I use it readily in an analysis tool? Can I open the dataset in R and do some statistical manipulations? Can I open it in Tableau and make a visualization without doing a lot of cleaning?</em></p>
+		<p>There could be some overlap with accurracy.</p>
+	</section>
+	<section id="relevance" typeof="bibo:Chapter" resource="#relevance" property="bibo:hasPart">
+		<h3 id="h-relevance" resource="#h-relevance"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.6 </span>Relevance</span></h3>
+		<p><em>Does the dataset include an appropriate amount of data?</em></p>
+		<p>It might be useful to include some information about the
+			context (e.g., why was the data created and what purpose is it
+			supposed to serve).</p>
+	</section>
+	<section id="completeness" typeof="bibo:Chapter" resource="#completeness" property="bibo:hasPart">
+		<h3 id="h-completeness" resource="#h-completeness"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.7 </span>Completeness</span></h3>
+		<p><em>Does the data include all data items representing the entity or event ?</em></p>
+	</section>
+	<section id="conformance-1" typeof="bibo:Chapter" resource="#conformance-1" property="bibo:hasPart">
+		<h3 id="h-conformance-1" resource="#h-conformance-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.8 </span>Conformance</span></h3>
+		<p><em>Is the data following accepted standards ?</em></p>
+	</section>
+	<section id="credibility" typeof="bibo:Chapter" resource="#credibility" property="bibo:hasPart">
+		<h3 id="h-credibility" resource="#h-credibility"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.9 </span>Credibility</span></h3>
+		<p><em>Is the data based on trustworthy sources ?</em></p>
+		<p>This is described using the provenance vocabulary PROV-O</p>
+	</section>
+	<section id="timeliness" typeof="bibo:Chapter" resource="#timeliness" property="bibo:hasPart">
+		<h3 id="h-timeliness" resource="#h-timeliness"><span property="xhv:role" resource="xhv:heading"><span class="secno">7.10 </span>Timeliness</span></h3>
+		<p><em>Is the data representing the actual situation and it is published soon enough ?</em></p>
+	</section>
+</section>
+
+
+<section id="requirements" class="informative" typeof="bibo:Chapter" resource="#requirements" property="bibo:hasPart">
+		<!--OddPage--><h2 id="h-requirements" resource="#h-requirements"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>Requirements</span></h2><p><em>This section is non-normative.</em></p>
+		<p>
+			The <a href="http://www.w3.org/TR/dwbp-ucr/">UCR document</a> lists
+			relevant <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">requirement
+				for data quality and granularity</a>:</p>
+		<ul>
+			<li>R-DataMissingIncomplete: 'Publishers should indicate if data
+				is partially missing or if the dataset is incomplete'</li>
+			<li>R-QualityComparable: 'Data should be comparable with other
+				datasets'</li>
+			<li>R-Data should be complete: 'Data should be complete'</li>
+			<li>R-QualityMetrics: 'Data should be associated with a set of
+				documented, objective and, if available, standardized quality
+				metrics. This set of quality metrics may include user-defined or
+				domain-specific metrics.'</li>
+			<li>R-QualityOpinions: 'Subjective quality opinions on the data
+				should be supported'</li>
+			<li>R-GranularityLevels: 'Data available at different levels of
+				granularity should be accessible and modelled in a common way'</li>
+		</ul>
+		The aforementioned  requirements are going to be further elabotated considering on-going discussions and materials from these two wiki pages:  <a href="https://www.w3.org/2013/dwbp/wiki/Requirements_From_FPWD_BP">Requirements from FPWD_BP</a> and  <a href="https://www.w3.org/2013/dwbp/wiki/Quality_Requirements_From_UCR">Quality Requirements From UCR</a>. 
+
+		<div class="issue" id="issue-14"><div class="issue-title" aria-level="3" role="heading" id="h-issue14"><span>Issue 14</span></div><div class="">
+			<p>
+				We have to confirm whether the scope of DQV work is indeed these
+				"official" DQV reqs or if we should go beyond, e.g., reflecting the
+				quality of the vocabulary (re-)used, access to datasets, metadata
+				and more generally the implementation of our best practices (cf. the
+				<a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Mar/0094.html">"5
+					stars" thread</a>).
+			</p>
+			<p>
+				The distinction between <a href="https://www.w3.org/2013/dwbp/wiki/Guidance_on_the_Provision_of_Metadata#Intrinsic_vs_Extrinsic_Metadata">intrinsinc
+					and extrinsic metadata</a> may help making choices here. For example,
+				DQV could be defined wrt. intrinsic properties of the datasets, not
+				extrinsinc properties (let alone properties of the metadata for a
+				dataset!)  (<a href="https://www.w3.org/2013/dwbp/track/issues/190">Issue-190</a>) 
+			</p>
+
+		</div></div>
+		<div class="issue" id="issue-15"><div class="issue-title" aria-level="3" role="heading" id="h-issue15"><span>Issue 15</span></div><div class="">
+		<p>Backward compatibility with DAQ and Data Cube: DAQ exploits Data Cube to make metric results consumable by visualisers such as CubeViz (see <a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">Jeremy's paper</a>). This may be useful to preserve in DQV. (<a href="https://www.w3.org/2013/dwbp/track/issues/191">Issue-191</a>) </p>
+	</div></div>
+
+	</section>
+	<section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+		<!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Acknowledgements</span></h2>
+	</section>
+
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-vocab-dcat">[vocab-dcat]</dt><dd>Fadi Maali; John Erickson. <a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references"><cite>Data Catalog Vocabulary (DCAT)</cite></a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references">http://www.w3.org/TR/vocab-dcat/</a>
+</dd></dl></section></section></body></html>
