@@ -57,9 +57,7 @@ href: "https://github.com/w3c/dwbp/commits/gh-pages"
 }]
 }],
 };
-</script>
-
-    <style type="text/css">
+</script> <style type="text/css">
 table {
 	border-collapse: collapse;
 }
@@ -106,201 +104,193 @@ pre {
 
 pre red { color: red;
 }
-</style>
-  </head>
-
-<body>   
+</style> </head>
+  <body>
     <section id="abstract">
-
-    <p> Datasets published on the web are accessed and experienced by consumers
-      in a variety of ways, but little information about these experiences is
-      typically conveyed. Dataset publishers many times lack
-      feedback from consumers about how datasets are used. Consumers
-      lack an effective way to discuss experiences with fellow collaborators and
-      explore referencing material citing the dataset. Datasets as defined by
-      DCAT are a collection of data, published or curated by a single agent, and
-      available for access or download in one or more formats. The Dataset Usage
-      Vocabulary (DUV) is used to describe consumer experiences, citations, and
-      feedback about the dataset from the human perspective. </p>
-    <p>By specifying a number of foundational concepts used to collect dataset
-      consumer feedback, experiences, and cite references associated with a
-      dataset, APIs can be written to support collaboration across the web by
-      structurally publishing consumer opinions and experiences, and provide a
-      means for data consumers and producers advertise and search for published
-      open dataset usage. </p>
-  </section>
+      <p> Datasets published on the web are accessed and experienced by
+        consumers in a variety of ways, but little information about these
+        experiences is typically conveyed. Dataset publishers many times lack
+        feedback from consumers about how datasets are used. Consumers lack an
+        effective way to discuss experiences with fellow collaborators and
+        explore referencing material citing the dataset. Datasets as defined by
+        DCAT are a collection of data, published or curated by a single agent,
+        and available for access or download in one or more formats. The Dataset
+        Usage Vocabulary (DUV) is used to describe consumer experiences,
+        citations, and feedback about the dataset from the human perspective. </p>
+      <p>By specifying a number of foundational concepts used to collect dataset
+        consumer feedback, experiences, and cite references associated with a
+        dataset, APIs can be written to support collaboration across the web by
+        structurally publishing consumer opinions and experiences, and provide a
+        means for data consumers and producers advertise and search for
+        published open dataset usage. </p>
+    </section>
     <section id="sotd">
-
-    <p> This is a draft document which may be merged into another document or
-      eventually make its way into being a standalone Working Draft. This
-      document was published by the Data on the Web Best Practices Working Group
-      as an Editor's Draft. If you wish to make comments regarding this
-      document, please send them to public-dwbp-wg@w3.org (subscribe, archives).
-      All comments are welcome. Publication as an Editor's Draft does not imply
-      endorsement by the W3C Membership. This is a draft document and may be
-      updated, replaced or obsoleted by other documents at any time. It is
-      inappropriate to cite this document as other than work in progress. This
-      document was produced by a group operating under the 5 February 2004 W3C
-      Patent Policy. W3C maintains a public list of any patent disclosures made
-      in connection with the deliverables of the group; that page also includes
-      instructions for disclosing a patent. An individual who has actual
-      knowledge of a patent which the individual believes contains Essential
-      Claim(s) must disclose the information in accordance with section 6 of the
-      W3C Patent Policy. This document is governed by the 1 August 2014 W3C
-      Process Document. </p>
-      </section>
-
-    
-
+      <p> This is a draft document which may be merged into another document or
+        eventually make its way into being a standalone Working Draft. This
+        document was published by the Data on the Web Best Practices Working
+        Group as an Editor's Draft. If you wish to make comments regarding this
+        document, please send them to public-dwbp-wg@w3.org (subscribe,
+        archives). All comments are welcome. Publication as an Editor's Draft
+        does not imply endorsement by the W3C Membership. This is a draft
+        document and may be updated, replaced or obsoleted by other documents at
+        any time. It is inappropriate to cite this document as other than work
+        in progress. This document was produced by a group operating under the 5
+        February 2004 W3C Patent Policy. W3C maintains a public list of any
+        patent disclosures made in connection with the deliverables
+        of the group; that page also includes instructions for disclosing a
+        patent. An individual who has actual knowledge of a patent which the
+        individual believes contains Essential Claim(s) must disclose the
+        information in accordance with section 6 of the W3C Patent Policy. This
+        document is governed by the 1 August 2014 W3C Process Document. </p>
+    </section>
     <section id="intro" class="informative">
-      
-    <h2> Introduction</h2>
-    <p> This vocabulary is meant to fill a niche that helps standardize the way
-      web published dataset usage be conveyed and shared. At this time is no
-      clear standard way to describe dataset usage on the Web. Without a means
-      to systematically describe dataset usage, searching and conveying
-      techniques are application specific and discovery and collaboration across
-      the Web is more difficult. This vocabulary also recommends and requires
-      data publishers to provide a mechanism of receiving data usage from data
-      consumers in the form of feedback,citation and data correction. </p>
+      <h2> Introduction</h2>
+      <p> This vocabulary is meant to fill a niche that helps standardize the
+        way web published dataset usage be conveyed and shared. At this time is
+        no clear standard way to describe dataset usage on the Web. Without a
+        means to systematically describe dataset usage, searching and conveying
+        techniques are application specific and discovery and collaboration
+        across the Web is more difficult. This vocabulary also recommends and
+        requires data publishers to provide a mechanism of receiving data usage
+        from data consumers in the form of feedback,citation and data
+        correction. </p>
     </section>
     <section id="namespaces-1">
-     
-    <h2> Namespaces</h2>
-    <p>The namespace for DCAT is <code>http://www.w3.org/ns/dcat#</code>.
-      However, it should be noted that DCAT makes extensive use of terms from
-      other vocabularies, in particular <a href="http://dublincore.org/documents/dcmi-terms/">Dublin
-        Core</a>. DCAT itself defines a minimal set of classes and properties of
-      its own. A full set of namespaces and prefixes used in this document is
-      shown in the table below.</p>
-    <table id="namespaces">
-      <thead>
-        <tr>
-          <th>Prefix</th>
-          <th>Namespace</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>dcat</td>
-          <td>http://www.w3.org/ns/dcat#</td>
-        </tr>
-        <tr>
-          <td>dct</td>
-          <td>http://purl.org/dc/terms/</td>
-        </tr>
-        <tr>
-          <td>dctype</td>
-          <td>http://purl.org/dc/dcmitype/</td>
-        </tr>
-        <tr>
-          <td>foaf</td>
-          <td>http://xmlns.com/foaf/0.1/</td>
-        </tr>
-        <tr>
-          <td>rdf</td>
-          <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-        </tr>
-        <tr>
-          <td>rdfs</td>
-          <td>http://www.w3.org/2000/01/rdf-schema#</td>
-        </tr>
-        <tr>
-          <td>skos</td>
-          <td>http://www.w3.org/2004/02/skos/core#</td>
-        </tr>
-        <tr>
-          <td>vcard</td>
-          <td>http://www.w3.org/2006/vcard/ns#</td>
-        </tr>
-        <tr>
-          <td>xsd</td>
-          <td>http://www.w3.org/2001/XMLSchema#</td>
-        </tr>
-        <tr>
-          <td>duv</td>
-          <td>http://www.w3.org/ns/duv#</td>
-        </tr>
-        <tr>
-          <td>oa</td>
-          <td>http://www.w3.org/ns/oa#</td>
-        </tr>
-        <tr>
-          <td>rev</td>
-          <td>http://purl.org/stuff/rev#</td>
-        </tr>
-        <tr>
-          <td>prov</td>
-          <td>http://www.w3.org/ns/prov#</td>
-        </tr>
-        <tr>
-          <td>cito</td>
-          <td>http://purl.org/spar/cito#</td>
-        </tr>
-        <tr>
-          <td>bibo</td>
-          <td>http://purl.org/ontology/bibo#</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+      <h2> Namespaces</h2>
+      <p>The namespace for DCAT is <code>http://www.w3.org/ns/dcat#</code>.
+        However, it should be noted that DCAT makes extensive use of terms from
+        other vocabularies, in particular <a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+          Core</a>. DCAT itself defines a minimal set of classes and properties
+        of its own. A full set of namespaces and prefixes used in this document
+        is shown in the table below.</p>
+      <table id="namespaces">
+        <thead>
+          <tr>
+            <th>Prefix</th>
+            <th>Namespace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>dcat</td>
+            <td>http://www.w3.org/ns/dcat#</td>
+          </tr>
+          <tr>
+            <td>dct</td>
+            <td>http://purl.org/dc/terms/</td>
+          </tr>
+          <tr>
+            <td>dctype</td>
+            <td>http://purl.org/dc/dcmitype/</td>
+          </tr>
+          <tr>
+            <td>foaf</td>
+            <td>http://xmlns.com/foaf/0.1/</td>
+          </tr>
+          <tr>
+            <td>rdf</td>
+            <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+          </tr>
+          <tr>
+            <td>rdfs</td>
+            <td>http://www.w3.org/2000/01/rdf-schema#</td>
+          </tr>
+          <tr>
+            <td>skos</td>
+            <td>http://www.w3.org/2004/02/skos/core#</td>
+          </tr>
+          <tr>
+            <td>vcard</td>
+            <td>http://www.w3.org/2006/vcard/ns#</td>
+          </tr>
+          <tr>
+            <td>xsd</td>
+            <td>http://www.w3.org/2001/XMLSchema#</td>
+          </tr>
+          <tr>
+            <td>duv</td>
+            <td>http://www.w3.org/ns/duv#</td>
+          </tr>
+          <tr>
+            <td>oa</td>
+            <td>http://www.w3.org/ns/oa#</td>
+          </tr>
+          <tr>
+            <td>rev</td>
+            <td>http://purl.org/stuff/rev#</td>
+          </tr>
+          <tr>
+            <td>prov</td>
+            <td>http://www.w3.org/ns/prov#</td>
+          </tr>
+          <tr>
+            <td>cito</td>
+            <td>http://purl.org/spar/cito#</td>
+          </tr>
+          <tr>
+            <td>bibo</td>
+            <td>http://purl.org/ontology/bibo#</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <section id="audience">
-    <h2> Audience</h2>
-    <p>The DUV is intended for data producers and publishers interested in
-      tracking, sharing, and persisting consumer dataset usage. It is also
-      intended for collaborators who require an exchange medium to advertise and
-      interactively convey dataset usage. </p>
-  </section>
+      <h2> Audience</h2>
+      <p>The DUV is intended for data producers and publishers interested in
+        tracking, sharing, and persisting consumer dataset usage. It is also
+        intended for collaborators who require an exchange medium to advertise
+        and interactively convey dataset usage. </p>
+    </section>
     <section id="scope">
-    <h2> Scope</h2>
-    <p> The scope of DUV is defined by the Data on the Web Best Practices (DWBP)
-      Use Case document based on the data usage requirements about datasets.
-      These requirements include: citing data on the Web, tracking the usage of
-      data, sharing feedback and rating data. These requirements were derived
-      from fourteen real world use cases examples provided in the use case
-      document. </p>
-  </section>
+      <h2> Scope</h2>
+      <p> The scope of DUV is defined by the Data on the Web Best Practices
+        (DWBP) Use Case document based on the data usage requirements about
+        datasets. These requirements include: citing data on the Web, tracking
+        the usage of data, sharing feedback and rating data. These requirements
+        were derived from fourteen real world use cases examples provided in the
+        use case document. </p>
+    </section>
     <section id="relationship_vocabularies">
-    <h2> Relationship to other Vocabularies</h2>
-    <p> The DUV is a “glue” vocabulary reusing and extending existing vocabulary
-      classes and properties to support citation, feedback, and usage. This
-      section provides our rationale and approach for vocabulary selection and
-      re-use. </p>
-    <p> Core to the dataset usage vocabulary is the “dataset”. The DUV uses the
-      Data Catalog (DCAT) vocabulary dcat:Dataset class and all properties
-      associated with the class. From a data usage perspective the DUV can be
-      considered an extension of the dcat:Dataset.</p>
-    <p> The Web Annotation Vocabulary is used to describe duv:Feedback as a
-      subclass inheriting the behavior of oa:Annotation. A crucial part of the
-      Web Annotation Model are “motivations” that describe the role of
-      particular Annotation. Each duv:Feedback must have at least one
-      oa:motivated_by property with a relationship to an instance of
-      oa:Motivation. A subset of the Motivation instances are important to
-      describe feedback to data publishers, and blogs between dataset consumers.
-      In addition to supporting duv:Feedback because the Web Annotation
-      vocabulary provides a generic way of annotating any web resource, it is
-      recommended that Web Annotation vocabulary be used to annotate the
-      duv:Dataset for uses beyond the scope of the DUV. </p>
-    <p> The Provenance Ontology (Prov-O) is a vocabulary used by data providers
-      to pass details about the data history to data users. Properties
-      associated with prov:Activity provide relationships (prov:used,
-      prov:hasGenerated) from a historical perspective using past tense forms of
-      words and phrases. The developed and duv:WebThing reuses these
-      properties by creating subProperties from Prov-O to describe usage from a
-      present tense perspective. </p>
-    <p> Both the Citation Typing Ontology (CiTO) and Dublin Core vocabularies
-      are used to describe citations and references between datasets and cited
-      sources. </p>
-  </section> 
+      <h2> Relationship to other Vocabularies</h2>
+      <p> The DUV is a “glue” vocabulary reusing and extending existing
+        vocabulary classes and properties to support citation, feedback, and
+        usage. This section provides our rationale and approach for vocabulary
+        selection and re-use. </p>
+      <p> Core to the dataset usage vocabulary is the “dataset”. The DUV uses
+        the Data Catalog (DCAT) vocabulary dcat:Dataset class and all properties
+        associated with the class. From a data usage perspective the DUV can be
+        considered an extension of the dcat:Dataset.</p>
+      <p> The Web Annotation Vocabulary is used to describe duv:Feedback as a
+        subclass inheriting the behavior of oa:Annotation. A crucial part of the
+        Web Annotation Model are “motivations” that describe the role of
+        particular Annotation. Each duv:Feedback must have at least one
+        oa:motivated_by property with a relationship to an instance of
+        oa:Motivation. A subset of the Motivation instances are important to
+        describe feedback to data publishers, and blogs between dataset
+        consumers. In addition to supporting duv:Feedback because the Web
+        Annotation vocabulary provides a generic way of annotating any web
+        resource, it is recommended that Web Annotation vocabulary be used to
+        annotate the duv:Dataset for uses beyond the scope of the DUV. </p>
+      <p> The Provenance Ontology (Prov-O) is a vocabulary used by data
+        providers to pass details about the data history to data users.
+        Properties associated with prov:Activity provide relationships
+        (prov:used, prov:hasGenerated) from a historical perspective using past
+        tense forms of words and phrases. The developed and duv:WebThing reuses
+        these properties by creating subProperties from Prov-O to describe usage
+        from a present tense perspective. </p>
+      <p> Both the Citation Typing Ontology (CiTO) and Dublin Core vocabularies
+        are used to describe citations and references between datasets and cited
+        sources. </p>
+    </section>
     <section id="examples">
-    <h2> Examples</h2>
-    <p> This section shows some examples to illustrate the application of the
-      Dataset Usage Vocabulary.</p>
-    <p> Example 1 - Usage: A 2-D plot application developed by Laufer can be
-      used to create temperature plots and consumes temperature readings from a
-      dataset to produce the plot. A data logger used to provide temperature
-      readings uses a configuration file for operation of the data logger. </p>
-    <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+      <h2> Examples</h2>
+      <p> This section shows some examples to illustrate the application of the
+        Dataset Usage Vocabulary.</p>
+      <p> Example 1 - Usage: A 2-D plot application developed by Laufer can be
+        used to create temperature plots and consumes temperature readings from
+        a dataset to produce the plot. A data logger used to provide temperature
+        readings uses a configuration file for operation of the data logger. </p>
+      <pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -348,9 +338,9 @@ a foaf:Agent, foaf:Person;
   dcat:distribution :dataset-Jan-Mar-2004-csv;
 .
   </pre>
-    <p> Example 2 - Feedback: Laufer provides feedback about the temperature
-      readings dataset. </p>
-    <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+      <p> Example 2 - Feedback: Laufer provides feedback about the temperature
+        readings dataset. </p>
+      <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -379,15 +369,15 @@ a foaf:Agent, foaf:Person;
 
 :comment2
    a duv:Feedback;
-   oa:hasRating "3 Star";
+   duv:hasRating "3 Star";
    oa:hasBody "Linked Data Rating";
    oa:hasTarget :dataset-03312004;
 .
   </pre>
-    <p>Example 3 - Citation: A technical report :paperA identified by a DOI
-      cites the dataset. The :dataset-03312013 is also identified by a digital
-      object identifier (DOI).</p>
-    <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+      <p>Example 3 - Citation: A technical report :paperA identified by a DOI
+        cites the dataset. The :dataset-03312013 is also identified by a digital
+        object identifier (DOI).</p>
+      <pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -412,1113 +402,1092 @@ a foaf:Agent, foaf:Person;
     cito:isCitedAsDataSourceBy :paperA ; 
 .
 
-:paperA 
-         a duv:Citation;
-         dc:identifier "doi:20.1055/ex7758";
-         dct:title "Mars Weather Technical Report"@en ;
-         cito:hasCitingEntity :dataset-03312004;
+:thisCitation 
+    a duv:Citation;
+    cito:hasCitingEntity :dataset-03312004;
+    cito:hasCitedEntity :paperA;
 .
 
-</pre>
-  </section>
+:paperA
+   a foaf:document
+   dc:identifier "doi:20.1055/ex7758";
+   dct:title "Mars Weather Technical Report"@en;
+   duv:cites :dataset-03312004;
+.
+
+</pre> </section>
     <section id=" Vocab_Overview">
-    <h2>Vocabulary Overview</h2>
-    <p><em>This section is non-normative.</em></p>
-    <p> This section depicts the vocabulary as a conceptual model. Shaded boxes
-      are used to identify each class. Labeled open arrows identify example
-      properties between the classes. Unlabeled shaded arrows are used to show
-      inheritance with the parent class identified by the arrow head.</p>
-    <p>The classes duv:Application, duv:WebThing, and prov:Activity are used to
-      convey dataset usage. The classes duv:Citation, bibo:Document,
-      cito:CitationAct are used to represent citation. The classes duv:Feedback,
-      oa:Annotation, duv:Rating are used to represent feedback.</p>
-      <img
+      <h2>Vocabulary Overview</h2>
+      <p><em>This section is non-normative.</em></p>
+      <p> This section depicts the vocabulary as a conceptual model. Shaded
+        boxes are used to identify each class. Labeled open arrows identify
+        example properties between the classes. Unlabeled shaded arrows are used
+        to show inheritance with the parent class identified by the arrow head.</p>
+      <p>The classes duv:Application, duv:WebThing, and prov:Activity are used
+        to convey dataset usage. The classes duv:Citation, bibo:Document,
+        cito:CitationAct are used to represent citation. The classes
+        duv:Feedback, oa:Annotation, duv:Rating are used to represent feedback.</p>
+      <img src="./images/vocab-overview.png" v:shapes="_x0000_i1025" border="1"
 
-          src="./images/vocab-overview.png" v:shapes="_x0000_i1025" border="1" height="490"
-
-      width="788"/>
-     
-    
-    <div class="issue"> Should usage be specified at the Dataset or Distribution level? 
-      <a href="http://www.w3.org/2013/dwbp/track/issues/169"> Issue-169 </a> </div>
-   
-  </section>
-    <section id="vocabulary-specification">
-    <h2> Vocabulary Specification  </h2>
-    
-    
-    
-    <section id="class-agent">
-    <h3> Class:Agent</h3>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>An agent (eg. person, group, software or physical artifact). </td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <a href="http://xmlns.com/foaf/spec/#term_Agent">http://xmlns.com/foaf/spec/#term_Agent </a> </td>
-         
-        </tr>
-      
-        <tr>
-          <td>Label</td>
-          <td>Agent</td>
-        </tr>
-      </tbody>
-    </table>
-   <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
-    <h4 role="heading" aria-level="3" id="Property:develops">Property:develops</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:develops</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Inverse relationship of developedBy.&nbsp; associated with the
-            development of an application</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><span style="text-decoration: underline;">duv:Application</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>develops</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
-    </table> -->
-      </section>
-    
-    <section id = "class-annotation">
-    
-    <h3>Class:Annotation</h3>
-   
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td> Information about a web resource or associations between
-            resources.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> http://www.w3.org/ns/oa</td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Annotation</td>
-        </tr>
-      </tbody>
-    </table>
-      
-    <h4>Property:title</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th> <a href ="http://purl.org/dc/terms/title"> dct:title </a> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A name given to the Annotation</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td> <a href = "http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-      
-    <h4 role="heading" aria-level="3" id="Property:annotation_description">Property:
-      description</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href ="http://purl.org/dc/terms/description">dct:description </a> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A free-text description of the Annotaion</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td> <a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
+        height="490" width="788">
+      <div class="issue"> Should usage be specified at the Dataset or
+        Distribution level? <a href="http://www.w3.org/2013/dwbp/track/issues/169">
+          Issue-169 </a> </div>
     </section>
-      <section id ="class-Application">
-      <h3>Class: Application</h3>
-   
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><span style="text-decoration: underline;">duv:Application</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Software that is capable of reading and processing a
-            corresponding dataset.</td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Application</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="issue"> Should we use Software or earl:Software instead of developed? <a href="http://www.w3.org/2013/dwbp/track/issues/170"> Issue-170 </a> </div>
-    
-    <h4 role="heading" aria-level="3" id="Property:application_title">Property:
-      title</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href ="http://purl.org/dc/terms/title"> dct:title </a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A name given to the Application</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:application_description">Property:
-      description</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href ="http://purl.org/dc/terms/description">dct:description </a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A free-text description of the Application</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:developedBy">Property:
-      developedBy</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:developedBy</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Describes the agent associated with the development of an application</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>developed by</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="issue"> Should dct:creator or doap:developer be used instead of duv:developedBy? <a href="http://www.w3.org/2013/dwbp/track/issues/171"> Issue-171 </a></div>
-    
-    <h4 role="heading" aria-level="3" id="Property:consumes">Property: consumes</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:consumes</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A dataset being consumed by an application. </td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>consumes</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
+    <section id="vocabulary-specification">
+      <h2> Vocabulary Specification </h2>
+      <div class="note"> This is an initial proposal of DUV classes and properties. We are still evaluating the use of classes like duv:Citation and duv:Feedback.</div>
+      <section id="class-agent">
+        <h3> Class:Agent</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://xmlns.com/foaf/0.1/Agent">foaf:Agent</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>An agent (eg. person, group, software or physical artifact). </td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <a href="http://xmlns.com/foaf/spec/#term_Agent">http://xmlns.com/foaf/spec/#term_Agent
+                  </a> </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Agent</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+        <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
+    <h4 role="heading" aria-level="3" id="Property:develops">Property:develops</h4>    <table class="definition">
+      <thead>        <tr>
+          <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:develops</span></th>
+        </tr>      </thead>
+      <tbody>        <tr>
+          <td class="prop">Definition</td>          <td>Inverse relationship of developedBy.&nbsp; associated with the
+            development of an application</td>        </tr>
+        <tr>          <td class="prop">Range</td>
+          <td><span style="text-decoration: underline;">duv:Application</span></td>        </tr>
+        <tr>          <td>Label</td>
+          <td>develops</td>        </tr>
+        <tr>          <td>rdfs:isDefinedBy</td>
+          <td>http://www.w3c.org/ns/duv</td>        </tr>
+      </tbody>    </table> --> 
+      <section id="class-annotation">
+        <h3>Class:Annotation</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td> Information about a web resource or associations between
+                resources.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> http://www.w3.org/ns/oa</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Annotation</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
       
-    </table>
-    <div class="issue"> Should duv:consumes be used instead of duv:consumed? Should we be able to reify Consumption?
-        <a href="http://www.w3.org/2013/dwbp/track/issues/177"> Issue-177 </a></div>
-    
-    <h4 role="heading" aria-level="3" id="Property:generates">Property:
-      generates</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:generates</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Usage experience associated with the dataset being generated. </td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>generates</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-        <tr>
-          <td>rdfs:subPropertyOf</td>
-          <td> <a href="http://www.w3.org/ns/prov#generated"> prov:generated </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-      </section>
-    <section id="class-Dataset">
-    <h3 role="heading" aria-level="2" id="Class:_Dataset">Class: Dataset</h3>
-    
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A collection of data, published or curated by a single
-            source, and available for access or download in one or more formats. </td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <span style="text-decoration: underline;">http://www.w3.org/ns/dcat</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Dataset</td>
-        </tr>
-        <tr>
-          <td>rdfs:subClassOf</td>
-          <td> <a href="http://purl.org/dc/dcmitype/Dataset"> dctype:Dataset </a> </td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      title</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th> <a href = "http://purl.org/dc/terms/title">dct:title</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A name given to the Dataset</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a> </td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:dataset_description">Property:
-      description</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href ="http://purl.org/dc/terms/description">dct:description </a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A free-text account of the Dataset</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-      </section>
-    <section id = "class-Document">
-      <h3> Class: Document</h3>
-   
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://xmlns.com/foaf/spec/#term_Document"> foaf:Document</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <!--<td>A document (noun) is a bounded physical representation of
-            body of information designed with the capacity (and usually intent)
-            to communicate. A document may manifest symbolic, diagrammatic or
-            sensory-representational information.</td>--> <td> The Document class represents those things which are, broadly conceived, 'documents'.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <span style="text-decoration: underline;">http://xmlns.com/foaf/spec/#term_Document</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Document</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4>Property:
-      title</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href = "http://purl.org/dc/terms/title">dct:title</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A name given to the Document</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:document_description">Property:
-      description</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href = "http://purl.org/dc/terms/description">dct:description</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A free-text account of the Document</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal"> rdfs:Literal</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
-      cites</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:cites</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>The citing entity cites the cited entity, either directly and
-            explicitly (as in the reference list of a journal article),
-            indirectly (e.g. by citing a more recent paper by the same group on
-            the same topic), or implicitly (e.g. as in artistic quotations or
-            parodies, or in cases of plagiarism).</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>cites</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
-    </table>
-      </section>
-    <section id = "class-Activity">
-    <h3 role="heading" aria-level="2" id="Class:_Acitivity">
-       Class: Activity</h3>
-   
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://www.w3.org/ns/prov#Activity">prov:Activity
+        <h4>Property:title</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> <a href="http://purl.org/dc/terms/title"> dct:title </a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A name given to the Annotation</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:annotation_description">Property:
+          description</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/description">dct:description
                 </a> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>An activity is something that occurs over a period of time
-            and acts upon or with entities; it may include consuming,
-            processing, transforming, modifying, relocating, using, or
-            generating entities.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <span style="text-decoration: underline;">http://www.w3.org/ns/prov</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Activity</td>
-        </tr>
-      </tbody>
-    </table>
-      </section> 
-     <section id = "class-Rating">
-    <h3> Class: Rating</h3>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><span style="text-decoration: underline;">duv:Rating</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Metric used to evaluate the dataset.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Rating</td>
-        </tr>
-      </tbody>
-    </table>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A free-text description of the Annotaion</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td> <a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+      <section id="class-Application">
+        <h3>Class: Application</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><span style="text-decoration: underline;">duv:Application</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Software that is capable of reading and processing a
+                corresponding dataset.</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Application</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="issue"> Should we use Software or earl:Software instead of
+          developed? <a href="http://www.w3.org/2013/dwbp/track/issues/170">
+            Issue-170 </a> </div>
+              </section>
+        <h4 role="heading" aria-level="3" id="Property:application_title">Property:
+          title</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/title"> dct:title </a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A name given to the Application</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:application_description">Property:
+          description</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/description">dct:description
+                </a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A free-text description of the Application</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4>Property:
+          developedBy</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:developedBy</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Describes the agent associated with the development of an
+                application</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>developed by</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="issue"> Should dct:creator or doap:developer be used instead
+          of duv:developedBy? <a href="http://www.w3.org/2013/dwbp/track/issues/171">
+            Issue-171 </a></div>
+        <h4 role="heading" aria-level="3" id="Property:consumes">Property:
+          consumes</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:consumes</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A dataset being consumed by an application. </td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>consumes</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="issue"> Should duv:consumes be used instead of duv:consumed?
+          Should we be able to reify Consumption? <a href="http://www.w3.org/2013/dwbp/track/issues/177">
+            Issue-177 </a></div>
+        <h4 role="heading" aria-level="3" id="Property:generates">Property:
+          generates</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:generates</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Usage experience associated with the dataset being generated.
+              </td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>generates</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+            <tr>
+              <td>rdfs:subPropertyOf</td>
+              <td> <a href="http://www.w3.org/ns/prov#generated">
+                  prov:generated </a> </td>
+            </tr>
+          </tbody>
+        </table>
+
+      <section id="class-Dataset">
+        <h3 role="heading" aria-level="2" id="Class:_Dataset">Class: Dataset</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A collection of data, published or curated by a single source,
+                and available for access or download in one or more formats. </td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <span style="text-decoration: underline;">http://www.w3.org/ns/dcat</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Dataset</td>
+            </tr>
+            <tr>
+              <td>rdfs:subClassOf</td>
+              <td> <a href="http://purl.org/dc/dcmitype/Dataset">
+                  dctype:Dataset </a> </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
-      <section id = "class-Citation">
-    <h3>Class: Citation</h3>
-   
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><span style="text-decoration: underline;">duv:Citation</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Citation in document that references dataset.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td><a href="#Class:_Dataset">http://www.w3.org/ns/duv</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Citation</td>
-        </tr>
-        <tr>
-          <td>rdfs:subClassOf</td>
-          <td><a href="http://purl.org/spar/cito/CitationsAct">cito:CitationsAct</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="issue"> The use of cito:CitationAct and duv:Citation is under evaluation. 
-      <a href="http://www.w3.org/2013/dwbp/track/issues/173"> Issue-173 </a></div>
-    <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
-      hasCitingEntity</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>The citation act relates to the entity containing that citation.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>has citing entity</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://purl.org/spar/cito/hasCitingEntity</td>
-        </tr>
-       
-      </tbody>
-    </table>
-      </section>
-      <section id = "class-Feedback">
-    <h3> Class: Feedback</h3>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><span style="text-decoration: underline;">duv:Feedback</span> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Feedback on the dataset. Expresses whether the dataset was useful or
-            not, for example.</td>
-        </tr>
-       <!-- <tr>
-          <td class="prop">Sub class of:</td>
-          <td><a href="http://vocab.org/review/terms.html#Feedback">rev:Feedback</a></td>
-        </tr> -->
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td>http://www.w3.org/ns/duv</td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>Feedback</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="issue"> The definition of duv:Feedback needs to be reviewed because it is not clear if it should be a subclass 
-      of oa:Annotation or just an instance of oa:Motivation. <a href="http://www.w3.org/2013/dwbp/track/issues/178"> Issue-178 </a> </div>
-    <h4 role="heading" aria-level="3" id="Property:endorses">Property: endorses</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:endorses</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Agent provided feedback providing endorsement of dataset.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>endorses</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-        <!--<tr>
-          <td>rdfs:subPropertyOf</td>
-          <td><a href="http://www.w3.org/ns/oa#hasTarget">oa:hasTarget</a></td>
-        </tr> -->
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:annotatedBy">Property:
-      annotatedBy</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><a href="http://www.w3.org/ns/oa#annotatedBy">oa:annotatedby</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>Feedback resource that identifies the agent responsible for
-            creating the Annotation.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><a href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>annotatedBy</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:retains">Property: retains</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:retains</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A feedback annotation may refer to another feedback annotation.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><span style="text-decoration: underline;">duv:Feedback</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>retains</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-        <!--<tr>
-          <td>rdfs:subPropertyOf</td>
-          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>
-        </tr> -->
-      </tbody>
-    </table>
-    <div class="issue"> The meaning of duv:retains needs to be clarified and more examples will be provided. <a href="http://www.w3.org/2013/dwbp/track/issues/174"> Issue-174 </a> </div>
-    <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
-      has_rating</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:has_rating</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>An optional rating provided as part of feedback.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><span style="text-decoration: underline;"><a href="">duv:Rating</a></span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>has_rating</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
-    </table>
-    <h4 role="heading" aria-level="3" id="Property:has_datasetCorrection">Property:
-      has_datasetCorrection</h4>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Property:</th>
-          <th><span style="text-decoration: underline;">duv:has_datasetCorrection</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>An optional data correction provided as part of feedback.</td>
-        </tr>
-        <tr>
-          <td class="prop">Range</td>
-          <td><span style="text-decoration: underline;"><a href="">duv:DatasetCorrection</a></span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>has_dataCorrection</td>
-        </tr>
-        <tr>
-          <td>rdfs:isDefinedBy</td>
-          <td>http://www.w3c.org/ns/duv</td>
-        </tr>
-      </tbody>
-    </table>
-      </section>
-    <section id = "class-DatasetCorrection">
-        <h3>Class: DatasetCorrection</h3>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th><a href="http://www.w3.org/ns/duv#DatasetCorrection">duv:DatasetCorrection</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A dataset correction suggested by user as part of a feedback.</td>
-        </tr>
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>DatasetCorrection</td>
-        </tr>
-      </tbody>
-    </table>
+        <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
+          title</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> <a href="http://purl.org/dc/terms/title">dct:title</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A name given to the Dataset</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a> </td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:dataset_description">Property:
+          description</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/description">dct:description
+                </a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A free-text account of the Dataset</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+    
+      <section id="class-Document">
+        <h3> Class: Document</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://xmlns.com/foaf/spec/#term_Document">
+                  foaf:Document</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <!--<td>A document (noun) is a bounded physical representation of
+            body of information designed with the capacity (and usually intent)            to communicate. A document may manifest symbolic, diagrammatic or
+            sensory-representational information.</td>-->
+              <td> The Document class represents those things which are, broadly
+                conceived, 'documents'.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <span style="text-decoration: underline;">http://xmlns.com/foaf/spec/#term_Document</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Document</td>
+            </tr>
+          </tbody>
+        </table>
         </section>
-        <section class = "id-WebThing"></section>
-    <h3> Class: WebThing</h3>
-    <table class="definition">
-      <thead>
-        <tr>
-          <th>RDF Class:</th>
-          <th>duv:WebThing</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="prop">Definition</td>
-          <td>A Web of Things (WoT) device, sensor, or hardware on the Web that
-            consumes a dataset.</td>
-        </tr>
-        
-        <tr>
-          <td class="prop">rdfs:isDefinedBy</td>
-          <td><a href="#Class:_Catalog_record" title="">http://www.w3.org/ns/duv</a></td>
-        </tr>
-        <tr>
-          <td>Label</td>
-          <td>WebThing</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="issue">Should prov:SoftwareAgent be used instead of Application/WebOfThing? 
-      <a href="http://www.w3.org/2013/dwbp/track/issues/176"> Issue-176 </a> </div>
+    
+        <h4>Property: title</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/title">dct:title</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A name given to the Document</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:document_description">Property:
+          description</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/dc/terms/description">dct:description</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A free-text account of the Document</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">
+                  rdfs:Literal</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
+          cites</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:cites</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>The citing entity cites the cited entity, either directly and
+                explicitly (as in the reference list of a journal article),
+                indirectly (e.g. by citing a more recent paper by the same group
+                on the same topic), or implicitly (e.g. as in artistic
+                quotations or parodies, or in cases of plagiarism).</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>cites</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
+
+      <section id="class-Activity">
+        <h3 role="heading" aria-level="2" id="Class:_Acitivity"> Class: Activity</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://www.w3.org/ns/prov#Activity">prov:Activity </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>An activity is something that occurs over a period of time and
+                acts upon or with entities; it may include consuming,
+                processing, transforming, modifying, relocating, using, or
+                generating entities.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <span style="text-decoration: underline;">http://www.w3.org/ns/prov</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Activity</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
+      <section id="class-Rating">
+        <h3> Class: Rating</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><span style="text-decoration: underline;">duv:Rating</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Metric used to evaluate the dataset.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Rating</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="class-Citation">
+        <h3>Class: Citation</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><span style="text-decoration: underline;">duv:Citation</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Citation in document that references dataset.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td><a href="#Class:_Dataset">http://www.w3.org/ns/duv</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Citation</td>
+            </tr>
+            <tr>
+              <td>rdfs:subClassOf</td>
+              <td><a href="http://purl.org/spar/cito/CitationsAct">cito:CitationsAct</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="issue"> The use of cito:CitationAct and duv:Citation is
+          under evaluation. <a href="http://www.w3.org/2013/dwbp/track/issues/173">
+            Issue-173 </a></div>
+              </section>
+        <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
+          hasCitingEntity</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>The citation act relates to the entity containing that
+                citation.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has citing entity</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://purl.org/spar/cito/hasCitingEntity</td>
+            </tr>
+          </tbody>
+        </table>
+
+      <section id="class-Feedback">
+        <h3> Class: Feedback</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><span style="text-decoration: underline;">duv:Feedback</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Feedback on the dataset. Expresses whether the dataset was
+                useful or not, for example.</td>
+            </tr>
+            <!-- <tr>
+          <td class="prop">Sub class of:</td>          <td><a href="http://vocab.org/review/terms.html#Feedback">rev:Feedback</a></td>
+        </tr> -->
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td>http://www.w3.org/ns/duv</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>Feedback</td>
+            </tr>
+             <tr>
+              <td>rdfs:subClassOf</td>
+              <td> <a href="http://www.w3.org/ns/oa#Annotation">
+                oa:Annotation </a> </td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <div class="issue"> The definition of duv:Feedback needs to be reviewed
+          because it is not clear if it should be a subclass of oa:Annotation or
+          just an instance of oa:Motivation. <a href="http://www.w3.org/2013/dwbp/track/issues/178">
+            Issue-178 </a> </div>
+              </section>
+        <h4 role="heading" aria-level="3" id="Property:endorses">Property:
+          endorses</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:endorses</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Agent provided feedback providing endorsement of dataset.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>endorses</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+            <!--<tr>
+          <td>rdfs:subPropertyOf</td>          <td><a href="http://www.w3.org/ns/oa#hasTarget">oa:hasTarget</a></td>
+        </tr> -->
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:annotatedBy">Property:
+          annotatedBy</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a href="http://www.w3.org/ns/oa#annotatedBy">oa:annotatedby</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>Feedback resource that identifies the agent responsible for
+                creating the Annotation.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><a href="http://xmlns.com/foaf/spec/#term_Agent">foaf:Agent</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>annotatedBy</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:retains">Property:
+          retains</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:retains</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A feedback annotation may refer to another feedback
+                annotation.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><span style="text-decoration: underline;">duv:Feedback</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>retains</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+            <!--<tr>
+          <td>rdfs:subPropertyOf</td>          <td><a href="http://purl.org/spar/cito/hasCitingEntity">cito:hasCitingEntity</a></td>
+        </tr> -->
+          </tbody>
+        </table>
+        <div class="issue"> The meaning of duv:retains needs to be clarified and
+          more examples will be provided. <a href="http://www.w3.org/2013/dwbp/track/issues/174">
+            Issue-174 </a> </div>
+        <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
+          has_rating</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:has_rating</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>An optional rating provided as part of feedback.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><span style="text-decoration: underline;"><a href="">duv:Rating</a></span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has_rating</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4 role="heading" aria-level="3" id="Property:has_datasetCorrection">Property:
+          has_datasetCorrection</h4>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><span style="text-decoration: underline;">duv:has_datasetCorrection</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>An optional data correction provided as part of feedback.</td>
+            </tr>
+            <tr>
+              <td class="prop">Range</td>
+              <td><span style="text-decoration: underline;"><a href="">duv:DatasetCorrection</a></span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has_datasetCorrection</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3c.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
+
+      <section id="class-DatasetCorrection">
+        <h3>Class: DatasetCorrection</h3>
+        <table class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a href="http://www.w3.org/ns/duv#DatasetCorrection">duv:DatasetCorrection</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition</td>
+              <td>A dataset correction suggested by user as part of a feedback.</td>
+            </tr>
+            <tr>
+              <td class="prop">rdfs:isDefinedBy</td>
+              <td> <span style="text-decoration: underline;">http://www.w3.org/ns/duv</span></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>DatasetCorrection</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    
+      <section class="id-WebThing">
+      <h3> Class: WebThing</h3>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Class:</th>
+            <th>duv:WebThing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td>A Web of Things (WoT) device, sensor, or hardware on the Web
+              that consumes a dataset.</td>
+          </tr>
+          <tr>
+            <td class="prop">rdfs:isDefinedBy</td>
+            <td><a href="#Class:_Catalog_record" title="">http://www.w3.org/ns/duv</a></td>
+          </tr>
+          <tr>
+            <td>Label</td>
+            <td>WebThing</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="issue">Should prov:SoftwareAgent be used instead of
+        Application/WebOfThing? <a href="http://www.w3.org/2013/dwbp/track/issues/176">
+          Issue-176 </a> </div>
+    </section>
+
     <section id="duvrequirements">
-    <h2>DUV Requirements</h2>
-    <p> This section shows some of the requirements that motivated the
-      development of the Dataset Usage Vocabulary. These requirements were
-      derived from the use cases described in <a href="http://www.w3.org/TR/dwbp-ucr/">Data
-        on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
-    <p> 
-        <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable"> R-TrackDataUsage </a>
-      </p>
-    <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
+      <h2>DUV Requirements</h2>
+      <p> This section shows some of the requirements that motivated the
+        development of the Dataset Usage Vocabulary. These requirements were
+        derived from the use cases described in <a href="http://www.w3.org/TR/dwbp-ucr/">Data
+          on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
+      <p> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable"> R-TrackDataUsage
+        </a> </p>
+      <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
         font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">
-        It should be possible to track the usage of data.</span></p>
-    <p> Capability of tracking data usage can help enhancing reputation of the
-      datasets. Records of data usage shows all the successful outcome of the
-      data usage and all the entities associated with it such as the person,
-      organisation, application, research projects that has used these datasets.
-      It increases trust in the data. It also provides provence about how data
-      versions over the time. </p>
-    <table style="width: 985px; height: 142px;" border="1">
-      <tbody>
-        <tr>
-          <td>Use Case</td>
-          <td> R-TrackDataUsage Benefits </td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-ASO"> Airborne Snow Observatory</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;"> Data
-is
-                used in decision making process by Water Reservoir Managers.
+          It should be possible to track the usage of data.</span></p>
+      <p> Capability of tracking data usage can help enhancing reputation of the
+        datasets. Records of data usage shows all the successful outcome of the
+        data usage and all the entities associated with it such as the person,
+        organisation, application, research projects that has used these
+        datasets. It increases trust in the data. It also provides provence
+        about how data versions over the time. </p>
+      <table style="width: 985px; height: 142px;" border="1">
+        <tbody>
+          <tr>
+            <td>Use Case</td>
+            <td> R-TrackDataUsage Benefits </td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-ASO">
+                  Airborne Snow Observatory</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;"> Data
+                is used in decision making process by Water Reservoir Managers.
                 Capability to track usage of data will lead to identification of
                 all the decisions and policy changes made by authorities based
                 on this data. It will also list applications, tools and
                 frameworks suitable for analysis of this kind of &nbsp;data. <br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LandPortal">LandPortal
-            </a><br>
-            </b></td>
-          <td> Data
-is
-                used in Research;
-Policy
-                Making, Journalism; Development; 
-             Investments;
-Governance;
-                  Food security; Poverty; Gender issues. Usage tracking will
-                  help in assessing the impact of published data. </td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LusTRE">
-            LusTRE</a><br>
-            </b></td>
-          <td>>Data
-is
-                put in public for reuse and reference in nature conservation
-                activities. Information about use of this data &nbsp;will
-                determined impact of this framework. Usage of this data MUST
-                lead to future publications of less heterogenous data and more
-                and more used of standardised thesauri.<br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LandPortal">LandPortal
+                  </a><br> </b></td>
+            <td> Data
+              is used in Research;
+              Policy Making, Journalism; Development; Investments;
+              Governance; Food security; Poverty; Gender issues. Usage tracking
+              will help in assessing the impact of published data. </td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LusTRE">
+                  LusTRE</a><br>
+              </b></td>
+            <td>&gt;Data
+              is put in public for reuse and reference in nature conservation
+              activities. Information about use of this data &nbsp;will
+              determined impact of this framework. Usage of this data MUST lead
+              to future publications of less heterogenous data and more and more
+              used of standardised thesauri.<br>
             </td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">
-            Open
-                  Experimental Field Studies</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">Data
-is
-                used in computational models and studies. Capabilities to track
-                usage of data will enable data publishers to identify all the
-                users communities making use of this data. It will also identify
-                combined use of multiple datasets in one big study. This will
-                identify related datasets which can be recommended to future
-                users. <br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;"> Data
-is
-                published in Linked Data Format for discovery and
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">
+                  Open Experimental Field Studies</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">Data
+                is used in computational models and studies. Capabilities to
+                track usage of data will enable data publishers to identify all
+                the users communities making use of this data. It will also
+                identify combined use of multiple datasets in one big study.
+                This will identify related datasets which can be recommended to
+                future users. <br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;"> Data
+                is published in Linked Data Format for discovery and
                 recommendations of related datasets. Capability to keep track of
                 its usage will list all the tools and application suitable to be
                 used with this data. Because RDESC is not data publisher but
                 more of a data facilitator, usage tracking will identify highly
                 search dataset and the trends in the temporal, spatial and
                 domain specific search queries.<br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-UKOpenResearchForum">
-          UKOpenResearchForum</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">Data
-is
-                published with intelligent
-openness
-                to support research projects. Capability to track data usage
-                will provide adequate acknowledgement to data originator.<br>
-            </b></td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-        <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-UKOpenResearchForum">
+                  UKOpenResearchForum</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">Data
+                is published with intelligent
+                openness to support research projects. Capability to track data
+                usage will provide adequate acknowledgement to data originator.<br>
+              </b></td>
+          </tr>
+        </tbody>
+      </table>
+      <p> <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">
           R-UsageFeedback </a> </p>
-    <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
+      <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
         font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">
-        Data consumers should have a way of sharing feedback and rating data.</span></p>
-    <p> User
-feedback
-        is important to address data quality concerns about published dataset.
-        Different users may have different experience with the same dataset so
-        it is important to capture the context in which data was used and the
-        profile of the user who uses it. R-UsageFeedback should also provide a
-        way to communicate suggested corrections and update to the datasets by
-        the users back to data publisher. Data publishers should &nbsp;have a
-        review mechanism to incorporate submitted corrections. </p>
-    <table style="width: 985px; height: 142px;" border="1">
-      <tbody>
-        <tr>
-          <td>Use Case</td>
-          <td> R-UsageFeedback Benefits </td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-ASO"> 
-             Airborne Snow Observatory</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">Data
-grows
-                rapidly each year. User feedback can reports issues of data
-                completeness and correctness. <br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-DadosGovBr">DadosGovBr</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;"> Data
-came
-                from various publishers. As a catalog, the site has faced
+          Data consumers should have a way of sharing feedback and rating data.</span></p>
+      <p> User
+        feedback is important to address data quality concerns about published
+        dataset. Different users may have different experience with the same
+        dataset so it is important to capture the context in which data was used
+        and the profile of the user who uses it. R-UsageFeedback should also
+        provide a way to communicate suggested corrections and update to the
+        datasets by the users back to data publisher. Data publishers should
+        &nbsp;have a review mechanism to incorporate submitted corrections. </p>
+      <table style="width: 985px; height: 142px;" border="1">
+        <tbody>
+          <tr>
+            <td>Use Case</td>
+            <td> R-UsageFeedback Benefits </td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-ASO">
+                  Airborne Snow Observatory</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">Data
+                grows rapidly each year. User feedback can reports issues of
+                data completeness and correctness. <br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-DadosGovBr">DadosGovBr</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;"> Data
+                came from various publishers. As a catalog, the site has faced
                 several challenges, one of them was to integrate the various
                 technologies and formulas used by publishers to provide datasets
                 in the portal. User feedback can provided usabilities of those
                 technologies and formulas. User feedback can be used to
                 crowdsource discrepancies in the vocabularies &nbsp;used to
                 describe datasets.<br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LusTRE">
-            LusTRE</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">Data
-multilingualism
-                is one of the challenge for this use case. User feedback can be
-                used to crowdsource multilingual text alignment.<br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;">
-              <a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">Experimental Field Studies</a>
-              <br>
-            </b></td>
-          <td><b style="font-weight: normal;">Data
-is
-                used in computational models and studies. User feedback can be
-                used to identify good quality data required for good quality
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LusTRE">
+                  LusTRE</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">Data
+                multilingualism is one of the challenge for this use case. User
+                feedback can be used to crowdsource multilingual text alignment.<br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"> <a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">Experimental
+                  Field Studies</a> <br>
+              </b></td>
+            <td><b style="font-weight: normal;">Data
+                is used in computational models and studies. User feedback can
+                be used to identify good quality data required for good quality
                 research. completeness, time resolution and usability can be
-                captured using user feedback.><br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">RDESC
-curate
-                different data source and publish metadata in Linked Data
+                captured using user feedback.&gt;<br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">RDESC
+                curate different data source and publish metadata in Linked Data
                 Format. User feedback is useful to assess metadata quality.
                 Availability of the source datasets, Correctness of persistent
                 URI, Correctness of the concepts defined in RDESC such as FOAF
                 Agents, Organizations, Physical Properties and Usability of the
                 search interface can be captured in user feedback. <br>
-            </b></td>
-        </tr>
-      </tbody>
-    </table>
-    <p> 
-        <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable"> R-Citable </a> </p>
-    <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
+              </b></td>
+          </tr>
+        </tbody>
+      </table>
+      <p> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable"> R-Citable </a> </p>
+      <p> <span style="color: rgb(0, 0, 0); font-family: Arial; font-size: 15px; font-style: italic; font-variant: normal; 
         font-weight: normal; text-decoration: none; vertical-align: baseline; background-color: rgb(255, 255, 255);">
-        It should be possible to cite data on the Web.</span></p>
-    <table style="width: 985px; height: 142px;" border="1">
-      <tbody>
-        <tr>
-          <td>Use Case</td>
-          <td> R-Citable Benefits </td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">
-            Open
-                  Experimental Field Studies</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">Various
-experiments
-                and fields studies are performed to generate data which is used
-                in computational
-models
-                and bigger studies.Capability
-to
-                capture all the citations of the published data can justify the
-                efforts used in publishing. Citation information can be used to
-                identify all the user communities interested in data source.<br>
-            </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LATimes">
-            LATimes</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">On
-27
-                March 2014, the LA Times published a story 
-             Women
-earn
-                83 cents for every $1 men earn in L.A. city government.
-                It was based on an Infographic released by LA's City Controller,
+          It should be possible to cite data on the Web.</span></p>
+      <table style="width: 985px; height: 142px;" border="1">
+        <tbody>
+          <tr>
+            <td>Use Case</td>
+            <td> R-Citable Benefits </td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-OpenExperimentalFieldStudies">
+                  Open Experimental Field Studies</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">Various
+                experiments and fields studies are performed to generate data
+                which is used in computational
+                models and bigger studies.Capability
+                to capture all the citations of the published data can justify
+                the efforts used in publishing. Citation information can be used
+                to identify all the user communities interested in data source.<br>
+              </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-LATimes">
+                  LATimes</a><br>
+              </b></td>
+            <td><b style="font-weight: normal;">On
+                27 March 2014, the LA Times published a story Women
+                earn 83 cents for every $1 men earn in L.A. city government. It
+                was based on an Infographic released by LA's City Controller,
                 Ron Galperin. This report could only cite data portal of all the
                 resource. It could not cite to exact dataset because tool long
-                URI. 
+                URI. </b></td>
+          </tr>
+          <tr>
+            <td><b style="font-weight: normal;"><a href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
               </b></td>
-        </tr>
-        <tr>
-          <td><b style="font-weight: normal;"><a  href="http://w3c.github.io/dwbp/usecasesv1.html#UC-RDESC">RDESC</a><br>
-            </b></td>
-          <td><b style="font-weight: normal;">RDESC
-is
-                a data curator so it uses data from different sources. But this
-                usage is not communicated to data publishers because of lack of
-                such mechanism provided by publishers.<br>
-            </b></td>
-        </tr>
-      </tbody>
-    </table>
-      </section>
-    
-  
+            <td><b style="font-weight: normal;">RDESC
+                is a data curator so it uses data from different sources. But
+                this usage is not communicated to data publishers because of
+                lack of such mechanism provided by publishers.<br>
+              </b></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
     <section id="acknowledgements" class="appendix">
       <h2>Acknowledgements</h2>
     </section>
     <section id="change-history" class="appendix">
       <h2>Change history</h2>
     </section>
-  
     <section id="references" class="appendix">
-    <h2> References</h2>
-    <section id="normative-references" class="appendix">
-    <h3>Normative references</h3>
-    <dl about="" class="bibliography">
-    </dl>
+      <h2> References</h2>
+      <section id="normative-references" class="appendix">
+        <h3>Normative references</h3>
+        <dl about="" class="bibliography">
+        </dl>
       </section>
-    <section id="informative-references">
-    <h3>Informative references</h3>
-    <dl about="" class="bibliography">
-    </dl>
+      <section id="informative-references">
+        <h3>Informative references</h3>
+        <dl about="" class="bibliography">
+        </dl>
       </section>
-  </section>
+    </section>
   </body>
 </html>
