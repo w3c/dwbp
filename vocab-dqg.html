@@ -619,16 +619,6 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	dqv:value "0.5"^^xsd:double 
 	.
 
-:csvAvailabilityMetric 
-	a dqv:Metric ;
-	dqv:hasDimension :availabity
-	.
-
-:csvConsistencyMetric
-	a dqv:Metric ; 
-	dqv:hasDimension :consistency
-	.
-	
 :availabity
 	a dqv:Dimension ; 
 	dqv:hasCategory :category1;
@@ -639,9 +629,67 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	dqv:hasCategory :category2
 	.
 
+	
+:csvAvailabilityMetric 
+	a dqv:Metric ;
+	dqv:hasDimension :availabity
+	.
+
+:csvConsistencyMetric
+	a dqv:Metric ; 
+	dqv:hasDimension :consistency
+	.
+	
+
 <red># Categories and  dimensions might be more extensively defined, for example, 
 # by grounding them in the section 'Dimensions and metrics hints'.
 # However, any quality framework is free to define its own dimensions and categories.</red>
+
+<red>
+# if  we want to maintain "abstract classes and abstract properties" as they were in DAQ. 
+The last part of this example should be changed, we should  define some subclasses for dqv:Category, dqv:Dimension, dqv:Metric 
+# and subproperties for dqv:hasCategory   dqv:hasDimension which might seem a little overcomplicated (???)  ... 
+
+:CCsvConsistencyMetric rdfs:subClassOf  dqv:Metric .
+:CCsvAvailabilityMetric rdfs:subClassOf  dqv:Metric .
+
+:CAvailabity rdfs:subClassOf  dqv:Dimension .
+:CConsistency rdfs:subClassOf dqv:Dimension .
+
+:CCategory1 rdfs:subClassOf  dqv:Category .
+:CCategory2 rdfs:subClassOf dqv:Category .
+
+
+
+:prop1 rdfs:subPropertyOf dqv:hasDimension .
+:prop2 rdfs:subPropertyOf dqv:hasCategory .
+ 
+	
+:availabity
+	a :CAvailability ; 
+	:prop2 :category1;
+	.
+
+:consistency
+	a :CConsistency ;
+	:prop2 :category2
+	.
+
+	
+:csvAvailabilityMetric 
+	a :CCsvAvailabilityMetric ;
+	:prop1 :availabity
+	.
+
+:csvConsistencyMetric
+	a :CCsvConsistencyMetric ; 
+	:prop1 :consistency
+	.
+
+:category1 rdfs:subClassOf  :CCategory1  .
+:category2 rdfs:subClassOf :CCategory2 .
+	
+</red>
 </pre>
 </section>
 <section>
