@@ -132,6 +132,30 @@
 
 		// implementationReportURI: "http://www.w3.org/2011/gld/wiki/DCAT_Implementations",
 		maxTocLevel : 2,
+		 localBiblio: {
+  		  	"CC-VOCAB" : {
+    				title : "Creative Commons Rights Expression Language",
+    			href : "http://creativecommons.org/ns"
+    			},
+		"DaQ": {
+      			title: "DaQ, an Ontology for Dataset Quality Information",
+      			authors: ["Jeremy Debattista", "Christoph Lange", "Sören Auer"],
+      			date: "2014",
+      			status: "LDOW 2014",
+			href : "http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf"
+
+      		},
+		"DaQ-RDFCUBE": {
+      			title: "Representing dataset quality metadata using multi-dimensional views",
+      			authors: ["Jeremy Debattista", "Christoph Lange", "Sören Auer"],
+      			date: "2014",
+      			status: "SEMANTICS 2014",
+			href : "http://arxiv.org/abs/1408.2468"
+
+      		}
+
+
+		},
 
 	};
 </script>
@@ -260,15 +284,6 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		
   		</tbody>
 		</table>
-		<div class="issue">
-			<p>
-				Are we actually allowed by W3C to re-use elements from <a
-					href="http://purl.org/eis/vocab/daq#">DAQ</a>?
-				This vocabulary is not a community standard and its guarantee of sustainability may be judged not good enough.
-		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.
-		(<a href="https://www.w3.org/2013/dwbp/track/issues/180">Issue-180</a>)
-			</p>
-		</div>
 
 	</section>
 
@@ -365,7 +380,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		<section id="QualityMeasure">	
 			<h3>Class: Quality Measure</h3>
 			
-			<p>DQV defines quality measures as specific instances of DQV observations, adapting the <a href="http://eis-bonn.github.io/Luzzu/papers/ldow2014.pdf">DAQ quality metrics framework</a>:</p>
+			<p>DQV defines quality measures as specific instances of DQV observations, adapting the DAQ quality metrics framework [[DaQ]], [[DaQ-RDFCUBE]]:</p>
 			<ul>
 			  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
 			  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
