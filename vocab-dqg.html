@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-08-24",
+		publishDate : "2015-09-11",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -381,23 +381,17 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
 			</p>
 	
-			<p>The following property should be used on this class: <a href="#Property:hasMetric">dqv:metric</a>. The following property may be used for this class: <a href="#Property:dataSet">qb:dataSet</a>.</p>
+			<p>The following properties should be used on this class: <a href="#Property:hasMetric">dqv:metric</a>, <a href="#Property:value">dqv:value</a>. The following property may be used for this class: <a href="#Property:dataSet">qb:dataSet</a>.</p>
 			<table class="definition">
 			  <thead><tr><th>RDF Class:</th><th><a href="#">dqv:QualityMeasure</a></th></tr></thead>
 			  <tbody>
 			    <tr><td class="prop">Definition:</td><td>A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</td></tr>
 			    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
-			    <tr><td class="prop">Subclass of:</td><td> <a href="#Class:Observation">dqv:Observation</a>
-			      (itself is equivalent to  <a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a>, which is  a subclass of <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>)</td></tr>
+			    <tr><td class="prop">Subclass of:</td><td> <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+ 			    <tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td></tr>
 			  </tbody>
 			</table>
-	
-			<div class="issue">
-				<p>There might be no need for a subclass link between <a href="#Class:QualityMeasure">dqv:QualityMeasure</a> and <a href="#Class:Observation">dqv:Observation</a>/<a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a> .
-	  I.e., we could re-use <a href="#Class:Observation">dqv:Observation</a>/<a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a> directly.  (<a href="https://www.w3.org/2013/dwbp/track/issues/186">Issue-186</a>) 	
-			</p>
-			</div>
-
+			
 			<section>
 			<h4 role="heading" aria-level="3" id="Property:hasMetric">Property: metric</h4>
 			<table class="definition">
@@ -415,16 +409,53 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			</section>
 
 			<section>
-			<h4 role="heading" aria-level="3" id="Property:measure_dataSet">Property: measure dataset</h4>
+			<h4 role="heading" aria-level="3" id="Property:measure_dataSet">Property: dataSet  </h4>
 			<table class="definition">
 			  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
 			  <tbody>
-			    <tr><td class="prop">Definition:</td><td>Indicates the data set of which this observation is a part.</td></tr>
+			    <tr><td class="prop">Definition:</td><td>Indicates the data set of which a quality measure, which is a  RDF CUBE observation is a part.</td></tr>
 			    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
 			    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
 			  </tbody>
 			</table>
 			</section>
+	
+		<section>
+		<h4 role="heading" aria-level="3" id="Property:computedOn">Property: computedOn</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#Property:computedOn">dqv:computedOn</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g.,  a dataset,  a linkset,  a graph, a  set of triples) on which the quality assessment is performed. </td></tr>
+<tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
+
+		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr>
+		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a> (??)</td></tr>
+		   <tr><td class="prop">Inverse property:</td><td><a href="">dqv:hasQualityMeasure</a>(??)</td></tr>
+
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+
+	<section>
+		<h4 role="heading" aria-level="3" id="Property:value">Property: value</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#Property:value">dqv:value</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td> Refers to values computed by metric.</td></tr>
+		   <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
+
+		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
+		    <!--tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr-->
+		   		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#value">daq:value</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+	
 		
 		</section>
 
@@ -507,53 +538,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			</table>
 	</section>
 
-	<section id="Observation">	
-			<h3 id="Class:Observation">Class: Observation</h3>
-		<p>The following properties should be used on this class: <a href="#Property:computedOn">dqv:computedOn</a>, <a href="#Property:value">dqv:value</a>. </p>
-			<table class="definition">
-			  <thead><tr><th>RDF Class:</th><th><a href="#Class:Observation">dqv:Observation</a></th></tr></thead>
-		 	 <tbody>
-		   	 <tr><td class="prop">Definition:</td><td>Represents  the statistical and provenance information of the attached metric's assessment activity.   </td></tr>
-		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
-<tr><td class="prop">Subclass of: </td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
-		    	<tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td></tr>
-		  	</tbody>
-			</table>
 
-		<section>
-		<h4 role="heading" aria-level="3" id="Property:computedOn">Property: computedOn</h4>
-		<table class="definition">
-		  <thead><tr><th>RDF Property:</th><th><a href="#Property:computedOn">dqv:computedOn</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g.,  a dataset,  a linkset,  a graph, a  set of triples) on which the quality assessment is performed. </td></tr>
-<tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
-
-		    <tr><td class="prop">Domain:</td><td><a href="#Class:Observation">dqv:Observation</a></td></tr>
-		    <tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr>
-		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td></tr>
-		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
-		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
-		  </tbody>
-		</table>
-		</section>
-
-	<section>
-		<h4 role="heading" aria-level="3" id="Property:value">Property: value</h4>
-		<table class="definition">
-		  <thead><tr><th>RDF Property:</th><th><a href="#Property:value">dqv:value</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td> Refers to values computed by metric.</td></tr>
-		   <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
-
-		    <tr><td class="prop">Domain:</td><td><a href="#Class:Observation">dqv:Observation</a></td></tr>
-		    <!--tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr-->
-		   		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#value">daq:value</a></td></tr>
-		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
-		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
-		  </tbody>
-		</table>
-		</section>
-	</section>	
 	<section id="dqv:QualityMeasureDataset">	
 			<h3 id="Class:QualityMeasureDataset">Class:QualityMeasureDataset</h3>
 			<table class="definition">
