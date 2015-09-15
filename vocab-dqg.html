@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-06-08",
+		publishDate : "2015-09-11",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -74,13 +74,15 @@
 
 		otherLinks : [ {
 			key : "Other locations",
-			data : [ {
+			data : [
+			/* {
 				value : "Github repository",
 				href : "https://github.com/w3c/dwbp"
 			}, {
 				value : "File a bug",
 				href : "https://github.com/w3c/dwbp"
-			}, {
+			},*/
+			 {
 				value : "Wiki pages",
 				href : "https://www.w3.org/2013/dwbp/wiki/Data_quality_notes"
 			} ]
@@ -132,6 +134,30 @@
 
 		// implementationReportURI: "http://www.w3.org/2011/gld/wiki/DCAT_Implementations",
 		maxTocLevel : 2,
+		 localBiblio: {
+  		  	"CC-VOCAB" : {
+    				title : "Creative Commons Rights Expression Language",
+    			href : "http://creativecommons.org/ns"
+    			},
+		"DaQ": {
+      			title: "DaQ, an Ontology for Dataset Quality Information",
+      			authors: ["Jeremy Debattista", "Christoph Lange", "Sören Auer"],
+      			date: "2014",
+      			status: "LDOW 2014",
+			href : "http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf"
+
+      		},
+		"DaQ-RDFCUBE": {
+      			title: "Representing dataset quality metadata using multi-dimensional views",
+      			authors: ["Jeremy Debattista", "Christoph Lange", "Sören Auer"],
+      			date: "2014",
+      			status: "SEMANTICS 2014",
+			href : "http://arxiv.org/abs/1408.2468"
+
+      		}
+
+
+		},
 
 	};
 </script>
@@ -260,15 +286,6 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		
   		</tbody>
 		</table>
-		<div class="issue">
-			<p>
-				Are we actually allowed by W3C to re-use elements from <a
-					href="http://purl.org/eis/vocab/daq#">DAQ</a>?
-				This vocabulary is not a community standard and its guarantee of sustainability may be judged not good enough.
-		  A possible way forward would be to declare all relevant classes in the DQV namespace but then declare them all as owl:equivalentClass/property with their DAQ counterparts.
-		(<a href="https://www.w3.org/2013/dwbp/track/issues/180">Issue-180</a>)
-			</p>
-		</div>
 
 	</section>
 
@@ -301,8 +318,8 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		</ul>
 		</p>
 		<figure>
-			<a href="images/Data Quality 0.2.3.svg"> <img
-				src="images/Data Quality 0.2.3.svg" width="100%" />
+			<a href="images/Data Quality 0.2.5.2.svg"> <img
+				src="images/Data Quality 0.2.5.2.svg" width="100%" />
 			</a>
 			<figcaption>
 				Data model showing the main relevant classes and their relations.
@@ -319,20 +336,11 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 	</div>
 	<div class="issue">
 			<p>
-				Should we have only the existing class <a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a>
+				Should we have only the existing class <a href="#">dqv:QualityMeasureDataset</a>
 		  or keep the new class <a href="#">dqv:QualityMetadata</a> 
 				to represent a set of statements providing quantitative and/or
 				qualitative information about the dataset or distribution. One could be a sub-class of the other. (<a
 					href="https://www.w3.org/2013/dwbp/track/issues/181">Issue-181</a>)
-			</p>
-	</div>
-	<div class="issue">
-			<p>
-			The label of <a href="#">daq:QualityGraph</a> does not fit well with the current model.
-	  DAQ graphs are meant to contain measures.
-	  In our context a "quality graph" has a wider scope: actually the role of representing overall quality graphs is currently played by <a href="#">dqv:QualityMetadata</a>.  (<a
-					href="https://www.w3.org/2013/dwbp/track/issues/182">Issue-182</a>)
- 
 			</p>
 	</div>
 	<div class="issue">
@@ -363,101 +371,188 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 
 
 		<section id="QualityMeasure">	
-		<h3>Class: Quality Measure</h3>
-		
-		<p>DQV defines quality measures as specific instances of DAQ observations, adapting the <a href="http://eis-bonn.github.io/Luzzu/papers/ldow2014.pdf">DAQ quality metrics framework</a>:</p>
-		<ul>
-		  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
-		  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
-		</ul>
-		<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
-		</p>
-
-		<p>The following property should be used on this class: <a href="#Property:hasMetric">daq:metric</a>. The following property may be used for this class: <a href="#Property:dataSet">qb:dataSet</a>.</p>
-		<table class="definition">
-		  <thead><tr><th>RDF Class:</th><th><a href="#">dqv:QualityMeasure</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</td></tr>
-		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
-		    <tr><td class="prop">Subclass of:</td><td> <a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a>
-		      (itself a subclass of <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>)</td></tr>
-		  </tbody>
-		</table>
-
-		<div class="issue">
-			<p>
-			There might be no need for a subclass link between <a href="#">dqv:QualityMeasure</a> and <a href="#">daq:Observation</a>.
-	  I.e., we could re-use <a href="#">daq:Observation</a> directly.  (<a
-					href="https://www.w3.org/2013/dwbp/track/issues/186">Issue-186</a>) 
+			<h3>Class: Quality Measure</h3>
+			
+			<p>DQV defines quality measures as specific instances of DQV observations, adapting the DAQ quality metrics framework [[DaQ]], [[DaQ-RDFCUBE]]:</p>
+			<ul>
+			  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
+			  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+			</ul>
+			<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
 			</p>
-		</div>
+	
+			<p>The following properties should be used on this class: <a href="#Property:hasMetric">dqv:metric</a>, <a href="#Property:value">dqv:value</a>. The following property may be used for this class: <a href="#Property:dataSet">qb:dataSet</a>.</p>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#">dqv:QualityMeasure</a></th></tr></thead>
+			  <tbody>
+			    <tr><td class="prop">Definition:</td><td>A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</td></tr>
+			    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+			    <tr><td class="prop">Subclass of:</td><td> <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+ 			    <tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td></tr>
+			  </tbody>
+			</table>
+			
+			<section>
+			<h4 role="heading" aria-level="3" id="Property:hasMetric">Property: metric</h4>
+			<table class="definition">
+			  <thead><tr><th>RDF Property:</th><th><a href="#Property:hasMetric">dqv:metric</a></th></tr></thead>
+			  <tbody>
+			    <tr><td class="prop">Definition:</td><td>Indicates the metric being observed.</td></tr>
+			    <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
 
+			    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+			    <tr><td class="prop">Range:</td><td><a href="#Class:Metric">dqv:Metric</a></td></tr>
+			    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+			    <tr><td class="prop">Equivalent Property </td><td><a href="http://purl.org/eis/vocab/daq#metric">daq:metric</a></td></tr>
+			  </tbody>
+			</table>
+			</section>
+
+			<section>
+			<h4 role="heading" aria-level="3" id="Property:measure_dataSet">Property: dataSet  </h4>
+			<table class="definition">
+			  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
+			  <tbody>
+			    <tr><td class="prop">Definition:</td><td>Indicates the data set of which a quality measure, which is a  RDF CUBE observation is a part.</td></tr>
+			    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
+			    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
+			  </tbody>
+			</table>
+			</section>
+	
 		<section>
-		<h4 role="heading" aria-level="3" id="Property:hasMetric">Property: metric</h4>
+		<h4 role="heading" aria-level="3" id="Property:computedOn">Property: computedOn</h4>
 		<table class="definition">
-		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/eis/vocab/daq#metric">daq:metric</a></th></tr></thead>
+		  <thead><tr><th>RDF Property:</th><th><a href="#Property:computedOn">dqv:computedOn</a></th></tr></thead>
 		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Indicates the metric being observed.</td></tr>
-		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
-		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
-		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
-		  </tbody>
-		</table>
-		</section>
+		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g.,  a dataset,  a linkset,  a graph, a  set of triples) on which the quality assessment is performed. </td></tr>
+<tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
 
-		<section>
-		<h4 role="heading" aria-level="3" id="Property:measure_dataSet">Property: measure dataset</h4>
-		<table class="definition">
-		  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Indicates the data set of which this observation is a part.</td></tr>
-		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
-		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
-		  </tbody>
-		</table>
-		</section>
-		
-		</section>
+		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr>
+		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a> (??)</td></tr>
+		   <tr><td class="prop">Inverse property:</td><td><a href="">dqv:hasQualityMeasure</a>(??)</td></tr>
 
-		<section id="Metric">	
-		<h3>Class: Metric</h3>
-
-		<p>The following properties should be used on this class: <a href="#Property:hasDimension">dqv:hasDimension</a>.</p>
-		<table class="definition">
-		  <thead><tr><th>RDF Class:</th><th><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension.</td></tr>
-		    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
-		  </tbody>
-		</table>
-
-		<div class="issue">
-			<p>
-			Do we want to keep the same occurrence constraints as defined in DAQ (for example, that every metric should belong to exactly one dimension)?
-		  In this specific case this may be demanding too much on quality data publishers:
-		  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions.  (<a
-					href="https://www.w3.org/2013/dwbp/track/issues/187">Issue-187</a>) 
-			</p>
-		</div>
-
-		<section>
-		<h4 role="heading" aria-level="3" id="Property:hasDimension">Property: dimension</h4>
-		<table class="definition">
-		  <thead><tr><th>RDF Property:</th><th><a href="#">dqv:hasDimension</a></th></tr></thead>
-		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Represents the dimension a metric allows a measurement of.</td></tr>
-		    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
-		    <tr><td class="prop">Range:</td><td><a href="http://purl.org/eis/vocab/daq#Dimension">daq:Dimension</a></td></tr>
-		    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td></tr>
 		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
 		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
 		  </tbody>
 		</table>
 		</section>
+
+	<section>
+		<h4 role="heading" aria-level="3" id="Property:value">Property: value</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#Property:value">dqv:value</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td> Refers to values computed by metric.</td></tr>
+		   <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
+
+		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
+		    <!--tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr-->
+		   		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#value">daq:value</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
+	
 		
 		</section>
 
+		<section id="Metric">	
+			<h3 id="Class:Metric">Class: Metric</h3>
+
+			<p>The following properties should be used on this class: <a href="#Property:hasDimension">dqv:hasDimension</a>.</p>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#Class:Metric">dqv:Metric</a></th></tr></thead>
+			  <tbody>
+			    <tr><td class="prop">Definition:</td><td>The smallest unit of measuring a quality dimension is a metric. A metric belongs to exactly one dimension. Metrics are provided as subclasses of this abstract class. </td></tr>
+			    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+			    <tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
+			  </tbody>
+			</table>
+
+			<div class="issue">
+				<p>
+				Do we want to keep the same occurrence constraints as defined in DAQ (for example, that every metric should belong to exactly one dimension)?
+			  In this specific case this may be demanding too much on quality data publishers:
+			  it could be that a metric does not clearly belong to a dimension, or that a metric is in scope for several dimensions.  (<a
+					href="https://www.w3.org/2013/dwbp/track/issues/187">Issue-187</a>) 
+				</p>
+			</div>
+
+			<section>
+			<h4 role="heading" aria-level="3" id="Property:hasDimension">Property hasDimension</h4>
+			<table class="definition">
+			  <thead><tr><th>RDF Property:</th><th><a href="#">dqv:hasDimension</a></th></tr></thead>
+			  <tbody>
+			    <tr><td class="prop">Definition:</td><td>Represents the dimension a metric allows a measurement of.</td></tr>
+			    <tr><td class="prop">Domain:</td><td><a href="#Class:Metric">dqv:Metric</a></td></tr>
+			    <tr><td class="prop">Range:</td><td><a href="#Class:Dimension">dqv:Dimension</a></td></tr>
+			    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td></tr>
+			    <tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+			    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+			  </tbody>
+			</table>
+			</section>
+		
+		</section>
+
+		<section id="Dimension">	
+			<h3 id="Class:Dimension">Class: Dimension</h3>
+			<p>The following properties should be used on this class: <a href="#Property:hasCategory">dqv:hasCategory</a>.</p>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#Class:Dimension">dqv:Dimension</a></th></tr></thead>
+		 	 <tbody>
+		   	 <tr><td class="prop">Definition:</td><td> Represents criteria relevant for assessing  quality. Each quality dimension must have one or more metric to measure it. Dimensions are provided as subclasses of this abstract class, which is not intended for direct usage.  A dimension is linked with a category using the dqv:hasDimension property.</td></tr>
+		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    	<tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Dimension">daq:Dimension</a></td></tr>
+		  	</tbody>
+			</table>
+
+		<section>
+		<h4 role="heading" aria-level="3" id="Property:hasCategory">Property: hasCategory</h4>
+		<table class="definition">
+		  <thead><tr><th>RDF Property:</th><th><a href="#">dqv:hasCategory</a></th></tr></thead>
+		  <tbody>
+		    <tr><td class="prop">Definition:</td><td>Represents the category  a dimension is grouped in.</td></tr>
+		    <tr><td class="prop">Domain:</td><td><a href="#Class:Dimension">dqv:Dimension</a></td></tr>
+		    <tr><td class="prop">Range:</td><td><a href="#Class:Category">dqv:Category</a></td></tr>
+		    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasDimension">daq:hasDimension</a></td></tr>
+		    <tr><td class="prop">Minimum cardinality:</td><td></td></tr>
+		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr>
+		  </tbody>
+		</table>
+		</section>
 	</section>
+
+	<section id="Category">	
+			<h3 id="Class:Category">Class: Category</h3>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#Class:Category">dqv:Category</a></th></tr></thead>
+		 	 <tbody>
+		   	 <tr><td class="prop">Definition:</td><td> Represents a group of quality dimensions in which a common type of information is used as quality indicator. Categories are provided as subclasses of this abstract class, which is not intended for direct usage.  </td></tr>
+		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    	<tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Category">daq:Category</a></td></tr>
+		  	</tbody>
+			</table>
+	</section>
+
+
+	<section id="dqv:QualityMeasureDataset">	
+			<h3 id="Class:QualityMeasureDataset">Class:Quality Measure Dataset</h3>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#Class:QualityMeasureDataset">dqv:QualityMeasureDataset</a></th></tr></thead>
+		 	 <tbody>
+		   	 <tr><td class="prop">Definition:</td><td> Represents a dataset of quality measures,  evaluations of a given dataset (or dataset distribution) against a specific quality metric.  </td></tr>
+			 <tr><td class="prop">Subclass of:</td><td>  <a href="http://www.w3.org/TR/vocab-data-cube/#ref_qb_DataSet">qb:DataSet</a></td></tr>
+
+		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    	<tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a></td></tr>
+		  	</tbody>
+			</table>
+	</section>	
+</section>
 
 	<section id="examples" class="informative">	
 		<h2>Example Usage</h2>
@@ -500,9 +595,9 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	<red># when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
 	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
         # In any case we could remove this statement. </red> 
-	daq:computedOn :myDatasetDistribution ;
-	daq:metric :cvsAvailabilityMetric ;
-	daq:value "1.0"^^xsd:double 
+	dqv:computedOn :myDatasetDistribution ;
+	dqv:metric :csvAvailabilityMetric ;
+	dqv:value "1.0"^^xsd:double 
 	.
      	
 :measure2
@@ -510,34 +605,81 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	<red># when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
 	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
         # In any case we could remove this statement. </red> 
-	daq:computedOn :myDatasetDistribution ;
-	daq:metric :csvConsistencyMetric ;
-	daq:value "0.5"^^xsd:double 
+	dqv:computedOn :myDatasetDistribution ;
+	dqv:metric :csvConsistencyMetric ;
+	dqv:value "0.5"^^xsd:double 
 	.
 
-:cvsAvailabilityMetric 
-	a daq:Metric ;
-	dqv:hasDimension :availabity
-	.
-
-:csvConsistencyMetric
-	a daq:Metric ; 
-	dqv:hasDimension :consistency
-	.
-	
 :availabity
-	a daq:Dimension ; 
+	a dqv:Dimension ; 
 	dqv:hasCategory :category1;
 	.
 
 :consistency
-	a daq:Dimension ;
+	a dqv:Dimension ;
 	dqv:hasCategory :category2
 	.
+
+	
+:csvAvailabilityMetric 
+	a dqv:Metric ;
+	dqv:hasDimension :availabity
+	.
+
+:csvConsistencyMetric
+	a dqv:Metric ; 
+	dqv:hasDimension :consistency
+	.
+	
 
 <red># Categories and  dimensions might be more extensively defined, for example, 
 # by grounding them in the section 'Dimensions and metrics hints'.
 # However, any quality framework is free to define its own dimensions and categories.</red>
+
+<red>
+# if  we want to maintain "abstract classes and abstract properties" as they were in DAQ, 
+# the last part of this example should be changed, we should  define some subclasses for dqv:Category, dqv:Dimension, dqv:Metric 
+# and subproperties for dqv:hasCategory   dqv:hasDimension .. isn't it  a little overcomplicated for our purposes ???  ... 
+
+:CCsvConsistencyMetric rdfs:subClassOf  dqv:Metric .
+:CCsvAvailabilityMetric rdfs:subClassOf  dqv:Metric .
+
+:CAvailabity rdfs:subClassOf  dqv:Dimension .
+:CConsistency rdfs:subClassOf dqv:Dimension .
+
+:CCategory1 rdfs:subClassOf  dqv:Category .
+:CCategory2 rdfs:subClassOf dqv:Category .
+
+
+:prop1 rdfs:subPropertyOf dqv:hasDimension .
+:prop2 rdfs:subPropertyOf dqv:hasCategory .
+ 
+	
+:availabity
+	a :CAvailability ; 
+	:prop2 :category1;
+	.
+
+:consistency
+	a :CConsistency ;
+	:prop2 :category2
+	.
+
+	
+:csvAvailabilityMetric 
+	a :CCsvAvailabilityMetric ;
+	:prop1 :availabity
+	.
+
+:csvConsistencyMetric
+	a :CCsvConsistencyMetric ; 
+	:prop1 :consistency
+	.
+
+:category1 rdfs:subClassOf  :CCategory1  .
+:category2 rdfs:subClassOf :CCategory2 .
+	
+</red>
 </pre>
 </section>
 <section>
@@ -547,8 +689,6 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 
 <pre>
 # myQualityMatadata is a graph 
-<red># we are assuming dqv:QualityMetadata is an extension of daq:QualityGraph,
-# otherwise we should probably define a proper qb:DataStructureDefinition </red>
 
 :myQualityMetadata {
 
@@ -586,6 +726,13 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
    	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime;
 	. 
 </pre>
+</section>
+<section>
+	<h4>Document the provenance of single quality measurement </h4>
+	<div class="note">
+	<p>
+	The group has discussed provenance at different level of granularity (dqv:QualityMeasure and dqv:QualityMetadata), so we might consider to add an example of provenance for  dqv:QualityMeasure.       	</p>
+</div>
 </section>
 <section>
  		<h4>Document the provenance of a dataset</h4>
