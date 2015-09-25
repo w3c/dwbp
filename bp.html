@@ -72,6 +72,20 @@ figure figcaption {
   font-style:italic;
 }
 
+table#uripatternstable {
+  border-collapse: collapse;
+  caption-side:bottom;
+}
+table#uripatternstable th, table#uripatternstable td {
+  border: 1px solid black;
+  padding:0.3em;
+}
+
+table#uripatternstable caption {
+  margin:0.5em;
+  font-style:italic;
+}
+
 .stmt
 {       
     padding: 3pt}
@@ -155,7 +169,7 @@ figure figcaption {
         publishers and consumers face the new challenges and opportunities posed
         by data on the Web. </p>
       <p>Best practices cover different aspects related to data publishing and
-        consumption, like data formats, data access, data identification and
+        consumption, like data formats, data access, data identifiers and
         metadata. In order to delimit the scope and elicit the required features
         for Data on the Web Best Practices, the <abbr title="Data on the Web Best Practices">DWBP</abbr>
         working group compiled a set of use cases [[UCR]] that represent
@@ -1181,58 +1195,27 @@ figure figcaption {
         </div>
         <!-- end of provide version history BP -->
         <!-- end of Metadata --> </section>
-      <!-- begin of Data Identification -->
-      <section id="DataIdentification">
-        <h3>Data Identification</h3>
-        <div class="issue">
-          <p> To discuss about limiting this section to information that applies
-            to publishing *data*. <a href="http://www.w3.org/2013/dwbp/track/issues/194">Issue-194</a></p>
-        </div>
-        <p>Identifiers are simple conventions of labels that allow us to
-          distinguish what is being identified from anything else. Identifiers
-          are used extensively in every information system, making it possible
-          to refer to any particular element. The Web is predicated on a uniform
-          system of identifiers that are globally unique and can be looked up by
-          dereferencing them over the Internet. There are three terms in common
-          use for these identifiers and, although they are often used
-          interchangeably, there are differences.</p>
-        <ul>
-          <li> URI (Uniform Resource Identifier) is an identifier for anything
-            including those not available over the Internet such as people,
-            buildings and mountains. There are many URI schemes, not all of
-            which can be looked up over the Internet. For example,
-            doi:10.1103/PhysRevD.89.032002 is as URI but cannot be looked up
-            (directly) on the Internet. For data on the Web, only HTTP(s) URIs
-            are relevant. HTTP URIs are a subset of URIs which are a subset of
-            IRIs.</li>
-          <li> IRI (Internationalized Resource Identifier) are conceptually
-            identical to URIs but allow the use of non-ASCII characters to which
-            URIs are limited.</li>
-          <li> URL (Uniform Resource Locator) is the location of a resource on
-            the Web. URLs are a subset of URIs.</li>
-        </ul>
-        <p> Of these three, the term URL is by far the most commonly used. The
-          term URI, and even more so, IRI, may cause confusion among some
-          audiences, however, in the context of data on the Web, URI is more
-          appropriate since data points and datasets very often refer to real
-          world objects and phenomena. The term IRI is used where necessary.</p>
-        <p> Data discovery, usage and citation on the Web depends fundamentally
-          on the use of HTTP (or HTTPS) URIs. </p>
-        <p> It is perhaps worth emphasizing some key points about URIs in the
+      <!-- begin of Data Identifiers -->
+      <section id="DataIdentifiers">
+        <h3>Data Identifiers</h3>
+        <p>Identifiers take many forms and are used extensively in every information system. 
+           Data discovery, usage and citation on the Web depends fundamentally
+          on the use of HTTP (or HTTPS) URIs: globally unique identifiers that can be looked up by
+          dereferencing them over the Internet [[RFC3986]]. It is perhaps worth emphasizing some key points about URIs in the
           current context.</p>
         <ol>
-          <li> URIs are 'dumb strings', that is, they carry no semantics. Their
+          <li>URIs are 'dumb strings', that is, they carry no semantics. Their
             function is purely to identify a resource.</li>
-          <li> Although the previous point is accurate, it would be perverse for
-            a URI such as http://example.com/datset.csv to return anything other
+          <li>Although the previous point is accurate, it would be perverse for
+            a URI such as http://example.com/dataset.csv to return anything other
             than a CSV file. Human readability is helpful.</li>
-          <li> When de-referenced (looked up), a single URI may offer the same
+          <li>When de-referenced (looked up), a single URI may offer the same
             resource in more than one format. http://example.com/dataset may
             offer the same data in, say, CSV, JSON and XML. The server returns
             the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
               content negotiation </a>.</li>
-          <li> One URI may redirect to another.</li>
-          <li> De-referencing a URI triggers a computer program to run on a
+          <li>One URI may redirect to another.</li>
+          <li>De-referencing a URI triggers a computer program to run on a
             server so that the URI acts as a call to an API. The server may
             therefore do something as simple as return a single, static file, or
             it may carry out complex processing. Precisely what processing is
@@ -1260,49 +1243,37 @@ figure figcaption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> To be persistent, URIs must be designed as such, backed up by
-              organizational commitments. There have been a <a href="http://philarcher.org/diary/2013/uripersistence/#recs">number
-                of articles written on this topic</a> and the following
-              summarizes many of the key points made.</p>
-            <ul>
-              <li>Follow a pattern (e.g.
-                http://{domain}/{type}/{concept}/{reference}) </li>
-              <li>Re-use existing identifiers (e.g.
-                http://education.data.gov.uk/id/school/<strong>123457</strong>)</li>
-              <li>Link multiple representations (e.g.
-                http://data.example.org/doc/foo/bar.rdf and
-                http://data.example.org/doc/foo/bar.html) </li>
-              <li>Implement 303 redirects for real-world objects (e.g.
-                http://www.example.com/id/alice_brown and
-                http://www.example.com/doc/alice_brown)</li>
-              <li>Use a dedicated service (i.e. independent of the data
-                originator)</li>
-              <li>Avoid stating ownership (e.g.
-                http://education.data.gov.uk/ministryofeducation/id/school/123456)</li>
-              <li>Avoid version numbers (e.g.
-                http://education.data.gov.uk/doc/school/v01/123456)</li>
-              <li>Avoid using auto-increment (e.g.
-                http://education.data.gov.uk/id/school/123456 and e.g.
-                http://education.data.gov.uk/id/school/123457)</li>
-              <li>Avoid query strings (e.g.
-                http://education.data.gov.uk/doc/school?id=123456)</li>
-              <li>Avoid file extensions
-                (http://education.data.gov.uk/doc/schools/123456.csv)</li>
-            </ul>
-            <p> Where a data publisher is unable or unwilling to manage its URI
+            <p>To be persistent, URIs must be designed as such and backed up by
+              organizational commitments. A lot has been written on this topic as the table below shows.
+
+<table id="uripatternstable">
+<caption>Some sources of information related to URI persistence</caption>
+<tbody><tr><th>Status</th><th>Title</th><th>Authors and Date</th></tr>
+<tr><td rowspan="3">Background</td><td><a href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don't change</a></td><td>Tim Berners-Lee, 1998</td></tr>
+<tr><td><a href="http://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</a></td><td>Leo Saurman, Richard Cyganiak, 2008</td></tr>
+<tr><td><a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked Data</a></td><td>Tim Berners-Lee, 2009</td></tr>
+<tr><td>Key Source</td><td><a href="http://www.cabinetoffice.gov.uk/sites/default/files/resources/designing-URI-sets-uk-public-sector.pdf">Designing URI Sets for the UK Public Sector</a> (PDF)</td><td>UK Chief Technology Officer Council October 2009</td></tr>
+<tr><td>Survey &amp; summary of techniques</td><td><a href="http://philarcher.org/diary/2013/uripersistence/">Study on Persistent URIs</a></td><td>Phil Archer, Nikos Loutas, Stijn Goedertier, Saky Kourtidis, 2013</td></tr>
+<tr><td rowspan="4">Expansion</td><td><a href="http://www.jenitennison.com/blog/node/136">Creating Linked Data</a></td><td>Jeni Tennison, 2009</td></tr>
+<tr><td><a href="http://linkeddatabook.com/editions/1.0/">Linked Data: Evolving the Web into a Global Data Space</a></td><td>Tom Heath & Christian Bizer, 2011</td></tr>
+<tr><td><a href="http://patterns.dataincubator.org/book/">Linked Data Patterns</a></td><td>Leigh Dodds &amp; Ian Davis, 2012</td></tr>
+<tr><td><a href="http://www.multilingualweb.eu/en/documents/dublin-workshop/dublin-program#linking">Best Practices for Multilingual Linked Open Data</a></td><td>Jose Emilio Labra Gayo, 2012</td></tr>
+<tr><td>Detail</td><td><a href="http://csarven.ca/statistical-linked-dataspaces">Statistical Linked Dataspaces</a></td><td>Sarven Capadisli, 2012</td></tr></tbody>
+</table>
+
+
+<p>Where a data publisher is unable or unwilling to manage its URI
               space directly for persistence, an alternative approach is to use
-              a redirection service such as <a href="http://purl.org/">purl.org
-              </a>. This provides persistent URIs that can be redirected as
-              required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
+              a redirection service such as <a href="http://purl.org/">purl.org</a>. This provides persistent URIs that can be redirected as required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
                 behind such services </a> is freely available so that it can be
-              installed and managed locally if required. </p>
-            <p> Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
+              installed and managed locally if required.</p>
+            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
               offer a similar alternative. These identifiers are defined
               independently of any Web technology but can be appended to a 'URI
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
             <aside class="example">
-              <pre>to be done</pre>
+              <p>To be done. Will take examples from UK guidelines</p>
             </aside>
           </section>
           <section class="test">
