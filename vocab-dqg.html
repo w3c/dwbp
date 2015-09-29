@@ -349,14 +349,6 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 	  (<a href="https://www.w3.org/2013/dwbp/track/issues/199">Issue-199</a>) 
 			</p>
 	</div>
-	<div class="issue">
-			<p>
-			 dqv:QualityAnnotation is foreseen as a subclass of  <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a>. The instances of this class should have a
-	  <a href="http://www.w3.org/ns/oa#d4e230">oa:motivatedBy</a> statement with a an instance of <a href="http://www.w3.org/ns/oa#d4e555">oa:Motivation</a>, which reflects a quality assessment purpose.
-	  We plan to define is as <a href="#">dqv:qualityAssessment</a>. (<a
-					href="https://www.w3.org/2013/dwbp/track/issues/185">Issue-185</a>) 
-			</p>
-	</div>
 
 	</div>
 	</section>
@@ -551,7 +543,27 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		    	<tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a></td></tr>
 		  	</tbody>
 			</table>
-	</section>	
+	</section>
+	<section id="dqv:QualityAnnotation">	
+			<h3 id="Class:QualityAnnotation">Class:Quality Annotation </h3>
+			<table class="definition">
+			  <thead><tr><th>RDF Class:</th><th><a href="#Class:QualityAnnotation">dqv:QualityAnnotation</a></th></tr></thead>
+		 	 <tbody>
+		   	 <tr><td class="prop">Definition:</td><td> Represents  quality annotations, including rating, quality certificate, feedback that can be associated to  datasets or distributions.  </td></tr>
+			 <tr><td class="prop">Subclass of:</td><td>  <a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></td></tr>
+
+		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+		    	<tr><td class="prop">Equivalent class </td><td> <pre> 
+EquivalentClasses(
+   oa:annotation 
+   ObjectSomeValuesFrom( oa:motivatedBy oa:Motivation )
+   ObjectHasValue( oa:motivatedBy dqv:qualityAssessment )
+   	
+ )
+</pre> </td></tr-->
+		  	</tbody>
+			</table>
+	</section>		
 </section>
 
 	<section id="examples" class="informative">	
