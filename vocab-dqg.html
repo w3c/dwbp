@@ -145,7 +145,6 @@
       			date: "2014",
       			status: "LDOW 2014",
 			href : "http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf"
-
       		},
 		"DaQ-RDFCUBE": {
       			title: "Representing dataset quality metadata using multi-dimensional views",
@@ -153,12 +152,15 @@
       			date: "2014",
       			status: "SEMANTICS 2014",
 			href : "http://arxiv.org/abs/1408.2468"
-
-      		}
-
-
+      		},
+		"MultilingualImporting" : {
+     			title: "A Linkset Quality Metric Measuring Multilingual Gain in SKOS Thesauri",
+      			authors: ["Riccardo Albertoni", "Monica De Martino", "Paola Podestà"],
+      			date: "2015",
+      			status: "LDQ@ESWC 2015",
+			href : "http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf"
+		}
 		},
-
 	};
 </script>
 
@@ -785,7 +787,245 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 					href="https://www.w3.org/2013/dwbp/track/issues/188">Issue-188</a>) 
 </p>
 	</div>
-		<pre></pre>
+<!--p>
+Quality is defined as “fitness for use”.  Depending on the concrete applications and technologies very specific notions of  quality  they might arise. The definition of  brand new quality dimensions and metrics to potentially include these more specific quality measures should be easily supported by the DQV vocabulary. </p-->
+<!--p>For example, Thesauri and controlled vocabulary encoded in SKOS, which requires  quite specific  quality measures (e.g., qSKOS [[qskos]]).<\p--> 
+<p>   
+ Linksets are as important as datasets when it comes to the joint exploitation of independently served datasets in linked data. The representation of quality of a linkset offer a further example of how the DQV can be exploited to represent an extended notion of quality. </p>
+
+<p> Let’s define three  DCAT datasets, representing two void datasets and one void linkset which connects the two datasets
+</p>
+		<pre>
+
+:myDataset 
+	a  dcat:Dataset ;
+	dct:title "My dataset" ; 
+	dcat:distribution :myDatasetDistributionInRDF
+	.
+
+:myDataset2 
+	a  dcat:Dataset ;
+	dct:title "My dataset 2" ; 
+	dcat:distribution :myDataset2DistributionInRDF
+	.
+
+:myLinkset 
+	a  dcat:Dataset ;
+	dct:title "A Linkset between  My dataset  and  My dataset 2" ; 
+	dcat:distribution :myLinksetDistribution
+	.
+
+:myDatasetInRDF
+	a  dcat:Distribution, void:Dataset ;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset.rdf&gt; ;
+       	dct:title "RDF distribution of dataset" ;
+       	dcat:mediaType "text/csv" ;
+       	dcat:byteSize "87120"^^xsd:decimal 
+	.
+
+
+:myDataset2InRDF
+	a  dcat:Distribution, void:Dataset ;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
+       	dct:title "RDF distribution of dataset" ;
+       	dcat:mediaType "text/csv" ;
+       	dcat:byteSize "100120"^^xsd:decimal 
+	.
+
+
+:myLinksetDistribution a dcat:Distribution, void:Linkset ;
+dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
+ void:linkPredicate skos:exactMatch ;
+ void:target :myDatasetInRDF ;
+ void:target :myDataset2InRDF
+
+</pre>
+<p> Let's  represent information about the  quality of :myLinksetDistribution  considering the  “Multilingual  importing” [[MultilingualImporting]], a  linkset quality metric which given  skos:exactMatch linksets estimates the preferred labels or the alternative labels  gained through linkset.  We should first define the proper metric, dimension and category.
+</p> 
+<pre>
+# let’s define the  a new metric, dimension and category respectively as  subclass of dqv Metric, Dimension and Category  
+lsq:LinksetImporting4Property
+        rdfs:subClassOf  dqv:Metric .
+lsq:Completeness  
+   rdfs:subClassOf  dqv:Dimension .
+
+lsq:ComplementationGain
+        rdfs:subClassOf  dqv:Category .
+
+
+
+#let’s provide proper subproperties for dqv:Dimension and dqv:hasCategory 
+dqv:hasLinksetQualityDimension 
+rdfs:subPropertyOf dqv:hasDimension .
+
+dqv:hasLinksetQualityCategory
+	rdfs:subPropertyOf dqv:hasCategory .
+	
+
+lsq:hasLinksetQualityDimension
+        rdfs:subPropertyOf  daq:hasDimension .
+
+lsq:hasLinksetQualityMetric
+        rdfs:subPropertyOf  daq:hasMetric .
+
+
+#let’s define instances for  Metric, Dimension and Category subclasses
+
+exq:complementationGain
+        a       lsq:ComplementationGain ;
+        lsq:hasLinksetQualityDimension
+                exq:Completeness .
+
+
+exq:completeness  a  lsq:Completeness ;
+        dqv:hasLinksetQualityCategory exq:complementationGain;
+        lsq:hasLinksetQualityMetric
+                exq:importing4PropertyPercentual .
+</pre>
+<p>
+The importing quality assessemnt depends on two extra  parameters: property and language, respectively the skos property and the language on which the importing is assessed. We  extend the DQV  to represents  these parameters.
+</p>  
+
+<div class="issue">
+			<p> Is the following a proper way to add extra metric parameter and to extend the DQV  RDF-CUBE data structure ?!?   (postponed issue) 
+			</p>
+	 </div>
+
+<pre>
+
+lsq:language
+        a              qb:DimensionProperty , rdf:Property , owl:DataProperty ;
+        rdfs:comment   "Represents the language on which importing  is assessed."@en ;
+        rdfs:domain    dqv:QualityMeasure;
+        rdfs:label     "language"@en .
+
+
+lsq:property
+        a              qb:DimensionProperty , rdf:Property , owl:ObjectProperty ;
+        rdfs:comment   "Represents the language on which importing  is assessed."@en ;
+        rdfs:domain    dqv:QualityMeasure ;
+        rdfs:label     "language"@en ;
+        # not sure that putting a owl:ObjectProperty is  the best solution
+        rdfs:range     rdf:Property .
+
+</pre>
+<p>
+Let's add actual quality assessments
+</p>
+<pre>
+exq:qualityMeasureDataset  a  dqv:QualityMeasureDataset ;
+        qb:structure  lsq:dsd .
+
+exq:importing4PropertyPercentual
+        a                   lsq:LinksetImporting4Property ;
+        dqv:hasLinksetQualityDimension exq:completeness ;
+        dqv:hasObservation  exq:exactMatchaltLabelit1 , exq:exactMatchaltLabelit2 , 
+			    exq:exactMatchaltLabelen1 , exq:exactMatchaltLabelen2,
+			 exq:exactMatchprefLabelit1, exq:exactMatchprefLabelit2 .
+
+
+
+#Adding quality observations 
+##AltLabel it
+exq:exactMatchaltLabelit1 a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+ #extra parameters that are specific to the importing linkset       
+       lsq:language    "it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#altLabel&gt; .
+
+exq:exactMatchaltLabelit2  a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+ #extra parameters that are specific to the importing linkset       
+       lsq:language    "it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#altLabel&gt; .
+
+##AltLabel em
+ exq:exactMatchaltLabelen1  a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "0.1"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+ #extra parameters that are specific to the importing linkset       
+       lsq:language    "en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#altLabel&gt; .
+
+exq:exactMatchaltLabelen2  a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+ #extra parameters that are specific to the importing linkset       
+       lsq:language    "en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#altLabel&gt; .      
+
+##PrefLabel it
+exq:exactMatchprefLabelit1 a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "0.5"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+
+         #extra parameters that are specific to the importing linkset       
+       lsq:language    "it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; .
+
+exq:exactMatchprefLabelit2  a dqv:QualityMeasure;
+       dqv:computedOn  :myLinksetDistribution ;
+        dc:date         "2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
+        dqv:value       "0.5"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
+        dqv:metric      exq:importing4PropertyPercentual ;
+        qb:dataSet      exq:qualityMeasureDataset;
+
+         #extra parameters that are specific to the importing linkset       
+       lsq:language    "it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+        lsq:property    &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; .
+
+</pre>
+Let's specify the rdf cube data structure 
+<pre>
+
+lsq:dsd  a     qb:DataStructureDefinition ;
+##Copying the structure of daq:dsq
+        qb:component  [ qb:dimension  dqv:computedOn ;
+                        qb:order      2
+                      ] ;
+        qb:component  [ qb:measure  dqv:value] ;
+        qb:component  [ qb:dimension  &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
+                        qb:order      3
+                      ] ;
+        qb:component  [ qb:dimension  dqv:metric ;
+                        qb:order      1
+                      ] ;
+       
+	qb:component [ qb:measure dqv:value;];
+	# Attribute (here: unit of measurement)
+	qb:component [
+		qb:attribute sdmx-attribute:unitMeasure
+	;
+	qb:componentRequired false ;
+	qb:componentAttachment qb:DataSet ; ] ;
+	
+    
+##Extending  the structure of lds:dsq with two new dimensions
+        qb:component  [ qb:dimension  lsq:property ;
+                        qb:order      4
+                      ] ;
+        qb:component  [ qb:dimension  lsq:language ;
+                        qb:order      5
+                      ] .
+</pre>
+
 </section>
 </section>
 
