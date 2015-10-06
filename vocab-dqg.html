@@ -643,6 +643,7 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	dqv:value "0.5"^^xsd:double 
 	.
 
+#definition of  dimensions and metrics
 :availabity
 	a dqv:Dimension ; 
 	dqv:hasCategory :category1;
@@ -664,15 +665,14 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 	dqv:hasDimension :consistency
 	.
 	
-
-<red># Categories and  dimensions might be more extensively defined, for example, 
-# by grounding them in the section 'Dimensions and metrics hints'.
-# However, any quality framework is free to define its own dimensions and categories.</red>
-
-<red>
-# if  we want to maintain "abstract classes and abstract properties" as they were in DAQ, 
-# the last part of this example should be changed, we should  define some subclasses for dqv:Category, dqv:Dimension, dqv:Metric 
-# and subproperties for dqv:hasCategory   dqv:hasDimension .. isn't it  a little overcomplicated for our purposes ???  ... 
+</pre>
+<p>Categories and  dimensions might be more extensively defined,  see in the section 'Dimensions and metrics hints' for  further examples.
+Any quality framework is free to define its own dimensions and categories. </p>
+<p style="color:red">
+In order to ease the ex-post alignment of dimensions, metrics and categories deployed in independentely developed quality framework, dqv:Metric, dqv:Dimension, dqv:Category can be  considered as a sort of  "abstract classes".  For example, in the previous example,  the part concerning the definition of dimension and metrics  can be replaced as shown below. 
+</p>
+<pre>
+#definition of  dimensions and metrics
 
 :CCsvConsistencyMetric rdfs:subClassOf  dqv:Metric .
 :CCsvAvailabilityMetric rdfs:subClassOf  dqv:Metric .
@@ -712,7 +712,7 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 :category1 rdfs:subClassOf  :CCategory1  .
 :category2 rdfs:subClassOf :CCategory2 .
 	
-</red>
+
 </pre>
 </section>
 <section>
