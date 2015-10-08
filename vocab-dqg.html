@@ -364,7 +364,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			<p>DQV defines quality measures as specific instances of DQV observations, adapting the DAQ quality metrics framework [[DaQ]], [[DaQ-RDFCUBE]]:</p>
 			<ul>
 			  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
-			  <li>A Quality Metric is a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+			  <li>A Quality Metric gives a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
 			</ul>
 			<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
 			</p>
@@ -453,8 +453,8 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			<p>The following properties should be used on this class: <a href="#Property:hasDimension">dqv:hasDimension</a>.</p>
 			<table class="definition">
 			  <thead><tr><th>RDF Class:</th><th><a href="#Class:Metric">dqv:Metric</a></th></tr></thead>
-			  <tbody>
-			    <tr><td class="prop">Definition:</td><td>The smallest unit of measurement of a quality dimension is a metric. A metric belongs to exactly one dimension. Metrics are provided as subclasses of this abstract class. </td></tr>
+			  <tbody> 
+			    <tr><td class="prop">Definition:</td><td>A standard to measure a quality dimension. An observation (instance of dqv:QualityMeasure) assigns a value in a given unit to a Metric. Specific metrics are defined as subclasses of this abstract class.</td></tr>
 			    <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
 			    <tr><td class="prop">Equivalent class </td><td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td></tr>
 			  </tbody>
