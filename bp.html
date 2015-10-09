@@ -1224,27 +1224,19 @@ table#uripatternstable caption {
         </ol>
         <!-- begin of Data Identification BP -->
         <div class="practice">
-          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent
-              URIs as identifiers</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be
-            identified by a persistent URI. </p>
+          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent URIs as identifiers of datasets</span></p>
+          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be identified by a persistent URI. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Adopting a common identification system enables basic data
-              identification and comparison processes by any stakeholder in a
-              reliable way. They are an essential pre-condition for proper data
-              management and re-use.</p>
+            <p>Adopting a common identification system enables basic data identification and comparison processes by any stakeholder in a reliable way. They are an essential pre-condition for proper data management and re-use.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Datasets or information about datasets, must be discoverable and
-              citable through time, regardless of the status, availability or
-              format of the data.</p>
+            <p> Datasets or information about datasets, must be discoverable and citable through time, regardless of the status, availability or format of the data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>To be persistent, URIs must be designed as such and backed up by
-              organizational commitments. A lot has been written on this topic as the table below shows.
+            <p>To be persistent, URIs must be designed as such and backed up by organizational commitments. A lot has been written on this topic as the table below shows.
 
 <table id="uripatternstable">
 <caption>Some sources of information related to URI persistence</caption>
@@ -1291,6 +1283,51 @@ table#uripatternstable caption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </section>
         </div>
+
+        <div class="practice">
+          <p><span id="identifiersWithinDatasets" class="practicelab">Use persistent URIs as identifiers within datasets</span></p>
+          <p class="practicedesc">Datasets <em class="rfc2119">should</em> use and reuse other people's URIs as identifiers where possible.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The power of the Web lies in the <em>Network effect</em>. The first telephone only became useful when the second telephone meant there was someone to call; the third telephone made both of them more useful yet. Data becomes more valuable if it refers to other people's data about the same thing, the same place, the same concept, the same event, the same person, and so on. That means using the same identifiers across datasets and making sure that your identifiers can be referred to by other datasets. When those identifiers are HTTP URIs, they can be looked up and more data discovered.</p>
+
+            <p>That's the Web of Data.</p>
+
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>That one data point can be related to others across the Web creating a global information space accessible to humans and machines alike.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>This is a topic in itself and a general document such as this can only include superficial detail.</p>
+            <p>Developers know that very often the problem they're trying to solve will have already been solved by other people. In the same way, if you're looking for a set of identifiers for obvious things like countries, currencies, subjects, species, proteins, cities and regions, Nobel prize winners – someone's done it already. The steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering existing vocabularies</a> [[LD-BP]] can readily be adapted.</p><ul>
+              <li>ensure URI sets you use are published by a trusted group or organization;</li>
+              <li>ensure URI sets have permanent URIs; and </li>
+              <li>confirm the versioning policy.</li></ul>
+              <p>If you can't find an existing set of identifiers that meet your needs then you'll need to create your own, following the patterns for URI persistence so that others will add value to your data by linking to it.</p>
+              <p>URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously wasteful. Instead, define unique identifiers for each element and provide data that allows them to be converted to resolvable URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]] provides mechanisms for doing this within tabular data such as CSV files.</p>
+              <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5 Stars of Linked Data</a> and of <a href="http://dret.github.io/webdata/">Hypermedia</a>. In both cases, emphasis is put on the ability for machines to traverse from one resource to another following links that express relationships.</p>
+
+
+            <aside class="example">
+              <p>To follow. Plan to use http://dbpedia.org/resource/ISO_3166-1:GR as the example. Store 'GB' and 'GR' as codes in a table but use CSVW to declare that these can be turned into URIs like http://dbpedia.org/resource/ISO_3166-1:GR.</p>
+
+            </aside>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that within the dataset, references to things that don't change or that change slowly, such as countries, regions, organizations and people, as referred to by URIs or by short identifiers that can be appended to a URI stub. Check that the URIs are resolvable. 
+</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+          </section>
+        </div>
+        <!-- end of URIs in datasets BP -->
+
+
         <div class="practice">
           <p><span id="VersionIdentifiers" class="practicelab">Assign URIs to
               dataset versions and series</span></p>
