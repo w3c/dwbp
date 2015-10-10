@@ -1253,16 +1253,10 @@ table#uripatternstable caption {
 <tr><td>Detail</td><td><a href="http://csarven.ca/statistical-linked-dataspaces">Statistical Linked Dataspaces</a></td><td>Sarven Capadisli, 2012</td></tr></tbody>
 </table>
 
+<div class="issue">The table links to Designing URI Sets for the UK Public Sector. A newer version of this document (which was the first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub repo</a>. It seems that this might happen due to changes in organisation behind data.gov.uk. If this happens, we should update the link to point to the new version.</div>
 
-<p>Where a data publisher is unable or unwilling to manage its URI
-              space directly for persistence, an alternative approach is to use
-              a redirection service such as <a href="http://purl.org/">purl.org</a>. This provides persistent URIs that can be redirected as required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
-                behind such services </a> is freely available so that it can be
-              installed and managed locally if required.</p>
-            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
-              offer a similar alternative. These identifiers are defined
-              independently of any Web technology but can be appended to a 'URI
-              stub.' DOIs are an important part of the digital infrastructure
+<p>Where a data publisher is unable or unwilling to manage its URI space directly for persistence, an alternative approach is to use a redirection service such as <a href="http://purl.org/">purl.org</a>. This provides persistent URIs that can be redirected as required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software behind such services </a> is freely available so that it can be installed and managed locally if required.</p>
+            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a> offer a similar alternative. These identifiers are defined independently of any Web technology but can be appended to a 'URI stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
             <aside class="example">
               <p>To be done. Will take examples from UK guidelines</p>
@@ -1270,12 +1264,7 @@ table#uripatternstable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that each dataset in question is identified using a URI
-              that has been assigned under a controlled process as set out in
-              the previous section. Ideally, the relevant Web site includes a
-              description of the process and a credible pledge of persistence
-              should the publisher no longer be able to maintain the URI space
-              themselves.</p>
+            <p>Check that each dataset in question is identified using a URI that has been assigned under a controlled process as set out in the previous section. Ideally, the relevant Web site includes a description of the process and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1303,11 +1292,10 @@ table#uripatternstable caption {
             <p>This is a topic in itself and a general document such as this can only include superficial detail.</p>
             <p>Developers know that very often the problem they're trying to solve will have already been solved by other people. In the same way, if you're looking for a set of identifiers for obvious things like countries, currencies, subjects, species, proteins, cities and regions, Nobel prize winners – someone's done it already. The steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering existing vocabularies</a> [[LD-BP]] can readily be adapted.</p><ul>
               <li>ensure URI sets you use are published by a trusted group or organization;</li>
-              <li>ensure URI sets have permanent URIs; and </li>
-              <li>confirm the versioning policy.</li></ul>
+              <li>ensure URI sets have permanent URIs.</li></ul>
               <p>If you can't find an existing set of identifiers that meet your needs then you'll need to create your own, following the patterns for URI persistence so that others will add value to your data by linking to it.</p>
-              <p>URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously wasteful. Instead, define unique identifiers for each element and provide data that allows them to be converted to resolvable URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]] provides mechanisms for doing this within tabular data such as CSV files.</p>
-              <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5 Stars of Linked Data</a> and of <a href="http://dret.github.io/webdata/">Hypermedia</a>. In both cases, emphasis is put on the ability for machines to traverse from one resource to another following links that express relationships.</p>
+              <p>URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously wasteful. Instead, define locally unique identifiers for each element and provide data that allows them to be converted to globally unique URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]] provides mechanisms for doing this within tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about URL</a> property.</p>
+              <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5 Stars of Linked Data</a> where one data point links to another, and of <a href="http://dret.github.io/webdata/">Hypermedia</a> where links may be to further data or to services (or more generally 'affordances') that act on or relate to the data in some way. Examples include a bug reporting mechanisms, processors, a visualization engine, a sensor, an actuator etc. In both Linked Data and Hypermedia, the emphasis is put on the ability for machines to traverse from one resource to another following links that express relationships.</p>
 
 
             <aside class="example">
@@ -1317,8 +1305,7 @@ table#uripatternstable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that within the dataset, references to things that don't change or that change slowly, such as countries, regions, organizations and people, as referred to by URIs or by short identifiers that can be appended to a URI stub. Check that the URIs are resolvable. 
-</p>
+            <p>Check that within the dataset, references to things that don't change or that change slowly, such as countries, regions, organizations and people, as referred to by URIs or by short identifiers that can be appended to a URI stub. Ideally the URIs should resolve, however, they have value as globally scoped variables whether they resolve or not.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
