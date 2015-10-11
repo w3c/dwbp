@@ -161,6 +161,13 @@
       			date: "2015",
       			status: "LDQ@ESWC 2015",
 			href : "http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf"
+		},
+		"SKOS" : {
+     			title: "SKOS Reference",
+      			authors: ["Alistair Miles", "Sean Bechhofer", "eds"],
+      			date: "18 August 2009",
+      			status: "W3C Recommendation",
+			href : "http://www.w3.org/TR/2009/REC-skos-reference-20090818/"
 		}
 		},
 	};
@@ -401,7 +408,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			<table class="definition">
 			  <thead><tr><th>RDF Property:</th><th><a href="http://purl.org/linked-data/cube#dataSet">qb:dataSet</a></th></tr></thead>
 			  <tbody>
-			    <tr><td class="prop">Definition:</td><td>Indicates the data set of which a quality measure, which is a  RDF CUBE observation is a part.</td></tr>
+			    <tr><td class="prop">Definition:</td><td>Indicates the dataset to a quality measure (which is an RDF Data Cube observation) belongs.</td></tr>
 			    <tr><td class="prop">Domain:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td></tr>
 			    <tr><td class="prop">Range:</td><td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td></tr>
 			  </tbody>
@@ -413,7 +420,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		<table class="definition">
 		  <thead><tr><th>RDF Property:</th><th><a href="#Property:computedOn">dqv:computedOn</a></th></tr></thead>
 		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g.,  a dataset,  a linkset,  a graph, a  set of triples) on which the quality measurement is performed.</td></tr>
+		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed.</td></tr>
 <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
 
 		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
@@ -432,7 +439,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		<table class="definition">
 		  <thead><tr><th>RDF Property:</th><th><a href="#Property:value">dqv:value</a></th></tr></thead>
 		  <tbody>
-		    <tr><td class="prop">Definition:</td><td> Refers to values computed by metric.</td></tr>
+		    <tr><td class="prop">Definition:</td><td>Refers to values computed by metric.</td></tr>
 		   <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
 
 		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
@@ -665,7 +672,7 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 <p>Categories and dimensions might be more extensively defined, see in the section 'Dimensions and metrics hints' for further examples.
 Any quality framework is free to define its own dimensions and categories.</p>
 <p style="color:red">
-In order to ease the ex-post alignment of dimensions, metrics and categories deployed in independentely developed quality framework, dqv:Metric, dqv:Dimension, dqv:Category can be  considered as a sort of  "abstract classes".  For example, in the previous example, the part concerning the definition of dimension and metrics can be replaced as shown below. 
+In order to ease the ex-post alignment of dimensions, metrics and categories deployed in independently developed quality framework, dqv:Metric, dqv:Dimension, dqv:Category can be considered as a sort of "abstract classes". For example, in the previous example, the part concerning the definition of dimension and metrics can be replaced as shown below. 
 </p>
 <pre>
 #definition of  dimensions and metrics
@@ -777,7 +784,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 		<h3>Express the quality of a linkset</h3>
 		<p></p>
 	<div class="issue">
-		<p>This section will be completed by examples coming from <a href="http://purl.oclc.org/net/LDQWorkshop2015.pdf">Riccardo's work</a> on measuring the quality of linksets between SKOS concept schemes, from the perspective of adding multilingual labels to these schemes. On the web, linksets are an especially interesting case of datasets! we could also add examples from <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.  (<a
+		<p>This section will be completed by examples coming from <a href="http://purl.oclc.org/net/LDQWorkshop2015.pdf">Riccardo's work</a> on measuring the quality of linksets between SKOS concept schemes, from the perspective of adding multilingual labels to these schemes. On the web, linksets are an especially interesting case of datasets! We could also add examples from <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.  (<a
 					href="https://www.w3.org/2013/dwbp/track/issues/188">Issue-188</a>) 
 </p>
 	</div>
@@ -785,42 +792,42 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 Quality is defined as “fitness for use”.  Depending on the concrete applications and technologies very specific notions of  quality  they might arise. The definition of  brand new quality dimensions and metrics to potentially include these more specific quality measures should be easily supported by the DQV vocabulary. </p-->
 <!--p>For example, Thesauri and controlled vocabulary encoded in SKOS, which requires  quite specific  quality measures (e.g., qSKOS [[qskos]]).<\p--> 
 <p>   
- Linksets are as important as datasets when it comes to the joint exploitation of independently served datasets in linked data. The representation of quality of a linkset offer a further example of how the DQV can be exploited to represent an extended notion of quality. </p>
+<a href="http://www.w3.org/TR/void/#linkset">(VoID) linksets</a> are collections of (RDF) links between two datasets. Linksets are as important as datasets when it comes to the joint exploitation of independently served datasets in linked data. The representation of quality for a linkset offers a further example of how DQV can be exploited. </p>
 
-<p> Let’s define three  DCAT datasets, representing two void datasets and one void linkset which connects the two datasets
+<p> Let’s define three DCAT datasets, including one VoID linkset, which connects the two others:
 </p>
 		<pre>
-:myDataset 
-	a  dcat:Dataset ;
-	dct:title "My dataset" ; 
+:myDataset1 
+	a dcat:Dataset ;
+	dct:title "My dataset 1" ; 
 	dcat:distribution :myDatasetDistributionInRDF
 	.
 
 :myDataset2 
-	a  dcat:Dataset ;
+	a dcat:Dataset ;
 	dct:title "My dataset 2" ; 
 	dcat:distribution :myDataset2DistributionInRDF
 	.
 
 :myLinkset 
-	a  dcat:Dataset ;
-	dct:title "A Linkset between  My dataset  and  My dataset 2" ; 
+	a dcat:Dataset ;
+	dct:title "A Linkset between My dataset 1 and My dataset 2" ; 
 	dcat:distribution :myLinksetDistribution
 	.
 
-:myDatasetInRDF
-	a  dcat:Distribution, void:Dataset ;
-	dcat:downloadURL &lt;http://www.example.org/files/mydataset.rdf&gt; ;
-       	dct:title "RDF distribution of dataset" ;
+:myDataset1InRDF
+	a dcat:Distribution, void:Dataset ;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
+       	dct:title "RDF distribution of dataset 1" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "87120"^^xsd:decimal 
 	.
 
 
 :myDataset2InRDF
-	a  dcat:Distribution, void:Dataset ;
+	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
-       	dct:title "RDF distribution of dataset" ;
+       	dct:title "RDF distribution of dataset 2" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "100120"^^xsd:decimal 
 	.
@@ -830,43 +837,32 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 	a dcat:Distribution, void:Linkset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
  	void:linkPredicate skos:exactMatch ;
- 	void:target :myDatasetInRDF ;
+ 	void:target :myDataset1InRDF ;
  	void:target :myDataset2InRDF .
 
 
 </pre>
-<p> Let's  represent information about the  quality of :myLinksetDistribution  considering the  “Multilingual  importing” [[MultilingualImporting]], a  linkset quality metric which given  skos:exactMatch linksets estimates the preferred labels or the alternative labels  gained through linkset.  We should first define the proper metric, dimension and category.
+<p>We can represent information about the quality of :myLinksetDistribution using the “Multilingual importing” [[MultilingualImporting]] linkset quality metric. This metrics works on linksets between datasets that include SKOS concepts [[SKOS]]. It quantifies the information gain when adding the preferred labels or the alternative labels of the concepts from a linked dataset to the descriptions of the concepts from the other dataset, which these concepts have been matched with with a skos:exactMatch statement from the linkset. We must first define the proper metric, dimension and category.
 </p> 
 <pre>
-# let’s define the  a new metric, dimension and category respectively as  subclass of dqv Metric, Dimension and Category  
+# Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
 
 :LinksetImporting4Property rdfs:subClassOf dqv:Metric .
 
-:Completeness 
-	rdfs:subClassOf dqv:Dimension .
+:Completeness rdfs:subClassOf dqv:Dimension .
 
-:ComplementationGain 
-	rdfs:subClassOf dqv:Category .
+:ComplementationGain rdfs:subClassOf dqv:Category .
 
+# Definition of subproperties for dqv:Dimension and dqv:hasCategory.
 
-#let’s provide proper subproperties for dqv:Dimension and dqv:hasCategory 
+:hasLinksetQualityDimension rdfs:subPropertyOf dqv:hasDimension .
 
-:hasLinksetQualityDimension 
-	rdfs:subPropertyOf dqv:hasDimension .
-
-:hasLinksetQualityCategory
-	rdfs:subPropertyOf dqv:hasCategory .
+:hasLinksetQualityCategory rdfs:subPropertyOf dqv:hasCategory .
 
 <!--
-:hasLinksetQualityDimension
-        rdfs:subPropertyOf  daq:hasDimension .
-
-:hasLinksetQualityMetric
-        rdfs:subPropertyOf  daq:hasMetric .
-
-
+:hasLinksetQualityMetric rdfs:subPropertyOf daq:hasMetric .
 -->
-#let’s define instances for  Metric, Dimension and Category subclasses 
+# Definition of instances for the subclasses of Metric, Dimension and Category. 
 
 :importing4PropertyPercentual 
 	a :LinksetImporting4Property;
@@ -881,33 +877,32 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
         a  :ComplementationGain .
 </pre>
 <p>
-The importing quality assessemnt depends on two extra  parameters: property and language, respectively the skos property and the language on which the importing is assessed. We  extend the DQV  to represents  these parameters.
+The quality assessment of the "label importing" can be made dependent on two extra parameters: property and language, respectively the SKOS property and the language tag. We  extend DQV to represent these parameters.
 </p>  
 
 <div class="issue">
-			<p> Is the way we  add extra parameters for the  metric and we  extend the DAQ  RDF-CUBE data structure correct??!? (postponed issue) 
+			<p>We need to further evaluate the way we add extra parameters for the metric and extend the DAQ RDF-CUBE data structure (postponed issue) 
 			</p>
 	 </div>
 
 <pre>
 :language
-        a qb:DimensionProperty , rdf:Property , owl:DataProperty ;
-        rdfs:comment   "Represents the language on which importing  is assessed."@en ;
+        a qb:DimensionProperty, owl:DataProperty ;
+        rdfs:comment   "language on which label importing is assessed."@en ;
         rdfs:domain    dqv:QualityMeasure;
-        rdfs:label     "language"@en .
+        rdfs:label     "label import assessment language"@en .
 
 
 :property
-        a qb:DimensionProperty , rdf:Property , owl:ObjectProperty ;
-        rdfs:comment 	"Represents the language on which importing  is assessed."@en ;
+        a qb:DimensionProperty, owl:ObjectProperty ;
+        rdfs:comment 	"property which label importing is assessed."@en ;
         rdfs:domain 	dqv:QualityMeasure ;
-        rdfs:label  	"language"@en ;
-        # not sure that putting a owl:ObjectProperty is  the best solution
+        rdfs:label  	"label import assessment property"@en ;
         rdfs:range     	rdf:Property .
 
 </pre>
 <p>
-Let's add actual quality assessments
+Let us add actual quality assessments:
 </p>
 <pre>
 :qualityMeasureDataset  a  dqv:QualityMeasureDataset ;
@@ -922,10 +917,9 @@ Let's add actual quality assessments
 			    		:exactMatchprefLabelit1, :exactMatchprefLabelit2 .
 	</red>
 
-
 #Adding quality observations 
-##AltLabel it
-:exactMatchaltLabelit1 
+## for Italian alternative labels
+:measure_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
        dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
@@ -936,7 +930,7 @@ Let's add actual quality assessments
        :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
        :property    	skos:altLabel .
 
-:exactMatchaltLabelit2  
+:measure_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
        dc:date         	"2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
@@ -947,8 +941,8 @@ Let's add actual quality assessments
        :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
        :property    	skos:altLabel .
 
-##AltLabel em
- :exactMatchaltLabelen1  
+## for English alternative labels
+:measure_exactMatchAltLabelEnDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
        dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
@@ -959,7 +953,7 @@ Let's add actual quality assessments
        :language    	"en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
        :property    	skos:altLabel .
 
-:exactMatchaltLabelen2 
+:measure_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
        dc:date         	"2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
@@ -970,8 +964,8 @@ Let's add actual quality assessments
        :language    	"en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
        :property    	skos:altLabel .      
 
-##PrefLabel it
-:exactMatchprefLabelit1 
+## for Italian preferred labels
+:measure_exactMatchPrefLabelItDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
        dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
@@ -994,7 +988,7 @@ Let's add actual quality assessments
        :property    	skos:prefLabel .
 
 </pre>
-Let's specify the rdf cube data structure 
+Let us specify the RDF Data Cube data structure: 
 <pre>
 :dsd  a     qb:DataStructureDefinition ;
 ##Copying the structure of daq:dsq
@@ -1228,7 +1222,7 @@ Let's specify the rdf cube data structure
 
 		</div>
 		<div class="issue">
-		<p>Backward compatibility with DAQ and Data Cube: DAQ exploits Data Cube to make metric results consumable by visualisers such as CubeViz (see <a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">Jeremy's paper</a>). This may be useful to preserve in DQV. (<a href="https://www.w3.org/2013/dwbp/track/issues/191">Issue-191</a>) </p>
+		<p>Backward compatibility with DAQ and RDF Data Cube: DAQ exploits Data Cube to make metric results consumable by visualisers such as CubeViz (see <a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">Jeremy's paper</a>). This may be useful to preserve in DQV. (<a href="https://www.w3.org/2013/dwbp/track/issues/191">Issue-191</a>) </p>
 	</div>
 
 	</section>
