@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-10-10",
+		publishDate : "2015-10-220",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -852,37 +852,44 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 </pre>
 <p>We can represent information about the quality of :myLinksetDistribution using the “Multilingual importing” [[MultilingualImporting]] linkset quality metric. This metrics works on linksets between datasets that include SKOS concepts [[SKOS]]. It quantifies the information gain when adding the preferred labels or the alternative labels of the concepts from a linked dataset to the descriptions of the concepts from the other dataset, which these concepts have been matched with with a skos:exactMatch statement from the linkset. We must first define the proper metric, dimension and category.
 </p> 
-<pre>
-# Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
 
-:LinksetImporting4Property rdfs:subClassOf dqv:Metric .
-
+<!-- # Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
+:LinksetImportingForProperty rdfs:subClassOf dqv:Metric .
 :Completeness rdfs:subClassOf dqv:Dimension .
-
 :ComplementationGain rdfs:subClassOf dqv:Category .
-
 # Definition of subproperties for dqv:Dimension and dqv:hasCategory.
-
 :hasLinksetQualityDimension rdfs:subPropertyOf dqv:hasDimension .
-
 :hasLinksetQualityCategory rdfs:subPropertyOf dqv:hasCategory .
-
+-->
 <!--
 :hasLinksetQualityMetric rdfs:subPropertyOf daq:hasMetric .
 -->
+<!--
 # Definition of instances for the subclasses of Metric, Dimension and Category. 
-
-:importing4PropertyPercentual 
-	a :LinksetImporting4Property;
+:importingForPropertyPercentage 
+	a :LinksetImportingForProperty;
 	:hasLinksetQualityDimension :completeness.
-
 :completeness
 	a  :Completeness ;
         dqv:hasLinksetQualityCategory :complementationGain .
+:complementationGain
+        a  :ComplementationGain .
+-->
+<pre>
+# Definition of instances for Metric, Dimension and Category. 
+
+:importingForPropertyPercentage 
+	a dqv:Metric;
+	dqv:hasDimension  :completeness.
+
+:completeness
+	a  dqv:Dimension;
+        dqv:hasCategory :complementationGain .
 
 
 :complementationGain
-        a  :ComplementationGain .
+        a  dqv:Category .
+
 </pre>
 <p>
 The quality assessment of the "label importing" can be made dependent on two extra parameters: property and language, respectively the SKOS property and the language tag. We  extend DQV to represent these parameters.
@@ -902,7 +909,7 @@ The quality assessment of the "label importing" can be made dependent on two ext
 
 
 :property
-        a qb:DimensionProperty, owl:ObjectProperty ;
+        a qb:DimensionProperty, rdf:Property ;
         rdfs:comment 	"property which label importing is assessed."@en ;
         rdfs:domain 	dqv:QualityMeasure ;
         rdfs:label  	"label import assessment property"@en ;
@@ -916,9 +923,7 @@ Let us add actual quality assessments:
 :qualityMeasureDataset  a  dqv:QualityMeasureDataset ;
         qb:structure  :dsd .
 
-:importing4PropertyPercentual
-        a				:LinksetImporting4Property ;
-        dqv:hasLinksetQualityDimension	:completeness ;
+:importingForPropertyPercentage
   <red> # should dqv:hasObservation  be added as inverse of dqv:metric?
         dqv:hasObservation  		:exactMatchaltLabelit1 , :exactMatchaltLabelit2 , 
 			   		:exactMatchaltLabelen1 , :exactMatchaltLabelen2,
@@ -930,69 +935,57 @@ Let us add actual quality assessments:
 :measure_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"it" ;
        :property    	skos:altLabel .
 
 :measure_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"it" ;
        :property    	skos:altLabel .
 
 ## for English alternative labels
 :measure_exactMatchAltLabelEnDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"0.1"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"0.1"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"en" ;
        :property    	skos:altLabel .
 
 :measure_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"1.0"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"en"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"en" ;
        :property    	skos:altLabel .      
 
 ## for Italian preferred labels
 :measure_exactMatchPrefLabelItDataset1 
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-28"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"0.5"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"it" ;
        :property    	skos:prefLabel .
 
 :exactMatchprefLabelit2  
        a 		dqv:QualityMeasure;
        dqv:computedOn  	:myLinksetDistribution ;
-       dc:date         	"2015-01-29"^^&lt;http://www.w3.org/2001/XMLSchema#date&gt; ;
-       dqv:value       	"0.5"^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; ;
-       dqv:metric      	:importing4PropertyPercentual ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
-     #extra parameters that are specific to the importing linkset       
-       :language    	"it"^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; ;
+       :language    	"it" ;
        :property    	skos:prefLabel .
 
 </pre>
