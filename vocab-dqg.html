@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-10-20",
+		publishDate : "2015-10-21",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -807,22 +807,25 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 		<pre>
 :myDataset1 
 	a dcat:Dataset ;
-	dct:title "My dataset 1" ; 
-	dcat:distribution :myDatasetDistributionInRDF
+	dct:title "My dataset 1" <!--; 
+	dcat:distribution :myDatasetDistributionInRDF -->
 	.
 
 :myDataset2 
 	a dcat:Dataset ;
-	dct:title "My dataset 2" ; 
-	dcat:distribution :myDataset2DistributionInRDF
+	dct:title "My dataset 2"  <!--; 
+	dcat:distribution :myDataset2DistributionInRDF -->
 	.
 
 :myLinkset 
-	a dcat:Dataset ;
-	dct:title "A Linkset between My dataset 1 and My dataset 2" ; 
-	dcat:distribution :myLinksetDistribution
+	a dcat:Dataset, void:Linkset ;
+	dct:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
+	dcat:distribution :myLinksetDistribution -->
+	void:linkPredicate skos:exactMatch ;
+ 	void:target :myDataset1 ;
+ 	void:target :myDataset2  
 	.
-
+<!--
 :myDataset1InRDF
 	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
@@ -844,13 +847,10 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :myLinksetDistribution
 	a dcat:Distribution, void:Linkset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
- 	void:linkPredicate skos:exactMatch ;
- 	void:target :myDataset1InRDF ;
- 	void:target :myDataset2InRDF .
-
-
+ 
+-->
 </pre>
-<p>We can represent information about the quality of :myLinksetDistribution using the “Multilingual importing” [[MultilingualImporting]] linkset quality metric. This metrics works on linksets between datasets that include SKOS concepts [[SKOS]]. It quantifies the information gain when adding the preferred labels or the alternative labels of the concepts from a linked dataset to the descriptions of the concepts from the other dataset, which these concepts have been matched with with a skos:exactMatch statement from the linkset. We must first define the proper metric, dimension and category.
+<p>We can represent information about the quality of :myLinkset using the “Multilingual importing” [[MultilingualImporting]] linkset quality metric. This metrics works on linksets between datasets that include SKOS concepts [[SKOS]]. It quantifies the information gain when adding the preferred labels or the alternative labels of the concepts from a linked dataset to the descriptions of the concepts from the other dataset, which these concepts have been matched with  a skos:exactMatch statement from the linkset. We must first define the proper metric, dimension and category.
 </p> 
 
 <!-- # Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
@@ -934,7 +934,7 @@ Let us add actual quality assessments:
 ## for Italian alternative labels
 :measure_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
@@ -943,7 +943,7 @@ Let us add actual quality assessments:
 
 :measure_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
@@ -953,7 +953,7 @@ Let us add actual quality assessments:
 ## for English alternative labels
 :measure_exactMatchAltLabelEnDataset1 
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
@@ -962,7 +962,7 @@ Let us add actual quality assessments:
 
 :measure_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
@@ -972,7 +972,7 @@ Let us add actual quality assessments:
 ## for Italian preferred labels
 :measure_exactMatchPrefLabelItDataset1 
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
@@ -981,7 +981,7 @@ Let us add actual quality assessments:
 
 :exactMatchprefLabelit2  
        a 		dqv:QualityMeasure;
-       dqv:computedOn  	:myLinksetDistribution ;
+       dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
        dqv:metric      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasureDataset;
