@@ -124,14 +124,14 @@ table#uripatternstable caption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the publication and
-        usage of data on the Web designed to help support a self-sustaining
-        ecosystem. Data should be discoverable and understandable by humans and
-        machines. Where data is used in some way, whether by the originator of
-        the data or by an external party, such usage should also be discoverable
-        and the efforts of the data publisher recognized. In short, following
-        these best practices will facilitate interaction between publishers and
-        consumers.</p>
+      <p>This document provides best practices related to the
+        publication and usage of data on the Web designed to help support a
+        self-sustaining ecosystem. Data should be discoverable and
+        understandable by humans and machines. Where data is used in some way,
+        whether by the originator of the data or by an external party, such
+        usage should also be discoverable and the efforts of the data publisher
+        recognized. In short, following these best practices will facilitate
+        interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
       <p>This version of the document shows its expected scope and future
@@ -591,15 +591,15 @@ table#uripatternstable caption {
             <p class="subhead">Why</p>
             <p> Providing locale parameters metadata helps data consumers, i.e.,
               human users and computer applications, to understand and to
-              manipulate the data, improving the re-use of the data. A
-              locale is a set of parameters that defines specific data aspects,
-              such as language and formatting used for numeric values and dates.
-               Providing information about the locality for which the data
-              is currently published aids data users in interpreting its
-              meaning. Date, time, and number formats can have very different
-              meanings, despite similar appearances. Making the language
-              explicit allows users to determine how readily they can work with
-              the data and may enable automated translation services.</p>
+              manipulate the data, improving the re-use of the data. A locale is
+              a set of parameters that defines specific data aspects, such as
+              language and formatting used for numeric values and dates.
+              Providing information about the locality for which the data is
+              currently published aids data users in interpreting its meaning.
+              Date, time, and number formats can have very different meanings,
+              despite similar appearances. Making the language explicit allows
+              users to determine how readily they can work with the data and may
+              enable automated translation services.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -991,23 +991,22 @@ table#uripatternstable caption {
         <div class="issue"> This section provides an initial idea of how we are
           planning to deal with versioning. We're keen to hear comments about
           our proposal to represent the relationship between a dataset and its
-          different versions as well as the use of <a href="http://pav-ontology.github.io/pav/">
-            PAV </a> ontology as a solution to track dataset versioning. <a href="https://www.w3.org/2013/dwbp/track/issues/192">Issue-192</a>
-        </div>
+          different versions  </div>
         <!-- <div class="issue"> To discuss if the items in yellow each represent a
           different dataset (they report different data points) or a different          version, if released independently. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
-        <div class="issue"> To debate if versions attempt to report the same
-          data. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div>
-        <p> Datasets published on the Web may change over time. Some datasets
-          are updated on a schedule basis and other datasets are changed as
-          improvements in collecting the data make updates worthwhile. In order
-          to deal with these changes, new versions of a dataset may be created.
-          In general, a dataset B is considered a version of an existing dataset
-          A, when A and B store values for the same observation about the world
-          and dataset B gives new values to such observation. These new values
-          may result, for example, from the updating of existing data, the
-          inclusion of new data or even the adaptation of values to a new
-          context. To illustrate this definition, consider the following
+        <!--<div class="issue"> To debate if versions attempt to report the same
+          data. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
+        <p> Datasets published on the Web may change over time. Some datasets are updated on a schedule basis and other datasets are 
+          changed as improvements in collecting the data make updates worthwhile. In order to deal with these changes, new versions of 
+          a dataset may be created. Dataset versioning has been 
+          the subject of numerous discussions, however there is no consensus about when creating a new version of a datset. In the following 
+          we provide some guidance about when to create a new dataset version, but the publisher should feel free to decide when to 
+          create a new dataset or a new version of an existing dataset. </p>
+
+         <p> In general, a dataset may change with respect its data as well as the metadata that describes it. Considering data updates,  
+           we may say that a dataset B is considered a version of an existing dataset A, when A and B store values for the same observation 
+           about the world and dataset B gives new values to such observation. These new values may result, for example, from the updating 
+           of existing data or the inclusion of new data. To illustrate this definition, consider the following
           scenarios related to a dataset that collects data about bus
           timetables:</p>
         <ul>
@@ -1017,19 +1016,17 @@ table#uripatternstable caption {
             should be deleted from the dataset;</li>
           <li> Scneario 3: an error was identified in one of the existing
             timetables stored in the dataset and this error must be corrected;</li>
-          <li> Scenario 4: the timetables available on the dataset need to be
-            translted to another language;</li>
         </ul>
-        <p> In all scenarios, a new dataset, i.e. a new version of the existing
-          dataset, should be created to reflect the corresponding update. Even
-          for small changes it is important to keep track of the different
-          dataset versions to make the dataset trustworthy. Publishers should
-          remember that a given dataset may be in use for one or more data
-          consumers and they should be notified about the creation of new
-          versions or it should be possible to automatically identify different
-          versions of the same dataset. All these types of dataset updates need
-          a consistent, informative approach to versioning, so data consumers
-          can understand and work with the changing data. </p>
+        
+        <p> In all scenarios, a new dataset, i.e. a new version of the existing dataset, should be created to reflect the corresponding update.</p>
+        
+        <p>  
+          Considering metadata updates, we should evaluate the impact of the update on the data in order to choose between the creation of a
+          new dataset or just the updating of the dataset description. For example, an update on the 
+          structural metadata of a dataset may result in the creation of a new dataset while the updating 
+          of descriptive metadata requires just the modification of the current dataset definition. 
+          In the first case, structural changes will have an impact on how the data is being described and then a new dataset should be 
+          created.</p>
         <p> It is important to note that the creation of multiple datasets to
           represent time series as well as spatial series, e.g. the same kind of
           data for different regions, are not considered as multiple versions
@@ -1039,6 +1036,15 @@ table#uripatternstable caption {
           dataset that collects data about weakly weather forecast of a given
           city, where every week a new dataset should be created to store data
           about that specific week. </p>
+        
+        <p> Even for small changes it is important to keep track of the different
+          dataset versions to make the dataset trustworthy. Publishers should
+          remember that a given dataset may be in use for one or more data
+          consumers and they should be notified about the creation of new
+          versions or it should be possible to automatically identify different
+          versions of the same dataset. All these types of dataset updates need
+          a consistent, informative approach to versioning, so data consumers
+          can understand and work with the changing data. </p>
         <!--
         <p>Data on the Web often changes over time. Many datasets are updated on          a scheduled basis, such as census data or funding data that changes          every fiscal year. Other datasets are changed as improvements in          collecting the data make updates worthwhile. Still other data changes          in real time or near real time. All these types of data need a          consistent, informative approach to versioning, so data consumers can          understand and work with the changing data. </p>        <p>In order to deal with changes over time, multiple versions may be          created for a single dataset. To illustrate this let us consider a          simple example: a dataset that collects data about weekly weather          forecast for MyCity. The following figure shows the relation between          the dataset (Dataset001) and its different versions (Dataset001_W1,          Dataset001_W2, Dataset001_W3 and Dataset001_W4), where each version          corresponds to the weather forecast of a week of May 2015. Each          dataset version has two different distributions: one in CSV and one in          JSON. For example, the version Dataset001_W1 has two distributions:          Dataset001_W1_csv and Dataset001_W1_json. </p>        <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."            src="images/DWBP_Context.svg"> <figcaption>Diagram showing the            relationships between Dataset, Versions and Distributions</figcaption>        </figure> -->
         <p>The following best practices address issues that arise in tracking
@@ -1082,8 +1088,8 @@ table#uripatternstable caption {
                 the dataset. </li>
               <li>Use a consistent numbering scheme with a meaningful approach
                 to incrementing digits, such as [[SchemaVer]]. </li>
-              <li>Provide a description of what has changed since the previous
-                version. </li>
+              <!-- <li>Provide a description of what has changed since the previous
+                version. </li> -->
               <li>If the data is made available through an API, the URI used to
                 request the latest version of the data should not change as the
                 versions change, but it should be possible to request a specific
@@ -1096,12 +1102,31 @@ table#uripatternstable caption {
                 resource is versioned and express its relation to other
                 versions.</li>
             </ul>
-            <p>The Web Ontology Language provides a number of annotation
-              properties for version information [[OWL2-QUICK-REFERENCE]] and
-              the Provenance Ontology [[PROV-O]] defines several types of link
-              between versions.</p>
+            <p>The Web Ontology Language [[OWL2-QUICK-REFERENCE]] and the Provenance, authoring and versioning Ontology [[PAV]] provides a number of annotation
+              properties for version information.</p>
             <aside class="example">
-              <p>to be completed</p>
+              
+              
+              <p> The example below shows the machine readable metadata for
+                dataset-001 with the inclusion of the <strong>versioning</strong>
+                metadata. </p>
+              <pre class="highlight">:dataset-001
+  a dcat:Dataset, prov:Entity;
+  dct:title "Bus timetable of MyCity";
+  dcat:keyword "transport","mobility" ,"bus";
+  dct:issued "2015-05-05";
+  dct:modified "2015-05-05";
+  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+  dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+  dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+  dct:publisher:transport-agency-mycity ;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+  prov:wasAttributedTo :john; 
+  <strong>owl:versionInfo "1.0" </strong> </pre>
+
+<div class="issue"> The example with memento needs to be rewritten to use the transport example. </div>                       
+            <pre>
               <p><em>Using Memento</em></p>
               <p>A query for the headers of a resource such as dbpedia:Paris
                 using </p>
@@ -2577,7 +2602,8 @@ table#uripatternstable caption {
             by a single agent, and available for access or download in one or
             more formats. A dataset does not have to be available as a
             downloadable file.</p>
-          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary (DCAT)</a></p>
+          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog
+              Vocabulary (DCAT)</a></p>
         </dd>
         <dt><dfn id="citation">Citation</dfn></dt>
         <dd>
@@ -2658,18 +2684,19 @@ table#uripatternstable caption {
               Archival Information System</a> which defines the archival process
             in terms of ingest, monitoring and re-use of data.</p>
         </dd>
-        
         <dt><dfn id="data_provenance">Data Provenance </dfn></dt>
         <dd>
-          <p> Provenance originates from the French term "provenir" (to come from), which is used to describe the curation process of artwork as art is passed from owner to owner. Data provenance, 
-            in a similar way, is metadata that allows data providers to pass details about the data history to data users.</p>          
+          <p> Provenance originates from the French term "provenir" (to come
+            from), which is used to describe the curation process of artwork as
+            art is passed from owner to owner. Data provenance, in a similar
+            way, is metadata that allows data providers to pass details about
+            the data history to data users.</p>
         </dd>
-        
         <dt><dfn id="data_quality">Data Quality </dfn></dt>
         <dd>
-          <p> Data quality is commonly defined as “fitness for use” for a specific application or use case.</p>          
+          <p> Data quality is commonly defined as “fitness for use” for a
+            specific application or use case.</p>
         </dd>
-        
         <dt><dfn id="file_format">File format</dfn></dt>
         <dd>
           <p> File Format is a standard way that information is encoded for
@@ -2684,14 +2711,17 @@ table#uripatternstable caption {
         </dd>
         <dt><dfn id="license">License </dfn></dt>
         <dd>
-          <p> A license is a legal document giving official permission to do something with the data with which it is associated.</p>          
-          <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/"> DC-TERMS</a></p>
+          <p> A license is a legal document giving official permission to do
+            something with the data with which it is associated.</p>
+          <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
+              DC-TERMS</a></p>
         </dd>
         <dt><dfn id="locale_parameter">Locale </dfn></dt>
         <dd>
-          <p> A locale is a set of parameters that defines specific data aspects, such as language and formatting used for numeric values and dates.</p>          
+          <p> A locale is a set of parameters that defines specific data
+            aspects, such as language and formatting used for numeric values and
+            dates.</p>
         </dd>
-       
         <dt><dfn id="machine_readable">Machine Readable Data</dfn></dt>
         <dd>
           <p> Machine Readable Data are data formats that may be readily parsed
@@ -2704,13 +2734,14 @@ table#uripatternstable caption {
           <p> From: <a href="http://www.w3.org/TR/ld-glossary/#vocabulary">Linked
               Data Glossary</a> </p>
         </dd>
-        
         <dt><dfn id="sensitive_data">Sensitive Data </dfn></dt>
         <dd>
-          <p> Sensitive data is any designated data or metadata that is used in limited ways and/or intended for limited audiences. Sensitive data may include personal data, corporate or government data, 
-            and mishandling of published sensitive data may lead to damages to individuals or organizations.</p>          
+          <p> Sensitive data is any designated data or metadata that is used in
+            limited ways and/or intended for limited audiences. Sensitive data
+            may include personal data, corporate or government data, and
+            mishandling of published sensitive data may lead to damages to
+            individuals or organizations.</p>
         </dd>
-        
         <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
         <dd>
           <p> Vocabulary is A collection of "terms" for a particular purpose.
