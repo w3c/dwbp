@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-10-27",
+		publishDate : "2015-11-03",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -766,8 +766,8 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
    	prov:wasAssociatedWith :qualityChecker;
    	prov:used              :myDatasetDistribution;
    	prov:generated         :myQualityMetadata;
-   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime
-   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime;
+   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
+   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
 	. 
 </pre>
 </section>
@@ -785,8 +785,21 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 </section>
 <section>
 		<h3>Express that a dataset received an ODI certificate</h3>
-		<p></p>
-		<pre></pre>
+		<p>Let us  express that  an ODI certificate for myDataset is available at the URL &lt;https://certificates.theodi.org/en/datasets/xxx&gt;.   </p>
+		<pre>
+:myDataset 
+	dqv:hasQualityAnnotation :myDatasetQA
+	.
+
+:myAnnotation 
+	a dqv:QualityCertificate;
+	oa:hasTarget :myDataset;
+	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/xxx&gt;;
+<red># should we be more specific about the motivation? (e.g., considering to define a specific skos:concept narrower of   :myDataset 
+	oa:motivatedBy oa:describing
+	.
+</red>
+		</pre>
 </section>
 <section>
 		<h3>Express the quality of a linkset</h3>
