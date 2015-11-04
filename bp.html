@@ -988,9 +988,7 @@ table#uripatternstable caption {
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
         <!--div class="issue"> This section provides an initial idea of how we are
-          planning to deal with versioning. We're keen to hear comments about          our proposal to represent the relationship between a dataset and its
-          different versions  </div>        <!-- <div class="issue"> To discuss if the items in yellow each represent a
-          different dataset (they report different data points) or a different          version, if released independently. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
+          planning to deal with versioning. We're keen to hear comments about          our proposal to represent the relationship between a dataset and its          different versions  </div>        <!-- <div class="issue"> To discuss if the items in yellow each represent a          different dataset (they report different data points) or a different          version, if released independently. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
         <!--<div class="issue"> To debate if versions attempt to report the same
           data. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
         <p> Datasets published on the Web may change over time. Some datasets
@@ -1099,10 +1097,15 @@ table#uripatternstable caption {
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li>Use the <a href="http://www.mementoweb.org/guide/howto">Memento</a>
-                protocol, or components thereofe, to declare that a given
-                resource is versioned and express its relation to other
-                versions.</li>
+              <li> Use the [[Memento protocol]], or components thereof, to express
+                temporal
+                versioning of a dataset and to access the version that was
+                operational
+                at a given datetime. The Memento protocol aligns closely with
+                the
+                approach for assigning URIs to versions described in the
+                following
+                and used for W3C specifications.</li>
             </ul>
             <p>The Web Ontology Language [[OWL2-QUICK-REFERENCE]] and the
               Provenance, authoring and versioning Ontology [[PAV]] provides a
@@ -1125,22 +1128,49 @@ table#uripatternstable caption {
   dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; 
   prov:wasAttributedTo :john;
   <strong>owl:versionInfo "1.0"; </strong> </pre>
-              <div class="note"> The example with memento needs to be rewritten
-                to use the transport example. </div>
-              <pre>              <p><em>Using Memento</em></p>
-              <p>A query for the headers of a resource such as dbpedia:Paris
-                using </p>
-              <pre class="highlight">curl -L -I http://dbpedia.org/resource/Paris</pre>
-              shows
-              <pre class="highlight">http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre>
-              as part of the links with a "timegate" relation. This timegate
-              itself points to the latest memento of the web representation of
-              the resource with a "last memento" relation:
-              <pre class="highlight">http://dbpedia.mementodepot.org/memento/20120515/http://dbpedia.org/page/Paris</pre>
-              A query for a particular datetime will point to the closest
-              memento available:
-              <pre class="highlight">curl -H "Accept-Datetime: Sat, 16 Jun 2012 00:00:00 GMT" -L -I http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre>
-            </pre>
+              <p><em>Using Memento</em></p>
+              Assume:
+              <ul>
+                <li> http://example.org/dataset is the “generic URI” at which
+                  the current version of a dataset is always available </li>
+                <li> http://example.org/dataset-002 is the versioned URI for the
+                  current dataset </li>
+                <li> http://example.org/dataset-001 is the versioned URI of the
+                  prior version of the dataset </li>
+                <li> http://example.org/dataset-000 is the versioned URI of the
+                  first version of the dataset </li>
+              </ul>
+              <p> In the Memento protocol, the versioned URIs provide HTTP
+                response header information to express their version datetime
+                and their relation to the generic URI: </p>
+              <pre class="highlight">curl -i -H http://example.org/dataset-001 
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
+              <p> The versioned URIs can provide a link to a TimeGate, which
+                supports
+                datetime negotiation as a means to determine which version of a
+                dataset was operational at a given datetime: </p>
+              <pre class="highlight"> 
+curl -i -H http://example.org/dataset-001
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link:&lt;http://example.org/dataset&gt;; rel=“original”,
+&lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+              <p> The generic URI can also provide a link to a TimeGate: </p>
+              <pre class="highlight">curl -i -H http://example.org/dataset
+HTTP/1.1 200 OK
+Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+              <p>This is how a client determines which dataset version was
+                operational
+                on March 20 2015: </p>
+              <pre class="highlight"> 
+curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT"
+http://example.org/timegate/dataset
+HTTP/1.1 302 Found
+Vary: accept-datetime
+Location: http://example.org/dataset-000
+Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
             </aside>
           </section>
           <section class="test">
@@ -1192,7 +1222,7 @@ table#uripatternstable caption {
                 includes all the data from dataset-001 plus the data about the
                 new bus stop. The machine readable metadata of dataset-002 is
                 shown below. </p>
-              <pre>:dataset-002
+              <pre class="highlight">:dataset-002
        a dcat:Dataset, version:Version;
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
@@ -1212,7 +1242,7 @@ table#uripatternstable caption {
 </pre>
               <p> Versioning metadata for dataset-001 after the creation of
                 dataset-002, which is a new version of dataset-001. </p>
-              <pre>:dataset-001
+              <pre class="highlight">:dataset-001
        a dcat:Dataset, version:VersionedThing;
        dct:title "Bus timetable of MyCity";
        <!-- dcat:keyword "transport","mobility" ,"bus";
@@ -1229,6 +1259,59 @@ table#uripatternstable caption {
        <strong>version:currentVersion:dataset-002;
        dct:hasVersion :dataset-002;
        owl:versionInfo "1.0". </strong> </pre>
+              <p> Using Memento:</p>
+              
+              Assume:
+<ul>
+<li> http://example.org/dataset is the “generic URI” at which the current
+version of a dataset is always available </li>
+<li> http://example.org/dataset-002 is the versioned URI for the current dataset </li>
+<li> http://example.org/dataset-001 is the versioned URI of the prior 
+version of the dataset </li>
+<li> http://example.org/dataset-000 is the versioned URI of the first
+version of the dataset </li>
+</ul>
+<p> The versioned URIs, the generic URI, and the TimeGate can provide a
+link to a TimeMap that provides an overview of all temporal versions
+  of the dataset: </p>
+<pre class="highlight">
+curl -i -H http://example.org/dataset-001
+
+HTTP/1.1 200 OK
+Date: Sat, 24 Oct 2015 16:23:30 GMT
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original”,
+ &lt;http://example.org/timemap/dataset&gt;; rel=“timemap”;
+type="application/link-format"
+
+curl -i http://example.org/timemap/dataset
+
+HTTP/1.1 200 OK
+Content-Type: application/link-format
+
+&lt;http://example.org/dataset&gt;;rel="original”,
+&lt;http://example.org/timedate/dataset&gt;;rel="timegate”,
+&lt;http://example.org/timedate/dataset&gt;;rel="timemap”;
+type=“application/link-format”,
+&lt;http://example.org/dataset-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
+&lt;http://example.org/dataset-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
+&lt;http://example.org/dataset-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
+</pre>
+<p> The versioned URI can provide information regarding relations with
+other dataset versions: </p>
+<pre class="highlight">
+curl -i -H http://example.org/dataset-001
+
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original”,
+&lt;http://example.org/dataset-000&gt;; rel=“prev first memento";
+datetime="Thu, 05 Mar 2015 00:00:00 GMT",
+&lt;http://example.org/dataset-002&gt;; rel=“next last memento";
+datetime="Tue, 05 May 2015 00:00:00 GMT"
+</pre>
+              
+              
             </aside>
           </section>
           <section class="test">
@@ -1245,17 +1328,18 @@ table#uripatternstable caption {
         <!-- end of Metadata --> </section>
       <section id="DataIdentifiers">
         <h3>Data Identifiers</h3>
-        <p>Identifiers take many forms and are used extensively in every information system. 
-           Data discovery, usage and citation on the Web depends fundamentally
-          on the use of HTTP (or HTTPS) URIs: globally unique identifiers that can be looked up by
-          dereferencing them over the Internet [[RFC3986]]. It is perhaps worth emphasizing some key points about URIs in the
-          current context.</p>
+        <p>Identifiers take many forms and are used extensively in every
+          information system. Data discovery, usage and citation on the Web
+          depends fundamentally on the use of HTTP (or HTTPS) URIs: globally
+          unique identifiers that can be looked up by dereferencing them over
+          the Internet [[RFC3986]]. It is perhaps worth emphasizing some key
+          points about URIs in the current context.</p>
         <ol>
           <li>URIs are 'dumb strings', that is, they carry no semantics. Their
             function is purely to identify a resource.</li>
           <li>Although the previous point is accurate, it would be perverse for
-            a URI such as http://example.com/dataset.csv to return anything other
-            than a CSV file. Human readability is helpful.</li>
+            a URI such as http://example.com/dataset.csv to return anything
+            other than a CSV file. Human readability is helpful.</li>
           <li>When de-referenced (looked up), a single URI may offer the same
             resource in more than one format. http://example.com/dataset may
             offer the same data in, say, CSV, JSON and XML. The server returns
@@ -1271,47 +1355,120 @@ table#uripatternstable caption {
         </ol>
         <!-- begin of Data Identification BP -->
         <div class="practice">
-          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent URIs as identifiers of datasets</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be identified by a persistent URI. </p>
+          <p><span id="UniqueIdentifiers" class="practicelab">Use persistent
+              URIs as identifiers of datasets</span></p>
+          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be
+            identified by a persistent URI. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Adopting a common identification system enables basic data identification and comparison processes by any stakeholder in a reliable way. They are an essential pre-condition for proper data management and re-use.</p>
+            <p>Adopting a common identification system enables basic data
+              identification and comparison processes by any stakeholder in a
+              reliable way. They are an essential pre-condition for proper data
+              management and re-use.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Datasets or information about datasets, must be discoverable and citable through time, regardless of the status, availability or format of the data.</p>
+            <p> Datasets or information about datasets, must be discoverable and
+              citable through time, regardless of the status, availability or
+              format of the data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>To be persistent, URIs must be designed as such and backed up by organizational commitments. A lot has been written on this topic as the table below shows.
-
-<table id="uripatternstable">
-<caption>Some sources of information related to URI persistence</caption>
-<tbody><tr><th>Status</th><th>Title</th><th>Authors and Date</th></tr>
-<tr><td rowspan="3">Background</td><td><a href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don't change</a></td><td>Tim Berners-Lee, 1998</td></tr>
-<tr><td><a href="http://www.w3.org/TR/cooluris/">Cool URIs for the Semantic Web</a></td><td>Leo Saurman, Richard Cyganiak, 2008</td></tr>
-<tr><td><a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked Data</a></td><td>Tim Berners-Lee, 2009</td></tr>
-<tr><td>Key Source</td><td><a href="http://www.cabinetoffice.gov.uk/sites/default/files/resources/designing-URI-sets-uk-public-sector.pdf">Designing URI Sets for the UK Public Sector</a> (PDF)</td><td>UK Chief Technology Officer Council October 2009</td></tr>
-<tr><td>Survey &amp; summary of techniques</td><td><a href="http://philarcher.org/diary/2013/uripersistence/">Study on Persistent URIs</a></td><td>Phil Archer, Nikos Loutas, Stijn Goedertier, Saky Kourtidis, 2013</td></tr>
-<tr><td rowspan="4">Expansion</td><td><a href="http://www.jenitennison.com/blog/node/136">Creating Linked Data</a></td><td>Jeni Tennison, 2009</td></tr>
-<tr><td><a href="http://linkeddatabook.com/editions/1.0/">Linked Data: Evolving the Web into a Global Data Space</a></td><td>Tom Heath & Christian Bizer, 2011</td></tr>
-<tr><td><a href="http://patterns.dataincubator.org/book/">Linked Data Patterns</a></td><td>Leigh Dodds &amp; Ian Davis, 2012</td></tr>
-<tr><td><a href="http://www.multilingualweb.eu/en/documents/dublin-workshop/dublin-program#linking">Best Practices for Multilingual Linked Open Data</a></td><td>Jose Emilio Labra Gayo, 2012</td></tr>
-<tr><td>Detail</td><td><a href="http://csarven.ca/statistical-linked-dataspaces">Statistical Linked Dataspaces</a></td><td>Sarven Capadisli, 2012</td></tr></tbody>
-</table>
-
-<div class="issue">The table links to Designing URI Sets for the UK Public Sector. A newer version of this document (which was the first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub repo</a>. It seems that this might happen due to changes in organisation behind data.gov.uk. If this happens, we should update the link to point to the new version.</div>
-
-              <p>URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously 
-                wasteful. Instead, define locally unique identifiers for each element and provide data that allows them to be
-                converted to globally unique URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]]
-                provides mechanisms for doing this within tabular data such as CSV files, in particular using 
-                <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI template properties</a> 
-                such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about URL</a> property.</p>
-
-              
-<p>Where a data publisher is unable or unwilling to manage its URI space directly for persistence, an alternative approach is to use a redirection service such as <a href="http://purl.org/">purl.org</a>. This provides persistent URIs that can be redirected as required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software behind such services </a> is freely available so that it can be installed and managed locally if required.</p>
-            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a> offer a similar alternative. These identifiers are defined independently of any Web technology but can be appended to a 'URI stub.' DOIs are an important part of the digital infrastructure
+            <p>To be persistent, URIs must be designed as such and backed up by
+              organizational commitments. A lot has been written on this topic
+              as the table below shows. </p>
+            <table id="uripatternstable">
+              <caption>Some sources of information related to URI persistence</caption>
+              <tbody>
+                <tr>
+                  <th>Status</th>
+                  <th>Title</th>
+                  <th>Authors and Date</th>
+                </tr>
+                <tr>
+                  <td rowspan="3">Background</td>
+                  <td><a href="http://www.w3.org/Provider/Style/URI.html">Cool
+                      URIs don't change</a></td>
+                  <td>Tim Berners-Lee, 1998</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3.org/TR/cooluris/">Cool URIs for the
+                      Semantic Web</a></td>
+                  <td>Leo Saurman, Richard Cyganiak, 2008</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked
+                      Data</a></td>
+                  <td>Tim Berners-Lee, 2009</td>
+                </tr>
+                <tr>
+                  <td>Key Source</td>
+                  <td><a href="http://www.cabinetoffice.gov.uk/sites/default/files/resources/designing-URI-sets-uk-public-sector.pdf">Designing
+                      URI Sets for the UK Public Sector</a> (PDF)</td>
+                  <td>UK Chief Technology Officer Council October 2009</td>
+                </tr>
+                <tr>
+                  <td>Survey &amp; summary of techniques</td>
+                  <td><a href="http://philarcher.org/diary/2013/uripersistence/">Study
+                      on Persistent URIs</a></td>
+                  <td>Phil Archer, Nikos Loutas, Stijn Goedertier, Saky
+                    Kourtidis, 2013</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">Expansion</td>
+                  <td><a href="http://www.jenitennison.com/blog/node/136">Creating
+                      Linked Data</a></td>
+                  <td>Jeni Tennison, 2009</td>
+                </tr>
+                <tr>
+                  <td><a href="http://linkeddatabook.com/editions/1.0/">Linked
+                      Data: Evolving the Web into a Global Data Space</a></td>
+                  <td>Tom Heath &amp; Christian Bizer, 2011</td>
+                </tr>
+                <tr>
+                  <td><a href="http://patterns.dataincubator.org/book/">Linked
+                      Data Patterns</a></td>
+                  <td>Leigh Dodds &amp; Ian Davis, 2012</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.multilingualweb.eu/en/documents/dublin-workshop/dublin-program#linking">Best
+                      Practices for Multilingual Linked Open Data</a></td>
+                  <td>Jose Emilio Labra Gayo, 2012</td>
+                </tr>
+                <tr>
+                  <td>Detail</td>
+                  <td><a href="http://csarven.ca/statistical-linked-dataspaces">Statistical
+                      Linked Dataspaces</a></td>
+                  <td>Sarven Capadisli, 2012</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="issue">The table links to Designing URI Sets for the UK
+              Public Sector. A newer version of this document (which was the
+              first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub
+                repo</a>. It seems that this might happen due to changes in
+              organisation behind data.gov.uk. If this happens, we should update
+              the link to point to the new version.</div>
+            <p>URIs can be long. In a dataset of even moderate size, storing
+              each URI is likely to be repetitive and obviously wasteful.
+              Instead, define locally unique identifiers for each element and
+              provide data that allows them to be converted to globally unique
+              URIs programmatically. The Metadata Vocabulary for Tabular Data
+              [[tabular-metadata]] provides mechanisms for doing this within
+              tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
+                template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
+                URL</a> property.</p>
+            <p>Where a data publisher is unable or unwilling to manage its URI
+              space directly for persistence, an alternative approach is to use
+              a redirection service such as <a href="http://purl.org/">purl.org</a>.
+              This provides persistent URIs that can be redirected as required
+              so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
+                behind such services </a> is freely available so that it can be
+              installed and managed locally if required.</p>
+            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
+              offer a similar alternative. These identifiers are defined
+              independently of any Web technology but can be appended to a 'URI
+              stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
             <aside class="example">
               <p>To be done. Will take examples from UK guidelines</p>
@@ -1319,8 +1476,12 @@ table#uripatternstable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that each dataset in question is identified using a URI that has been assigned under a controlled process as set out in
-              the previous section. Ideally, the relevant Web site includes a description of the process and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
+            <p>Check that each dataset in question is identified using a URI
+              that has been assigned under a controlled process as set out in
+              the previous section. Ideally, the relevant Web site includes a
+              description of the process and a credible pledge of persistence
+              should the publisher no longer be able to maintain the URI space
+              themselves.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1328,54 +1489,80 @@ table#uripatternstable caption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></p>
           </section>
         </div>
-
         <div class="practice">
-          <p><span id="identifiersWithinDatasets" class="practicelab">Use persistent URIs as identifiers within datasets</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">should</em> use and reuse other people's URIs as identifiers 
-            where possible.</p>
+          <p><span id="identifiersWithinDatasets" class="practicelab">Use
+              persistent URIs as identifiers within datasets</span></p>
+          <p class="practicedesc">Datasets <em class="rfc2119">should</em> use
+            and reuse other people's URIs as identifiers where possible.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The power of the Web lies in the <em>Network effect</em>. The first telephone only became useful when the second telephone 
-              meant there was someone to call; the third telephone made both of them more useful yet. Data becomes more valuable if it 
-              refers to other people's data about the same thing, the same place, the same concept, the same event, the same person, and 
-              so on. That means using the same identifiers across datasets and making sure that your identifiers can be referred to by 
-              other datasets. When those identifiers are HTTP URIs, they can be looked up and more data discovered.</p>
-            
-           <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5 Stars of Linked Data</a> 
-             where one data point links to another, and of <a href="http://dret.github.io/webdata/">Hypermedia</a> where links may 
-             be to further data or to services (or more generally 'affordances') that act on or relate to the data in some way. 
-             Examples include a bug reporting mechanisms, processors, a visualization engine, a sensor, an actuator etc. In both Linked 
-             Data and Hypermedia, the emphasis is put on the ability for machines to traverse from one resource to another following links 
-             that express relationships.</p>
-
+            <p>The power of the Web lies in the <em>Network effect</em>. The
+              first telephone only became useful when the second telephone meant
+              there was someone to call; the third telephone made both of them
+              more useful yet. Data becomes more valuable if it refers to other
+              people's data about the same thing, the same place, the same
+              concept, the same event, the same person, and so on. That means
+              using the same identifiers across datasets and making sure that
+              your identifiers can be referred to by other datasets. When those
+              identifiers are HTTP URIs, they can be looked up and more data
+              discovered.</p>
+            <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5
+                Stars of Linked Data</a> where one data point links to another,
+              and of <a href="http://dret.github.io/webdata/">Hypermedia</a>
+              where links may be to further data or to services (or more
+              generally 'affordances') that act on or relate to the data in some
+              way. Examples include a bug reporting mechanisms, processors, a
+              visualization engine, a sensor, an actuator etc. In both Linked
+              Data and Hypermedia, the emphasis is put on the ability for
+              machines to traverse from one resource to another following links
+              that express relationships.</p>
             <p>That's the Web of Data.</p>
-
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>That one data item can be related to others across the Web creating a global information space accessible to humans and machines alike.</p>
+            <p>That one data item can be related to others across the Web
+              creating a global information space accessible to humans and
+              machines alike.</p>
             <div class="note">
               <p> I changed data point for data item. Bernadette</p>
             </div>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>This is a topic in itself and a general document such as this can only include superficial detail.</p>
-            <p>Developers know that very often the problem they're trying to solve will have already been solved by other people. In the same way, if you're looking for a set of identifiers for obvious things like countries, currencies, subjects, species, proteins, cities and regions, Nobel prize winners – someone's done it already. The steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering existing vocabularies</a> [[LD-BP]] can readily be adapted.</p><ul>
-              <li>ensure URI sets you use are published by a trusted group or organization;</li>
-              <li>ensure URI sets have permanent URIs.</li></ul>
-              <p>If you can't find an existing set of identifiers that meet your needs then you'll need to create your own, following the patterns for URI persistence so that others will add value to your data by linking to it.</p>
-
-
-
+            <p>This is a topic in itself and a general document such as this can
+              only include superficial detail.</p>
+            <p>Developers know that very often the problem they're trying to
+              solve will have already been solved by other people. In the same
+              way, if you're looking for a set of identifiers for obvious things
+              like countries, currencies, subjects, species, proteins, cities
+              and regions, Nobel prize winners – someone's done it already. The
+              steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering
+                existing vocabularies</a> [[LD-BP]] can readily be adapted.</p>
+            <ul>
+              <li>ensure URI sets you use are published by a trusted group or
+                organization;</li>
+              <li>ensure URI sets have permanent URIs.</li>
+            </ul>
+            <p>If you can't find an existing set of identifiers that meet your
+              needs then you'll need to create your own, following the patterns
+              for URI persistence so that others will add value to your data by
+              linking to it.</p>
             <aside class="example">
-              <p>To follow. Plan to use http://dbpedia.org/resource/ISO_3166-1:GR as the example. Store 'GB' and 'GR' as codes in a table but use CSVW to declare that these can be turned into URIs like http://dbpedia.org/resource/ISO_3166-1:GR.</p>
-
+              <p>To follow. Plan to use
+                http://dbpedia.org/resource/ISO_3166-1:GR as the example. Store
+                'GB' and 'GR' as codes in a table but use CSVW to declare that
+                these can be turned into URIs like
+                http://dbpedia.org/resource/ISO_3166-1:GR.</p>
             </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that within the dataset, references to things that don't change or that change slowly, such as countries, regions, organizations and people, as referred to by URIs or by short identifiers that can be appended to a URI stub. Ideally the URIs should resolve, however, they have value as globally scoped variables whether they resolve or not.</p>
+            <p>Check that within the dataset, references to things that don't
+              change or that change slowly, such as countries, regions,
+              organizations and people, as referred to by URIs or by short
+              identifiers that can be appended to a URI stub. Ideally the URIs
+              should resolve, however, they have value as globally scoped
+              variables whether they resolve or not.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1383,10 +1570,9 @@ table#uripatternstable caption {
           </section>
         </div>
         <!-- end of URIs in datasets BP -->
-
-
         <div class="practice">
-          <p><span id="VersionIdentifiers" class="practicelab">Assign URIs to dataset versions and series</span></p>
+          <p><span id="VersionIdentifiers" class="practicelab">Assign URIs to
+              dataset versions and series</span></p>
           <p class="practicedesc">URIs <em class="rfc2119">should</em> be
             assigned to individual versions of datasets as well as the overall
             series. </p>
@@ -1405,13 +1591,23 @@ table#uripatternstable caption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible to refer to a specific version of a
-              dataset and to concepts such as a 'dataset series' and 'the latest
+            <p>It should be possible to refer to a specific version of a dataset
+              and to concepts such as a 'dataset series' and 'the latest
               version.' </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The W3C provides a good example of how to do this. The (persistent) URI for this document is http://www.w3.org/TR/2015/WD-dwbp-20150224/. That identifier points to an immutable snapshot of the document on the day of its publication. The URI for the 'latest version' of this document is http://www.w3.org/TR/dwbp/ which is an identifier for a series of closely related documents that are subject to change over time.  At the time of publication, these two URIs both resolve to this document. However, when the next version of this document is published, the 'latest version' URI will be changed to point to that. </p>
+            <p>The W3C provides a good example of how to do this. The
+              (persistent) URI for this document is
+              http://www.w3.org/TR/2015/WD-dwbp-20150224/. That identifier
+              points to an immutable snapshot of the document on the day of its
+              publication. The URI for the 'latest version' of this document is
+              http://www.w3.org/TR/dwbp/ which is an identifier for a series of
+              closely related documents that are subject to change over time. At
+              the time of publication, these two URIs both resolve to this
+              document. However, when the next version of this document is
+              published, the 'latest version' URI will be changed to point to
+              that. </p>
             <aside class="example">
               <p>To complete the London temperature example, one might imagine
                 URIs as follows: </p>
