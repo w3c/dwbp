@@ -988,7 +988,7 @@ table#uripatternstable caption {
       <!-- begin of Data Versioning -->
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
-        <div class="issue"> This section provides an initial idea of how we are
+        <!--div class="issue"> This section provides an initial idea of how we are
           planning to deal with versioning. We're keen to hear comments about
           our proposal to represent the relationship between a dataset and its
           different versions  </div>
@@ -1126,7 +1126,7 @@ table#uripatternstable caption {
   prov:wasAttributedTo :john;
   <strong>owl:versionInfo "1.0"; </strong> </pre>
 
-<div class="issue"> The example with memento needs to be rewritten to use the transport example. </div>                       
+<div class="note"> The example with memento needs to be rewritten to use the transport example. </div>                       
             <pre>
               <p><em>Using Memento</em></p>
               <p>A query for the headers of a resource such as dbpedia:Paris
@@ -1186,7 +1186,29 @@ table#uripatternstable caption {
               versioning history? This is <a href="https://www.w3.org/2013/dwbp/track/issues/168">Issue-168</a></div>
             <aside class="example">
               
-<p> Versioning metadata for dataset-001 after the creation of dataset-002, which is a new version of dataset-001. </p>
+
+<p> Suppose that a new bus stop was created and its timetable doesn't exist on the dataset-001. To maintain the dataset-001 up to date a new dataset (dataset-002) was created. 
+  dataset-002 includes all the data from dataset-001 plus the data about the new bus stop. The machine readable metadata of dataset-002 is shown below. </p>
+<pre>:dataset-002
+       a dcat:Dataset, version:Version;
+       dct:title "Bus timetable of MyCity";
+       dcat:keyword "transport","mobility" ,"bus";
+       dct:issued "2015-05-06"^^xsd:date';
+       dct:modified "2015-05-06"^^xsd:date';
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+       dct:publisher:transport-agency-mycity ;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+       ...
+       <strong>dct:isVersionOf:dataset-001;
+       pav:previousVersion:dataset-001;
+       rdfs:comment "A new timetable was included in the dataset-001 to reflect the creation of a new bus stop."
+       owl:versionInfo "1.1". </strong>
+</pre>
+              
+              <p> Versioning metadata for dataset-001 after the creation of dataset-002, which is a new version of dataset-001. </p>
 <pre>:dataset-001
        a dcat:Dataset, version:VersionedThing;
        dct:title "Bus timetable of MyCity";
@@ -1203,27 +1225,7 @@ table#uripatternstable caption {
        ...
        <strong>version:currentVersion:dataset-002;
        dct:hasVersion :dataset-002;
-owl:versionInfo “1.0”. </strong> </pre>
-<p> Description of dataset-002, which is a new version of dataset-001. </p>
-<pre>:dataset-002
-       a dcat:Dataset, version:Version;
-       dct:title "Bus timetable of MyCity";
-       <!-- dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-06"^^xsd:date';
-       dct:modified "2015-05-06"^^xsd:date';
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;-->
-       ...
-       <strong>dct:isVersionOf:dataset-001;
-       pav:previousVersion:dataset-001;
-       owl:versionInfo “1.1”. </strong>
-
-
-</pre>
+       owl:versionInfo "1.0". </strong> </pre>
             </aside>
           </section>
           <section class="test">
