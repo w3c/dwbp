@@ -1144,6 +1144,7 @@ table#uripatternstable caption {
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
               <pre class="highlight">curl -i -H http://example.org/dataset-001 
+
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
 Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
@@ -1153,20 +1154,22 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
                 dataset was operational at a given datetime: </p>
               <pre class="highlight"> 
 curl -i -H http://example.org/dataset-001
+
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
 Link:&lt;http://example.org/dataset&gt;; rel=“original”,
 &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
               <p> The generic URI can also provide a link to a TimeGate: </p>
               <pre class="highlight">curl -i -H http://example.org/dataset
+
 HTTP/1.1 200 OK
 Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational
                 on March 20 2015: </p>
               <pre class="highlight"> 
-curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT"
-http://example.org/timegate/dataset
+curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
+
 HTTP/1.1 302 Found
 Vary: accept-datetime
 Location: http://example.org/dataset-000
@@ -1263,13 +1266,11 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
               
               Assume:
 <ul>
-<li> http://example.org/dataset is the “generic URI” at which the current
+<li> <code>http://example.org/dataset</code> is the “generic URI” at which the current
 version of a dataset is always available </li>
-<li> http://example.org/dataset-002 is the versioned URI for the current dataset </li>
-<li> http://example.org/dataset-001 is the versioned URI of the prior 
-version of the dataset </li>
-<li> http://example.org/dataset-000 is the versioned URI of the first
-version of the dataset </li>
+<li> <code>http://example.org/dataset-002</code> is the versioned URI for the current dataset </li>
+<li> <code>http://example.org/dataset-001</code> is the versioned URI of the prior version of the dataset </li>
+<li> <code>http://example.org/dataset-000</code> is the versioned URI of the first version of the dataset </li>
 </ul>
 <p> The versioned URIs, the generic URI, and the TimeGate can provide a
 link to a TimeMap that provides an overview of all temporal versions
@@ -1292,7 +1293,7 @@ Content-Type: application/link-format
 &lt;http://example.org/dataset&gt;;rel="original”,
 &lt;http://example.org/timedate/dataset&gt;;rel="timegate”,
 &lt;http://example.org/timedate/dataset&gt;;rel="timemap”;
-type=“application/link-format”,
+type="application/link-format",
 &lt;http://example.org/dataset-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
 &lt;http://example.org/dataset-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
 &lt;http://example.org/dataset-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
