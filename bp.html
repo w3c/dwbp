@@ -124,14 +124,14 @@ table#uripatternstable caption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the
-        publication and usage of data on the Web designed to help support a
-        self-sustaining ecosystem. Data should be discoverable and
-        understandable by humans and machines. Where data is used in some way,
-        whether by the originator of the data or by an external party, such
-        usage should also be discoverable and the efforts of the data publisher
-        recognized. In short, following these best practices will facilitate
-        interaction between publishers and consumers.</p>
+      <p>This document provides best practices related to the publication and
+        usage of data on the Web designed to help support a self-sustaining
+        ecosystem. Data should be discoverable and understandable by humans and
+        machines. Where data is used in some way, whether by the originator of
+        the data or by an external party, such usage should also be discoverable
+        and the efforts of the data publisher recognized. In short, following
+        these best practices will facilitate interaction between publishers and
+        consumers.</p>
     </section>
     <section id="sotd">
       <p>This version of the document shows its expected scope and future
@@ -290,7 +290,7 @@ table#uripatternstable caption {
         questions. As presented in the diagram, each one of these challenges is
         addressed by one or more best practices.</p>
       <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
-      Data on the Web Challenges
+      
       <p> Each one of these challenges originated one or more requirements as
         documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
           use-cases document</a>. The development of Data on the Web Best
@@ -298,6 +298,30 @@ table#uripatternstable caption {
         best practice should have at least one of these requirements as an
         evidence of its relevance.</p>
     </section>
+      
+      <section id="bp-benefits" class="informative">
+      <h2>Best Practices Benefits</h2>
+      <p>In order to encourage data publishers to adopt the DWBP, the list below describes the main benefits
+        of applying the proposed BP. Each benefit represents an improvement in the way how datasets are available 
+        on the Web.</p>
+        <ul>
+           
+          <li> Comprehension: humans will have a better understanding about the data structure, the data meaning, 
+            the metadata and the nature of the dataset. </li>
+          <li> Processibility: machines will be able to automatically process and manipulate the data within a dataset.</li>
+          <li> Discoverability machines will be able to automatically discover a dataset or data within a dataset.</li>
+          <li> Reuse: the chances of dataset reuse by different groups of data consumers will increase.</li>
+          <li> Trustworthy: the confidence of consumers on the dataset will improve.</li>
+          <li> Linkability: it will be possible to create links between data resources (datasets and data items).</li>
+          <li> Accessibility: humans and machines will be able to access the data up to date in a variety of forms.</li>
+          <li> Interoperability: it will be easier to reach consensus among data publishers and consumers.</li>
+
+        </ul>
+        The figure below shows the benefits that data publishers will gain with the adoption of each one of the proposed best practices.
+        
+        <img src="images/benefits.jpg" alt="BP Benefits" height="340" width="840">
+        
+      </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -1097,15 +1121,12 @@ table#uripatternstable caption {
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li> Use the [[Memento protocol]], or components thereof, to express
-                temporal
-                versioning of a dataset and to access the version that was
-                operational
-                at a given datetime. The Memento protocol aligns closely with
-                the
-                approach for assigning URIs to versions described in the
-                following
-                and used for W3C specifications.</li>
+              <li> Use the [[Memento protocol]], or components thereof, to
+                express temporal versioning of a dataset and to access the
+                version that was operational at a given datetime. The Memento
+                protocol aligns closely with the approach for assigning URIs to
+                versions described in the following and used for W3C
+                specifications.</li>
             </ul>
             <p>The Web Ontology Language [[OWL2-QUICK-REFERENCE]] and the
               Provenance, authoring and versioning Ontology [[PAV]] provides a
@@ -1149,9 +1170,8 @@ HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
 Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
               <p> The versioned URIs can provide a link to a TimeGate, which
-                supports
-                datetime negotiation as a means to determine which version of a
-                dataset was operational at a given datetime: </p>
+                supports datetime negotiation as a means to determine which
+                version of a dataset was operational at a given datetime: </p>
               <pre class="highlight"> 
 curl -i -H http://example.org/dataset-001
 
@@ -1165,8 +1185,7 @@ Link:&lt;http://example.org/dataset&gt;; rel=“original”,
 HTTP/1.1 200 OK
 Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
-                operational
-                on March 20 2015: </p>
+                operational on March 20 2015: </p>
               <pre class="highlight"> 
 curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
 
@@ -1263,20 +1282,23 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
        dct:hasVersion :dataset-002;
        owl:versionInfo "1.0". </strong> </pre>
               <p> Using Memento:</p>
-              
               Assume:
-<ul>
-<li> <code>http://example.org/dataset</code> is the “generic URI” at which the current
-version of a dataset is always available </li>
-<li> <code>http://example.org/dataset-002</code> is the versioned URI for the current dataset </li>
-<li> <code>http://example.org/dataset-001</code> is the versioned URI of the prior version of the dataset </li>
-<li> <code>http://example.org/dataset-000</code> is the versioned URI of the first version of the dataset </li>
-</ul>
-<p> The versioned URIs, the generic URI, and the TimeGate can provide a
-link to a TimeMap that provides an overview of all temporal versions
-  of the dataset: </p>
-<pre class="highlight">
-curl -i -H http://example.org/dataset-001
+              <ul>
+                <li> <code>http://example.org/dataset</code> is the “generic
+                  URI” at which the current
+                  version of a dataset is always available </li>
+                <li> <code>http://example.org/dataset-002</code> is the
+                  versioned URI for the current dataset </li>
+                <li> <code>http://example.org/dataset-001</code> is the
+                  versioned URI of the prior version of the dataset </li>
+                <li> <code>http://example.org/dataset-000</code> is the
+                  versioned URI of the first version of the dataset </li>
+              </ul>
+              <p> The versioned URIs, the generic URI, and the TimeGate can
+                provide a
+                link to a TimeMap that provides an overview of all temporal
+                versions of the dataset: </p>
+              <pre class="highlight">curl -i -H http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Date: Sat, 24 Oct 2015 16:23:30 GMT
@@ -1298,10 +1320,10 @@ type="application/link-format",
 &lt;http://example.org/dataset-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
 &lt;http://example.org/dataset-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
 </pre>
-<p> The versioned URI can provide information regarding relations with
-other dataset versions: </p>
-<pre class="highlight">
-curl -i -H http://example.org/dataset-001
+              <p> The versioned URI can provide information regarding relations
+                with
+                other dataset versions: </p>
+              <pre class="highlight">curl -i -H http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -1310,10 +1332,7 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original”,
 datetime="Thu, 05 Mar 2015 00:00:00 GMT",
 &lt;http://example.org/dataset-002&gt;; rel=“next last memento";
 datetime="Tue, 05 May 2015 00:00:00 GMT"
-</pre>
-              
-              
-            </aside>
+</pre> </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1358,7 +1377,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="UniqueIdentifiers" class="practicelab">Use persistent
               URIs as identifiers of datasets</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be
+          <p class="practicedesc">Datasets must be
             identified by a persistent URI. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1493,7 +1512,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="identifiersWithinDatasets" class="practicelab">Use
               persistent URIs as identifiers within datasets</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">should</em> use
+          <p class="practicedesc">Datasets should use
             and reuse other people's URIs as identifiers where possible.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
