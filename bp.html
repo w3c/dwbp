@@ -264,12 +264,12 @@ table#uripatternstable caption {
         be available in one or more distributions, which should be defined by
         the publisher considering data consumer's expectations. The Metadata
         component corresponds to the additional information that describes the
-        dataset and dataset distributions, helping the manipulation and the reuse of the data.&nbsp; In
-        order to allow an easy access to the dataset and its corresponding
-        distributions multiple Dataset Access mechanisms should be available
-        such as APIs and bulk download. Finally, to promote the interoperability
-        among datasets it is important to adopt Data Vocabularies and
-        Standards. </p>
+        dataset and dataset distributions, helping the manipulation and the
+        reuse of the data.&nbsp; In order to allow an easy access to the dataset
+        and its corresponding distributions multiple Dataset Access mechanisms
+        should be available such as APIs and bulk download. Finally, to promote
+        the interoperability among datasets it is important to adopt Data
+        Vocabularies and Standards. </p>
       <img src="images/context.jpg" alt="Our Context" height="440" width="640">
     </section>
     <section id="challenges" class="informative">
@@ -1710,8 +1710,11 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <!--<p>Consider which data formats potential users of the data are most
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
             <aside class="example">
-              <p>  To provide data about the bus timetables John chooses the <a href="http://www.w3.org/TR/tabular-data-model/"> tabular format </a> and creates a new distribution for dataset-001. 
-                <pre class="highlight"> 
+              <p> To provide data about the bus timetables John chooses the <a
+
+                  href="http://www.w3.org/TR/tabular-data-model/"> tabular
+                  format </a> and creates a new distribution for dataset-001. </p>
+              <pre class="highlight"> 
    :dataset-001
        a dcat:Dataset;
        dcat:distribution :dataset-001-csv;
@@ -1722,17 +1725,13 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
 </pre>
-The corresponding csv file is presented below.
-<pre class="highlight">
-Origin, Destination, Bus Number, Bus Stop, Time
-X , Y, 001, Stop A, 06:00
-X , Y, 001, Stop B, 06:15
-X , Y, 001, Stop C, 06:35
+              The corresponding csv file is presented below.
+              <pre class="highlight">Origin, Destination, Bus Number, Bus Stop, Time
+X, Y, 001, Stop A, 06:00
+X, Y, 001, Stop B, 06:15
+X, Y, 001, Stop C, 06:35
 ...
-</pre>
-
-    
-            </aside>
+</pre> </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1779,8 +1778,10 @@ X , Y, 001, Stop C, 06:35
               make the data available in many formats, but providing at least
               one alternative will greatly increase the usability of the data.</p>
             <aside class="example">
-               <p>  In order to reach a larger number of data consumers John decides to provide RDF and XML distributions for the dataset-001. 
-                <pre class="highlight"> 
+              <p> In order to reach a larger number of data consumers John
+                decides to provide RDF and XML distributions for the
+                dataset-001. </p>
+              <pre class="highlight"> 
   :dataset-001
        a dcat:Dataset;
        dcat:distribution :dataset-001-csv;
@@ -1802,6 +1803,7 @@ X , Y, 001, Stop C, 06:35
        dcat:mediaType "text/xml";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .   
+            </pre>
             </aside>
           </section>
           <section class="test">
@@ -1819,9 +1821,9 @@ X , Y, 001, Stop C, 06:35
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
-        <div class="issue"> There is a discussion going on in the group if the
+        <!--<div class="issue"> There is a discussion going on in the group if the
           creation (and publication) of vocabularies is in the scope of the DWBP
-          document.</div>
+          document.</div>-->
         <p>Data is often represented in a structured and controlled way, making
           reference to a range of vocabularies, for example, by defining types
           of nodes and links in a data graph or types of values for columns in a
@@ -1870,14 +1872,53 @@ X , Y, 001, Stop C, 06:35
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="MetadataStandardized" class="practicelab">Use
-              standardized terms</span></p>
-          <p class="practicedesc"> Standardized terms should be used to provide
+              shared vocabularies</span></p>
+          <p class="practicedesc"> Shared vocabularies should be used to provide
             metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
+            <p> Shared vocabularies, i.e., vocabularies that capture a consensus of the community about a specific domain,
+              helps to increase interoperability between datasets, encouraging reuse of the data. Shared vocabularies should be used to describe both 
+              structural metadata as well as other types of metadata (descriptive, provenance, quality and versioning). 
+              The use of shared vocabularies to describe metadata helps the automatic processing of data and metadata. 
+            </p>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p> It should be possible to automatically compare data of two or more datasets when 
+                  they use the same vocabulary to describe structural metadata.  </p>
+              <p> It should be possible for machines to automatically process the data within a dataset. </p>
+              <p> It should be possible for machines to automatically process the metadata that describes a dataset. </p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
+                Vocabularies</a> section of the W3C Best Practices for
+              Publishing Linked Data [[LD-BP]] provides guidance on the
+              discovery, evaluation and selection of existing vocabularies.</p>
+              <aside class="example">
+                <pre>to be done</pre>
+              </aside>
+            </section>
+            <section class="test"><span style="font-weight: bold;">How to Test </span>
+              <p>Check that terms or attributes used do not replicate those
+              defined by vocabularies in common use within the same domain.</p>
+              <section class="ucr">
+                <p class="subhead">Evidence</p>
+                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a> </p>
+              </section>
+            </section>
+          </section>
+        </div>
+         <div class="practice">
+          <p><span id="MetadataStandardized" class="practicelab">Use
+              code lists</span></p>
+          <p class="practicedesc"> Code lists should be used to provide
+            data values</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
             <p>The need for code lists and other commonly used terms for
-              describing metadata is to avoid as much as possible ambiguity and
-              clashes in the terms chosen for metadata information. The key
+              data values is to avoid as much as possible ambiguity and
+              clashes in the terms chosen for data values. The key
               reason is to be able to refer to the standardized
               body/organization which defines the term or code as a clear
               reference.</p>
@@ -1911,68 +1952,13 @@ X , Y, 001, Stop C, 06:35
             </section>
           </section>
         </div>
-        <!-- begin of Document Vocabularies -->
-        <!--<div class="practice">
-          <p><span id="DocumentVocabularies" class="practicelab"> Document              vocabularies </span></p>          <p class="practicedesc">Vocabularies should            be clearly documented.</p>          <section class="axioms">            <p class="subhead">Why</p>            <p>Documentation defines what is within the vocabulary and the              better the documentation the higher the possibility of re-use the              vocabulary and the datasets built with it.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>The description of the vocabulary must be human-readable.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>A vocabulary may be published together with human-readable Web              pages, as detailed in the recipes for serving vocabularies with              HTML documents in the Best Practice Recipes for Publishing RDF              Vocabularies [[SWBP-VOCAB-PUB]]. Elements from the vocabulary are              defined with attributes containing human-understandable labels and              definitions, such as rdfs:label, rdfs:comment, dc:description,              skos:prefLabel, skos:altLabel, skos:note, skos:definition,              skos:example, etc.. Documentation may benefit from the additional              presence of visual documentation such as the UML-style diagram of              the W3C Organization Ontology [[ORG]]</p>            <aside class="example">              <pre>to be done</pre>            </aside>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p>Check that a human user can understand the documentation              associated with a vocabulary. </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>            </p>          </section>        </div>-->
-        <!-- end of Document Vocabularies BP -->
-        <!-- begin of Share Open Vocabularies BP -->
-        <!--<div class="practice">
-          <p><span id="ShareOpenVocabularies" class="practicelab"> Share              vocabularies in an open way </span></p>          <p class="practicedesc"> Vocabularies should            be shared in an open way </p>          <section class="axioms">            <p class="subhead">Why</p>            <p> Sharing vocabularies in an open way may increase the usage of a              data vocabulary and help to understand the relationships among              different vocabularies.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>The vocabulary should be available for data consumers to use or              re-use it.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>Provide the vocabulary under an open license such as Creative              Commons Attribution License CC-BY [[CC-ABOUT]]. Create entries for              the vocabulary in repositories such as <a href="http://lov.okfn.org/"><abbr                  title="Linked Open Vocabularies">LOV</abbr></a>, <a href="http://prefix.cc">Prefix.cc</a>,              <a href="http://bioportal.bioontology.org/">Bioportal</a> and the              European Commission's <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a>.</p>            <aside class="example">              <pre>to be done</pre>            </aside>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> Check that an open license is available looking for URL or link              to the document where the copyright is provided. </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></p>          </section>        </div>-->
-        <!-- end of Share Open Vocabularies BP -->
-        <!-- begin of Versioning Vocabularies BP -->
-        <!--<div class="practice">
-          <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary              versioning </span></p>          <p class="practicedesc">Vocabularies should            include versioning information </p>          <section class="axioms">            <p class="subhead">Why</p>            <p>Versioning information guarantees compatibility over time by              providing a way to compare different versions as the vocabulary              evolves.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It should be possible to identify changes to a vocabulary over              time.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>A vocabulary may be given a unique identifier for 'the latest              version' that remains stable over time, even as the vocabulary              evolves. In addition, each version of the vocabulary has its own              unique identifier. URI versioning for W3C documents provides              examples. The latest version of this document is always found at <a                href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>              but individual versions such as <a href="http://www.w3.org/TR/2015/WD-dwbp-20150224/">http://www.w3.org/TR/2015/WD-dwbp-20150224/</a>              each have their own URL as well so that an initial effort can be              made towards understanding, characterizing and tracking data              evolution and specific versions pointed to if required.</p>            <p>Several vocabularies, including OWL [[OWL2-OVERVIEW]] and              schema.org [[SCHEMA-ORG]], include properties for version numbers.</p>            <aside class="example">              <pre>to be done</pre>            </aside>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> Different versions of a vocabulary can be easily identified; </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>            </p>          </section>        </div>-->
-        <!-- end of BP -->
-        <!-- begin of re-use Vocabularies BP -->
-        <div class="practice">
-          <p><span id="ReuseVocabularies" class="practicelab">Re-use
-              vocabularies</span></p>
-          <p class="practicedesc"> Existing reference vocabularies should be
-            re-used where possible </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>re-using vocabularies increases interoperability and reduces
-              redundancies between vocabularies, encouraging re-use of the data.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Datasets (and vocabularies) should re-use core vocabularies.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <!--
-            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find              any, there are several criteria that we should              consider to assess the suitability of re-using that vocabulary for              our use case:</p>            <ul>              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary should                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies should                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer                enhanced reusability.</li>            </ul> -->
-            <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the W3C Best Practices for
-              Publishing Linked Data [[LD-BP]] provides guidance on the
-              discovery, evaluation and selection of existing vocabularies.</p>
-            <aside class="example">
-              <pre>to be done</pre>
-            </aside>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check that terms or attributes used do not replicate those
-              defined by vocabularies in common use within the same domain.</p>
-            <!--
-            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library                  Linked Data Incubator Group report</a>. </li>            </ol>            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative                Commons Rights Expression Language</a>, are re-used instead of              re-defined.</p> -->
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
-            </p>
-          </section>
-        </div>
-        <!-- end of BP -->
-        <!-- begin of Used vocabularies information BP
-        <div class="practice">          <p><span id="UsedVocabularies" class="practicelab"> Provide              information about vocabularies used to trepresent the data</span></p>          <p class="practicedesc">Information about vocabularies used to            represent the data should be available</p>          <section class="axioms">            <p class="subhead">Why</p>            <p></p>            <p></p>            <section class="outcome">              <p class="subhead">Intended Outcome</p>              <p></p>              <p></p>            </section>            <section class="how">              <p class="subhead">Possible Approach to Implementation</p>              <p></p>              <p></p>              <p> </p>            </section>            <section class="test"><span style="font-weight: bold;">How to Test </span>              <p></p>              <p></p>              <section class="ucr">                <p class="subhead">Evidence</p>              </section>            </section>          </section>          <div class="issue">            <p> Is this BP relevant just for RDF datasets or vocabularies may be              used to represent data in other formats (ex: csv)? </p>          </div>        </div> -->
-        <!-- end of BP -->
+      
+        
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
           <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
               the right formalization level</span></p>
-          <p class="practicedesc">When publishing or re-using a vocabulary for
-            an application, a data publisher should opt for a level of formal
+          <p class="practicedesc">When reusing a vocabulary, a data publisher should opt for a level of formal
             semantics that fit data and applications.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
