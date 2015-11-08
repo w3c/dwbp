@@ -781,15 +781,16 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 </section>
 <section>
 		<h3>Express that a dataset received an ODI certificate</h3>
-		<p>Let us  express that  an ODI certificate for myDataset is available at the URL &lt;https://certificates.theodi.org/en/datasets/xxx&gt;.   </p>
+		<p>Let us  express that  an ODI certificate for the "City of Raleigh Open Government Data" dataset is available at the URL &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;.   </p>
 		<pre>
-&lt;https://certificates.theodi.org/en/datasets/393&gt; dqv:hasQualityAnnotation :myDatasetQA .
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+        dqv:hasQualityAnnotation :myDatasetQA .
 
 :myAnnotation 
-	a dqv:QualityCertificate;
-	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt;;
-	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;;
-        oa:motivatedBy dqv:qualityAssessment.
+	a dqv:QualityCertificate ;
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt; ;
+        oa:motivatedBy dqv:qualityAssessment .
 		</pre>
 </section>
 <section>
