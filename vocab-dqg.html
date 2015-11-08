@@ -58,16 +58,13 @@
 					companyURL : "http://www.cnr.it/"
 				},
 				{
-					name : "Christophe Gu&eacute;ret",
-					url : "mailto:c.d.m.gueret@vu.nl",
-					company : "Free University Amsterdam and DANS, The Netherlands",
-					companyURL : "http://www.vu.nl/"
-				},
-				{
 					name : "Antoine Isaac",
 					url : "mailto:aisaac@few.vu.nl",
 					company : "Free University Amsterdam and Europeana, The Netherlands",
 					companyURL : "http://www.vu.nl/"
+				},
+				{
+					name : "Christophe Gu&eacute;ret [early drafts]"
 				},
 
 		],
@@ -420,14 +417,13 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		<table class="definition">
 		  <thead><tr><th>RDF Property:</th><th><a href="#Property:computedOn">dqv:computedOn</a></th></tr></thead>
 		  <tbody>
-		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed.</td></tr>
+		    <tr><td class="prop">Definition:</td><td>Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of <a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a> and <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a>.</td></tr>
 <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr>
 
 		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
-		    <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>, <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a></td></tr>
-		    <tr><td class="prop">Sub property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a> (TBC, maybe be equivalent)</td></tr>
+		    <!--<tr><td class="prop">Range:</td><td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>, <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a></td></tr>-->
+		    <tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td></tr>
 		   <tr><td class="prop">Inverse property:</td><td><a href="">dqv:hasQualityMeasure</a></td></tr>
-
 		    <!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr-->
 		    <!--tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
 		  </tbody>
@@ -440,7 +436,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 		  <thead><tr><th>RDF Property:</th><th><a href="#Property:value">dqv:value</a></th></tr></thead>
 		  <tbody>
 		    <tr><td class="prop">Definition:</td><td>Refers to values computed by metric.</td></tr>
-		   <tr><td class="prop">Subproperty of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
+		   <tr><td class="prop">Instance of:</td><td><a href="http://purl.org/linked-data/cube#MeasureProperty">qb:MeasureProperty</a>, <a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a> </td></tr>
 
 		    <tr><td class="prop">Domain:</td><td><a href="#Class:QualityMeasure">dqv:QualityMeasure</a></td></tr>
 		    <!--tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr-->
@@ -583,7 +579,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 
 		<div class="issue">
 			<p>Should we exploit predefined instances of oa:Motivation to further characterize a user's feedback purposes? (<a href="https://www.w3.org/2013/dwbp/track/issues/201">issue-201</a>)<br>
-				 Combining the <a href="http://www.openannotation.org/spec/core/core.html#Motivations">predefined instances of oa:Motivation</a> with the dqv:qualityAssessment we could distinguish different kinds of for user feedbacks, for example:
+				 Combining the <a href="http://www.w3.org/TR/annotation-model/#creation-reason">predefined instances of oa:Motivation</a> with the dqv:qualityAssessment we could distinguish different kinds of for user feedbacks, for example:
 <ol>
   <li>dqv:qualityAssessment plus oa:editing might indicate a request for a modification or edit, which relates to the quality of the target dataset/distribution</li>
   <li>dqv:qualityAssessment plus oa:questioning might express a question issued about specific quality of the dataset/distribution</li>
@@ -787,18 +783,13 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 		<h3>Express that a dataset received an ODI certificate</h3>
 		<p>Let us  express that  an ODI certificate for myDataset is available at the URL &lt;https://certificates.theodi.org/en/datasets/xxx&gt;.   </p>
 		<pre>
-:myDataset 
-	dqv:hasQualityAnnotation :myDatasetQA
-	.
+&lt;https://certificates.theodi.org/en/datasets/393&gt; dqv:hasQualityAnnotation :myDatasetQA .
 
 :myAnnotation 
 	a dqv:QualityCertificate;
-	oa:hasTarget :myDataset;
-	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/xxx&gt;;
-<red># should we be more specific about the motivation? (e.g., considering to define a specific skos:concept narrower of   :myDataset 
-	oa:motivatedBy oa:describing
-	.
-</red>
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt;;
+	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;;
+        oa:motivatedBy dqv:qualityAssessment.
 		</pre>
 </section>
 <section>
