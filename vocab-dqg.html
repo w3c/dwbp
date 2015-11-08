@@ -579,7 +579,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 
 		<div class="issue">
 			<p>Should we exploit predefined instances of oa:Motivation to further characterize a user's feedback purposes? (<a href="https://www.w3.org/2013/dwbp/track/issues/201">issue-201</a>)<br>
-				 Combining the <a href="http://www.openannotation.org/spec/core/core.html#Motivations">predefined instances of oa:Motivation</a> with the dqv:qualityAssessment we could distinguish different kinds of for user feedbacks, for example:
+				 Combining the <a href="http://www.w3.org/TR/annotation-model/#creation-reason">predefined instances of oa:Motivation</a> with the dqv:qualityAssessment we could distinguish different kinds of for user feedbacks, for example:
 <ol>
   <li>dqv:qualityAssessment plus oa:editing might indicate a request for a modification or edit, which relates to the quality of the target dataset/distribution</li>
   <li>dqv:qualityAssessment plus oa:questioning might express a question issued about specific quality of the dataset/distribution</li>
@@ -783,18 +783,13 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 		<h3>Express that a dataset received an ODI certificate</h3>
 		<p>Let us  express that  an ODI certificate for myDataset is available at the URL &lt;https://certificates.theodi.org/en/datasets/xxx&gt;.   </p>
 		<pre>
-:myDataset 
-	dqv:hasQualityAnnotation :myDatasetQA
-	.
+&lt;https://certificates.theodi.org/en/datasets/393&gt; dqv:hasQualityAnnotation :myDatasetQA .
 
 :myAnnotation 
 	a dqv:QualityCertificate;
-	oa:hasTarget :myDataset;
-	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/xxx&gt;;
-<red># should we be more specific about the motivation? (e.g., considering to define a specific skos:concept narrower of   :myDataset 
-	oa:motivatedBy oa:describing
-	.
-</red>
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt;;
+	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;;
+        oa:motivatedBy dqv:qualityAssessment.
 		</pre>
 </section>
 <section>
