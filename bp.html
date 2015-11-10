@@ -1724,8 +1724,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
        dcat:mediaType "text/csv";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
-</pre>
-              The corresponding csv file is presented below.
+</pre> The corresponding csv file is presented below.
               <pre class="highlight">Origin, Destination, Bus Number, Bus Stop, Time
 X, Y, 001, Stop A, 06:00
 X, Y, 001, Stop B, 06:15
@@ -1822,8 +1821,7 @@ X, Y, 001, Stop C, 06:35
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
         <!--<div class="issue"> There is a discussion going on in the group if the
-          creation (and publication) of vocabularies is in the scope of the DWBP
-          document.</div>-->
+          creation (and publication) of vocabularies is in the scope of the DWBP          document.</div>-->
         <p>Data is often represented in a structured and controlled way, making
           reference to a range of vocabularies, for example, by defining types
           of nodes and links in a data graph or types of values for columns in a
@@ -1872,56 +1870,24 @@ X, Y, 001, Stop C, 06:35
         <!-- begin of Provide Metadata Standardized BP -->
         <div class="practice">
           <p><span id="MetadataStandardized" class="practicelab">Use
-              shared vocabularies</span></p>
-          <p class="practicedesc"> Shared vocabularies should be used to provide
+              standardized terms</span></p>
+          <p class="practicedesc"> Standardized terms should be used to provide
             metadata</p>
+          
+          <div class="issue"> A definition for standardized term should be included in the glossary to clarify the difference between
+             standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209"> Issue-209 </a> </div>
+          
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Shared vocabularies, i.e., vocabularies that capture a consensus of the community about a specific domain,
-              helps to increase interoperability between datasets, encouraging reuse of the data. Shared vocabularies should be used to describe both 
-              structural metadata as well as other types of metadata (descriptive, provenance, quality and versioning). 
-              The use of shared vocabularies to describe metadata helps the automatic processing of data and metadata. 
-            </p>
-            <section class="outcome">
-              <p class="subhead">Intended Outcome</p>
-              <p> It should be possible to automatically compare data of two or more datasets when 
-                  they use the same vocabulary to describe structural metadata.  </p>
-              <p> It should be possible for machines to automatically process the data within a dataset. </p>
-              <p> It should be possible for machines to automatically process the metadata that describes a dataset. </p>
-            </section>
-            <section class="how">
-              <p class="subhead">Possible Approach to Implementation</p>
-              <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the W3C Best Practices for
-              Publishing Linked Data [[LD-BP]] provides guidance on the
-              discovery, evaluation and selection of existing vocabularies.</p>
-              <aside class="example">
-                <pre>to be done</pre>
-              </aside>
-            </section>
-            <section class="test"><span style="font-weight: bold;">How to Test </span>
-              <p>Check that terms or attributes used do not replicate those
-              defined by vocabularies in common use within the same domain.</p>
-              <section class="ucr">
-                <p class="subhead">Evidence</p>
-                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a> </p>
-              </section>
-            </section>
-          </section>
-        </div>
-         <div class="practice">
-          <p><span id="MetadataStandardized" class="practicelab">Use
-              code lists</span></p>
-          <p class="practicedesc"> Code lists should be used to provide
-            data values</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>The need for code lists and other commonly used terms for
-              data values is to avoid as much as possible ambiguity and
-              clashes in the terms chosen for data values. The key
-              reason is to be able to refer to the standardized
-              body/organization which defines the term or code as a clear
-              reference.</p>
+            <p>The need for code lists and other commonly used terms for describing metadata
+              is to avoid as much as possible ambiguity and clashes in
+              the terms chosen for metadata information. The key reason is to be able to
+              refer to the standardized body/organization which defines the term
+              or code as a clear reference.</p>
+            <div class="issue"> Code lists are used for describing metadata or data values? If code lists are used for describing data values then 
+              it would be nice to have a separate BP for this. The title of this BP mentions just metadata. 
+              <a href="https://www.w3.org/2013/dwbp/track/issues/210"> Issue-210 </a> </div>
+            
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p>The benefit of using standardized code lists and other commonly
@@ -1952,14 +1918,67 @@ X, Y, 001, Stop C, 06:35
             </section>
           </section>
         </div>
-      
+        
+        <div class="practice">
+          <p><span id="ReuseVocabularies" class="practicelab">Re-use
+              vocabularies</span></p>
+          
+          
+          <p class="practicedesc"> Shared vocabularies should be used to provide
+            metadata</p>
+          
+          <div class="issue"> As proposed during the F2F, it would be nice to use the term shared vocabularies, i.e., vocabularies that capture a consensus
+              of the community about a specific domain, instead of vocabularies. In the context of this BP, I think it is more appropriate to say
+             "Use shared vocabularies" instead of "Reuse vocabularies". I think Reuse of vocabularies is more appropriate when we are talking about the creation of new vocabularies .
+            <a href="https://www.w3.org/2013/dwbp/track/issues/212"> Issue-212 </a></div>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p> re-using vocabularies increases interoperability and reduces
+              redundancies between vocabularies, encouraging re-use of the data. </p>
+            <div class="issue"> I propose to change the Why section to be more specific about the use of shared vocabularies. 
+              <a href="https://www.w3.org/2013/dwbp/track/issues/211"> Issue-211 </a>
+            </div>
+            
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p> It should be possible to automatically compare data of two or
+                more datasets when they use the same vocabulary to describe
+                structural metadata. </p>
+              <p> It should be possible for machines to automatically process
+                the data within a dataset. </p>
+              <p> It should be possible for machines to automatically process
+                the metadata that describes a dataset. </p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
+                  Vocabularies</a> section of the W3C Best Practices for
+                Publishing Linked Data [[LD-BP]] provides guidance on the
+                discovery, evaluation and selection of existing vocabularies.</p>
+              <aside class="example">
+                <pre>to be done</pre>
+              </aside>
+            </section>
+            <section class="test"><span style="font-weight: bold;">How to Test </span>
+              <p>Check that terms or attributes used do not replicate those
+                defined by vocabularies in common use within the same domain.</p>
+              <section class="ucr">
+                <p class="subhead">Evidence</p>
+                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
+                  <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
+                </p>
+              </section>
+            </section>
+          </section>
+        </div>
         
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
           <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
               the right formalization level</span></p>
-          <p class="practicedesc">When reusing a vocabulary, a data publisher should opt for a level of formal
-            semantics that fit data and applications.</p>
+          <p class="practicedesc">When reusing a vocabulary, a data publisher
+            should opt for a level of formal semantics that fit data and
+            applications.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Formal semantics may help one to establish precise specifications
