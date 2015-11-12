@@ -291,6 +291,12 @@
         "status":"RFC 4180",
         "date":"October 2005"
        },
+       "PAV":{
+        "authors":["Paolo Ciccarese", "Stian Soiland-Reyes"],
+        "href": "http://purl.org/pav/",
+        "title": "PAV - Provenance, Authoring and Versioning",
+        "date": "28 August 2014"
+       },
       "Navathe": {
  	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        
 	"title": "Fundamentals of Database Systems",
