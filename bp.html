@@ -553,7 +553,7 @@ table#uripatternstable caption {
                 Administrative Metadata</a></p> -->
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows how to use [[VOCAB-DCAT]] to provide
+              <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
                 the timetable dataset (dataset-001). </p>
               <pre class="highlight">  :dataset-001
@@ -1168,7 +1168,7 @@ table#uripatternstable caption {
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001 
+              <pre class="highlight">curl -I http://example.org/dataset-001 
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -1177,7 +1177,7 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
                 supports datetime negotiation as a means to determine which
                 version of a dataset was operational at a given datetime: </p>
               <pre class="highlight"> 
-curl -i -H http://example.org/dataset-001
+curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -1191,7 +1191,7 @@ Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on March 20 2015: </p>
               <pre class="highlight"> 
-curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
+curl -I -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
@@ -1301,7 +1301,7 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Date: Sat, 24 Oct 2015 16:23:30 GMT
@@ -1310,7 +1310,7 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original”,
  &lt;http://example.org/timemap/dataset&gt;; rel=“timemap”;
 type="application/link-format"
 
-curl -i http://example.org/timemap/dataset
+curl -I http://example.org/timemap/dataset
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
@@ -1325,7 +1325,7 @@ type="application/link-format",
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -2543,18 +2543,35 @@ X, Y, 001, Stop C, 06:35
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be done an evaluation of the preservation coverage for
-              a given dataset.</p>
+            <p>It should be possible to appreciate the coverage and external dependencies of a given dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The assessement could be performed by the digital preservation
+            <p>The assessement can be performed by the digital preservation
               institute or the dataset depositor. It essentially consists in
               checking whether all the resources used are either already
               preserved somewhere or provided along with the new dataset
               considered for preservation.</p>
             <aside class="example">
-              <p>to be done </p>
+                 <p>A dataset targetted for preservation is made of the following triples:</p>
+                 <pre style="" class="highlight prettyprint prettyprinted">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+                 </pre>
+                <p>Those triples make use of the "foaf" vocabulary and a custom one defined in the testing domain name "ex". It also uses entities defined in "dbpedia" and "ex". FOAF is a well established ontology that is archived in several places on the web (see, for instance, <a href="http://lov.okfn.org">the LOV repository</a>). Entities defined in DBpedia are also preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento gateway</a> and archived dumps of the dataset also exists. The risks associated to preserving the triple making use of those external resource is thus minimal. A bigger concerns rises from the usage made of resources defined in "ex" which is a name space that, by design, does not exist outside of the dataset. Unless the data describing "ex:john" and "ex:Staff" is preserved alongside those triples their contextual meaning will be lost. This is in particular critical for "ex:Staff" as without it the type of "ex:bob" is unknown.</p>
+                <p>Considering this assessement, a revised dataset including the definition of "ex:Staff" can be considered for preservation:</p>
+                 <pre style="" class="highlight prettyprint prettyprinted">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+ # Custom vocabulary element
+ ex:Staff rdfs:subClass foaf:Person;
+     rdfs:label "A staff member". 
+                 </pre>
+                 <p>This second, more complete, dataset is better suited for preservation as it is more self-describing and make use of external entities whose preservation is trusted.</p>
             </aside>
           </section>
           <section class="test">
@@ -2577,8 +2594,8 @@ X, Y, 001, Stop C, 06:35
             long term preservation must use a well established serialisation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Web data is a abtract data model that can be expressed in
-              different ways (RDF, JSON-LD, ...). Using a well established
+            <p>Web data is an abtract data model that can be expressed in
+              different ways (RDF/XML, JSON-LD, ...). Using a well established
               serialisation of this data increases its chances of re-use. </p>
             <p>Institute doing digital preservation are tasked with monitoring
               file format obsolescence. Datasets which have been acquired in
@@ -2599,7 +2616,17 @@ X, Y, 001, Stop C, 06:35
               open standards. For instance those provided by the W3C
               [[FORMATS]]. </p>
             <aside class="example">
-              <p>to be done </p>
+                 <p>Those triples are serialised using the Turtle W3C recommendation. It is a text-based format which is supported by the majority of software able to process Web data. This format can thus be trusted for preservation.</p>
+                 <pre style="" class="highlight">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+                 </pre>
+                <p>A custom-made serialisation of the same data such as what follows should be given a negative appreciation towards preserving the dataset.</p>
+                 <pre style="" class="highlight">
+ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
+                 </pre>
             </aside>
           </section>
           <section class="test">
@@ -2620,7 +2647,7 @@ X, Y, 001, Stop C, 06:35
         <div class="practice">
           <p><span id="ResourceStatus" class="practicelab">Update the status of
               identifiers</span></p>
-          <p class="practicedesc">Preserved datasets should be linked with their
+          <p class="practicedesc">Preserved resources should be linked with their
             "live" counterparts</p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -2666,7 +2693,28 @@ X, Y, 001, Stop C, 06:35
             <p>In addition to the status codes, HTTP Link headers can also be
               used to relate resources to preserved descriptions.</p>
             <aside class="example">
-              <p>to be done </p>
+              <p>One approach with link header is to use the Memento protocol to give a link to a timegate providing access to preserved descriptions of the resource:</p>
+              <pre class="highlight"> 
+curl -I http://example.org/dataset-001
+
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: http://example.org/dataset; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
+            </pre>
+            <p>Using HTTP status code the data consumer can be redirected to the most recent description of the entity. In the following example a request for the resource "http://example.org/dataset-001" is first redirected to the description "http://example.org/data/dataset-001" which, as it has been preserved and flagged as invalid, redirects the client to the newer description "http://example.org/newdata/dataset-001"</p>
+            <pre class="highlight">
+curl -L -I http://example.org/dataset-001
+
+HTTP/1.1 303 See Other
+Location: http://example.org/data/dataset-001
+Link: http://example.org/newdata/dataset-001, rel="new"
+
+HTTP/1.1 303 See Other
+Location: http://example.org/newdata/dataset-001
+Link: http://example.org/data/dataset-001, rel="previous"
+           
+HTTP/1.1 200 Ok
+           </pre>
             </aside>
           </section>
           <section class="test">
