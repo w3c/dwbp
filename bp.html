@@ -1168,7 +1168,7 @@ table#uripatternstable caption {
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001 
+              <pre class="highlight">curl -I http://example.org/dataset-001 
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -1177,7 +1177,7 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
                 supports datetime negotiation as a means to determine which
                 version of a dataset was operational at a given datetime: </p>
               <pre class="highlight"> 
-curl -i -H http://example.org/dataset-001
+curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -1191,7 +1191,7 @@ Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on March 20 2015: </p>
               <pre class="highlight"> 
-curl -i -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
+curl -I -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
@@ -1301,7 +1301,7 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Date: Sat, 24 Oct 2015 16:23:30 GMT
@@ -1310,7 +1310,7 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original”,
  &lt;http://example.org/timemap/dataset&gt;; rel=“timemap”;
 type="application/link-format"
 
-curl -i http://example.org/timemap/dataset
+curl -I http://example.org/timemap/dataset
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
@@ -1325,7 +1325,7 @@ type="application/link-format",
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/dataset-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
