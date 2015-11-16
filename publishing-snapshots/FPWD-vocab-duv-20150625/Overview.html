@@ -1,194 +1,67 @@
 <!DOCTYPE html>
-<html typeof="bibo:Document w3p:REC" about="" property="dcterms:language" content="en"
-
-  lang="en">
-  <head>
+<html typeof="bibo:Document " about="" property="dcterms:language" content="en" lang="en" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head><meta lang="" property="dc:language" content="en">
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Data on the Web Best Practices: Dataset Usage Vocabulary</title>
-    <meta name="description" content="A vocabulary to describe how datasets are used by humans and machines as well as to describe consumer feedback">
-    <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common">
-  </script>
-    <script class="remove">
-var respecConfig = {
-specStatus: "ED",
-shortName: "dwbp-duv",
-//publishDate: "2014-03-27",
-//previousPublishDate: "2014-07-01",
-previousMaturity: "WD",
-//previousURI: "http://www.w3.org/TR/2014/...",
-edDraftURI: "http://w3c.github.io/dwbp/vocab-du.html",
-// lcEnd: "3000-01-01",
-// crEnd: "3000-01-01",
-editors: [{
-name: "Bernadette Farias L&oacute;scio",
-company: "CIn - UFPE, Brazil",
-companyURL: "http://www.cin.ufpe.br/"
-},{
-name: "Eric G. Stephan",
-company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
-}, {
-name: "Sumit Purohit",
-company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
-}],
-wg: "Data on the Web Working Group",
-noRecTrack: true,
-wgURI: "http://www.w3.org/2013/dwbp/",
-wgPublicList: "public-dwbp-wg",
-wgPatentURI: "http://www.w3.org/2004/01/pp-impl/68238/status",
-otherLinks: [{
-key: "Repository",
-data: [{
-value: "We are on Github",
-href: "https://github.com/w3c/dwbp"
-}, {
-value: "File a bug",
-href: "https://github.com/w3c/dwbp"
-}]
-}, {
-key: "Changes",
-data: [{
-value: "Diff to previous version",
-href: "diff-xxx.html"
-}, {
-value: "Commit history",
-href: "https://github.com/w3c/dwbp/commits/gh-pages"
-}]
-}],
-};
-</script> <style type="text/css">
-table {
-	border-collapse: collapse;
-}
+    <title>Dataset Usage Vocabulary</title>
+    <meta name="description" content="A vocabulary to describe how datasets are used by humans and machines as well as to describe consumer feedback"/>
+    <link rel="stylesheet" type="text/css" href="localstyles.css" />
+    <link href="https://www.w3.org/StyleSheets/TR/W3C-WD" rel="stylesheet">
+    <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+  <body style="" class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p><a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a></p>
+  <h1 class="title p-name" id="title" property="dcterms:title">Dataset Usage Vocabulary</h1>
+  
+  <h2 id="w3c-first-public-working-draft-25-june-2015"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-06-25">25 June 2015</time></h2>
+  <dl>
+    
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-dwbp-duv-20150625/">http://www.w3.org/TR/2015/WD-dwbp-duv-20150625/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/vocab-duv/">http://www.w3.org/TR/vocab-duv/</a></dd>
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="http://w3c.github.io/dwbp/vocab-du.html">http://w3c.github.io/dwbp/vocab-du.html</a></dd>
+    <dt>Editors:</dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Bernadette Farias Lóscio</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.cin.ufpe.br/">CIn - UFPE, Brazil</a></span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Eric G. Stephan</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.pnnl.gov">Pacific Northwest National Laboratory</a></span>
+<span property="rdf:rest" resource="_:editor2"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor2"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Sumit Purohit</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.pnnl.gov">Pacific Northwest National Laboratory</a></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
 
-td, th {
-	border: 1px solid black;
-	padding: 1em;
-}
-
-table#namespaces td {
-	font-family: monospace;
-}
-
-table.definition {
-	width: 100%;
-}
-
-table.definition td.prop {
-	width: 10em;
-}
-/*  .editorsnote::before {
-    content:    "Editor's Note";
-    display:    block;
-  	width:      150px;
-    background: #F30023;
-    color:  #fff;
-    margin: -1.5em 0 0.5em 0;
-    font-weight:    bold;
-    border: 1px solid #cff6d9;
-    padding:    3px 1em;
-  }
-  .editorsnote {
-    margin: 1em 0em 1em 1em;
-    padding:    1em;
-    border: 2px solid #cff6d9;
-  } */
-pre {
-	padding: 1em;
-	border: 1px dashed #2f6fab;
-	color: black;
-	background-color: #f9f9f9;
-	line-height: 1.1em;
-}
-
-pre red { color: red;
-}
-</style>
-
-<!-- ttl to json-ld convertor begin -->
-
-		<style>
-			.todo {
-				color: red;
-			}
-		    pre {
-				tab-size: 4;
-		    }
-			th {
-				text-align: left;
-			}
-      .comment {
-        /* font-lock-comment-face */
-        color: #b22222;
-      }
-      .constant {
-        /* font-lock-constant-face */
-        color: #008b8b;
-      }
-      .function-name {
-        /* font-lock-function-name-face */
-        color: #0000ff;
-      }
-      .keyword {
-        /* font-lock-keyword-face */
-        color: #a020f0;
-      }
-      .string {
-        /* font-lock-string-face */
-        color: #8b2252;
-      }
-      .type {
-        /* font-lock-type-face */
-        color: #228b22;
-      }
-      .example {
-        display: inline-block;
-      }
-      .example.wrapper {
-        background-color: #fff;
-      }
-      .example.wrapper pre {
-        background-color: #fcfaee;
-        margin-left: 0;
-        line-height: 1.2;
-      }
-      .example.wrapper .fail {
-        background-color: #fceefa
-      }
-      .verticalDivider {
-        float: left;
-        width: .5em;
-        border:thin solid #fff; /* disappears without this */
-      }
-
-.highlight1     { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(176, 176, 0, .5); border-right: 5px solid rgba(176, 176, 0, .5); } /* font-weight: bold  ;  */
-.highlight1.top {    margin-top: -5px;                      border-top: 5px solid rgba(176, 176, 0, .5);                                                } /* font-weight: bold  ;  */
-.highlight1.bot { margin-bottom: -5px;                   border-bottom: 5px solid rgba(176, 176, 0, .5);                                                } /* font-weight: bold  ;  */
-.lowlight1      { margin-left: -5px; margin-right: -5px;   border-left: 5px solid transparent; border-right: 5px solid transparent;                     } /* font-weight: normal;  */
-.lowlight1.top  {    margin-top: -5px;                      border-top: 5px solid transparent;                                                          } /* font-weight: normal;  */
-.lowlight1.bot  { margin-bottom: -5px;                   border-bottom: 5px solid transparent;                                                          } /* font-weight: normal;  */
-.highlight2     { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(176, 0, 176, .5); border-right: 5px solid rgba(176, 0, 176, .5); } /* font-weight: bold  ;  */
-.highlight2.top {    margin-top: -5px;                      border-top: 5px solid rgba(176, 0, 176, .5);                                                } /* font-weight: bold  ;  */
-.highlight2.bot { margin-bottom: -5px;                   border-bottom: 5px solid rgba(176, 0, 176, .5);                                                } /* font-weight: bold  ;  */
-.lowlight2      { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(127, 127, 127, .07); border-right: 5px solid rgba(127, 127, 127, .07);         } /* font-weight: normal;  */
-.lowlight2.top  {    margin-top: -5px;                      border-top: 5px solid rgba(127, 127, 127, .07);                                                           } /* font-weight: normal;  */
-.lowlight2.bot  { margin-bottom: -5px;                   border-bottom: 5px solid rgba(127, 127, 127, .07);                                                           } /* font-weight: normal;  */
-
-.highlightBG1   { /* border: 5px solid transparent; */ background-color: #bb0; font-weight: bold; }
-.lowlightBG1    { /* border: 5px solid transparent; */ font-weight: normal; }
-.highlightBG2   { /* border: 5px solid transparent; */ background-color: #b00; font-weight: bold; }
-.lowlightBG2    { /* border: 5px solid transparent; */ font-weight: normal; }
-
-.new            { font-weight: bold; }
-.errorSite      { color: red; }
-		</style>
-<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
-<!-- ttl to json-ld convertor end -->
-
- </head>
-  <body>
-    <section id="abstract">
+          <dt>Repository:</dt>
+                  <dd>
+                    <a href="https://github.com/w3c/dwbp">
+                      We are on Github
+                    </a>
+                  </dd>
+                  <dd>
+                    <a href="https://github.com/w3c/dwbp">
+                      File a bug
+                    </a>
+                  </dd>
+                  <dd>
+                    <a href="https://github.com/w3c/dwbp/commits/gh-pages">
+                      Commit history
+                    </a>
+                  </dd>
+  </dl>
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2015         
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
+        
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+  <hr />
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
       <p> Datasets published on the web are accessed and experienced by
         consumers in a variety of ways, but little information about these
         experiences is typically conveyed. Dataset publishers many times lack
@@ -206,27 +79,49 @@ pre red { color: red;
         means for data consumers and producers advertise and search for
         published open dataset usage. </p>
     </section>
-    <section id="sotd">
-      <p> This is a draft document which may be merged into another document or
-        eventually make its way into being a standalone Working Draft. This
-        document was published by the Data on the Web Best Practices Working
-        Group as an Editor's Draft. If you wish to make comments regarding this
-        document, please send them to public-dwbp-wg@w3.org (subscribe,
-        archives). All comments are welcome. Publication as an Editor's Draft
-        does not imply endorsement by the W3C Membership. This is a draft
-        document and may be updated, replaced or obsoleted by other documents at
-        any time. It is inappropriate to cite this document as other than work
-        in progress. This document was produced by a group operating under the 5
-        February 2004 W3C Patent Policy. W3C maintains a public list of any
-        patent disclosures made in connection with the deliverables
-        of the group; that page also includes instructions for disclosing a
-        patent. An individual who has actual knowledge of a patent which the
-        individual believes contains Essential Claim(s) must disclose the
-        information in accordance with section 6 of the W3C Patent Policy. This
-        document is governed by the 1 August 2014 W3C Process Document. </p>
-    </section>
-    <section id="intro" class="informative">
-      <h2> Introduction</h2>
+
+<section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+        <p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em></p>
+        
+      <p>This is a draft document which may be merged with the Data Quality Vocabulary or
+        remain as a standalone document. Feedback is sought on the overall direction
+        being taken as much as the specific details of the proposed vocabulary.</p>
+
+
+    <p>This document was published by the <a href="http://www.w3.org/2013/dwbp/">Data on the 
+    Web Best Practices Working Group</a> as a First Public Working Draft.If you wish to make 
+    comments regarding this document, please send them to 
+            <a href="mailto:public-dwbp-comments@w3.org">public-dwbp-comments@w3.org</a> 
+            (<a href="mailto:public-dwbp-comments-request@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/public-dwbp-comments/">archives</a>).
+            All comments are welcome.</p>
+        
+          <p>Publication as a First Public Working Draft does not imply endorsement by the 
+          <abbr title="World Wide Web Consortium">W3C</abbr>
+            Membership. This is a draft document and may be updated, replaced or obsoleted by other
+            documents at any time. It is inappropriate to cite this document as other than work in
+            progress.</p>
+        <p>This document was produced by a group operating under the 
+            <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+            The group does not expect this document to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a 
+              <a href="http://www.w3.org/2004/01/pp-impl/68239/status" rel="disclosure">public list of any patent
+              disclosures</a> 
+            made in connection with the deliverables of the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual knowledge of a patent
+            which the individual believes contains
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.</p>
+        
+          <p>This document is governed by the <a id="w3c_process_revision" 
+          href="http://www.w3.org/2014/Process-20140801/">1 August 2014 
+          <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
+</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#intro" class="tocxref"><span class="secno">1. </span> Introduction</a></li><li class="tocline"><a href="#namespaces-1" class="tocxref"><span class="secno">2. </span> Namespaces</a></li><li class="tocline"><a href="#audience" class="tocxref"><span class="secno">3. </span> Audience</a></li><li class="tocline"><a href="#scope" class="tocxref"><span class="secno">4. </span> Scope</a></li><li class="tocline"><a href="#relationship_vocabularies" class="tocxref"><span class="secno">5. </span> Relationship to other Vocabularies</a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">6. </span> Examples</a></li><li class="tocline"><a href="# Vocab_Overview" class="tocxref"><span class="secno">7. </span>Vocabulary Overview</a></li><li class="tocline"><a href="#vocabulary-specification" class="tocxref"><span class="secno">8. </span> Vocabulary Specification </a><ul class="toc"><li class="tocline"><a href="#class-agent" class="tocxref"><span class="secno">8.1 </span> Class:Agent</a></li><li class="tocline"><a href="#class-annotation" class="tocxref"><span class="secno">8.2 </span>Class:Annotation</a></li><li class="tocline"><a href="#class-Application" class="tocxref"><span class="secno">8.3 </span>Class: Application</a></li><li class="tocline"><a href="#class-Dataset" class="tocxref"><span class="secno">8.4 </span>Class: Dataset</a></li><li class="tocline"><a href="#class-Document" class="tocxref"><span class="secno">8.5 </span> Class: Document</a></li><li class="tocline"><a href="#class-Activity" class="tocxref"><span class="secno">8.6 </span> Class: Activity</a></li><li class="tocline"><a href="#class-Rating" class="tocxref"><span class="secno">8.7 </span> Class: Rating</a></li><li class="tocline"><a href="#class-Citation" class="tocxref"><span class="secno">8.8 </span>Class: Citation</a></li><li class="tocline"><a href="#class-Feedback" class="tocxref"><span class="secno">8.9 </span> Class: Feedback</a></li><li class="tocline"><a href="#class-DatasetCorrection" class="tocxref"><span class="secno">8.10 </span>Class: DatasetCorrection</a></li><li class="tocline"><a href="#class-webthing" class="tocxref"><span class="secno">8.11 </span> Class: WebThing</a></li></ul></li><li class="tocline"><a href="#duvrequirements" class="tocxref"><span class="secno">9. </span>DUV Requirements</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-history" class="tocxref"><span class="secno">B. </span>Change history</a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span> References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></section>
+    
+    <section id="intro" class="informative" typeof="bibo:Chapter" resource="#intro" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-intro" resource="#h-intro"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span> Introduction</span></h2><p><em>This section is non-normative.</em></p>
       <p> This vocabulary is meant to fill a niche that helps standardize the
         way web published dataset usage be conveyed and shared. At this time is
         no clear standard way to describe dataset usage on the Web. Without a
@@ -236,15 +131,9 @@ pre red { color: red;
         requires data publishers to provide a mechanism of receiving data usage
         from data consumers in the form of feedback,citation and data
         correction. </p>
-      <div class="issue">Is the JSON-LD representation helpful?  Is it the best representation of JSON-LD?(JSON-LD was created by converting TTL with Jena rdfcat. )  </div>
-<!-- ttl to json-ld convertor begin -->
-        <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
-      </section>
-
-
-    <section id="namespaces-1">
-      <h2> Namespaces</h2>
-      <div class="note">The namespaces need to be reviewed based on the decisions at the F2F4 meeting and updated accordingly. </div>
+    </section>
+    <section id="namespaces-1" typeof="bibo:Chapter" resource="#namespaces-1" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-namespaces-1" resource="#h-namespaces-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span> Namespaces</span></h2>
       <p>The namespace for DCAT is <code>http://www.w3.org/ns/dcat#</code>.
         However, it should be noted that DCAT makes extensive use of terms from
         other vocabularies, in particular <a href="http://dublincore.org/documents/dcmi-terms/">Dublin
@@ -322,15 +211,15 @@ pre red { color: red;
         </tbody>
       </table>
     </section>
-    <section id="audience">
-      <h2> Audience</h2>
+    <section id="audience" typeof="bibo:Chapter" resource="#audience" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-audience" resource="#h-audience"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span> Audience</span></h2>
       <p>The DUV is intended for data producers and publishers interested in
         tracking, sharing, and persisting consumer dataset usage. It is also
         intended for collaborators who require an exchange medium to advertise
         and interactively convey dataset usage. </p>
     </section>
-    <section id="scope">
-      <h2> Scope</h2>
+    <section id="scope" typeof="bibo:Chapter" resource="#scope" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-scope" resource="#h-scope"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span> Scope</span></h2>
       <p> The scope of DUV is defined by the Data on the Web Best Practices
         (DWBP) Use Case document based on the data usage requirements about
         datasets. These requirements include: citing data on the Web, tracking
@@ -338,8 +227,8 @@ pre red { color: red;
         were derived from fourteen real world use cases examples provided in the
         use case document. </p>
     </section>
-    <section id="relationship_vocabularies">
-      <h2> Relationship to other Vocabularies</h2>
+    <section id="relationship_vocabularies" typeof="bibo:Chapter" resource="#relationship_vocabularies" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-relationship_vocabularies" resource="#h-relationship_vocabularies"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span> Relationship to other Vocabularies</span></h2>
       <p> The DUV is a “glue” vocabulary reusing and extending existing
         vocabulary classes and properties to support citation, feedback, and
         usage. This section provides our rationale and approach for vocabulary
@@ -370,49 +259,51 @@ pre red { color: red;
         are used to describe citations and references between datasets and cited
         sources. </p>
     </section>
-    <section id="examples">
-      <h2> Examples</h2>
+    <section id="examples" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-examples" resource="#h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span> Examples</span></h2>
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
-      <p> Example 1 - Usage: A 2-D charting application developed to be
+      <p> Example 1 - Usage: A 2-D plot application developed by Laufer can be
         used to create temperature plots and consumes temperature readings from
-        a dataset to produce the plot. </p>
-      <pre class="schema turtle" >@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+        a dataset to produce the plot. A data logger used to provide temperature
+        readings uses a configuration file for operation of the data logger. </p>
+      <div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
 @prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix prov: &lt;http://www.w3.org/nsprov#&gt; .
 @prefix :     &lt;http://example.org#&gt; .
 
-
-:plot-graphic
-  a prov:Activity;
-  rdfs:label "plots a 2d graphic";
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent   :xyplotter;
-        prov:hadRole :chart-software;
-    ];
+:laufer
+a foaf:Agent, foaf:Person;
+   foaf:givenName "Laufer";
+   foaf:mbox &lt;mailto:laufer@example.org&gt;
+   duv:develops :xyplotter;
 .
-
-:plot-csv-data
-  a duv:Usage;
-  prov:qualifiedUsage :plot-graphic;
-  prov:entity :dataset-03312004
-.
- 
 
 :xyplotter
-  a prov:Agent, prov:SoftwareAgent ;
-  rdfs:label "2dplotter" .
-
-:chart-software 
-   a prov:Role;
-   rdfs:label "software that creates charts" 
+  a duv:Application;
+  rdfs:label "2dplotter" ;
+  duv:consumes :dataset-03312004
+  duv:developedBy :laufer ;
 .
 
+:insitu-measurement-data-logger
+  a duv:WebThing;
+  rdfs:label "surface meteorology data logger" ;
+  duv:consumes :configfile ;
+.
+
+:configfile-csv
+  a dcat:Distribution;
+.
+
+:configfile
+  a dcat:Dataset ;
+  dct:title "configuration settings" ;
+  dcat:distribution :configfile-csv ;
+.
 
 :dataset-Jan-Mar-2004-csv 
   a dcat:Distribution;
@@ -420,91 +311,12 @@ pre red { color: red;
 
 :dataset-03312004
   a dcat:Dataset;
-  dct:title "Quarterly Temperature Plot"; 
+  dct:title "Mars Quarterly Temperature Plot"; 
   dcat:distribution :dataset-Jan-Mar-2004-csv;
-.
-  </pre>
-<pre class="schema json-ld" ><span class="comment">
-{
-  "@graph" : [ {
-    "@id" : "_:b0",
-    "@type" : "prov:Association",
-    "agent" : "http://example.org#xyplotter",
-    "hadRole" : "http://example.org#chart-software"
-  }, {
-    "@id" : "http://example.org#chart-software",
-    "@type" : "prov:Role",
-    "rdfs:label" : "software that creates charts"
-  }, {
-    "@id" : "http://example.org#dataset-03312004",
-    "@type" : "dcat:Dataset",
-    "dct:title" : "Quarterly Temperature Plot",
-    "distribution" : "http://example.org#dataset-Jan-Mar-2004-csv"
-  }, {
-    "@id" : "http://example.org#dataset-Jan-Mar-2004-csv",
-    "@type" : "dcat:Distribution"
-  }, {
-    "@id" : "http://example.org#plot-csv-data",
-    "@type" : "duv:Usage",
-    "entity" : "http://example.org#dataset-03312004",
-    "qualifiedUsage" : "http://example.org#plot-graphic"
-  }, {
-    "@id" : "http://example.org#plot-graphic",
-    "@type" : "prov:Activity",
-    "rdfs:label" : "plots a 2d graphic",
-    "qualifiedAssociation" : "_:b0"
-  }, {
-    "@id" : "http://example.org#xyplotter",
-    "@type" : [ "prov:Agent", "prov:SoftwareAgent" ],
-    "rdfs:label" : "2dplotter"
-  } ],
-  "@context" : {
-    "agent" : {
-      "@id" : "http://www.w3.org/nsprov#agent",
-      "@type" : "@id"
-    },
-    "hadRole" : {
-      "@id" : "http://www.w3.org/nsprov#hadRole",
-      "@type" : "@id"
-    },
-    "qualifiedUsage" : {
-      "@id" : "http://www.w3.org/nsprov#qualifiedUsage",
-      "@type" : "@id"
-    },
-    "entity" : {
-      "@id" : "http://www.w3.org/nsprov#entity",
-      "@type" : "@id"
-    },
-    "label" : {
-      "@id" : "http://www.w3.org/2000/01/rdf-schema#label",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "distribution" : {
-      "@id" : "http://www.w3.org/ns/dcat#distribution",
-      "@type" : "@id"
-    },
-    "qualifiedAssociation" : {
-      "@id" : "http://www.w3.org/nsprov#qualifiedAssociation",
-      "@type" : "@id"
-    },
-    "dct" : "http://purl.org/dc/terms/",
-    "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "prov" : "http://www.w3.org/nsprov#"
-  }
-}
-
-  </pre>
+.</pre></div>
       <p> Example 2 - Feedback: Laufer provides feedback about the temperature
         readings dataset. </p>
-      <pre class="schema turtle" >
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+      <div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -536,76 +348,11 @@ pre red { color: red;
    duv:hasRating "3 Star";
    oa:hasBody "Linked Data Rating";
    oa:hasTarget :dataset-03312004;
-.
-  </pre>
-<pre class="schema json-ld" >
-{
-  "@graph" : [ {
-    "@id" : "http://example.org#comment1",
-    "@type" : "duv:Feedback",
-    "annotatedBy" : "http://example.org#laufer",
-    "oa:hasBody" : "Written in MS-DOS text format.",
-    "hasTarget" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#comment2",
-    "@type" : "duv:Feedback",
-    "duv:hasRating" : "3 Star",
-    "oa:hasBody" : "Linked Data Rating",
-    "hasTarget" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#dataset-03312004",
-    "@type" : "dcat:Dataset",
-    "dct:title" : "Mars Quarterly Temperature Plot"
-  }, {
-    "@id" : "http://example.org#laufer",
-    "@type" : "duv:Person",
-    "foaf:givenName" : "Laufer",
-    "mbox" : "mailto:laufer@example.org"
-  } ],
-  "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms#title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "hasRating" : {
-      "@id" : "http://www.w3.org/ns/duv#hasRating",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "hasBody" : {
-      "@id" : "http://www.w3.org/ns/oa#hasBody",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "hasTarget" : {
-      "@id" : "http://www.w3.org/ns/oa#hasTarget",
-      "@type" : "@id"
-    },
-    "annotatedBy" : {
-      "@id" : "http://www.w3.org/ns/oa#annotatedBy",
-      "@type" : "@id"
-    },
-    "givenName" : {
-      "@id" : "http://xmlns.com/foaf/0.1/givenName",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "mbox" : {
-      "@id" : "http://xmlns.com/foaf/0.1/mbox",
-      "@type" : "@id"
-    },
-    "oa" : "http://www.w3.org/ns/oa#",
-    "dct" : "http://purl.org/dc/terms#",
-    "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "foaf" : "http://xmlns.com/foaf/0.1/"
-  }
-}
-</pre>
+.</pre></div>
       <p>Example 3 - Citation: A technical report :paperA identified by a DOI
         cites the dataset. The :dataset-03312013 is also identified by a digital
         object identifier (DOI).</p>
-<pre class="schema turtle" >
-      @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+      <div class="example"><div class="example-title"><span>Example 3</span></div><pre class="example">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -641,137 +388,31 @@ pre red { color: red;
    dc:identifier "doi:20.1055/ex7758";
    dct:title "Mars Weather Technical Report"@en;
    duv:cites :dataset-03312004;
-.
-
-</pre> 
-<pre class="schema json-ld">
-
-{
-  "@graph" : [ {
-    "@id" : "http://example.org#dataset-03312013",
-    "@type" : "dcat:Dataset",
-    "dct:alternative" : {
-      "@language" : "en",
-      "@value" : "Qtrly Temp Plot"
-    },
-    "created" : "2013-03-31T15:18:00Z",
-    "dct:creator" : "Laufer",
-    "dct:description" : {
-      "@language" : "en",
-      "@value" : "This plot features average surface temperatures measured by the Mars Land Rover. "
-    },
-    "dct:identifier" : "doi:10.1038/ex2158",
-    "language" : "http://www.lexvo.org/page/iso639-3/eng",
-    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
-    "dct:title" : {
-      "@language" : "en",
-      "@value" : "Mars Quarterly Temperature Plot"
-    },
-    "isCitedAsDataSourceBy" : "http://example.org#paperA",
-    "dcat:keyword" : "Mars"
-  }, {
-    "@id" : "http://example.org#paperA",
-    "@type" : "foaf:document",
-    "dct:identifier" : "doi:20.1055/ex7758",
-    "dct:title" : {
-      "@language" : "en",
-      "@value" : "Mars Weather Technical Report"
-    },
-    "cites" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#thisCitation",
-    "@type" : "duv:Citation",
-    "hasCitedEntity" : "http://example.org#paperA",
-    "hasCitingEntity" : "http://example.org#dataset-03312004"
-  } ],
-  "@context" : {
-    "identifier" : {
-      "@id" : "http://purl.org/dc/terms#identifier",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "title" : {
-      "@id" : "http://purl.org/dc/terms#title",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-    },
-    "cites" : {
-      "@id" : "http://www.w3.org/ns/duv#cites",
-      "@type" : "@id"
-    },
-    "creator" : {
-      "@id" : "http://purl.org/dc/terms#creator",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "keyword" : {
-      "@id" : "http://www.w3.org/ns/dcat#keyword",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "isCitedAsDataSourceBy" : {
-      "@id" : "http://purl.org/spar/cito#isCitedAsDataSourceBy",
-      "@type" : "@id"
-    },
-    "alternative" : {
-      "@id" : "http://purl.org/dc/terms#alternative",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-    },
-    "created" : {
-      "@id" : "http://purl.org/dc/terms#created",
-      "@type" : "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "language" : {
-      "@id" : "http://purl.org/dc/terms#language",
-      "@type" : "@id"
-    },
-    "license" : {
-      "@id" : "http://purl.org/dc/terms#license",
-      "@type" : "@id"
-    },
-    "description" : {
-      "@id" : "http://purl.org/dc/terms#description",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-    },
-    "hasCitingEntity" : {
-      "@id" : "http://purl.org/spar/cito#hasCitingEntity",
-      "@type" : "@id"
-    },
-    "hasCitedEntity" : {
-      "@id" : "http://purl.org/spar/cito#hasCitedEntity",
-      "@type" : "@id"
-    },
-    "oa" : "http://www.w3.org/ns/oa#",
-    "dct" : "http://purl.org/dc/terms#",
-    "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "xsd" : "http://www.w3.org/2001/XMLSchema#",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "cito" : "http://purl.org/spar/cito#"
-  }
-}
-</pre>
-</section>
-    <section id=" Vocab_Overview">
-      <h2>Vocabulary Overview</h2>
-        <div class="issue"> Consistency between Data Usage and Data Quality Vocabs 
-          The DUV and DQV should align reused vocabulary terms and agree on common namespace for overlapping classes.  <a href="http://www.w3.org/2013/dwbp/track/issues/198">
-            Issue-198 </a>.  </div>
-      <div class="note"> Based on discussions held June-August the model has been modified significantly  The non-normative text below needs updating once general agreement is reached on the DUV model.</div>
+.</pre></div> </section>
+    <section id=" Vocab_Overview" typeof="bibo:Chapter" resource="# Vocab_Overview" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-vocab_overview" resource="#h-vocab_overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>Vocabulary Overview</span></h2>
       <p><em>This section is non-normative.</em></p>
       <p> This section depicts the vocabulary as a conceptual model. Shaded
         boxes are used to identify each class. Labeled open arrows identify
         example properties between the classes. Unlabeled shaded arrows are used
         to show inheritance with the parent class identified by the arrow head.</p>
-      <img src="./images/vocab-overview.png" v:shapes="_x0000_i1025" border="1"
-
-        height="490" width="788">
-      <div class="note"> Classes and properties from the PROV-O have been used to describe usage.  duv:Entity (a child of prov:Entity) is used in the model as a means to generally depict dcat:Dataset or dcat:Distribution.  </div>
-      <div class="note"> Classes and properties from the Web Annotation Vocabulary have been used to describe feedback.  There were some recent inqueries to our approach from the SIOC team.  The SIOC has an extensive vocabulary on on-line forums.  A note may be included in the future discussing possible relationships to the SIOC.    </div>
+      <p>The classes duv:Application, duv:WebThing, and prov:Activity are used
+        to convey dataset usage. The classes duv:Citation, bibo:Document,
+        cito:CitationAct are used to represent citation. The classes
+        duv:Feedback, oa:Annotation, duv:Rating are used to represent feedback.</p>
+      <figure id="umlOverview">
+        <img src="vocab-overview.png" height="497" width="743" alt="UML diagram of the vocabulary">
+        <figcaption>Fig. <span class="figno">1</span> <span class="fig-title">Diagrammatic overview of the Dataset Usage Vocabulary</span></figcaption>
+      </figure>
+      <div class="issue" id="issue-1"><div class="issue-title" aria-level="3" role="heading" id="h-issue1"><span>Issue 1</span></div><div class=""> Should usage be specified at the Dataset or
+        Distribution level? <a href="http://www.w3.org/2013/dwbp/track/issues/169">
+          Issue-169 </a> </div></div>
     </section>
-    <section id="vocabulary-specification">
-      <h2> Vocabulary Specification </h2>
-      <div class="note"> This description of DUV classes and properties is out of date. These descriptions will be updated after the F2F4 discussion.</div>
-      <section id="class-agent">
-        <h3> Class:Agent</h3>
+    <section id="vocabulary-specification" typeof="bibo:Chapter" resource="#vocabulary-specification" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-vocabulary-specification" resource="#h-vocabulary-specification"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span> Vocabulary Specification </span></h2>
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><div class=""> This is an initial proposal of DUV classes and properties. We are still evaluating the use of classes like duv:Citation and duv:Feedback.</div></div>
+      <section id="class-agent" typeof="bibo:Chapter" resource="#class-agent" property="bibo:hasPart">
+        <h3 id="h-class-agent" resource="#h-class-agent"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.1 </span> Class:Agent</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -811,8 +452,8 @@ pre red { color: red;
         <tr>          <td>rdfs:isDefinedBy</td>
           <td>http://www.w3c.org/ns/duv</td>        </tr>
       </tbody>    </table> --> 
-      <section id="class-annotation">
-        <h3>Class:Annotation</h3>
+      <section id="class-annotation" typeof="bibo:Chapter" resource="#class-annotation" property="bibo:hasPart">
+        <h3 id="h-class-annotation" resource="#h-class-annotation"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.2 </span>Class:Annotation</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -838,7 +479,7 @@ pre red { color: red;
         </table>
       </section>
       
-        <h4>Property:title</h4>
+        <h2 id="property-title">Property:title</h2>
         <table class="definition">
           <thead>
             <tr>
@@ -858,8 +499,8 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:annotation_description">Property:
-          description</h4>
+        <h2 role="heading" aria-level="3" id="Property:annotation_description">Property:
+          description</h2>
         <table class="definition">
           <thead>
             <tr>
@@ -881,8 +522,8 @@ pre red { color: red;
           </tbody>
         </table>
 
-      <section id="class-Application">
-        <h3>Class: Application</h3>
+      <section id="class-Application" typeof="bibo:Chapter" resource="#class-Application" property="bibo:hasPart">
+        <h3 id="h-class-application" resource="#h-class-application"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.3 </span>Class: Application</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -902,6 +543,9 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
+        <div class="issue" id="issue-2"><div class="issue-title" aria-level="4" role="heading" id="h-issue2"><span>Issue 2</span></div><div class=""> Should we use Software or earl:Software instead of
+          developed? <a href="http://www.w3.org/2013/dwbp/track/issues/170">
+            Issue-170 </a> </div></div>
               </section>
         <h4 role="heading" aria-level="3" id="Property:application_title">Property:
           title</h4>
@@ -946,7 +590,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4>Property:
+        <h4 id="property-developedby">Property:
           developedBy</h4>
         <table class="definition">
           <thead>
@@ -975,6 +619,9 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
+        <div class="issue" id="issue-3"><div class="issue-title" aria-level="3" role="heading" id="h-issue3"><span>Issue 3</span></div><div class=""> Should dct:creator or doap:developer be used instead
+          of duv:developedBy? <a href="http://www.w3.org/2013/dwbp/track/issues/171">
+            Issue-171 </a></div></div>
         <h4 role="heading" aria-level="3" id="Property:consumes">Property:
           consumes</h4>
         <table class="definition">
@@ -1003,9 +650,9 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <div class="issue"> Should duv:consumes be used instead of duv:consumed?
+        <div class="issue" id="issue-4"><div class="issue-title" aria-level="3" role="heading" id="h-issue4"><span>Issue 4</span></div><div class=""> Should duv:consumes be used instead of duv:consumed?
           Should we be able to reify Consumption? <a href="http://www.w3.org/2013/dwbp/track/issues/177">
-            Issue-177 </a>.  Please note the model has changed significantly so the previous question is not entirely accurate.  The main question that currently remains:  Is the current usage model adequate and does it satisfy the original concern?  </div>
+            Issue-177 </a></div></div>
         <h4 role="heading" aria-level="3" id="Property:generates">Property:
           generates</h4>
         <table class="definition">
@@ -1041,8 +688,8 @@ pre red { color: red;
           </tbody>
         </table>
 
-      <section id="class-Dataset">
-        <h3 role="heading" aria-level="2" id="Class:_Dataset">Class: Dataset</h3>
+      <section id="class-Dataset" typeof="bibo:Chapter" resource="#class-Dataset" property="bibo:hasPart">
+        <h3 role="heading" aria-level="2" id="Class:_Dataset" resource="#Class:_Dataset"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.4 </span>Class: Dataset</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1116,8 +763,8 @@ pre red { color: red;
           </tbody>
         </table>
     
-      <section id="class-Document">
-        <h3> Class: Document</h3>
+      <section id="class-Document" typeof="bibo:Chapter" resource="#class-Document" property="bibo:hasPart">
+        <h3 id="h-class-document" resource="#h-class-document"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.5 </span> Class: Document</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1147,7 +794,7 @@ pre red { color: red;
         </table>
         </section>
     
-        <h4>Property: title</h4>
+        <h4 id="property-title-1">Property: title</h4>
         <table class="definition">
           <thead>
             <tr>
@@ -1221,8 +868,8 @@ pre red { color: red;
           </tbody>
         </table>
 
-      <section id="class-Activity">
-        <h3 role="heading" aria-level="2" id="Class:_Acitivity"> Class: Activity</h3>
+      <section id="class-Activity" typeof="bibo:Chapter" resource="#class-Activity" property="bibo:hasPart">
+        <h3 role="heading" aria-level="2" id="Class:_Acitivity" resource="#Class:_Acitivity"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.6 </span> Class: Activity</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1250,8 +897,8 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <section id="class-Rating">
-        <h3> Class: Rating</h3>
+      <section id="class-Rating" typeof="bibo:Chapter" resource="#class-Rating" property="bibo:hasPart">
+        <h3 id="h-class-rating" resource="#h-class-rating"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.7 </span> Class: Rating</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1275,8 +922,8 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <section id="class-Citation">
-        <h3>Class: Citation</h3>
+      <section id="class-Citation" typeof="bibo:Chapter" resource="#class-Citation" property="bibo:hasPart">
+        <h3 id="h-class-citation" resource="#h-class-citation"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.8 </span>Class: Citation</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1303,9 +950,9 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <div class="issue"> The use of cito:CitationAct and duv:Citation is
+        <div class="issue" id="issue-5"><div class="issue-title" aria-level="4" role="heading" id="h-issue5"><span>Issue 5</span></div><div class=""> The use of cito:CitationAct and duv:Citation is
           under evaluation. <a href="http://www.w3.org/2013/dwbp/track/issues/173">
-            Issue-173 </a></div>
+            Issue-173 </a></div></div>
               </section>
         <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
           hasCitingEntity</h4>
@@ -1337,8 +984,8 @@ pre red { color: red;
           </tbody>
         </table>
 
-      <section id="class-Feedback">
-        <h3> Class: Feedback</h3>
+      <section id="class-Feedback" typeof="bibo:Chapter" resource="#class-Feedback" property="bibo:hasPart">
+        <h3 id="h-class-feedback" resource="#h-class-feedback"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.9 </span> Class: Feedback</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1372,10 +1019,10 @@ pre red { color: red;
           </tbody>
         </table>
     
-        <div class="issue"> The definition of duv:Feedback needs to be reviewed
+        <div class="issue" id="issue-6"><div class="issue-title" aria-level="4" role="heading" id="h-issue6"><span>Issue 6</span></div><div class=""> The definition of duv:Feedback needs to be reviewed
           because it is not clear if it should be a subclass of oa:Annotation or
           just an instance of oa:Motivation. <a href="http://www.w3.org/2013/dwbp/track/issues/178">
-            Issue-178 </a> </div>
+            Issue-178 </a> </div></div>
               </section>
         <h4 role="heading" aria-level="3" id="Property:endorses">Property:
           endorses</h4>
@@ -1465,9 +1112,9 @@ pre red { color: red;
         </tr> -->
           </tbody>
         </table>
-        <div class="issue"> The meaning of duv:retains needs to be clarified and
+        <div class="issue" id="issue-7"><div class="issue-title" aria-level="3" role="heading" id="h-issue7"><span>Issue 7</span></div><div class=""> The meaning of duv:retains needs to be clarified and
           more examples will be provided. <a href="http://www.w3.org/2013/dwbp/track/issues/174">
-            Issue-174 </a> </div>
+            Issue-174 </a> </div></div>
         <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
           has_rating</h4>
         <table class="definition">
@@ -1525,8 +1172,8 @@ pre red { color: red;
           </tbody>
         </table>
 
-      <section id="class-DatasetCorrection">
-        <h3>Class: DatasetCorrection</h3>
+      <section id="class-DatasetCorrection" typeof="bibo:Chapter" resource="#class-DatasetCorrection" property="bibo:hasPart">
+        <h3 id="h-class-datasetcorrection" resource="#h-class-datasetcorrection"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.10 </span>Class: DatasetCorrection</span></h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1551,8 +1198,8 @@ pre red { color: red;
         </table>
       </section>
     
-      <section class="id-WebThing">
-      <h3> Class: WebThing</h3>
+      <section class="id-WebThing" id="class-webthing" typeof="bibo:Chapter" resource="#class-webthing" property="bibo:hasPart">
+      <h3 id="h-class-webthing" resource="#h-class-webthing"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.11 </span> Class: WebThing</span></h3>
       <table class="definition">
         <thead>
           <tr>
@@ -1576,14 +1223,14 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
-      <div class="issue">Should prov:SoftwareAgent be used instead of
+      <div class="issue" id="issue-8"><div class="issue-title" aria-level="4" role="heading" id="h-issue8"><span>Issue 8</span></div><div class="">Should prov:SoftwareAgent be used instead of
         Application/WebOfThing? <a href="http://www.w3.org/2013/dwbp/track/issues/176">
-          Issue-176 </a> </div>
+          Issue-176 </a> </div></div>
     </section>
     </section>
 
-    <section id="duvrequirements">
-      <h2>DUV Requirements</h2>
+    <section id="duvrequirements" typeof="bibo:Chapter" resource="#duvrequirements" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-duvrequirements" resource="#h-duvrequirements"><span property="xhv:role" resource="xhv:heading"><span class="secno">9. </span>DUV Requirements</span></h2>
       <p> This section shows some of the requirements that motivated the
         development of the Dataset Usage Vocabulary. These requirements were
         derived from the use cases described in <a href="http://www.w3.org/TR/dwbp-ucr/">Data
@@ -1633,7 +1280,7 @@ pre red { color: red;
             <td>&gt;Data
               is put in public for reuse and reference in nature conservation
               activities. Information about use of this data &nbsp;will
-              determined impact of this framework. Usage of this data MUST lead
+              determined impact of this framework. Usage of this data <em class="rfc2119" title="MUST">MUST</em> lead
               to future publications of less heterogenous data and more and more
               used of standardised thesauri.<br>
             </td>
@@ -1798,95 +1445,25 @@ pre red { color: red;
         </tbody>
       </table>
     </section>
-    <section id="acknowledgements" class="appendix">
-      <h2>Acknowledgements</h2>
+    <section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Acknowledgements</span></h2>
     </section>
-    <section id="change-history" class="appendix">
-      <h2>Change history</h2>
+    <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-change-history" resource="#h-change-history"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Change history</span></h2>
     </section>
-    <section id="references" class="appendix">
-      <h2> References</h2>
-      <section id="normative-references" class="appendix">
-        <h3>Normative references</h3>
+    <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span> References</span></h2>
+      <section id="normative-references" class="appendix" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+        <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Normative references</span></h3>
         <dl about="" class="bibliography">
         </dl>
       </section>
-      <section id="informative-references">
-        <h3>Informative references</h3>
+      <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+        <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Informative references</span></h3>
         <dl about="" class="bibliography">
         </dl>
       </section>
     </section>
-        <script type="application/javascript">
-        var bodyKeypressCallbacks = {};
+  
 
-        /* a form like
-        <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
-        controls display of sections like
-        <pre class="schema turtle">...</pre>
-        <pre class="schema json-ld">...</pre>
-         */
-        [
-          { lookIn: ".schema", form: "#langOptions", radioName: "presLang", keys:
-            { 74: "json-ld", 106: "json-ld", 84: "turtle", 116: "turtle" }
-          },
-          { lookIn: ".enumChoice", form: "#enumOptions", radioName: "enumForm", keys:
-            { 67: "collection", 99: "collection", 79: "objectlist", 111: "objectlist" }
-          },
-          { lookIn: ".sparqlExt", form: "#sparqlOptions", radioName: "sparqlRepresentation", keys:
-            { 66: "builtin", 98: "builtin", 69: "extension", 101: "extension" }
-          }
-        ].forEach(function (x) {
-
-          /* In lookIn, reveal classes selected by radioName; hide others.
-           */
-          function revealClass (lookIn, form, radioName) {
-            $(lookIn+"."+$(form+" input[name="+radioName+"]").not(":checked").val()).hide();
-            $(lookIn+"."+$(form+" input[name="+radioName+"]" +    ":checked").val()).show();
-          }
-          /* Look in all lookIn containers for the height different of from and to targets.
-           */
-          function adjustHeight (lookIn, from, to) {
-            var visibleTop = $(window).scrollTop();
-            var all = $(lookIn+"."+from); // all containers of from (and presumably, to)
-            var adj = 0;
-            for (var i = 0; i < all.length; ++i) {
-              var elt = all.slice(i, i+1);
-              if (elt.offset().top >= visibleTop) // stop when we pass the current scroll top.
-                break;
-              adj += elt.siblings("."+to).height() - elt.height();
-            }
-            $(window).scrollTop($(window).scrollTop() + adj); // move the scroll top.
-          }
-         var inputs = $(x.form + " input[name="+x.radioName+"]");
-          // Listen for checkbox changes.
-          inputs.change(function() {revealClass(x.lookIn, x.form, x.radioName);})
-          // Show only the currently selected class.
-          revealClass(x.lookIn, x.form, x.radioName);
-          // Assign callbacks the the associated keycodes.
-          Object.keys(x.keys).forEach(function (k) {
-            bodyKeypressCallbacks[k] = function () {
-              // If the corresponding radio button isn't already selected,
-              if(!inputs.filter("[value="+x.keys[k]+"]").is(":checked")) {
-                // adjust the height from the current class to the new class;
-                adjustHeight(x.lookIn, $("input[name="+x.radioName+"]:checked", x.form).val(), ""+x.keys[k]+"");
-                // set it as "checked";
-                inputs.filter("[value="+x.keys[k]+"]").prop("checked", true); // .change() did nothing
-                // swap which is displayed.
-                revealClass(x.lookIn, x.form, x.radioName);
-              }
-              return false;
-            };
-          });
-        });
-        $("html > body").keypress(function (evt) {
-          if (evt.ctrlKey)
-            return true; // don't interfere with browser control keys.
-          if (evt.which in bodyKeypressCallbacks)
-            return bodyKeypressCallbacks[evt.which]();
-          return true;
-        });
-        </script>
-
-  </body>
-</html>
+</body></html>

@@ -1,7 +1,8 @@
 ﻿var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-    publishDate:  "2015-05-18",
+    publishDate:  "2015-11-13",
+    //previousPublishDate: "2015-05-18",
     //previousPublishDate: "2014-03-27",
     //previousMaturity: "FPWD",
     //previousURI: "http://www.w3.org/TR/2014/WD-tabular-data-model-20140327/",
@@ -120,7 +121,24 @@
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
       },
-
+      "UCR" : {
+        title: "Data on the Web Best Practices Use Cases & Requirements",
+        authors: ["Deirdre Lee", "Bernadette Farias Lóscio", "Phil Archer"],
+        href: "http://www.w3.org/TR/dwbp-ucr/",
+        status: "Note"
+      },
+      "DUV" : { 
+	title: "Data on the Web Best Practices: Dataset Usage Vocabulary",
+        authors: ["Bernadette Farias Lóscio", "Eric G. Stephan", "Sumit Purohit"],
+        href: "http://www.w3.org/TR/vocab-duv/",
+        status: "Public Working Draft"
+     },
+     "DQV" : { 
+	title: "Data Quality Vocabulary",
+        authors: ["Riccardo Albertoni", "Christophe Guéret", "Antoine Isaac","Jeremy Debattista", "Makx Dekkers", "Deirdre Lee"],
+        href: "http://www.w3.org/TR/vocab-dqv/",
+        status: "Public Working Draft"
+     },
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
@@ -272,6 +290,12 @@
         "title":"Common Format and MIME Type for Comma-Separated Values (CSV) Files",
         "status":"RFC 4180",
         "date":"October 2005"
+       },
+       "PAV":{
+        "authors":["Paolo Ciccarese", "Stian Soiland-Reyes"],
+        "href": "http://purl.org/pav/",
+        "title": "PAV - Provenance, Authoring and Versioning",
+        "date": "28 August 2014"
        },
       "Navathe": {
  	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        

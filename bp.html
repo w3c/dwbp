@@ -5,9 +5,13 @@
     <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Linux https://github.com/w3c/tidy-html5/tree/c63cc39">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <title>Data on the Web Best Practices</title>
-    <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common">
-</script> <script class="remove" src="bpconfig.js">
-</script> <style type="text/css">
+    <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common"></script>
+    <script class="remove" src="bpconfig.js"></script>
+    <script src="cross-dom.js"></script>
+    <script>
+      window.onload=init;
+    </script>
+    <style type="text/css">
 
 #bp-summary ul {
   list-style-type: none;
@@ -68,6 +72,20 @@ figure figcaption {
   font-style:italic;
 }
 
+table#uripatternstable {
+  border-collapse: collapse;
+  caption-side:bottom;
+}
+table#uripatternstable th, table#uripatternstable td {
+  border: 1px solid black;
+  padding:0.3em;
+}
+
+table#uripatternstable caption {
+  margin:0.5em;
+  font-style:italic;
+}
+
 .stmt
 {       
     padding: 3pt}
@@ -106,20 +124,20 @@ figure figcaption {
   </head>
   <body>
     <section id="abstract">
-      <p>This document provides best practices related to the publication and
-        usage of data on the Web designed to help support a self-sustaining
-        ecosystem. Data should be discoverable and understandable by humans and
-        machines. Where data is used in some way, whether by the originator of
-        the data or by an external party, such usage should also be discoverable
-        and the efforts of the data publisher recognized. In short, following
-        these best practices will facilitate interaction between publishers and
-        consumers.</p>
+      <p>This document provides best practices related to the
+        publication and usage of data on the Web designed to help support a
+        self-sustaining ecosystem. Data should be discoverable and
+        understandable by humans and machines. Where data is used in some way,
+        whether by the originator of the data or by an external party, such
+        usage should also be discoverable and the efforts of the data publisher
+        recognized. In short, following these best practices will facilitate
+        interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
       <p>This version of the document shows its expected scope and future
-        direction. A template is used to show the "what", "why" and "how" of each
-        best practice. Comments are sought on the usefulness of this approach
-        and the expected scope of the final document.</p>
+        direction. A template is used to show the "what", "why" and "how" of
+        each best practice. Comments are sought on the usefulness of this
+        approach and the expected scope of the final document.</p>
     </section>
     <section id="intro" class="informative">
       <h2>Introduction</h2>
@@ -151,7 +169,7 @@ figure figcaption {
         publishers and consumers face the new challenges and opportunities posed
         by data on the Web. </p>
       <p>Best practices cover different aspects related to data publishing and
-        consumption, like data formats, data access, data identification and
+        consumption, like data formats, data access, data identifiers and
         metadata. In order to delimit the scope and elicit the required features
         for Data on the Web Best Practices, the <abbr title="Data on the Web Best Practices">DWBP</abbr>
         working group compiled a set of use cases [[UCR]] that represent
@@ -167,7 +185,7 @@ figure figcaption {
         practices that stem from Best Practices for Publishing Linked Data where
         appropriate.</p>
     </section>
-    <section id="conformance"> </section>
+    <!--     <section id="conformance"> </section> -->
     <section id="audience" class="informative">
       <h2>Audience</h2>
       <p>This document provides best practices to those who publish data on the
@@ -196,24 +214,63 @@ figure figcaption {
         <li>can be tested by machines, humans or a combination of the two.</li>
       </ul>
       <p>As noted above, whether a best practice has or has not been followed
-        should be judged against the <em>intended outcome</em>, not the
-        <em>possible approach to implementation</em> which is offered as guidance. A best practice is
-        always subject to improvement as we learn and evolve the Web together.</p>
+        should be judged against the <em>intended outcome</em>, not the <em>possible
+          approach to implementation</em> which is offered as guidance. A best
+        practice is always subject to improvement as we learn and evolve the Web
+        together.</p>
     </section>
     <section id="context" class="informative">
       <h2>Context</h2>
-      <p>In general, publishing data on the Web means publishing datasets in
-        order to share them with multiple users. For this document, as defined
-        by [[DCAT]], "a dataset is a collection of data, available for access or
-        download in one or more formats". By data, "we mean known facts that can
-        be recorded and that have implicit meaning" [[Navathe]]. To meet the
-        requirements of different users, a single dataset may be available in
-        different data formats or distributions. Again quoting the DCAT
-        specification, a distribution "Represents a specific available form of a
-        dataset. Each dataset might be available in different forms, these forms
-        might represent different formats of the dataset or different endpoints.
-        Examples of distributions include a downloadable CSV file, an API or an
-        RSS feed" [[VOCAB-DCAT]]</p>
+      <p> In general, the Best Practices proposed for publication and usage of
+        Data on the Web refer to datasets and distributions. For this document,
+        as defined by [[DCAT]], "a dataset is a collection of data, available
+        for access or download in one or more formats". By data, "we mean known
+        facts that can be recorded and that have implicit meaning" [[Navathe]].
+        In ordet to meet the requirements of several data consumers datasets
+        should be available in more than one distribution. Again quoting the
+        [[DCAT]] specification, a distribution "Represents a specific available
+        form of a dataset. Each dataset might be available in different forms,
+        these forms might represent different formats of the dataset or
+        different endpoints. Examples of distributions include a downloadable
+        CSV file, an API or an RSS feed".</p>
+      <p> In our context, two importante aspects should be considered when
+        publishing data on the Web: the sharing of data in a large scale and the
+        use of the Web as a platform for data publication and sharing. Large
+        scale data sharing allows datasets to be used for several groups of data
+        consumers, which may have distinct requirements and expectations about
+        the data. Given this heterogeneity and the fact that data publishers and
+        data consumers may be unknown to each other, it is necessary to offer
+        some additional information to help understanding and manipulating the
+        data. Such information may also contribute to leverage dataset
+        trustworthy and reuse. Additional information that should be published
+        as part of the dataset includes but is not limited to: structural
+        metadata, descriptive metadata, access information, data quality
+        information, provenance information, license information and usage
+        information. </p>
+      <p> The second aspect, the use of the Web as a platform for data
+        publication and sharing, concerns the architectural bases of the Web as
+        discussed in [[WEBARCH]]. The DWBP document is mainly interested on the
+        Identification principle that says that URIs should be used to identify
+        resources. In our context, a resource may be a whole dataset or a
+        specific item of given dataset. All resources should be published with
+        stable URIs, so that they can be referenced. At the very least, give
+        them unique and stable URIs, if you don't want to make them directly
+        accessible. Besides it should be possible to create links between
+        resources. A link may be defined as a relationship between two resources
+        when one resource refers to the other resource by means of a URI. </p>
+      <p>The following diagram illustrates the dataset composition (data values
+        and metadata) together with other components related to the dataset
+        publication and usage. Data values correspond to the data itself and may
+        be available in one or more distributions, which should be defined by
+        the publisher considering data consumer's expectations. The Metadata
+        component corresponds to the additional information that describes the
+        dataset and dataset distributions, helping the manipulation and the
+        reuse of the data.&nbsp; In order to allow an easy access to the dataset
+        and its corresponding distributions multiple Dataset Access mechanisms
+        should be available such as APIs and bulk download. Finally, to promote
+        the interoperability among datasets it is important to adopt Data
+        Vocabularies and Standards. </p>
+      <img src="images/context.jpg" alt="Our Context" height="440" width="640">
     </section>
     <section id="challenges" class="informative">
       <h2>Data on the Web Challenges</h2>
@@ -232,8 +289,7 @@ figure figcaption {
         Use Cases and Requirements [[UCR]] and are described by one or more
         questions. As presented in the diagram, each one of these challenges is
         addressed by one or more best practices.</p>
-      <object type="image/svg+xml" data="images/DW_Challenges.svg"> Data on the
-        Web Challenges </object>
+      <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
       <p> Each one of these challenges originated one or more requirements as
         documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
           use-cases document</a>. The development of Data on the Web Best
@@ -241,14 +297,42 @@ figure figcaption {
         best practice should have at least one of these requirements as an
         evidence of its relevance.</p>
     </section>
+    <section id="bp-benefits" class="informative">
+      <h2>Best Practices Benefits</h2>
+      <p>In order to encourage data publishers to adopt the DWBP, the list below
+        describes the main benefits of applying the proposed BP. Each benefit
+        represents an improvement in the way how datasets are available on the
+        Web.</p>
+      <ul>
+        <li> Comprehension: humans will have a better understanding about the
+          data structure, the data meaning, the metadata and the nature of the
+          dataset. </li>
+        <li> Processibility: machines will be able to automatically process and
+          manipulate the data within a dataset.</li>
+        <li> Discoverability machines will be able to automatically discover a
+          dataset or data within a dataset.</li>
+        <li> Reuse: the chances of dataset reuse by different groups of data
+          consumers will increase.</li>
+        <li> Trustworthy: the confidence of consumers on the dataset will
+          improve.</li>
+        <li> Linkability: it will be possible to create links between data
+          resources (datasets and data items).</li>
+        <li> Accessibility: humans and machines will be able to access the data
+          up to date in a variety of forms.</li>
+        <li> Interoperability: it will be easier to reach consensus among data
+          publishers and consumers.</li>
+      </ul>
+      The figure below shows the benefits that data publishers will gain with
+      the adoption of each one of the proposed best practices. <img src="images/benefits.jpg"
+
+        alt="BP Benefits" height="340" width="840"> </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
         Best Practices.</p>
       <div id="tempPractice">
         <p><span id="template" class="tempPracticelab">Best Practice Template</span></p>
-        <p class="tempPracticedesc">Short description of the BP, including the
-          relevant RFC2119 keyword(s)</p>
+        <p class="tempPracticedesc">Short description of the BP</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>This section answers two crucial questions:</p>
@@ -286,10 +370,8 @@ figure figcaption {
               on the Web Best Practices Use Cases &amp; Requirements document</a></p>
         </section>
       </div>
-      <div class="issue">
-        <p>Which section of a BP is normative, and whether the use of RFC2119
-          keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>
-      </div>
+      <!--       <div class="issue">
+        <p>Which section of a BP is normative, and whether the use of RFC2119          keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>      </div> -->
     </section>
     <section id="bp-summary"> </section>
     <section id="bestPractices">
@@ -356,8 +438,8 @@ figure figcaption {
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab"> Provide metadata</span></p>
-          <p class="practicedesc">Metadata <em class="rfc2119">must</em> be
-            provided for both human users and computer applications</p>
+          <p class="practicedesc">Metadata must be provided for both human users
+            and computer applications</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Providing metadata is a fundamental requirement when publishing
@@ -387,24 +469,22 @@ figure figcaption {
             <ul>
               <li> machine readable metadata may be provided in a serialization
                 format such as Turtle and JSON, or it can be embedded in the
-                HTML page using [[JSON-LD]], or [[HTML-RDFA]] or [[Microdata]].
-                If multiple formats are published separately, they should be
-                served from the same URL using content negotiation. Maintenance
-                of multiple formats is best achieved by generating each
-                available format on the fly based on a single source of the
-                metadata.</li>
+                HTML page using [[HTML-RDFA]] or [[JSON-LD]]. If multiple
+                formats are published separately, they should be served from the
+                same URL using content negotiation. Maintenance of multiple
+                formats is best achieved by generating each available format on
+                the fly based on a single source of the metadata.</li>
               <li> when defining machine readable metadata, reusing existing
                 standard terms and popular vocabularies are strongly
                 recommended. For example, Dublin Core Metadata (DCMI) terms
                 [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] should
-                be used to provide descriptive metadata (see Section <a href="#dataVocabularies"></a>).</li>
+                be used to provide descriptive metadata (see Section ).</li>
             </ul>
-            <label class="expand" for="example-ProvideMetadata"></label> <input
-
-              id="example-ProvideMetadata" type="checkbox">
-            <div class="example">
+            <!--             <label class="expand" for="example-ProvideMetadata"></label> <input
+              id="example-ProvideMetadata" type="checkbox"> -->
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -427,13 +507,13 @@ figure figcaption {
         <div class="practice">
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
-          <p class="practicedesc">The overall features of a dataset <em class="rfc2119">must</em>
-            be described by metadata</p>
+          <p class="practicedesc">The overall features of a dataset must be
+            described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Explicitly providing dataset descriptive information allows user
               agents to automatically discover datasets available on the Web and
-              it allows humans to understand the nature of the dataset.&nbsp; </p>
+              it allows humans to understand the nature of the dataset. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -470,27 +550,25 @@ figure figcaption {
               [[VOCAB-DCAT]]. This provides a framework in which datasets can be
               described as abstract entities. </p>
             <!--<p>See also <a href="#AdministrativeMetadata">Provide
-                Administrative Metadata</a></p> --> <label class="expand" for="example-DiscoveryMetadata"></label>
-            <input id="example-DiscoveryMetadata" type="checkbox">
-            <div class="example">
+                Administrative Metadata</a></p> -->
+            <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows how to use [[VOCAB-DCAT]] to provide
+              <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
                 the timetable dataset (dataset-001). </p>
-              <pre>  &nbsp;:dataset-001
-       a dcat:Dataset&nbsp;;
-       dct:title "Bus timetable of MyCity"&nbsp;;
-       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
-       dct:issued "2015-05-05"^^xsd:date'&nbsp;;
-       dct:modified "2015-05-05"^^xsd:date'&nbsp;;
+              <pre class="highlight">  :dataset-001
+       a dcat:Dataset;
+       dct:title "Bus timetable of MyCity";
+       dcat:keyword "transport","mobility" ,"bus";
+       dct:issued "2015-05-05"^^xsd:date';
+       dct:modified "2015-05-05"^^xsd:date';
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;       
+       dct:publisher:transport-agency-mycity ;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;       
        .
 </pre>
-              <p></p>
               <p> The following paragraph was extracted from the DCAT
                 specification (to review): In order to express frequency of
                 update in the example above, we chose to use an instance from
@@ -511,7 +589,7 @@ figure figcaption {
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable description of dataset is availabe.</p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -534,8 +612,8 @@ figure figcaption {
           <p><span id="LocaleParametersMetadata" class="practicelab">Provide
               locale parameters metadata </span></p>
           <p class="practicedesc">Information about locale parameters (date,
-            time, and number formats, language) <em class="rfc2119">should</em>
-            be described by metadata. </p>
+            time, and number formats, language) should be described by metadata.
+          </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Providing locale parameters metadata helps data consumers, i.e.,
@@ -568,27 +646,23 @@ figure figcaption {
               provided according to the vocabulary recommended by W3C to
               describe datasets, i.e. the Data Catalog Vocabulary
               [[VOCAB-DCAT]].</p>
-            <label class="expand" for="example-LocaleParameters"></label> <input
-
-              id="example-LocaleParameters" type="checkbox">
-            <div class="example">
-              <p> </p>
+            <aside class="example">
               <p> The example below shows the machine readable metadata for
                 dataset-001 with the inclusion of the <strong> locale
                   parameters </strong> metadata. </p>
-              <pre>  &nbsp;:dataset-001
-       a dcat:Dataset&nbsp;;
-       dct:title "Bus timetable of MyCity"&nbsp;;
-       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
-       dct:issued "2015-05-05"&nbsp;;
-       dct:modified "2015-05-05"&nbsp;;
+              <pre class="highlight">  :dataset-001
+       a dcat:Dataset;
+       dct:title "Bus timetable of MyCity";
+       dcat:keyword "transport","mobility" ,"bus";
+       dct:issued "2015-05-05";
+       dct:modified "2015-05-05";
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;&nbsp;; 
-       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt;&nbsp;;</strong>
-       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/por&gt;&nbsp;;</strong>
+       dct:publisher:transport-agency-mycity ;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;; 
+       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt;;</strong>
+       <strong>dct:language &lt;http://lexvo.org/id/iso639-3/por&gt;;</strong>
        .
 </pre>
               <p> To declare the languages the dataset is published in use
@@ -597,12 +671,11 @@ figure figcaption {
                 in Dataset Descriptions from HCLS Community [[HCLS]] values were
                 taken from the Lexvo.org Ontology [[Lexvo]]. </p>
               <div class="note"> to include date and numbers formats! </div>
-              <p></p>
               <div class="issue"> DCAT has a property to describe language, but
                 there are no properties to describe date, time and numeric
                 formats. Which vocabulary should be used to provide this type of
                 metadata? This is <a href="https://www.w3.org/2013/dwbp/track/issues/167">Issue-167</a>.</div>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -623,7 +696,7 @@ figure figcaption {
           <p><span id="StructuralMetadata" class="practicelab">Provide
               structural metadata </span> </p>
           <p class="practicedesc"> Information about the schema and internal
-            structure of a distribution <em class="rfc2119">must</em> be described by metadata</p>
+            structure of a distribution must be described by metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Providing information about the internal structure of a
@@ -652,14 +725,9 @@ figure figcaption {
               <li> XML: see <a href="http://www.w3.org/XML/Schema"> XML Schema
                 </a> </li>
             </ul>
-            <p></p>
-            <label class="expand" for="example-StructuralMetadata"></label> <input
-
-              id="example-StructuralMetadata" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
-            <p></p>
+            </aside>
           </section>
           <section class="test"><span style="font-weight: bold;">How to Test </span>
             <p> Check that the distribution itself includes structural
@@ -677,13 +745,13 @@ figure figcaption {
       <section id="licenses">
         <h2>Data Licenses</h2>
         <p>A license is a very useful piece of information to be attached to
-          data on the Web. As defined by the Dublin Core Metadata Initiative [[DC-TERMS]], a
-          license is a legal document giving official permission to do something
-          with the data with which it is associated. According to the type of
-          license adopted by the publisher, there might be more or fewer
-          restrictions on sharing and re-using data. In the context of data on
-          the Web, the license of a dataset can be specified within the data, or
-          outside of it, in a separate document to which it is linked.
+          data on the Web. As defined by the Dublin Core Metadata Initiative
+          [[DC-TERMS]], a license is a legal document giving official permission
+          to do something with the data with which it is associated. According
+          to the type of license adopted by the publisher, there might be more
+          or fewer restrictions on sharing and re-using data. In the context of
+          data on the Web, the license of a dataset can be specified within the
+          data, or outside of it, in a separate document to which it is linked.
           <!--However, in line with the Linked
           Data principles, licenses for such datasets should          be specified in RDF, for instance through the Dublin Core vocabulary          [[DC-TERMS]].</p> -->
           <!-- begin of Provide Data License BP --> </p>
@@ -691,8 +759,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="DataLicense" class="practicelab">Provide data license
               information</span></p>
-          <p class="practicedesc"> Data license information <em class="rfc2119">should</em>
-            be available </p>
+          <p class="practicedesc"> Data license information should be available
+          </p>
           <div class="axioms">
             <p class="subhead">Why</p>
             <p>The presence of license information is essential for data
@@ -728,25 +796,19 @@ figure figcaption {
               <li> The Open Data Rights Language [[ODRL]]</li>
               <li> The Open Data Rights Statement Vocabulary [[ODRS]].</li>
             </ul>
-            <p></p>
             <!-- <p>Links to the license can be provided from the data itself, from
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
-            <label class="expand" for="example-DataLicense"></label> <input id="example-DataLicense"
-
-              type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p> </p>
               <p> The example below shows the machine readable metadata for
                 :dataset-001-csv with the inclusion of the <strong> data
                   license </strong> information. </p>
-              <pre>  &nbsp;:dataset-001-csv
-       a dcat:Distribution&nbsp;;
+              <pre class="highlight">  :dataset-001-csv
+       a dcat:Distribution;
        dcat:mediaType "text/csv";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
-</pre>
-              <p></p>
-            </div>
+</pre> </aside>
           </div>
           <div class="test">
             <p class="subhead">How to Test</p>
@@ -768,7 +830,7 @@ figure figcaption {
       <!--      <div class="issue">
         <p> I am not sure of how to define data licence metadata. In DCAT,          licence is defined as a property of distribution. However, in our BP          we just mention datasets. Should we also consider distributions? </p>      </div>-->
       <!--      <div class="example">
-          <p> </p>          <p> The example below shows the machine readable metadata for            dataset-001 with the inclusion of the <strong> data licence </strong>            metadata. </p>          <pre>  &nbsp;:dataset-001       a dcat:Dataset&nbsp;;       dct:title "Bus timetable of MyCity"&nbsp;;       dcat:keyword "transport","mobility" ,"bus"&nbsp;;       dct:issued "2015-05-05"&nbsp;;       dct:modified "2015-05-05"&nbsp;;       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;       dct:spatial &lt;http://www.geonames.org/3399415&gt;;       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;;        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;       <strong>dct:licence &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; &nbsp;;</strong><http://creativecommons.org/licenses/by-sa/3.0/>       .</pre>                 </div> -->
+          <p> </p>          <p> The example below shows the machine readable metadata for            dataset-001 with the inclusion of the <strong> data licence </strong>            metadata. </p>          <pre>  :dataset-001       a dcat:Dataset;       dct:title "Bus timetable of MyCity";       dcat:keyword "transport","mobility" ,"bus";       dct:issued "2015-05-05";       dct:modified "2015-05-05";       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;       dct:spatial &lt;http://www.geonames.org/3399415&gt;;       dct:publisher:transport-agency-mycity ;       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;       <strong>dct:licence &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;</strong>&lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;       .</pre>                 </div> -->
       <!-- end of Data Licenses -->
       <!-- begin of Data Provenance -->
       <section id="provenance">
@@ -797,8 +859,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="DataProvenance" class="practicelab">Provide data
               provenance information</span></p>
-          <p class="practicedesc">Data provenance information <em class="rfc2119">should</em>
-            should be available. </p>
+          <p class="practicedesc">Data provenance information should should be
+            available. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Without accessible data provenance, data consumers will not know
@@ -823,39 +885,36 @@ figure figcaption {
             </p>
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
-            <label class="expand" for="example-DataProvenance"></label> <input
-
-              id="example-DataProvenance" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p> The example below shows the machine readable metadata for
-                dataset-001 with the inclusion of the <strong> provenance </strong>
+                dataset-001 with the inclusion of the <strong>provenance</strong>
                 metadata. </p>
-              <pre>  &nbsp;:dataset-001
-       a dcat:Dataset&nbsp;, prov:Entity;
-       dct:title "Bus timetable of MyCity"&nbsp;;
-       dcat:keyword "transport","mobility" ,"bus"&nbsp;;
-       dct:issued "2015-05-05"&nbsp;;
-       dct:modified "2015-05-05"&nbsp;;
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher&nbsp;:transport-agency-mycity &nbsp;;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; &nbsp;; 
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; &nbsp;;
-       <strong>prov:wasAttributedTo :john; </strong> 
-       .
+              <pre class="highlight">:dataset-001
+  a dcat:Dataset, prov:Entity;
+  dct:title "Bus timetable of MyCity";
+  dcat:keyword "transport","mobility" ,"bus";
+  dct:issued "2015-05-05";
+  dct:modified "2015-05-05";
+  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+  dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+  dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+  dct:publisher:transport-agency-mycity ;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+  <strong>prov:wasAttributedTo :john; </strong> 
+  .
        
- &nbsp;:john
-       a foaf:Person, prov:Agent;
-       foaf:givenName "John";
-       foaf:mbox <mailto:john@mycitytransport.org>;
-       prov:actedOnBehalfOf :transport-agency-mycity;
-       .
- &nbsp;:transport-agency-mycity
-       a foaf:Organization, prov:Agent;
-       foaf:name "Transport Agency of Mycity";
-       .
-</mailto:john@mycitytransport.org></pre> </div>
+:john
+  a foaf:Person, prov:Agent;
+  foaf:givenName "John";
+  foaf:mbox &lt;mailto:john@mycitytransport.org&gt;;
+  prov:actedOnBehalfOf :transport-agency-mycity;
+ .
+:transport-agency-mycity
+  a foaf:Organization, prov:Agent;
+  foaf:name "Transport Agency of Mycity";
+  .
+</pre> </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -896,8 +955,7 @@ figure figcaption {
         <div class="practice">
           <p><span id="DataQuality" class="practicelab">Provide data quality
               information</span></p>
-          <p class="practicedesc">Data Quality information <em class="rfc2119">should</em>
-            be available.</p>
+          <p class="practicedesc">Data Quality information should be available.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Data quality might seriously affect the suitability of data for
@@ -927,14 +985,10 @@ figure figcaption {
             <p>The machine readable version of the dataset quality metadata may
               be provided according to the vocabulary that is being developed by
               the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-              working group , i.e., the Data Quality and Granularity vocabulary.
-            </p>
-            <label class="expand" for="example-Quality"></label> <input id="example-Quality"
-
-              type="checkbox">
-            <div class="example">
+              working group , i.e., the Data Quality Vocabulary [[DQV]]. </p>
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -961,48 +1015,78 @@ figure figcaption {
       <!-- begin of Data Versioning -->
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
-         <div class="issue"> This section provides an initial idea of how we are planning to deal with versioning. 
-        We're keen to hear comments about our proposal to represent the relationship between a dataset and its different versions 
-           as well as the use of <a href="http://pav-ontology.github.io/pav/"> PAV </a> ontology as a solution to track dataset 
-           versioning. <a href="https://www.w3.org/2013/dwbp/track/issues/192">Issue-192</a> </div>
-          <div class="issue"> To discuss if the items in yellow each represent a different dataset (they report different data points) or a different version, if released independently. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div>
-            </div>
-          <div class="issue"> To debate if versions attempt to report the same data. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div>
-            </div>
-        <p>Data on the Web often changes over time. Many datasets are updated on
-          a scheduled basis, such as census data or funding data that changes
-          every fiscal year. Other datasets are changed as improvements in
-          collecting the data make updates worthwhile. Still other data changes
-          in real time or near real time. All these types of data need a
-          consistent, informative approach to versioning, so data consumers
+        <!--div class="issue"> This section provides an initial idea of how we are
+          planning to deal with versioning. We're keen to hear comments about          our proposal to represent the relationship between a dataset and its          different versions  </div>        <!-- <div class="issue"> To discuss if the items in yellow each represent a          different dataset (they report different data points) or a different          version, if released independently. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
+        <!--<div class="issue"> To debate if versions attempt to report the same
+          data. This is <a href="https://www.w3.org/2013/dwbp/track/issues/193">Issue-193</a>.</div> -->
+        <p> Datasets published on the Web may change over time. Some datasets
+          are updated on a schedule basis and other datasets are changed as
+          improvements in collecting the data make updates worthwhile. In order
+          to deal with these changes, new versions of a dataset may be created.
+          Dataset versioning has been the subject of numerous discussions,
+          however there is no consensus about when creating a new version of a
+          datset. In the following we provide some guidance about when to create
+          a new dataset version, but the publisher should feel free to decide
+          when to create a new dataset or a new version of an existing dataset.
+        </p>
+        <p> In general, a dataset may change with respect its data as well as
+          the metadata that describes it. Considering data updates, we may say
+          that a dataset B is considered a version of an existing dataset A,
+          when A and B store values for the same observation about the world and
+          dataset B gives new values to such observation. These new values may
+          result, for example, from the updating of existing data or the
+          inclusion of new data. To illustrate this definition, consider the
+          following scenarios related to a dataset that collects data about bus
+          timetables:</p>
+        <ul>
+          <li> Scenario 1: a new bus stop is created and its timetable doesn’t
+            exist on the dataset;</li>
+          <li> Scenario 2: an existing bus stop is removed and its timetable
+            should be deleted from the dataset;</li>
+          <li> Scneario 3: an error was identified in one of the existing
+            timetables stored in the dataset and this error must be corrected;</li>
+        </ul>
+        <p> In all scenarios, a new dataset, i.e. a new version of the existing
+          dataset, should be created to reflect the corresponding update.</p>
+        <p> Considering metadata updates, we should evaluate the impact of the
+          update on the data in order to choose between the creation of a new
+          dataset or just the updating of the dataset description. For example,
+          an update on the structural metadata of a dataset may result in the
+          creation of a new dataset while the updating of descriptive metadata
+          requires just the modification of the current dataset definition. In
+          the first case, structural changes will have an impact on how the data
+          is being described and then a new dataset should be created.</p>
+        <p> It is important to note that the creation of multiple datasets to
+          represent time series as well as spatial series, e.g. the same kind of
+          data for different regions, are not considered as multiple versions
+          for the same dataset. In this case, each dataset covers a different
+          observation about the world and should be treated as a new dataset
+          instead of a new version of an existing dataset. This is the case of a
+          dataset that collects data about weakly weather forecast of a given
+          city, where every week a new dataset should be created to store data
+          about that specific week. </p>
+        <p> Even for small changes it is important to keep track of the
+          different dataset versions to make the dataset trustworthy. Publishers
+          should remember that a given dataset may be in use for one or more
+          data consumers and they should be notified about the creation of new
+          versions or it should be possible to automatically identify different
+          versions of the same dataset. All these types of dataset updates need
+          a consistent, informative approach to versioning, so data consumers
           can understand and work with the changing data. </p>
-        <p>In order to deal with changes over time, multiple versions may be
-          created for a single dataset. To illustrate this let us consider a
-          simple example: a dataset that collects data about weekly weather
-          forecast for MyCity. The following figure shows the relation between
-          the dataset (Dataset001) and its different versions (Dataset001_W1,
-          Dataset001_W2, Dataset001_W3 and Dataset001_W4), where each version
-          corresponds to the weather forecast of a week of May 2015. Each
-          dataset version has two different distributions: one in CSV and one in
-          JSON. For example, the version Dataset001_W1 has two distributions:
-          Dataset001_W1_csv and Dataset001_W1_json. </p>
-        <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."
-        src="images/DWBP_Context.svg">
-          <figcaption>Diagram showing the relationships between Dataset,
-            Versions and Distributions</figcaption> </figure>
+        <!--
+        <p>Data on the Web often changes over time. Many datasets are updated on          a scheduled basis, such as census data or funding data that changes          every fiscal year. Other datasets are changed as improvements in          collecting the data make updates worthwhile. Still other data changes          in real time or near real time. All these types of data need a          consistent, informative approach to versioning, so data consumers can          understand and work with the changing data. </p>        <p>In order to deal with changes over time, multiple versions may be          created for a single dataset. To illustrate this let us consider a          simple example: a dataset that collects data about weekly weather          forecast for MyCity. The following figure shows the relation between          the dataset (Dataset001) and its different versions (Dataset001_W1,          Dataset001_W2, Dataset001_W3 and Dataset001_W4), where each version          corresponds to the weather forecast of a week of May 2015. Each          dataset version has two different distributions: one in CSV and one in          JSON. For example, the version Dataset001_W1 has two distributions:          Dataset001_W1_csv and Dataset001_W1_json. </p>        <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."            src="images/DWBP_Context.svg"> <figcaption>Diagram showing the            relationships between Dataset, Versions and Distributions</figcaption>        </figure> -->
         <p>The following best practices address issues that arise in tracking
           and managing different versions of datasets.</p>
-       
         <p><br>
         </p>
         <!-- begin of provide Versioning Info BP -->
         <div class="practice">
           <p><span id="VersioningInfo" class="practicelab">Provide versioning
               information</span></p>
-          <p class="practicedesc">Information about dataset versioning <em class="rfc2119">should</em>
-            be available.</p>
-          <!-- <p class="practicedesc">Data that will be updated over time <em class="rfc2119">should</em>
-              be assigned a unique version number or, at a minimum, a unique              version date, and that unique identifier <em class="rfc2119">should</em>              be distributed with the data in the form of metadata. </p> -->
+          <p class="practicedesc">Information about dataset versioning should be
+            available.</p>
+          <!-- <p class="practicedesc">Data that will be updated over time should
+              be assigned a unique version number or, at a minimum, a unique              version date, and that unique identifier should              be distributed with the data in the form of metadata. </p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Version information makes a dataset uniquely identifiable.
@@ -1032,8 +1116,8 @@ figure figcaption {
                 the dataset. </li>
               <li>Use a consistent numbering scheme with a meaningful approach
                 to incrementing digits, such as [[SchemaVer]]. </li>
-              <li>Provide a description of what has changed since the previous
-                version. </li>
+              <!-- <li>Provide a description of what has changed since the previous
+                version. </li> -->
               <li>If the data is made available through an API, the URI used to
                 request the latest version of the data should not change as the
                 versions change, but it should be possible to request a specific
@@ -1041,35 +1125,79 @@ figure figcaption {
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li>Use the <a href="http://www.mementoweb.org/guide/howto">Memento</a>
-                protocol, or components thereofe, to declare that a given
-                resource is versioned and express its relation to other
-                versions.</li>
+              <li> Use the [[Memento protocol]], or components thereof, to
+                express temporal versioning of a dataset and to access the
+                version that was operational at a given datetime. The Memento
+                protocol aligns closely with the approach for assigning URIs to
+                versions described in the following and used for W3C
+                specifications.</li>
             </ul>
-            <p>The Web Ontology Language provides a number of annotation
-              properties for version information [[OWL2-QUICK-REFERENCE]] and
-              the Provenance Ontology [[PROV-O]] defines several types of link
-              between versions.</p>
-            <label class="expand" for="example-Versioning"></label> <input id="example-Versioning"
-
-              type="checkbox">
-            <div class="example">
-              <p>to be completed</p>
+            <p>The Web Ontology Language [[OWL2-QUICK-REFERENCE]] and the
+              Provenance, authoring and versioning Ontology [[PAV]] provides a
+              number of annotation properties for version information.</p>
+            <aside class="example">
+              <p> The example below shows the machine readable metadata for
+                dataset-001 with the inclusion of the <strong>versioning</strong>
+                metadata. </p>
+              <pre class="highlight">:dataset-001
+  a dcat:Dataset, prov:Entity, version:VersionedThing;
+  dct:title "Bus timetable of MyCity";
+  dcat:keyword "transport","mobility" ,"bus";
+  dct:issued "2015-05-05";
+  dct:modified "2015-05-05";
+  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+  dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+  dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+  dct:publisher:transport-agency-mycity ;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; 
+  prov:wasAttributedTo :john;
+  <strong>owl:versionInfo "1.0"; </strong> </pre>
               <p><em>Using Memento</em></p>
-              <p>A query for the headers of a resource such as dbpedia:Paris
-                using </p>
-              <pre>curl -L -I http://dbpedia.org/resource/Paris</pre>
-              shows
-              <pre>http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre>
-              as part of the links with a "timegate" relation. This timegate
-              itself points to the latest memento of the web representation of
-              the resource with a "last memento" relation:
-              <pre>http://dbpedia.mementodepot.org/memento/20120515/http://dbpedia.org/page/Paris</pre>
-              A query for a particular datetime will point to the closest
-              memento available:
-              <pre>curl -H "Accept-Datetime: Sat, 16 Jun 2012 00:00:00 GMT" -L -I http://mementoarchive.lanl.gov/dbpedia/timegate/http://dbpedia.org/page/Paris</pre>
-              <p></p>
-            </div>
+              Assume:
+              <ul>
+                <li> http://example.org/dataset is the “generic URI” at which
+                  the current version of a dataset is always available </li>
+                <li> http://example.org/dataset-002 is the versioned URI for the
+                  current dataset </li>
+                <li> http://example.org/dataset-001 is the versioned URI of the
+                  prior version of the dataset </li>
+                <li> http://example.org/dataset-000 is the versioned URI of the
+                  first version of the dataset </li>
+              </ul>
+              <p> In the Memento protocol, the versioned URIs provide HTTP
+                response header information to express their version datetime
+                and their relation to the generic URI: </p>
+              <pre class="highlight">curl -I http://example.org/dataset-001 
+
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
+              <p> The versioned URIs can provide a link to a TimeGate, which
+                supports datetime negotiation as a means to determine which
+                version of a dataset was operational at a given datetime: </p>
+              <pre class="highlight"> 
+curl -I http://example.org/dataset-001
+
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link:&lt;http://example.org/dataset&gt;; rel=“original”,
+&lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+              <p> The generic URI can also provide a link to a TimeGate: </p>
+              <pre class="highlight">curl -i -H http://example.org/dataset
+
+HTTP/1.1 200 OK
+Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+              <p>This is how a client determines which dataset version was
+                operational on March 20 2015: </p>
+              <pre class="highlight"> 
+curl -I -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
+
+HTTP/1.1 302 Found
+Vary: accept-datetime
+Location: http://example.org/dataset-000
+Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1086,9 +1214,9 @@ figure figcaption {
         <div class="practice">
           <p><span id="VersionHistory" class="practicelab">Provide version
               history</span></p>
-          <p class="practicedesc">A version history <em class="rfc2119">should</em>
-            be available.</p>
-          <!-- <p class="practicedesc">A version history <em class="rfc2119">should</em>
+          <p class="practicedesc">A version history about the dataset should be
+            available.</p>
+          <!-- <p class="practicedesc">A version history should
               be available for versioned data.</p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1113,12 +1241,100 @@ figure figcaption {
               retrieves the latest version of the complete history.</p>
             <div class="issue"> Which vocabulary should be used to describe the
               versioning history? This is <a href="https://www.w3.org/2013/dwbp/track/issues/168">Issue-168</a></div>
-            <label class="expand" for="example-VersionHistory"></label> <input
+            <aside class="example">
+              <p> Suppose that a new bus stop was created and its timetable
+                doesn't exist on the dataset-001. To maintain the dataset-001 up
+                to date a new dataset (dataset-002) was created. dataset-002
+                includes all the data from dataset-001 plus the data about the
+                new bus stop. The machine readable metadata of dataset-002 is
+                shown below. </p>
+              <pre class="highlight">:dataset-002
+       a dcat:Dataset, version:Version;
+       dct:title "Bus timetable of MyCity";
+       dcat:keyword "transport","mobility" ,"bus";
+       dct:issued "2015-05-06"^^xsd:date';
+       dct:modified "2015-05-06"^^xsd:date';
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+       dct:publisher:transport-agency-mycity ;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+       ...
+       <strong>dct:isVersionOf:dataset-001;
+       pav:previousVersion:dataset-001;
+       rdfs:comment "A new timetable was included in the dataset-001 to reflect the creation of a new bus stop."
+       owl:versionInfo "1.1". </strong>
+</pre>
+              <p> Versioning metadata for dataset-001 after the creation of
+                dataset-002, which is a new version of dataset-001. </p>
+              <pre class="highlight">:dataset-001
+       a dcat:Dataset, version:VersionedThing;
+       dct:title "Bus timetable of MyCity";
+       <!-- dcat:keyword "transport","mobility" ,"bus";
+       dct:issued "2015-05-05"^^xsd:date';
+       dct:modified "2015-05-05"^^xsd:date';
+       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
+       dct:publisher:transport-agency-mycity ;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; 
+       prov:wasAttributedTo:john; -->
+       ...
+       <strong>version:currentVersion:dataset-002;
+       dct:hasVersion :dataset-002;
+       owl:versionInfo "1.0". </strong> </pre>
+              <p> Using Memento:</p>
+              Assume:
+              <ul>
+                <li> <code>http://example.org/dataset</code> is the “generic
+                  URI” at which the current version of a dataset is always
+                  available </li>
+                <li> <code>http://example.org/dataset-002</code> is the
+                  versioned URI for the current dataset </li>
+                <li> <code>http://example.org/dataset-001</code> is the
+                  versioned URI of the prior version of the dataset </li>
+                <li> <code>http://example.org/dataset-000</code> is the
+                  versioned URI of the first version of the dataset </li>
+              </ul>
+              <p> The versioned URIs, the generic URI, and the TimeGate can
+                provide a link to a TimeMap that provides an overview of all
+                temporal versions of the dataset: </p>
+              <pre class="highlight">curl -I http://example.org/dataset-001
 
-              id="example-VersionHistory" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+HTTP/1.1 200 OK
+Date: Sat, 24 Oct 2015 16:23:30 GMT
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original”,
+ &lt;http://example.org/timemap/dataset&gt;; rel=“timemap”;
+type="application/link-format"
+
+curl -I http://example.org/timemap/dataset
+
+HTTP/1.1 200 OK
+Content-Type: application/link-format
+
+&lt;http://example.org/dataset&gt;;rel="original”,
+&lt;http://example.org/timedate/dataset&gt;;rel="timegate”,
+&lt;http://example.org/timedate/dataset&gt;;rel="timemap”;
+type="application/link-format",
+&lt;http://example.org/dataset-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
+&lt;http://example.org/dataset-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
+&lt;http://example.org/dataset-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
+</pre>
+              <p> The versioned URI can provide information regarding relations
+                with other dataset versions: </p>
+              <pre class="highlight">curl -I http://example.org/dataset-001
+
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: &lt;http://example.org/dataset&gt;; rel=“original”,
+&lt;http://example.org/dataset-000&gt;; rel=“prev first memento";
+datetime="Thu, 05 Mar 2015 00:00:00 GMT",
+&lt;http://example.org/dataset-002&gt;; rel=“next last memento";
+datetime="Tue, 05 May 2015 00:00:00 GMT"
+</pre> </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1132,57 +1348,27 @@ figure figcaption {
         </div>
         <!-- end of provide version history BP -->
         <!-- end of Metadata --> </section>
-      <!-- begin of Data Identification -->
-      <section id="DataIdentification">
-        <h3>Data Identification</h3>
-        <div class="issue">
-        <p> To discuss about limiting this section to information that applies to publishing *data*. <a href="http://www.w3.org/2013/dwbp/track/issues/194">Issue-194</a></p>
-      </div>
-        <p>Identifiers are simple conventions of labels that allow us to
-          distinguish what is being identified from anything else. Identifiers
-          are used extensively in every information system, making it possible
-          to refer to any particular element. The Web is predicated on a uniform
-          system of identifiers that are globally unique and can be looked up by
-          dereferencing them over the Internet. There are three terms in common
-          use for these identifiers and, although they are often used
-          interchangeably, there are differences.</p>
-        <ul>
-          <li> URI (Uniform Resource Identifier) is an identifier for anything
-            including those not available over the Internet such as people,
-            buildings and mountains. There are many URI schemes, not all of
-            which can be looked up over the Internet. For example,
-            doi:10.1103/PhysRevD.89.032002 is as URI but cannot be looked up
-            (directly) on the Internet. For data on the Web, only HTTP(s) URIs
-            are relevant. HTTP URIs are a subset of URIs which are a subset of
-            IRIs.</li>
-          <li> IRI (Internationalized Resource Identifier) are conceptually
-            identical to URIs but allow the use of non-ASCII characters to which
-            URIs are limited.</li>
-          <li> URL (Uniform Resource Locator) is the location of a resource on
-            the Web. URLs are a subset of URIs.</li>            
-        </ul>
-        <p> Of these three, the term URL is by far the most commonly used. The
-          term URI, and even more so, IRI, may cause confusion among some
-          audiences, however, in the context of data on the Web, URI is more
-          appropriate since data points and datasets very often refer to real
-          world objects and phenomena. The term IRI is used where necessary.</p>
-        <p> Data discovery, usage and citation on the Web depends fundamentally
-          on the use of HTTP (or HTTPS) URIs. </p>
-        <p> It is perhaps worth emphasizing some key points about URIs in the
-          current context.</p>
+      <section id="DataIdentifiers">
+        <h3>Data Identifiers</h3>
+        <p>Identifiers take many forms and are used extensively in every
+          information system. Data discovery, usage and citation on the Web
+          depends fundamentally on the use of HTTP (or HTTPS) URIs: globally
+          unique identifiers that can be looked up by dereferencing them over
+          the Internet [[RFC3986]]. It is perhaps worth emphasizing some key
+          points about URIs in the current context.</p>
         <ol>
-          <li> URIs are 'dumb strings', that is, they carry no semantics. Their
+          <li>URIs are 'dumb strings', that is, they carry no semantics. Their
             function is purely to identify a resource.</li>
-          <li> Although the previous point is accurate, it would be perverse for
-            a URI such as http://example.com/datset.csv to return anything other
-            than a CSV file. Human readability is helpful.</li>
-          <li> When de-referenced (looked up), a single URI may offer the same
+          <li>Although the previous point is accurate, it would be perverse for
+            a URI such as http://example.com/dataset.csv to return anything
+            other than a CSV file. Human readability is helpful.</li>
+          <li>When de-referenced (looked up), a single URI may offer the same
             resource in more than one format. http://example.com/dataset may
             offer the same data in, say, CSV, JSON and XML. The server returns
             the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
               content negotiation </a>.</li>
-          <li> One URI may redirect to another.</li>
-          <li> De-referencing a URI triggers a computer program to run on a
+          <li>One URI may redirect to another.</li>
+          <li>De-referencing a URI triggers a computer program to run on a
             server so that the URI acts as a call to an API. The server may
             therefore do something as simple as return a single, static file, or
             it may carry out complex processing. Precisely what processing is
@@ -1192,9 +1378,9 @@ figure figcaption {
         <!-- begin of Data Identification BP -->
         <div class="practice">
           <p><span id="UniqueIdentifiers" class="practicelab">Use persistent
-              URIs as identifiers</span></p>
-          <p class="practicedesc">Datasets <em class="rfc2119">must</em> be
-            identified by a persistent URI. </p>
+              URIs as identifiers of datasets</span></p>
+          <p class="practicedesc">Datasets must be identified by a persistent
+            URI. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Adopting a common identification system enables basic data
@@ -1204,53 +1390,111 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Datasets or information about datasets, must be discoverable and
+            <p>Datasets or information about datasets, must be discoverable and
               citable through time, regardless of the status, availability or
               format of the data.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> To be persistent, URIs must be designed as such, backed up by
-              organizational commitments. There have been a <a href="http://philarcher.org/diary/2013/uripersistence/#recs">number
-                of articles written on this topic</a> and the following
-              summarizes many of the key points made.</p>
-            <ul>
-              <li>Follow a pattern (e.g.
-                http://{domain}/{type}/{concept}/{reference}) </li>
-              <li>Re-use existing identifiers (e.g.
-                http://education.data.gov.uk/id/school/<strong>123457</strong>)</li>
-              <li>Link multiple representations (e.g.
-                http://data.example.org/doc/foo/bar.rdf and
-                http://data.example.org/doc/foo/bar.html) </li>
-              <li>Implement 303 redirects for real-world objects (e.g.
-                http://www.example.com/id/alice_brown and
-                http://www.example.com/doc/alice_brown)</li>
-              <li>Use a dedicated service (i.e. independent of the data
-                originator)</li>
-              <li>Avoid stating ownership (e.g.
-                http://education.data.gov.uk/ministryofeducation/id/school/123456)</li>
-              <li>Avoid version numbers (e.g.
-                http://education.data.gov.uk/doc/school/v01/123456)</li>
-              <li>Avoid using auto-increment (e.g.
-                http://education.data.gov.uk/id/school/123456 and e.g.
-                http://education.data.gov.uk/id/school/123457)</li>
-              <li>Avoid query strings (e.g.
-                http://education.data.gov.uk/doc/school?id=123456)</li>
-              <li>Avoid file extensions
-                (http://education.data.gov.uk/doc/schools/123456.csv)</li>
-            </ul>
-            <p> Where a data publisher is unable or unwilling to manage its URI
+            <p>To be persistent, URIs must be designed as such and backed up by
+              organizational commitments. A lot has been written on this topic
+              as the table below shows. </p>
+            <table id="uripatternstable">
+              <caption>Some sources of information related to URI persistence</caption>
+              <tbody>
+                <tr>
+                  <th>Status</th>
+                  <th>Title</th>
+                  <th>Authors and Date</th>
+                </tr>
+                <tr>
+                  <td rowspan="3">Background</td>
+                  <td><a href="http://www.w3.org/Provider/Style/URI.html">Cool
+                      URIs don't change</a></td>
+                  <td>Tim Berners-Lee, 1998</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3.org/TR/cooluris/">Cool URIs for the
+                      Semantic Web</a></td>
+                  <td>Leo Saurman, Richard Cyganiak, 2008</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked
+                      Data</a></td>
+                  <td>Tim Berners-Lee, 2009</td>
+                </tr>
+                <tr>
+                  <td>Key Source</td>
+                  <td><a href="http://www.cabinetoffice.gov.uk/sites/default/files/resources/designing-URI-sets-uk-public-sector.pdf">Designing
+                      URI Sets for the UK Public Sector</a> (PDF)</td>
+                  <td>UK Chief Technology Officer Council October 2009</td>
+                </tr>
+                <tr>
+                  <td>Survey &amp; summary of techniques</td>
+                  <td><a href="http://philarcher.org/diary/2013/uripersistence/">Study
+                      on Persistent URIs</a></td>
+                  <td>Phil Archer, Nikos Loutas, Stijn Goedertier, Saky
+                    Kourtidis, 2013</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">Expansion</td>
+                  <td><a href="http://www.jenitennison.com/blog/node/136">Creating
+                      Linked Data</a></td>
+                  <td>Jeni Tennison, 2009</td>
+                </tr>
+                <tr>
+                  <td><a href="http://linkeddatabook.com/editions/1.0/">Linked
+                      Data: Evolving the Web into a Global Data Space</a></td>
+                  <td>Tom Heath &amp; Christian Bizer, 2011</td>
+                </tr>
+                <tr>
+                  <td><a href="http://patterns.dataincubator.org/book/">Linked
+                      Data Patterns</a></td>
+                  <td>Leigh Dodds &amp; Ian Davis, 2012</td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.multilingualweb.eu/en/documents/dublin-workshop/dublin-program#linking">Best
+                      Practices for Multilingual Linked Open Data</a></td>
+                  <td>Jose Emilio Labra Gayo, 2012</td>
+                </tr>
+                <tr>
+                  <td>Detail</td>
+                  <td><a href="http://csarven.ca/statistical-linked-dataspaces">Statistical
+                      Linked Dataspaces</a></td>
+                  <td>Sarven Capadisli, 2012</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="issue">The table links to Designing URI Sets for the UK
+              Public Sector. A newer version of this document (which was the
+              first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub
+                repo</a>. It seems that this might happen due to changes in
+              organisation behind data.gov.uk. If this happens, we should update
+              the link to point to the new version.</div>
+            <p>URIs can be long. In a dataset of even moderate size, storing
+              each URI is likely to be repetitive and obviously wasteful.
+              Instead, define locally unique identifiers for each element and
+              provide data that allows them to be converted to globally unique
+              URIs programmatically. The Metadata Vocabulary for Tabular Data
+              [[tabular-metadata]] provides mechanisms for doing this within
+              tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
+                template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
+                URL</a> property.</p>
+            <p>Where a data publisher is unable or unwilling to manage its URI
               space directly for persistence, an alternative approach is to use
-              a redirection service such as <a href="http://purl.org/">purl.org
-              </a>. This provides persistent URIs that can be redirected as
-              required so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
+              a redirection service such as <a href="http://purl.org/">purl.org</a>.
+              This provides persistent URIs that can be redirected as required
+              so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
                 behind such services </a> is freely available so that it can be
-              installed and managed locally if required. </p>
-            <p> Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
+              installed and managed locally if required.</p>
+            <p>Digital Object Identifiers <a href="http://doi.org/">(DOIs)</a>
               offer a similar alternative. These identifiers are defined
               independently of any Web technology but can be appended to a 'URI
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
+            <aside class="example">
+              <p>To be done. Will take examples from UK guidelines</p>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1268,9 +1512,90 @@ figure figcaption {
           </section>
         </div>
         <div class="practice">
-          <p><span id="UniqueIdentifiers" class="practicelab">Assign URIs to
+          <p><span id="identifiersWithinDatasets" class="practicelab">Use
+              persistent URIs as identifiers within datasets</span></p>
+          <p class="practicedesc">Datasets should use and reuse other people's
+            URIs as identifiers where possible.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The power of the Web lies in the <em>Network effect</em>. The
+              first telephone only became useful when the second telephone meant
+              there was someone to call; the third telephone made both of them
+              more useful yet. Data becomes more valuable if it refers to other
+              people's data about the same thing, the same place, the same
+              concept, the same event, the same person, and so on. That means
+              using the same identifiers across datasets and making sure that
+              your identifiers can be referred to by other datasets. When those
+              identifiers are HTTP URIs, they can be looked up and more data
+              discovered.</p>
+            <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5
+                Stars of Linked Data</a> where one data point links to another,
+              and of <a href="http://dret.github.io/webdata/">Hypermedia</a>
+              where links may be to further data or to services (or more
+              generally 'affordances') that act on or relate to the data in some
+              way. Examples include a bug reporting mechanisms, processors, a
+              visualization engine, a sensor, an actuator etc. In both Linked
+              Data and Hypermedia, the emphasis is put on the ability for
+              machines to traverse from one resource to another following links
+              that express relationships.</p>
+            <p>That's the Web of Data.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>That one data item can be related to others across the Web
+              creating a global information space accessible to humans and
+              machines alike.</p>
+            <div class="note">
+              <p> I changed data point for data item. Bernadette</p>
+            </div>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>This is a topic in itself and a general document such as this can
+              only include superficial detail.</p>
+            <p>Developers know that very often the problem they're trying to
+              solve will have already been solved by other people. In the same
+              way, if you're looking for a set of identifiers for obvious things
+              like countries, currencies, subjects, species, proteins, cities
+              and regions, Nobel prize winners – someone's done it already. The
+              steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering
+                existing vocabularies</a> [[LD-BP]] can readily be adapted.</p>
+            <ul>
+              <li>ensure URI sets you use are published by a trusted group or
+                organization;</li>
+              <li>ensure URI sets have permanent URIs.</li>
+            </ul>
+            <p>If you can't find an existing set of identifiers that meet your
+              needs then you'll need to create your own, following the patterns
+              for URI persistence so that others will add value to your data by
+              linking to it.</p>
+            <aside class="example">
+              <p>To follow. Plan to use
+                http://dbpedia.org/resource/ISO_3166-1:GR as the example. Store
+                'GB' and 'GR' as codes in a table but use CSVW to declare that
+                these can be turned into URIs like
+                http://dbpedia.org/resource/ISO_3166-1:GR.</p>
+            </aside>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Check that within the dataset, references to things that don't
+              change or that change slowly, such as countries, regions,
+              organizations and people, as referred to by URIs or by short
+              identifiers that can be appended to a URI stub. Ideally the URIs
+              should resolve, however, they have value as globally scoped
+              variables whether they resolve or not.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+          </section>
+        </div>
+        <!-- end of URIs in datasets BP -->
+        <div class="practice">
+          <p><span id="VersionIdentifiers" class="practicelab">Assign URIs to
               dataset versions and series</span></p>
-          <p class="practicedesc">URIs <em class="rfc2119">should</em> be
+          <p class="practicedesc">URIs should be
             assigned to individual versions of datasets as well as the overall
             series. </p>
           <section class="axioms">
@@ -1283,36 +1608,35 @@ figure figcaption {
               <li>today's noon temperature in London;</li>
               <li>the temperature in London at noon on 3rd June 2015.</li>
             </ul>
-            <p> In different circumstances, it will be appropriate to refer
-              separately to each of these examples (and many like them).
-            </p>
+            <p>In different circumstances, it will be appropriate to refer
+              separately to each of these examples (and many like them). </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It should be possible to refer to a specific version of a
-              dataset and to concepts such as a 'dataset series' and 'the latest
-              version.'
-            </p>
+            <p>It should be possible to refer to a specific version of a dataset
+              and to concepts such as a 'dataset series' and 'the latest
+              version.' </p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> The W3C provides a good example of how to do this. The
+            <p>The W3C provides a good example of how to do this. The
               (persistent) URI for this document is
-              http://www.w3.org/TR/2015/WD-dwbp-20150224/. The URI for the
-              'latest version' of this document is http://www.w3.org/TR/dwbp. At
+              http://www.w3.org/TR/2015/WD-dwbp-20150224/. That identifier
+              points to an immutable snapshot of the document on the day of its
+              publication. The URI for the 'latest version' of this document is
+              http://www.w3.org/TR/dwbp/ which is an identifier for a series of
+              closely related documents that are subject to change over time. At
               the time of publication, these two URIs both resolve to this
               document. However, when the next version of this document is
               published, the 'latest version' URI will be changed to point to
               that. </p>
-            <label class="expand" for="example-DataIdentificationVersion"></label>
-            <input id="example-DataIdentificationVersion" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>To complete the London temperature example, one might imagine
                 URIs as follows: </p>
-              <pre>  http://weather.example.com/temperature/UK/London/noon
+              <pre class="highlight">  http://weather.example.com/temperature/UK/London/noon
   http://weather.example.com/temperature/UK/London/noon/today
   http://weather.example.com/temperature/UK/London/noon/2015-06-03  </pre>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1326,7 +1650,6 @@ figure figcaption {
           </section>
         </div>
         <!-- end of Data Identification BP --> </section>
-      <!-- end of Data Identification -->
       <!-- begin of Data Formats -->
       <section id="dataFormats">
         <h3>Data Formats</h3>
@@ -1345,103 +1668,92 @@ figure figcaption {
         <div class="practice">
           <p><span id="MachineReadableStandardizedFormat" class="practicelab">Use
               machine-readable standardized data formats </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">must</em> be
-            available in a machine-readable standardized data format that is
-            adequate for its intended or potential use.</p>
+          <p class="practicedesc">Data must be available in a machine-readable
+            standardized data format that is adequate for its intended or
+            potential use.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>As data becomes more ubiquitous, and datasets become larger and
               more complex, processing by computers becomes ever more crucial.
               Posting data in a format that is not machine readable places
-              severe limitations on the continuing usefulness of the data. Using
-              non-standard data formats is costly and inefficient, and the data
-              may lose meaning as it is transformed. On the other hand,
+              severe limitations on the continuing usefulness of the data. Data
+              becomes useful when it has been processed and transformed into
+              information. </p>
+            <p> Using non-standard data formats is costly and inefficient, and
+              the data may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
-              cannot be anticipated when the data is first published.</p>
+              cannot be anticipated when the data is first published. The use of
+              non-proprietary data formats should also be considered since it
+              increases the possibilities for use and re-use of data </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Published data on the Web must be readable and processable by
-              typical computing systems. Any data consumer who wishes to work
-              with the data and is authorized to do so must be able to do so
-              with computational tools typically available in the relevant
-              domain.</p>
+            <p> It should be possible for machines to easily read and process
+              data published on the Web. </p>
+            <p> It should be possible for data consumers to use computational
+              tools typically available in the relevant domain to work with the
+              data. </p>
+            <p> It should be possible for data consumers who wants to use or
+              re-use the data to do so without investment in proprietary
+              software.</p>
+            <!-- Published data on the Web must be readable and easily processable by
+              typical computing systems. Any data consumer who wishes to work              with the data and is authorized to do so must be able to do so              with computational tools typically available in the relevant              domain. -->
             <!--<p> A machine must be able to: </p>
             <ol>              <li>Open and read the data using commonly available software                packages. </li>              <li>Process the data. </li>              <li>Store the data for future use.</li>            </ol> -->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Consider which data formats potential users of the data are most
-              likely to have the necessary tools to parse. Formats suggestion are shown in the <a href="#OpenFormat"></a>. Standard data formats as well as the use of standard data
-              vocabularies will better enable machines to process the data.</p>
-            <label class="expand" for="example-MachineDataFormat"></label> <input
+            <p> Make data available in a machine readable standardized data
+              format that is easily parseable including but not limited to CSV,
+              XML, Turtle, NetCDF, JSON and RDF. </p>
+            <!--<p>Consider which data formats potential users of the data are most
+              likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
+            <aside class="example">
+              <p> To provide data about the bus timetables John chooses the <a
 
-              id="example-MachineDataFormat" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+                  href="http://www.w3.org/TR/tabular-data-model/"> tabular
+                  format </a> and creates a new distribution for dataset-001. </p>
+              <pre class="highlight"> 
+   :dataset-001
+       a dcat:Dataset;
+       dcat:distribution :dataset-001-csv;
+       .
+    :dataset-001-csv
+       a dcat:Distribution;
+       dcat:mediaType "text/csv";
+       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       .
+</pre> The corresponding csv file is presented below.
+              <pre class="highlight">Origin, Destination, Bus Number, Bus Stop, Time
+X, Y, 001, Stop A, 06:00
+X, Y, 001, Stop B, 06:15
+X, Y, 001, Stop C, 06:35
+...
+</pre> </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p> Check that the data format conforms to a known machine-readable
-              data format specification in current use among anticipated data
-              users. </p>
+              data format specification. </p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></p>
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a>
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>
           </section>
         </div>
-        <div class="issue"> Should the <a href="#dataVocabularies">BP "Use machine-readable standardized data formats"</a> be split in two? <a href="https://www.w3.org/2013/dwbp/track/issues/138">
-            Issue-138</a> </div>
         <!-- end of Machine-Readable Standardized FormatBP -->
-        <!-- begin of Open Format BP -->
-        <div class="practice">
-          <p><span id="OpenFormat" class="practicelab">Use non-proprietary data
-              formats </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            available in a nonproprietary data format. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p> Non-proprietary data formats are usable by anyone. Proprietary
-              data formats may be difficult or impractical for some data users
-              to view or parse. Thus, the use of open data formats increases the
-              possibilities for use and re-use of data.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for any person who wants to use or re-use
-              the data to do so without investment in proprietary software.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p> Make data available in open data formats including but not
-              limited to CSV, XML, Turtle, NetCDF, JSON and RDF.</p>
-            <label class="expand" for="example-NonproprietaryDataFormat"></label>
-            <input id="example-NonproprietaryDataFormat" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> Check if it is possible to read, process, and store the data
-              without using any proprietary software package. </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>
-          </section>
-        </div>
+        <!-- begin of Open Format BP 
+        <div class="practice">          <p><span id="OpenFormat" class="practicelab">Use non-proprietary data              formats </span></p>          <p class="practicedesc">Data should be            available in a nonproprietary data format. </p>          <section class="axioms">            <p class="subhead">Why</p>            <p> Non-proprietary data formats are usable by anyone. Proprietary              data formats may be difficult or impractical for some data users              to view or parse. Thus, the use of open data formats increases the              possibilities for use and re-use of data.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It should be possible for any person who wants to use or re-use              the data to do so without investment in proprietary software.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p> Make data available in open data formats including but not              limited to CSV, XML, Turtle, NetCDF, JSON and RDF.</p>            <label class="expand" for="example-NonproprietaryDataFormat"></label>            <input id="example-NonproprietaryDataFormat" type="checkbox">            <div class="example">              <p>to be done </p>            </div>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> Check if it is possible to read, process, and store the data              without using any proprietary software package. </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>          </section>        </div>-->
         <!-- end of Open Formats BP -->
         <!-- begin of Multiple Formats BP -->
         <div class="practice">
           <p><span id="MultipleFormats" class="practicelab">Provide data in
               multiple formats </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            available in multiple data formats. </p>
+          <p class="practicedesc">Data should be available in multiple data
+            formats. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Providing data in more than one format reduces costs incurred in
@@ -1464,12 +1776,34 @@ figure figcaption {
               the future. Data publishers must balance the effort required to
               make the data available in many formats, but providing at least
               one alternative will greatly increase the usability of the data.</p>
-            <label class="expand" for="example-MultipleFormats"></label> <input
-
-              id="example-MultipleFormats" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+            <aside class="example">
+              <p> In order to reach a larger number of data consumers John
+                decides to provide RDF and XML distributions for the
+                dataset-001. </p>
+              <pre class="highlight"> 
+  :dataset-001
+       a dcat:Dataset;
+       dcat:distribution :dataset-001-csv;
+       dcat:distribution :dataset-001-rdf;
+       dcat:distribution :dataset-001-xml;
+       .
+  :dataset-001-csv
+       a dcat:Distribution;
+       dcat:mediaType "text/csv";
+       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       .
+  :dataset-001-rdf
+       a dcat:Distribution;
+       dcat:mediaType "text/rdf";
+       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       .
+  :dataset-001-xml
+       a dcat:Distribution;
+       dcat:mediaType "text/xml";
+       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       .   
+            </pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1486,17 +1820,8 @@ figure figcaption {
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
-        <div class="issue"> There is a discussion going on in the group if the
-          creation (and publication) of vocabularies is in the scope of the DWBP
-          document.</div>
-        <div class="issue">The section needs terminological discussion on
-          whether we keep "vocabularies", which could be replaced by "data
-          models" or "schemas" and whether we should remove "controlled
-          vocabularies" from the picture. <a href="https://www.w3.org/2013/dwbp/track/issues/134">Issue-134</a>
-        </div>
-        <div class="issue">A big part of the section (starting by the section
-          name) is biased towards linked data technology. It should be completed
-          with other references and alternative implementation approaches. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
+        <!--<div class="issue"> There is a discussion going on in the group if the
+          creation (and publication) of vocabularies is in the scope of the DWBP          document.</div>-->
         <p>Data is often represented in a structured and controlled way, making
           reference to a range of vocabularies, for example, by defining types
           of nodes and links in a data graph or types of values for columns in a
@@ -1511,13 +1836,13 @@ figure figcaption {
           allows applications to localize their display of their search
           depending on the language of the user. </p>
         <p>According to W3C, <a href="http://www.w3.org/standards/semanticweb/ontology">vocabularies</a>
-          define the concepts and relationships (also referred to as “terms”)
-          used to describe and represent an area of concern. Vocabularies are
-          used to classify the terms that can be used in a particular
-          application, characterize possible relationships, and define possible
-          constraints on using those terms. Several categories of vocabularies
-          have been coined, for example, ontology, controlled vocabularies,
-          thesaurus, taxonomy, semantic network.</p>
+          define the concepts and relationships (also referred to as “terms” or
+          “attributes”) used to describe and represent an area of concern.
+          Vocabularies are used to classify the terms that can be used in a
+          particular application, characterize possible relationships, and
+          define possible constraints on using those terms. Several categories
+          of vocabularies have been coined, for example, ontology, controlled
+          vocabulary, thesaurus, taxonomy, code list, semantic network.</p>
         <p>There is no strict division between the artifacts referred to by
           these names. “Ontology” tends however to denote the vocabularies of
           classes and properties that structure the descriptions of resources in
@@ -1546,38 +1871,46 @@ figure figcaption {
         <div class="practice">
           <p><span id="MetadataStandardized" class="practicelab">Use
               standardized terms</span></p>
-          <p class="practicedesc"> Standardized terms <em class="rfc2119">should</em>
-            be used to provide metadata</p>
+          <p class="practicedesc"> Standardized terms should be used to provide
+            metadata</p>
+          
+          <div class="issue"> A definition for standardized term should be included in the glossary to clarify the difference between
+             standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209"> Issue-209 </a> </div>
+          
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The need for standardized terms for describing metadata is to
-              avoid as much as possible ambiguity and clashes in the terms
-              chosen for metadata information. The key reason is to be able to
+            <p>The need for code lists and other commonly used terms for describing metadata
+              is to avoid as much as possible ambiguity and clashes in
+              the terms chosen for metadata information. The key reason is to be able to
               refer to the standardized body/organization which defines the term
-              as a clear reference.</p>
-            <p></p>
+              or code as a clear reference.</p>
+            <div class="issue"> Code lists are used for describing metadata or data values? If code lists are used for describing data values then 
+              it would be nice to have a separate BP for this. The title of this BP mentions just metadata. 
+              <a href="https://www.w3.org/2013/dwbp/track/issues/210"> Issue-210 </a> </div>
+            
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
-              <p>The benefit of using standardized terms is to enable
-                interoperability and consensus among data publishers and
-                consumers. </p>
-              <p></p>
+              <p>The benefit of using standardized code lists and other commonly
+                used terms is to enable interoperability and consensus among
+                data publishers and consumers. </p>
             </section>
             <section class="how">
               <p class="subhead">Possible Approach to Implementation</p>
               <p>An approach to implementation is the case of a vocabulary
                 developed within a Working Group or a standardized body such as
                 the W3C.</p>
-              <p>The Open Geospatial Consortium (OGC) could define the notion
-                of <em>granularity</em> for geospatial datasets, while [DCAT]
+              <p>The Open Geospatial Consortium (OGC) could define the notion of
+                <em>granularity</em> for geospatial datasets, while [DCAT]
                 vocabulary provides a vocabulary reusing the same notion applied
                 to catalogs on the Web.</p>
-              <p> </p>
+              <aside class="example">
+                <pre>to be done</pre>
+              </aside>
             </section>
             <section class="test"><span style="font-weight: bold;">How to Test </span>
-              <p>Check that the terms to be used are defined in a standard
-                organization/working group of body such as IETF, OGC, W3C, etc.</p>
-              <p></p>
+              <p>Check that the terms or codes to be used are defined in a
+                standard organization/working group of body such as IETF, OGC,
+                W3C, etc.</p>
               <section class="ucr">
                 <p class="subhead">Evidence</p>
                 <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
@@ -1585,185 +1918,67 @@ figure figcaption {
             </section>
           </section>
         </div>
-        <!-- begin of Document Vocabularies -->
-        <div class="practice">
-          <p><span id="DocumentVocabularies" class="practicelab"> Document
-              vocabularies </span></p>
-          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
-            be clearly documented.</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Documentation defines what is within the vocabulary and the
-              better the documentation the higher the possibility of re-use the
-              vocabulary and the datasets built with it.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>The description of the vocabulary must be human-readable.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>A vocabulary may be published together with human-readable Web
-              pages, as detailed in the recipes for serving vocabularies with
-              HTML documents in the Best Practice Recipes for Publishing RDF
-              Vocabularies [[SWBP-VOCAB-PUB]]. Elements from the vocabulary are
-              defined with attributes containing human-understandable labels and
-              definitions, such as rdfs:label, rdfs:comment, dc:description,
-              skos:prefLabel, skos:altLabel, skos:note, skos:definition,
-              skos:example, etc.. Documentation may benefit from the additional
-              presence of visual documentation such as the UML-style diagram of
-              the W3C Organization Ontology [[ORG]]</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check that a human user can understand the documentation
-              associated with a vocabulary. </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>
-            </p>
-          </section>
-        </div>
-        <!-- end of Document Vocabularies BP -->
-        <!-- begin of Share Open Vocabularies BP -->
-        <div class="practice">
-          <p><span id="ShareOpenVocabularies" class="practicelab"> Share
-              vocabularies in an open way </span></p>
-          <p class="practicedesc"> Vocabularies <em class="rfc2119">should</em>
-            be shared in an open way </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p> Sharing vocabularies in an open way may increase the usage of a
-              data vocabulary and help to understand the relationships among
-              different vocabularies.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>The vocabulary should be available for data consumers to use or
-              re-use it.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>Provide the vocabulary under an open license such as Creative
-              Commons Attribution License CC-BY [[CC-ABOUT]]. Create entries for
-              the vocabulary in repositories such as <a href="http://lov.okfn.org/"><abbr
-
-                  title="Linked Open Vocabularies">LOV</abbr></a>, <a href="http://prefix.cc">Prefix.cc</a>,
-              <a href="http://bioportal.bioontology.org/">Bioportal</a> and the
-              European Commission's <a href="https://joinup.ec.europa.eu/catalogue/repository">Joinup</a>.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> Check that an open license is available looking for URL or link
-              to the document where the copyright is provided. </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></p>
-          </section>
-        </div>
-        <!-- end of Share Open Vocabularies BP -->
-        <!-- begin of Versioning Vocabularies BP -->
-        <div class="practice">
-          <p><span id="VersioningVocabularies" class="practicelab"> Vocabulary
-              versioning </span></p>
-          <p class="practicedesc">Vocabularies <em class="rfc2119">should</em>
-            include versioning information </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Versioning information guarantees compatibility over time by
-              providing a way to compare different versions as the vocabulary
-              evolves.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>It should be possible to identify changes to a vocabulary over
-              time.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <p>A vocabulary may be given a unique identifier for 'the latest
-              version' that remains stable over time, even as the vocabulary
-              evolves. In addition, each version of the vocabulary has its own
-              unique identifier. URI versioning for W3C documents provides
-              examples. The latest version of this document is always found at <a
-
-                href="http://www.w3.org/TR/dwbp/">http://www.w3.org/TR/dwbp/</a>
-              but individual versions such as <a href="http://www.w3.org/TR/2015/WD-dwbp-20150224/">http://www.w3.org/TR/2015/WD-dwbp-20150224/</a>
-              each have their own URL as well so that an initial effort can be
-              made towards understanding, characterizing and tracking data
-              evolution and specific versions pointed to if required.</p>
-            <p>Several vocabularies, including OWL [[OWL2-OVERVIEW]] and
-              schema.org [[SCHEMA-ORG]], include properties for version numbers.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p> Different versions of a vocabulary can be easily identified; </p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a>
-            </p>
-          </section>
-        </div>
-        <!-- end of BP -->
-        <!-- begin of re-use Vocabularies BP -->
+        
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Re-use
               vocabularies</span></p>
-          <p class="practicedesc"> Existing reference vocabularies <em class="rfc2119">should</em>
-            be re-used where possible </p>
+          
+          
+          <p class="practicedesc"> Shared vocabularies should be used to provide
+            metadata</p>
+          
+          <div class="issue"> As proposed during the F2F, it would be nice to use the term shared vocabularies, i.e., vocabularies that capture a consensus
+              of the community about a specific domain, instead of vocabularies. In the context of this BP, I think it is more appropriate to say
+             "Use shared vocabularies" instead of "Reuse vocabularies". I think Reuse of vocabularies is more appropriate when we are talking about the creation of new vocabularies .
+            <a href="https://www.w3.org/2013/dwbp/track/issues/212"> Issue-212 </a></div>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>re-using vocabularies increases interoperability and reduces
-              redundancies between vocabularies, encouraging re-use of the data.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Datasets (and vocabularies) should re-use core vocabularies.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-            <!--
-            <p>Before defining any new vocabulary, a first preliminary step               is to analyze whether there are any              other public vocabularies that have been previously applied to the              same scope of knowledge we intend to work with. In case we find              any, there are several criteria that we <em class="rfc2119">should</em>              consider to assess the suitability of re-using that vocabulary for              our use case:</p>            <ul>              <li>Frequent use: Although there is an increasingly number of                available vocabularies, just a reduced number of them have been                internationally recognized as standards de jure or de facto.                Common vocabularies greatly facilitate re-use, so we should                prioritize those that have demonstrated previous broad adoption.</li>              <li>Expressiveness: it is important to assess to what extent the                candidate vocabulary may cover all aspects included in our                dataset, as well as whether the expressiveness degree is                sufficient for the disaggregation level of our data.</li>              <li>Activity and maintenance: the vocabulary <em class="rfc2119">should</em>                be actively maintained, and offer a clear policy to collect                feedback and perform updates.</li>              <li>Quality of publication: as per our best practice "Document                vocabularies" above, the vocabularies <em class="rfc2119">should</em>                have sufficient documentation to be able to interpret the                meaning of their elements in a unambiguous way. In addition,                vocabularies that are <a href="http://www.w3.org/TR/swbp-vocab-pub/">designed                  and published under the Linked Data paradigm</a> will offer                enhanced reusability.</li>            </ul> -->
-            <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the W3C Best Practices for
-              Publishing Linked Data [[LD-BP]] provides guidance on the
-              discovery, evaluation and selection of existing vocabularies.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Check that terms used do not replicate those defined by
-              vocabularies in common use within the same domain.</p>
-            <!--
-            <p>Verify whether for any new vocabulary developed an analog              reference one may already be publicly available on the Web.</p>            <ol>              <li>Vocabularies Search tools: <a href="http://ws.nju.edu.cn/falcons/objectsearch/index.jsp">                  Falcons</a>, <a href="http://watson.kmi.open.ac.uk/WatsonWUI/">Watson</a>,                <a href="http://sindice.com/">Sindice</a>, <a href="http://swoogle.umbc.edu/">Swoogle</a>,                <a href="http://vocab.org">vocab.org</a> or others</li>              <li>Vocabularies Repositories: <a href="http://lov.okfn.org/dataset/lov/">LOV</a>,                <a href="http://bioportal.bioontology.org/">BioPortal</a>, and <a                  href="https://joinup.ec.europa.eu/catalogue/repository">JoinUp</a>;              </li>              <li>Inventories: <a href="http://www.w3.org/standards/">W3C                  Standards</a> or domain-specific inventories like this <a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-vocabdataset/">Library                  Linked Data Incubator Group report</a>. </li>            </ol>            <p>Verify that when no analog reference vocabulary may already be              available at least core elements from base vocabularies, such as              the <a href="http://dublincore.org/documents/dcmi-terms/">DCMI                Metadata Terms</a>, <a href="http://xmlns.com/foaf/spec/">FOAF</a>,              <a href="http://rdfs.org/sioc/spec/">SIOC</a>, <a href="http://www.w3.org/TR/vcard-rdf/">vCard</a>,              the <a href="http://www.w3.org/ns/locn">Location Core Vocabulary</a>,              the <a href="http://www.w3.org/2003/01/geo/wgs84_pos">W3C WGS84                Geo Positioning vocabulary</a> or the <a href="http://creativecommons.org/ns">Creative                Commons Rights Expression Language</a>, are re-used instead of              re-defined.</p> -->
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
-            </p>
+            <p> re-using vocabularies increases interoperability and reduces
+              redundancies between vocabularies, encouraging re-use of the data. </p>
+            <div class="issue"> I propose to change the Why section to be more specific about the use of shared vocabularies. 
+              <a href="https://www.w3.org/2013/dwbp/track/issues/211"> Issue-211 </a>
+            </div>
+            
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p> It should be possible to automatically compare data of two or
+                more datasets when they use the same vocabulary to describe
+                structural metadata. </p>
+              <p> It should be possible for machines to automatically process
+                the data within a dataset. </p>
+              <p> It should be possible for machines to automatically process
+                the metadata that describes a dataset. </p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+              <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
+                  Vocabularies</a> section of the W3C Best Practices for
+                Publishing Linked Data [[LD-BP]] provides guidance on the
+                discovery, evaluation and selection of existing vocabularies.</p>
+              <aside class="example">
+                <pre>to be done</pre>
+              </aside>
+            </section>
+            <section class="test"><span style="font-weight: bold;">How to Test </span>
+              <p>Check that terms or attributes used do not replicate those
+                defined by vocabularies in common use within the same domain.</p>
+              <section class="ucr">
+                <p class="subhead">Evidence</p>
+                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
+                  <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
+                </p>
+              </section>
+            </section>
           </section>
         </div>
-        <!-- end of BP -->
-        <!-- begin of Used vocabularies information BP
-        <div class="practice">          <p><span id="UsedVocabularies" class="practicelab"> Provide              information about vocabularies used to trepresent the data</span></p>          <p class="practicedesc">Information about vocabularies used to
-            represent the data <em class="rfc2119">should</em> be available</p>          <section class="axioms">            <p class="subhead">Why</p>            <p></p>
-            <p></p>            <section class="outcome">              <p class="subhead">Intended Outcome</p>              <p></p>
-              <p></p>            </section>            <section class="how">              <p class="subhead">Possible Approach to Implementation</p>
-              <p></p>              <p></p>              <p> </p>            </section>
-            <section class="test"><span style="font-weight: bold;">How to Test </span>              <p></p>              <p></p>              <section class="ucr">
-                <p class="subhead">Evidence</p>              </section>            </section>          </section>
-          <div class="issue">            <p> Is this BP relevant just for RDF datasets or vocabularies may be              used to represent data in other formats (ex: csv)? </p>          </div>
-        </div> -->
-        <!-- end of BP -->
+        
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
           <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
               the right formalization level</span></p>
-          <p class="practicedesc">When creating or re-using a vocabulary for an
-            application, a data publisher <em class="rfc2119">should</em> opt
-            for a level of formal semantics that fit data and applications.</p>
+          <p class="practicedesc">When reusing a vocabulary, a data publisher
+            should opt for a level of formal semantics that fit data and
+            applications.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Formal semantics may help one to establish precise specifications
@@ -1800,6 +2015,9 @@ figure figcaption {
               <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
                 schemes and code lists</a> are used in the RDF Data Cube
               Recommendation [[QB]].</p>
+            <aside class="example">
+              <pre>to be done</pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1844,16 +2062,16 @@ figure figcaption {
           Appropriate security measures should also account for secure
           authentication and use of HTTPS.</p>
         <p>At times, because of sharing policies sensitive data may not be
-          available in part or in its entirety. Data unavailability represents
-          gaps that may affect the overall analysis of datasets. To account for
-          unavailable data, data publishers should publish information about
-          unavoidable data gaps.</p>
+          available in part or in its entirety. Data represents gaps that may
+          affect the overall analysis of datasets. To account for unavailable
+          data, data publishers should publish information about unavoidable
+          data gaps.</p>
         <!-- begin of Preserve Privacy BP -->
         <div class="practice">
           <p><span id="PreservePrivacy" class="practicelab">Preserve people's
               right to privacy </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">must not</em>
-            infringe a person's right to privacy.</p>
+          <p class="practicedesc">Data must/em&gt; infringe a person's right to
+            privacy.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Data publishers should preserve the privacy of individuals where
@@ -1892,12 +2110,9 @@ figure figcaption {
             follow. Prior to publication put security measures in place and
             follow them. In preparation to publication review data to ensure
             compliance.</p>
-          <label class="expand" for="example-PreservePrivacy"></label> <input id="example-PreservePrivacy"
-
-            type="checkbox">
-          <div class="example">
+          <aside class="example">
             <p>to be done </p>
-          </div>
+          </aside>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Write and test a plan for reviewing, curating and vetting data
@@ -1910,14 +2125,15 @@ figure figcaption {
         </div>
         <!-- end of Preserve Privacy BP -->
         <!-- begin of Preserve Security BP
-        <div class="practice">          <p><span id="PreserveSecurity" class="practicelab">Preserve              organization's security </span></p>          <p class="practicedesc">Data <em class="rfc2119">should</em> not            infringe an organization's security (local government, national            government, business). </p>          <section class="axioms">            <p class="subhead">Why</p>          </section>          <section class="description">            <p class="subhead">What</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>          </section>        </div>        <!-- end of Preserve Security BP -->
+        <div class="practice">          <p><span id="PreserveSecurity" class="practicelab">Preserve              organization's security </span></p>          <p class="practicedesc">Data should not            infringe an organization's security (local government, national            government, business). </p>          <section class="axioms">            <p class="subhead">Why</p>          </section>          <section class="description">            <p class="subhead">What</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>          </section>        </div> -->
+        <!-- end of Preserve Security BP -->
         <div class="practice">
           <p><span id="DataUnavailabilityReference" class="practicelab">Provide
               data unavailability reference</span></p>
           <p class="practicedesc">References to data that is not open, or is
             available under different restrictions to the origin of the
-            reference, <em class="rfc2119">should</em> provide context by
-            explaining how or by whom the referred to data can be accessed. </p>
+            reference, should provide context by explaining how or by whom the
+            referred to data can be accessed. </p>
           <!-- <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataHumanMachine">Provide
               metadata for both humans and machines</a> best practice. </p> -->
           <section class="axioms">
@@ -1941,12 +2157,9 @@ figure figcaption {
               used to provide a machine readable version of the same
               information. If appropriate, consider editing the server's 4xx
               response page(s) to provide the information.</p>
-            <label class="expand" for="example-DataUnavailability"></label> <input
-
-              id="example-DataUnavailability" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1956,7 +2169,7 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a></p>
           </section>
         </div>
         <!-- end of BP --> </section>
@@ -1976,13 +2189,12 @@ figure figcaption {
           bulk download and <abbr title="Application Programming Interfaces">API</abbr>s.
           </p>
         <p>One approach is packaging data in bulk using non-proprietary file
-          formats (for example tar files). Using this approach, bulk
-          data is generally pre-processed server side where multiple files or
-          directory trees of files are provided as one downloadable file. When
-          bulk data is being retrieved from non-file system solutions, depending
-          on the data user communities, the data publisher can offer APIs to
-          support a series of retrieval operations representing a single
-          transaction.</p>
+          formats (for example tar files). Using this approach, bulk data is
+          generally pre-processed server side where multiple files or directory
+          trees of files are provided as one downloadable file. When bulk data
+          is being retrieved from non-file system solutions, depending on the
+          data user communities, the data publisher can offer APIs to support a
+          series of retrieval operations representing a single transaction.</p>
         <p>For data that is streaming to the Web in “real time” or “near real
           time”, data publishers should publish data or use APIs to enable
           immediate access to data, allowing access to critical time sensitive
@@ -2000,8 +2212,7 @@ figure figcaption {
         <!-- begin of BP Bulk Access-->
         <div class="practice">
           <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            available for bulk download. </p>
+          <p class="practicedesc">Data should be available for bulk download. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>When web data is distributed across many URLs and logically
@@ -2034,17 +2245,12 @@ figure figcaption {
                 discoverable metadata [[VOCAB-DCAT]] describing the container
                 and data URLs associated with the container.</li>
             </ul>
-            
-            <label class="expand" for="example-BulkDownload"></label> <input id="example-BulkDownload"
-
-              type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p class="subhead"></p>
             <p>Humans can retreive copies of preprocessed bulk data through
               existing tools such as a browser. Clients can test bulk access
               through an API or queries to web resources with discoverable
@@ -2060,8 +2266,7 @@ figure figcaption {
         <div class="practice">
           <p><span id="DesigningAPIs" class="practicelab">Follow REST principles
               when designing APIs</span></p>
-          <p class="practicedesc">APIs for accessing data <em class="rfc2119">should</em>
-            follow <abbr title="Representational State Transfer">REST</abbr>
+          <p class="practicedesc">APIs for accessing data should follow <abbr title="Representational State Transfer">REST</abbr>
             architectural approaches.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -2121,12 +2326,9 @@ figure figcaption {
               <li>Version your API. Never release an API without a version and
                 make the version mandatory.</li>
             </ul>
-            <label class="expand" for="example-DesigningAPIs"></label> <input id="example-DesigningAPIs"
-
-              type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>            
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2135,7 +2337,8 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
           </section>
         </div>
         <!-- end of BP BulkAccess 2-->
@@ -2143,7 +2346,7 @@ figure figcaption {
         <div class="practice">
           <p><span id="AccessRealTime" class="practicelab">Provide real-time
               access </span></p>
-          <p class="practicedesc">When data is produced in real-time, it <em class="rfc2119">should</em>
+          <p class="practicedesc">When data is produced in real-time, it should
             be available on the Web in real-time. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -2181,22 +2384,20 @@ figure figcaption {
             to error conditions, anomolies, and instrument "house keeping" data
             enhance real-time applications ability to interpret and convey
             real-time data quality to consumers.
-            <p></p>
-            <label class="expand" for="example-Realtime"></label> <input id="example-Realtime" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            To adequately test real time data access, data will need to be tracked
-            from the time it is initially collected to the time it is published
-            and accessed. [[PROV-O]] can be used to describe these activities.
-            Caution should be used when analyzing real-time access for systems
-            that consist of multiple computer systems. For example, tests that
-            rely on wall clock time stamps may reflect inconsistences between
-            the individual computer systems as opposed to data publication time
-            latency. </section>
+            To adequately test real time data access, data will need to be
+            tracked from the time it is initially collected to the time it is
+            published and accessed. [[PROV-O]] can be used to describe these
+            activities. Caution should be used when analyzing real-time access
+            for systems that consist of multiple computer systems. For example,
+            tests that rely on wall clock time stamps may reflect inconsistences
+            between the individual computer systems as opposed to data
+            publication time latency. </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
@@ -2206,10 +2407,9 @@ figure figcaption {
         <!-- begin of BP Access Up to date -->
         <div class="practice">
           <p><span id="AccessUptoDate" class="practicelab">Provide data up to
-              date </span></p> 
-          <p class="practicedesc"> Data <em class="rfc2119">must</em> be
-            available in an up-to-date manner and the update frequency made
-            explicit. </p>
+              date </span></p>
+          <p class="practicedesc"> Data must be available in an up-to-date
+            manner and the update frequency made explicit. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Data on the Web availability should closely coincide with data
@@ -2228,12 +2428,9 @@ figure figcaption {
             <p>Implement an API to enable data access. When data is provided by
               bulk access, new files with new data should be provided as soon as
               additional data is created or updated. </p>
-            <label class="expand" for="example-UptoDate"></label> <input id="example-UptoDate"
-
-              type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2254,16 +2451,16 @@ figure figcaption {
           </section>
         </div>
         <div class="issue">
-        <p> To debate if the goal should be to adhere to a published schedule for updates. <a href="http://www.w3.org/2013/dwbp/track/issues/195">Issue-195</a></p>
-      </div>
+          <p> To debate if the goal should be to adhere to a published schedule
+            for updates. <a href="http://www.w3.org/2013/dwbp/track/issues/195">Issue-195</a></p>
+        </div>
         <!-- begin of versions For API BP -->
         <div class="practice">
           <p><span id="VersionsForAPI" class="practicelab">Maintain separate
               versions for a data API</span></p>
           <p class="practicedesc">If data is made available through an API, the
-            API itself <em class="rfc2119">should</em> be versioned separately
-            from the data. Old versions <em class="rfc2119">should</em>
-            continue to be available.</p>
+            API itself should be versioned separately from the data. Old
+            versions should continue to be available.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Developers need to be made aware of changes to an API so that
@@ -2292,9 +2489,6 @@ figure figcaption {
               version number as far to the left as possible in the API call
               allows developers to switch to the newer version with the least
               effort.</p>
-            <label class="expand" for="example-VersionsApi"></label> <input id="example-VersionsApi"
-
-              type="checkbox">
             <div class="example">
               <p>to be done </p>
             </div>
@@ -2324,14 +2518,14 @@ figure figcaption {
         <p>Data preservation is a well understood and commonly performed task          for static and self-contained data. This commonly includes the          following steps:</p>        <ul>          <li>ingest the data and assign a persistent identifier to it;</li>          <li>ensure the data is correctly stored and prevent bit rot;</li>          <li>provide access to the data and perform format translation if            needed.</li>        </ul>        <p>The model most commonly referred to is the Open Archival Information          System [[OAIS]]. Many digital preservation institutions are          implementing this model or some variant of it. Web pages can be          preserved following the same strategies, considering a Web site as a          static data set that is self-contained and can be preserved as a snap          shot at a fixed time. When preserving data on the Web some new          elements have to be taken into account:</p>        <ul>          <li>the persistent re-use (URIs) used across the Web may be related to            live data that can change;</li>          <li>the meaning of a resource is contextualized by the other resources            it is linked to;</li>          <li>documents fetched in HTML, RDF/XML of JSON, for instance, are only            one of the many possible serializations of the data they represent.</li>        </ul>        <p>The preservation of Web data should generally focus on the          preservation of the description of entities.</p>        -->
         <!-- begin of list of resources BP -->
         <!--
-        <div class="practice">          <p><span id="list_resources" class="practicelab">Maintain a list of              resources described in a dataset</span></p>          <p class="practicedesc">A dataset <em class="rfc2119">should</em> be            preserved together with a list of all the resources it describes</p>          <section class="axioms">            <p class="subhead">Why</p>            <p>data on the Web is essentially about the description of entities              identified by a unique, Web-based, identifier (a URI). Once the              data is dumped and sent to an institute specialised in digital              preservation the link with the Web is broken (de-referencing) but              the role of the URI as a unique identifier still remains. In order              to increase the usability of preserved dataset dumps it is              relevant to maintain a list of these identifiers.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It <em class="rfc2119">should</em> be possible to look for a              preserved dataset based on the resources contained in it.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>The list of resources can be created by the data depositor or the              digital repository at ingestion time. A dataset dump is scanned              for all the subject described and this list is stored separately.              For RDF and JSON-LD, this corresponds to all the resources in the              "subject" position of statements.</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p>Every resource listed in the resource list must              have some kind of description in the dataset</p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>          </section>        </div>-->
+        <div class="practice">          <p><span id="list_resources" class="practicelab">Maintain a list of              resources described in a dataset</span></p>          <p class="practicedesc">A dataset should be            preserved together with a list of all the resources it describes</p>          <section class="axioms">            <p class="subhead">Why</p>            <p>data on the Web is essentially about the description of entities              identified by a unique, Web-based, identifier (a URI). Once the              data is dumped and sent to an institute specialised in digital              preservation the link with the Web is broken (de-referencing) but              the role of the URI as a unique identifier still remains. In order              to increase the usability of preserved dataset dumps it is              relevant to maintain a list of these identifiers.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It should be possible to look for a              preserved dataset based on the resources contained in it.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p>The list of resources can be created by the data depositor or the              digital repository at ingestion time. A dataset dump is scanned              for all the subject described and this list is stored separately.              For RDF and JSON-LD, this corresponds to all the resources in the              "subject" position of statements.</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p>Every resource listed in the resource list must              have some kind of description in the dataset</p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>          </section>        </div>-->
         <!-- end of list of resources BP -->
         <!-- begin of assess dataset BP -->
         <div class="practice">
           <p><span id="EvaluateCoverage" class="practicelab">Assess dataset
               coverage</span></p>
-          <p class="practicedesc">The coverage of a dataset <em class="rfc2119">should</em>
-            be assessed prior to its preservation</p>
+          <p class="practicedesc">The coverage of a dataset should be assessed
+            prior to its preservation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>A chunk of Web data is by definition dependent on the rest of the
@@ -2349,20 +2543,36 @@ figure figcaption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be done an evaluation of the preservation coverage for
-              a given dataset.</p>
+            <p>It should be possible to appreciate the coverage and external dependencies of a given dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The assessement could be performed by the digital preservation
+            <p>The assessement can be performed by the digital preservation
               institute or the dataset depositor. It essentially consists in
               checking whether all the resources used are either already
               preserved somewhere or provided along with the new dataset
               considered for preservation.</p>
-            <label class="expand" for="example-EvaluateCoverage"></label> <input id="example-EvaluateCoverage" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+            <aside class="example">
+                 <p>A dataset targetted for preservation is made of the following triples:</p>
+                 <pre style="" class="highlight prettyprint prettyprinted">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+                 </pre>
+                <p>Those triples make use of the "foaf" vocabulary and a custom one defined in the testing domain name "ex". It also uses entities defined in "dbpedia" and "ex". FOAF is a well established ontology that is archived in several places on the web (see, for instance, <a href="http://lov.okfn.org">the LOV repository</a>). Entities defined in DBpedia are also preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento gateway</a> and archived dumps of the dataset also exists. The risks associated to preserving the triple making use of those external resource is thus minimal. A bigger concerns rises from the usage made of resources defined in "ex" which is a name space that, by design, does not exist outside of the dataset. Unless the data describing "ex:john" and "ex:Staff" is preserved alongside those triples their contextual meaning will be lost. This is in particular critical for "ex:Staff" as without it the type of "ex:bob" is unknown.</p>
+                <p>Considering this assessement, a revised dataset including the definition of "ex:Staff" can be considered for preservation:</p>
+                 <pre style="" class="highlight prettyprint prettyprinted">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+ # Custom vocabulary element
+ ex:Staff rdfs:subClass foaf:Person;
+     rdfs:label "A staff member". 
+                 </pre>
+                 <p>This second, more complete, dataset is better suited for preservation as it is more self-describing and make use of external entities whose preservation is trusted.</p>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2381,12 +2591,11 @@ figure figcaption {
           <p><span id="Serialisation" class="practicelab">Use a trusted
               serialisation format for preserved data dumps</span></p>
           <p class="practicedesc">Data depositors willing to send a datadump for
-            long term preservation <em class="rfc2119">must</em> use a well
-            established serialisation</p>
+            long term preservation must use a well established serialisation</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Web data is a abtract data model that can be expressed in
-              different ways (RDF, JSON-LD, ...). Using a well established
+            <p>Web data is an abtract data model that can be expressed in
+              different ways (RDF/XML, JSON-LD, ...). Using a well established
               serialisation of this data increases its chances of re-use. </p>
             <p>Institute doing digital preservation are tasked with monitoring
               file format obsolescence. Datasets which have been acquired in
@@ -2406,12 +2615,19 @@ figure figcaption {
             <p>Give preference to Web data serialisation formats available as
               open standards. For instance those provided by the W3C
               [[FORMATS]]. </p>
-            <label class="expand" for="example-Serialisation"></label> <input id="example-Serialisation"
-
-              type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+            <aside class="example">
+                 <p>Those triples are serialised using the Turtle W3C recommendation. It is a text-based format which is supported by the majority of software able to process Web data. This format can thus be trusted for preservation.</p>
+                 <pre style="" class="highlight">
+ # Definition of a person
+ ex:bob a ex:Staff;
+     foaf:basedNear dbpedia:Cardiff;
+     foaf:knows ex:john.
+                 </pre>
+                <p>A custom-made serialisation of the same data such as what follows should be given a negative appreciation towards preserving the dataset.</p>
+                 <pre style="" class="highlight">
+ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
+                 </pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2431,8 +2647,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="ResourceStatus" class="practicelab">Update the status of
               identifiers</span></p>
-          <p class="practicedesc">Preserved datasets <em class="rfc2119">should</em>
-            be linked with their "live" counterparts</p>
+          <p class="practicedesc">Preserved resources should be linked with their
+            "live" counterparts</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>URI dereferencing is a primary interface to data on the Web.
@@ -2476,12 +2692,30 @@ figure figcaption {
             </ul>
             <p>In addition to the status codes, HTTP Link headers can also be
               used to relate resources to preserved descriptions.</p>
-            <label class="expand" for="example-ResourceStatus"></label> <input
+            <aside class="example">
+              <p>One approach with link header is to use the Memento protocol to give a link to a timegate providing access to preserved descriptions of the resource:</p>
+              <pre class="highlight"> 
+curl -I http://example.org/dataset-001
 
-              id="example-ResourceStatus" type="checkbox">
-            <div class="example">
-              <p>to be done </p>
-            </div>
+HTTP/1.1 200 OK
+Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Link: http://example.org/dataset; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
+            </pre>
+            <p>Using HTTP status code the data consumer can be redirected to the most recent description of the entity. In the following example a request for the resource "http://example.org/dataset-001" is first redirected to the description "http://example.org/data/dataset-001" which, as it has been preserved and flagged as invalid, redirects the client to the newer description "http://example.org/newdata/dataset-001"</p>
+            <pre class="highlight">
+curl -L -I http://example.org/dataset-001
+
+HTTP/1.1 303 See Other
+Location: http://example.org/data/dataset-001
+Link: http://example.org/newdata/dataset-001, rel="new"
+
+HTTP/1.1 303 See Other
+Location: http://example.org/newdata/dataset-001
+Link: http://example.org/data/dataset-001, rel="previous"
+           
+HTTP/1.1 200 Ok
+           </pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2490,7 +2724,7 @@ figure figcaption {
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-DataUnavailabilityReference">R-DataUnavailabilityReference</a>,
+            <p><span>Relevant requirements</span>:<a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">
                 R-PersistentIdentification</a></p>
           </section>
@@ -2532,8 +2766,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="GatherFeedback" class="practicelab">Gather feedback from
               data consumers </span></p>
-          <p class="practicedesc"> Data publishers <em class="rfc2119">should</em>
-            provide a means for consumers to offer feedback.</p>
+          <p class="practicedesc"> Data publishers should provide a means for
+            consumers to offer feedback.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Providing feedback contributes to improving the quality of
@@ -2560,12 +2794,9 @@ figure figcaption {
               feedback information.
               <!-- The definition of a Data Usage Vocabulary is
               included in the activity of the DWBP group in order to support in              the implementation of this best practice. --></p>
-            <label class="expand" for="example-GatherFeedback"></label> <input
-
-              id="example-GatherFeedback" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2591,8 +2822,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="FeedbackInformation" class="practicelab"> Provide
               information about feedback </span></p>
-          <p class="practicedesc"> Information about feedback <em class="rfc2119">should</em>
-            be provided.</p>
+          <p class="practicedesc"> Information about feedback should be
+            provided.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Sharing information about feedback allows data consumers to be
@@ -2610,15 +2841,13 @@ figure figcaption {
             <p class="subhead">Possible Approach to Implementation</p>
             <p>The machine readable version of the feedback metadata may be
               provided according to the vocabulary that is being developed by
-              the DWBP working group , i.e., the Dataset Usage Vocabulary.</p>
+              the DWBP working group , i.e., the Dataset Usage Vocabulary
+              [[DUV]].</p>
             <!-- The definition of a Data Usage Vocabulary is
               included in the activity of the DWBP group in order to support in              the implementation of this best practice. -->
-            <label class="expand" for="example-GatherFeedback"></label> <input
-
-              id="example-GatherFeedback" type="checkbox">
-            <div class="example">
+            <aside class="example">
               <p>to be done </p>
-            </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2640,12 +2869,15 @@ figure figcaption {
       <!-- begin enrichment -->
       <section id="enrichment">
         <h3>Data Enrichment</h3>
-      <div class="issue">
-        <p> To discuss about enrichment yields derived data, not just metadata. For example, you could take a dataset of scheduled and real bus arrival times and enrich it by adding on-time arrival percentages. The percentages are data, not metadata. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
-      </div>
-      <div class="issue">
-        <p> To discuss about the meaning of the word “topification”. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
-      </div>
+        <div class="issue">
+          <p> To discuss about enrichment yields derived data, not just
+            metadata. For example, you could take a dataset of scheduled and
+            real bus arrival times and enrich it by adding on-time arrival
+            percentages. The percentages are data, not metadata. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
+        </div>
+        <div class="issue">
+          <p> To discuss about the meaning of the word “topification”. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
+        </div>
         <p>Data enrichment refers to a set of processes that can be used to
           enhance, refine or otherwise improve raw or previously processed data.
           This idea and other similar concepts contribute to making data a
@@ -2658,9 +2890,8 @@ figure figcaption {
         <div class="practice">
           <p><span id="EnrichData" class="practicelab">Enrich data by generating
               new metadata.</span></p>
-          <p class="practicedesc">Data <em class="rfc2119">should</em> be
-            enriched whenever possible, generating richer metadata to represent
-            and describe it.</p>
+          <p class="practicedesc">Data should be enriched whenever possible,
+            generating richer metadata to represent and describe it.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>There is a large number of intelligent techniques that can be
@@ -2685,6 +2916,9 @@ figure figcaption {
                 Enrichment Technical Note</a>. After new metadata is extracted,
               it can be provided as part of an HTML Web page or any open data
               format.</p>
+            <aside class="example">
+              <pre>to be done</pre>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to test</p>
@@ -2702,11 +2936,381 @@ figure figcaption {
     <section id="conclusions">
       <h2>Conclusions</h2>
     </section>
-    <section class="appendix">
-      <h2>Acknowledgements</h2>
-      <p>The editors gratefully acknowledge the contributions made to this
-        document by all members of the working group and the chairs: Hadley
-        Beeman, Steve Adler, Yaso Córdova, Deirdre Lee.</p>
+    <section id="glossary">
+      <h2>Glossary</h2>
+      <dl>
+        <dt><dfn id="dataset">Dataset</dfn></dt>
+        <dd>
+          <p>A dataset is defined as a collection of data, published or curated
+            by a single agent, and available for access or download in one or
+            more formats. A dataset does not have to be available as a
+            downloadable file.</p>
+          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog
+              Vocabulary (DCAT)</a></p>
+        </dd>
+        <dt><dfn id="citation">Citation</dfn></dt>
+        <dd>
+          <p>A Citation may be either direct and explicit (as in the reference
+            list of a journal article), indirect (e.g. a citation to a more
+            recent paper by the same research group on the same topic), or
+            implicit (e.g. as in artistic quotations or parodies, or in cases of
+            plagiarism).</p>
+          <p>From: <a href="http://www.essepuntato.it/lode/http://purl.org/spar/cito">CiTO</a></p>
+        </dd>
+        <dt><dfn id="data_consumer">Data consumer</dfn></dt>
+        <dd>
+          <p>For the purposes of this WG, a Data Consumer is a person or group
+            accessing, using, and potentially performing post-processing steps
+            on data.</p>
+          <p>From: Strong, Diane M., Yang W. Lee, and Richard Y. Wang. "Data
+            quality in context." Communications of the ACM 40.5 (1997): 103-110.
+          </p>
+        </dd>
+        <dt><dfn id="data_format">Data format</dfn></dt>
+        <dd>
+          <p>Data Format defined as a specific convention for data
+            representation i.e. the way that information is encoded and stored
+            for use in a computer system, possibly constrained by a formal data
+            type or set of standards."</p>
+          <p>From: <a href="http://guide.dhcuration.org/representation/">DH
+              Curation Guide</a></p>
+        </dd>
+        <dt><dfn id="data_producer">Data producer</dfn></dt>
+        <dd>
+          <p>Data Producer is a person or group responsible for generating and
+            maintaining data.</p>
+          <p>From: Strong, Diane M., Yang W. Lee, and Richard Y. Wang. "Data
+            quality in context." Communications of the ACM 40.5 (1997): 103-110.
+          </p>
+        </dd>
+        <dt><dfn id="data_representation">Data representation</dfn></dt>
+        <dd>
+          <p>Data representation is any convention for the arrangement of
+            symbols in such a way as to enable information to be encoded by a
+            data producer and later decoded by data consumers."&gt;Data
+            representation</p>
+          <p>From: <a href="http://guide.dhcuration.org/representation/">DH
+              Curation Guide</a></p>
+        </dd>
+        <dt><dfn id="feedback">Feedback</dfn></dt>
+        <dd>
+          <p>Feedback is a forum used to collect messages posted by consumers
+            about a particular topic. Messages can include replies to other
+            consumers. Datetime stamps are associated with each message and the
+            messages can be associated with a person or submitted anonymously.</p>
+          <p><a href="http://rdfs.org/sioc/spec/#sec-modules-types">SIOC</a>,
+            (2) <a href="http://www.w3.org/TR/annotation-model/#motivations">Annotation#Motivation</a></p>
+          <p>To better understand why annotation (See Annotation) was created <a
+
+              href="http://www.w3.org/TR/skos-reference/">SKOS</a> is used to
+            show inter-related annotation between communities with more
+            meaningful distinctions than a simple class/subclass tree.</p>
+        </dd>
+        <dt><dfn id="data_preservation">Data preservation</dfn></dt>
+        <dd>
+          <p> Data Preservation is defined by <a href="http://www.alliancepermanentaccess.org/index.php/consultancy/dpglossary/#Preservation">APA</a>
+            as "The processes and operations in ensuring the technical and
+            intellectual survival of objects through time". This is part of a
+            data management plan <a href="http://guide.dhcuration.org/preservation/">focusing
+              on preservation planning and meta-data</a>. Whether it is
+            worthwhile to put effort into preservation depends on the (future)
+            value of the data, the resources available and the opinion of the
+            stakeholders (= designated community). </p>
+        </dd>
+        <dt><dfn id="data_archiving">Data archiving</dfn></dt>
+        <dd>
+          <p>Data Archiving is the set of practices around the storage and
+            monitoring of the state of digital material over the years. </p>
+          <p>These tasks are the responsibility of a Trusted Digital Repository
+            (TDR), also sometimes referred to as <a href="http://tools.ietf.org/html/rfc4810">Long-Term
+              Archive Service (LTA)</a>. Often such services follow the <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">Open
+              Archival Information System</a> which defines the archival process
+            in terms of ingest, monitoring and re-use of data.</p>
+        </dd>
+        <dt><dfn id="data_provenance">Data Provenance </dfn></dt>
+        <dd>
+          <p> Provenance originates from the French term "provenir" (to come
+            from), which is used to describe the curation process of artwork as
+            art is passed from owner to owner. Data provenance, in a similar
+            way, is metadata that allows data providers to pass details about
+            the data history to data users.</p>
+        </dd>
+        <dt><dfn id="data_quality">Data Quality </dfn></dt>
+        <dd>
+          <p> Data quality is commonly defined as “fitness for use” for a
+            specific application or use case.</p>
+        </dd>
+        <dt><dfn id="file_format">File format</dfn></dt>
+        <dd>
+          <p> File Format is a standard way that information is encoded for
+            storage in a computer file. It specifies how bits are used to encode
+            information in a digital storage medium. File formats may be either
+            proprietary or free and may be either unpublished or open.</p>
+          <p>Examples of file formats: <a href="https://en.wikipedia.org/wiki/Text_file#.TXT">txt</a>,
+            <a href="https://en.wikipedia.org/wiki/Portable_Document_Format">pdf</a>,
+            <a href="https://en.wikipedia.org/wiki/Postscript">ps</a>,<a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">avi</a>,
+            <a href="https://en.wikipedia.org/wiki/GIF">gif</a> or <a href="https://en.wikipedia.org/wiki/JPEG">jpg</a>
+          </p>
+        </dd>
+        <dt><dfn id="license">License </dfn></dt>
+        <dd>
+          <p> A license is a legal document giving official permission to do
+            something with the data with which it is associated.</p>
+          <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
+              DC-TERMS</a></p>
+        </dd>
+        <dt><dfn id="locale_parameter">Locale </dfn></dt>
+        <dd>
+          <p> A locale is a set of parameters that defines specific data
+            aspects, such as language and formatting used for numeric values and
+            dates.</p>
+        </dd>
+        <dt><dfn id="machine_readable">Machine Readable Data</dfn></dt>
+        <dd>
+          <p> Machine Readable Data are data formats that may be readily parsed
+            by computer programs without access to proprietary libraries. For
+            example <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>
+            and <a href="http://www.w3.org/TR/2014/NOTE-rdf11-primer-20140624/#section-graph-syntax">RDF
+              turtle family for graphs</a> are machine readable, but <a href="http://www.data.gov/developers/blog/primer-machine-readability-online-documents-and-data">PDF</a>
+            and <a href="https://en.wikipedia.org/wiki/JPEG">JPEG</a> are not.
+          </p>
+          <p> From: <a href="http://www.w3.org/TR/ld-glossary/#vocabulary">Linked
+              Data Glossary</a> </p>
+        </dd>
+        <dt><dfn id="sensitive_data">Sensitive Data </dfn></dt>
+        <dd>
+          <p> Sensitive data is any designated data or metadata that is used in
+            limited ways and/or intended for limited audiences. Sensitive data
+            may include personal data, corporate or government data, and
+            mishandling of published sensitive data may lead to damages to
+            individuals or organizations.</p>
+        </dd>
+        <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
+        <dd>
+          <p> Vocabulary is A collection of "terms" for a particular purpose.
+            Vocabularies can range from simple such as the widely used <a href="">RDF
+              Schema</a>, <a href="http://xmlns.com/foaf/spec/">Foaf</a> and <a
+
+              href="https://en.wikipedia.org/wiki/Dublin_Core#Dublin_Core_Metadata_Element_Set_Version_1.1">Dublin
+              Core Metadata Element Set</a> to complex vocabularies with
+            thousands of terms, such as those used in healthcare to describe
+            symptoms, diseases and treatments. Vocabularies play a very
+            important role in Linked Data, specifically to help with data
+            integration. The use of this term overlaps with Ontology.</p>
+          <p> From: <a href="http://www.w3.org/TR/ld-glossary/#vocabulary">Linked
+              Data Glossary</a> </p>
+        </dd>
+        <dt><dfn id="structured_data">Structured data</dfn></dt>
+        <dd>
+          <p> Structured Data refers to data that conforms to a fixed schema.
+            Relational databases and spreadsheets are examples of structured
+            data.</p>
+        </dd>
+      </dl>
     </section>
+    <section id="requirements">
+      <h2>Use Cases Requirements x Best Practices</h2>
+      <table id="uripatternstable">
+        <caption>Requirements x Best Practices</caption>
+        <tbody>
+          <tr>
+            <th>UC Requirement</th>
+            <th>Best Practice</th>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></td>
+            <td> Best Practice 19: Provide bulk download, Best Practice 20:
+              Follow REST principles when designing APIs</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a></td>
+            <td> Best Practice 18: Provide data unavailability reference, Best
+              Practice 26: Update the status of identifier</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></td>
+            <td> Best Practice 21: Provide real-time access</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUpToDate</a></td>
+            <td> Best Practice 22: Provide data up to date</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></td>
+            <td> Best Practice 20: Follow REST principles when designing APIs</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></td>
+            <td> Best Practice 10: Use persistent URIs as identifiers, Best
+              Practice 11: Assign URIs to dataset versions and series</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataEnrichment">R-DataEnrichment</a></td>
+            <td> Best Practice 29: Enrich data by generating new metadata</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataIrreproducibility">R-DataIrreproducibility</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataLifecyclePrivacy">R-DataLifecyclePrivacy</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataLifecycleStage">R-DataLifecycleStage</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataMissingIncomplete">R-DataMissingIncomplete</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></td>
+            <td> Best Practice 8: Provide versioning information, Best Practice
+              9: Provide version history, Best Practice 23: Maintain separate
+              versions for a data API</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></td>
+            <td> Best Practice 3: Provide locale parameters metadat, Best
+              Practice 9: Provide version history, Best Practice 23: Maintain
+              separate versions for a data API</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></td>
+            <td> Best Practice 12: Use machine-readable standardized data
+              formats </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a></td>
+            <td> Best Practice 13: Provide data in multiple formats </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></td>
+            <td> Best Practice 12: Use machine-readable standardized data
+              formats, Best Practice 25: Use a trusted serialisation format for
+              preserved data dumps</td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></td>
+            <td> Best Practice 12: Use machine-readable standardized data
+              formats </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-GeographicalContext">R-GeographicalContext</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-GranularityLevels">R-GranularityLevels</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailables">R-MetadataAvailable</a></td>
+            <td> Best Practice 1: Provide metadata, Best Practice 2: Provide
+              descriptive metadata, Best Practice 3: Provide locale parameters
+              metadata, Best Practice 4: Provide structural metadata, Best
+              Practice 6: Provide data provenance information </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></td>
+            <td> Best Practice 1: Provide metadata </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a></td>
+            <td> Best Practice 1: Provide metadata, Best Practice 2: Provide
+              descriptive metadata, Best Practice 5: Provide data license
+              information </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></td>
+            <td> Best Practice 2: Provide descriptive metadata, Best Practice 5:
+              Provide data license information, Best Practice 14: Use
+              standardized terms </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">R-PersistentIdentification</a></td>
+            <td> Best Practice 26: Update the status of identifiers </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></td>
+            <td> Best Practice 16: Choose the right formalization level </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityMetrics">R-QualityMetrics</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></td>
+            <td> Best Practice 27: Gather feedback from data consumers, Best
+              Practice 28: Provide information about feedback </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsage">R-TrackDataUsages</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a></td>
+            <td> Best Practice 27: Gather feedback from data consumers, Best
+              Practice 28: Provide information about feedback </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a></td>
+            <td> Best Practice 16: Choose the right formalization level </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></td>
+            <td> Best Practice 15: Re-use vocabularies, Best Practice 16: Choose
+              the right formalization level </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a></td>
+            <td> Best Practice 24: Assess dataset coverage </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></td>
+            <td> Best Practice 10: Use persistent URIs as identifiers, Best
+              Practice 11: Assign URIs to dataset versions and series </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a></td>
+            <td> Best Practice 5: Provide data license information </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseLiability">R-LicenseLiability</a></td>
+            <td> <br>
+            </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a></td>
+            <td> Best Practice 6: Provide data provenance information </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a></td>
+            <td> Best Practice 17: Preserve people's right to privacy </td>
+          </tr>
+          <tr>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></td>
+            <td> Best Practice 17: Preserve people's right to privacy </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <h2>Acknowledgements</h2>
+    <p>The editors gratefully acknowledge the contributions made to this
+      document by all members of the working group and the chairs: Hadley
+      Beeman, Steve Adler, Yaso Córdova, Deirdre Lee.</p>
   </body>
 </html>
