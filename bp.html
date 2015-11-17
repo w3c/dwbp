@@ -1595,9 +1595,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="VersionIdentifiers" class="practicelab">Assign URIs to
               dataset versions and series</span></p>
-          <p class="practicedesc">URIs should be
-            assigned to individual versions of datasets as well as the overall
-            series. </p>
+          <p class="practicedesc">URIs should be assigned to individual versions
+            of datasets as well as the overall series. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Like documents, many datasets fall into natural series or groups.
@@ -1713,24 +1712,54 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               <p> To provide data about the bus timetables John chooses the <a
 
                   href="http://www.w3.org/TR/tabular-data-model/"> tabular
-                  format </a> and creates a new distribution for dataset-001. </p>
+                  format </a> and creates a new distribution for dataset-001.  To promote interoperability and to help the automatic data processing, John adopts  the GTFS standard to describe the data 
+about the bus time tables. According to GTFS John needs to create several csv files, which describe 
+information about bus stops, routes, trips, stop times, bus frequencies as well as information about the starting and ending time of the bus 
+service during the week, the weekend and holidays. As described in the tabular data model, John creates a group of tables to connect the 
+several csv files used to describe the bus timetables. In this case, the csv distribution (dataset-001-csv) of the dataset-001 corresponds 
+to a group of tables as described below.</p>
               <pre class="highlight"> 
    :dataset-001
        a dcat:Dataset;
        dcat:distribution :dataset-001-csv;
        .
-    :dataset-001-csv
+   :dataset-001-csv
        a dcat:Distribution;
+       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
+       dct:title "CSV distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/csv";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
-</pre> The corresponding csv file is presented below.
-              <pre class="highlight">Origin, Destination, Bus Number, Bus Stop, Time
-X, Y, 001, Stop A, 06:00
-X, Y, 001, Stop B, 06:15
-X, Y, 001, Stop C, 06:35
-...
-</pre> </aside>
+
+    http://example.org/bus_timetables_mycity.json
+    {
+      "@context": "http://www.w3.org/ns/csvw",
+      "tables": [{
+          "url": "https://example.org/stops.csv",
+          "tableSchema": "https://example.org/stops.json"
+      }, {
+          "url": "https://example.org/routes.csv",
+          "tableSchema": "https://example.org/routes.json"
+      }, {
+          "url": "https://example.org/trips.csv",
+          "tableSchema": "https://example.org/trips.json"
+      }, {
+          "url": "https://example.org/stop_times.csv",
+          "tableSchema": "https://example.org/stop_times.json"
+      }, {
+          "url": "https://example.org/frequencies.csv",
+          "tableSchema": "https://example.org/frequencies.json"
+      }, {
+          "url": "https://example.org/calendar.csv",
+          "tableSchema": "https://example.org/calendar.json"
+      }, {
+          "url": "https://example.org/calendar_dates.csv",
+          "tableSchema": "https://example.org/calendar_dates.json"
+      }]
+    }
+</pre>
+              
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1746,7 +1775,7 @@ X, Y, 001, Stop C, 06:35
         </div>
         <!-- end of Machine-Readable Standardized FormatBP -->
         <!-- begin of Open Format BP 
-        <div class="practice">          <p><span id="OpenFormat" class="practicelab">Use non-proprietary data              formats </span></p>          <p class="practicedesc">Data should be            available in a nonproprietary data format. </p>          <section class="axioms">            <p class="subhead">Why</p>            <p> Non-proprietary data formats are usable by anyone. Proprietary              data formats may be difficult or impractical for some data users              to view or parse. Thus, the use of open data formats increases the              possibilities for use and re-use of data.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It should be possible for any person who wants to use or re-use              the data to do so without investment in proprietary software.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p> Make data available in open data formats including but not              limited to CSV, XML, Turtle, NetCDF, JSON and RDF.</p>            <label class="expand" for="example-NonproprietaryDataFormat"></label>            <input id="example-NonproprietaryDataFormat" type="checkbox">            <div class="example">              <p>to be done </p>            </div>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> Check if it is possible to read, process, and store the data              without using any proprietary software package. </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>          </section>        </div>-->
+        <div class="practice">          <p><span id="OpenFormat" class="practicelab">Use non-proprietary data formats </span></p>          <p class="practicedesc">Data should be            available in a nonproprietary data format. </p>          <section class="axioms">            <p class="subhead">Why</p>            <p> Non-proprietary data formats are usable by anyone. Proprietary              data formats may be difficult or impractical for some data users              to view or parse. Thus, the use of open data formats increases the              possibilities for use and re-use of data.</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>            <p>It should be possible for any person who wants to use or re-use              the data to do so without investment in proprietary software.</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>            <p> Make data available in open data formats including but not              limited to CSV, XML, Turtle, NetCDF, JSON and RDF.</p>            <label class="expand" for="example-NonproprietaryDataFormat"></label>            <input id="example-NonproprietaryDataFormat" type="checkbox">            <div class="example">              <p>to be done </p>            </div>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> Check if it is possible to read, process, and store the data              without using any proprietary software package. </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></p>          </section>        </div>-->
         <!-- end of Open Formats BP -->
         <!-- begin of Multiple Formats BP -->
         <div class="practice">
@@ -1789,16 +1818,21 @@ X, Y, 001, Stop C, 06:35
        .
   :dataset-001-csv
        a dcat:Distribution;
+       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
+       dct:title "CSV distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/csv";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
   :dataset-001-rdf
-       a dcat:Distribution;
+       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.rdf&gt;
+       dct:title "RDF distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/rdf";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
   :dataset-001-xml
        a dcat:Distribution;
+       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.xml&gt;
+       dct:title "XML distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/xml";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .   
@@ -1873,21 +1907,23 @@ X, Y, 001, Stop C, 06:35
               standardized terms</span></p>
           <p class="practicedesc"> Standardized terms should be used to provide
             metadata</p>
-          
-          <div class="issue"> A definition for standardized term should be included in the glossary to clarify the difference between
-             standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209"> Issue-209 </a> </div>
-          
+          <div class="issue"> A definition for standardized term should be
+            included in the glossary to clarify the difference between
+            standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209">
+              Issue-209 </a> </div>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The need for code lists and other commonly used terms for describing metadata
-              is to avoid as much as possible ambiguity and clashes in
-              the terms chosen for metadata information. The key reason is to be able to
-              refer to the standardized body/organization which defines the term
-              or code as a clear reference.</p>
-            <div class="issue"> Code lists are used for describing metadata or data values? If code lists are used for describing data values then 
-              it would be nice to have a separate BP for this. The title of this BP mentions just metadata. 
-              <a href="https://www.w3.org/2013/dwbp/track/issues/210"> Issue-210 </a> </div>
-            
+            <p>The need for code lists and other commonly used terms for
+              describing metadata is to avoid as much as possible ambiguity and
+              clashes in the terms chosen for metadata information. The key
+              reason is to be able to refer to the standardized
+              body/organization which defines the term or code as a clear
+              reference.</p>
+            <div class="issue"> Code lists are used for describing metadata or
+              data values? If code lists are used for describing data values
+              then it would be nice to have a separate BP for this. The title of
+              this BP mentions just metadata. <a href="https://www.w3.org/2013/dwbp/track/issues/210">
+                Issue-210 </a> </div>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p>The benefit of using standardized code lists and other commonly
@@ -1918,27 +1954,27 @@ X, Y, 001, Stop C, 06:35
             </section>
           </section>
         </div>
-        
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Re-use
               vocabularies</span></p>
-          
-          
           <p class="practicedesc"> Shared vocabularies should be used to provide
             metadata</p>
-          
-          <div class="issue"> As proposed during the F2F, it would be nice to use the term shared vocabularies, i.e., vocabularies that capture a consensus
-              of the community about a specific domain, instead of vocabularies. In the context of this BP, I think it is more appropriate to say
-             "Use shared vocabularies" instead of "Reuse vocabularies". I think Reuse of vocabularies is more appropriate when we are talking about the creation of new vocabularies .
-            <a href="https://www.w3.org/2013/dwbp/track/issues/212"> Issue-212 </a></div>
+          <div class="issue"> As proposed during the F2F, it would be nice to
+            use the term shared vocabularies, i.e., vocabularies that capture a
+            consensus of the community about a specific domain, instead of
+            vocabularies. In the context of this BP, I think it is more
+            appropriate to say "Use shared vocabularies" instead of "Reuse
+            vocabularies". I think Reuse of vocabularies is more appropriate
+            when we are talking about the creation of new vocabularies . <a href="https://www.w3.org/2013/dwbp/track/issues/212">
+              Issue-212 </a></div>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> re-using vocabularies increases interoperability and reduces
-              redundancies between vocabularies, encouraging re-use of the data. </p>
-            <div class="issue"> I propose to change the Why section to be more specific about the use of shared vocabularies. 
-              <a href="https://www.w3.org/2013/dwbp/track/issues/211"> Issue-211 </a>
-            </div>
-            
+              redundancies between vocabularies, encouraging re-use of the data.
+            </p>
+            <div class="issue"> I propose to change the Why section to be more
+              specific about the use of shared vocabularies. <a href="https://www.w3.org/2013/dwbp/track/issues/211">
+                Issue-211 </a> </div>
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p> It should be possible to automatically compare data of two or
@@ -1971,7 +2007,6 @@ X, Y, 001, Stop C, 06:35
             </section>
           </section>
         </div>
-        
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
           <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
@@ -2543,7 +2578,8 @@ X, Y, 001, Stop C, 06:35
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible to appreciate the coverage and external dependencies of a given dataset.</p>
+            <p>It should be possible to appreciate the coverage and external
+              dependencies of a given dataset.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -2553,17 +2589,32 @@ X, Y, 001, Stop C, 06:35
               preserved somewhere or provided along with the new dataset
               considered for preservation.</p>
             <aside class="example">
-                 <p>A dataset targetted for preservation is made of the following triples:</p>
-                 <pre style="" class="highlight prettyprint prettyprinted">
- # Definition of a person
+              <p>A dataset targetted for preservation is made of the following
+                triples:</p>
+              <pre style="" class="highlight prettyprint prettyprinted"> # Definition of a person
  ex:bob a ex:Staff;
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
                  </pre>
-                <p>Those triples make use of the "foaf" vocabulary and a custom one defined in the testing domain name "ex". It also uses entities defined in "dbpedia" and "ex". FOAF is a well established ontology that is archived in several places on the web (see, for instance, <a href="http://lov.okfn.org">the LOV repository</a>). Entities defined in DBpedia are also preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento gateway</a> and archived dumps of the dataset also exists. The risks associated to preserving the triple making use of those external resource is thus minimal. A bigger concerns rises from the usage made of resources defined in "ex" which is a name space that, by design, does not exist outside of the dataset. Unless the data describing "ex:john" and "ex:Staff" is preserved alongside those triples their contextual meaning will be lost. This is in particular critical for "ex:Staff" as without it the type of "ex:bob" is unknown.</p>
-                <p>Considering this assessement, a revised dataset including the definition of "ex:Staff" can be considered for preservation:</p>
-                 <pre style="" class="highlight prettyprint prettyprinted">
- # Definition of a person
+              <p>Those triples make use of the "foaf" vocabulary and a custom
+                one defined in the testing domain name "ex". It also uses
+                entities defined in "dbpedia" and "ex". FOAF is a well
+                established ontology that is archived in several places on the
+                web (see, for instance, <a href="http://lov.okfn.org">the LOV
+                  repository</a>). Entities defined in DBpedia are also
+                preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento
+                  gateway</a> and archived dumps of the dataset also exists. The
+                risks associated to preserving the triple making use of those
+                external resource is thus minimal. A bigger concerns rises from
+                the usage made of resources defined in "ex" which is a name
+                space that, by design, does not exist outside of the dataset.
+                Unless the data describing "ex:john" and "ex:Staff" is preserved
+                alongside those triples their contextual meaning will be lost.
+                This is in particular critical for "ex:Staff" as without it the
+                type of "ex:bob" is unknown.</p>
+              <p>Considering this assessement, a revised dataset including the
+                definition of "ex:Staff" can be considered for preservation:</p>
+              <pre style="" class="highlight prettyprint prettyprinted"> # Definition of a person
  ex:bob a ex:Staff;
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
@@ -2571,7 +2622,9 @@ X, Y, 001, Stop C, 06:35
  ex:Staff rdfs:subClass foaf:Person;
      rdfs:label "A staff member". 
                  </pre>
-                 <p>This second, more complete, dataset is better suited for preservation as it is more self-describing and make use of external entities whose preservation is trusted.</p>
+              <p>This second, more complete, dataset is better suited for
+                preservation as it is more self-describing and make use of
+                external entities whose preservation is trusted.</p>
             </aside>
           </section>
           <section class="test">
@@ -2616,16 +2669,19 @@ X, Y, 001, Stop C, 06:35
               open standards. For instance those provided by the W3C
               [[FORMATS]]. </p>
             <aside class="example">
-                 <p>Those triples are serialised using the Turtle W3C recommendation. It is a text-based format which is supported by the majority of software able to process Web data. This format can thus be trusted for preservation.</p>
-                 <pre style="" class="highlight">
- # Definition of a person
+              <p>Those triples are serialised using the Turtle W3C
+                recommendation. It is a text-based format which is supported by
+                the majority of software able to process Web data. This format
+                can thus be trusted for preservation.</p>
+              <pre style="" class="highlight"> # Definition of a person
  ex:bob a ex:Staff;
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
                  </pre>
-                <p>A custom-made serialisation of the same data such as what follows should be given a negative appreciation towards preserving the dataset.</p>
-                 <pre style="" class="highlight">
-ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
+              <p>A custom-made serialisation of the same data such as what
+                follows should be given a negative appreciation towards
+                preserving the dataset.</p>
+              <pre style="" class="highlight">ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
                  </pre>
             </aside>
           </section>
@@ -2647,8 +2703,8 @@ ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
         <div class="practice">
           <p><span id="ResourceStatus" class="practicelab">Update the status of
               identifiers</span></p>
-          <p class="practicedesc">Preserved resources should be linked with their
-            "live" counterparts</p>
+          <p class="practicedesc">Preserved resources should be linked with
+            their "live" counterparts</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>URI dereferencing is a primary interface to data on the Web.
@@ -2693,7 +2749,9 @@ ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
             <p>In addition to the status codes, HTTP Link headers can also be
               used to relate resources to preserved descriptions.</p>
             <aside class="example">
-              <p>One approach with link header is to use the Memento protocol to give a link to a timegate providing access to preserved descriptions of the resource:</p>
+              <p>One approach with link header is to use the Memento protocol to
+                give a link to a timegate providing access to preserved
+                descriptions of the resource:</p>
               <pre class="highlight"> 
 curl -I http://example.org/dataset-001
 
@@ -2701,9 +2759,15 @@ HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
 Link: http://example.org/dataset; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
             </pre>
-            <p>Using HTTP status code the data consumer can be redirected to the most recent description of the entity. In the following example a request for the resource "http://example.org/dataset-001" is first redirected to the description "http://example.org/data/dataset-001" which, as it has been preserved and flagged as invalid, redirects the client to the newer description "http://example.org/newdata/dataset-001"</p>
-            <pre class="highlight">
-curl -L -I http://example.org/dataset-001
+              <p>Using HTTP status code the data consumer can be redirected to
+                the most recent description of the entity. In the following
+                example a request for the resource
+                "http://example.org/dataset-001" is first redirected to the
+                description "http://example.org/data/dataset-001" which, as it
+                has been preserved and flagged as invalid, redirects the client
+                to the newer description
+                "http://example.org/newdata/dataset-001"</p>
+              <pre class="highlight">curl -L -I http://example.org/dataset-001
 
 HTTP/1.1 303 See Other
 Location: http://example.org/data/dataset-001
