@@ -1906,7 +1906,7 @@ to a group of tables as described below.</p>
           <p><span id="MetadataStandardized" class="practicelab">Use
               standardized terms</span></p>
           <p class="practicedesc"> Standardized terms should be used to provide
-            metadata</p>
+            data and metadata</p>
           <div class="issue"> A definition for standardized term should be
             included in the glossary to clarify the difference between
             standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209">
@@ -1914,16 +1914,16 @@ to a group of tables as described below.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The need for code lists and other commonly used terms for
-              describing metadata is to avoid as much as possible ambiguity and
-              clashes in the terms chosen for metadata information. The key
+              data values and for describing metadata is to avoid as much as possible ambiguity and
+              clashes in the terms chosen for data and metadata information. The key
               reason is to be able to refer to the standardized
               body/organization which defines the term or code as a clear
               reference.</p>
-            <div class="issue"> Code lists are used for describing metadata or
+            <!--<div class="issue"> Code lists are used for describing metadata or
               data values? If code lists are used for describing data values
               then it would be nice to have a separate BP for this. The title of
               this BP mentions just metadata. <a href="https://www.w3.org/2013/dwbp/track/issues/210">
-                Issue-210 </a> </div>
+                Issue-210 </a> </div> -->
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p>The benefit of using standardized code lists and other commonly
@@ -1949,7 +1949,8 @@ to a group of tables as described below.</p>
                 W3C, etc.</p>
               <section class="ucr">
                 <p class="subhead">Evidence</p>
-                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
+                <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>, 
+                  <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></p>
               </section>
             </section>
           </section>
@@ -1959,27 +1960,32 @@ to a group of tables as described below.</p>
               vocabularies</span></p>
           <p class="practicedesc"> Shared vocabularies should be used to provide
             metadata</p>
-          <div class="issue"> As proposed during the F2F, it would be nice to
+          <!-- <div class="issue"> As proposed during the F2F, it would be nice to
             use the term shared vocabularies, i.e., vocabularies that capture a
             consensus of the community about a specific domain, instead of
             vocabularies. In the context of this BP, I think it is more
             appropriate to say "Use shared vocabularies" instead of "Reuse
             vocabularies". I think Reuse of vocabularies is more appropriate
             when we are talking about the creation of new vocabularies . <a href="https://www.w3.org/2013/dwbp/track/issues/212">
-              Issue-212 </a></div>
+              Issue-212 </a></div> -->
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> re-using vocabularies increases interoperability and reduces
-              redundancies between vocabularies, encouraging re-use of the data.
+            <p> 
+              Re-using vocabularies increases interoperability and reduces redundancies, encouraging re-use of the data.
+              Shared vocabularies capture a consensus of the community about a specific domain.
+              The re-use of shared vocabularies to describe metadata helps the automatic processing of data and metadata.
+              Shared vocabularies should be especially used to describe both structural metadata as well as other types of metadata 
+              (descriptive, provenance, quality and versioning).
+              
             </p>
-            <div class="issue"> I propose to change the Why section to be more
+            <!-- <div class="issue"> I propose to change the Why section to be more
               specific about the use of shared vocabularies. <a href="https://www.w3.org/2013/dwbp/track/issues/211">
-                Issue-211 </a> </div>
+                Issue-211 </a> </div> -->
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
-              <p> It should be possible to automatically compare data of two or
+              <p> It should be possible to automatically compare two or
                 more datasets when they use the same vocabulary to describe
-                structural metadata. </p>
+                metadata. </p>
               <p> It should be possible for machines to automatically process
                 the data within a dataset. </p>
               <p> It should be possible for machines to automatically process
@@ -2084,91 +2090,29 @@ to a group of tables as described below.</p>
       <!-- begin of Sensitive Data -->
       <section id="sensitive">
         <h3>Sensitive Data</h3>
-        <p>Sensitive data is any designated data or metadata that is used in
-          limited ways and/or intended for limited audiences. Sensitive data may
-          include personal data, corporate or government data, and mishandling
-          of published sensitive data may lead to damages to individuals or
-          organizations.</p>
         <p>To support best practices for publishing sensitive data, data
           publishers should identify all sensitive data, assess the exposure
           risk, determine the intended usage, data user audience and any related
           usage policies, obtain appropriate approval, and determine the
-          appropriate security measures needed to taken to protect the data.
-          Appropriate security measures should also account for secure
-          authentication and use of HTTPS.</p>
-        <p>At times, because of sharing policies sensitive data may not be
-          available in part or in its entirety. Data represents gaps that may
-          affect the overall analysis of datasets. To account for unavailable
-          data, data publishers should publish information about unavoidable
-          data gaps.</p>
-        <!-- begin of Preserve Privacy BP -->
-        <div class="practice">
-          <p><span id="PreservePrivacy" class="practicelab">Preserve people's
-              right to privacy </span></p>
-          <p class="practicedesc">Data must/em&gt; infringe a person's right to
-            privacy.</p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>Data publishers should preserve the privacy of individuals where
-              the release of personal information would endanger safety
-              (unintended accidents) or security (deliberate attack). Privacy
-              information might include: full name, home address, mail address,
-              national identification number, IP address (in some cases),
-              vehicle registration plate number, driver's license number, face,
-              fingerprints, or handwriting, credit card numbers, digital
-              identity, date of birth, birthplace, genetic information,
-              telephone number, login name, screen name, nickname, health
-              records etc.</p>
-            <p>Data publishers should identify all personal data, assess the
-              exposure risk, determine the intended usage, data user audience
-              and any related usage policies, obtain appropriate approval, and
-              determine the appropriate security measures needed to taken to
-              protect the data including secure authentication and use of HTTPS
-              for data transmission.</p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Data that can identify an individual person must not be published
-              without their consent.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-          </section>
-          <p>The data publisher should establish a security plan for publishing
-            data and metadata. The plan should include preparatory steps to
-            ensure personal data is protected or removed prior to publication.
-            All steps need to be followed prior to publication of new data or
-            new data formats particularly binary formats (word processing,
-            spreadsheet etc) that may embed personal metadata in files.</p>
-          <p>Identify any personal data exposure risks. Write a security plan
-            for publishing data and metadata that includes clear guidelines to
-            follow. Prior to publication put security measures in place and
-            follow them. In preparation to publication review data to ensure
-            compliance.</p>
-          <aside class="example">
-            <p>to be done </p>
-          </aside>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Write and test a plan for reviewing, curating and vetting data
-              prior to publication.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a></p>
-          </section>
-        </div>
-        <!-- end of Preserve Privacy BP -->
-        <!-- begin of Preserve Security BP
-        <div class="practice">          <p><span id="PreserveSecurity" class="practicelab">Preserve              organization's security </span></p>          <p class="practicedesc">Data should not            infringe an organization's security (local government, national            government, business). </p>          <section class="axioms">            <p class="subhead">Why</p>          </section>          <section class="description">            <p class="subhead">What</p>          </section>          <section class="outcome">            <p class="subhead">Intended Outcome</p>          </section>          <section class="how">            <p class="subhead">Possible Approach to Implementation</p>          </section>          <section class="test">            <p class="subhead">How to Test</p>            <p> </p>          </section>          <section class="ucr">            <p class="subhead">Evidence</p>            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>          </section>        </div> -->
-        <!-- end of Preserve Security BP -->
+          appropriate security measures needed to taken to protect the data, which 
+          should also account for secure authentication and use of HTTPS.</p>
+        <p>Data publishers should preserve the privacy of individuals where
+            the release of personal information would endanger safety
+            (unintended accidents) or security (deliberate attack). Privacy
+            information might include: full name, home address, mail address,
+            national identification number, IP address (in some cases),
+            vehicle registration plate number, driver's license number, face,
+            fingerprints, or handwriting, credit card numbers, digital
+            identity, date of birth, birthplace, genetic information,
+            telephone number, login name, screen name, nickname, health
+            records etc.</p>
+        <p> At times, because of sharing policies sensitive data may not be available in part or in its entirety. Data unavailability represents gaps that may affect the overall analysis of datasets. To account for unavailable data, data publishers should publish information about unavoidable data gaps.</p>
         <div class="practice">
           <p><span id="DataUnavailabilityReference" class="practicelab">Provide
               data unavailability reference</span></p>
-          <p class="practicedesc">References to data that is not open, or is
+          <p class="practicedesc">References to data that is not open, or 
             available under different restrictions to the origin of the
-            reference, should provide context by explaining how or by whom the
-            referred to data can be accessed. </p>
+            reference, should provide explanation about how the referred data can be accessed and who can access it. </p>
           <!-- <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataHumanMachine">Provide
               metadata for both humans and machines</a> best practice. </p> -->
           <section class="axioms">
