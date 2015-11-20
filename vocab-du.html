@@ -236,7 +236,7 @@ pre red { color: red;
         requires data publishers to provide a mechanism of receiving data usage
         from data consumers in the form of feedback,citation and data
         correction. </p>
-      <div class="issue">Is the JSON-LD representation helpful?  Is it the best representation of JSON-LD?(JSON-LD was created by converting TTL with Jena rdfcat. )  </div>
+<!--      <div class="issue">Is the JSON-LD representation helpful?  Is it the best representation of JSON-LD?(JSON-LD was created by converting TTL with Jena rdfcat. )  </div> -->
 <!-- ttl to json-ld convertor begin -->
         <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
       </section>
@@ -244,7 +244,7 @@ pre red { color: red;
 
     <section id="namespaces-1">
       <h2> Namespaces</h2>
-      <div class="note">The namespaces need to be reviewed based on the decisions at the F2F4 meeting and updated accordingly. </div>
+
       <p>The namespace for DCAT is <code>http://www.w3.org/ns/dcat#</code>.
         However, it should be noted that DCAT makes extensive use of terms from
         other vocabularies, in particular <a href="http://dublincore.org/documents/dcmi-terms/">Dublin
@@ -288,10 +288,6 @@ pre red { color: red;
             <td>http://www.w3.org/2004/02/skos/core#</td>
           </tr>
           <tr>
-            <td>vcard</td>
-            <td>http://www.w3.org/2006/vcard/ns#</td>
-          </tr>
-          <tr>
             <td>xsd</td>
             <td>http://www.w3.org/2001/XMLSchema#</td>
           </tr>
@@ -314,10 +310,6 @@ pre red { color: red;
           <tr>
             <td>cito</td>
             <td>http://purl.org/spar/cito#</td>
-          </tr>
-          <tr>
-            <td>bibo</td>
-            <td>http://purl.org/ontology/bibo#</td>
           </tr>
         </tbody>
       </table>
@@ -372,6 +364,8 @@ pre red { color: red;
     </section>
     <section id="examples">
       <h2> Examples</h2>
+        <div class="note">The vocabularies are out of date, and need to be improved.  This needs to be an action item once the vocabulary specifcation has been completed. </div>
+
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
       <p> Example 1 - Usage: A 2-D charting application developed to be
@@ -752,24 +746,33 @@ pre red { color: red;
 </section>
     <section id=" Vocab_Overview">
       <h2>Vocabulary Overview</h2>
-        <div class="issue"> Consistency between Data Usage and Data Quality Vocabs 
-          The DUV and DQV should align reused vocabulary terms and agree on common namespace for overlapping classes.  <a href="http://www.w3.org/2013/dwbp/track/issues/198">
-            Issue-198 </a>.  </div>
       <div class="note"> Based on discussions held June-August the model has been modified significantly  The non-normative text below needs updating once general agreement is reached on the DUV model.</div>
       <p><em>This section is non-normative.</em></p>
       <p> This section depicts the vocabulary as a conceptual model. Shaded
         boxes are used to identify each class. Labeled open arrows identify
         example properties between the classes. Unlabeled shaded arrows are used
         to show inheritance with the parent class identified by the arrow head.</p>
-      <img src="./images/vocab-overview.png" v:shapes="_x0000_i1025" border="1"
+      <img src="./images/vocab_overview_11202015.png" v:shapes="_x0000_i1025" border="1"
 
         height="490" width="788">
-      <div class="note"> Classes and properties from the PROV-O have been used to describe usage.  duv:Entity (a child of prov:Entity) is used in the model as a means to generally depict dcat:Dataset or dcat:Distribution.  </div>
-      <div class="note"> Classes and properties from the Web Annotation Vocabulary have been used to describe feedback.  There were some recent inqueries to our approach from the SIOC team.  The SIOC has an extensive vocabulary on on-line forums.  A note may be included in the future discussing possible relationships to the SIOC.    </div>
     </section>
+
+        <div class="issue">Data vocabulary reuse question:  In the citation model, is it better to use prov:Agent that is a superclass to new classes such as foaf:Project or should we create a new class duv:Agent? </div>
+
+        <div class="issue">Data vocabulary reuse question:  Should duv:Publication be a subclass of foaf:Document?   In the citation model, duv:Publication is used as opposed to foaf:Document.  It could be a subclass of foaf:Document.  duv:Publication gives us an opportunity to extend it with the basic electronic citation requirements, on the other hand foaf:Document is more familiar.  </div>
+
+        <div class="issue">The data quality vocabulary daq:Metric has been included in the feedback model, duv:Rating is included as an instance of daq:Metric as opposed to being a subclass.  Should it be a subclass or instance?  If an instance is appropriate how should this be depicted as an instance in the model diagram?  </div>
+
+        <div class="issue"> Data usage model review:  As discussed in our working group, duv:Usage is a subclass of oa:Annotation. Two types of annotation are being considered:  Notes (procedures, readme etc) and at some level a man page if usage (e.g. duv:ToolUsage) is describing a tool that can consume the duv:Entity.  </div>
+
+        <div class="note">We need to mention classes and properties explicitly included from other vocabularies within a new section.  This section will be non-normative and will contain links back to the vocabularies we mention.      </div>
+
+
     <section id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
       <div class="note"> This description of DUV classes and properties is out of date. These descriptions will be updated after the F2F4 discussion.</div>
+      <div class="issue"> There are several vocabularies that hold many properties can be heavily leveraged in the data usage vocabulary.  How and where do we describe these properties and at what level of detail is appropriate?  We want to give readers enough guidance to get started, not overwelm them, or not leave readers with the impression that we are recommending certain properties.  </div>
+        <div class="note"> This section needs to be overhauled.  Classes reused from other vocabularies shouldn't be redefined in our vocabulary, need to be removed, and included as a subclass with a link reference back to the vocabulary.  </div>
       <section id="class-agent">
         <h3> Class:Agent</h3>
         <table class="definition">
@@ -1003,9 +1006,6 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <div class="issue"> Should duv:consumes be used instead of duv:consumed?
-          Should we be able to reify Consumption? <a href="http://www.w3.org/2013/dwbp/track/issues/177">
-            Issue-177 </a>.  Please note the model has changed significantly so the previous question is not entirely accurate.  The main question that currently remains:  Is the current usage model adequate and does it satisfy the original concern?  </div>
         <h4 role="heading" aria-level="3" id="Property:generates">Property:
           generates</h4>
         <table class="definition">
@@ -1303,9 +1303,6 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <div class="issue"> The use of cito:CitationAct and duv:Citation is
-          under evaluation. <a href="http://www.w3.org/2013/dwbp/track/issues/173">
-            Issue-173 </a></div>
               </section>
         <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
           hasCitingEntity</h4>
@@ -1372,10 +1369,6 @@ pre red { color: red;
           </tbody>
         </table>
     
-        <div class="issue"> The definition of duv:Feedback needs to be reviewed
-          because it is not clear if it should be a subclass of oa:Annotation or
-          just an instance of oa:Motivation. <a href="http://www.w3.org/2013/dwbp/track/issues/178">
-            Issue-178 </a> </div>
               </section>
         <h4 role="heading" aria-level="3" id="Property:endorses">Property:
           endorses</h4>
@@ -1465,9 +1458,6 @@ pre red { color: red;
         </tr> -->
           </tbody>
         </table>
-        <div class="issue"> The meaning of duv:retains needs to be clarified and
-          more examples will be provided. <a href="http://www.w3.org/2013/dwbp/track/issues/174">
-            Issue-174 </a> </div>
         <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
           has_rating</h4>
         <table class="definition">
@@ -1576,14 +1566,13 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
-      <div class="issue">Should prov:SoftwareAgent be used instead of
-        Application/WebOfThing? <a href="http://www.w3.org/2013/dwbp/track/issues/176">
-          Issue-176 </a> </div>
     </section>
     </section>
 
     <section id="duvrequirements">
+
       <h2>DUV Requirements</h2>
+        <div class="issue">Right now this section is somewhat of a duplication of the use case requirements.  It would better fit into this document if we described HOW the DUV fulfills these requirements. </div>
       <p> This section shows some of the requirements that motivated the
         development of the Dataset Usage Vocabulary. These requirements were
         derived from the use cases described in <a href="http://www.w3.org/TR/dwbp-ucr/">Data
