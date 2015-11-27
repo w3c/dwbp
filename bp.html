@@ -47,11 +47,17 @@
   border-bottom: thin solid black;
   position:relative;
   top:-1.5em;
-  margin: 0 2em -1em 1em;;
+  margin: 0 2em -1em 1em;
 }
 
 .subhead{
   font-weight:bold;
+}
+.benefits .stamp {
+  height: 50px;
+  width: 50px;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 .practice dl dt #tempPractice dl dt{
@@ -369,6 +375,17 @@ table#uripatternstable caption {
             or more relevant requirements as documented in the <a href="http://www.w3.org/TR/dwbp-ucr/">Data
               on the Web Best Practices Use Cases &amp; Requirements document</a></p>
         </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <img src="images/stamp-reuse.svg" alt="Reuse" class="stamp">
+          <img src="images/stamp-trustworthy.svg" alt="Trustworthy" class="stamp">
+          <img src="images/stamp-comprehension.svg" alt="Comprehension" class="stamp">
+          <img src="images/stamp-linkability.svg" alt="Linkability" class="stamp">
+          <img src="images/stamp-accessibility.svg" alt="Accessibility" class="stamp">
+          <img src="images/stamp-discoverability.svg" alt="Discoverability" class="stamp">
+          <img src="images/stamp-processability.svg" alt="Processability" class="stamp">
+          <img src="images/stamp-interoperability.svg" alt="Interoperability" class="stamp">
+        </section>
       </div>
       <!--       <div class="issue">
         <p>Which section of a BP is normative, and whether the use of RFC2119          keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>      </div> -->
@@ -437,7 +454,7 @@ table#uripatternstable caption {
         <p> </p>
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
-          <p><span id="ProvideMetadata" class="practicelab"> Provide metadata</span></p>
+          <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Metadata must be provided for both human users
             and computer applications</p>
           <section class="axioms">
@@ -500,6 +517,10 @@ table#uripatternstable caption {
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable,
                 </a><a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum,
                 </a><a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a></p>
+          </section>
+          <section class="benefits">
+            <p class="subhead">Benefits</p>
+            <img src="images/stamp-comprehension.svg" alt="Comprehension" class="stamp">
           </section>
         </div>
         <!-- end of BP -->
@@ -605,6 +626,11 @@ table#uripatternstable caption {
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></p>
           </section>
+          <section class="benefits">
+            <p class="subhead">Benefits</p>
+            <img src="images/stamp-comprehension.svg" alt="Comprehension" class="stamp">
+            <img src="images/stamp-discoverability.svg" alt="Discoverability" class="stamp">
+          </section>
         </div>
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
@@ -688,6 +714,10 @@ table#uripatternstable caption {
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
+          </section>
+          <section class="benefits">
+            <p class="subhead">Benefits</p>
+            <img src="images/stamp-comprehension.svg" alt="Comprehension" class="stamp">
           </section>
         </div>
         <!-- end of Locale Parameters BP -->
@@ -2183,9 +2213,9 @@ to a group of tables as described below.</p>
           published on the Web. </p>
         <p>On a further note, it can be observed that data on the Web is
           essentially about the description of entities identified by a unique,
-          Web-based, identifier (a URI). Once the data is dumped and sent to an
+          Web-based, identifier (an URI). Once the data is dumped and sent to an
           institute specialised in digital preservation the link with the Web is
-          broken (de-referencing) but the role of the URI as a unique identifier
+          broken (dereferencing) but the role of the URI as a unique identifier
           still remains. In order to increase the usability of preserved dataset
           dumps it is relevant to maintain a list of these identifiers. </p>
         <!-- begin of BP Bulk Access-->
@@ -2321,6 +2351,49 @@ to a group of tables as described below.</p>
           </section>
         </div>
         <!-- end of BP BulkAccess 2-->
+        <!-- begin of BP Content Negotiation -->
+        <div class="practice">
+          <p><span id="Conneg" class="practicelab">Serving data and resources with different formats </span></p>
+          <p class="practicedesc">It is recommended to use content negotiation for serving data available in multiple formats</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+	    <p>It is possible to have data being served in a HTML page mixed with human-readable and machine-readable data. RDFa could be used to mix HTML content with semantic data.
+	    </p>
+	    <p>But, in some cases this page is subject of scraping by some applications in order to get data available. When structured data is mixed with HTML, but it is possible to have a different representation with the same structured data, written in Turtle or JSON-LD, it is recommended to serve this page using Content Negotiation.
+	    </p>
+        <div class="issue">
+          <p>This BP will be complemented.</p>
+        </div>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+	    	<p>
+	    		It should be possible to serve the same resource with different representations.
+	    	</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+	    	<p>A possible approach to implementation is to configure the web server to deal with content negotiation of the requested resource.</p>
+	    	<ul>
+	    		<li>http://example.org/profile_info.html - Personal information represented in HTML + RDFa</li>
+	    		<li>http://example.org/profile_info.json - The same information of the resource but represented in JSON-LD format</li>
+	    		<li>http://example.org/profile_info.ttl - The same information of the resource but represented in Turtle format</li>
+	    	</ul>
+	    	
+	    	<p>The specif format of the resource's representation can be acessed by the URI or by the Content-type of the HTTP Request.</p>
+            <aside class="example">
+              <p>to be done </p>
+            </aside>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: </p>
+          </section>
+        </div>
+        <!-- end of BP Content Negotiation -->
         <!-- begin of BP Access Real-time-->
         <div class="practice">
           <p><span id="AccessRealTime" class="practicelab">Provide real-time
