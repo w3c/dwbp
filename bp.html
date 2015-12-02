@@ -215,8 +215,8 @@ table#uripatternstable caption {
         resources and URIs, as well as a number of data formats. The normative
         element of each best practice is the <em>intended outcome</em>.
         Possible implementations are suggested and, where appropriate, these
-        recommend the use of a particular technology such as <abbr title="Comma Separataed Variables">CSV</abbr>,
-        JSON or RDF. A basic knowledge of vocabularies and data models would be
+        recommend the use of a particular technology such as [[CSV]], [[JSON]] and
+        [[RDF]]. A basic knowledge of vocabularies and data models would be
         helpful to better understand some aspects of this document. </p>
     </section>
     <section id="scope" class="informative">
@@ -236,55 +236,38 @@ table#uripatternstable caption {
     <section id="context" class="informative">
       <h2>Context</h2>
       <p> In general, the Best Practices proposed for publication and usage of
-        Data on the Web refer to datasets and distributions. For this document,
-        as defined by [[DCAT]], "a dataset is a collection of data, available
-        for access or download in one or more formats". By data, "we mean known
-        facts that can be recorded and that have implicit meaning" [[Navathe]].
-        In ordet to meet the requirements of several data consumers datasets
-        should be available in more than one distribution. Again quoting the
-        [[DCAT]] specification, a distribution "Represents a specific available
-        form of a dataset. Each dataset might be available in different forms,
-        these forms might represent different formats of the dataset or
-        different endpoints. Examples of distributions include a downloadable
-        CSV file, an API or an RSS feed".</p>
-      <p> In our context, two importante aspects should be considered when
-        publishing data on the Web: the sharing of data in a large scale and the
-        use of the Web as a platform for data publication and sharing. Large
-        scale data sharing allows datasets to be used for several groups of data
-        consumers, which may have distinct requirements and expectations about
-        the data. Given this heterogeneity and the fact that data publishers and
-        data consumers may be unknown to each other, it is necessary to offer
-        some additional information to help understanding and manipulating the
-        data. Such information may also contribute to leverage dataset
-        trustworthy and reuse. Additional information that should be published
-        as part of the dataset includes but is not limited to: structural
-        metadata, descriptive metadata, access information, data quality
-        information, provenance information, license information and usage
-        information. </p>
-      <p> The second aspect, the use of the Web as a platform for data
-        publication and sharing, concerns the architectural bases of the Web as
-        discussed in [[WEBARCH]]. The DWBP document is mainly interested on the
+        Data on the Web refer to <a href="#dataset">datasets</a> and <a href="#distribution"> distributions</a>.  
+        Data is published in different distributions, which is a specific physical 
+        form of a dataset. By data, "we mean known facts that can be recorded and that have implicit meaning" [[Navathe]].
+      
+      These distributions facilitate the sharing of data on a large scale, which allows datasets to be used for several groups of 
+      <a href="#data_consumer"> data consumers </a>, without regard to purpose, audience, interest, or license. Given this heterogeneity and the fact that data 
+      publishers and data consumers may be unknown to each other, it is necessary to provide some information about the datasets 
+      which may also contribute to trustworthiness and reuse, such as: structural metadata, descriptive metadata, access information, 
+      data quality information, provenance information, license information and usage information. </p>
+      
+      <p> Other important aspect of publishing and sharing data on the Web
+        concerns the architectural bases of the Web as
+        discussed in [[WEBARCH]]. The <abbr title="Data on the Web Best Practices">DWBP</abbr> document is mainly interested on the
         Identification principle that says that URIs should be used to identify
         resources. In our context, a resource may be a whole dataset or a
-        specific item of given dataset. All resources should be published with
-        stable URIs, so that they can be referenced. At the very least, give
-        them unique and stable URIs, if you don't want to make them directly
-        accessible. Besides it should be possible to create links between
-        resources. A link may be defined as a relationship between two resources
-        when one resource refers to the other resource by means of a URI. </p>
+        specific item of given dataset. All resources should be published with stable 
+        URIs, so that they can be referenced and make links, via URI, between two or more resources.</p>
       <p>The following diagram illustrates the dataset composition (data values
         and metadata) together with other components related to the dataset
         publication and usage. Data values correspond to the data itself and may
-        be available in one or more distributions, which should be defined by
+        be available in one or more  distributions, which should be defined by
         the publisher considering data consumer's expectations. The Metadata
         component corresponds to the additional information that describes the
         dataset and dataset distributions, helping the manipulation and the
         reuse of the data.&nbsp; In order to allow an easy access to the dataset
-        and its corresponding distributions multiple Dataset Access mechanisms
-        should be available such as APIs and bulk download. Finally, to promote
+        and its corresponding distributions, multiple Dataset Access mechanisms
+        should be available. Finally, to promote
         the interoperability among datasets it is important to adopt Data
         Vocabularies and Standards. </p>
       <img src="images/context.jpg" alt="Our Context" height="440" width="640">
+      
+      <div class="note"> Should we include definitions on the glossary to explain terms used in this section ? <div> 
     </section>
     <section id="challenges" class="informative">
       <h2>Data on the Web Challenges</h2>
@@ -293,15 +276,10 @@ table#uripatternstable caption {
         for example, where there is a single data model to represent the data
         and a database management system (DBMS) to control data access, data on
         the Web allows for the existence of multiple ways to represent and to
-        access data. Furthermore, publishers and consumers may be unknown to
-        each other and be part of entirely disparate communities with different
-        norms and in-built assumptions so that it becomes essential to provide
-        information about data structure, quality, provenance and any terms of
-        use. The following diagram summarizes some of the main challenges faced
+        access data.  The following diagram summarizes some of the main challenges faced
         when publishing or consuming data on the Web. These challenges were
         identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-        Use Cases and Requirements [[UCR]] and are described by one or more
-        questions. As presented in the diagram, each one of these challenges is
+        Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
         addressed by one or more best practices.</p>
       <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
       <p> Each one of these challenges originated one or more requirements as
@@ -314,7 +292,7 @@ table#uripatternstable caption {
     <section id="bp-benefits" class="informative">
       <h2>Best Practices Benefits</h2>
       <p>In order to encourage data publishers to adopt the DWBP, the list below
-        describes the main benefits of applying the proposed BP. Each benefit
+        describes the main benefits of applying the DWBP. Each benefit
         represents an improvement in the way how datasets are available on the
         Web.</p>
       <ul>
@@ -339,10 +317,7 @@ table#uripatternstable caption {
       The figure below shows the benefits that data publishers will gain with
       the adoption of each one of the proposed best practices. <img src="images/benefits.png"
 
-        alt="BP Benefits" height="340" width="840"> 
-     
-      
-      </section>
+        alt="BP Benefits" height="340" width="840"> </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -386,67 +361,80 @@ table#uripatternstable caption {
             or more relevant requirements as documented in the <a href="http://www.w3.org/TR/dwbp-ucr/">Data
               on the Web Best Practices Use Cases &amp; Requirements document</a></p>
         </section>
-       
- <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
+        <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
           <p class="subhead">Benefits</p>
-
-					<!-- Trustworthy -->
+          <!-- Trustworthy -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E" style="fill-opacity:0.4;"></circle>
+              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="14" y="41" font-family="Arial" font-size="40" fill="#BF5B0E">T</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
             </g> </svg>
           <!-- Reuse -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05" style="fill-opacity:0.4;"></circle>
+              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="12" y="41" font-family="Arial" font-size="40" fill="#387F05">R</text>
-							<text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
+              <text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
             </g> </svg>
           <!-- Linkability -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="26" cy="26" r="25" fill="#50637F" stroke-width="2" stroke="#50637F" style="fill-opacity:0.4;"></circle>
+              <circle cx="26" cy="26" r="25" fill="#50637F" stroke-width="2" stroke="#50637F"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="14" y="41" font-family="Arial" font-size="40" fill="#50637F">L</text>
-							<text x="4" y="65" font-family="Arial" font-size="11" fill="#50637F">Linkability</text>
+              <text x="4" y="65" font-family="Arial" font-size="11" fill="#50637F">Linkability</text>
             </g> </svg>
           <!-- Processability -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="26" cy="26" r="25" fill="#6E46AD" stroke-width="2" stroke="#6E46AD" style="fill-opacity:0.4;"></circle>
+              <circle cx="26" cy="26" r="25" fill="#6E46AD" stroke-width="2" stroke="#6E46AD"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="14" y="41" font-family="Arial" font-size="40" fill="#6E46AD">P</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#6E46AD">Processibility</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#6E46AD">Processibility</text>
             </g> </svg>
           <!-- Interoperability -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="30" cy="26" r="25" fill="#E0B200" stroke-width="2" stroke="#E0B200" style="fill-opacity:0.4;"></circle>
+              <circle cx="30" cy="26" r="25" fill="#E0B200" stroke-width="2" stroke="#E0B200"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="24" y="41" font-family="Arial" font-size="40" fill="#E0B200">I</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#E0B200">Interoperability</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#E0B200">Interoperability</text>
             </g> </svg>
           <!-- Comprehension -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040" style="fill-opacity:0.4;"></circle>
+              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
             </g> </svg>
           <!-- Discoverability -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
             <g>
-              <circle cx="26" cy="26" r="25" fill="#7F5C46" stroke-width="2" stroke="#7F5C46" style="fill-opacity:0.4;"></circle>
+              <circle cx="26" cy="26" r="25" fill="#7F5C46" stroke-width="2" stroke="#7F5C46"
+
+                style="fill-opacity:0.4;"></circle>
               <text x="13" y="41" font-family="Arial" font-size="40" fill="#7F5C46">D</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#7F5C46">Discoverability</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#7F5C46">Discoverability</text>
             </g> </svg>
           <!-- Accessibility -->
           <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
-						<g>
-							<circle cx="26" cy="26" r="25" fill="#C5DCF1" stroke-width="2" stroke="#81B3E0" style="fill-opacity:0.4;"></circle>
-							<text x="13" y="41" font-family="Arial" font-size="40" fill="#81B3E0">A</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#81B3E0">Accessibility</text>
-						</g></svg>
-					</section>
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#C5DCF1" stroke-width="2" stroke="#81B3E0"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="13" y="41" font-family="Arial" font-size="40" fill="#81B3E0">A</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#81B3E0">Accessibility</text>
+            </g></svg> </section>
       </div>
       <!--       <div class="issue">
         <p>Which section of a BP is normative, and whether the use of RFC2119          keywords is appropriate, is <a href="http://www.w3.org/2013/dwbp/track/issues/146">Issue-146</a></p>      </div> -->
@@ -582,12 +570,14 @@ table#uripatternstable caption {
           <section class="benefits">
             <p class="subhead">Benefits</p>
             <!-- Comprehension -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
-            <g>
-              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040" style="fill-opacity:0.4;"></circle>
-              <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
-            </g> </svg> </section>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+              <g>
+                <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040"
+
+                  style="fill-opacity:0.4;"></circle>
+                <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
+                <text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
+              </g> </svg> </section>
         </div>
         <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
@@ -695,19 +685,23 @@ table#uripatternstable caption {
           <section class="benefits">
             <p class="subhead">Benefits</p>
             <!-- Comprehension -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
-            <g>
-              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040" style="fill-opacity:0.4;"></circle>
-              <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
-            </g> </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+              <g>
+                <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040"
+
+                  style="fill-opacity:0.4;"></circle>
+                <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
+                <text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
+              </g> </svg>
             <!-- Discoverability -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
-            <g>
-              <circle cx="26" cy="26" r="25" fill="#7F5C46" stroke-width="2" stroke="#7F5C46" style="fill-opacity:0.4;"></circle>
-              <text x="13" y="41" font-family="Arial" font-size="40" fill="#7F5C46">D</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#7F5C46">Discoverability</text>
-            </g> </svg> </section>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+              <g>
+                <circle cx="26" cy="26" r="25" fill="#7F5C46" stroke-width="2" stroke="#7F5C46"
+
+                  style="fill-opacity:0.4;"></circle>
+                <text x="13" y="41" font-family="Arial" font-size="40" fill="#7F5C46">D</text>
+                <text x="0" y="65" font-family="Arial" font-size="11" fill="#7F5C46">Discoverability</text>
+              </g> </svg> </section>
         </div>
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
@@ -794,13 +788,15 @@ table#uripatternstable caption {
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-             <!-- Comprehension -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
-            <g>
-              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040" style="fill-opacity:0.4;"></circle>
-              <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
-							<text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
-            </g> </svg> </section>
+            <!-- Comprehension -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+              <g>
+                <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040"
+
+                  style="fill-opacity:0.4;"></circle>
+                <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
+                <text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
+              </g> </svg> </section>
         </div>
         <!-- end of Locale Parameters BP -->
         <!-- begin of Provide Structural Metadata -->
@@ -1351,8 +1347,8 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
               version that explains how it differs from the previous version. An
               API can expose a version history with a single dedicated URL that
               retrieves the latest version of the complete history.</p>
-            <div class="issue"> Which vocabulary should be used to describe the
-              versioning history? This is <a href="https://www.w3.org/2013/dwbp/track/issues/168">Issue-168</a></div>
+            <!--<div class="issue"> Which vocabulary should be used to describe the
+              versioning history? This is <a href="https://www.w3.org/2013/dwbp/track/issues/168">Issue-168</a></div>-->
             <aside class="example">
               <p> Suppose that a new bus stop was created and its timetable
                 doesn't exist on the dataset-001. To maintain the dataset-001 up
@@ -2024,10 +2020,10 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               standardized terms</span></p>
           <p class="practicedesc"> Standardized terms should be used to provide
             data and metadata</p>
-          <div class="issue"> A definition for standardized term should be
+          <!--<div class="issue"> A definition for standardized term should be
             included in the glossary to clarify the difference between
             standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209">
-              Issue-209 </a> </div>
+              Issue-209 </a> </div> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>The need for code lists and other commonly used terms for data
@@ -2075,8 +2071,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p class="practicedesc"> Shared vocabularies should be used to provide
             metadata</p>
           <!-- <div class="issue"> As proposed during the F2F, it would be nice to
-            use the term shared vocabularies, i.e., vocabularies that capture a            consensus of the community about a specific domain, instead of            vocabularies. In the context of this BP, I think it is more            appropriate to say "Use shared vocabularies" instead of "Reuse
-            vocabularies". I think Reuse of vocabularies is more appropriate            when we are talking about the creation of new vocabularies . <a href="https://www.w3.org/2013/dwbp/track/issues/212">              Issue-212 </a></div> -->
+            use the term shared vocabularies, i.e., vocabularies that capture a            consensus of the community about a specific domain, instead of            vocabularies. In the context of this BP, I think it is more            appropriate to say "Use shared vocabularies" instead of "Reuse            vocabularies". I think Reuse of vocabularies is more appropriate            when we are talking about the creation of new vocabularies . <a href="https://www.w3.org/2013/dwbp/track/issues/212">              Issue-212 </a></div> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Re-using vocabularies increases interoperability and reduces
@@ -2453,7 +2448,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               representation with the same structured data, written in Turtle or
               JSON-LD, it is recommended to serve this page using Content
               Negotiation. </p>
-            <div class="issue">
+            <div class="note">
               <p>This BP will be complemented.</p>
             </div>
           </section>
@@ -3045,14 +3040,14 @@ HTTP/1.1 200 Ok
       <!-- begin enrichment -->
       <section id="enrichment">
         <h3>Data Enrichment</h3>
-        <div class="issue">
+        <div class="note">
           <p> To discuss about enrichment yields derived data, not just
             metadata. For example, you could take a dataset of scheduled and
             real bus arrival times and enrich it by adding on-time arrival
-            percentages. The percentages are data, not metadata. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
+            percentages. The percentages are data, not metadata. 
         </div>
-        <div class="issue">
-          <p> To discuss about the meaning of the word “topification”. <a href="http://www.w3.org/2013/dwbp/track/issues/196">Issue-196</a></p>
+        <div class="note">
+          <p> To discuss about the meaning of the word “topification”. </p>
         </div>
         <p>Data enrichment refers to a set of processes that can be used to
           enhance, refine or otherwise improve raw or previously processed data.
@@ -3167,6 +3162,15 @@ HTTP/1.1 200 Ok
             representation</p>
           <p>From: <a href="http://guide.dhcuration.org/representation/">DH
               Curation Guide</a></p>
+        </dd>
+         <dt><dfn id="distribution">Distribution</dfn></dt>
+        <dd>
+          <p>  A distribution represents a specific available form of a dataset. 
+            Each dataset might be available in different forms, these forms might represent 
+            different formats of the dataset or different endpoints. Examples of distributions 
+            include a downloadable CSV file, an API or an RSS feed</p>
+          <p><a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog
+              Vocabulary (DCAT)</a></p>
         </dd>
         <dt><dfn id="feedback">Feedback</dfn></dt>
         <dd>
