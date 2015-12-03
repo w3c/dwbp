@@ -1279,14 +1279,13 @@ http://example.org/stops.csv-metadata.json
       <!-- begin of Data Quality -->
       <section id="quality">
         <h3>Data Quality</h3>
-        <p>Data quality is commonly defined as “fitness for use” for a specific
-          application or use case. It can affect the potentiality of the
+        <p> <a href="#data-quality"> Data quality </a> can affect the potentiality of the
           application that use data, as a consequence, its inclusion in the data
-          publishing and consumption pipelines is of primary importance.</p>
-        <p>Usually, the assessment of quality involves different kinds of
+          publishing and consumption pipelines is of primary importance.
+        Usually, the assessment of quality involves different kinds of
           quality dimensions, each representing groups of characteristics that
           are relevant to publishers and consumers. Measures and metrics are
-          defined to assess the quality for each dimension. There are heuristics
+          defined to assess the quality for each dimension [[DQV]]. There are heuristics
           designed to fit specific assessment situations that rely on quality
           indicators, namely, pieces of data content, pieces of data
           meta-information, and human ratings that give indications about the
@@ -1312,9 +1311,9 @@ http://example.org/stops.csv-metadata.json
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p>It should be possible for humans to have access to information
-              that describes the quality of the dataset.</p>
+              that describes the quality of the dataset and its distributions.</p>
             <p>It should be possible for machines to automatically process the
-              quality information about the dataset.</p>
+              quality information about the dataset and its distributions.</p>
             <!--<p> Information about the quality of the data should be provided
                 for humans. Ideally it is also made available in machine                readable manner for processing by applications.</p> -->
           </section>
@@ -1329,7 +1328,57 @@ http://example.org/stops.csv-metadata.json
               the <abbr title="Data on the Web Best Practices">DWBP</abbr>
               working group , i.e., the Data Quality Vocabulary [[DQV]]. </p>
             <aside class="example">
-              <p>to be done </p>
+              <h5>Machine-readable</h5>
+              <p> The example below shows the metadata for the CSV distribution of the 
+                Bus Timetable dataset with the inclusion of the data quality metadata.
+                The metadata was defined according to the Data Quality Vocabulary [[DQV]].</p>
+              <pre class="highlight">
+
+:dataset001-csv
+   a dcat:Distribution;
+   dct:title "CSV distribution MyCity_busTimetable dataset."
+   dct:description "CSV distribution of the bus timetable dataset of MyCity."
+   dcat:mediaType "text/csv";
+   dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+   <strong>dqv:hasQualityMeasure :measure1, :measure2 </strong>
+	.
+:measure1 
+	a dqv:QualityMeasure ;
+	dqv:computedOn :dataset001-csv ;
+	dqv:metric :csvAvailabilityMetric ;
+	dqv:value "1.0"^^xsd:double 
+	.     	
+:measure2
+	a dqv:QualityMeasure ;
+	dqv:computedOn :dataset001-csv ;
+	dqv:metric :csvConsistencyMetric ;
+	dqv:value "0.5"^^xsd:double 
+	.
+
+#definition of dimensions and metrics
+:availabity
+	a dqv:Dimension ; 
+	dqv:hasCategory :category1;
+	.
+:consistency
+	a dqv:Dimension ;
+	dqv:hasCategory :category2
+	.
+:csvAvailabilityMetric 
+	a dqv:Metric ;
+	dqv:hasDimension :availabity
+	.
+:csvConsistencyMetric
+	a dqv:Metric ; 
+	dqv:hasDimension :consistency
+	.
+</pre> 
+              
+              <h5>Human-readable</h5>
+              <p><a href="dwbp-example.html">Example page</a> with
+                human-readable data quality information.</p>
+              
+              <div class="note"> This example is not definitive. It will change according to the updates on the Data Quality Vocabulary [[DQV]]. </div>  
             </aside>
           </section>
           <section class="test">
@@ -1342,16 +1391,43 @@ http://example.org/stops.csv-metadata.json
                 the quality of the data.</p> --> </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p>Information about the relevance of the BP is described by
+            <p> Relevant Requirements: 
+            <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityMetrics"> R-QualityMetrics</a>, 
+            <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataMissingIncomplete"> R-DataMissingIncomplete</a>
+            <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions"> R-QualityOpinions</a> </p>
+            <!-- <p>Information about the relevance of the BP is described by
               requirements documented in <a href="http://www.w3.org/TR/dwbp-ucr/">the
                 Data on the Web Best Practices Use Cases &amp; Requirements
                 document</a>: <a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">Requirements
-                for Data Quality</a></p>
+                for Data Quality</a></p> 
           </section>
           <!-- end of Provide Data Quality BP -->
           <!--<div class="issue"> Should we provide more specific/ detailed
             strategies on how to attach quality info in metadata apart from the            use of the data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">Issue-116</a>-->
-        </div>
+         <section class="benefits">
+            <p class="subhead">Benefits</p>
+          <!-- Trustworthy -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="14" y="41" font-family="Arial" font-size="40" fill="#BF5B0E">T</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
+            </g> </svg>
+           <!-- Reuse -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="12" y="41" font-family="Arial" font-size="40" fill="#387F05">R</text>
+              <text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
+            </g> </svg>
+          
+          </section>
+          
+          </div>
       </section>
       <!-- end of Data Quality -->
       <!-- begin of Data Versioning -->
