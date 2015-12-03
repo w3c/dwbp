@@ -165,8 +165,15 @@
       			date: "18 August 2009",
       			status: "W3C Recommendation",
 			href : "http://www.w3.org/TR/2009/REC-skos-reference-20090818/"
-		}
 		},
+		"GeoDCAT-AP" : {
+     			title: "GeoDCAT-AP: A geospatial extension for the DCAT application profile for data portals in Europe",
+      			authors: ["ISA Programme"],
+      			date: "13 July 2015",
+      			status: "WG Draft",
+			href : "http://joinup.ec.europa.eu/catalogue/distribution/geodcat-ap-working-draft-6-0"
+		}
+		}
 	};
 </script>
 
@@ -345,7 +352,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 	</div>
 	<div class="issue">
 			<p>
-				Relation between DQV, ISO 19115/19157 and GeoDCAT-AP: DQV is already able to express the notion of "conformance" to a standard using the property dcterm:conformsTo.
+				Relation between DQV, ISO 19115/19157 and GeoDCAT-AP: DQV is already able to express the notion of "conformance" to a standard using the property dcterms:conformsTo.
 However, there were suggestion to be further compatibile with ISO 19157:2013 and INSPIRE by adding respectively "Not conformant" and "Not evaluated" as possible properties or values.
 Should DQV be this expressive? (<a
 					href="https://www.w3.org/2013/dwbp/track/issues/202">Issue-202</a>)
@@ -615,14 +622,14 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 <pre>
 :myDataset 
 	a  dcat:Dataset ;
-	dct:title "My dataset" ; 
+	dcterms:title "My dataset" ; 
 	dcat:distribution :myDatasetDistribution
 	.
 
 :myDatasetDistribution
 	a  dcat:Distribution ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
-       	dct:title "CSV distribution of dataset" ;
+       	dcterms:title "CSV distribution of dataset" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "87120"^^xsd:decimal 
 	.
@@ -822,19 +829,19 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 		<pre>
 :myDataset1 
 	a dcat:Dataset ;
-	dct:title "My dataset 1" <!--; 
+	dcterms:title "My dataset 1" <!--; 
 	dcat:distribution :myDatasetDistributionInRDF -->
 	.
 
 :myDataset2 
 	a dcat:Dataset ;
-	dct:title "My dataset 2"  <!--; 
+	dcterms:title "My dataset 2"  <!--; 
 	dcat:distribution :myDataset2DistributionInRDF -->
 	.
 
 :myLinkset 
 	a dcat:Dataset, void:Linkset ;
-	dct:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
+	dcterms:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
 	dcat:distribution :myLinksetDistribution -->
 	void:linkPredicate skos:exactMatch ;
  	void:target :myDataset1 ;
@@ -844,7 +851,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :myDataset1InRDF
 	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
-       	dct:title "RDF distribution of dataset 1" ;
+       	dcterms:title "RDF distribution of dataset 1" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "87120"^^xsd:decimal 
 	.
@@ -853,7 +860,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :myDataset2InRDF
 	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
-       	dct:title "RDF distribution of dataset 2" ;
+       	dcterms:title "RDF distribution of dataset 2" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "100120"^^xsd:decimal 
 	.
@@ -1037,6 +1044,28 @@ Let us specify the RDF Data Cube data structure:
 </pre>
 
 </section>
+<section>
+
+<h3>Express the conformance of a dataset's metadata with a standard</h3>
+<p>It is often desirable to indicate that metadata about datasets in a catalogue are compliant with a metadata standard, or an application profile of an existing metadata standard. A typical example is the GeoDCAT Application Profile [[GeoDCAT-AP]], an extension of the DCAT vocabulary [[vocab-dcat]] to represent metadata for geospatial data portals. The following example illustrates how a <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Catalog_record">(DCAT) catalog record</a> can be said to be conformant with the GeoDCAT-AP guidelines.</p>
+
+<pre>
+ex:myDataset a dcat:Dataset;
+
+ex:myDatasetRecord a dcat:DatasetRecord;
+ foaf:primaryTopic :myDataset
+ dcterms:conformsTo :geoDCAT-AP.
+
+ex:geoDCAT-AP a dcterms:Standard;
+  dcterms:title "GeoDCAT Application Profile"
+  dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability Solutions for European Public Administrations (ISA) Programme"@en;
+  dcterms:issued "201X-XX-XX"^^xsd:date.
+</pre>
+
+<p>Note that this example does not include the metadata about the dataset ex:myDataset itself. We assume this is present in an RDF data source accessible via the URI <code>ex:myDatasetRecord</code>. We also assume that <code>ex:geoDCAT-AP</code> is a reference URI that denotes the GeoDCAT-AP standard, which can be re-used across many catalog record descriptions, not just a locally introduced URI. 
+</p>
+</section>
+
 </section>
 
 <section class="informative">
