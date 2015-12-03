@@ -583,9 +583,9 @@ table#uripatternstable caption {
               <h5>Machine-readable</h5>
               <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
-                the timetable dataset (dataset-001). The dataset has one CSV distribution (dataset-001-csv) that is also described using the 
+                the timetable dataset (timetable-001). The dataset has one CSV distribution (timetable-001-csv) that is also described using the 
               [[VOCAB-DCAT]].</p>
-              <pre class="highlight">  :dataset-001
+              <pre class="highlight">  :timetable-001
        a dcat:Dataset;
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
@@ -597,7 +597,7 @@ table#uripatternstable caption {
        dct:publisher:transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;       
        dcat:theme :mobility;
-       dcat:distribution :dataset-001-csv;
+       dcat:distribution :timetable-001-csv;
        .
 
        :mobility 
@@ -611,7 +611,7 @@ table#uripatternstable caption {
        skos:prefLabel "A set of domains to classify documents" ;
        .
 
-       :dataset-001-csv
+       :timetable-001-csv
        a dcat:Distribution;
        dct:title "CSV distribution MyCity_busTimetable dataset."
        dct:description "CSV distribution of the bus timetable dataset of MyCity."
@@ -706,9 +706,9 @@ table#uripatternstable caption {
             <aside class="example">
                <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-                dataset-001 with the inclusion of the <strong> locale
+                timetable-001 with the inclusion of the <strong> locale
                   parameters </strong> metadata. </p>
-              <pre class="highlight">  :dataset-001
+              <pre class="highlight">  :timetable-001
        a dcat:Dataset;
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
@@ -720,7 +720,7 @@ table#uripatternstable caption {
        dct:publisher :transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
-       dcat:distribution :dataset-001-csv;
+       dcat:distribution :timetable-001-csv;
        <strong>dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt;;</strong>
        <strong>dct:language &lt;http://lexvo.org/id/iso639-3/por&gt;;</strong>
        .
@@ -940,16 +940,16 @@ http://example.org/stops.csv-metadata.json
              <aside class="example">
              <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-                :dataset-001-csv with the inclusion of the <strong> data
+                :timetable-001-csv with the inclusion of the <strong> data
                   license </strong> information. </p>
-              <pre class="highlight">  :dataset-001-csv
-       :dataset-001-csv
-       a dcat:Distribution;
-       dct:title "CSV distribution MyCity_busTimetable dataset."
-       dct:description "CSV distribution of the bus timetable dataset of MyCity."
-       dcat:mediaType "text/csv";
-       <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong>;
-       .
+              <pre class="highlight"> 
+:timetable-001-csv
+   a dcat:Distribution;
+   dct:title "CSV distribution MyCity_busTimetable dataset."
+   dct:description "CSV distribution of the bus timetable dataset of MyCity."
+   dcat:mediaType "text/csv";
+   <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong>;
+   .
 </pre> 
              <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
@@ -1034,9 +1034,9 @@ http://example.org/stops.csv-metadata.json
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-                the Bus Timetable dataset (dataset-001) with the inclusion of the <strong>provenance</strong>
+                the Bus Timetable dataset (timetable-001) with the inclusion of the <strong>provenance</strong>
                 metadata. The metadata specifies that John created the Bus Timetable dataset. </p>
-              <pre class="highlight">:dataset-001
+              <pre class="highlight">:timetable-001
   a dcat:Dataset, prov:Entity;
   dct:title "Bus timetable of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
@@ -1156,7 +1156,7 @@ http://example.org/stops.csv-metadata.json
                 The metadata was defined according to the Data Quality Vocabulary [[DQV]].</p>
               <pre class="highlight">
 
-:dataset001-csv
+:timetable-001-csv
    a dcat:Distribution;
    dct:title "CSV distribution MyCity_busTimetable dataset."
    dct:description "CSV distribution of the bus timetable dataset of MyCity."
@@ -1339,9 +1339,9 @@ http://example.org/stops.csv-metadata.json
                <h5>Machine-readable</h5>
               
               <p> The example below shows the metadata for
-                dataset-001 with the inclusion of the <strong>versioning</strong>
+                timetable-001 with the inclusion of the <strong>versioning</strong>
                 metadata. </p>
-              <pre class="highlight">:dataset-001
+              <pre class="highlight">:timetable-001
   a dcat:Dataset, prov:Entity, version:VersionedThing;
   dct:title "Bus timetable of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
@@ -1362,36 +1362,36 @@ http://example.org/stops.csv-metadata.json
               <ul>
                 <li> http://example.org/dataset is the “generic URI” at which
                   the current version of a dataset is always available </li>
-                <li> http://example.org/dataset-002 is the versioned URI for the
+                <li> http://example.org/timetable-002 is the versioned URI for the
                   current dataset </li>
-                <li> http://example.org/dataset-001 is the versioned URI of the
+                <li> http://example.org/timetable-001 is the versioned URI of the
                   prior version of the dataset </li>
-                <li> http://example.org/dataset-000 is the versioned URI of the
+                <li> http://example.org/timetable-000 is the versioned URI of the
                   first version of the dataset </li>
               </ul>
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -I http://example.org/dataset-001 
+              <pre class="highlight">curl -I http://example.org/timetable-001 
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: &lt;http://example.org/dataset&gt;; rel=“original” </pre>
+Link: &lt;http://example.org/timetable&gt;; rel=“original” </pre>
               <p> The versioned URIs can provide a link to a TimeGate, which
                 supports datetime negotiation as a means to determine which
                 version of a dataset was operational at a given datetime: </p>
               <pre class="highlight"> 
-curl -I http://example.org/dataset-001
+curl -I http://example.org/timetable-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link:&lt;http://example.org/dataset&gt;; rel=“original”,
-&lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+Link:&lt;http://example.org/timetable&gt;; rel=“original”,
+&lt;http://example.org/timegate/timetable&gt;; rel=“timegate” </pre>
               <p> The generic URI can also provide a link to a TimeGate: </p>
-              <pre class="highlight">curl -i -H http://example.org/dataset
+              <pre class="highlight">curl -i -H http://example.org/timetable
 
 HTTP/1.1 200 OK
-Link: &lt;http://example.org/timegate/dataset&gt;; rel=“timegate” </pre>
+Link: &lt;http://example.org/timegate/timetable&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on March 20 2015: </p>
               <pre class="highlight"> 
@@ -1399,8 +1399,8 @@ curl -I -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
-Location: http://example.org/dataset-000
-Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
+Location: http://example.org/timetable-000
+Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
             
              <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
@@ -1461,12 +1461,12 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
-                doesn't exist on the dataset-001. To maintain the dataset-001 up
-                to date a new dataset (dataset-002) was created. dataset-002
-                includes all the data from dataset-001 plus the data about the
-                new bus stop. The machine readable metadata of dataset-002 is
+                doesn't exist on the timetable-001. To maintain the timetable-001 up
+                to date a new dataset (timetable-002) was created. timetable-002
+                includes all the data from timetable-001 plus the data about the
+                new bus stop. The machine readable metadata of timetable-002 is
                 shown below. </p>
-              <pre class="highlight">:dataset-002
+              <pre class="highlight">:timetable-002
        a dcat:Dataset, version:Version;
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
@@ -1479,14 +1479,14 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
        ...
-       <strong>dct:isVersionOf:dataset-001;
-       pav:previousVersion:dataset-001;
-       rdfs:comment "A new timetable was included in the dataset-001 to reflect the creation of a new bus stop."
+       <strong>dct:isVersionOf:timetable-001;
+       pav:previousVersion:timetable-001;
+       rdfs:comment "A new timetable was included in the timetable-001 to reflect the creation of a new bus stop."
        pav:version "1.1". </strong>
 </pre>
-              <p> Versioning metadata for dataset-001 after the creation of
-                dataset-002, which is a new version of dataset-001. </p>
-              <pre class="highlight">:dataset-001
+              <p> Versioning metadata for timetable-001 after the creation of
+                timetable-002, which is a new version of timetable-001. </p>
+              <pre class="highlight">:timetable-001
        a dcat:Dataset, version:VersionedThing;
        dct:title "Bus timetable of MyCity";
        <!-- dcat:keyword "transport","mobility" ,"bus";
@@ -1500,57 +1500,57 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; 
        prov:wasAttributedTo:john; -->
        ...
-       <strong>version:currentVersion:dataset-002;
-       dct:hasVersion :dataset-002;
+       <strong>version:currentVersion:timetable-002;
+       dct:hasVersion :timetable-002;
        pav:version "1.0". </strong> </pre>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
-                <li> <code>http://example.org/dataset</code> is the “generic
+                <li> <code>http://example.org/timetable</code> is the “generic
                   URI” at which the current version of a dataset is always
                   available </li>
-                <li> <code>http://example.org/dataset-002</code> is the
+                <li> <code>http://example.org/timetable-002</code> is the
                   versioned URI for the current dataset </li>
-                <li> <code>http://example.org/dataset-001</code> is the
+                <li> <code>http://example.org/timetable-001</code> is the
                   versioned URI of the prior version of the dataset </li>
-                <li> <code>http://example.org/dataset-000</code> is the
+                <li> <code>http://example.org/timetable-000</code> is the
                   versioned URI of the first version of the dataset </li>
               </ul>
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -I http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/timetable-001
 
 HTTP/1.1 200 OK
 Date: Sat, 24 Oct 2015 16:23:30 GMT
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: &lt;http://example.org/dataset&gt;; rel=“original”,
- &lt;http://example.org/timemap/dataset&gt;; rel=“timemap”;
+Link: &lt;http://example.org/timetable&gt;; rel=“original”,
+ &lt;http://example.org/timemap/timetable&gt;; rel=“timemap”;
 type="application/link-format"
 
-curl -I http://example.org/timemap/dataset
+curl -I http://example.org/timemap/timetable
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
 
-&lt;http://example.org/dataset&gt;;rel="original”,
-&lt;http://example.org/timedate/dataset&gt;;rel="timegate”,
-&lt;http://example.org/timedate/dataset&gt;;rel="timemap”;
+&lt;http://example.org/timetable&gt;;rel="original”,
+&lt;http://example.org/timedate/timetable&gt;;rel="timegate”,
+&lt;http://example.org/timedate/timetable&gt;;rel="timemap”;
 type="application/link-format",
-&lt;http://example.org/dataset-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
-&lt;http://example.org/dataset-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
-&lt;http://example.org/dataset-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
+&lt;http://example.org/timetable-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
+&lt;http://example.org/timetable-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
+&lt;http://example.org/timetable-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -I http://example.org/dataset-001
+              <pre class="highlight">curl -I http://example.org/timetable-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: &lt;http://example.org/dataset&gt;; rel=“original”,
-&lt;http://example.org/dataset-000&gt;; rel=“prev first memento";
+Link: &lt;http://example.org/timetable&gt;; rel=“original”,
+&lt;http://example.org/timetable-000&gt;; rel=“prev first memento";
 datetime="Thu, 05 Mar 2015 00:00:00 GMT",
-&lt;http://example.org/dataset-002&gt;; rel=“next last memento";
+&lt;http://example.org/timetable-002&gt;; rel=“next last memento";
 datetime="Tue, 05 May 2015 00:00:00 GMT"
 </pre> 
              <h5>Human-readable</h5>
@@ -1970,7 +1970,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               <p> To provide data about the bus timetables John chooses the <a
 
                   href="http://www.w3.org/TR/tabular-data-model/"> tabular
-                  format </a> and creates a new distribution for dataset-001.
+                  format </a> and creates a new distribution for timetable-001.
                 To promote interoperability and to help the automatic data
                 processing, John adopts the GTFS standard to describe the data
                 about the bus time tables. According to GTFS John needs to
@@ -1980,15 +1980,15 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 service during the week, the weekend and holidays. As described
                 in the tabular data model, John creates a group of tables to
                 connect the several csv files used to describe the bus
-                timetables. In this case, the csv distribution (dataset-001-csv)
-                of the dataset-001 corresponds to a group of tables as described
+                timetables. In this case, the csv distribution (timetable-001-csv)
+                of the timetable-001 corresponds to a group of tables as described
                 below.</p>
               <pre class="highlight"> 
-   :dataset-001
+   :timetable-001
        a dcat:Dataset;
-       dcat:distribution :dataset-001-csv;
+       dcat:distribution :timetable-001-csv;
        .
-   :dataset-001-csv
+   :timetable-001-csv
        a dcat:Distribution;
        dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
        dct:title "CSV distribution of the bus timetable dataset of MyCity."
@@ -2081,28 +2081,28 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <aside class="example">
               <p> In order to reach a larger number of data consumers John
                 decides to provide RDF and XML distributions for the
-                dataset-001. </p>
+                timetable-001. </p>
               <pre class="highlight"> 
-  :dataset-001
+  :timetable-001
        a dcat:Dataset;
-       dcat:distribution :dataset-001-csv;
-       dcat:distribution :dataset-001-rdf;
-       dcat:distribution :dataset-001-xml;
+       dcat:distribution :timetable-001-csv;
+       dcat:distribution :timetable-001-rdf;
+       dcat:distribution :timetable-001-xml;
        .
-  :dataset-001-csv
+  :timetable-001-csv
        a dcat:Distribution;
        dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
        dct:title "CSV distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/csv";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
-  :dataset-001-rdf
+  :timetable-001-rdf
        dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.rdf&gt;
        dct:title "RDF distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/rdf";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
-  :dataset-001-xml
+  :timetable-001-xml
        a dcat:Distribution;
        dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.xml&gt;
        dct:title "XML distribution of the bus timetable dataset of MyCity."
@@ -3133,7 +3133,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 give a link to a timegate providing access to preserved
                 descriptions of the resource:</p>
               <pre class="highlight"> 
-curl -I http://example.org/dataset-001
+curl -I http://example.org/timetable-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
@@ -3142,20 +3142,20 @@ Link: http://example.org/dataset; rel=“original”, http://example.org/timegat
               <p>Using HTTP status code the data consumer can be redirected to
                 the most recent description of the entity. In the following
                 example a request for the resource
-                "http://example.org/dataset-001" is first redirected to the
-                description "http://example.org/data/dataset-001" which, as it
+                "http://example.org/timetable-001" is first redirected to the
+                description "http://example.org/data/timetable-001" which, as it
                 has been preserved and flagged as invalid, redirects the client
                 to the newer description
-                "http://example.org/newdata/dataset-001"</p>
-              <pre class="highlight">curl -L -I http://example.org/dataset-001
+                "http://example.org/newdata/timetable-001"</p>
+              <pre class="highlight">curl -L -I http://example.org/timetable-001
 
 HTTP/1.1 303 See Other
-Location: http://example.org/data/dataset-001
-Link: http://example.org/newdata/dataset-001, rel="new"
+Location: http://example.org/data/timetable-001
+Link: http://example.org/newdata/timetable-001, rel="new"
 
 HTTP/1.1 303 See Other
-Location: http://example.org/newdata/dataset-001
-Link: http://example.org/data/dataset-001, rel="previous"
+Location: http://example.org/newdata/timetable-001
+Link: http://example.org/data/timetable-001, rel="previous"
            
 HTTP/1.1 200 Ok
            </pre>
