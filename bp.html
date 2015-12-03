@@ -1720,8 +1720,17 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               independently of any Web technology but can be appended to a 'URI
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
-            <aside class="example">
-              <p>To be done. Will take examples from UK guidelines</p>
+             <aside class="example">
+              <p>The URI <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable</code> has several features that support persistence:</p><ul>
+              <li>All names are subject to change over time but in choosing a domain name, it is reasonable for John to assume that MyCity will continue to exist and that it will continue to have a government. Therefore, while cases like Yugoslavia prove that even country names change and top level domains disappear (like .yu), <code>mycity.gov</code> is as persistent as any domain name can be.</li>
+              <li>By putting data on the <code>data.mycity.gov</code> subdomain, John is creating a specific domain that can be managed independently of any particular department.</li>
+            <li>It is <em>not</em> safe to assume that a specific <em>department</em> will persist. The authorities in MyCity might very well decide that the Transport Agency should be merged with another to create the Transport and Environment Agency. It is right, therefore, not to include the name of the Transport Agency in the URI, but to include the task from which the data comes, in this case that of providing public transport.</li>
+            <li>Likewise, the path segments of <code>/road</code> and <code>/bus</code> take us further towards the specific dataset for which John is reposnsible.</li>
+            <li>The <code>/dataset</code> path segment is an indication that the URI identifies a dataset, rather than, say, a specific bus route.</li>
+            <li>Finally <code>/timetable</code> leads us to the dataset concerning bus timetables in MyCity.</li>
+            <li>In DCAT terms, this would be the identifier for the dataset. Specific distributions of the dataset are likely to be identified by adding the relevant file extension to the URI, such as <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv</code>, <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.json</code>, <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl</code> etc.</li></ul>
+            <p>These points cover the design aspects of a persistent URI. To cover the organizational aspect, MyCity should publish information about its URI design principles as well as commitment to maintain the service in the long term.</p>
+
             </aside>
           </section>
           <section class="test">
@@ -1809,11 +1818,11 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               for URI persistence so that others will add value to your data by
               linking to it.</p>
             <aside class="example">
-              <p>To follow. Plan to use
-                http://dbpedia.org/resource/ISO_3166-1:GR as the example. Store
-                'GB' and 'GR' as codes in a table but use CSVW to declare that
-                these can be turned into URIs like
-                http://dbpedia.org/resource/ISO_3166-1:GR.</p>
+            <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable</code>) identifies a dataset. Much of the URI can be reused to identify bus stops, routes and the type of bus used on a given service. For example, a suitable persistent URI for the 'Airport - Bullfrog' route would be:</p>
+            <p><code>http://data.mycity.gov/public-transport/road/bus/route/id/AB</code></p>
+            <p>This has the same initial structure as for the dataset but rather than <code>/dataset</code> it now includes the path segment <code>/route</code> so that humans can see that the type of thing identified is a bus route. The <code>/id</code> segment indicates that the URI identifies something that is not an information resource, i.e. something you cannot retrieve over the Internet, and <code>/AB</code> is the local identifier for the actual bus route. Dereferencing this URI should result in an HTTP 303 redirect to a similar URL such as <code>http://data.mycity.gov/public-transport/road/bus/route/doc/AB</code> that <em>describes</em>, i.e. gives information about, the AB bus route (note the substitution of <code>/doc</code> for <code>/id</code>). Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs in Data</a> has more to say on this topic.</p>
+            <p>In offering this advice, it is recognized that URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously wasteful. Instead, define locally unique identifiers for each element (such as <code>AB</code> in this example) and provide data that allows them to be converted to globally unique URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]] provides mechanisms for doing this within tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about URL</a> property.</p>
+
             </aside>
           </section>
           <section class="test">
@@ -1878,7 +1887,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               document. However, when the next version of this document is
               published, the 'latest version' URI will be changed to point to
               that. </p>
-            <aside class="example">
+             <aside class="example">
               <p>To complete the London temperature example, one might imagine
                 URIs as follows: </p>
               <pre class="highlight">  http://weather.example.com/temperature/UK/London/noon
@@ -2953,43 +2962,59 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               checking whether all the resources used are either already
               preserved somewhere or provided along with the new dataset
               considered for preservation.</p>
-            <aside class="example">
-              <p>A dataset targetted for preservation is made of the following
-                triples:</p>
-              <pre style="" class="highlight prettyprint prettyprinted"> # Definition of a person
- ex:bob a ex:Staff;
-     foaf:basedNear dbpedia:Cardiff;
-     foaf:knows ex:john.
-                 </pre>
-              <p>Those triples make use of the "foaf" vocabulary and a custom
-                one defined in the testing domain name "ex". It also uses
-                entities defined in "dbpedia" and "ex". FOAF is a well
-                established ontology that is archived in several places on the
-                web (see, for instance, <a href="http://lov.okfn.org">the LOV
-                  repository</a>). Entities defined in DBpedia are also
-                preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento
-                  gateway</a> and archived dumps of the dataset also exists. The
-                risks associated to preserving the triple making use of those
-                external resource is thus minimal. A bigger concerns rises from
-                the usage made of resources defined in "ex" which is a name
-                space that, by design, does not exist outside of the dataset.
-                Unless the data describing "ex:john" and "ex:Staff" is preserved
-                alongside those triples their contextual meaning will be lost.
-                This is in particular critical for "ex:Staff" as without it the
-                type of "ex:bob" is unknown.</p>
-              <p>Considering this assessement, a revised dataset including the
-                definition of "ex:Staff" can be considered for preservation:</p>
-              <pre style="" class="highlight prettyprint prettyprinted"> # Definition of a person
- ex:bob a ex:Staff;
-     foaf:basedNear dbpedia:Cardiff;
-     foaf:knows ex:john.
- # Custom vocabulary element
- ex:Staff rdfs:subClass foaf:Person;
-     rdfs:label "A staff member". 
-                 </pre>
-              <p>This second, more complete, dataset is better suited for
-                preservation as it is more self-describing and make use of
-                external entities whose preservation is trusted.</p>
+           <aside class="example">
+              <p>A dataset targetted for preservation is made of the following triples:</p>
+              <pre style="" class="highlight prettyprint prettyprinted">
+&lt;http://data.mycity.gov/public-transport/road/bus/route/ABtimetable&gt; a gtfs:Route;
+  gtfs:color "ff0000";
+  gtfs:shortname "10";
+  gtfs:longName "Airport - Bullfrog";
+  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
+  gtfs:routeType ex:three;
+  ex:usualVehicleType dbpedia:Roumaster;
+  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+
+&lt;http://data.mycity.gov/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
+  gtfs:color "ffff00";
+  gtfs:shortname "20";
+  gtfs:longName "Bullfrog - Furnace Creek Resort";
+  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
+  gtfs:routeType ex:three;
+  ex:usualVehicleType dbpedia:Articulated_bus;
+  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+
+  &hellip;
+</pre>
+              <p>Those triples make use of the "gtfs" vocabulary and a custom one defined in the testing domain name "ex". It also uses entities defined in "foaf", "dbpedia" and "ex". Although not formal standards, FOAF and GTFS [[GTFS]] are well established ontologies that are archived in several places on the Web (see, for instance, <a href="http://lov.okfn.org">the LOV repository</a>). Entities defined in DBpedia are also preserved through their <a href="http://mementoweb.org/depot/native/dbpedia/">Memento gateway</a> and archived dumps of the dataset also exist. The risks associated to preserving the triple making use of those external resource is thus minimal. A bigger concern arises from the usage made of resources defined in "ex" which is a namespace that, by design, does not exist outside of the dataset. Unless the data describing "ex:usualVehicleType", "ex:Airport_Bullfrog" and "ex:Bullfrog_Furnace_Creek_Resort" is preserved alongside those triples their contextual meaning will be lost. This is particularly critical for "ex:usualVehicleType" as without it the relationship between the described route and the dbpedia resources will be unknown to a consuming application (however obvious it may be to a human).</p>
+
+<p>Considering this assessement, a revised dataset including the definition of "ex:usualVehicleType" can be considered for preservation:</p>
+              <pre style="" class="highlight prettyprint prettyprinted">
+&lt;http://data.mycity.gov/public-transport/road/bus/route/AB&gt; a gtfs:Route;
+  gtfs:color "ff0000";
+  gtfs:shortname "10";
+  gtfs:longName "Airport - Bullfrog";
+  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
+  gtfs:routeType ex:three;
+  ex:usualVehicleType dbpedia:Roumaster;
+  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+
+&lt;http://data.mycity.gov/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
+  gtfs:color "ffff00";
+  gtfs:shortname "20";
+  gtfs:longName "Bullfrog - Furnace Creek Resort";
+  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
+  gtfs:routeType ex:three;
+  ex:usualVehicleType dbpedia:Articulated_bus;
+  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+
+  &hellip;
+
+  # Custom vocabulary element
+  ex:usualVehicleType a rdf:Property;
+    rdfs:subPropertyOf gtfs:routeType;
+    rdfs:range gtfs:Bus.
+</pre>
+              <p>This second, more complete, dataset is better suited for  preservation as it is more self-describing and only makes use of external entities whose preservation is trusted.</p>
             </aside>
           </section>
           <section class="test">
@@ -3137,7 +3162,7 @@ curl -I http://example.org/timetable-001
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: http://example.org/dataset; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
+Link: http://example.org/timetable; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
             </pre>
               <p>Using HTTP status code the data consumer can be redirected to
                 the most recent description of the entity. In the following
