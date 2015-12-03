@@ -1443,40 +1443,20 @@ http://example.org/stops.csv-metadata.json
           to deal with these changes, new versions of a dataset may be created.
           Dataset versioning has been the subject of numerous discussions,
           however there is no consensus about when creating a new version of a
-          datset. In the following we provide some guidance about when to create
-          a new dataset version, but the publisher should feel free to decide
-          when to create a new dataset or a new version of an existing dataset.
-        </p>
-        <p> In general, a dataset may change with respect its data as well as
-          the metadata that describes it. Considering data updates, we may say
-          that a dataset B is considered a version of an existing dataset A,
-          when A and B store values for the same observation about the world and
-          dataset B gives new values to such observation. These new values may
-          result, for example, from the updating of existing data or the
-          inclusion of new data. To illustrate this definition, consider the
-          following scenarios related to a dataset that collects data about bus
-          timetables:</p>
+          datset. In the following we present some scenarios where a new dataset, i.e. a new version of the existing
+          dataset, should be created to reflect the corresponding update. 
         <ul>
           <li> Scenario 1: a new bus stop is created and its timetable doesn’t
             exist on the dataset;</li>
           <li> Scenario 2: an existing bus stop is removed and its timetable
             should be deleted from the dataset;</li>
-          <li> Scneario 3: an error was identified in one of the existing
+          <li> Scenario 3: an error was identified in one of the existing
             timetables stored in the dataset and this error must be corrected;</li>
         </ul>
-        <p> In all scenarios, a new dataset, i.e. a new version of the existing
-          dataset, should be created to reflect the corresponding update.</p>
-        <p> Considering metadata updates, we should evaluate the impact of the
-          update on the data in order to choose between the creation of a new
-          dataset or just the updating of the dataset description. For example,
-          an update on the structural metadata of a dataset may result in the
-          creation of a new dataset while the updating of descriptive metadata
-          requires just the modification of the current dataset definition. In
-          the first case, structural changes will have an impact on how the data
-          is being described and then a new dataset should be created.</p>
-        <p> It is important to note that the creation of multiple datasets to
+        
+        <p> The creation of multiple datasets to
           represent time series as well as spatial series, e.g. the same kind of
-          data for different regions, are not considered as multiple versions
+          data for different regions, in general, are not considered as multiple versions
           for the same dataset. In this case, each dataset covers a different
           observation about the world and should be treated as a new dataset
           instead of a new version of an existing dataset. This is the case of a
@@ -1488,14 +1468,9 @@ http://example.org/stops.csv-metadata.json
           should remember that a given dataset may be in use for one or more
           data consumers and they should be notified about the creation of new
           versions or it should be possible to automatically identify different
-          versions of the same dataset. All these types of dataset updates need
+          versions of the same dataset.Different types of dataset updates need
           a consistent, informative approach to versioning, so data consumers
           can understand and work with the changing data. </p>
-        <!--
-        <p>Data on the Web often changes over time. Many datasets are updated on          a scheduled basis, such as census data or funding data that changes          every fiscal year. Other datasets are changed as improvements in          collecting the data make updates worthwhile. Still other data changes          in real time or near real time. All these types of data need a          consistent, informative approach to versioning, so data consumers can          understand and work with the changing data. </p>        <p>In order to deal with changes over time, multiple versions may be          created for a single dataset. To illustrate this let us consider a          simple example: a dataset that collects data about weekly weather          forecast for MyCity. The following figure shows the relation between          the dataset (Dataset001) and its different versions (Dataset001_W1,          Dataset001_W2, Dataset001_W3 and Dataset001_W4), where each version          corresponds to the weather forecast of a week of May 2015. Each          dataset version has two different distributions: one in CSV and one in          JSON. For example, the version Dataset001_W1 has two distributions:          Dataset001_W1_csv and Dataset001_W1_json. </p>        <figure id="contextDiagram"> <img alt="A single node on the left hand side is the Dataset, lines from here split to link to 4 versions of the dataset, each of which is linked to two distributions of each one, making a total of 8 files for this one dataset."            src="images/DWBP_Context.svg"> <figcaption>Diagram showing the            relationships between Dataset, Versions and Distributions</figcaption>        </figure> -->
-        <p>The following best practices address issues that arise in tracking
-          and managing different versions of datasets.</p>
-        <p><br>
         </p>
         <!-- begin of provide Versioning Info BP -->
         <div class="practice">
@@ -1543,7 +1518,7 @@ http://example.org/stops.csv-metadata.json
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li> Use the [[Memento protocol]], or components thereof, to
+              <li> Use the [[Memento]], or components thereof, to
                 express temporal versioning of a dataset and to access the
                 version that was operational at a given datetime. The Memento
                 protocol aligns closely with the approach for assigning URIs to
@@ -1554,7 +1529,10 @@ http://example.org/stops.csv-metadata.json
               Provenance, authoring and versioning Ontology [[PAV]] provides a
               number of annotation properties for version information.</p>
             <aside class="example">
-              <p> The example below shows the machine readable metadata for
+              
+               <h5>Machine-readable</h5>
+              
+              <p> The example below shows the metadata for
                 dataset-001 with the inclusion of the <strong>versioning</strong>
                 metadata. </p>
               <pre class="highlight">:dataset-001
@@ -1570,9 +1548,11 @@ http://example.org/stops.csv-metadata.json
   dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ; 
   dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; 
   prov:wasAttributedTo :john;
-  <strong>owl:versionInfo "1.0"; </strong> </pre>
-              <p><em>Using Memento</em></p>
-              Assume:
+  <strong>pav:version "1.0"; </strong> </pre>
+   
+              <strong>Using Memento</strong>
+             <p> 
+              Assume: </p>
               <ul>
                 <li> http://example.org/dataset is the “generic URI” at which
                   the current version of a dataset is always available </li>
@@ -1615,6 +1595,11 @@ HTTP/1.1 302 Found
 Vary: accept-datetime
 Location: http://example.org/dataset-000
 Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
+            
+             <h5>Human-readable</h5>
+              <p><a href="dwbp-example.html">Example page</a> with
+                human-readable data versioning information.</p>
+              
             </aside>
           </section>
           <section class="test">
@@ -1626,6 +1611,30 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
           </section>
+        
+        <section class="benefits">
+            <p class="subhead">Benefits</p>
+           
+           <!-- Reuse -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="12" y="41" font-family="Arial" font-size="40" fill="#387F05">R</text>
+              <text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
+            </g> </svg>
+          <!-- Trustworthy -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="14" y="41" font-family="Arial" font-size="40" fill="#BF5B0E">T</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
+            </g> </svg>
+          </section>
+        
         </div>
         <!-- end of provide Versioning Info BP -->
         <!-- begin of provide version history BP -->
@@ -1660,6 +1669,7 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
             <!--<div class="issue"> Which vocabulary should be used to describe the
               versioning history? This is <a href="https://www.w3.org/2013/dwbp/track/issues/168">Issue-168</a></div>-->
             <aside class="example">
+              <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
                 doesn't exist on the dataset-001. To maintain the dataset-001 up
                 to date a new dataset (dataset-002) was created. dataset-002
@@ -1682,7 +1692,7 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
        <strong>dct:isVersionOf:dataset-001;
        pav:previousVersion:dataset-001;
        rdfs:comment "A new timetable was included in the dataset-001 to reflect the creation of a new bus stop."
-       owl:versionInfo "1.1". </strong>
+       pav:version "1.1". </strong>
 </pre>
               <p> Versioning metadata for dataset-001 after the creation of
                 dataset-002, which is a new version of dataset-001. </p>
@@ -1702,8 +1712,8 @@ Link: &lt;http://example.org/dataset&gt; rel="original" </pre>
        ...
        <strong>version:currentVersion:dataset-002;
        dct:hasVersion :dataset-002;
-       owl:versionInfo "1.0". </strong> </pre>
-              <p> Using Memento:</p>
+       pav:version "1.0". </strong> </pre>
+              <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
                 <li> <code>http://example.org/dataset</code> is the “generic
@@ -1752,7 +1762,11 @@ Link: &lt;http://example.org/dataset&gt;; rel=“original”,
 datetime="Thu, 05 Mar 2015 00:00:00 GMT",
 &lt;http://example.org/dataset-002&gt;; rel=“next last memento";
 datetime="Tue, 05 May 2015 00:00:00 GMT"
-</pre> </aside>
+</pre> 
+             <h5>Human-readable</h5>
+              <p><a href="dwbp-example.html">Example page</a> with
+                human-readable data versioning history information.</p>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1762,6 +1776,28 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
+          </section>
+          <section class="benefits">
+            <p class="subhead">Benefits</p>
+           
+           <!-- Reuse -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="12" y="41" font-family="Arial" font-size="40" fill="#387F05">R</text>
+              <text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
+            </g> </svg>
+          <!-- Trustworthy -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="14" y="41" font-family="Arial" font-size="40" fill="#BF5B0E">T</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
+            </g> </svg>
           </section>
         </div>
         <!-- end of provide version history BP -->
