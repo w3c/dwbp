@@ -1059,7 +1059,7 @@ http://example.org/stops.csv-metadata.json
               information</span></p>
           <p class="practicedesc"> Data license information should be available
           </p>
-          <div class="axioms">
+          <section class="axioms">
             <p class="subhead">Why</p>
             <p>The presence of license information is essential for data
               consumers to assess the usability of data. User agents, for
@@ -1068,15 +1068,15 @@ http://example.org/stops.csv-metadata.json
               potential consumer. </p>
             <!--Even though the license may be presented in natural
                 language, where data links to the URL of a well known license,                the user agent may be able to present the well known features to                the potential consumer.-->
-          </div>
-          <div class="description">
+          </section>
+          <section class="description">
             <p class="subhead">Intended outcome</p>
             <p>It should be possible for humans to understand possible
               restrictions placed on the use of a distribution.</p>
             <p>It should be possible for machines to automatically detect the
               data license of a distribution.</p>
-          </div>
-          <div class="how">
+          </section>
+          <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>The machine readable version of the data license metadata may be
               provided using one of the following vocabularies that include
@@ -1096,19 +1096,27 @@ http://example.org/stops.csv-metadata.json
             </ul>
             <!-- <p>Links to the license can be provided from the data itself, from
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
-            <aside class="example">
-              <p> </p>
+         
+             <aside class="example">
+             <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
                 :dataset-001-csv with the inclusion of the <strong> data
                   license </strong> information. </p>
               <pre class="highlight">  :dataset-001-csv
+       :dataset-001-csv
        a dcat:Distribution;
+       dct:title "CSV distribution MyCity_busTimetable dataset."
+       dct:description "CSV distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/csv";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong>;
        .
-</pre> </aside>
-          </div>
-          <div class="test">
+</pre> 
+             <h5>Human-readable</h5>
+              <p><a href="dwbp-example.html">Example page</a> with
+                human-readable data license information of the distribution.</p>
+            </aside>
+          </section>
+          <section class="test">
             <p class="subhead">How to Test</p>
             <p> Check that the metadata for the dataset itself includes the data
               license information. </p>
@@ -1122,7 +1130,7 @@ http://example.org/stops.csv-metadata.json
                 and <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a>
               </p>
             </div>
-          </div>
+          </section>
           <!-- end of machine detectable license BP --> </div>
       </section>
       <!--      <div class="issue">
