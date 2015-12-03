@@ -622,14 +622,14 @@ Let us consider a dataset <code>myDataset</code>, and its distribution <code>myD
 <pre>
 :myDataset 
 	a  dcat:Dataset ;
-	dct:title "My dataset" ; 
+	dcterms:title "My dataset" ; 
 	dcat:distribution :myDatasetDistribution
 	.
 
 :myDatasetDistribution
 	a  dcat:Distribution ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
-       	dct:title "CSV distribution of dataset" ;
+       	dcterms:title "CSV distribution of dataset" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "87120"^^xsd:decimal 
 	.
@@ -829,19 +829,19 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 		<pre>
 :myDataset1 
 	a dcat:Dataset ;
-	dct:title "My dataset 1" <!--; 
+	dcterms:title "My dataset 1" <!--; 
 	dcat:distribution :myDatasetDistributionInRDF -->
 	.
 
 :myDataset2 
 	a dcat:Dataset ;
-	dct:title "My dataset 2"  <!--; 
+	dcterms:title "My dataset 2"  <!--; 
 	dcat:distribution :myDataset2DistributionInRDF -->
 	.
 
 :myLinkset 
 	a dcat:Dataset, void:Linkset ;
-	dct:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
+	dcterms:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
 	dcat:distribution :myLinksetDistribution -->
 	void:linkPredicate skos:exactMatch ;
  	void:target :myDataset1 ;
@@ -851,7 +851,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :myDataset1InRDF
 	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
-       	dct:title "RDF distribution of dataset 1" ;
+       	dcterms:title "RDF distribution of dataset 1" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "87120"^^xsd:decimal 
 	.
@@ -860,7 +860,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :myDataset2InRDF
 	a dcat:Distribution, void:Dataset ;
 	dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
-       	dct:title "RDF distribution of dataset 2" ;
+       	dcterms:title "RDF distribution of dataset 2" ;
        	dcat:mediaType "text/csv" ;
        	dcat:byteSize "100120"^^xsd:decimal 
 	.
