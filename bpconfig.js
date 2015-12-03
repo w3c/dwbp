@@ -315,5 +315,14 @@
  	"href":"http://www.lexvo.org/" 
        
       },
+       "Memento":{
+        "href":"http://mementoweb.org/guide/howto/",
+        "title":"Memento"
+       },
+    },
+       "GTFS":{
+        "href":"https://developers.google.com/transit/gtfs/",
+        "title":"GTFS"
+       },
     }
 };
