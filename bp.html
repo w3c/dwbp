@@ -1042,10 +1042,8 @@ http://example.org/stops.csv-metadata.json
       <!-- begin of Data Licenses -->
       <section id="licenses">
         <h2>Data Licenses</h2>
-        <p>A license is a very useful piece of information to be attached to
-          data on the Web. As defined by the Dublin Core Metadata Initiative
-          [[DC-TERMS]], a license is a legal document giving official permission
-          to do something with the data with which it is associated. According
+        <p>A <a href="#license"> license </a> is a very useful piece of information to be attached to
+          data on the Web. According
           to the type of license adopted by the publisher, there might be more
           or fewer restrictions on sharing and re-using data. In the context of
           data on the Web, the license of a dataset can be specified within the
@@ -1141,18 +1139,14 @@ http://example.org/stops.csv-metadata.json
       <!-- begin of Data Provenance -->
       <section id="provenance">
         <h3>Data Provenance</h3>
-        <p>Provenance originates from the French term "provenir" (to come from),
-          which is used to describe the curation process of artwork as art is
-          passed from owner to owner. Data provenance, in a similar way, is
-          metadata that allows data providers to pass details about the data
-          history to data users. Provenance becomes particularly important when
+        <p> <a href="data_provenance"> Data provenance</a> becomes particularly important when
           data is shared between collaborators who might not have direct contact
           with one another either due to proximity or because the published data
           outlives the lifespan of the data provider projects or organizations.</p>
         <p>The Web brings together business, engineering, and scientific
           communities creating collaborative opportunities that were previously
           unimaginable. The challenge in publishing data on the Web is providing
-          an appropriate level of detail about its origin. The data publishers
+          an appropriate level of detail about its origin. The <a href="data_producer"> data producer</a>
           may not necessarily be the data provider and so collecting and
           conveying this corresponding metadata is particularly important.
           Without provenance, consumers have no inherent way to trust the
@@ -1192,9 +1186,10 @@ http://example.org/stops.csv-metadata.json
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
             <aside class="example">
+              <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-                dataset-001 with the inclusion of the <strong>provenance</strong>
-                metadata. </p>
+                the Bus Timetable dataset (dataset-001) with the inclusion of the <strong>provenance</strong>
+                metadata. The metadata specifies that John created the Bus Timetable dataset. </p>
               <pre class="highlight">:dataset-001
   a dcat:Dataset, prov:Entity;
   dct:title "Bus timetable of MyCity";
@@ -1220,7 +1215,15 @@ http://example.org/stops.csv-metadata.json
   a foaf:Organization, prov:Agent;
   foaf:name "Transport Agency of Mycity";
   .
-</pre> </aside>
+
+</pre>
+              
+              <h5>Human-readable</h5>
+              <p><a href="dwbp-example.html">Example page</a> with
+                human-readable data provenance information.</p>
+            <div class="issue"> Should we include a more complexe example to illustrate provenance? 
+              <a href="https://www.w3.org/2013/dwbp/track/issues/220"> Issue-220 </a> </div>
+            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -1237,6 +1240,39 @@ http://example.org/stops.csv-metadata.json
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>
             </p>
           </section>
+        <section class="benefits">
+            <p class="subhead">Benefits</p>
+          <!-- Trustworthy -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#BF5B0E" stroke-width="2" stroke="#BF5B0E"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="14" y="41" font-family="Arial" font-size="40" fill="#BF5B0E">T</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#BF5B0E">Trustworthy</text>
+            </g> </svg>
+           <!-- Reuse -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="26" cy="26" r="25" fill="#387F05" stroke-width="2" stroke="#387F05"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="12" y="41" font-family="Arial" font-size="40" fill="#387F05">R</text>
+              <text x="10" y="65" font-family="Arial" font-size="11" fill="#387F05">Reuse</text>
+            </g> </svg>
+           <!-- Comprehension -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="stamp-template">
+            <g>
+              <circle cx="35" cy="26" r="25" fill="#404040" stroke-width="2" stroke="#404040"
+
+                style="fill-opacity:0.4;"></circle>
+              <text x="20" y="41" font-family="Arial" font-size="40" fill="#404040">C</text>
+              <text x="0" y="65" font-family="Arial" font-size="11" fill="#404040">Comprehension</text>
+            </g> </svg>
+          </section>
+          
+        
+        
         </div>
         <!-- end of Provide Data Provenance BP --> </section>
       <!-- end of Data Provenance -->
