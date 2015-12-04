@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-11-27",
+		publishDate : "2015-12-04",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -1052,14 +1052,14 @@ Let us specify the RDF Data Cube data structure:
 <pre>
 ex:myDataset a dcat:Dataset;
 
-ex:myDatasetRecord a dcat:DatasetRecord;
- foaf:primaryTopic :myDataset
- dcterms:conformsTo :geoDCAT-AP.
+ex:myDatasetRecord a dcat:CatalogRecord ;
+ foaf:primaryTopic :myDataset ;
+ dcterms:conformsTo :geoDCAT-AP .
 
 ex:geoDCAT-AP a dcterms:Standard;
-  dcterms:title "GeoDCAT Application Profile"
+  dcterms:title "GeoDCAT Application Profile" ;
   dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability Solutions for European Public Administrations (ISA) Programme"@en;
-  dcterms:issued "201X-XX-XX"^^xsd:date.
+  dcterms:issued "201X-XX-XX"^^xsd:date .
 </pre>
 
 <p>Note that this example does not include the metadata about the dataset ex:myDataset itself. We assume this is present in an RDF data source accessible via the URI <code>ex:myDatasetRecord</code>. We also assume that <code>ex:geoDCAT-AP</code> is a reference URI that denotes the GeoDCAT-AP standard, which can be re-used across many catalog record descriptions, not just a locally introduced URI. 
