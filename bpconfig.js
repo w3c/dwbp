@@ -1,4 +1,4 @@
-﻿var respecConfig = {
+var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
     publishDate:  "2015-12-02",
@@ -177,53 +177,12 @@
         date: "2014",
         href: "http://snowplowanalytics.com/blog/2014/05/13/introducing-schemaver-for-semantic-versioning-of-schemas/"
       },
-
-      "ld-bp":{
-        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Boris Villazón-Terrazas"],
-        "href":"http://www.w3.org/TR/ld-bp/",
-        "title":"Best Practices for Publishing Linked Data",
-        "status":"NOTE",
-        "publisher":"W3C",
-        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
-        "id":"ld-bp",
-        "date":"9 January 2014"
-      }, 
-      "ld-glossary":{
-        "authors":["Bernadette Hyland","Ghislain Auguste Atemezing","Michael Pendleton","Biplav Srivastava"],
-        "href":"http://www.w3.org/TR/ld-glossary/",
-        "title":"Linked Data Glossary",
-        "status":"NOTE",
-        "publisher":"W3C",
-        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
-        "id":"ld-glossary",
-        "date":"27 June 2013"
-       }, 
       "ISO-25964":{
         "authors":["Stella Dextre Clarke et al"],
         "href":"http://www.niso.org/schemas/iso25964/",
         "title":"ISO 25964 – the international standard for thesauri and interoperability with other vocabularies",
         "publisher":"ISO/NISO",
         "id":"ISO 25964"
-       }, 
-      "ORG":{
-        "authors":["Dave Reynolds"],
-        "href":"http://www.w3.org/TR/vocab-org/",
-        "title":"The Organization Ontology",
-        "status":"W3C Recommendation",
-        "publisher":"W3C",
-        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
-        "id":"vocab-org",
-        "date":"16 January 2014"
-       }, 
-      "QB":{
-        "authors":["Richard Cyganiak","Dave Reynolds"],
-        "href":"http://www.w3.org/TR/vocab-data-cube/",
-        "title":"The RDF Data Cube Vocabulary",
-        "status":"W3C Recommendation",
-        "publisher":"W3C",
-        "deliveredBy":[{"url":"http://www.w3.org/2011/gld/","shortname":"gld"}],
-        "id":"vocab-data-cube",
-        "date":"16 January 2014"
        }, 
       "ccREL":{
         "authors":["Hal Abelson","Ben Adida","Mike Linksvayer","Nathan Yergler"],
@@ -233,7 +192,7 @@
         "publisher":"W3C/Creative Commons",
         "date":"1 May 2008"
        }, 
-      "ODRL":{
+      "ODRL2":{
         "authors":["Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten"],
         "href":"http://www.w3.org/community/odrl/two/model/",
         "title":"ODRL Version 2.0 Core Model",
@@ -252,23 +211,6 @@
         "href":"http://schema.org/",
         "title":"Schema.org"
        }, 
-      "PROV-IMP":{
-        "authors":["Trung Dong Huynh","Paul Groth","Stephan Zednik"],
-        "href":"http://www.w3.org/TR/prov-implementations/",
-        "title":"PROV Implementation Report",
-        "status":"W3C Working Group Note",
-        "publisher":"W3C",
-        "deliveredBy":[{"url":"http://www.w3.org/2011/prov/","shortname":"prov"}],
-        "date":"30 April 2013"
-       }, 
-      "RFC7809":{
-        "authors":["H. Van de Sompel","M.L. Nelson ","R.D. Sanderson"],
-        "href":"http://www.mementoweb.org/guide/rfc/",
-        "title":"HTTP Framework for Time-Based Access to Resource States -- Memento",
-        "status":"Independent Submission (Informational)",
-        "publisher":"IETF",
-        "date":"December 2013"
-       }, 
       "OAIS":{
         "authors":["ISO/TC 20/SC 13"],
         "href":"http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=57284",
@@ -278,51 +220,26 @@
         "id":"ISO 14721:2012",
         "date":"21 August 2012"
        }, 
-      "DCAT":{
-        "authors":["Fadi Maali", "John Erickson"],
-        "href":"http://www.w3.org/TR/vocab-dcat/",
-        "title":"Data Catalog Vocabulary (DCAT)",
-        "status":"W3C Recommendation",
-        "date":"16 January 2014"
-       }, 
-      "CSV":{
-        "authors":["Y. Shafranovich"],
-        "href":"https://www.ietf.org/rfc/rfc4180.txt",
-        "title":"Common Format and MIME Type for Comma-Separated Values (CSV) Files",
-        "status":"RFC 4180",
-        "date":"October 2005"
-       },
        "PAV":{
         "authors":["Paolo Ciccarese", "Stian Soiland-Reyes"],
         "href": "http://purl.org/pav/",
         "title": "PAV - Provenance, Authoring and Versioning",
         "date": "28 August 2014"
        },
-      "Navathe": {
- 	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        
-	"title": "Fundamentals of Database Systems",
+       "Navathe": {
+       	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        
+      	"title": "Fundamentals of Database Systems",
         "date": "2010",
         "publisher": "Addison Wesley"
-      },
-      "HCLS": {
-        authors: ["Alasdair J.G. Gray", "Joachim Baran", "M. Scott Marshall", "Michel Dumontier"],
-	title: "Dataset Descriptions: HCLS Community Profile",
- 	"href":"http://www.w3.org/TR/vocab-dcat/", 
-        "publisher": "W3C"
-      },
-      "Lexvo": {
-	title: "Lexvo.org",
- 	"href":"http://www.lexvo.org/" 
-       
-      },
-       "Memento":{
-        "href":"http://mementoweb.org/guide/howto/",
-        "title":"Memento"
        },
-    },
-       "GTFS":{
-        "href":"https://developers.google.com/transit/gtfs/",
-        "title":"GTFS"
+       "Lexvo": {
+     	 "title": "Lexvo.org",
+     	 "href":"http://www.lexvo.org/" 
        },
+       "GTFS": {
+	      "title": "General Transit Feed Specification",
+     	  "href":"http://vocab.gtfs.org/terms#",
+        "authors": ["Pieter Colpaert", "Andrew Byrd"]
+       }
     }
 };
