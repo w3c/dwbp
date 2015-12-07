@@ -7,9 +7,143 @@
     <title>Data on the Web Best Practices</title>
     <script class="remove" src="http://www.w3.org/Tools/respec/respec-w3c-common"></script>
     <script class="remove" src="bpconfig.js"></script>
-    <script src="cross-dom.js"></script>
     <script>
+/* *********************************************
+This script auto-generates the lists of BPs by benefit. It works by picking 
+up the ul of class 'benefitsList'. If there is no JavaScript, that list still
+exists as a normal ul. If JS is active, the list is replaced by the icons
+************************************************ */
+
       window.onload=init;
+
+function bpObject(t,id,b) {
+  this.title = t;   // The BP's title
+  this.id = id      // Its id
+  if (b != undefined) {
+    var benefitList = new Array () ;
+    for (var i = 0; i < b.length; i++) {
+      benefitList.push(b[i].textContent);
+    }
+    this.benefits = benefitList;       // Its benefits in an array
+  }
+}
+
+function benefitObject(b) {
+  this.name = b;   // The benefit's name
+  this.id = b.toLowerCase();  // The benefit's id which is an all lower case version of the name
+  // I'd like to create the image object here and reuse it but it doesn't seem to work properly sadly.
+/*  var img = document.createElement('img');
+  img.src= 'images/' + b.toLowerCase() + '.svg';
+  img.alt= b;
+  img.classList.add('benefitIcon');
+  this.img = img; */
+}
+
+
+function init() {
+
+  // Need an array of objects for the benefits
+
+  var theBenefits = new Array ();
+  theBenefits.push(new benefitObject('Reuse')) ;
+  theBenefits.push(new benefitObject('Access')) ;
+  theBenefits.push(new benefitObject('Discoverability')) ;
+  theBenefits.push(new benefitObject('Processability')) ;
+  theBenefits.push(new benefitObject('Trust')) ;
+  theBenefits.push(new benefitObject('Interoperability')) ;
+  theBenefits.push(new benefitObject('Linkability')) ;
+  theBenefits.push(new benefitObject('Comprehension')) ;
+
+
+  // Get list of our BPs and put them in an array of objects
+
+  var BPlist = new Array (); // This will be our array of BPs from the document
+
+  var BPdivs = new Array ();
+  BPdivs = document.getElementsByClassName('practice'); // This is the info we have effectively scraped from the page
+
+  // Need the title and id of each one
+  for (var i = 0; i < BPdivs.length; i++) {
+    var t; var id; var b;
+    var BPtop = BPdivs[i].getElementsByClassName('practicelab');
+    t = BPtop[0].textContent; // There should only be values in BPtop[0]
+    id = BPtop[0].id;
+    // Now we need the list of benefits for that BP
+    var BPbenefitsList = BPdivs[i].getElementsByClassName('benefitsList');
+    if (BPbenefitsList[0] != undefined) {
+      b = BPbenefitsList[0].getElementsByTagName("li");
+    } else {
+      b = undefined;
+    }
+    BPlist.push(new bpObject(t, id, b)) ;
+  }
+
+  // Now create the panels
+  var r;
+
+
+  for (var i = 0; i < theBenefits.length; i++) {               // Working through the list of benefits
+    r = document.createElement('div');                         // Need to create the div, ready to add the list items for this benefit
+    r.classList.add('benefit-list-panel');
+    r.id = 'benefitList' + theBenefits[i].name;
+/*    var img = document.createElement('img');                    // Put the icon at the top
+    img.src= 'images/' + theBenefits[i].name.toLowerCase() + '.svg';
+    img.alt= theBenefits[i].name;
+    img.classList.add('benefitIconPanel');
+    r.appendChild(img); */
+    var h = document.createElement('p');
+    h.classList.add('benefitsPanelTitle');
+    var ht = document.createTextNode(theBenefits[i].name);      // Create the heading for the div which is the benefit
+    h.appendChild(ht);
+    r.appendChild(h);
+    // And add a UL
+    var ul = document.createElement('ul');                      // Create the ul element that we're going to add each relevant BP to
+    ul.id = theBenefits[i].id + 'BPs';
+
+    for (var j = 0; j < BPlist.length; j++) {                   // Go through list of BPs in the doc
+      if (typeof BPlist[j].benefits == 'object') {              // Do we have a list of benefits for this BP?
+        for (var k = 0; k < BPlist[j].benefits.length; k++) {   // We need to look at the benefits the BP offers
+          if (theBenefits[i].name == BPlist[j].benefits[k]) {   // We're looking at the i benefit in the list of possibles and the k benefit of BP j
+            var li = document.createElement('li');              // If there's a match, create the li with the hyperlink
+            var a = document.createElement('a');
+            a.href = '#' + BPlist[j].id;
+            var t = document.createTextNode(BPlist[j].title);
+            a.appendChild(t);
+            li.appendChild(a);
+            ul.appendChild(li);                                 // Add this BP to the benefit div's list
+          }
+        }
+      }
+    }
+    r.appendChild(ul);                                          // Add the ul with all its li elements to the div
+    document.getElementById('benefitsTables').appendChild(r);   // Add the div to the doc
+  } 
+
+  // Next we want to replace all text benefits with the relevant icon
+  var bList = document.getElementsByClassName('benefitsList');  // get the set of ul elements we need to process
+  for (var i = 0; i < bList.length; i++) {                      
+    var listElements = bList[i].getElementsByTagName('li');       // Get the li elements within this ul
+    for (var j = 0; j < listElements.length; j++) {
+      for (var k = 0; k < theBenefits.length; k++) {              // Go through the benefits
+        if (listElements[j].textContent == theBenefits[k].name) {  // The text in the current li element matches the current benefit, so we can make the swap
+
+//          bList[i].removeChild(listElements[j]);                // This works but it destroys things as they're created. Should rearrange the loop but for now...
+          listElements[j].classList.add('hidden');                // Hide the original li
+          var l = document.createElement('li');                   // Create a new li
+          l.classList.add('icon');
+          var img = document.createElement('img');                // This is repetitive but I tried to create an img element in theBenefits but
+          img.src= 'images/' + theBenefits[k].name.toLowerCase() + '.svg';  // For reasons I don't understand, it dowsn't work properly, this does.
+          img.alt= theBenefits[k].name;
+          img.classList.add('benefitIcon');
+          img.classList.add(theBenefits[k].id + 'Icon');
+          l.appendChild(img);                      // Add the img element from the current benefit
+          bList[i].appendChild(l);                                // Add the li back into the current ul
+        }
+      }
+    }
+  }
+}
+
     </script>
     <style type="text/css">
 
@@ -20,14 +154,138 @@
   background-color: #FCFAEE;
 }
 
+
+.hidden {display:none}
+
+ul.benefitsList li.icon {
+  display:inline;
+  list-style-type: none;
+}
+
+ul.benefitsList li.icon img {
+  padding:0;
+  margin-right:1em;
+  max-width:60px;
+  max-height: 70px;
+}
+
+ul.benefitsList li.icon img.comprehensionIcon, ul.benefitsList li.icon img.discoverabilityIcon, ul.benefitsList li.icon img.interoperabilityIcon, ul.benefitsList li.icon img.processabilityIcon {
+  max-width:80px;
+}
+
+ul.benefitsList li.icon img.discoverabilityIcon, ul.benefitsList li.icon img.interoperabilityIcon, ul.benefitsList li.icon img.processabilityIcon {
+  max-width:73px;
+}
+
+/* *************************************************************
+These styles are for the lists of benefits
+************************************************************** */
+#benefitsTables {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.benefit-list-panel {
+  border-radius: 1em; /*(padrão)*/
+  -moz-border-radius: 1em; /*(navegadores Flock e Firefox)*/
+  -webkit-border-radius: 1em; /*(navegadores Chrome e Safari)*/
+  padding: 0.2em 1em;
+}
+
+.benefit-list-panel ul {
+  list-style-type:none;
+  padding-left:0;
+}
+
+.benefit-list-panel ul li {
+  font-size:smaller;
+  line-height:1.4em;
+}
+
+.benefit-list-panel p.benefitsPanelTitle {
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#benefitListReuse {
+	background: #B0CC9B;
+	border: 1px solid #387F05;
+}
+
+#benefitListAccess {
+	background: #E8F1FA;
+	border: 1px solid #81B3E0;
+}
+
+#benefitListTrust {
+	background: #E6BE9F;
+	border: 1px solid #BF5B0E;
+}
+
+#benefitListDiscoverability {
+	background: #CCBEB5;
+	border: 1px solid #7F5C46;
+}
+
+#benefitListProcessability {
+	background: #C5B5DE;
+	border: 1px solid #6E46AD;
+}
+
+#benefitListInteroperability {
+	background: #F3E09A;
+	border: 1px solid #E0B200;
+}
+
+#benefitListLinkability {
+	background: #B9C1CC;
+	border: 1px solid #50637F;
+}
+
+#benefitListComprehension {
+	background: #B3B3B3;
+	border: 1px solid #404040;
+}
+
+
+/* *******************************************
+We re-use the 2 column style (for screens > 600 wide) from the list of BPs
+to create the columns for the lists of benefits
+********************************************** */
+
 @media screen and (min-width: 600px) {
-  #bp-summary ul {
+  #bp-summary ul, #benefitsTables {
     column-count:2;
     -moz-column-count:2;
     -webkit-column-count:2;
     column-gap: 1em;
   }
+
+/* We need to re-set the column number to 1 so that within each panel there is only 1 column */
+
+  #benefitsTables .benefit-list-panel {
+    column-count:1;
+    -moz-column-count:1;
+    -webkit-column-count:1;
+    margin:.1em;
+    display:inline-block;   /* This prevents single lists spanning multiple columns, thank you http://stackoverflow.com/questions/6682501/css3-columns-widows-orphans */
+    width:90%; /* For somr reason some of the panels are wider than others, this stops that heppening */
+  }
 }
+
+/* And we can go to three columns for bigger screens */
+
+@media screen and (min-width: 850px) {
+  #benefitsTables {
+    column-count:3;
+    -moz-column-count:3;
+    -webkit-column-count:3;
+    column-gap: 1em;
+  }
+}
+
+/* Styles for the BPs themsevles */
 
 .practice, #tempPractice {
   padding-left: 1em;
@@ -264,7 +522,7 @@ table#uripatternstable caption {
         the publisher considering data consumer's expectations. The Metadata
         component corresponds to the additional information that describes the
         dataset and dataset distributions, helping the manipulation and the
-        reuse of the data.&nbsp; In order to allow an easy access to the dataset
+        reuse of the data. In order to allow an easy access to the dataset
         and its corresponding distributions, multiple Dataset Access mechanisms
         should be available. Finally, to promote the interoperability among
         datasets it is important to adopt Data Vocabularies and Standards. </p>
@@ -286,6 +544,7 @@ table#uripatternstable caption {
         challenges were identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
         Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
         addressed by one or more best practices.</p>
+<div class="note">The diagram needs to be updated before publication</div>
       <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG"/>
       <p> Each one of these challenges originated one or more requirements as
         documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
@@ -296,37 +555,25 @@ table#uripatternstable caption {
     </section>
     <section id="bp-benefits" class="informative">
       <h2>Best Practices Benefits</h2>
-      <p>In order to encourage data publishers to adopt the DWBP, the list below
-        describes the main benefits of applying the DWBP. Each benefit
-        represents an improvement in the way how datasets are available on the
-        Web.</p>
+      <p>In order to encourage data publishers to adopt the DWBP, the list below describes the main benefits of applying the DWBP. Each benefit represents an improvement in the way how datasets are available on the Web.</p>
       <ul>
-        <li> Comprehension: humans will have a better understanding about the
-          data structure, the data meaning, the metadata and the nature of the
-          dataset. </li>
-        <li> Processability: machines will be able to automatically process and
-          manipulate the data within a dataset.</li>
-        <li> Discoverability machines will be able to automatically discover a
-          dataset or data within a dataset.</li>
-        <li> Reuse: the chances of dataset reuse by different groups of data
-          consumers will increase.</li>
-        <li> Trustworthy: the confidence of consumers on the dataset will
-          improve.</li>
-        <li> Linkability: it will be possible to create links between data
-          resources (datasets and data items).</li>
-        <li> Accessibility: humans and machines will be able to access the data
-          up to date in a variety of forms.</li>
-        <li> Interoperability: it will be easier to reach consensus among data
-          publishers and consumers.</li>
+        <li>Comprehension: humans will have a better understanding about the data structure, the data meaning, the metadata and the nature of the dataset. </li>
+        <li>Processability: machines will be able to automatically process and manipulate the data within a dataset.</li>
+        <li>Discoverability machines will be able to automatically discover a dataset or data within a dataset.</li>
+        <li>Reuse: the chances of dataset reuse by different groups of data  consumers will increase.</li>
+        <li>Trust: the confidence that consumers have in the dataset will improve.</li>
+        <li>Linkability: it will be possible to create links between data resources (datasets and data items).</li>
+        <li>Access: humans and machines will be able to access up to date data in a variety of forms.</li>
+        <li>Interoperability: it will be easier to reach consensus among data publishers and consumers.</li>
       </ul>
-      
        
       <p> The figure below shows the benefits that data publishers will gain with
         adoption of the best practices. <a href="#BP_Benefits"> Section 17</a> presents a table that relates Best Practices to Benefits. 
       </p>
-      <img src="images/benefits.png"
+      <div id="benefitsTables"></div> <!-- This section is auto-generated -->
+<!--      <img src="images/benefits.png" alt="BP Benefits" height="640" width="940"> -->
 
-        alt="BP Benefits" height="640" width="940"> </section>
+ </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -372,6 +619,18 @@ table#uripatternstable caption {
         </section>
         <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
           <p class="subhead">Benefits</p>
+          <ul class="benefitsList"> <!-- This text list is replaced by the icons by scripting -->
+            <li>Reuse</li>
+            <li>Comprehension</li>
+            <li>Linkability</li>
+            <li>Discoverability</li>
+            <li>Trust</li>
+            <li>Access</li>
+            <li>Interoperability</li>
+            <li>Processability</li>
+          </ul>
+
+<!--
           <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>
           <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
           <img src="images/linkability.svg" alt="Linkability" height="70" width="80"/>
@@ -380,7 +639,7 @@ table#uripatternstable caption {
           <img src="images/access.svg" alt="Access" height="70" width="80"/>
           <img src="images/interoperability.svg" alt="Interoperability" height="70" width="80"/>
           <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-        
+-->        
         </section>
       </div>
      </section>
@@ -518,10 +777,12 @@ table#uripatternstable caption {
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-            <img src="images/reuse.svg" alt="Reuse" height="70" width="60"/>
-            <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>
-            <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-            <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+              <li>Discoverability</li>
+              <li>Processability</li>
+            </ul>
          </section>
         </div>
         <!-- end of BP -->
@@ -621,7 +882,6 @@ table#uripatternstable caption {
        dct:description "CSV distribution of the bus timetable dataset of MyCity."
        dcat:mediaType "text/csv";
        .
-
 </pre>
               
               <div class="note"> Notice that this dataset is classified under the domain represented by the 
@@ -649,8 +909,6 @@ table#uripatternstable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <!-- <p>A manual test might simply be to use an appropriate search tool
-                and check that the dataset is discoverable as expected since                that is the intended outcome. However, a more structured test                would be to ensure that the basic metadata fields listed above                are filled. </p> -->
             <p> Check that the metadata for the dataset itself includes the
               overall features of the dataset.</p>
             <p> Check if a user agent can automatically discover the dataset. </p>
@@ -663,10 +921,11 @@ table#uripatternstable caption {
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-            <img src="images/reuse.svg" alt="Reuse" height="70" width="60"/>
-            <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>
-            <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-            
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+              <li>Discoverability</li>
+            </ul>
           </section>
         </div>
         <!-- end of BP -->
@@ -743,9 +1002,6 @@ table#uripatternstable caption {
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable description of dataset is availabe.</p>
             </aside>
-            
-            
-           
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -761,9 +1017,16 @@ table#uripatternstable caption {
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-            <img src="images/reuse.svg" alt="Reuse" height="70" width="60"/>
-            <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>  
-          
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+<!--              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of Locale Parameters BP -->
@@ -882,9 +1145,17 @@ http://example.org/stops.csv-metadata.json
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-            <img src="images/reuse.svg" alt="Reuse" height="70" width="60"/>
-            <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>
-            <img src="images/processability.svg" alt="Processability" height="70" width="80"/></section>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+<!--              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li>-->
+              <li>Processability</li>
+            </ul>          
+          </section>
         </div>
         <!-- end of BP --> </section>
       <!-- begin of Data Licenses -->
@@ -976,7 +1247,16 @@ http://example.org/stops.csv-metadata.json
             </section>
             <section class="benefits">
             <p class="subhead">Benefits</p>
-            <img src="images/reuse.svg" alt="Reuse" height="70" width="60"/>      
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li> -->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
           </div>
           <!-- end of machine detectable license BP --> 
@@ -1092,13 +1372,17 @@ http://example.org/stops.csv-metadata.json
           </section>
         <section class="benefits">
             <p class="subhead">Benefits</p>
-          <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-          <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+<!--              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
-          
-        
-        
         </div>
         <!-- end of Provide Data Provenance BP --> </section>
       <!-- end of Data Provenance -->
@@ -1232,11 +1516,17 @@ http://example.org/stops.csv-metadata.json
             strategies on how to attach quality info in metadata apart from the            use of the data quality vocabulary the group is working on? <a href="https://www.w3.org/2013/dwbp/track/issues/116">Issue-116</a>-->
          <section class="benefits">
             <p class="subhead">Benefits</p>
-           <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-          
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li> -->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
-          
           </div>
       </section>
       <!-- end of Data Quality -->
@@ -1288,8 +1578,6 @@ http://example.org/stops.csv-metadata.json
               information</span></p>
           <p class="practicedesc">Information about dataset versioning should be
             available.</p>
-          <!-- <p class="practicedesc">Data that will be updated over time should
-              be assigned a unique version number or, at a minimum, a unique              version date, and that unique identifier should              be distributed with the data in the form of metadata. </p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Version information makes a dataset uniquely identifiable.
@@ -1424,9 +1712,16 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
         
         <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         
         </div>
@@ -1573,9 +1868,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li> -->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of provide version history BP -->
@@ -1697,12 +1999,6 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 </tr>
               </tbody>
             </table>
-            <div class="issue">The table links to Designing URI Sets for the UK
-              Public Sector. A newer version of this document (which was the
-              first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub
-                repo</a>. It seems that this might happen due to changes in
-              organisation behind data.gov.uk. If this happens, we should update
-              the link to point to the new version.</div>
             <p>URIs can be long. In a dataset of even moderate size, storing
               each URI is likely to be repetitive and obviously wasteful.
               Instead, define locally unique identifiers for each element and
@@ -1725,15 +2021,15 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
              <aside class="example">
-              <p>The URI <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable</code> has several features that support persistence:</p><ul>
+              <p>The URI <code>http://data.mycity.example/public-transport/road/bus/dataset/timetable</code> has several features that support persistence:</p><ul>
               <li>All names are subject to change over time but in choosing a domain name, it is reasonable for John to assume that MyCity will continue to exist and that it will continue to have a government. Therefore, while cases like Yugoslavia prove that even country names change and top level domains disappear (like .yu), <code>mycity.gov</code> is as persistent as any domain name can be.</li>
-              <li>By putting data on the <code>data.mycity.gov</code> subdomain, John is creating a specific domain that can be managed independently of any particular department.</li>
+              <li>By putting data on the <code>data.mycity.example</code> subdomain, John is creating a specific domain that can be managed independently of any particular department.</li>
             <li>It is <em>not</em> safe to assume that a specific <em>department</em> will persist. The authorities in MyCity might very well decide that the Transport Agency should be merged with another to create the Transport and Environment Agency. It is right, therefore, not to include the name of the Transport Agency in the URI, but to include the task from which the data comes, in this case that of providing public transport.</li>
             <li>Likewise, the path segments of <code>/road</code> and <code>/bus</code> take us further towards the specific dataset for which John is reposnsible.</li>
             <li>The <code>/dataset</code> path segment is an indication that the URI identifies a dataset, rather than, say, a specific bus route.</li>
             <li>Finally <code>/timetable</code> leads us to the dataset concerning bus timetables in MyCity.</li>
-            <li>In DCAT terms, this would be the identifier for the dataset. Specific distributions of the dataset are likely to be identified by adding the relevant file extension to the URI, such as <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv</code>, <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.json</code>, <code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl</code> etc.</li></ul>
-            <p>These points cover the design aspects of a persistent URI. To cover the organizational aspect, MyCity should publish information about its URI design principles as well as commitment to maintain the service in the long term.</p>
+            <li>In DCAT terms, this would be the identifier for the dataset. Specific distributions of the dataset are likely to be identified by adding the relevant file extension to the URI, such as <code>http://data.mycity.example/public-transport/road/bus/dataset/timetable.csv</code>, <code>http://data.mycity.example/public-transport/road/bus/dataset/timetable.json</code>, <code>http://data.mycity.example/public-transport/road/bus/dataset/timetable.ttl</code> etc.</li></ul>
+            <p>These points cover the design aspects of a persistent URI. To cover the organizational aspect, MyCity should publish information about its URI design principles as well as a commitment to maintain the service in the long term.</p>
 
             </aside>
           </section>
@@ -1753,14 +2049,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-           <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/linkability.svg" alt="Linkability" height="70" width="80"/>
-           <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-
-            
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li> -->
+              <li>Linkability</li>
+              <li>Discoverability</li>
+<!--              <li>Trust</li>
+              <li>Access</li> -->
+              <li>Interoperability</li>
+<!--              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <div class="practice">
@@ -1822,9 +2120,9 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               for URI persistence so that others will add value to your data by
               linking to it.</p>
             <aside class="example">
-            <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.gov/public-transport/road/bus/dataset/timetable</code>) identifies a dataset. Much of the URI can be reused to identify bus stops, routes and the type of bus used on a given service. For example, a suitable persistent URI for the 'Airport - Bullfrog' route would be:</p>
-            <p><code>http://data.mycity.gov/public-transport/road/bus/route/id/AB</code></p>
-            <p>This has the same initial structure as for the dataset but rather than <code>/dataset</code> it now includes the path segment <code>/route</code> so that humans can see that the type of thing identified is a bus route. The <code>/id</code> segment indicates that the URI identifies something that is not an information resource, i.e. something you cannot retrieve over the Internet, and <code>/AB</code> is the local identifier for the actual bus route. Dereferencing this URI should result in an HTTP 303 redirect to a similar URL such as <code>http://data.mycity.gov/public-transport/road/bus/route/doc/AB</code> that <em>describes</em>, i.e. gives information about, the AB bus route (note the substitution of <code>/doc</code> for <code>/id</code>). Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs in Data</a> has more to say on this topic.</p>
+            <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example/public-transport/road/bus/dataset/timetable</code>) identifies a dataset. Much of the URI can be reused to identify bus stops, routes and the type of bus used on a given service. For example, a suitable persistent URI for the 'Airport - Bullfrog' route would be:</p>
+            <p><code>http://data.mycity.example/public-transport/road/bus/route/id/AB</code></p>
+            <p>This has the same initial structure as for the dataset but rather than <code>/dataset</code> it now includes the path segment <code>/route</code> so that humans can see that the type of thing identified is a bus route. The <code>/id</code> segment indicates that the URI identifies something that is not an information resource, i.e. something you cannot retrieve over the Internet, and <code>/AB</code> is the local identifier for the actual bus route. Dereferencing this URI should result in an HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example/public-transport/road/bus/route/doc/AB</code> that <em>describes</em>, i.e. gives information about, the AB bus route (note the substitution of <code>/doc</code> for <code>/id</code>). Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs in Data</a> has more to say on this topic.</p>
             <p>In offering this advice, it is recognized that URIs can be long. In a dataset of even moderate size, storing each URI is likely to be repetitive and obviously wasteful. Instead, define locally unique identifiers for each element (such as <code>AB</code> in this example) and provide data that allows them to be converted to globally unique URIs programmatically. The Metadata Vocabulary for Tabular Data [[tabular-metadata]] provides mechanisms for doing this within tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about URL</a> property.</p>
 
             </aside>
@@ -1844,13 +2142,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/linkability.svg" alt="Linkability" height="70" width="80"/>
-           <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-            
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li> -->
+              <li>Linkability</li>
+              <li>Discoverability</li>
+<!--              <li>Trust</li>
+              <li>Access</li> -->
+              <li>Interoperability</li>
+<!--              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of URIs in datasets BP -->
@@ -1911,12 +2212,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-           <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>-->
+              <li>Discoverability</li>
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of Data Identification BP --> </section>
@@ -1981,7 +2286,6 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
             <aside class="example">
               <p> To provide data about the bus timetables John chooses the <a
-
                   href="http://www.w3.org/TR/tabular-data-model/"> tabular
                   format </a> and creates a new distribution for timetable-001.
                 To promote interoperability and to help the automatic data
@@ -2050,12 +2354,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li> -->
+              <li>Processability</li>
+            </ul>          
           </section>
           
         </div>
@@ -2136,12 +2444,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
            <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li> -->
+              <li>Processability</li>
+            </ul>          
           </section>
         </div>
         <!-- end of Multiple Formats BP --> </section>
@@ -2245,13 +2557,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               </section>
                <section class="benefits">
             <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/interoperability.svg" alt="Interoperability" height="70" width="80"/>
-                 <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li> -->
+              <li>Interoperability</li>
+              <li>Processability</li>
+            </ul>          
           </section>
             </section>
           </section>
@@ -2259,10 +2574,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Re-use
               vocabularies</span></p>
-          <p class="practicedesc"> Shared vocabularies should be used to provide
-            metadata</p>
-          <!-- <div class="issue"> As proposed during the F2F, it would be nice to
-            use the term shared vocabularies, i.e., vocabularies that capture a            consensus of the community about a specific domain, instead of            vocabularies. In the context of this BP, I think it is more            appropriate to say "Use shared vocabularies" instead of "Reuse            vocabularies". I think Reuse of vocabularies is more appropriate            when we are talking about the creation of new vocabularies . <a href="https://www.w3.org/2013/dwbp/track/issues/212">              Issue-212 </a></div> -->
+          <p class="practicedesc"> Shared vocabularies should be used to provide metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Re-using vocabularies increases interoperability and reduces
@@ -2273,8 +2585,6 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               should be especially used to describe both structural metadata as
               well as other types of metadata (descriptive, provenance, quality
               and versioning). </p>
-            <!-- <div class="issue"> I propose to change the Why section to be more
-              specific about the use of shared vocabularies. <a href="https://www.w3.org/2013/dwbp/track/issues/211">                Issue-211 </a> </div> -->
             <section class="outcome">
               <p class="subhead">Intended Outcome</p>
               <p> It should be possible to automatically compare two or more
@@ -2305,21 +2615,24 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 </p>
               </section>
               <p class="subhead">Benefits</p>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>-->
+              <li>Interoperability</li>
+              <li>Processability</li>
+            </ul>          
            
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/interoperability.svg" alt="Interoperability" height="70" width="80"/>
-                 <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-            
-         
           </section>
             </section>
           </section>
         </div>
         <!-- begin of Not Over formalize Vocabularies BP -->
         <div class="practice">
-          <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
-              the right formalization level</span></p>
+          <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
           <p class="practicedesc">When reusing a vocabulary, a data publisher
             should opt for a level of formal semantics that fit data and
             applications.</p>
@@ -2471,12 +2784,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-            
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of BP --> </section>
@@ -2567,12 +2884,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
            <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of BP Bulk Access -->
@@ -2656,12 +2977,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
           
         </div>
@@ -2719,12 +3044,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of BP Content Negotiation -->
@@ -2790,12 +3119,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of BP Access Real-time-->
@@ -2846,12 +3179,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <div class="issue">
@@ -2909,12 +3246,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/access.svg" alt="Access" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+<!--              <li>Reuse</li>
+              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>-->
+              <li>Access</li>
+<!--              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of versions For API BP --> </section>
@@ -2969,7 +3310,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
            <aside class="example">
               <p>A dataset targetted for preservation is made of the following triples:</p>
               <pre style="" class="highlight prettyprint prettyprinted">
-&lt;http://data.mycity.gov/public-transport/road/bus/route/ABtimetable&gt; a gtfs:Route;
+&lt;http://data.mycity.example/public-transport/road/bus/route/ABtimetable&gt; a gtfs:Route;
   gtfs:color "ff0000";
   gtfs:shortname "10";
   gtfs:longName "Airport - Bullfrog";
@@ -2978,7 +3319,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
   ex:usualVehicleType dbpedia:Roumaster;
   foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
 
-&lt;http://data.mycity.gov/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
+&lt;http://data.mycity.example/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
   gtfs:color "ffff00";
   gtfs:shortname "20";
   gtfs:longName "Bullfrog - Furnace Creek Resort";
@@ -2993,7 +3334,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
 
 <p>Considering this assessement, a revised dataset including the definition of "ex:usualVehicleType" can be considered for preservation:</p>
               <pre style="" class="highlight prettyprint prettyprinted">
-&lt;http://data.mycity.gov/public-transport/road/bus/route/AB&gt; a gtfs:Route;
+&lt;http://data.mycity.example/public-transport/road/bus/route/AB&gt; a gtfs:Route;
   gtfs:color "ff0000";
   gtfs:shortname "10";
   gtfs:longName "Airport - Bullfrog";
@@ -3002,7 +3343,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
   ex:usualVehicleType dbpedia:Roumaster;
   foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
 
-&lt;http://data.mycity.gov/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
+&lt;http://data.mycity.example/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
   gtfs:color "ffff00";
   gtfs:shortname "20";
   gtfs:longName "Bullfrog - Furnace Creek Resort";
@@ -3033,12 +3374,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li> -->
+            </ul>          
           </section>
         </div>
         <!-- end of assess dataset BP -->
@@ -3072,6 +3417,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               open standards. For instance those provided by the W3C
               [[FORMATS]]. </p>
             <aside class="example">
+<div class="note">Need to update this section to match the running example</div>
               <p>Those triples are serialised using the Turtle W3C
                 recommendation. It is a text-based format which is supported by
                 the majority of software able to process Web data. This format
@@ -3102,9 +3448,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of serialisation BP -->
@@ -3203,12 +3556,16 @@ HTTP/1.1 200 Ok
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of resource status BP --> </section>
@@ -3300,12 +3657,16 @@ HTTP/1.1 200 Ok
           </section>
           <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+<!--              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of BP Gather Feedback -->
@@ -3356,12 +3717,16 @@ HTTP/1.1 200 Ok
           </section>
            <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/trust.svg" alt="Trust" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+<!--              <li>Comprehension</li>
+              <li>Linkability</li>
+              <li>Discoverability</li>-->
+              <li>Trust</li>
+<!--              <li>Access</li>
+              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>          
           </section>
         </div>
         <!-- end of BP Gather Feedback --> </section>
@@ -3431,12 +3796,16 @@ HTTP/1.1 200 Ok
           </section>
            <section class="benefits">
           <p class="subhead">Benefits</p>
-           
-          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>
-
-           <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
-           
-         
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+<!--              <li>Linkability</li>
+              <li>Discoverability</li>
+              <li>Trust</li>
+              <li>Access</li>
+              <li>Interoperability</li>-->
+              <li>Processability</li>
+            </ul>          
           </section>
         </div>
         <!-- end of BP Data Enrichment --> </section>
