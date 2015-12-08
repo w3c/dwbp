@@ -1016,6 +1016,33 @@ Issue-116</a>--> </div> </section>
             </section>
           </div>
           <!-- end of provide Versioning Info BP -->
+              <!-- begin of avoid breaking changes  -->
+          <div class="practice">
+            <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API, Communicate Changes to Developers</span></p>
+            <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens </p>
+            <section class="axioms">
+              <p class="subhead">Why</p>
+              <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the details of each response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur allows developers to take action. </p>
+            </section>
+            <section class="outcome">
+              <p class="subhead">Intended Outcome</p>
+              <p>Developer code will continue to work, and if changes are made, developers will have sufficient time and information to adapt their code. That will enable them to address changes that would otherwise cause breakage.</p>
+            </section>
+            <section class="how">
+              <p class="subhead">Possible Approach to Implementation</p>
+            <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not call directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is required, and this will be a breaking change. In that case, it’s best to implement the changes as a new API. </p>
+            <p>If using any other architectural style, use versioning to indicate changes that affect client code. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+            </section>
+            <section class="test">
+              <p class="subhead">How to Test</p>
+              <p>Be sure that client code is still working after changes, ask for feedback from developers</p>
+            </section>
+            <section class="ucr">
+              <p class="subhead">Evidence</p>
+              <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
+            </section>
+          </div>
+          <!-- end of avoid breaking API-->
           <!-- begin of provide version history BP -->
           <div class="practice">
             <p><span id="provideVersionHistory" class="practicelab">Provide
