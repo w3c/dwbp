@@ -1,0 +1,92 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voaf:    <http://purl.org/vocommons/voaf#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix cito:    <http://purl.org/spar/cito#> .
+@prefix :        <http://www.w3.org/ns/duv#> .
+
+
+<http://www.w3.org/ns/duv> a voaf:Vocabulary;
+    dcterms:title "Dataset Usage Vocabulary";
+    dcterms:description "The Dataset Usage Vocabulary (DUV) is used to describe consumer experiences, citations, and feedback about datasets from the human perspective.";
+    vann:preferredNamespaceUri "http://www.w3.org/ns/duv";
+    vann:preferredNamespacePrefix "duv";
+    rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dqv/> ;
+    dcterms:created "2015-12-17"^^xsd:date;
+    dcterms:publisher <http://www.w3.org/data#W3C>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:creator [foaf:name "Bernadette Farias Lóscio"], [foaf:name "Eric G. Stephan"], [foaf:name "Sumit Purohit"] .
+
+:Application a rdfs:Class ;
+  rdfs:label "Application"@en ;
+  rdfs:comment "Software that is capable of reading and processing a corresponding dataset."@en .
+
+:developedBy a rdf:Property ;
+  rdfs:label "developed by"@en ;
+  rdfs:comment "Describes the agent associated with the development of an application."@en ;
+  rdfs:range foaf:Agent .
+
+:consumes a rdf:Property ;
+  rdfs:label "consumes"@en ;
+  rdfs:comment "A dataset being consumed by an application."@en ;
+  rdfs:range dcat:Dataset .
+
+:generates a rdf:Property ;
+  rdfs:label "generates"@en ;
+  rdfs:comment "Usage experience associated with the dataset being generated."@en ;
+  rdfs:range dcat:Dataset ;
+  rdfs:subPropertyOf prov:generated .
+
+:cites a rdf:Property ;
+  rdfs:label "cites"@en ;
+  rdfs:comment "The citing entity cites the cited entity, either directly and explicitly (as in the reference list of a journal article), indirectly (e.g. by citing a more recent paper by the same group on the same topic), or implicitly (e.g. as in artistic quotations or parodies, or in cases of plagiarism)."@en ;
+  rdfs:range dcat:Dataset .
+
+:Rating a rdfs:Class ;
+  rdfs:label "Rating"@en ;
+  rdfs:comment "Metric used to evaluate the dataset."@en .
+
+:Citation a rdfs:Class ;
+  rdfs:label "Citation"@en ;
+  rdfs:comment "Citation in document that references dataset."@en ;
+  rdfs:subClassOf cito:CitationsAct .
+
+:Feedback a rdfs:Class ;
+  rdfs:label "Feedback"@en ;
+  rdfs:comment "Feedback on the dataset. Expresses whether the dataset was useful or not, for example."@en ;
+  rdfs:subClassOf oa:Annotation .
+
+:endorses a rdf:Property ;
+  rdfs:label "endorses"@en ;
+  rdfs:comment "Agent provided feedback providing endorsement of dataset."@en ;
+  rdfs:range dcat:Dataset .
+
+:retains a rdf:Property ;
+  rdfs:label "retains"@en ;
+  rdfs:comment "A feedback annotation may refer to another feedback annotation."@en ;
+  rdfs:range :Feedback .
+
+:has_rating a rdf:Property ;
+  rdfs:label "has rating"@en ;
+  rdfs:comment "An optional rating provided as part of feedback."@en ;
+  rdfs:range :Rating .
+
+:has_datasetCorrection a rdf:Property ;
+  rdfs:label "has rating"@en ;
+  rdfs:comment "An optional data correction provided as part of feedback."@en ;
+  rdfs:range :DatasetCorrection .
+
+:DatasetCorrection a rdfs:Class ;
+  rdfs:label "Dataset Correction"@en ;
+  rdfs:comment "A dataset correction suggested by user as part of a feedback."@en .
+
+:WebThing a rdfs:Class ;
+  rdfs:label "Web Thing"@en ;
+  rdfs:comment "A Web of Things (WoT) device, sensor, or hardware on the Web that consumes a dataset."@en .
