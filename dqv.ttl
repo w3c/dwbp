@@ -1,0 +1,108 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+@prefix daq:     <http://purl.org/eis/vocab/daq#> .
+@prefix voaf:    <http://purl.org/vocommons/voaf#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix duv:     <http://www.w3.org/ns/duv#> .
+
+@prefix :        <http://www.w3.org/ns/dqv#> .
+
+
+<http://www.w3.org/ns/dqv> a voaf:Vocabulary;
+    dcterms:title "Data Quality Vocabulary";
+    dcterms:description "The Data Quality Vocabulary (DQV) is seen as an extension to DCAT to cover the quality of the data, how frequently is it updated, whether it accepts user corrections, persistence commitments etc. When used by publishers, this vocabulary will foster trust in the data amongst developers.";
+    vann:preferredNamespaceUri "http://www.w3.org/ns/dqv";
+    vann:preferredNamespacePrefix "dqv";
+    foaf:homepage <http://www.w3.org/TR/vocab-dqv/> ;
+    dcterms:created "2015-12-17"^^xsd:date;
+    dcterms:publisher <http://www.w3.org/data#W3C>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:creator [foaf:name "Antoine Isaac"], [foaf:name "Riccardo Albertoni"], [foaf:name "Christophe Guéret"] ;
+    dcterms:contributor [foaf:name "Jeremy Debattista"], [foaf:name "Makx Dekkers"], [foaf:name "Deirdre Lee"], [foaf:name "Nandana Mihindukulasooriya"] .
+
+:QualityMeasure a rdfs:Class ;
+  rdfs:label "Quality Measure"@en ;
+  rdfs:comment "A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric."@en ;
+  owl:equivalentClass daq:Observation;
+  rdfs:subClassOf qb:Observation .
+
+:metric a rdf:Property ;
+  rdfs:label "metric"@en ;
+  rdfs:comment "Indicates the metric being observed."@en ;
+  rdfs:subPropertyOf qb:DimensionProperty ;
+  rdfs:domain qb:Observation ;
+  rdfs:range :Metric ;
+  owl:equivalentProperty daq:metric .
+
+:dataSet a rdf:Property ;
+  rdfs:label "data set"@en ;
+  rdfs:comment "Indicates the dataset to a quality measure (which is an RDF Data Cube observation) belongs."@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range qb:DataSet .
+
+:computedOn a rdf:Property ;
+  rdfs:label "computed on"@en ;
+  rdfs:comment "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset and dcat:Distribution."@en ;
+  rdfs:subPropertyOf qb:DimensionProperty ;
+  rdfs:domain :QualityMeasure ;
+  owl:equivalentProperty daq:computedOn;
+  owl:inverseOf :hasQualityMeasure .
+
+:value a rdf:Property, qb:MeasureProperty, owl:DatatypeProperty ;
+  rdfs:label "value"@en;
+  rdfs:comment "Refers to values computed by metric."@en ;
+  rdfs:domain :QualityMeasure ;
+  owl:equivalentProperty daq:value .
+
+:Metric a rdfs:Class;
+  rdfs:label "Metric"@en ;
+  rdfs:comment "A standard to measure a quality dimension. An observation (instance of dqv:QualityMeasure) assigns a value in a given unit to a Metric."@en ;
+  owl:equivalentClass daq:Metric .
+
+:hasDimension a rdf:Property ;
+  rdfs:label "has dimension"@en ;
+  rdfs:comment "Represents the dimension a metric allows a measurement of."@en ;
+  rdfs:domain :Metric ;
+  rdfs:range :Dimension ;
+  owl:inverseOf daq:hasMetric ;
+  vann:usageNote "Dimensions are meant to systematically organize metrics. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality measures should try to avoid this as much as possible and assign only one dimension to the metrics they define."@en .
+
+:Dimension a rdfs:Class ;
+  rdfs:label "Dimension"@en ;
+  rdfs:Comment "Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:hasDimension property."@en ;
+  owl:equivalentClass daq:Dimension .
+
+:hasCategory a rdf:Property ;
+  rdfs:label "has category"@en ;
+  rdfs:comment "Represents the category a dimension is grouped in."@en ;
+  rdfs:domain :Dimension ;
+  rdfs:range :Category ;
+  owl:inverseOf daq:hasDimension ;
+  vann:usageNote "Categories are meant to systematically organize dimensions. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality measures should try to avoid this as much as possible and assign only one category to the dimensions they define."@en .
+
+:Category a rdfs:Class ;
+  rdfs:label "Category"@en ;
+  rdfs:comment "Represents a group of quality dimensions in which a common type of information is used as quality indicator."@en ;
+  owl:equivalentClass daq:Category .
+
+:QualityMeasureDataset a rdfs:Class ;
+  rdfs:label "Quality Measure Dataset"@en ;
+  rdfs:comment "Represents a dataset of quality measures, evaluations of a given dataset (or dataset distribution) against a specific quality metric."@en ;
+  rdfs:subClassOf qb:DataSet ;
+  owl:equivalentClass daq:QualityGraph .
+
+:QualityAnnotation a rdfs:Class ;
+  rdfs:label "Quality Annotation"@en ;
+  rdfs:comment "Represents quality annotations, including rating, quality certificate, feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with a instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment."@en ;
+  rdfs:subClassOf oa:Annotation .
+
+:UserQualityFeedback a rdfs:Class ;
+  rdfs:label "User Quality feedback"@en ;
+  rdfs:comment "Represents feedback users might want to associate to datasets or distributions."@en ;
+  rdfs:subClassOf :QualityAnnotation, duv:UserFeedback .
