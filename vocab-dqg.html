@@ -20,7 +20,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2015-12-07",
+		publishDate : "2015-12-09",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -182,7 +182,14 @@
 		"ISOIEC25012" : {
      			title: "ISO/IEC 25012 - Data Quality model",
       			href : "http://iso25000.com/index.php/en/iso-25000-standards/iso-25012"
+		},
+		"qSKOS" : {
+     			title: "Finding Quality Issues in SKOS Vocabularies",
+      			authors: ["Christian Mader", "Bernhard Haslhofer", "Antoine Isaac" ],
+      			status: "Theory and Practice of Digital Libraries, Lecture Notes in Computer Science, Vol. 7489, pp 222-233, 2012",
+			href : "https://dx.doi.org/10.1007/978-3-642-33290-6_25"
 		}
+
 		}
 	};
 </script>
@@ -829,10 +836,80 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 <section>
 	<h3>Express quality of SKOS concept schemes</h3>
 
-	<div class="note">
+	<!--div class="note">
 		<p> We plan to add examples of quality assessmement on SKOS concept schemes originated by <a href="https://github.com/cmader/qSKOS/">qSKOS</a>.   
 		</p>
-	</div>
+	</div-->
+	<p> Let’s consider <code>myControlledVocabulary</code>, a controlled vocabulary made available on the web using the SKOS [[SKOS]] and DCAT [[vocab-dcat]].</p>
+	<pre>
+:myControlledVocabulary 
+	a dcat:Dataset ;
+	dcterms:title "My controlled vocabulary" 
+	.
+	
+:myControlledVocabularyDistribution
+	a  dcat:Distribution ;
+	dcat:downloadURL <http://www.example.org/files/myControlledVocabulary.csv> ;
+       	dcterms:title "SKOS/RDF distribution of my controlled vocabulary"" ;
+       	dcat:mediaType "text/turtle" ;
+       	dcat:byteSize "190120"^^xsd:decimal 
+	. </pre>
+ 	<p>qSKOS is an open source tool, which detects quality issues affecting SKOS vocabularies [[qSKOS]]. It considers  26 quality issues including, for example,  “Incomplete Language Coverage” and “Label Conflicts” which are grouped in the category “Labeling and Documentation issues”.  Quality issues addressed by qSKOS  can be considered as DQV quality dimensions, whilst the number of concepts in which a quality issue occurs can be the metric deployed for each quality dimension.</p> 
+	<pre>
+# definition of instances for some of the  metrics, dimensions and categories deployed in qSKOS. 
+
+:numOfConceptsWithLabelConflicts 
+	a dqv:Metric;
+	rdfs:label "Conflicting concepts"@en ;
+	rdfs:comment "Number of concepts having conflicting labels"@en ;
+	dqv:hasDimension  :LabelConflicts 
+	.
+
+:numOfConceptsWithIncompleteLanguageCoverage
+	a dqv:Metric;
+	rdfs:label "Language incomplete concepts"@en ;
+	rdfs:comment "Number of concepts having an incomplete language coverage"@en ;
+	dqv:hasDimension  :incompleteLanguageCoverage .
+
+:LabelConflicts
+	a  dqv:Dimension;
+	rdfs:label "Label Conflicts"@en ;
+	rdfs:comment "Dimension corresponding to the label conflicts quality issue"@en ;
+        dqv:hasCategory :labelingDocumentationIssues .
+
+:incompleteLanguageCoverage
+	a  dqv:Dimension;
+	rdfs:label "Incomplete Language Coverage"@en ;
+	rdfs:comment "Dimension corresponding to the incomplete language coverage issue"@en ;
+        dqv:hasCategory :labelingDocumentationIssues .
+
+:labelingDocumentationIssues
+        a  dqv:Category ;
+	rdfs:label "Labeling and Documentation Issues"@en ;
+	rdfs:comment "Category grouping labeling and documentation issues"@en ;
+	. </pre>
+
+	<p>DQV represents the qSKOS  quality assessment on <code>myControlledVocabulary</code> for the dimensions “Incomplete Language Coverage” and “Label Conflicts”.</p>
+
+<pre>
+:myDatasetDistribution
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+
+:measure1 
+	a dqv:QualityMeasure ;
+	dqv:computedOn :myControlledVocabulary ;
+	dqv:metric :numOfConceptsWithMissingValues ;
+	dqv:value "1500"^^xsd:integer  
+	.
+     	
+:measure2
+	a dqv:QualityMeasure ;
+	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
+	dqv:metric :csvConsistencyMetric ;
+	dqv:value "450"^^xsd:integer 
+	.
+</pre>
 </section>
 <section>
 		<h3>Express the quality of a linkset</h3>
