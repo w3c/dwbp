@@ -233,7 +233,7 @@ pre red { color: red;
         correction. </p>
 <!--      <div class="issue">Is the JSON-LD representation helpful?  Is it the best representation of JSON-LD?(JSON-LD was created by converting TTL with Jena rdfcat. )  </div> -->
 <!-- ttl to json-ld convertor begin -->
-        <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
+        <form id="langOptions" action="#">View as: <label><input type="radio" name="presLang" value="turtle" checked="checked" />Turtle (press 't')</label> <label><input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</label> . </form>
       </section>
 
 
@@ -363,7 +363,7 @@ pre red { color: red;
 
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
-      <p> Example 1 - Usage: A 2-D charting application developed to create temperature plots that consumes temperature readings from
+      <p id="ex1"> Example 1 - Usage: A 2-D charting application developed to create temperature plots that consumes temperature readings from
         a dataset to produce the plot. </p>
       <pre class="schema turtle" >@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
@@ -412,7 +412,7 @@ pre red { color: red;
   dcat:distribution :dataset-Jan-Mar-2004-csv;
 .
   </pre>
-<pre class="schema json-ld" ><span class="comment">
+<pre class="schema json-ld" >
 {
   "@graph" : [ {
     "@id" : "_:b0",
@@ -489,7 +489,7 @@ pre red { color: red;
 }
 
   </pre>
-      <p> Example 2 - Feedback: Laufer provides feedback about the temperature
+      <p id="ex2"> Example 2 - Feedback: Laufer provides feedback about the temperature
         readings dataset. </p>
       <pre class="schema turtle" >
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
@@ -589,7 +589,7 @@ pre red { color: red;
   }
 }
 </pre>
-      <p>Example 3 - Citation: A technical report :paperA identified by a DOI
+      <p id="ex3">Example 3 - Citation: A technical report :paperA identified by a DOI
         cites the dataset. The :dataset-03312013 is also identified by a digital
         object identifier (DOI).</p>
 <pre class="schema turtle" >
@@ -738,7 +738,7 @@ pre red { color: red;
 }
 </pre>
 </section>
-    <section id=" Vocab_Overview">
+    <section id="Vocab_Overview">
       <h2>Vocabulary Overview</h2>
       <div class="note"> Based on discussions held June-August the model has been modified significantly  The non-normative text below needs updating once general agreement is reached on the DUV model.</div>
       <p><em>This section is non-normative.</em></p>
@@ -746,9 +746,7 @@ pre red { color: red;
         boxes are used to identify each class. Labeled open arrows identify
         example properties between the classes. Unlabeled shaded arrows are used
         to show inheritance with the parent class identified by the arrow head.</p>
-      <img src="./images/vocab_overview_11202015.png" v:shapes="_x0000_i1025" border="1"
-
-        height="490" width="788">
+      <img src="./images/vocab_overview_11202015.png" height="490" width="788" alt="Diagrammatic overview of the vocabulary" />
     </section>
 
         <div class="issue">Data vocabulary reuse question:  In the citation model, is it better to use prov:Agent that is a superclass to new classes such as foaf:Project or should we create a new class duv:Agent? <a href="http://www.w3.org/2013/dwbp/track/issues/214"> Issue-214 </a> </div>
@@ -798,7 +796,7 @@ pre red { color: red;
         </table>
       </section>
         <!-- <section rel="bibo:Chapter" resource="#ref" typeof="bibo:Chapter"></section>
-    <h4 role="heading" aria-level="3" id="Property:develops">Property:develops</h4>    <table class="definition">
+    <h4 aria-level="3" id="Property:develops">Property:develops</h4>    <table class="definition">
       <thead>        <tr>
           <th>RDF Property:</th>          <th><span style="text-decoration: underline;">duv:develops</span></th>
         </tr>      </thead>
@@ -859,7 +857,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:annotation_description">Property:
+        <h4 aria-level="3" id="Property:annotation_description">Property:
           description</h4>
         <table class="definition">
           <thead>
@@ -904,7 +902,7 @@ pre red { color: red;
           </tbody>
         </table>
               </section>
-        <h4 role="heading" aria-level="3" id="Property:application_title">Property:
+        <h4 aria-level="3" id="Property:application_title">Property:
           title</h4>
         <table class="definition">
           <thead>
@@ -925,7 +923,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:application_description">Property:
+        <h4 aria-level="3" id="Property:application_description">Property:
           description</h4>
         <table class="definition">
           <thead>
@@ -976,7 +974,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:consumes">Property:
+        <h4 aria-level="3" id="Property:consumes">Property:
           consumes</h4>
         <table class="definition">
           <thead>
@@ -1004,7 +1002,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:generates">Property:
+        <h4 aria-level="3" id="Property:generates">Property:
           generates</h4>
         <table class="definition">
           <thead>
@@ -1040,7 +1038,7 @@ pre red { color: red;
         </table>
 
       <section id="class-Dataset">
-        <h3 role="heading" aria-level="2" id="Class:_Dataset">Class: Dataset</h3>
+        <h3 aria-level="2" id="Class:_Dataset">Class: Dataset</h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1070,7 +1068,7 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-        <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
+        <h4 aria-level="3" id="Property:dataset_title">Property:
           title</h4>
         <table class="definition">
           <thead>
@@ -1091,7 +1089,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:dataset_description">Property:
+        <h4 aria-level="3" id="Property:dataset_description">Property:
           description</h4>
         <table class="definition">
           <thead>
@@ -1165,7 +1163,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:document_description">Property:
+        <h4 aria-level="3" id="Property:document_description">Property:
           description</h4>
         <table class="definition">
           <thead>
@@ -1186,7 +1184,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:dataset_title">Property:
+        <h4  aria-level="3" id="Property:cites">Property:
           cites</h4>
         <table class="definition">
           <thead>
@@ -1220,7 +1218,7 @@ pre red { color: red;
         </table>
 
       <section id="class-Activity">
-        <h3 role="heading" aria-level="2" id="Class:_Acitivity"> Class: Activity</h3>
+        <h3 aria-level="2" id="Class:_Acitivity"> Class: Activity</h3>
         <table class="definition">
           <thead>
             <tr>
@@ -1302,7 +1300,7 @@ pre red { color: red;
           </tbody>
         </table>
               </section>
-        <h4 role="heading" aria-level="3" id="Property:hasCitingEntity">Property:
+        <h4 aria-level="3" id="Property:hasCitingEntity">Property:
           hasCitingEntity</h4>
         <table class="definition">
           <thead>
@@ -1368,7 +1366,7 @@ pre red { color: red;
         </table>
     
               </section>
-        <h4 role="heading" aria-level="3" id="Property:endorses">Property:
+        <h4 aria-level="3" id="Property:endorses">Property:
           endorses</h4>
         <table class="definition">
           <thead>
@@ -1399,7 +1397,7 @@ pre red { color: red;
         </tr> -->
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:annotatedBy">Property:
+        <h4 aria-level="3" id="Property:annotatedBy">Property:
           annotatedBy</h4>
         <table class="definition">
           <thead>
@@ -1424,7 +1422,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:retains">Property:
+        <h4 aria-level="3" id="Property:retains">Property:
           retains</h4>
         <table class="definition">
           <thead>
@@ -1456,7 +1454,7 @@ pre red { color: red;
         </tr> -->
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:has_rating">Property:
+        <h4 aria-level="3" id="Property:has_rating">Property:
           has_rating</h4>
         <table class="definition">
           <thead>
@@ -1484,7 +1482,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4 role="heading" aria-level="3" id="Property:has_datasetCorrection">Property:
+        <h4 aria-level="3" id="Property:has_datasetCorrection">Property:
           has_datasetCorrection</h4>
         <table class="definition">
           <thead>
