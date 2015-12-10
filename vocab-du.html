@@ -11,11 +11,11 @@
     <script class="remove">
 var respecConfig = {
 specStatus: "ED",
-shortName: "dwbp-duv",
+shortName: "vocab-duv",
 //publishDate: "2014-03-27",
-//previousPublishDate: "2014-07-01",
-previousMaturity: "WD",
-//previousURI: "http://www.w3.org/TR/2014/...",
+previousPublishDate: "2015-06-25",
+previousMaturity: "FPWD",
+previousURI: "http://www.w3.org/TR/2015/WD-vocab-duv-20150625/",
 edDraftURI: "http://w3c.github.io/dwbp/vocab-du.html",
 // lcEnd: "3000-01-01",
 // crEnd: "3000-01-01",
@@ -26,11 +26,11 @@ companyURL: "http://www.cin.ufpe.br/"
 },{
 name: "Eric G. Stephan",
 company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
+companyURL: "http://www.pnnl.gov/"
 }, {
 name: "Sumit Purohit",
 company: "Pacific Northwest National Laboratory",
-companyURL: "http://www.pnnl.gov"
+companyURL: "http://www.pnnl.gov/"
 }],
 wg: "Data on the Web Working Group",
 noRecTrack: true,
@@ -41,9 +41,6 @@ otherLinks: [{
 key: "Repository",
 data: [{
 value: "We are on Github",
-href: "https://github.com/w3c/dwbp"
-}, {
-value: "File a bug",
 href: "https://github.com/w3c/dwbp"
 }]
 }, {
@@ -56,8 +53,20 @@ value: "Commit history",
 href: "https://github.com/w3c/dwbp/commits/gh-pages"
 }]
 }],
+
+localBiblio: {
+  "CITO" : {
+  title : "CiTO, the Citation Typing Ontology",
+  href : "http://vocab.ox.ac.uk/cito",
+  authors: ["David Shotton", "Paolo Ciccarese"]
+  }
+} 
 };
-</script> <style type="text/css">
+
+
+
+</script>
+ <style type="text/css">
 table {
 	border-collapse: collapse;
 }
@@ -182,14 +191,15 @@ pre red { color: red;
 
 .new            { font-weight: bold; }
 .errorSite      { color: red; }
-		</style>
-<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script>
+		</style> <!--
+<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script> -->
+<!-- That script libraray was causing a problem. Commenting it out seems to have fixed it. The T/J swicth still works ;-) -->
 <!-- ttl to json-ld convertor end -->
 
  </head>
   <body>
     <section id="abstract">
-      <p> Datasets published on the web are accessed and experienced by
+      <p>Datasets published on the Web are accessed and experienced by
         consumers in a variety of ways, but little information about these
         experiences is typically conveyed. Dataset publishers many times lack
         feedback from consumers about how datasets are used. Consumers lack an
@@ -201,40 +211,25 @@ pre red { color: red;
         citations, and feedback about the dataset from the human perspective. </p>
       <p>By specifying a number of foundational concepts used to collect dataset
         consumer feedback, experiences, and cite references associated with a
-        dataset, APIs can be written to support collaboration across the web by
+        dataset, APIs can be written to support collaboration across the Web by
         structurally publishing consumer opinions and experiences, and provide a
         means for data consumers and producers advertise and search for
         published open dataset usage. </p>
     </section>
     <section id="sotd">
       <p> This is a draft document which may be merged into another document or
-        eventually make its way into being a standalone Working Draft. This
-        document was published by the Data on the Web Best Practices Working
-        Group as an Editor's Draft. If you wish to make comments regarding this
-        document, please send them to public-dwbp-wg@w3.org (subscribe,
-        archives). All comments are welcome. Publication as an Editor's Draft
-        does not imply endorsement by the W3C Membership. This is a draft
-        document and may be updated, replaced or obsoleted by other documents at
-        any time. It is inappropriate to cite this document as other than work
-        in progress. This document was produced by a group operating under the 5
-        February 2004 W3C Patent Policy. W3C maintains a public list of any
-        patent disclosures made in connection with the deliverables
-        of the group; that page also includes instructions for disclosing a
-        patent. An individual who has actual knowledge of a patent which the
-        individual believes contains Essential Claim(s) must disclose the
-        information in accordance with section 6 of the W3C Patent Policy. This
-        document is governed by the 1 August 2014 W3C Process Document. </p>
+        eventually make its way into being a standalone Working Draft.</p>
     </section>
     <section id="intro" class="informative">
       <h2> Introduction</h2>
       <p> This vocabulary is meant to fill a niche that helps standardize the
-        way web published dataset usage be conveyed and shared. At this time is
+        way Web published dataset usage be conveyed and shared. At this time there is
         no clear standard way to describe dataset usage on the Web. Without a
         means to systematically describe dataset usage, searching and conveying
         techniques are application specific and discovery and collaboration
         across the Web is more difficult. This vocabulary also recommends and
-        requires data publishers to provide a mechanism of receiving data usage
-        from data consumers in the form of feedback,citation and data
+        requires data publishers to provide a mechanism of receiving data usage information
+        from data consumers in the form of feedback, citation and data
         correction. </p>
 <!--      <div class="issue">Is the JSON-LD representation helpful?  Is it the best representation of JSON-LD?(JSON-LD was created by converting TTL with Jena rdfcat. )  </div> -->
 <!-- ttl to json-ld convertor begin -->
@@ -316,15 +311,15 @@ pre red { color: red;
     </section>
     <section id="audience">
       <h2> Audience</h2>
-      <p>The DUV is intended for data producers and publishers interested in
+      <p>The <abbr title="Dataset Usage Vocabulary">DUV</abbr> is intended for data producers and publishers interested in
         tracking, sharing, and persisting consumer dataset usage. It is also
         intended for collaborators who require an exchange medium to advertise
         and interactively convey dataset usage. </p>
     </section>
     <section id="scope">
       <h2> Scope</h2>
-      <p> The scope of DUV is defined by the Data on the Web Best Practices
-        (DWBP) Use Case document based on the data usage requirements about
+      <p> The scope of the <abbr title="Dataset Usage Vocabulary">DUV</abbr> is defined by the Data on the Web Best Practices
+        (DWBP) Use Case document [[DWBP-UCR]] based on the data usage requirements about
         datasets. These requirements include: citing data on the Web, tracking
         the usage of data, sharing feedback and rating data. These requirements
         were derived from fourteen real world use cases examples provided in the
@@ -332,33 +327,33 @@ pre red { color: red;
     </section>
     <section id="relationship_vocabularies">
       <h2> Relationship to other Vocabularies</h2>
-      <p> The DUV is a “glue” vocabulary reusing and extending existing
+      <p> The <abbr title="Dataset Usage Vocabulary">DUV</abbr> is a “glue” vocabulary reusing and extending existing
         vocabulary classes and properties to support citation, feedback, and
         usage. This section provides our rationale and approach for vocabulary
-        selection and re-use. </p>
+        selection and reuse. </p>
       <p> Core to the dataset usage vocabulary is the “dataset”. The DUV uses
-        the Data Catalog (DCAT) vocabulary dcat:Dataset class and all properties
-        associated with the class. From a data usage perspective the DUV can be
-        considered an extension of the dcat:Dataset.</p>
-      <p> The Web Annotation Vocabulary is used to describe duv:Feedback as a
+        the Data Catalog Vocabulary's dcat:Dataset class and all properties
+        associated with the class [[VOCAB-DCAT]]. From a data usage perspective the DUV can be
+        considered an extension of dcat:Dataset.</p>
+      <p>The Web Annotation Vocabulary [[OA]] is used to describe duv:Feedback as a
         subclass inheriting the behavior of oa:Annotation. A crucial part of the
         Web Annotation Model are “motivations” that describe the role of
         particular Annotation. Each duv:Feedback must have at least one
         oa:motivated_by property with a relationship to an instance of
         oa:Motivation. A subset of the Motivation instances are important to
         describe feedback to data publishers, and blogs between dataset
-        consumers. In addition to supporting duv:Feedback because the Web
-        Annotation vocabulary provides a generic way of annotating any web
+        consumers. In addition to supporting duv:Feedback, because the Web
+        Annotation vocabulary provides a generic way of annotating any Web
         resource, it is recommended that Web Annotation vocabulary be used to
         annotate the duv:Dataset for uses beyond the scope of the DUV. </p>
-      <p> The Provenance Ontology (Prov-O) is a vocabulary used by data
+      <p> The Provenance Ontology [[PROV-O]] is a vocabulary used by data
         providers to pass details about the data history to data users.
         Properties associated with prov:Activity provide relationships
         (prov:used, prov:hasGenerated) from a historical perspective using past
         tense forms of words and phrases. The developed and duv:WebThing reuses
         these properties by creating subProperties from Prov-O to describe usage
         from a present tense perspective. </p>
-      <p> Both the Citation Typing Ontology (CiTO) and Dublin Core vocabularies
+      <p> Both the Citation Typing Ontology [[CITO]] and Dublin Core [[DC-TERMS]] vocabularies
         are used to describe citations and references between datasets and cited
         sources. </p>
     </section>
@@ -368,8 +363,7 @@ pre red { color: red;
 
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
-      <p> Example 1 - Usage: A 2-D charting application developed to be
-        used to create temperature plots and consumes temperature readings from
+      <p> Example 1 - Usage: A 2-D charting application developed to create temperature plots that consumes temperature readings from
         a dataset to produce the plot. </p>
       <pre class="schema turtle" >@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
@@ -599,7 +593,7 @@ pre red { color: red;
         cites the dataset. The :dataset-03312013 is also identified by a digital
         object identifier (DOI).</p>
 <pre class="schema turtle" >
-      @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -830,7 +824,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td class="prop">Definition</td>
-              <td> Information about a web resource or associations between
+              <td> Information about a Web resource or associations between
                 resources.</td>
             </tr>
             <tr>
@@ -1798,7 +1792,7 @@ pre red { color: red;
     <section id="change-history" class="appendix">
       <h2>Change history</h2>
     </section>
-    <section id="references" class="appendix">
+<!--    <section id="references" class="appendix">
       <h2> References</h2>
       <section id="normative-references" class="appendix">
         <h3>Normative references</h3>
@@ -1810,7 +1804,7 @@ pre red { color: red;
         <dl about="" class="bibliography">
         </dl>
       </section>
-    </section>
+    </section>-->
         <script type="application/javascript">
         var bodyKeypressCallbacks = {};
 
@@ -1881,6 +1875,5 @@ pre red { color: red;
           return true;
         });
         </script>
-
   </body>
 </html>
