@@ -3250,69 +3250,53 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <p> To debate if the goal should be to adhere to a published schedule
           for updates. <a href="http://www.w3.org/2013/dwbp/track/issues/195">Issue-195</a></p>
       </div>
-      <!-- begin of versions For API BP -->
-      <div class="practice">
-        <p><span id="VersionsForAPI" class="practicelab">Maintain separate
-            versions for a data API</span></p>
-        <p class="practicedesc">If data is made available through an API, the
-          API itself should be versioned separately from the data. Old versions
-          should continue to be available.</p>
-        <section class="axioms">
-          <p class="subhead">Why</p>
-          <p>Developers need to be made aware of changes to an API so that they
-            can update their code to use it. When an API is changed, as opposed
-            to when the data it makes available is changed, releasing it as a
-            new version makes it possible to gracefully transition from the old
-            version to the new one. Keeping the older versions available avoids
-            breaking applications that cannot be updated.</p>
-        </section>
-        <section class="outcome">
-          <p class="subhead">Intended Outcome</p>
-          <p>It should be possible for developers to transition easily from one
-            version of the API to another. Applications that are impractical to
-            transition should continue to work. The API version should not be
-            updated when data versions are updated, only when the API itself
-            changes, and that should be infrequent.</p>
-        </section>
-        <section class="how">
-          <p class="subhead">Possible Approach to Implementation</p>
-          <p>Release updates to your API under a slightly different base URI so
-            that older versions remain available under the previous base URI.
-            For example, <a href="http://myapi.org/v1/dogs/alfred">http://myapi.org/v1/dogs/alfred</a>
-            retrieves the older version of data about a dog named Alfred, and <a
-
-              href="http://myapi.org/v2/dogs/alfred">http://myapi.org/v2/dogs/alfred</a>
-            retrieves the newer version of data about Alfred. Keeping the
-            version number as far to the left as possible in the API call allows
-            developers to switch to the newer version with the least effort.</p>
-          <div class="example">
-            <p>to be done </p>
+      <<!-- Document API code -->
+        <div class="practice">
+          <p><span id="versionsForAPI" class="practicelab">Document your API</span></p>
+          <p class="practicedesc">Provide your users with complete information about how to use your API. Explain the architecture you’ve chosen. Show how to invoke each API call and what will be returned.</p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it. 
+          </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p><a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others provide formats for documentation.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Quality of documentation is related to the usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
+          </section>
           </div>
-        </section>
-        <section class="test">
-          <p class="subhead">How to Test</p>
-          <p>Existing calls to the API should continue to work when the API is
-            updated. New calls to a slightly different base URI should retrieve
-            data according to the new rules.</p>
-        </section>
-        <section class="ucr">
-          <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
-        </section>
-        <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <ul class="benefitsList">
-            <li>Reuse</li>
-            <!--
-              <li>Comprehension</li>              <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>-->
-            <li>Access</li>
-            <!--              <li>Interoperability</li>
-              <li>Processability</li>-->
-          </ul>
-        </section>
-      </div>
-      <!-- end of versions For API BP --> </section>
-    <!-- end of BP Access Up to date-->
+        <!-- end of document your API -->
+         <!-- begin of Use an API -->
+          <div class="practice">
+          <p><span id="useanAPI" class="practicelab">Use an API</span></p>
+          <p class="practicedesc">If you have the resources, you <em class="rfc2119">should</em> offer an API</em></p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be helpful.</p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Developers will have programmatic access to the data for use in their own applications.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+            <p>If you use a data management platform, such as CKAN, you may be able to simply enable an existing API. Many web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs. Examples include Swagger, Apigility, Apache CXF, and Restify</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Use Service Virtualization to simulate calls and responses, make sure that the performance is acceptable.</p>
+          </section>
+          </section>
+          </div>
+      <!-- end of Document your API code -->
+
     <!-- end of Data Access -->
     <!-- begin of Data Preservation -->
     <section id="dataPreservation">
