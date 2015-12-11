@@ -753,7 +753,7 @@ table#uripatternstable caption {
         <p> This example serves as a basis for elaboration that will be
           described in subsequent sections. It helps to illustrate how best
           practices may be applied. </p>
-        <div class="example">
+        <aside class="example">
           <p> John works for the Transport Agency of MyCity and he is in charge
             of the publication of data on the Web about bus timetables as well
             as real time data about the traffic of the city. John decides to
@@ -765,7 +765,7 @@ table#uripatternstable caption {
               languages: english and portuguese; </li>
             <li> Both datasets must be available in csv and json-ld formats; </li>
           </ul>
-        </div>
+        </aside>
         When necessary RDF examples will be used to show the result of the
         application of some best practices. RDF examples in this document are
         written in Turtle syntax [[TURTLE]] and [[JSON-LD]]. </section>
@@ -3027,8 +3027,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <!-- end of BP Bulk Access -->
    <!-- begin of Web Standardized Interfaces -->
         <div class="practice">
-          <p><span id="BulkAccess2" class="practicelab">Use Web Standardized Interfaces</span></p>
-          <p class="practicedesc">You <em class="rfc2119">should</em> make use of URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation when designing APIs</p>
+          <p><span id="APIHttpVerbs" class="practicelab">Use Web Standardized Interfaces</span></p>
+          <p class="practicedesc">It is recommended to use URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links and content negotiation when designing APIs</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>APIs that use HTTP verbs, URIs, and response codes leverage developers’ existing knowledge, making it easier to make use of your API. Using a standardized interface also helps to avoid tight coupling between requests and responses, making for an API that can readily be used by many clients.</p>
@@ -3045,12 +3045,13 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p></p>
+            <aside class="example">to be done</aside>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
           </section>
+          <div class="note">This BP will be complemented.</div>
         </div>
         <!-- end of Web Standardized Interfaces -->
       <!-- begin of BP Content Negotiation -->
@@ -3253,30 +3254,33 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <!-- Document API code -->
         <div class="practice">
           <p><span id="versionsForAPI" class="practicelab">Document your API</span></p>
-          <p class="practicedesc">Provide your users with complete information about how to use your API. Explain the architecture you’ve chosen. Show how to invoke each API call and what will be returned.</p>
+          <p class="practicedesc">Provide your users with complete information about how to use your API.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it. 
-          </p>
+            <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.</p>
+            <p>It is recommended to show explaination about the architecture chosen for the API design and show how to invoke each API call and what will be returned from those calls.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p><a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others provide formats for documentation.</p>
+            <aside class="example"><p>To be done</p></aside>            
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Quality of documentation is related to the usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
           </section>
+          <div class="note">This BP will be complemented.</div>
           </div>
         <!-- end of document your API -->
          <!-- begin of Use an API -->
           <div class="practice">
           <p><span id="useanAPI" class="practicelab">Use an API</span></p>
-          <p class="practicedesc">If you have the resources, you <em class="rfc2119">should</em> offer an API</em></p>
+          <p class="practicedesc">Offer an API to serve data</p>
+          <!-- <p class="practicedesc">When there are resources available, you <em class="rfc2119">should</em> offer an API</p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be helpful.</p>
@@ -3288,12 +3292,13 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>If you use a data management platform, such as CKAN, you may be able to simply enable an existing API. Many web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs. Examples include Swagger, Apigility, Apache CXF, and Restify</p>
+            <aside class="example"><p>To be done</p></aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
             <p>Use Service Virtualization to simulate calls and responses, make sure that the performance is acceptable.</p>
           </section>
-          </section>
+          <div class="issue">To review the BP "Use an API" and possibly rewrite <em>Possible Approach to Impelmentation</em> section.</div>
           </div>
       <!-- end of Document your API code -->
 
