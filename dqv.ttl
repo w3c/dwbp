@@ -37,16 +37,16 @@
   rdfs:comment "A quality measure represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric."@en ;
   owl:equivalentClass daq:Observation;
   rdfs:subClassOf qb:Observation .
-
-:Dimension a owl:Class, rdfs:Class ;
-  rdfs:label "Dimension"@en ;
-  rdfs:Comment "Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:hasDimension property."@en ;
-  owl:equivalentClass daq:Dimension .
   
 :Metric a owl:Class, rdfs:Class;
   rdfs:label "Metric"@en ;
   rdfs:comment "A standard to measure a quality dimension. An observation (instance of dqv:QualityMeasure) assigns a value in a given unit to a Metric."@en ;
   owl:equivalentClass daq:Metric .
+
+:Dimension a owl:Class, rdfs:Class ;
+  rdfs:label "Dimension"@en ;
+  rdfs:Comment "Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:hasDimension property."@en ;
+  owl:equivalentClass daq:Dimension .
   
 :Category a owl:Class, rdfs:Class ;
   rdfs:label "Category"@en ;
@@ -63,6 +63,12 @@
   rdfs:label "Quality Annotation"@en ;
   rdfs:comment "Represents quality annotations, including rating, quality certificate, feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with a instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment."@en ;
   rdfs:subClassOf oa:Annotation .
+  owl:equivalentClass
+    [ rdf:type owl:Restriction ; 
+      owl:onProperty oa:motivation ;
+      owl:hasValue :qualityAssessment
+    ] .
+
 
 :UserQualityFeedback a owl:Class, rdfs:Class ;
   rdfs:label "User Quality feedback"@en ;
@@ -81,16 +87,16 @@
   rdfs:range :Metric ;
   owl:equivalentProperty daq:metric .
 
-:dataSet a rdf:Property ;
-  rdfs:label "data set"@en ;
-  rdfs:comment "Indicates the dataset to a quality measure (which is an RDF Data Cube observation) belongs."@en ;
-  rdfs:domain qb:Observation ;
-  rdfs:range qb:DataSet .
+# this property is still defined in the qb: namespace, the re-definition is therefore commented for now
+# :dataSet a rdf:Property ;
+#  rdfs:label "data set"@en ;
+#  rdfs:comment "Indicates the dataset to a quality measure (which is an RDF Data Cube observation) belongs."@en ;
+#  rdfs:domain qb:Observation ;
+#  rdfs:range qb:DataSet .
 
-:computedOn a rdf:Property ;
+:computedOn a rdf:Property, qb:DimensionProperty ;
   rdfs:label "computed on"@en ;
   rdfs:comment "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset and dcat:Distribution."@en ;
-  rdfs:subPropertyOf qb:DimensionProperty ;
   rdfs:domain :QualityMeasure ;
   owl:equivalentProperty daq:computedOn;
   owl:inverseOf :hasQualityMeasure .
@@ -118,3 +124,8 @@
   vann:usageNote "Categories are meant to systematically organize dimensions. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality measures should try to avoid this as much as possible and assign only one category to the dimensions they define."@en .
 
 
+###########################
+### Instances here #######
+###########################
+
+:qualityAssessment a oa:Motivation .
