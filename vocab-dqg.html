@@ -395,7 +395,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 			<p>DQV defines quality measures as specific instances of DQV observations, adapting the DAQ quality metrics framework [[DaQ]], [[DaQ-RDFCUBE]]:</p>
 			<ul>
 			  <li>A Quality Dimension is a characteristic of a dataset relevant to the consumer (e.g., the availability of a dataset).</li>
-			  <li>A Quality Metric gives a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labelling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+			  <li>A Quality Metric gives a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
 			</ul>
 			<p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number of different language tags". 
 			</p>
@@ -492,7 +492,7 @@ DQV, however, seeks to re-use elements  from other vocabularies, following the <
 
 			<div class="issue">
 			<p>
-In daQ, the property <a href="http://purl.org/eis/vocab/daq#expectedDataType">daq:expectedDataType</a> associates each metric to the expected datatype for its observed value. Datatypes for observed values are restricted to <a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</a>  (e.g. xsd:boolean, xsd:double etc…). Is the current practice of using daq:expectedDataType in daQ appropriate? Isn't the restriction to xsd:anySimpleType too narrow? (<a href="https://www.w3.org/2013/dwbp/track/issues/224">Issue-224</a>) 
+In daQ, the property <a href="http://purl.org/eis/vocab/daq#expectedDataType">daq:expectedDataType</a> associates each metric to the expected data type for its observed value. Data types for observed values are restricted to <a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</a>  (e.g. xsd:boolean, xsd:double etc…). Is the current practice of using daq:expectedDataType in daQ appropriate? Isn't the restriction to xsd:anySimpleType too narrow? (<a href="https://www.w3.org/2013/dwbp/track/issues/224">Issue-224</a>) 
 			</p>
 			</div>
 			
@@ -516,7 +516,7 @@ In daQ, the property <a href="http://purl.org/eis/vocab/daq#expectedDataType">da
 			    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td></tr>
 			    <!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
 			    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
-			    <tr><td class="prop">Usage note:</td><td>Dimensions are meant to systematically organize metrics. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality measures should try to avoid this as much as possible and assign only one dimension to the metrics they define.</td></tr>
+			    <tr><td class="prop">Usage note:</td><td>Dimensions are meant to systematically organize metrics. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:hasDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality measures should try to avoid this as much as possible and assign only one dimension to the metrics they define.</td></tr>
 			  </tbody>
 			</table>
 			</section>
@@ -546,7 +546,7 @@ In daQ, the property <a href="http://purl.org/eis/vocab/daq#expectedDataType">da
 		    <tr><td class="prop">Inverse:</td><td><a href="http://purl.org/eis/vocab/daq#hasDimension">daq:hasDimension</a></td></tr>
 		    <!--tr><td class="prop">Minimum cardinality:</td><td></td></tr>
 		    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
-		    <tr><td class="prop">Usage note:</td><td>Categories are meant to systematically organize dimensions. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality measures should try to avoid this as much as possible and assign only one category to the dimensions they define.</td></tr>
+		    <tr><td class="prop">Usage note:</td><td>Categories are meant to systematically organize dimensions. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:hasCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality measures should try to avoid this as much as possible and assign only one category to the dimensions they define.</td></tr>
 		  </tbody>
 		</table>
 		</section>
@@ -589,7 +589,7 @@ In daQ, the property <a href="http://purl.org/eis/vocab/daq#expectedDataType">da
 			<table class="definition">
 			  <thead><tr><th>RDF Class:</th><th><a href="#Class:QualityAnnotation">dqv:QualityAnnotation</a></th></tr></thead>
 		 	 <tbody>
-		   	 <tr><td class="prop">Definition:</td><td> Represents  quality annotations, including rating, quality certificate, feedback that can be associated to  datasets or distributions. Quality annotations must have one oa:motivatedBy statement with a instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment.  </td></tr>
+		   	 <tr><td class="prop">Definition:</td><td> Represents  quality annotations, including rating, quality certificate, feedback that can be associated to  datasets or distributions. Quality annotations must have one oa:motivatedBy statement with an instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment.  </td></tr>
 			 <tr><td class="prop">Subclass of:</td><td>  <a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></td></tr>
 
 		    	<!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
@@ -764,7 +764,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 <section>
 <h3>Document the provenance of the quality metadata</h3>
 
-<p>The result of metrics obtained in the previous assessment are stored in the <code>myQualityMetadata</code> graph.</p>
+<p>The results of metrics obtained in the previous assessment are stored in the <code>myQualityMetadata</code> graph.</p>
 
 <pre>
 # myQualityMatadata is a graph 
@@ -816,7 +816,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 <section>
  		<h4>Document the provenance of a dataset</h4>
 
-	<p>Statements similar to the ones applied to the resource <code>myQualityMetadata</code> above can be applied to the resource <code>myDataset</code> to indicate the provenance of the dataset. I.e., a dataset can be generated by a specific software agent, be generated at a certain time, etc. The <a href="http://www.w3.org/TR/hcls-dataset/">HCLS Community Profile</a> for describing datasets provide further examples.</p>
+	<p>Statements similar to the ones applied to the resource <code>myQualityMetadata</code> above can be applied to the resource <code>myDataset</code> to indicate the provenance of the dataset. I.e., a dataset can be generated by a specific software agent, be generated at a certain time, etc. The <a href="http://www.w3.org/TR/hcls-dataset/">HCLS Community Profile</a> for describing datasets provides further examples.</p>
 </section>
 <section>
 		<h3>Express that a dataset received an ODI certificate</h3>
@@ -1164,7 +1164,7 @@ ex:geoDCAT-AP a dcterms:Standard;
 	<div class="issue">
 			<p>
 				Relation between DQV, ISO 19115/19157 and GeoDCAT-AP: DQV is already able to express the notion of "conformance" to a standard using the property dcterms:conformsTo.
-However, there were suggestion to be further compatibile with ISO 19157:2013 and INSPIRE by adding respectively "Not conformant" and "Not evaluated" as possible properties or values.
+However, there were suggestion to be further compatible with ISO 19157:2013 and INSPIRE by adding respectively "Not conformant" and "Not evaluated" as possible properties or values.
 Should DQV be this expressive? (<a
 					href="https://www.w3.org/2013/dwbp/track/issues/202">Issue-202</a>)
 	</div>
@@ -1298,7 +1298,7 @@ Suggestions on possible mappings between ISO 25012  and Zaveri et al.'s dimensio
 			<em>Is the data not containing contradictions?</em>
 		</p>
 		<p><em>Can I use it readily in an analysis tool? Can I open the dataset in R and do some statistical manipulations? Can I open it in Tableau and make a visualization without doing a lot of cleaning?</em></p>
-		<p>There could be some overlap with accurracy.</p>
+		<p>There could be some overlap with accuracy.</p>
 	</section>
 	<section>
 		<h3>Relevance</h3>
@@ -1348,7 +1348,7 @@ Suggestions on possible mappings between ISO 25012  and Zaveri et al.'s dimensio
 			<li>R-QualityOpinions: 'Subjective quality opinions on the data
 				should be supported'</li>
 			<li>R-GranularityLevels: 'Data available at different levels of
-				granularity should be accessible and modelled in a common way'</li>
+				granularity should be accessible and modeled in a common way'</li>
 		</ul>
 		The aforementioned requirements are going to be further elaborated considering on-going discussions and materials from these two wiki pages: <a
 				href="https://www.w3.org/2013/dwbp/wiki/Requirements_From_FPWD_BP">Requirements from FPWD_BP</a> and  <a
@@ -1366,10 +1366,10 @@ Suggestions on possible mappings between ISO 25012  and Zaveri et al.'s dimensio
 			</p>
 			<p>
 				The distinction between <a
-					href="https://www.w3.org/2013/dwbp/wiki/Guidance_on_the_Provision_of_Metadata#Intrinsic_vs_Extrinsic_Metadata">intrinsinc
+					href="https://www.w3.org/2013/dwbp/wiki/Guidance_on_the_Provision_of_Metadata#Intrinsic_vs_Extrinsic_Metadata">Intrinsic
 					and extrinsic metadata</a> may help making choices here. For example,
 				DQV could be defined wrt. intrinsic properties of the datasets, not
-				extrinsinc properties (let alone properties of the metadata for a
+				extrinsic properties (let alone properties of the metadata for a
 				dataset!)  (<a href="https://www.w3.org/2013/dwbp/track/issues/190">Issue-190</a>) 
 			</p>
 
