@@ -5,7 +5,7 @@
 var svgdoc = null;
 var svgwin = null;
 
-function init()
+function initCrossDom()
 {
   // FIRST WE TRY TO OBTAIN A REFERENCE TO THE SVG DOCUMENT.
   //
