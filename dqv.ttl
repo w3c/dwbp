@@ -123,6 +123,11 @@
   owl:inverseOf daq:hasDimension ;
   vann:usageNote "Categories are meant to systematically organize dimensions. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality measures should try to avoid this as much as possible and assign only one category to the dimensions they define."@en .
 
+:hasQualityMeasure a rdf:Property ;
+  rdfs:label "has quality measure"@en ;
+  rdfs:comment "Refers to the performed quality measurements. Quality measurements can be performed to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset and dcat:Distribution."@en ;
+  rdfs:range :QualityMeasure ;
+  owl:inverseOf :computedOn .
 
 ###########################
 ### Instances here #######
