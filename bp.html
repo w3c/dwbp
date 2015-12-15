@@ -256,7 +256,7 @@ These styles are for the lists of benefits
 
 
 /* *******************************************
-We re-use the 2 column style (for screens > 600 wide) from the list of BPs
+We reuse the 2 column style (for screens > 600 wide) from the list of BPs
 to create the columns for the lists of benefits
 ********************************************** */
 
@@ -350,16 +350,19 @@ figure figcaption {
   font-style:italic;
 }
 
-table#uripatternstable {
+table#uripatternstable,
+table.bptable {
   border-collapse: collapse;
   caption-side:bottom;
 }
-table#uripatternstable th, table#uripatternstable td {
+table#uripatternstable th, table#uripatternstable td,
+table.bptable th, table.bptable td {
   border: 1px solid black;
   padding:0.3em;
 }
 
-table#uripatternstable caption {
+table#uripatternstable caption,
+table.bptable caption {
   margin:0.5em;
   font-style:italic;
 }
@@ -524,7 +527,7 @@ table#uripatternstable caption {
         represent, describe and make data available in a way that it will be
         easy to find and to understand. In this context, it becomes crucial to
         provide guidance to publishers that will improve consistency in the way
-        data is managed, thus promoting the re-use of data and also to foster
+        data is managed, thus promoting the reuse of data and also to foster
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
       <p>This document sets out a series of best practices that will help
@@ -542,7 +545,7 @@ table#uripatternstable caption {
         more general purpose than the practices suggested in Best Practices for
         Publishing Linked Data [[LD-BP]] since it is domain-independent and
         whilst it recommends the use of Linked Data, it also promotes best
-        practices for data on the web in formats such as CSV [[RFC4180]] and
+        practices for data on the Web in formats such as CSV [[RFC4180]] and
         JSON [[RFC4627]]. The Best Practices related to the use of vocabularies
         incorporate practices that stem from Best Practices for Publishing
         Linked Data where appropriate.</p>
@@ -553,7 +556,7 @@ table#uripatternstable caption {
       <p>This document provides best practices to those who publish data on the
         Web. The best practices are designed to meet the needs of information
         management staff, developers, and wider groups such as scientists
-        interested in sharing and re-using research data on the Web. While data
+        interested in sharing and reusing research data on the Web. While data
         publishers are our primary audience, we encourage all those engaged in
         related activities to become familiar with it. Every attempt has been
         made to make the document as readable and usable as possible while still
@@ -572,7 +575,7 @@ table#uripatternstable caption {
       <p>This document is concerned solely with best practices that:</p>
       <ul>
         <li>are specifically relevant to data published on the Web;</li>
-        <li>encourage publication or re-use of data on the Web;</li>
+        <li>encourage publication or reuse of data on the Web;</li>
         <li>can be tested by machines, humans or a combination of the two.</li>
       </ul>
       <p>As noted above, whether a best practice has or has not been followed
@@ -688,8 +691,8 @@ table#uripatternstable caption {
           <p class="subhead">Why</p>
           <p>This section answers two crucial questions:</p>
           <ul>
-            <li>Why this is unique to publishing or re-using data on the Web? </li>
-            <li>How does this encourages publication or re-use of data on the
+            <li>Why this is unique to publishing or reusing data on the Web? </li>
+            <li>How does this encourages publication or reuse of data on the
               Web? </li>
           </ul>
         </section>
@@ -733,11 +736,9 @@ table#uripatternstable caption {
             <li>Interoperability</li>
             <li>Processability</li>
           </ul>
-          <!--
-          <img src="images/comprehension.svg" alt="Comprehension" height="70" width="80"/>          <img src="images/reuse.svg" alt="Reuse" height="70" width="80"/>          <img src="images/linkability.svg" alt="Linkability" height="70" width="80"/>          <img src="images/discoverability.svg" alt="Discoverability" height="70" width="80"/>
-          <img src="images/trust.svg" alt="Trust" height="70" width="80"/>          <img src="images/access.svg" alt="Access" height="70" width="80"/>          <img src="images/interoperability.svg" alt="Interoperability" height="70" width="80"/>          <img src="images/processability.svg" alt="Processability" height="70" width="80"/>
---> <div class="note"> To include links from the icons to the corresponding benefits. </div>
-        </section> 
+          <div class="note"> To include links from the icons to the corresponding benefits. </div>
+        </section>
+      </div>
     </section>
     <section id="bp-summary"></section>
     <section id="bestPractices">
@@ -763,8 +764,8 @@ table#uripatternstable caption {
           <p> Some requirements that should be addressed:</p>
           <ul>
             <li> The dataset for bus timetables must be available in two
-              languages: english and portuguese; </li>
-            <li> Both datasets must be available in csv and json-ld formats; </li>
+              languages: English and Portuguese; </li>
+            <li> Both datasets must be available in CSV and JSON-LD formats; </li>
           </ul>
         </aside>
         When necessary RDF examples will be used to show the result of the
@@ -787,7 +788,7 @@ table#uripatternstable caption {
           license terms, the organization that generated the data, data quality,
           data access methods and the update schedule of datasets. <br>
         </p>
-        Metadata can be used to help tasks such as dataset discovery and re-use,
+        Metadata can be used to help tasks such as dataset discovery and reuse,
         and can be assigned considering different levels of granularity from a
         single property of a resource to a whole dataset, or all datasets from a
         specific organization. <br>
@@ -800,7 +801,7 @@ table#uripatternstable caption {
           administrative metadata serves to provide information about the
           version, update schedule etc. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
-          used, for example, discovery and re-use. </p>
+          used, for example, discovery and reuse. </p>
         <p> </p>
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
@@ -811,7 +812,7 @@ table#uripatternstable caption {
             <p class="subhead">Why</p>
             <p>Providing metadata is a fundamental requirement when publishing
               data on the Web because data publishers and data consumers may be
-              unkown to each other. Then, it is essential to provide information
+              unknown to each other. Then, it is essential to provide information
               that helps human users and computer applications to understand the
               data as well as other important aspects that describes a dataset
               or a distribution.</p>
@@ -850,7 +851,7 @@ table#uripatternstable caption {
             <aside class="example">
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
-                human-readable description of dataset is availabe.</p>
+                human-readable description of dataset is available.</p>
               <h5>Machine-readable</h5>
               <p>to be done</p>
             </aside>
@@ -997,7 +998,7 @@ table#uripatternstable caption {
                   dataset</a> from data.gov.uk, respectively. </div>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
-                human-readable description of dataset is availabe.</p>
+                human-readable description of dataset is available.</p>
             </aside>
           </section>
           <section class="test">
@@ -1031,9 +1032,9 @@ table#uripatternstable caption {
           </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Providing <a href="#locale">locale</a> parameters metadata
+            <p> Providing <a href="#locale_parameter">locale</a> parameters metadata
               helps human users and computer applications to understand and to
-              manipulate the data, improving the re-use of the data. Providing
+              manipulate the data, improving the reuse of the data. Providing
               information about the locality for which the data is currently
               published aids data users in interpreting its meaning. Date, time,
               and number formats can have very different meanings, despite
@@ -1082,7 +1083,7 @@ table#uripatternstable caption {
        .
 </pre>
               <p> To declare the languages the dataset is published in use
-                dct:language. If the dataset is available in mutiple languages,
+                dct:language. If the dataset is available in multiple languages,
                 use multiple values for this property [[VOCAB-DCAT]. As proposed
                 in Dataset Descriptions from HCLS Community [[HCLS-DATASET]]
                 values were taken from the Lexvo.org Ontology [[Lexvo]]. </p>
@@ -1093,7 +1094,7 @@ table#uripatternstable caption {
                 metadata? This is <a href="https://www.w3.org/2013/dwbp/track/issues/167">Issue-167</a>.</div>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
-                human-readable description of dataset is availabe.</p>
+                human-readable description of dataset is available.</p>
             </aside>
           </section>
           <section class="test">
@@ -1221,7 +1222,7 @@ table#uripatternstable caption {
 </pre>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
-                human-readable structural metadata is availabe.</p>
+                human-readable structural metadata is available.</p>
             </aside>
           </section>
           <section class="test"><span style="font-weight: bold;">How to Test </span>
@@ -1254,7 +1255,7 @@ table#uripatternstable caption {
         <p>A <a href="#license"> license </a> is a very useful piece of
           information to be attached to data on the Web. According to the type
           of license adopted by the publisher, there might be more or fewer
-          restrictions on sharing and re-using data. In the context of data on
+          restrictions on sharing and reusing data. In the context of data on
           the Web, the license of a dataset can be specified within the data, or
           outside of it, in a separate document to which it is linked.
           <!-- begin of machine detectable license BP --> </p>
@@ -1349,7 +1350,7 @@ table#uripatternstable caption {
       <!-- begin of Data Provenance -->
       <section id="provenance">
         <h3>Data Provenance</h3>
-        <p> <a href="data_provenance"> Data provenance</a> becomes particularly
+        <p> <a href="#data_provenance">Data provenance</a> becomes particularly
           important when data is shared between collaborators who might not have
           direct contact with one another either due to proximity or because the
           published data outlives the lifespan of the data provider projects or
@@ -1357,7 +1358,7 @@ table#uripatternstable caption {
         <p>The Web brings together business, engineering, and scientific
           communities creating collaborative opportunities that were previously
           unimaginable. The challenge in publishing data on the Web is providing
-          an appropriate level of detail about its origin. The <a href="data_producer">
+          an appropriate level of detail about its origin. The <a href="#data_producer">
             data producer</a> may not necessarily be the data provider and so
           collecting and conveying this corresponding metadata is particularly
           important. Without provenance, consumers have no inherent way to trust
@@ -1432,7 +1433,7 @@ table#uripatternstable caption {
               <!--<p><a href="dwbp-example.html">Example page</a> with
                 human-readable data provenance information.</p> -->
               <p> to be done.</p>
-              <div class="issue"> Should we include a more complexe example to
+              <div class="issue"> Should we include a more complex example to
                 illustrate provenance? <a href="https://www.w3.org/2013/dwbp/track/issues/220">
                   Issue-220 </a> </div>
             </aside>
@@ -1471,7 +1472,7 @@ table#uripatternstable caption {
       <!-- begin of Data Quality -->
       <section id="quality">
         <h3>Data Quality</h3>
-        <p> <a href="#data-quality"> Data quality </a> can affect the
+        <p> <a href="#data_quality"> Data quality </a> can affect the
           potentiality of the application that use data, as a consequence, its
           inclusion in the data publishing and consumption pipelines is of
           primary importance. Usually, the assessment of quality involves
@@ -1496,7 +1497,7 @@ table#uripatternstable caption {
               specific applications, including applications very different from
               the purpose for which it was originally generated. Documenting
               data quality significantly eases the process of datasets
-              selection, increasing the chances of re-use. Independently from
+              selection, increasing the chances of reuse. Independently from
               domain-specific peculiarities, the quality of data should be
               documented and known quality issues should be explicitly stated in
               metadata.</p>
@@ -1614,7 +1615,7 @@ table#uripatternstable caption {
           to deal with these changes, new versions of a dataset may be created.
           Dataset versioning has been the subject of numerous discussions,
           however there is no consensus about when creating a new version of a
-          datset. In the following we present some scenarios where a new
+          dataset. In the following we present some scenarios where a new
           dataset, i.e. a new version of the existing dataset, should be created
           to reflect the corresponding update. </p>
         <ul>
@@ -2006,7 +2007,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <p>Adopting a common identification system enables basic data
               identification and comparison processes by any stakeholder in a
               reliable way. They are an essential pre-condition for proper data
-              management and re-use.</p>
+              management and reuse.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -2088,7 +2089,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <div class="issue">The table links to Designing URI Sets for the UK
               Public Sector. A newer version of this document (which was the
               first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub
-                repo</a>. It seems that this might happen due to changes in
+                repository</a>. It seems that this might happen due to changes in
               organisation behind data.gov.uk. If this happens, we should update
               the link to point to the new version.</div>
             <p>URIs can be long. In a dataset of even moderate size, storing
@@ -2135,7 +2136,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                   this case that of providing public transport.</li>
                 <li>Likewise, the path segments of <code>/road</code> and <code>/bus</code>
                   take us further towards the specific dataset for which John is
-                  reposnsible.</li>
+                  responsible.</li>
                 <li>The <code>/dataset</code> path segment is an indication
                   that the URI identifies a dataset, rather than, say, a
                   specific bus route.</li>
@@ -2408,7 +2409,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               future uses, such as remixing or visualization, many of which
               cannot be anticipated when the data is first published. The use of
               non-proprietary data formats should also be considered since it
-              increases the possibilities for use and re-use of data </p>
+              increases the possibilities for use and reuse of data </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -2418,7 +2419,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               tools typically available in the relevant domain to work with the
               data. </p>
             <p> It should be possible for data consumers who wants to use or
-              re-use the data to do so without investment in proprietary
+              reuse the data to do so without investment in proprietary
               software.</p>
             <!-- Published data on the Web must be readable and easily processable by
               typical computing systems. Any data consumer who wishes to work              with the data and is authorized to do so must be able to do so              with computational tools typically available in the relevant              domain. -->
@@ -2703,16 +2704,16 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <!-- end of Provide Metadata Standardized BP -->
         <!-- begin of Reuse vocabularies BP -->
         <div class="practice">
-          <p><span id="ReuseVocabularies" class="practicelab">Re-use
+          <p><span id="ReuseVocabularies" class="practicelab">Reuse
               vocabularies</span></p>
           <p class="practicedesc"> Shared vocabularies should be used to provide
             metadata</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p> Re-using vocabularies increases interoperability and reduces
-              redundancies, encouraging re-use of the data. Shared vocabularies
+            <p> Reusing vocabularies increases interoperability and reduces
+              redundancies, encouraging reuse of the data. Shared vocabularies
               capture a consensus of the community about a specific domain. The
-              re-use of shared vocabularies to describe metadata helps the
+              reuse of shared vocabularies to describe metadata helps the
               automatic processing of data and metadata. Shared vocabularies
               should be especially used to describe both structural metadata as
               well as other types of metadata (descriptive, provenance, quality
@@ -2770,7 +2771,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             that support establishing the intended meaning of the vocabulary and
             the performance of complex tasks such as reasoning. On the other
             hand, complex vocabularies require more effort to produce and
-            understand, which could hamper their re-use, as well as the
+            understand, which could hamper their reuse, as well as the
             comparison and linking of datasets exploiting them. Highly
             formalized data is also harder to exploit by inference engines: for
             example, using an OWL class in a position where a SKOS concept is
@@ -2784,7 +2785,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>The data supports all application cases but should not be more
-            complex to produce and re-use than necessary;</p>
+            complex to produce and reuse than necessary;</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -2990,7 +2991,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Humans can retreive copies of preprocessed bulk data through
+          <p>Humans can retrieve copies of preprocessed bulk data through
             existing tools such as a browser. Clients can test bulk access
             through an API or queries to web resources with discoverable
             metadata about the bulk data. </p>
@@ -3079,7 +3080,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <li>http://example.org/profile_info.ttl - The same information of
               the resource but represented in Turtle format</li>
           </ul>
-          <p>The specif format of the resource's representation can be acessed
+          <p>The specif format of the resource's representation can be accessed
             by the URI or by the Content-type of the HTTP Request.</p>
           <aside class="example">
             <p>to be done </p>
@@ -3113,7 +3114,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           available on the Web in real-time. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p> The presence of real-time data on the web enables access to
+          <p> The presence of real-time data on the Web enables access to
             critical time sensitive data, and encourages the development of
             real-time web applications. Real-time access is dependent on
             real-time data producers making their data readily available to the
@@ -3123,7 +3124,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             processing steps, infrastructure availability, and the data needed
             by consumers. In addition to making data accessible, data publishers
             may provide additional information describing data gaps, data errors
-            and anomolies, and publication delays.</p>
+            and anomalies, and publication delays.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -3144,7 +3145,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               facilitate these read-only requests.</li>
           </ul>
           In addition to data access, to ensure credibility providing access to
-          error conditions, anomolies, and instrument "house keeping" data
+          error conditions, anomalies, and instrument "house keeping" data
           enhance real-time applications ability to interpret and convey
           real-time data quality to consumers.
           <aside class="example">
@@ -3158,7 +3159,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           and accessed. [[PROV-O]] can be used to describe these activities.
           Caution should be used when analyzing real-time access for systems
           that consist of multiple computer systems. For example, tests that
-          rely on wall clock time stamps may reflect inconsistences between the
+          rely on wall clock time stamps may reflect inconsistencies between the
           individual computer systems as opposed to data publication time
           latency.
         </section>
@@ -3190,7 +3191,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p>Data on the Web availability should closely coincide with data
             provided at creation time, collection time, or after it has been
             processed or changed. Carefully synchronizing data publication to
-            the update frequency encourages data consumer confidence and re-use.</p>
+            the update frequency encourages data consumer confidence and reuse.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -3221,7 +3222,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUptodate">R-AccessUptodate</a></p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUptodate</a></p>
         </section>
         <section class="benefits">
           <p class="subhead">Benefits</p>
@@ -3251,7 +3252,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.</p>
-          <p>It is recommended to show explaination about the architecture chosen for the API design and show how to invoke each API call and what will be returned from those calls.</p>
+          <p>It is recommended to show explanation about the architecture chosen for the API design and show how to invoke each API call and what will be returned from those calls.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3295,8 +3296,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
     <!-- begin of Data Preservation -->
     <section id="dataPreservation">
       <h3>Data Preservation</h3>
-      This section describes best practices related to <a href="http://w3c.github.io/dwbp/glossary.html#data-preservation-1">data
-        preservation</a>. Albeit being a closely related topic <a href="http://w3c.github.io/dwbp/glossary.html#data-archiving-1data">archiving</a>
+      This section describes best practices related to <a href="#data_preservation">data
+        preservation</a>. Albeit being a closely related topic <a href="#data_archiving">archiving</a>
       is considered out of scope for this group and therefore not covered here.
       <!-- end of list of resources BP -->
       <!-- begin of assess dataset BP -->
@@ -3326,7 +3327,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>The assessement can be performed by the digital preservation
+          <p>The assessment can be performed by the digital preservation
             institute or the dataset depositor. It essentially consists in
             checking whether all the resources used are either already preserved
             somewhere or provided along with the new dataset considered for
@@ -3373,7 +3374,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               relationship between the described route and the dbpedia resources
               will be unknown to a consuming application (however obvious it may
               be to a human).</p>
-            <p>Considering this assessement, a revised dataset including the
+            <p>Considering this assessment, a revised dataset including the
               definition of "ex:usualVehicleType" can be considered for
               preservation:</p>
             <pre style="" class="highlight prettyprint prettyprinted">&lt;http://data.mycity.example/public-transport/road/bus/route/AB&gt; a gtfs:Route;
@@ -3433,13 +3434,13 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <div class="practice">
         <p><span id="Serialisation" class="practicelab">Use a trusted
             serialisation format for preserved data dumps</span></p>
-        <p class="practicedesc">Data depositors willing to send a datadump for
+        <p class="practicedesc">Data depositors willing to send a data dump for
           long term preservation must use a well established serialisation</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Web data is an abtract data model that can be expressed in
             different ways (RDF/XML, JSON-LD, ...). Using a well established
-            serialisation of this data increases its chances of re-use. </p>
+            serialisation of this data increases its chances of reuse. </p>
           <p>Institute doing digital preservation are tasked with monitoring
             file format obsolescence. Datasets which have been acquired in some
             format some years ago may have to be converted into another format
@@ -3602,7 +3603,7 @@ HTTP/1.1 200 Ok
     </section>
     <!-- end of Data Preservation -->
     <!-- begin Feedback -->
-    <section id="feedback">
+    <section id="feedbacksection">
       <h3>Feedback</h3>
       <p>Publishing data on the Web enables data sharing on a large scale,
         providing data access to a wide range of audiences with different levels
@@ -3799,9 +3800,10 @@ HTTP/1.1 200 Ok
           <p class="subhead"> Possible Approach to Implementation</p>
           <p> The implementation depends on what types of metadata should be
             produced. They require the implementation of methods for data
-            categorization, disambiguation, sentiment analysis, among others,
+            categorization, disambiguation, sentiment analysis, among others.<!-- ,
             according to the suggestions described in <a href="enrichment.html">Data
-              Enrichment Technical Note</a>. After new metadata is extracted, it
+              Enrichment Technical Note</a>. -->
+             After new metadata is extracted, it
             can be provided as part of an HTML Web page or any open data format.</p>
           <aside class="example">
             <pre>to be done</pre>
@@ -3934,7 +3936,7 @@ HTTP/1.1 200 Ok
             (TDR), also sometimes referred to as <a href="http://tools.ietf.org/html/rfc4810">Long-Term
               Archive Service (LTA)</a>. Often such services follow the <a href="http://en.wikipedia.org/wiki/Open_Archival_Information_System">Open
               Archival Information System</a> which defines the archival process
-            in terms of ingest, monitoring and re-use of data.</p>
+            in terms of ingest, monitoring and reuse of data.</p>
         </dd>
         <dt><dfn id="data_provenance">Data Provenance </dfn></dt>
         <dd>
@@ -3968,7 +3970,7 @@ HTTP/1.1 200 Ok
           <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
               DC-TERMS</a></p>
         </dd>
-        <dt><dfn id="locale_parameter">Locale </dfn></dt>
+        <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
           <p> A locale is a set of parameters that defines specific data
             aspects, such as language and formatting used for numeric values and
@@ -3996,11 +3998,9 @@ HTTP/1.1 200 Ok
         </dd>
         <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
         <dd>
-          <p> Vocabulary is A collection of "terms" for a particular purpose.
-            Vocabularies can range from simple such as the widely used <a href="">RDF
-              Schema</a>, <a href="http://xmlns.com/foaf/spec/">Foaf</a> and <a
-
-              href="https://en.wikipedia.org/wiki/Dublin_Core#Dublin_Core_Metadata_Element_Set_Version_1.1">Dublin
+          <p>Vocabulary is A collection of "terms" for a particular purpose.
+            Vocabularies can range from simple such as the widely used <a href="http://www.w3.org/TR/rdf-schema/">RDF
+              Schema</a>, <a href="http://xmlns.com/foaf/spec/">Foaf</a> and <a href="https://en.wikipedia.org/wiki/Dublin_Core#Dublin_Core_Metadata_Element_Set_Version_1.1">Dublin
               Core Metadata Element Set</a> to complex vocabularies with
             thousands of terms, such as those used in healthcare to describe
             symptoms, diseases and treatments. Vocabularies play a very
@@ -4020,7 +4020,7 @@ HTTP/1.1 200 Ok
     <section id="BP_Benefits" class="informative">
       <h2>Best Practices x Benefits</h2>
       <div class="note"> To update the table to use the auto-generate script. </div>
-      <table id="uripatternstable">
+      <table id="bpbenefitstable" class="bptable">
         <caption>Best Practices x Benefits </caption>
         <tbody>
           <tr>
@@ -4141,7 +4141,7 @@ HTTP/1.1 200 Ok
                 height="70" width="70"> </td>
           </tr>
           <tr>
-            <td> Re-use vocabularies </td>
+            <td> Reuse vocabularies </td>
             <td> <img src="images/reuse.svg" alt="Reuse" height="70" width="60">
               <img src="images/processability.svg" alt="Processability" height="70"
 
@@ -4235,7 +4235,7 @@ HTTP/1.1 200 Ok
       <div class="issue"> Each requirement should be listed as an evidence of at least one BP. 
         We need to review the requirements that are not associated with a BP to check if they are still in the scope of the BP document. 
         <a href="https://www.w3.org/2013/dwbp/track/issues/229"> Issue-229 </a> </div>
-      <table id="uripatternstable">
+      <table id="requirementsbpstable" class="bptable">
         <caption>Requirements x Best Practices</caption>
         <tbody>
           <tr>
@@ -4301,7 +4301,7 @@ HTTP/1.1 200 Ok
           </tr>
           <tr>
             <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></td>
-            <td> Best Practice 3: Provide locale parameters metadat, Best
+            <td> Best Practice 3: Provide locale parameters metadata, Best
               Practice 9: Provide version history, Best Practice 23: Maintain
               separate versions for a data API</td>
           </tr>
@@ -4336,7 +4336,7 @@ HTTP/1.1 200 Ok
             </td>
           </tr>
           <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailables">R-MetadataAvailable</a></td>
+            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></td>
             <td> Best Practice 1: Provide metadata, Best Practice 2: Provide
               descriptive metadata, Best Practice 3: Provide locale parameters
               metadata, Best Practice 4: Provide structural metadata, Best
@@ -4397,7 +4397,7 @@ HTTP/1.1 200 Ok
           </tr>
           <tr>
             <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></td>
-            <td> Best Practice 15: Re-use vocabularies, Best Practice 16: Choose
+            <td> Best Practice 15: Reuse vocabularies, Best Practice 16: Choose
               the right formalization level </td>
           </tr>
           <tr>
@@ -4441,17 +4441,16 @@ HTTP/1.1 200 Ok
       </section>
     <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history" rel="bibo:Chapter" property="bibo:hasPart">
       <h2>Change history</h2>
-      <p>Changes since the <a href="http://www.w3.org/TR/2015/WD-dwbp-20150625/">previous version</a> include: 
-        <ul>
-          <li> A new section to explain the general context and some of the main concepts used in the BP document. </li>
-          <li> A new section to present the main benefits of adopting the BP as well as the association between BP and benefits. The list of benefits and BP is auto-generated.</li>
-          <li> Inclusion of a new section on the BP Template to list the benefits of the BP. Icons were created to repesent each one of the benefits.</li>
-          <li> Inclusion of new examples and the updating of some of the existing examples.</li>
-          <li> Inclusion of a glossary to explain some of the terms used in the BP document. </li>
-          <li> Inclusion of a table to show the BP associated with each one of the <a href="http://www.w3.org/TR/dwbp-ucr/#requirements"> Use Cases requirements. </a> </li>
-          <li> Inclusion of a table to show the benefits associated with each one of the BP. </li>
-        </ul>
-      </p>
+      <p>Changes since the <a href="http://www.w3.org/TR/2015/WD-dwbp-20150625/">previous version</a> include:</p>
+      <ul>
+        <li>A new section to explain the general context and some of the main concepts used in the BP document. </li>
+        <li>A new section to present the main benefits of adopting the BP as well as the association between BP and benefits. The list of benefits and BP is auto-generated.</li>
+        <li>Inclusion of a new section on the BP Template to list the benefits of the BP. Icons were created to represent each one of the benefits.</li>
+        <li>Inclusion of new examples and the updating of some of the existing examples.</li>
+        <li>Inclusion of a glossary to explain some of the terms used in the BP document.</li>
+        <li>Inclusion of a table to show the BP associated with each one of the <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">Use Cases requirements</a>.</li>
+        <li>Inclusion of a table to show the benefits associated with each one of the BP.</li>
+      </ul>
       </section>
   </body>
 </html>
