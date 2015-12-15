@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html typeof="bibo:Document w3p:REC" about="" property="dcterms:language" content="en"
+<html typeof="bibo:Document w3p:REC" about="" property="dcts:language" content="en"
 
   lang="en">
   <head>
@@ -292,10 +292,6 @@ pre red { color: red;
             <td>http://www.w3.org/ns/oa#</td>
           </tr>
           <tr>
-            <td>rev</td>
-            <td>http://purl.org/stuff/rev#</td>
-          </tr>
-          <tr>
             <td>prov</td>
             <td>http://www.w3.org/ns/prov#</td>
           </tr>
@@ -359,9 +355,9 @@ pre red { color: red;
     </section>
     <section id="examples">
       <h2> Examples</h2>
-      <div class="note">The vocabularies are out of date, and need to be
-        improved. This needs to be an action item once the vocabulary
-        specifcation has been completed. </div>
+      <div class="note">The examples need to be updated based on the new 
+        vocabulary.  Are the examples detailed enough to help orient readers
+        to the vocabulary?  Are the examples correct? </div>
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
       <p id="ex1"> Example 1 - Usage: A 2-D charting application developed to
@@ -685,7 +681,7 @@ pre red { color: red;
 
 :dataset-03312013
     a dcat:Dataset;
-    dc:identifier "doi:10.1038/ex2158";
+    dct:identifier "doi:10.1038/ex2158";
     dct:title "Mars Quarterly Temperature Plot"@en ;
     dct:alternative "Qtrly Temp Plot"@en;
     dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
@@ -698,20 +694,20 @@ pre red { color: red;
 .
 
 :thisCitation 
-    a duv:Citation;
+    a duv:DataCitationAct;
     cito:hasCitingEntity :dataset-03312004;
     cito:hasCitedEntity :paperA;
 .
 
 :paperA
-   a duv:publication;
-   dc:identifier "doi:20.1055/ex7758";
+   a dct:BibliographicResource ;
+   dct:identifier "doi:20.1055/ex7758";
    dct:title "Mars Weather Technical Report"@en;
 .
 <!--
 :dataset-03312013
     a dcat:Dataset;
-    dc:identifier "doi:10.1038/ex2158";
+    dct:identifier "doi:10.1038/ex2158";
     dct:title "Mars Quarterly Temperature Plot"@en ;
     dct:alternative "Qtrly Temp Plot"@en;
     dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
@@ -724,14 +720,14 @@ pre red { color: red;
 .
 
 :thisCitation 
-    a duv:Citation;
+    a duv:DataCitationAct;
     cito:hasCitingEntity :dataset-03312004;
     cito:hasCitedEntity :paperA;
 .
 
 :paperA
    a foaf:document
-   dc:identifier "doi:20.1055/ex7758";
+   dct:identifier "doi:20.1055/ex7758";
    dct:title "Mars Weather Technical Report"@en;
    duv:cites :dataset-03312004;
 .
@@ -772,7 +768,7 @@ pre red { color: red;
     "cites" : "http://example.org#dataset-03312004"
   }, {
     "@id" : "http://example.org#thisCitation",
-    "@type" : "duv:Citation",
+    "@type" : "duv:DataCitationAct",
     "hasCitedEntity" : "http://example.org#paperA",
     "hasCitingEntity" : "http://example.org#dataset-03312004"
   } ],
@@ -851,7 +847,7 @@ pre red { color: red;
         boxes are used to identify each class. Labeled open arrows identify
         example properties between the classes. Unlabeled shaded arrows are used
         to show inheritance with the parent class identified by the arrow head.</p>
-      <img href="images/DUV_model.svg" src="images/DUV_model.svg" alt="Diagrammatic overview of the vocabulary"
+      <img src="images/DUV_model.svg" alt="Diagrammatic overview of the vocabulary"
 
         height="490" width="788"> </section>
     <div class="note">We need to mention classes and properties explicitly
@@ -860,13 +856,13 @@ pre red { color: red;
       mention. </div>
     <section id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
-      <section id="class-citation">
-        <h3>Class: Citation</h3>
+      <section id="class-datacitationact">
+        <h3>Class: DataCitationAct</h3>
         <table class="definition">
           <thead>
             <tr>
               <th>RDF Class:</th>
-              <th><span style="text-decoration: underline;">duv:Citation</span></th>
+              <th><span style="text-decoration: underline;">duv:DataCitationAct</span></th>
             </tr>
           </thead>
           <tbody>
@@ -881,7 +877,7 @@ pre red { color: red;
             </tr>
             <tr>
               <td>Label</td>
-              <td>Citation</td>
+              <td>DataCitationAct</td>
             </tr>
             <tr>
               <td>rdfs:subClassOf</td>
@@ -890,12 +886,12 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <h4 aria-level="3" id="Property:author">Property: author</h4>
+      <h4 aria-level="3" id="Property:creator">Property: creator</h4>
       <table class="definition">
         <thead>
           <tr>
             <th>RDF Property:</th>
-            <th> duv:author </th>
+            <th> dct:creator </th>
           </tr>
         </thead>
         <tbody>
@@ -904,12 +900,12 @@ pre red { color: red;
             <td>Author of the cited dataset of distribution</td>
           </tr>
           <tr>
-            <td class="prop">rdfs:subClassOf</td>
-            <td>dc:creator</td>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
-            <td>prov:Agent, skos:Concept</td>
+            <td>prov:Agent</td>
           </tr>
         </tbody>
       </table>
@@ -924,12 +920,16 @@ pre red { color: red;
         <tbody>
           <tr>
             <td class="prop">Definition</td>
-            <td>The dataset, distribution, or publication of interest being
+            <td>The dataset, distribution, or bibliographicresource of interest being
               cited.</td>
           </tr>
           <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
+          </tr>
+          <tr>
             <td class="prop">Range</td>
-            <td>duv:Publication, dcat:Dataset, dcat:Distribution</td>
+            <td>dct:BibliographicResource, dcat:Dataset, dcat:Distribution</td>
           </tr>
         </tbody>
       </table>
@@ -944,7 +944,11 @@ pre red { color: red;
         <tbody>
           <tr>
             <td class="prop">Definition</td>
-            <td>The title of a cited publication, dataset or distribution</td>
+            <td>The title of a cited bibliographicresource, dataset or distribution</td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -952,12 +956,12 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
-      <h4 aria-level="3" id="Property:publisher">Property: hasPublisher</h4>
+      <h4 aria-level="3" id="Property:publisher">Property: publisher</h4>
       <table class="definition">
         <thead>
           <tr>
             <th>RDF Property:</th>
-            <th> duv:hasPublisher </th>
+            <th> dct:publisher </th>
           </tr>
         </thead>
         <tbody>
@@ -966,8 +970,12 @@ pre red { color: red;
             <td>Creator of the cited dataset of distribution</td>
           </tr>
           <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
+          </tr>
+          <tr>
             <td class="prop">Range</td>
-            <td>prov:Agent, skos:Concept</td>
+            <td>prov:Agent</td>
           </tr>
         </tbody>
       </table>
@@ -988,8 +996,12 @@ pre red { color: red;
               data. </td>
           </tr>
           <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
+          </tr>
+          <tr>
             <td class="prop">Range</td>
-            <td>prov:Agent, skos:Concept</td>
+            <td>prov:Agent</td>
           </tr>
         </tbody>
       </table>
@@ -1008,17 +1020,46 @@ pre red { color: red;
               dataset available for downloading and use.&nbsp; </td>
           </tr>
           <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
+          </tr>
+          <tr>
             <td class="prop">Range</td>
-            <td>prov:Agent, skos:Concept</td>
+            <td>prov:Agent</td>
           </tr>
         </tbody>
       </table>
-      <h4 aria-level="3" id="Property:edition">Property: edition</h4>
+
+      <h4 aria-level="3" id="Property:classification">Property: classification</h4>
       <table class="definition">
         <thead>
           <tr>
             <th>RDF Property:</th>
-            <th> duv:edition </th>
+            <th> duv:classification </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td> &nbsp;Extension vocabularies may wish to specialize this property to have a range corresponding to a specific &nbsp;<a href="http://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">ConceptScheme</a> </td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>prov:Agent</td>
+          </tr>
+          <tr>
+            <td class="prop">Range</td>
+            <td>skos:Concept</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 aria-level="3" id="Property:hasversion">Property: hasVersion</h4>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Property:</th>
+            <th> dct:hasVersion </th>
           </tr>
         </thead>
         <tbody>
@@ -1027,8 +1068,8 @@ pre red { color: red;
             <td>The version or edition number associated with the dataset. </td>
           </tr>
           <tr>
-            <td class="prop">rdfs:subPropertyOf</td>
-            <td>dcterm:hasVersion</td>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitationAct</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -1036,52 +1077,28 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
-      <h4 aria-level="3" id="Property:edition">Property: hasAccessInformation</h4>
-      <table class="definition">
-        <thead>
-          <tr>
-            <th>RDF Property:</th>
-            <th> duv:hasAccessInformation </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="prop">Definition</td>
-            <td>An explanation of how to access the data based on the citation
-              format and identification strategy used. </td>
-          </tr>
-          <tr>
-            <td class="prop">rdfs:subPropertyOf</td>
-            <td>dcterm:hasAccessInformation</td>
-          </tr>
-          <tr>
-            <td class="prop">Range</td>
-            <td>duv:Usage</td>
-          </tr>
-        </tbody>
-      </table>
-      <section id="class-publication">
-        <h3> Class: Publication</h3>
+      <section id="class-bibliographicresource">
+        <h3> Class: BibliographicResource</h3>
         <table class="definition">
           <thead>
             <tr>
               <th>RDF Class:</th>
-              <th><span style="text-decoration: underline;">duv:Publication</span></th>
+              <th><span style="text-decoration: underline;">dct:BibliographicResource</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="prop">Definition</td>
-              <td>Electronic publication that references dataset or
+              <td>Electronic bibliographicresource that references dataset or
                 distribution.</td>
             </tr>
             <tr>
               <td class="prop">rdfs:isDefinedBy</td>
-              <td><a href="vocab-du.html#Class:_Dataset">http://www.w3.org/ns/duv</a></td>
+              <td><a href="http://udfr.org/docs/onto/dct_BibliographicResource.html">http://purl.org/dc/terms/</a></td>
             </tr>
             <tr>
               <td>Label</td>
-              <td>Publication</td>
+              <td>BibliographicResource</td>
             </tr>
           </tbody>
         </table>
@@ -1116,7 +1133,7 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <!--<h4 aria-level="3" id="Property:application_title">Property: title</h4>
+      <h4 aria-level="3" id="Property:application_title">Property: title</h4>
       <table class="definition">        <thead>
           <tr>            <th>RDF Property:</th>
             <th><a href="http://purl.org/dc/terms/title"> dct:title </a></th>          </tr>
@@ -1126,7 +1143,8 @@ pre red { color: red;
           <tr>            <td class="prop">Range</td>
             <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">                rdfs:Literal</a></td>
           </tr>        </tbody>
-      </table>      <h4 aria-level="3" id="Property:application_description">Property:
+      </table>      
+<h4 aria-level="3" id="Property:application_description">Property:
         description</h4>      <table class="definition">
         <thead>          <tr>
             <th>RDF Property:</th>            <th><a href="http://purl.org/dc/terms/description">dct:description </a></th>
@@ -1180,7 +1198,7 @@ pre red { color: red;
           <tr>            <td>rdfs:subPropertyOf</td>
             <td> <a href="http://www.w3.org/ns/prov#generated"> prov:generated              </a> </td>
           </tr>        </tbody>
-      </table> -->
+      </table> 
       <section id="class-usage">
         <h3>Class: Usage</h3>
         <table class="definition">
@@ -1207,33 +1225,74 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <section id="class-usageActor">
-        <h3> Class: UsageActor</h3>
-        <table class="definition">
-          <thead>
-            <tr>
-              <th>RDF Class:</th>
-              <th><span style="text-decoration: underline;">duv:UsageActor</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="prop">Definition</td>
-              <td>A persona or archetype associated with particular usage
-                actions on a given dataset or distribution. </td>
-            </tr>
-            <tr>
-              <td class="prop">rdfs:isDefinedBy</td>
-              <td><a href="vocab-du.html#Class:_Dataset">http://www.w3.org/ns/duv</a></td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>Usage Actor<br>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+<h4 aria-level="3" id="Property:hasUsage">Property: hasUsage</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:hasUsage</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>has dataset or distribution usage guidance or instructions. </td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>dcat:Dataset, dcat:Distribution</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>duv:Usage</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>hasUsage</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table> 
+<h4 aria-level="3" id="Property:hasUsageTool">Property: hasUsageTool</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:hasUsageTool</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>has dataset or distribution tool usage synopsys </td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>dcat:Dataset, dcat:Distribution</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>duv:UsageTool</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>hasUsageTool</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table>
+<h4 aria-level="3" id="Property:performs">Property: performs</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:performs</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>Agent performs usage </td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>prov:Agent</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>duv:Usage</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>performs</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table>
+<h4 aria-level="3" id="Property:performs">Property: performedBy</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:performedBy</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>Usage performed by agent. </td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>duv:Agent</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>prov:Usage</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>performed by</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table>
       <section id="class-usageTool">
         <h3>Class: UsageTool</h3>
         <table class="definition">
@@ -1278,8 +1337,8 @@ pre red { color: red;
               <td>User feedback on the dataset. Expresses whether the dataset
                 was useful or not, for example.</td>
             </tr>
-            <!-- <tr>
-          <td class="prop">Sub class of:</td>          <td><a href="http://vocab.org/review/terms.html#Feedback">rev:Feedback</a></td>        </tr> -->
+
+          <td class="prop">Sub class of:</td>          <td><a href="http://vocab.org/review/terms.html#Feedback">rev:Feedback</a></td>        </tr> 
             <tr>
               <td class="prop">rdfs:isDefinedBy</td>
               <td>http://www.w3.org/ns/duv</td>
@@ -1296,6 +1355,57 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
+<h4 aria-level="3" id="Property:hastarget">Property: oa:hasTarget</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">oa:hasTarget</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>Dataset or distribution associated with UserFeedback. </td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>duv:UserFeedback</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>dcat:Dataset, dcat:Distribution</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>hasTarget</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>oa:hasTarget</td>          </tr>
+ </tbody>
+      </table> 
+<h4 aria-level="3" id="Property:hasuserfeedback">Property: hasUserFeedback</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:hasUserFeedback</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>User feedback associated with Dataset or distribution.</td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>dcat:Dataset, dcat:Distribution</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>duv:UserFeedback</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>hasTarget</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table> 
+<h4 aria-level="3" id="Property:hasrating">Property: hasRating</h4>
+      <table class="definition">        <thead>
+          <tr>            <th>RDF Property:</th>
+            <th><span style="text-decoration: underline;">duv:hasRating</span></th>          </tr>
+        </thead>        <tbody>
+          <tr>            <td class="prop">Definition</td>
+            <td>RatingFeedback has rating opinion</td>          </tr>
+          <tr>            <td class="prop">Domain</td>
+            <td>RatingFeedback</a></td>          </tr>
+          <tr>            <td class="prop">Range</td>
+            <td>skos:Concept</td>          </tr>
+          <tr>            <td>Label</td>
+            <td>has rating</td>          </tr>
+          <tr>            <td>rdfs:isDefinedBy</td>
+            <td>http://www.w3.org/ns/duv</td>          </tr>
+ </tbody>
+      </table> 
       <section id="duvrequirements">
         <h2>DUV Requirements</h2>
         <div class="issue">Right now this section is somewhat of a duplication
@@ -1526,9 +1636,9 @@ pre red { color: red;
           <li> The following classes used to describe usage were removed: prov:Activity, duv:Application and foaf:Agent. </li>
           <li> New classes were included to represent usage: duv:Usage, duv:UsageActor and duv:UsageTool. </li>
           <li> Two new classes were included to describe user feedback: duv:UserQualityFeedback and duv:RatingFeedback.</li>
-          <li> foaf:document was replaced by duv:Publication.</li>
+          <li> foaf:document was replaced by dct:BibliographicResource</li>
           <li> duv:WebThing was removed. </li>
-          <li> prov:Agent was included together with some properties that complements the description of duv:Publication.</li>
+          <li> prov:Agent was included together with some properties that complements the description of dct:BibliographicResource.</li>
           <li> skos:Concept is being used to represent: usage type, usage actor roles, citation agent role and rating feedback. </li>
           <li> Examples were updated to reflect the new model. </li>
           <li> The vocabulary specification was updated to reflect the model updates.</li>
