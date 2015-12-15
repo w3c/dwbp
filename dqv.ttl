@@ -10,7 +10,7 @@
 @prefix voaf:    <http://purl.org/vocommons/voaf#> .
 @prefix oa:      <http://www.w3.org/ns/oa#> .
 @prefix duv:     <http://www.w3.org/ns/duv#> .
-@prefix duv:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
 @prefix :        <http://www.w3.org/ns/dqv#> .
 
@@ -63,7 +63,7 @@
 :QualityAnnotation a owl:Class, rdfs:Class ;
   rdfs:label "Quality Annotation"@en ;
   rdfs:comment "Represents quality annotations, including rating, quality certificate, feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with a instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment."@en ;
-  rdfs:subClassOf oa:Annotation .
+  rdfs:subClassOf oa:Annotation ;
   owl:equivalentClass
     [ rdf:type owl:Restriction ; 
       owl:onProperty oa:motivation ;
@@ -80,8 +80,8 @@
 ### Properties here #######
 ###########################
 
-:metric a rdf:Property, qb:DimensionProperty ;
-  rdfs:label "metric"@en ;
+:hasMetric a rdf:Property, qb:DimensionProperty ;
+  rdfs:label "has metric"@en ;
   rdfs:comment "Indicates the metric being observed."@en ;
   rdfs:domain qb:Observation ;
   rdfs:range :Metric ;
