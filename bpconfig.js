@@ -79,7 +79,7 @@
       // },
       // {
       //   value: "Diff to previous version",
-      //   href: "http://w3c.github.io/dwbp/diffs/bpdiff-20151215.html"
+      //   href: "http://w3c.github.io/dwbp/diffs/dwbpdiff-20151215.html"
       // }],
     }],
     wg: "Data on the Web Best Practices Working Group",
