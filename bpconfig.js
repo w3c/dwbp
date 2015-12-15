@@ -1,9 +1,9 @@
 ﻿var respecConfig = {
-    specStatus: "ED",
+    specStatus: "WD",
     shortName: "dwbp",
     publishDate:  "2015-12-17",
-    previouspublishDate: "2015-06-25",
-    //previousMaturity: "FPWD",
+    previousPublishDate: "2015-06-25",
+    previousMaturity: "WD",
     previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20150625/",
     edDraftURI: "http://w3c.github.io/dwbp/bp.html",
     // lcEnd: "3000-01-01",
