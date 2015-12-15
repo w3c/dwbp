@@ -1,13 +1,10 @@
 ﻿var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-    publishDate:  "2015-12-08",
-    //previouspublishDate: "2015-12-02",
-    //previouspublishDate: "2015-11-13",
-    //previousPublishDate: "2015-05-18",
-    //previousPublishDate: "2014-03-27",
+    publishDate:  "2015-12-17",
+    previouspublishDate: "2015-06-25",
     //previousMaturity: "FPWD",
-    //previousURI: "http://www.w3.org/TR/2014/WD-tabular-data-model-20140327/",
+    previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20150625/",
     edDraftURI: "http://w3c.github.io/dwbp/bp.html",
     // lcEnd: "3000-01-01",
     // crEnd: "3000-01-01",
@@ -73,7 +70,17 @@
       },   
       { 
         value: "Yasodara Córdova"
-      }]
+      }],
+      key: "Changes",
+      data: [
+      {
+        value : "Change History",
+        href : "#change-history"
+      },
+      {
+        value: "Diff to previous version",
+        href: "http://w3c.github.io/dwbp/diffs/bpdiff-20151215.html"
+      }],
     }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
