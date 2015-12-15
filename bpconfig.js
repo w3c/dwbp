@@ -26,61 +26,61 @@
     {
       key: "Contributors",
       data: [
-      { 
+      {
         value: "Annette Greiner"
       },
-      { 
+      {
         value: "Antoine Isaac"
       },
       {
         value: "Carlos Iglesias"
-      },      
-      { 
+      },
+      {
         value: "Carlos Laufer"
       },
       {
         value: "Christophe Guéret"
       },
-      { 
+      {
         value: "Eric G. Stephan"
       },
-      { 
+      {
         value: "Eric Kauz"
-      },      
+      },
       {
         value: "Ghislain A. Atemezing"
       },
-      { 
+      {
         value: "Ig Ibert Bittencourt"
-      },   
-      { 
+      },
+      {
         value: "João Paulo Almeida"
-      },   
-      { 
+      },
+      {
         value: "Manuel Tomas Carrasco"
-      },  
+      },
       {
         value: "Phil Archer"
       },
-      { 
+      {
         value: "Riccardo Albertoni"
       },
-      { 
-        value: "Sumit Purohit"
-      },   
-      { 
-        value: "Yasodara Córdova"
-      }],
-      key: "Changes",
-      data: [
       {
-        value : "Change History",
-        href : "#change-history"
+        value: "Sumit Purohit"
       },
       {
-        value: "Diff to previous version",
-        href: "http://w3c.github.io/dwbp/diffs/bpdiff-20151215.html"
+        value: "Yasodara Córdova"
       }],
+      // key: "Changes",
+      // data: [
+      // {
+      //   value : "Change History",
+      //   href : "#change-history"
+      // },
+      // {
+      //   value: "Diff to previous version",
+      //   href: "http://w3c.github.io/dwbp/diffs/bpdiff-20151215.html"
+      // }],
     }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
