@@ -268,6 +268,10 @@ pre red { color: red;
             <td>http://xmlns.com/foaf/0.1/</td>
           </tr>
           <tr>
+             <td>disco</td>
+             <td>http://rdf-vocabulary.ddialliance.org/discovery#</td>
+          </tr>
+          <tr>
             <td>rdf</td>
             <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
           </tr>
@@ -856,32 +860,33 @@ pre red { color: red;
       mention. </div>
     <section id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
-      <section id="class-datacitationact">
-        <h3>Class: DataCitationAct</h3>
+
+      <section id="class-datacitation">
+        <h3> Class: DataCitation</h3>
         <table class="definition">
           <thead>
             <tr>
               <th>RDF Class:</th>
-              <th><span style="text-decoration: underline;">duv:DataCitationAct</span></th>
+              <th><span style="text-decoration: underline;">duv:DataCitation</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="prop">Definition</td>
-              <td>Basic citation required to reference electronic dataset or
+              <td>Electronic data work that references dataset or
                 distribution.</td>
             </tr>
             <tr>
               <td class="prop">rdfs:isDefinedBy</td>
-              <td><a href="#Class:_Dataset">http://www.w3.org/ns/duv</a></td>
+              <td><a href="http://udfr.org/docs/onto/dct_BibliographicResource.html">http://purl.org/dc/terms/</a></td>
             </tr>
             <tr>
               <td>Label</td>
-              <td>DataCitationAct</td>
+              <td>Data Citation</td>
             </tr>
             <tr>
               <td>rdfs:subClassOf</td>
-              <td><a href="http://purl.org/spar/cito/CitationsAct">cito:CitationsAct</a></td>
+              <td><span style="text-decoration: underline;">fabio:Work</span></td>
             </tr>
           </tbody>
         </table>
@@ -901,7 +906,7 @@ pre red { color: red;
           </tr>
           <tr>
             <td class="prop">Domain</td>
-            <td>duv:DataCitationAct</td>
+            <td>duv:DataCitation</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -920,7 +925,7 @@ pre red { color: red;
         <tbody>
           <tr>
             <td class="prop">Definition</td>
-            <td>The dataset, distribution, or bibliographicresource of interest being
+            <td>The dataset, distribution, or ciation of interest being
               cited.</td>
           </tr>
           <tr>
@@ -929,7 +934,7 @@ pre red { color: red;
           </tr>
           <tr>
             <td class="prop">Range</td>
-            <td>dct:BibliographicResource, dcat:Dataset, dcat:Distribution</td>
+            <td>duv:DataCitation, dcat:Dataset, dcat:Distribution</td>
           </tr>
         </tbody>
       </table>
@@ -944,11 +949,11 @@ pre red { color: red;
         <tbody>
           <tr>
             <td class="prop">Definition</td>
-            <td>The title of a cited bibliographicresource, dataset or distribution</td>
+            <td>The title of citation, dataset or distribution</td>
           </tr>
           <tr>
             <td class="prop">Domain</td>
-            <td>duv:DataCitationAct</td>
+            <td>duv:DataCitation, duv:UsageTool</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -956,6 +961,8 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
+
+
       <h4 aria-level="3" id="Property:publisher">Property: publisher</h4>
       <table class="definition">
         <thead>
@@ -971,7 +978,59 @@ pre red { color: red;
           </tr>
           <tr>
             <td class="prop">Domain</td>
-            <td>duv:DataCitationAct</td>
+            <td>duv:DataCitation</td>
+          </tr>
+          <tr>
+            <td class="prop">Range</td>
+            <td>prov:Agent</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 aria-level="3" id="Property:publisher">Property: citationCreator</h4>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Property:</th>
+            <th> duv:citationCreator </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td>Creator of the citation itself</td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitation</td>
+          </tr>
+          <tr>
+            <td class="prop">Range</td>
+            <td>prov:Agent</td>
+          </tr>
+          <tr>
+            <td class="prop">rdfs:subProperty</td>
+            <td>dct:creator</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 aria-level="3" id="Property:fundedby">Property: fundedby</h4>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Property:</th>
+            <th> dct:fundedby </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td>Funding agent </td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitation</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -1021,7 +1080,7 @@ pre red { color: red;
           </tr>
           <tr>
             <td class="prop">Domain</td>
-            <td>duv:DataCitationAct</td>
+            <td>duv:DataCitation</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -1069,7 +1128,7 @@ pre red { color: red;
           </tr>
           <tr>
             <td class="prop">Domain</td>
-            <td>duv:DataCitationAct</td>
+            <td>duv:DataCitation</td>
           </tr>
           <tr>
             <td class="prop">Range</td>
@@ -1077,32 +1136,54 @@ pre red { color: red;
           </tr>
         </tbody>
       </table>
-      <section id="class-bibliographicresource">
-        <h3> Class: BibliographicResource</h3>
-        <table class="definition">
-          <thead>
-            <tr>
-              <th>RDF Class:</th>
-              <th><span style="text-decoration: underline;">dct:BibliographicResource</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="prop">Definition</td>
-              <td>Electronic bibliographicresource that references dataset or
-                distribution.</td>
-            </tr>
-            <tr>
-              <td class="prop">rdfs:isDefinedBy</td>
-              <td><a href="http://udfr.org/docs/onto/dct_BibliographicResource.html">http://purl.org/dc/terms/</a></td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>BibliographicResource</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <h4 aria-level="3" id="Property:date">Property: date</h4>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Property:</th>
+            <th> dct:date </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td>The date associated with the DataCitation </td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitation</td>
+          </tr>
+          <tr>
+            <td class="prop">Range</td>
+            <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 aria-level="3" id="Property:hasversion">Property: identifier</h4>
+      <table class="definition">
+        <thead>
+          <tr>
+            <th>RDF Property:</th>
+            <th> dct:identifier </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="prop">Definition</td>
+            <td>The identifier of the DataCitation, Usage, or UsageTool </td>
+          </tr>
+          <tr>
+            <td class="prop">Domain</td>
+            <td>duv:DataCitation, duv:Usage, duv:UsageTool</td>
+          </tr>
+          <tr>
+            <td class="prop">Range</td>
+            <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+          </tr>
+        </tbody>
+      </table>
+
       <section id="class-ratingfeedback">
         <h3> Class: RatingFeedback</h3>
         <table class="definition">
@@ -1132,18 +1213,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-      </section>
-      <h4 aria-level="3" id="Property:application_title">Property: title</h4>
-      <table class="definition">        <thead>
-          <tr>            <th>RDF Property:</th>
-            <th><a href="http://purl.org/dc/terms/title"> dct:title </a></th>          </tr>
-        </thead>        <tbody>
-          <tr>            <td class="prop">Definition</td>
-            <td>A name given to the Application</td>          </tr>
-          <tr>            <td class="prop">Range</td>
-            <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">                rdfs:Literal</a></td>
-          </tr>        </tbody>
-      </table>      
+      </section>     
 <h4 aria-level="3" id="Property:application_description">Property:
         description</h4>      <table class="definition">
         <thead>          <tr>
@@ -1182,23 +1252,8 @@ pre red { color: red;
           </tr>          <tr>
             <td>rdfs:isDefinedBy</td>            <td>http://www.w3c.org/ns/duv</td>
           </tr>        </tbody>
-      </table>      <h4 aria-level="3" id="Property:generates">Property: generates</h4>
-      <table class="definition">        <thead>
-          <tr>            <th>RDF Property:</th>
-            <th><span style="text-decoration: underline;">duv:generates</span></th>          </tr>
-        </thead>        <tbody>
-          <tr>            <td class="prop">Definition</td>
-            <td>Usage experience associated with the dataset being generated. </td>          </tr>
-          <tr>            <td class="prop">Range</td>
-            <td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a></td>          </tr>
-          <tr>            <td>Label</td>
-            <td>generates</td>          </tr>
-          <tr>            <td>rdfs:isDefinedBy</td>
-            <td>http://www.w3c.org/ns/duv</td>          </tr>
-          <tr>            <td>rdfs:subPropertyOf</td>
-            <td> <a href="http://www.w3.org/ns/prov#generated"> prov:generated              </a> </td>
-          </tr>        </tbody>
-      </table> 
+      </table>      
+
       <section id="class-usage">
         <h3>Class: Usage</h3>
         <table class="definition">
