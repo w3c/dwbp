@@ -94,23 +94,37 @@ dct:created a rdf:Property ;
     rdfs:range rdfs:Literal ;
     rdfs:domain duv:DataCitation .
 
+disco:fundedBy a rdf:Property ;
+    rdfs:label “funded by”@en ;
+    rdfs:comment “The Funding agent.”@en ;
+    rdfs:range prov:Agent ;
+    rdfs:domain duv:DataCitation .
+
+:hasCitedEntity a rdf:Property ;
+    rdfs:label "has cited entity"@en ;
+    rdfs:comment "The dataset, distribution, or citation of interest being cited." @en ;
+    rdfs:range dcat:Dataset ;
+    rdfs:range dcat:Distribution ;
+    rdfs:domain duv:DataCitation .
+
 cito:hasCitingEntity a rdf:Property ;
     rdfs:label "has citing entity"@en ;
-    rdfs:comment "Describes the publication that cites the dataset."@en ;
-    rdfs:range duv:Publication ;
-    rdfs:domain duv:Citation .
+    rdfs:comment "Citation that references a dataset or a distribution."@en ;
+    rdfs:domain duv:DataCitationAct ;
+    rdfs:range duv:DataCitation .
 
-:hasAuthor a rdf:Property ;
-    rdfs:label "has author"@en ;
-    rdfs:comment "Describes the agent who provides the citation."@en ;
+:hasDistributor a rdf:Property ;
+    rdfs:label "has distributor”@en ;
+    rdfs:comment "The distributor is the organization that makes the dataset available for downloading and use. ."@en ;
     rdfs:range prov:Agent ;
-    rdfs:domain duv:Citation .
+    rdfs:domain duv:DataCitation .
 
-:hasPublisher a rdf:Property ;
-    rdfs:label "has author"@en ;
-    rdfs:comment "Describes the publisher who publishes the citation."@en ;
+
+:hasProducer a rdf:Property ;
+    rdfs:label "has producer”@en ;
+    rdfs:comment "The producer is the organization that sponsored the author’s research and/or the organization that made the creation of the dataset possible, such as codifying and digitizing the data. ."@en ;
     rdfs:range prov:Agent ;
-    rdfs:domain duv:Citation .
+    rdfs:domain duv:DataCitationAct .
 
 :hasUsage a rdf:Property ;
     rdfs:label "has usage"@en ;
@@ -119,12 +133,12 @@ cito:hasCitingEntity a rdf:Property ;
     rdfs:domain dcat:Dataset ;
     rdfs:domain dcat:Distribution .
 
-:hasCitedEntity a rdf:Property ;
-    rdfs:label "has cited entity"@en ;
-    rdfs:comment "Description of the fact that the citation belongs to a dcat dataset" @en ;
-    rdfs:range dcat:Dataset ;
-    rdfs:range dcat:Distribution ;
-    rdfs:domain duv:Citation .
+
+:hasRating a rdf:Property ;
+    rdfs:label "has rating"@en ;
+    rdfs:comment “Rating Feedback has rating opinion” @en ;
+    rdfs:domain duv:RatingFeedback ;
+    rdfs:range skos:Concept .
 
 :performs a rdf:Property ;
     rdfs:label "performs"@en ;
@@ -160,11 +174,6 @@ oa:hasTarget a rdf:Property ;
     rdfs:range duv:UserFeedback .
 
 
-:hasRatingFeedback a rdf:Property ;
-    rdfs:label "has rating"@en ;
-    rdfs:comment "Describes the user rating feedback provided for a dcat dataset" @en ;
-    rdfs:domain duv:RatingFeedback ;
-    rdfs:range skos:Concept .
 
 :hasRole a rdf:Property ;
     rdfs:label "has role"@en ;
