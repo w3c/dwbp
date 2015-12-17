@@ -133,24 +133,49 @@ cito:hasCitingEntity a rdf:Property ;
     rdfs:domain dcat:Dataset ;
     rdfs:domain dcat:Distribution .
 
-
 :hasRating a rdf:Property ;
     rdfs:label "has rating"@en ;
     rdfs:comment “Rating Feedback has rating opinion” @en ;
     rdfs:domain duv:RatingFeedback ;
     rdfs:range skos:Concept .
 
+oa:hasTarget a rdf:Property ;
+    rdfs:label "has target"@en ;
+    rdfs:comment "Dataset or distribution associated with UserFeedback. " @en ;
+    rdfs:range dcat:Dataset ;
+    rdfs:range dcat:Distribution ;
+    rdfs:domain duv:UserFeedback .
+
+
+:hasUsage a rdf:Property ;
+    rdfs:label "has usage"@en ;
+    rdfs:comment "Dataset or distribution usage guidance or instructions. " @en ;
+    rdfs:range duv:Usage ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:domain dcat:Distribution .
+    
+
+:hasUsageTool a rdf:Property ;
+    rdfs:label "has usage tool"@en ;
+    rdfs:comment "Describes the tool that provides the Usage " @en ;
+    rdfs:range duv:UsageTool ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:domain dcat:Distribution .
+    
+:hasUserFeedback a rdf:Property ;
+    rdfs:label "has user feedback"@en ;
+    rdfs:comment "User feedback associated with Dataset or distribution." @en ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:domain dcat:Distribution ;
+    rdfs:range duv:UserFeedback .
+
+#
 :performs a rdf:Property ;
     rdfs:label "performs"@en ;
     rdfs:comment "Describes the Usage an actor provides" @en ;
     rdfs:domain duv:UsageActor ;
     rdfs:range duv:Usage .
 
-:hasUsageTool a rdf:Property ;
-    rdfs:label "has usage tool"@en ;
-    rdfs:comment "Describes the tool that provides the Usage " @en ;
-    rdfs:range duv:UsageTool ;
-    rdfs:domain duv:Usage .
 
 
 :performedBy a rdf:Property ;
@@ -159,19 +184,8 @@ cito:hasCitingEntity a rdf:Property ;
     rdfs:range duv:UsageActor ;
     rdfs:domain duv:Usage .
 
-oa:hasTarget a rdf:Property ;
-    rdfs:label "has target"@en ;
-    rdfs:comment "Describes the dataset for which the User Feedback is provided" @en ;
-    rdfs:range dcat:Dataset ;
-    rdfs:range dcat:Distribution ;
-    rdfs:domain duv:UserFeedback .
 
-:hasUserFeedback a rdf:Property ;
-    rdfs:label "has user feedback"@en ;
-    rdfs:comment "Describes the user feedback provided for a dcat dataset" @en ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:range duv:UserFeedback .
+
 
 
 
