@@ -37,11 +37,12 @@
 
 :Usage a owl:Class, rdfs:Class ;
   rdfs:label "Usage"@en ;
-  rdfs:comment "Usage experience associated with the dataset."@en .
+  rdfs:comment "A helpful description of actions that can be performed on a given dataset or distribution."@en .
 
-:Citation a owl:Class, rdfs:Class ;
-  rdfs:label "Citation"@en ;
-  rdfs:comment "Citation in document that references dataset."@en ;
+:DataCitation a owl:Class, rdfs:Class ;
+  rdfs:label “DataCitation"@en ;
+  rdfs:comment "A reference to a dataset or distribution."@en ;
+  rdfs:isDefinedBy http://www.w3.org/ns/duv ;
   rdfs:subClassOf cito:CitationsAct .
 
 :UsageActor a owl:Class, rdfs:Class ;
@@ -51,20 +52,47 @@
  
 :UsageTool a owl:Class, rdfs:Class ;
   rdfs:label "UsageTool"@en ;
-  rdfs:comment "TODO"@en .
+  rdfs:comment "A synopsis describing the way a tool can use a dataset or distribution."@en .
 
 :UserFeedback a owl:Class, rdfs:Class ;
   rdfs:label "User Feedback"@en ;
-  rdfs:comment "An identifiable entity that provides a general user feedback for the dataset."@en .
+  rdfs:subClassOf rev:Feedback ;
+  rdfs:comment "User feedback on the dataset. Expresses whether the dataset was useful or not, for example."@en .
 
 :RatingFeedback a owl:Class, rdfs:Class ;
-rdfs:label "Rating Feedback"@en ;
-rdfs:comment "An identifiable entity that provides a user feedback for the dataset in the form of some rating."@en .
+  rdfs:label "Rating Feedback"@en ;
+  rdfs:comment "Predefined criteria used to express a user opinion about a dataset or distribution using a discrete range of values."@en ;
+  rdfs:subclassOf duv:UserFeedback .
 
 
 
 ##### Properties here #####
 ###########################
+
+:citationCreator a rdf:Property ;
+    rdfs:label "citation creator"@en ;
+    rdfs:comment “Creator of the citation itself.”@en ;
+    rdfs:range prov:Agent ;
+    rdfs:domain duv:DataCitation .
+
+:classification a rdf:Property ;
+    rdfs:label "has specific agent category"@en ;
+    rdfs:comment " Extension vocabularies may wish to specialize this property to have a range corresponding to a specific  ConceptScheme" @en ;
+    rdfs:domain prov:Agent ;
+    rdfs:range skos:Concept .
+
+dct:creator a rdf:Property ;
+    rdfs:label "creator"@en ;
+    rdfs:comment “Author of the cited dataset of distribution”@en ;
+    rdfs:range prov:Agent ;
+    rdfs:domain duv:DataCitation .
+
+
+dct:created a rdf:Property ;
+    rdfs:label "creator"@en ;
+    rdfs:comment “The date associated with the DataCitation.”@en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:domain duv:DataCitation .
 
 cito:hasCitingEntity a rdf:Property ;
     rdfs:label "has citing entity"@en ;
@@ -81,12 +109,6 @@ cito:hasCitingEntity a rdf:Property ;
 :hasPublisher a rdf:Property ;
     rdfs:label "has author"@en ;
     rdfs:comment "Describes the publisher who publishes the citation."@en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:Citation .
-
-:hasCitationCreator a rdf:Property ;
-    rdfs:label "has citation creator"@en ;
-    rdfs:comment "Describes the creatoror of the citation."@en ;
     rdfs:range prov:Agent ;
     rdfs:domain duv:Citation .
 
