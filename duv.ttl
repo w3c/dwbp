@@ -31,24 +31,20 @@
 #### Classes here ####
 ######################
 
-:Publication a owl:Class, rdfs:Class ;
-  rdfs:label "Publication"@en ;
-  rdfs:comment "A citing entity such as a report, paper, or document that cites a dataset."@en .
-
-:Usage a owl:Class, rdfs:Class ;
-  rdfs:label "Usage"@en ;
-  rdfs:comment "A helpful description of actions that can be performed on a given dataset or distribution."@en .
-
 :DataCitation a owl:Class, rdfs:Class ;
   rdfs:label “DataCitation"@en ;
   rdfs:comment "A reference to a dataset or distribution."@en ;
   rdfs:isDefinedBy http://www.w3.org/ns/duv ;
   rdfs:subClassOf cito:CitationsAct .
 
-:UsageActor a owl:Class, rdfs:Class ;
-  rdfs:label "UsageActor"@en ;
-  rdfs:comment "An Identifiable entity that perform some usage of the dataset. It can be an application, visualization, or a person."@en ;
-  rdfs:subClassOf oa:Annotation .
+:RatingFeedback a owl:Class, rdfs:Class ;
+  rdfs:label "Rating Feedback"@en ;
+  rdfs:comment "Predefined criteria used to express a user opinion about a dataset or distribution using a discrete range of values."@en ;
+  rdfs:subclassOf duv:UserFeedback .
+
+:Usage a owl:Class, rdfs:Class ;
+  rdfs:label "Usage"@en ;
+  rdfs:comment "A helpful description of actions that can be performed on a given dataset or distribution."@en .
  
 :UsageTool a owl:Class, rdfs:Class ;
   rdfs:label "UsageTool"@en ;
@@ -59,11 +55,6 @@
   rdfs:subClassOf rev:Feedback ;
   rdfs:comment "User feedback on the dataset. Expresses whether the dataset was useful or not, for example."@en .
 
-:RatingFeedback a owl:Class, rdfs:Class ;
-  rdfs:label "Rating Feedback"@en ;
-  rdfs:comment "Predefined criteria used to express a user opinion about a dataset or distribution using a discrete range of values."@en ;
-  rdfs:subclassOf duv:UserFeedback .
-
 
 
 ##### Properties here #####
@@ -73,6 +64,7 @@
     rdfs:label "citation creator"@en ;
     rdfs:comment “Creator of the citation itself.”@en ;
     rdfs:range prov:Agent ;
+    rdfs:subProperty dct:creator ;
     rdfs:domain duv:DataCitation .
 
 :classification a rdf:Property ;
@@ -105,7 +97,7 @@ disco:fundedBy a rdf:Property ;
     rdfs:comment "The dataset, distribution, or citation of interest being cited." @en ;
     rdfs:range dcat:Dataset ;
     rdfs:range dcat:Distribution ;
-    rdfs:domain duv:DataCitation .
+    rdfs:domain duv:DataCitationAct .
 
 cito:hasCitingEntity a rdf:Property ;
     rdfs:label "has citing entity"@en ;
@@ -125,13 +117,6 @@ cito:hasCitingEntity a rdf:Property ;
     rdfs:comment "The producer is the organization that sponsored the author’s research and/or the organization that made the creation of the dataset possible, such as codifying and digitizing the data. ."@en ;
     rdfs:range prov:Agent ;
     rdfs:domain duv:DataCitationAct .
-
-:hasUsage a rdf:Property ;
-    rdfs:label "has usage"@en ;
-    rdfs:comment "Description of the fact that the dataset has a Usage experience associated with it" @en ;
-    rdfs:range duv:Usage ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:domain dcat:Distribution .
 
 :hasRating a rdf:Property ;
     rdfs:label "has rating"@en ;
@@ -169,40 +154,51 @@ oa:hasTarget a rdf:Property ;
     rdfs:domain dcat:Distribution ;
     rdfs:range duv:UserFeedback .
 
-#
-:performs a rdf:Property ;
-    rdfs:label "performs"@en ;
-    rdfs:comment "Describes the Usage an actor provides" @en ;
-    rdfs:domain duv:UsageActor ;
-    rdfs:range duv:Usage .
+:hasVersion a rdf:Property ;
+    rdfs:label “has version“@en ;
+    rdfs:comment "The version or edition number associated with the dataset. " @en ;
+    rdfs:domain duv:DataCitation ;
+    rdfs:range rdfs:Literal .
 
-
+:identifier a rdf:Property ;
+    rdfs:label “identifier“@en ;
+    rdfs:comment "The identifier of the DataCitation. " @en ;
+    rdfs:domain duv:DataCitation ;
+    rdfs:range rdfs:Literal .
 
 :performedBy a rdf:Property ;
-    rdfs:label "performed by"@en ;
-    rdfs:comment "Describes the actor who provides the Usage " @en ;
+    rdfs:label “performed by”@en ;
+    rdfs:comment “Usage performed by agent” @en ;
+    rdfs:domain duv:Agen ;
+    rdfs:range prov:Usage .
+
+:performs a rdf:Property ;
+    rdfs:label "performs”@en ;
+    rdfs:comment “Agent performs usage” @en ;
     rdfs:range duv:UsageActor ;
+    rdfs:domain duv:Agent .
+
+:publisher a rdf:Property ;
+    rdfs:label “publisher”@en ;
+    rdfs:comment “Creator of the cited dataset of distribution.” @en ;
+    rdfs:range prov:Agent ;
+    rdfs:domain duv:DataCitation .
+
+:title a rdf:Property ;
+    rdfs:label “title”@en ;
+    rdfs:comment “The title of citation, dataset or distribution.” @en ;
+    rdfs:range rdfs:Literal ;
+    rdfs:domain duv:DataCitation .
+
+:referesTo a rdf:Property ;
+    rdfs:label “refersTo”@en ;
+    rdfs:comment “Dataset or distribution associated with Usage. ” @en ;
+    rdfs:range dcat:Dataset ;
+    rdfs:range dcat:Distribution ;
     rdfs:domain duv:Usage .
 
-
-
-
-
-
-:hasRole a rdf:Property ;
-    rdfs:label "has role"@en ;
-    rdfs:comment "Describes the role usage actor has in providing duv:Usage" @en ;
-    rdfs:domain duv:UsageActor ;
-    rdfs:range skos:Concept .
-
-:hasSpecificAgentCategory a rdf:Property ;
-    rdfs:label "has specific agent category"@en ;
-    rdfs:comment "Describes the type of prov:Agent creating a duv:Citation" @en ;
-    rdfs:domain prov:Agent ;
-    rdfs:range skos:Concept .
-
-:hasUsageType a rdf:Property ;
-    rdfs:label "has usage type"@en ;
-    rdfs:comment "Describes the type of the usage performed by actor" @en ;
-    rdfs:domain duv:Usage ;
-    rdfs:range skos:Concept .
+:hasWork a rdf:Property ;
+    rdfs:label “has Work”@en ;
+    rdfs:comment “Work associated with a dataset citation. ” @en ;
+    rdfs:range fabio:Work ;
+    rdfs:domain duv:DataCitation .
