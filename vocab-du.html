@@ -303,6 +303,10 @@ pre red { color: red;
             <td>http://purl.org/dc/terms/</td>
           </tr>
           <tr>
+            <td>dqv</td>
+            <td>http://www.w3.org/ns/dqv#</td>
+          </tr>
+          <tr>
             <td>fabio</td>
             <td>http://purl.org/spar/fabio/#</td>
           </tr>
@@ -393,13 +397,6 @@ pre red { color: red;
         Annotation vocabulary provides a generic way of annotating any Web
         resource, it is recommended that Web Annotation vocabulary be used to
         annotate the duv:Dataset for uses beyond the scope of the DUV. </p>
-      <p> The Provenance Ontology [[PROV-O]] is a vocabulary used by data
-        providers to pass details about the data history to data users.
-        Properties associated with prov:Activity provide relationships
-        (prov:used, prov:hasGenerated) from a historical perspective using past
-        tense forms of words and phrases. The developed and duv:WebThing reuses
-        these properties by creating subProperties from Prov-O to describe usage
-        from a present tense perspective. </p>
       <p> The Semantic Publishing and Referencing [[SPAR]] Ontologies provides a
         suite of vocabularies used to related entities to reference citations,
         bibliographic records, and describe the publication process along with
@@ -426,34 +423,35 @@ pre red { color: red;
         example properties between the classes. Unlabeled shaded arrows are used
         to show inheritance with the parent class identified by the arrow head.</p>
       <embed  src="images/DUV_model.svg"  type="image/svg+xml"  style="width:100%">
+       <div  class="note"> Links to the classes and properties need to be added as
+       a way to more easily reference the document.</div>
       <section  id="Citation_Model">
         <h3>Citation Model</h3>
-        <p>The citation model is comprised of the following classes:  fabio:Work, duv:DataCitation, 
-           cito:CitationAct, skos:Concept, oa:Annotation, oa:Motivation, and Prov:Agent.  Properties 
-           include: dct:title, dtc:hasVersion, dct:created, dct:identifier, dct:creator, 
-           duv:classification, dct:publisher, duv:hasDistributor, duv:citationCreator, 
-           cito:isCitedBy, cito:hasCitedEntity, cito:hasCitingEntity, disco:fundedBy.  
-        </p>
+        <p>The citation model is comprised of the following classes: fabio:Work,
+          duv:DataCitation, cito:CitationAct, skos:Concept, oa:Annotation,
+          oa:Motivation, and Prov:Agent. Properties include: dct:title,
+          dtc:hasVersion, dct:created, dct:identifier, dct:creator,
+          duv:classification, dct:publisher, duv:hasDistributor,
+          duv:citationCreator, cito:isCitedBy, cito:hasCitedEntity,
+          cito:hasCitingEntity, disco:fundedBy. </p>
       </section>
       <section  id="Usage_Model">
         <h3>Usage Model</h3>
-        <p> The following classes constitute the Usage Model:  duv:Usage, duv:UsageTool, prov:Agent, 
-            and skos:Concept.  Properties include:  duv:hasUsage, duv:hasUsageType, duv:performedBy, 
-            duv:performs, duv:classification, duv:refersTo.
-        </p>
+        <p> The following classes constitute the Usage Model: duv:Usage,
+          duv:UsageTool, prov:Agent, and skos:Concept. Properties include:
+          duv:hasUsage, duv:hasUsageType, duv:performedBy, duv:performs,
+          duv:classification, duv:refersTo. </p>
       </section>
       <section  id="Feedback_Model">
         <h3>Feedback Model</h3>
-        <p> The following classes constitute the Feedback Model:  oa:Annotation, duv:UserFeedback, 
-            dqv:UserQualityFeedback, duv:RatingFeedback, skos:Concept.  Properties include: 
-            duv:hasRating, oa:hasTarget, duv:hasUserFeedback, oa:hasMotivation.
-        </p>
+        <p> The following classes constitute the Feedback Model: oa:Annotation,
+          duv:UserFeedback, dqv:UserQualityFeedback, duv:RatingFeedback,
+          skos:Concept. Properties include: duv:hasRating, oa:hasTarget,
+          duv:hasUserFeedback, oa:hasMotivation. </p>
       </section>
     </section>
-    <div  class="note">We need to mention classes and properties explicitly
-      included from other vocabularies within a new section. This section will
-      be non-normative and will contain links back to the vocabularies we
-      mention. </div>
+    <div  class="note">This section will be non-normative and will contain links 
+      back to the vocabularies we mention. </div>
     <section  id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
       <section  id="class-datacitation">
@@ -561,7 +559,7 @@ pre red { color: red;
             </tr>
             <tr>
               <td>Label</td>
-              <td>Usage Actor<br>
+              <td>usage tool<br>
               </td>
             </tr>
           </tbody>
