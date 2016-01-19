@@ -1,14 +1,22 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix biro:    <http://purl.org/spar/biro/> .
+@prefix cnt:     <http://www.w3.org/2011/content/> .
+@prefix disco:   <http://rdf-vocabulary.ddialliance.org/discovery#> . 
+@prefix fabio:   <http://purl.org/spar/fabio/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix pav:     <http://pav-ontology.github.io/pav/> .
+@prefix prism:   <http://http://prismstandard.org/namespaces/basic/2.2/> .
+@prefix frbr:    <http://purl.org/vocab/frbr/> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix voaf:    <http://purl.org/vocommons/voaf#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix oa:      <http://www.w3.org/ns/oa#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
-@prefix prov:    <http://www.w3.org/ns/prov#> .
 @prefix cito:    <http://purl.org/spar/cito#> .
 @prefix :        <http://www.w3.org/ns/duv#> .
 
@@ -31,12 +39,6 @@
 #### Classes here ####
 ######################
 
-:DataCitation a owl:Class, rdfs:Class ;
-  rdfs:label “DataCitation"@en ;
-  rdfs:comment "A reference to a dataset or distribution."@en ;
-  rdfs:isDefinedBy http://www.w3.org/ns/duv ;
-  rdfs:subClassOf cito:CitationsAct .
-
 :RatingFeedback a owl:Class, rdfs:Class ;
   rdfs:label "Rating Feedback"@en ;
   rdfs:comment "Predefined criteria used to express a user opinion about a dataset or distribution using a discrete range of values."@en ;
@@ -56,67 +58,95 @@
   rdfs:comment "User feedback on the dataset. Expresses whether the dataset was useful or not, for example."@en .
 
 
-
 ##### Properties here #####
 ###########################
 
-:citationCreator a rdf:Property ;
-    rdfs:label "citation creator"@en ;
-    rdfs:comment “Creator of the citation itself.”@en ;
-    rdfs:range prov:Agent ;
-    rdfs:subProperty dct:creator ;
-    rdfs:domain duv:DataCitation .
-
-:classification a rdf:Property ;
-    rdfs:label "has specific agent category"@en ;
+:agentClassification a rdf:Property ;
+    rdfs:label "agent classification"@en ;
     rdfs:comment " Extension vocabularies may wish to specialize this property to have a range corresponding to a specific  ConceptScheme" @en ;
-    rdfs:domain prov:Agent ;
+    rdfs:domain foaf:Agent ;
     rdfs:range skos:Concept .
+
+cnt:chars a rdf:Property ;
+    rdfs:label "characters" ;
+    rdfs:commment "Text content of an annotation body" @en;
+    vann:usageNote "cnt:ContentAsText (subject) cnt:chars (predicate) rdfs:Literal (object)" @en .
+
 
 dct:creator a rdf:Property ;
     rdfs:label "creator"@en ;
     rdfs:comment “Author of the cited dataset of distribution”@en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:DataCitation .
+    vann:usageNote "dcat:Dataset (subject) dct:creator (predicate) foaf:Agent (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) dct:creator (predicate) foaf:Agent (object)" @en .
 
 
 dct:created a rdf:Property ;
-    rdfs:label "creator"@en ;
+    rdfs:label "created"@en ;
     rdfs:comment “The date associated with the DataCitation.”@en ;
-    rdfs:range rdfs:Literal ;
-    rdfs:domain duv:DataCitation .
+    vann:usageNote "dcat:Dataset (subject) dct:created (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) dct:created (predicate) rdfs:Literal (object)" @en .
 
 disco:fundedBy a rdf:Property ;
     rdfs:label “funded by”@en ;
     rdfs:comment “The Funding agent.”@en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:DataCitation .
+    vann:usageNote "dcat:Dataset (subject) disco:fundedBy  (predicate) foaf:Agent (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) fundedBy (predicate) foaf:Agent (object) @en .
+
+oa:hasBody a rdf:Property ;
+    rdfs:label "has body" @en ;
+    rdfs:comment "Body of the comment associated with either feedback or associated with citation" @en ;
+    vann:usageNote "duv:UserFeedback (subject) oa:hasBody (predicate) cnt:ContentAsText (object)" @en ;
+    vann:usageNote "oa:Annotation (subject) oa:hasBody (predicate) cnt:ContextAsText (object)" @en .
 
 :hasCitedEntity a rdf:Property ;
     rdfs:label "has cited entity"@en ;
     rdfs:comment "The dataset, distribution, or citation of interest being cited." @en ;
-    rdfs:range dcat:Dataset ;
-    rdfs:range dcat:Distribution ;
-    rdfs:domain duv:DataCitationAct .
+    vann:usageNote "cito:CitationAct (subject) cito:hasCitedEntity (predicate) dcat:Dataset (object)" @en ;
+    vann:usageNote "cito:CitationAct (subject) cito:hasCitedEntity (predicate) dcat:Distribution (object)" @en .
 
 cito:hasCitingEntity a rdf:Property ;
     rdfs:label "has citing entity"@en ;
     rdfs:comment "Citation that references a dataset or a distribution."@en ;
-    rdfs:domain duv:DataCitationAct ;
-    rdfs:range duv:DataCitation .
+    vann:usageNote "cito:CitationAct (subject) cito:hasCitingEntity (predicate) fabio:Expression (object)" @en .
+
+
+:hasDatasetFeedback a rdf:Property ;
+    rdfs:label "has dataset feedback"@en ;
+    rdfs:comment "User feedback associated with Dataset" @en ;
+    rdfs:range duv:UserFeedback ;
+    rdfs:domain dcat:Dataset . 
+
+:hasDatasetUsage a rdf:Property ;
+    rdfs:label "has dataset usage"@en ;
+    rdfs:comment "Dataset usage guidance or instructions. " @en ;
+    rdfs:range duv:Usage ;
+    rdfs:domain dcat:Dataset .
+
+:hasDistributionFeedback a rdf:Property ;
+    rdfs:label "has distribution feedback"@en ;
+    rdfs:comment "User feedback associated with Distribution" @en ;
+    rdfs:range duv:UserFeedback ;
+    rdfs:domain dcat:Distribution . 
+
+:hasDistributionUsage a rdf:Property ;
+    rdfs:label "has distribution usage"@en ;
+    rdfs:comment "Distribution usage guidance or instructions. " @en ;
+    rdfs:range duv:Usage ;
+    rdfs:domain dcat:Distribution .
 
 :hasDistributor a rdf:Property ;
-    rdfs:label "has distributor”@en ;
-    rdfs:comment "The distributor is the organization that makes the dataset available for downloading and use. ."@en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:DataCitation .
-
+    rdfs:label “has distributor”@en ;
+    rdfs:comment “The distributor is the organization that makes the dataset available for downloading and use.” @en ;
+    rdfs:range foaf:Agent ;
+    vann:usageNote "dcat:Dataset (subject) duv:hasDistributor (predicate) foaf:Agent (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) duv:hasDistributor (predicate) foaf:Agent (object)" @en .
 
 :hasProducer a rdf:Property ;
-    rdfs:label "has producer”@en ;
-    rdfs:comment "The producer is the organization that sponsored the author’s research and/or the organization that made the creation of the dataset possible, such as codifying and digitizing the data. ."@en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:DataCitationAct .
+    rdfs:label “has producer”@en ;
+    rdfs:comment “The producer is the organization that sponsored the author’s research and/or the organization that made the creation of the dataset possible, such as codifying and digitizing the data.” @en ;
+    rdfs:range foaf:Agent ;
+    vann:usageNote "dcat:Dataset (subject) duv:hasProducer (predicate) foaf:Agent (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) duv:hasProducer (predicate) foaf:Agent (object)" @en .
 
 :hasRating a rdf:Property ;
     rdfs:label "has rating"@en ;
@@ -126,76 +156,80 @@ cito:hasCitingEntity a rdf:Property ;
 
 oa:hasTarget a rdf:Property ;
     rdfs:label "has target"@en ;
-    rdfs:comment "Dataset or distribution associated with UserFeedback. " @en .
-
-
-:hasUsage a rdf:Property ;
-    rdfs:label "has usage"@en ;
-    rdfs:comment "Dataset or distribution usage guidance or instructions. " @en ;
-    rdfs:range duv:Usage ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:domain dcat:Distribution .
-    
+    rdfs:comment "Dataset or distribution associated with UserFeedback. " @en ;
+    vann:usageNote "duv:UserFeedback (subject) oa:hasTarget (predicate) dcat:Dataset (object)" @en ;
+    vann:usageNote "duv:UserFeedback (subject) oa:hasTarget (predicate) dcat:Distribution (object)" @en ;
+    vann:usageNote "oa:Annotation (subject) oa:hasTarget (predicate) cito:CitationAct (object)" @en .    
 
 :hasUsageTool a rdf:Property ;
     rdfs:label "has usage tool"@en ;
     rdfs:comment "Describes the tool that provides the Usage " @en ;
     rdfs:range duv:UsageTool ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:domain dcat:Distribution .
+    rdfs:domain duv:Usage .
     
-:hasUserFeedback a rdf:Property ;
-    rdfs:label "has user feedback"@en ;
-    rdfs:comment "User feedback associated with Dataset or distribution." @en ;
-    rdfs:domain dcat:Dataset ;
-    rdfs:domain dcat:Distribution ;
-    rdfs:range duv:UserFeedback .
-
-:hasVersion a rdf:Property ;
-    rdfs:label “has version“@en ;
-    rdfs:comment "The version or edition number associated with the dataset. " @en ;
-    rdfs:domain duv:DataCitation ;
-    rdfs:range rdfs:Literal .
-
 :identifier a rdf:Property ;
     rdfs:label “identifier“@en ;
     rdfs:comment "The identifier of the DataCitation. " @en ;
-    rdfs:domain duv:DataCitation ;
-    rdfs:range rdfs:Literal .
+    vann:usageNote "dcat:Dataset (subject)  dct:identifier (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject)  dct:identifier (predicate) rdfs:Literal (object)" @en .
+
+oa:motivatedBy a rdf:Property ;
+    rdfs:label "motivated by"@en ;
+    rdfs:comment "reason behind citation annotation or userfeedback. " @en ;
+    vann:usageNote "duv:UserFeedback (subject) oa:motivatedBy (predicate) oa:Motivation (object)" @en ;
+    vann:usageNote "oa:Annotation (subject) oa:motivatedBy (predicate) oa:Motivation (object)" @en .    
 
 :performedBy a rdf:Property ;
     rdfs:label “performed by”@en ;
     rdfs:comment “Usage performed by agent” @en ;
-    rdfs:domain duv:Agen ;
-    rdfs:range prov:Usage .
+    rdfs:domain foaf:Agent ;
+    rdfs:range duv:Usage .
 
 :performs a rdf:Property ;
     rdfs:label "performs”@en ;
     rdfs:comment “Agent performs usage” @en ;
-    rdfs:range duv:UsageActor ;
-    rdfs:domain duv:Agent .
+    rdfs:range duv:Usage;
+    rdfs:domain foaf:Agent .
+
+prism:publicationDate ;
+    rdfs:label "publication date" @en ;
+    rdfs:comment "The publication date associated with the dataset or distribution" @en ;
+    vann:usageNote "dcat:Dataset (subject) prism:publicationDate (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) prism:publicationDate (predicate) rdfs:Literal (object)" @en .
 
 :publisher a rdf:Property ;
     rdfs:label “publisher”@en ;
     rdfs:comment “Creator of the cited dataset of distribution.” @en ;
-    rdfs:range prov:Agent ;
-    rdfs:domain duv:DataCitation .
+    vann:usageNote "dcat:Dataset (subject) dct:publisher (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) dct:publisher (predicate) rdfs:Literal (object)" @en .
+
+:refersToDataset a rdf:Property ;
+    rdfs:label “refers to dataset”@en ;
+    rdfs:comment “Dataset associated with Usage. ” @en ;
+    rdfs:range dcat:Dataset ;
+    rdfs:domain duv:Usage .
+
+:refersToDistribution a rdf:Property ;
+    rdfs:label “refers to distribution”@en ;
+    rdfs:comment “Distribution associated with Usage. ” @en ;
+    rdfs:range dcat:Distribution ;
+    rdfs:domain duv:Usage .
 
 :title a rdf:Property ;
     rdfs:label “title”@en ;
     rdfs:comment “The title of citation, dataset or distribution.” @en ;
-    rdfs:range rdfs:Literal ;
-    rdfs:domain duv:DataCitation .
+    vann:usageNote "dcat:Dataset (subject) dct:title (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject) dct:title (predicate) rdfs:Literal (object)" @en .
 
-:referesTo a rdf:Property ;
-    rdfs:label “refersTo”@en ;
-    rdfs:comment “Dataset or distribution associated with Usage. ” @en ;
-    rdfs:range dcat:Dataset ;
-    rdfs:range dcat:Distribution ;
-    rdfs:domain duv:Usage .
+:usageClassification a rdf:Property ;
+    rdfs:label "usage classification"@en ;
+    rdfs:comment " Extension vocabularies may wish to specialize this property to have a range corresponding to a specific  ConceptScheme" @en ;
+    rdfs:domain duv:Usage ;
+    rdfs:range skos:Concept .
 
-:hasWork a rdf:Property ;
-    rdfs:label “has Work”@en ;
-    rdfs:comment “Work associated with a dataset citation. ” @en ;
-    rdfs:range fabio:Work ;
-    rdfs:domain duv:DataCitation .
+pav:version a rdf:Property ;
+    rdfs:label “version“@en ;
+    rdfs:comment "The version or edition number associated with the dataset. " @en ;
+    vann:usageNote "dcat:Dataset (subject)  pav:version (predicate) rdfs:Literal (object)" @en ;
+    vann:usageNote "dcat:Distribution (subject)  pav:version (predicate) rdfs:Literal (object)" @en .
+
