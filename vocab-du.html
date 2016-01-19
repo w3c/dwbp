@@ -1630,27 +1630,32 @@ pre red { color: red;
       <p  id="ex2"> Example 2 - Feedback: Laufer provides feedback about the
         temperature readings dataset. </p>
       <pre  class="schema turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
 @prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
-@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix : &lt;http://example.org#&gt; .
+@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
+@prefix cnt:  &lt;http://www.w3.org/2011/content/&gt; .
+@prefix :     &lt;http://example.org#&gt; .
 
 :dataset-03312004
    a dcat:Dataset ;
    dct:title "Quarterly Temperature Plot" ; 
-   duv:hasUserFeedback :comment1;
-   duv:hasUserFeedback :comment2;
+   duv:hasDatasetFeedback :comment1;
+   duv:hasDatasetFeedback :comment2;
 .
+
+:comment1Content a cnt:ContentAsText ;
+cnt:chars "Written in MS-DOS text format." .
 
 :comment1
    a duv:UserFeedback ;
-   oa:hasBody "Written in MS-DOS text format." ;
+   oa:hasBody comment1Content ;
    oa:hasTarget :dataset-03312004 ;
-   dct:creator :laufer ;
-.
+   dct:creator :laufer .
 
 :comment2
    a duv:UserRatingFeedback;
@@ -1672,7 +1677,7 @@ pre red { color: red;
 :three_stars
    a skos:Concept;
    skos:inScheme :feedbackRating ;
-   skos:prefLabel "Good dataset or distribution";
+   skos:prefLabel "Good dataset or distribution" ;
 .
 <!--
 :laufer
