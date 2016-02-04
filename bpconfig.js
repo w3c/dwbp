@@ -1,4 +1,4 @@
-﻿var respecConfig = {
+var respecConfig = {
     specStatus: "WD",
     shortName: "dwbp",
     publishDate:  "2015-12-17",
@@ -71,16 +71,16 @@
       {
         value: "Yasodara Córdova"
       }],
-      // key: "Changes",
-      // data: [
-      // {
-      //   value : "Change History",
-      //   href : "#change-history"
-      // },
-      // {
-      //   value: "Diff to previous version",
-      //   href: "http://w3c.github.io/dwbp/diffs/dwbpdiff-20151215.html"
-      // }],
+       key: "Changes",
+       data: [
+       {
+         value : "Change History",
+         href : "#change-history"
+       },
+       {
+         value: "Diff to previous version",
+         href: "http://w3c.github.io/dwbp/diffs/dwbpdiff-20151217.html"
+       }],
     }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
