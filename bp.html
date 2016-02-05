@@ -624,62 +624,6 @@ table.bptable caption {
         explain other terms used in this section? <a href="https://www.w3.org/2013/dwbp/track/issues/228"> Issue-228 </a>
       </div>
     </section>
-    <section id="challenges" class="informative">
-      <h2>Data on the Web Challenges</h2>
-      <p>The openness and flexibility of the Web creates new challenges for data
-        publishers and data consumers. In contrast to conventional databases,
-        for example, where there is a single data model to represent the data
-        and a database management system (DBMS) to control data access, data on
-        the Web allows for the existence of multiple ways to represent and to
-        access data. The following diagram summarizes some of the main
-        challenges faced when publishing or consuming data on the Web. These
-        challenges were identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-        Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
-        addressed by one or more best practices.</p>
-      <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
-      <p> Each one of these challenges originated one or more requirements as
-        documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
-          use-cases document</a>. The development of Data on the Web Best
-        Practices were guided by these requirements, in such a way that each
-        best practice should have at least one of these requirements as an
-        evidence of its relevance.</p>
-    </section>
-    <section id="bp-benefits" class="informative">
-      <h2>Best Practices Benefits</h2>
-      <p>In order to encourage data publishers to adopt the DWBP, the list below
-        describes the main benefits of applying the DWBP. Each benefit
-        represents an improvement in the way how datasets are available on the
-        Web.</p>
-      <ul>
-        <li>Comprehension: humans will have a better understanding about the
-          data structure, the data meaning, the metadata and the nature of the
-          dataset. </li>
-        <li>Processability: machines will be able to automatically process and
-          manipulate the data within a dataset.</li>
-        <li>Discoverability machines will be able to automatically discover a
-          dataset or data within a dataset.</li>
-        <li>Reuse: the chances of dataset reuse by different groups of data
-          consumers will increase.</li>
-        <li>Trust: the confidence that consumers have in the dataset will
-          improve.</li>
-        <li>Linkability: it will be possible to create links between data
-          resources (datasets and data items).</li>
-        <li>Access: humans and machines will be able to access up to date data
-          in a variety of forms.</li>
-        <li>Interoperability: it will be easier to reach consensus among data
-          publishers and consumers.</li>
-      </ul>
-      <p> The figure below shows the benefits that data publishers will gain
-        with adoption of the best practices. <a href="#BP_Benefits"> Section 17</a>
-        presents a table that relates Best Practices to Benefits. </p>
-      <div id="benefitsTables"></div>
-      <div class="note"> Feedback about the association between BP and benefits is welcome!</div>
-      <div class="issue"> Should we remove the Reuse benefit? As one of the goals of the BP is to promote the data reuse, then all BP have this benefit. <a href="https://www.w3.org/2013/dwbp/track/issues/226"> Issue-226 </a> </div>
-      <div class="issue"> Should we consider other BP benefits? <a href="https://www.w3.org/2013/dwbp/track/issues/230"> Issue-230 </a> </div>  
-      <div class="issue"> The document has three different indexes for the BP: by challenges, by benefits and the summary. 
-          Should we keep the three of them? Are they redundant? <a href="https://www.w3.org/2013/dwbp/track/issues/227"> Issue-227 </a> </div>
-      <!-- This section is auto-generated -->
-    </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -2458,7 +2402,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
        a dcat:Distribution;
        dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
        dct:title "CSV distribution of the bus timetable dataset of MyCity."
-       dcat:mediaType "text/csv";
+       dcat:mediaType "application/ld+json";
        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
        .
 
@@ -4015,6 +3959,62 @@ HTTP/1.1 200 Ok
             data.</p>
         </dd>
       </dl>
+    </section>
+    <section id="challenges" class="informative">
+      <h2>Data on the Web Challenges</h2>
+      <p>The openness and flexibility of the Web creates new challenges for data
+        publishers and data consumers. In contrast to conventional databases,
+        for example, where there is a single data model to represent the data
+        and a database management system (DBMS) to control data access, data on
+        the Web allows for the existence of multiple ways to represent and to
+        access data. The following diagram summarizes some of the main
+        challenges faced when publishing or consuming data on the Web. These
+        challenges were identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
+        Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
+        addressed by one or more best practices.</p>
+      <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
+      <p> Each one of these challenges originated one or more requirements as
+        documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
+          use-cases document</a>. The development of Data on the Web Best
+        Practices were guided by these requirements, in such a way that each
+        best practice should have at least one of these requirements as an
+        evidence of its relevance.</p>
+    </section>
+    <section id="bp-benefits" class="informative">
+      <h2>Best Practices Benefits</h2>
+      <p>In order to encourage data publishers to adopt the DWBP, the list below
+        describes the main benefits of applying the DWBP. Each benefit
+        represents an improvement in the way how datasets are available on the
+        Web.</p>
+      <ul>
+        <li>Comprehension: humans will have a better understanding about the
+          data structure, the data meaning, the metadata and the nature of the
+          dataset. </li>
+        <li>Processability: machines will be able to automatically process and
+          manipulate the data within a dataset.</li>
+        <li>Discoverability machines will be able to automatically discover a
+          dataset or data within a dataset.</li>
+        <li>Reuse: the chances of dataset reuse by different groups of data
+          consumers will increase.</li>
+        <li>Trust: the confidence that consumers have in the dataset will
+          improve.</li>
+        <li>Linkability: it will be possible to create links between data
+          resources (datasets and data items).</li>
+        <li>Access: humans and machines will be able to access up to date data
+          in a variety of forms.</li>
+        <li>Interoperability: it will be easier to reach consensus among data
+          publishers and consumers.</li>
+      </ul>
+      <p> The figure below shows the benefits that data publishers will gain
+        with adoption of the best practices. <a href="#BP_Benefits">Section 12</a>
+        presents a table that relates Best Practices to Benefits. </p>
+      <div id="benefitsTables"></div>
+      <div class="note"> Feedback about the association between BP and benefits is welcome!</div>
+      <div class="issue"> Should we remove the Reuse benefit? As one of the goals of the BP is to promote the data reuse, then all BP have this benefit. <a href="https://www.w3.org/2013/dwbp/track/issues/226"> Issue-226 </a> </div>
+      <div class="issue"> Should we consider other BP benefits? <a href="https://www.w3.org/2013/dwbp/track/issues/230"> Issue-230 </a> </div>
+      <div class="issue"> The document has three different indexes for the BP: by challenges, by benefits and the summary.
+          Should we keep the three of them? Are they redundant? <a href="https://www.w3.org/2013/dwbp/track/issues/227"> Issue-227 </a> </div>
+      <!-- This section is auto-generated -->
     </section>
     <section id="BP_Benefits" class="informative">
       <h2>Best Practices x Benefits</h2>
