@@ -1472,42 +1472,49 @@ table.bptable caption {
                 quality metadata. The metadata was defined according to the Data
                 Quality Vocabulary [[DQV]].</p>
               <pre class="highlight">:timetable-001-csv
-   a dcat:Distribution;
-   dct:title "CSV distribution MyCity_busTimetable dataset."
-   dct:description "CSV distribution of the bus timetable dataset of MyCity."
-   dcat:mediaType "text/csv";
-   dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+   a dcat:Distribution ;
+   dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.csv&gt;
+   dct:title "CSV distribution MyCity_busTimetable dataset." ;
+   dct:description "CSV distribution of the bus timetable dataset of MyCity." ;
+   dcat:mediaType "text/csv" ;
+   dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
    <strong>dqv:hasQualityMeasure :measure1, :measure2 </strong>
 	.
 :measure1
 	a dqv:QualityMeasure ;
-	dqv:computedOn :dataset001-csv ;
-	dqv:metric :csvAvailabilityMetric ;
-	dqv:value "1.0"^^xsd:double
+	dqv:computedOn :timetable-001-csv ;
+	dqv:metric :availabilityMetric ;
+	dqv:value "true"^^xsd:boolean
 	.
 :measure2
 	a dqv:QualityMeasure ;
-	dqv:computedOn :dataset001-csv ;
-	dqv:metric :csvConsistencyMetric ;
+	dqv:computedOn :timetable-001-csv ;
+	dqv:metric :csvCompletenessMetric ;
 	dqv:value "0.5"^^xsd:double
 	.
 
 #definition of dimensions and metrics
 :availabity
 	a dqv:Dimension ;
-	dqv:hasCategory :category1;
+	skos:prefLabel "Availability"@en ;
+	skos:prefLabel "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ;
+	dqv:hasCategory :assessibility 
 	.
-:consistency
+:completeness
 	a dqv:Dimension ;
-	dqv:hasCategory :category2
+   	skos:prefLabel "Completeness"@en ;
+	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
+	dqv:hasCategory :intrinsicDimensions	
 	.
-:csvAvailabilityMetric
+:availabilityMetric
 	a dqv:Metric ;
+	skos:definition "It checks if dcat:downloadURL  is available and its value is dereferenceable."@en ;
 	dqv:hasDimension :availabity
 	.
-:csvConsistencyMetric
+:csvComplitenessMetric
 	a dqv:Metric ;
-	dqv:hasDimension :consistency
+	skos:definition "Ratio between the number of real-word objects represented in the cvs and the total number of real objects."@en ;
+	dqv:hasDimension :completeness
 	.
 </pre>
               <h5>Human-readable</h5>
