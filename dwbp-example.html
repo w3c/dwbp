@@ -8,30 +8,32 @@
     <style type="text/css">
 	.container {
 		font-family: sans-serif;
-		width: 968px;
+		max-width: 968px;
 		margin: 0 auto;
 	}
-	.dataset-description {
+
+	.human-readable-example {
 		background-color: transparent;
 		border-collapse: collapse;
 		border-spacing: 0px;
 		color: #333;
+    width: 100%;
 	}
 
-	.dataset-description td {
+	.human-readable-example td {
 		padding: 6px 3px 6px 3px;
 	}
 
-	.dataset-description td:first-child {
+	.human-readable-example tr:first-child td:first-child {
 		width: 25%;
 	}
 
-	.dataset-description tr:nth-child(even) {
+	.human-readable-example tr:nth-child(even) {
 		background-color: #F7F7F7;
 	}
 
 
-	.dataset-description tr:nth-child(odd) {
+	.human-readable-example tr:nth-child(odd) {
 		background-color: #FFFFFF;
 	}
 	div.example {
@@ -45,7 +47,7 @@
 		text-decoration: none;
 	}
 	a[href]:hover {
-		background: none repeat scroll 0% 0% #FFA;	
+		background: none repeat scroll 0% 0% #FFA;
 	}
 	</style>
   </head>
@@ -53,35 +55,31 @@
     <div class="container">
       <h1>Example of Dataset - Human-readable</h1>
       <section id="abstract">
-        <p>This is the human-readable version of example used in the <a href="http://w3.org/TR/dwbp/"><abbr
-
-              title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
+        <p>This is the human-readable version of examples used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
       </section>
+
       <section typeof="dcat:Dataset">
         <p>The dataset description is based on following example:</p>
         <div class="example">
-          <p> John works for the Transport Agency of MyCity and he is in charge
+          <p>John works for the Transport Agency of MyCity and he is in charge
             of the publication of data on the Web about bus timetables as well
             as real time data about the traffic of the city. John decides to
             create two datasets: one for the bus timetables and other one for
             the real time traffic data. </p>
-          <p> Some requirements that should be addressed:</p>
+          <p>Some requirements that should be addressed:</p>
           <ul>
-            <li> The dataset for bus timetables must be available in two
+            <li>The dataset for bus timetables must be available in two
               languages: english and portuguese; </li>
-            <li> Both datasets must be available in csv and json-ld formats; </li>
+            <li>Both datasets must be available in csv and json-ld formats; </li>
           </ul>
         </div>
-        <h2>Dataset description</h2>
-        <table class="dataset-description">
+        <h2 id="dataset-description">Dataset description</h2>
+        <table class="human-readable-example">
           <tbody>
             <tr>
               <td>Title</td>
               <td property="dct:title">Bus timetable of MyCity</td>
             </tr>
-            <!-- 			<tr>
-				<td>Description</td>				<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>				</tr> -->
             <tr>
               <td>Keywords</td>
               <td property="dcat:keyword">transport, mobility, bus</td>
@@ -124,50 +122,15 @@
               <td>Language</td>
               <td>English, Portuguese</td>
             </tr>
-            
              <tr>
               <td>Version</td>
               <td>1.0</td>
-            </tr>  
+            </tr>
           </tbody>
         </table>
-         
-        <h2>Dataset distributions </h2>
-        <table class="dataset-description">
-          <tbody>
-            <tr>
-              <td>Title</td>
-              <td property="dct:title">timetable-001-CSV</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td property="dct:description">CSV distribution of the bus timetable dataset of MyCity</td>
-            </tr>
-             <tr>
-              <td>Media type</td>
-              <td property="dcat:mediaType">text/csv</td>
-            </tr>
-            <tr>
-              <td>License</td>
-              <td> <a href="http://creativecommons.org/licenses/by-sa/3.0/"> CC
-                  BY-SA 3.0 </a></td>
-            </tr>
-             <tr>
-              <td>Publication date</td>
-              <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-            <tr>
-              <td>Last modification</td>
-              <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-             <tr>
-              <td>Download URL</td>
-              <td property="dcat:downloadURL"> <a href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv"> http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv </a>  </td>
-            </tr>
-               </tbody>
-        </table>
-        <p></p>
-        <table class="dataset-description">
+
+        <h2 id="dataset-distributions">Dataset distributions</h2>
+        <table class="human-readable-example">
           <tbody>
             <tr>
               <td>Title</td>
@@ -200,19 +163,17 @@
             </tr>
                </tbody>
         </table>
-            
-        <h2>Dataset version history </h2>
-        <table class="dataset-description">
+
+        <h2 id="dataset-version-history">Dataset version history </h2>
+        <table class="human-readable-example">
         <tbody>
             <tr>
               <td>Current Version</td>
               <td>1.1</td>
             </tr>
-            
            </tbody>
         </table>
-        
-        
+
       </section>
     </div>
   </body>
