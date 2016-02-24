@@ -4,7 +4,11 @@
 <title>Data on the Web Best Practices: Data Quality Vocabulary</title>
 <meta charset='utf-8'>
 <script src="https://www.w3.org/Tools/respec/respec-w3c-common"
-	class="remove"></script>
+	class="remove">
+    <script>
+
+
+</script>
 <script class='remove'>
 	var respecConfig = {
 
@@ -1787,11 +1791,14 @@ ex:geoDCAT-AP a dcterms:Standard;
 				ISO/IEC 25012 are listed in the table below.</p>
 
 			<table style="width: 100%">
+				<thead>
 				<tr>
-					<td>Category</td>
-					<td>Dimension</td>
-					<td>Definition</td>
+					<th>Category</th>
+					<th>Dimension</th>
+					<th>Definition</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
 					<th rowspan="5">Inherent Data Quality</th>
 					<td>Accuracy</td>
@@ -1891,6 +1898,7 @@ ex:geoDCAT-AP a dcterms:Standard;
 						maintain and preserve a specified level of operations and quality,
 						even in the event of failure, in a specific context of use.</td>
 				</tr>
+				</tbody>
 			</table>
 			<p>DQV can express the dimensions and categories listed in the
 				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
@@ -1952,11 +1960,14 @@ iso:consistency
 				provided in Zaveri Et Al. [[ZaveriEtAl]]</p>
 
 			<table style="width: 100%">
+				<thead>
 				<tr>
-					<td>Category</td>
-					<td>Dimension</td>
-					<td>Definition</td>
+					<th>Category</th>
+					<th>Dimension</th>
+					<th>Definition</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
 					<th rowspan="5">Accessibility</th>
 					<td>Availability.</td>
@@ -2061,7 +2072,7 @@ iso:consistency
 					<td>Versatility refers to the availability of the data in
 						different representations and in an internationalized way.</td>
 				</tr>
-
+				<tbody>
 
 			</table>
 
@@ -2337,5 +2348,78 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 					http://www.w3.org/ns/dqv#.</li>
 			</ul>
 		</section>
+<section id="mapping-ISOZaveri" class="appendix">
+			<h2> Correspondences between Quality Dimensions in ISO/IEC 25012 and Zaveri et al.</h2>
+			<p>
+				The selection of a proper set of quality dimensions to express the quality of data might depend on several factors, as the kind of application, assumptions and  domain  in which data is considered. The aforementioned classification of quality dimensions should be considered as a starting point to be eventually extended or replaced according to user and application specific needs. Besidesat a certain extent of abstraction, the dimensions listed in ISO/IEC 25012 and Zaveri et al. are not completelly disjoint. 
+Assuming that  dimensions are expressed as skos:Concept, the following table includes some of the  correspondences  that can be considered  between the two classifications. </p>
+	<table class="definition"style="width: 100%">
+	<thead>
+				<tr>				
+					<th>Dimension from Zaveri et al.</th>
+					<th>Dimension from ISO/IEC 25012</th>
+					<th>Suggested mapping relation</th>
+				</tr>
+	</thead>
+	<tbody>
+
+
+				<tr>
+					<td>Availability</td>
+					<td>Availability</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Completeness</td>
+					<td>Completeness</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Consistency</td>
+					<td>Consistency</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Currentness</td>
+					<td>Timeliness</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Iteroperability</td>
+					<td>Portability</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+				<tr>
+					<td>Iteroperability</td>
+					<td>Compliance</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+				<tr>
+					<td>Semantic Accurancy</td>
+					<td>Accurancy</td>
+					<td>skos:broadMatch</td>
+				</tr>
+				<tr>
+					<td>Trustworthliness</td>
+					<td>Credibility</td>
+					<td>skos:narrowMatch</td>
+				</tr>
+				<tr>
+					<td>Trustworthliness</td>
+					<td>Traceability</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+
+				<tr>
+					<td>Understandability</td>
+					<td>Understandability</td>
+					<td>skos:exactMatch</td>
+				</tr>
+	</tbody>
+
+			</table>
+
+				</section>
+
 </body>
 </html>
