@@ -14,63 +14,62 @@ var respecConfig = {
       company: "CIn - UFPE, Brazil",
       companyURL: "http://www.cin.ufpe.br/"
     }, {
-			name: "Caroline Burle",
-			company: "NIC.br, Brazil",
-			companyURL: "http://nic.br/",
-		}, {
-			name: "Newton Calegari",
-			company: "NIC.br, Brazil",
-			companyURL: "http://nic.br/",
-		}],
+      name: "Caroline Burle",
+      company: "NIC.br, Brazil",
+      companyURL: "http://nic.br/",
+    }, {
+      name: "Newton Calegari",
+      company: "NIC.br, Brazil",
+      companyURL: "http://nic.br/",
+    }],
+    authors: [
+      {
+        name: "Annette Greiner"
+      },
+      {
+        name: "Antoine Isaac"
+      },
+      {
+        name: "Carlos Iglesias"
+      },
+      {
+        name: "Carlos Laufer"
+      },
+      {
+        name: "Christophe Guéret"
+      },
+      {
+        name: "Eric G. Stephan"
+      },
+      {
+        name: "Eric Kauz"
+      },
+      {
+        name: "Ghislain A. Atemezing"
+      },
+      {
+        name: "Ig Ibert Bittencourt"
+      },
+      {
+        name: "João Paulo Almeida"
+      },
+      {
+        name: "Manuel Tomas Carrasco"
+      },
+      {
+        name: "Phil Archer"
+      },
+      {
+        name: "Riccardo Albertoni"
+      },
+      {
+        name: "Sumit Purohit"
+      },
+      {
+        name: "Yasodara Córdova"
+      }],
     otherLinks: [
     {
-      key: "Contributors",
-      data: [
-      {
-        value: "Annette Greiner"
-      },
-      {
-        value: "Antoine Isaac"
-      },
-      {
-        value: "Carlos Iglesias"
-      },
-      {
-        value: "Carlos Laufer"
-      },
-      {
-        value: "Christophe Guéret"
-      },
-      {
-        value: "Eric G. Stephan"
-      },
-      {
-        value: "Eric Kauz"
-      },
-      {
-        value: "Ghislain A. Atemezing"
-      },
-      {
-        value: "Ig Ibert Bittencourt"
-      },
-      {
-        value: "João Paulo Almeida"
-      },
-      {
-        value: "Manuel Tomas Carrasco"
-      },
-      {
-        value: "Phil Archer"
-      },
-      {
-        value: "Riccardo Albertoni"
-      },
-      {
-        value: "Sumit Purohit"
-      },
-      {
-        value: "Yasodara Córdova"
-      }],
        key: "Changes",
        data: [
        {
