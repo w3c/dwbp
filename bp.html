@@ -3220,29 +3220,42 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <!-- end of document Document API code BP -->
       <!-- begin of Use an API -->
       <div class="practice">
-        <p><span id="useanAPI" class="practicelab">Use an API</span></p>
-        <p class="practicedesc">Offer an API to serve data</p>
+        <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
+        <p class="practicedesc">Offer an API to serve data if you have the resources to do so.</p>
         <!-- <p class="practicedesc">When there are resources available, you <em class="rfc2119">should</em> offer an API</p> -->
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be helpful.</p>
+          <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be the best option for publishing your data.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Developers will have programmatic access to the data for use in their own applications.</p>
+          <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>If you use a data management platform, such as CKAN, you may be able to simply enable an existing API. Many web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs. Examples include Swagger, Apigility, Apache CXF, and Restify</p>
-          <aside class="example"><p>To be done</p></aside>
+          <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs. Examples include Swagger, Apigility, Apache CXF, and Restify.</p>
+          <aside class="example"><p>If the fictional MyCity Transport Agency wanted developers to build applications that use its data, it could make the data available via an API. Developers would then be able to create applications that allow transit riders to plan trips, check timetables, or even check real-time arrivals. Making the same data available only as data downloads would require more effort on the part of developers, risk them using out-of-date information, and preclude real-time information.</p></aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Use Service Virtualization to simulate calls and responses, make sure that the performance is acceptable.</p>
+          <p>It should be possible for Web applications to obtain specific data by querying a programmatic interface. Use a test client to simulate calls and responses, making sure that the performance is acceptable.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUpToDate</a></p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li>  <li>Processability</li><li>Interoperability</li> <li>Access</li>
+
+            <!--              <li>Comprehension</li>
+              <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>-->
+          </ul>
         </section>
         <div class="issue">To review the BP "Use an API" and possibly rewrite <em>Possible Approach to Impelmentation</em> section.</div>
       </div>
-      <!-- end of Document your API code -->
+      <!-- end of Use an API -->
     </section>
     <!-- end of Data Access -->
     <!-- begin of Data Preservation -->
