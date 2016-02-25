@@ -2964,35 +2964,36 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         </section>
       </div>
       <!-- end of BP Bulk Access -->
-      <!-- begin of Web Standardized Interfaces -->
+      <!-- begin of Web Standards for APIs -->
       <div class="practice">
-        <p><span id="APIHttpVerbs" class="practicelab">Use Web Standardized Interfaces</span></p>
-        <p class="practicedesc">It is recommended to use URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links and content negotiation when designing APIs</p>
+        <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
+        <p class="practicedesc">When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>APIs that use HTTP verbs, URIs, and response codes leverage developers’ existing knowledge, making it easier to make use of your API. Using a standardized interface also helps to avoid tight coupling between requests and responses, making for an API that can readily be used by many clients.</p>
+          <p>APIs that are built on web standards leverage the strengths of the web. For example, using HTTP verbs as methods and URIs that map directly to individual resources helps to avoid tight coupling between requests and responses, making for an API that is easy to maintain and can readily be understood and used by many developers. The statelessness of the web can be a strength in enabling quick scaling, and using hypermedia enables rich interactions with your API. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <ul>
-            <li>Developers who have some experience with REST or REST-like APIs will have an initial understanding of how to use your API because it uses standardized interfaces. Your API will also be easier to maintain </li>
+            <li>Developers who have some experience with APIs based on web standards, such as REST or hypermedia APIs, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </li>
           </ul>
         </section>
         <section class="how">
-          <p class="subhead">Possible Approach to Implementation</p>
-          <p>There are many RESTful development frameworks available. If you are already using a web development framework that supports building REST APIs, consider using that. If not, consider an API-specific framework that uses REST, such as those mentioned above. One implementation type to consider is a hypermedia API—an API that responds with links rather than data alone. Even for an API that is not truly RESTful, using hypermedia can be helpful for making an API that is self-documenting. RESTful APIs use hypermedia as the engine of application state (HATEOAS). Because state is controlled by links that can be examined and used on the fly, the underlying code can change without affecting client code and developers, making your API evolvable.</p>
+          <p class="subhead">Possible Approaches to Implementation</p>
+          <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
+          <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <aside class="example">to be done</aside>
+          <aside class="example">Check that the service avoids using http as a tunnel for calls to custom methods, and check that URIs do not contain method names.</aside>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
         </section>
         <div class="note">This BP will be complemented.</div>
       </div>
-      <!-- end of Web Standardized Interfaces -->
+      <!-- end of Web Standards for APIs -->
       <!-- begin of BP Content Negotiation -->
       <div class="practice">
         <p><span id="Conneg" class="practicelab">Serving data and resources with
