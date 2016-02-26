@@ -4,7 +4,11 @@
 <title>Data on the Web Best Practices: Data Quality Vocabulary</title>
 <meta charset='utf-8'>
 <script src="https://www.w3.org/Tools/respec/respec-w3c-common"
-	class="remove"></script>
+	class="remove">
+    <script>
+
+
+</script>
 <script class='remove'>
 	var respecConfig = {
 
@@ -20,7 +24,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2016-01-28",
+		publishDate : "2016-02-23",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -380,7 +384,7 @@ pre red {
 			<li><a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
 				represents an entity involved in the provenance of the dataset or
 				distribution.</li>
-			<li><a href="#dqv:QualityMeasure">dqv:QualityMeasure</a>
+			<li><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a>
 				represents a metric value providing quantitative or qualitative
 				information about the dataset or distribution.</li>
 		</ul>
@@ -388,8 +392,8 @@ pre red {
 			<p>Textual description of the diagram will be added.</p>
 		</div>
 		<figure>
-			<a href="images/DataQuality0.2.6.svg"> <img
-				src="images/DataQuality0.2.6.svg" />
+			<a href="images/DataQuality0.2.7.svg"> <img
+				src="images/DataQuality0.2.7.svg" />
 			</a>
 			<figcaption>Data model showing the main relevant classes
 				and their relations.</figcaption>
@@ -404,7 +408,7 @@ pre red {
 		<div class="issue">
 			<p>
 				Should we have only the existing class <a
-					href="#dqv:QualityMeasureDataset">dqv:QualityMeasureDataset</a> or
+					href="#dqv:QualityMeasurementDataset">dqv:QualityMeasurementDataset</a> or
 				define a new class dqv:QualityMetadata to represent a set of
 				statements providing quantitative and/or qualitative information
 				about the dataset or distribution. One could be a sub-class of the
@@ -434,7 +438,7 @@ pre red {
 		</div>
 
 
-		<section id="dqv:QualityMeasure">
+		<section id="dqv:QualityMeasurement">
 			<h3>Class: Quality Measure</h3>
 
 			<p>DQV defines quality measures as specific instances of DQV
@@ -483,7 +487,7 @@ pre red {
 				<thead>
 					<tr>
 						<th>RDF Class:</th>
-						<th><a href="#dqv:QualityMeasure">dqv:QualityMeasure</a></th>
+						<th><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -607,7 +611,7 @@ pre red {
 						</tr>
 						<tr>
 							<td class="prop">Domain:</td>
-							<td><a href="#dqv:QualityMeasure">dqv:QualityMeasure</a></td>
+							<td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
 						</tr>
 						<!--<tr><td class="prop">Range:</td><td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>, <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a></td></tr>-->
 						<tr>
@@ -616,7 +620,7 @@ pre red {
 						</tr>
 						<tr>
 							<td class="prop">Inverse property:</td>
-							<td><a href="#dqv:hasQualityMeasure">dqv:hasQualityMeasure</a></td>
+							<td><a href="#dqv:hasQualityMeasurement">dqv:hasQualityMeasurement</a></td>
 						</tr>
 						<!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr-->
 						<!--tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
@@ -648,7 +652,7 @@ pre red {
 
 						<tr>
 							<td class="prop">Domain:</td>
-							<td><a href="#dqv:QualityMeasure">dqv:QualityMeasure</a></td>
+							<td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
 						</tr>
 						<!--tr><td class="prop">Range:</td><td><a href="ttp://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr-->
 						<tr>
@@ -697,7 +701,7 @@ pre red {
 					<tr>
 						<td class="prop">Definition:</td>
 						<td>A standard to measure a quality dimension. An observation
-							(instance of dqv:QualityMeasure) assigns a value in a given unit
+							(instance of dqv:QualityMeasurement) assigns a value in a given unit
 							to a Metric. <!--Specific metrics are defined as subclasses of this abstract class.-->
 						</td>
 					</tr>
@@ -854,13 +858,13 @@ pre red {
 			</table>
 		</section>
 
-		<section id="dqv:QualityMeasureDataset">
+		<section id="dqv:QualityMeasurementDataset">
 			<h3>Class: Quality Measure Dataset</h3>
 			<table class="definition">
 				<thead>
 					<tr>
 						<th>RDF Class:</th>
-						<th><a href="#dqv:QualityMeasureDataset">dqv:QualityMeasureDataset</a></th>
+						<th><a href="#dqv:QualityMeasurementDataset">dqv:QualityMeasurementDataset</a></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -978,13 +982,13 @@ pre red {
 			</div>
 		</section>
 
-		<section id="dqv:hasQualityMeasure">
+		<section id="dqv:hasQualityMeasurement">
 			<h3>Property: Has Quality Measure</h3>
 			<table class="definition">
 				<thead>
 					<tr>
 						<th>RDF Property:</th>
-						<th><a href="#dqv:hasQualityMeasure">dqv:hasQualityMeasure</a></th>
+						<th><a href="#dqv:hasQualityMeasurement">dqv:hasQualityMeasurement</a></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -1002,7 +1006,7 @@ pre red {
 					<!--tr><td class="prop">Instance of:</td><td><a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a> </td></tr-->
 					<tr>
 						<td class="prop">Range:</td>
-						<td><a href="#dqv:QualityMeasure">dqv:QualityMeasure</a></td>
+						<td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
 					</tr>
 					<!--<tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>, <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a></td></tr>-->
 					<!--tr><td class="prop">Equivalent property:</td><td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td></tr-->
@@ -1067,18 +1071,18 @@ pre red {
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasure :measure1, :measure2
+	dqv:hasQualityMeasurement :measure1, :measure2
 	.
 
 :measure1 
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:hasMetric :csvAvailabilityMetric ;
 	dqv:value "1.0"^^xsd:double 
 	.
      	
 :measure2
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:hasMetric :csvConsistencyMetric ;
 	dqv:value "0.5"^^xsd:double 
@@ -1198,7 +1202,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :myQualityMetadata {
 
 :myDatasetDistribution
-	dqv:hasQualityMeasure :measure1, :measure2
+	dqv:hasQualityMeasurement :measure1, :measure2
 	.
 
 <span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
@@ -1236,9 +1240,9 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 			<h4>Document the provenance of single quality measurement</h4>
 			<div class="note">
 				<p>The group has discussed provenance at different level of
-					granularity (dqv:QualityMeasure and dqv:QualityMetadata), so we
+					granularity (dqv:QualityMeasurement and dqv:QualityMetadata), so we
 					might consider to add an example of provenance for
-					dqv:QualityMeasure.</p>
+					dqv:QualityMeasurement.</p>
 			</div>
 		</section>
 		<section id="DocumentProvDataset">
@@ -1350,18 +1354,18 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasure :measure1, :measure2
+	dqv:hasQualityMeasurement :measure1, :measure2
 	.
 
 :measure1 
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :myControlledVocabulary ;
 	dqv:hasMetric :numOfConceptsWithMissingValues ;
 	dqv:value "1500"^^xsd:integer  
 	.
      	
 :measure2
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
 	dqv:hasMetric :csvConsistencyMetric ;
 	dqv:value "450"^^xsd:integer 
@@ -1493,21 +1497,21 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :language
         a qb:DimensionProperty, owl:DataProperty ;
         rdfs:comment   "language on which label importing is assessed."@en ;
-        rdfs:domain    dqv:QualityMeasure;
+        rdfs:domain    dqv:QualityMeasurement;
         rdfs:label     "label import assessment language"@en .
 
 
 :property
         a qb:DimensionProperty, rdf:Property ;
         rdfs:comment 	"property which label importing is assessed."@en ;
-        rdfs:domain 	dqv:QualityMeasure ;
+        rdfs:domain 	dqv:QualityMeasurement ;
         rdfs:label  	"label import assessment property"@en ;
         rdfs:range     	rdf:Property .
 
 </pre>
 			<p>Let us add actual quality assessments:</p>
 			<pre>
-:qualityMeasureDataset  a  dqv:QualityMeasureDataset ;
+:qualityMeasurementDataset  a  dqv:QualityMeasurementDataset ;
         qb:structure  :dsd .
 
 :importingForPropertyPercentage
@@ -1520,58 +1524,58 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 #Adding quality observations 
 ## for Italian alternative labels
 :measure_exactMatchAltLabelItDataset1 
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:altLabel .
 
 :measure_exactMatchAltLabelItDataset2 
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:altLabel .
 
 ## for English alternative labels
 :measure_exactMatchAltLabelEnDataset1 
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"en" ;
        :property    	skos:altLabel .
 
 :measure_exactMatchAltLabelEnDataset2  
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"en" ;
        :property    	skos:altLabel .      
 
 ## for Italian preferred labels
 :measure_exactMatchPrefLabelItDataset1 
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:prefLabel .
 
 :exactMatchprefLabelit2  
-       a 		dqv:QualityMeasure;
+       a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
        dqv:hasMetric      	:importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasureDataset;
+       qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:prefLabel .
 
@@ -1787,11 +1791,14 @@ ex:geoDCAT-AP a dcterms:Standard;
 				ISO/IEC 25012 are listed in the table below.</p>
 
 			<table style="width: 100%">
+				<thead>
 				<tr>
-					<td>Category</td>
-					<td>Dimension</td>
-					<td>Definition</td>
+					<th>Category</th>
+					<th>Dimension</th>
+					<th>Definition</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
 					<th rowspan="5">Inherent Data Quality</th>
 					<td>Accuracy</td>
@@ -1891,6 +1898,7 @@ ex:geoDCAT-AP a dcterms:Standard;
 						maintain and preserve a specified level of operations and quality,
 						even in the event of failure, in a specific context of use.</td>
 				</tr>
+				</tbody>
 			</table>
 			<p>DQV can express the dimensions and categories listed in the
 				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
@@ -1952,13 +1960,16 @@ iso:consistency
 				provided in Zaveri Et Al. [[ZaveriEtAl]]</p>
 
 			<table style="width: 100%">
+				<thead>
 				<tr>
-					<td>Category</td>
-					<td>Dimension</td>
-					<td>Definition</td>
+					<th>Category</th>
+					<th>Dimension</th>
+					<th>Definition</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
-					<th rowspan="5">Assessibility</th>
+					<th rowspan="5">Accessibility</th>
 					<td>Availability.</td>
 					<td>Availability of a dataset is the extent to which data (or
 						some portion of it) is present, obtainable and ready for use.</td>
@@ -2061,18 +2072,18 @@ iso:consistency
 					<td>Versatility refers to the availability of the data in
 						different representations and in an internationalized way.</td>
 				</tr>
-
+				<tbody>
 
 			</table>
 
 		<p>DQV can express the dimensions and categories listed in the
-				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
+				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
 
 
 			<pre>
 #defining  categories as defined in Zaveri et al 
-zaveri:assessibility a dqv:Category ; 
-   skos:prefLabel "Assessibility"@en. 
+zaveri:accessibility a dqv:Category ; 
+   skos:prefLabel "Accessibility"@en. 
 
 zaveri:intrinsicDimensions a dqv:Category ; 
    skos:prefLabel "Intrinsic dimensions"@en. 
@@ -2088,28 +2099,26 @@ zaveri:representationalDimensions a dqv:Category ;
 
 
 #definition of dimensions
-
 zaveri:availability
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:hasCategory zaveri:accessibility ;
 	skos:prefLabel "Availability"@en;
-	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) 
-	is present, obtainable and ready for use."@en
+	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
 	.
 
 zaveri:licensing
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
-	skos:prefLabel "Completeness"@en;
-	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset
-   	under defined conditions."@en
+	dqv:hasCategory zaveri:accessibility  ;
+	skos:prefLabel "Licensing"@en;
+	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
+	.
+
 
 zaveri:interlinking
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:hasCategory zaveri:accessibility ;
 	skos:prefLabel "Consistency"@en;
-	skos:definition "Interlinking refers to the degree to which entities that represent the same concept 
-	are linked to each other, be it within or between two or more data sources."@en
+	skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
 	.
 
 # ... ect ...
@@ -2337,5 +2346,78 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 					http://www.w3.org/ns/dqv#.</li>
 			</ul>
 		</section>
+<section id="mapping-ISOZaveri" class="appendix">
+			<h2> Correspondences between Quality Dimensions in ISO/IEC 25012 and Zaveri et al.</h2>
+			<p>
+				The selection of a proper set of quality dimensions to express the quality of data might depend on several factors, as the kind of application, assumptions and  domain  in which data is considered. The aforementioned classification of quality dimensions should be considered as a starting point to be eventually extended or replaced according to user and application specific needs. Besidesat a certain extent of abstraction, the dimensions listed in ISO/IEC 25012 and Zaveri et al. are not completelly disjoint. 
+Assuming that  dimensions are expressed as skos:Concept, the following table includes some of the  correspondences  that can be considered  between the two classifications. </p>
+	<table class="definition"style="width: 100%">
+	<thead>
+				<tr>				
+					<th>Dimension from Zaveri et al.</th>
+					<th>Dimension from ISO/IEC 25012</th>
+					<th>Suggested mapping relation</th>
+				</tr>
+	</thead>
+	<tbody>
+
+
+				<tr>
+					<td>Availability</td>
+					<td>Availability</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Completeness</td>
+					<td>Completeness</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Consistency</td>
+					<td>Consistency</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Currentness</td>
+					<td>Timeliness</td>
+					<td>skos:exactMatch</td>
+				</tr>
+				<tr>
+					<td>Iteroperability</td>
+					<td>Portability</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+				<tr>
+					<td>Iteroperability</td>
+					<td>Compliance</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+				<tr>
+					<td>Semantic Accurancy</td>
+					<td>Accurancy</td>
+					<td>skos:broadMatch</td>
+				</tr>
+				<tr>
+					<td>Trustworthliness</td>
+					<td>Credibility</td>
+					<td>skos:narrowMatch</td>
+				</tr>
+				<tr>
+					<td>Trustworthliness</td>
+					<td>Traceability</td>
+					<td>skos:relatedMatch</td>
+				</tr>
+
+				<tr>
+					<td>Understandability</td>
+					<td>Understandability</td>
+					<td>skos:exactMatch</td>
+				</tr>
+	</tbody>
+
+			</table>
+
+				</section>
+
 </body>
 </html>

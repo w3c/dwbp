@@ -1,180 +1,286 @@
 <!DOCTYPE html>
 <html prefix="dcat: http://www.w3.org/ns/dcat#
-	dct: http://purl.org/dc/terms/" lang="en">
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>DWBP - Examples</title>
-    <meta content="width=device-width,initial-scale=1" name="viewport">
-    <style type="text/css">
-	.container {
-		font-family: sans-serif;
-		max-width: 968px;
-		margin: 0 auto;
-	}
+dqv: http://www.w3.org/ns/dqv#
+dct: http://purl.org/dc/terms/" lang="en" >
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+  <title>DWBP - Examples</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <style type="text/css">
+   .container {
+    font-family: sans-serif;
+    max-width: 968px;
+    margin: 0 auto;
+  }
 
-	.human-readable-example {
-		background-color: transparent;
-		border-collapse: collapse;
-		border-spacing: 0px;
-		color: #333;
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
     width: 100%;
-	}
+  }
 
-	.human-readable-example td {
-		padding: 6px 3px 6px 3px;
-	}
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+  }
 
-	.human-readable-example tr:first-child td:first-child {
-		width: 25%;
-	}
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
 
-	.human-readable-example tr:nth-child(even) {
-		background-color: #F7F7F7;
-	}
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
 
 
-	.human-readable-example tr:nth-child(odd) {
-		background-color: #FFFFFF;
-	}
-	div.example {
-		padding: 0.5em;
-		border-left: 0.5em solid #E0CB52;
-		border-color: #E0CB52;
-		background: none repeat scroll 0% 0% #FCFAEE;
-	}
-	a {
-		color: #00C;
-		text-decoration: none;
-	}
-	a[href]:hover {
-		background: none repeat scroll 0% 0% #FFA;
-	}
-	</style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Example of Dataset - Human-readable</h1>
-      <section id="abstract">
-        <p>This is the human-readable version of examples used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
-      </section>
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+  div.example {
+    padding: 0.5em;
+    border-left: 0.5em solid #E0CB52;
+    border-color: #E0CB52;
+    background: none repeat scroll 0% 0% #FCFAEE;
+  }
+  a {
+    color: #00C;
+    text-decoration: none;
+  }
+  a[href]:hover {
+    background: none repeat scroll 0% 0% #FFA;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Example of Dataset - Human-readable</h1>
+    <section id="abstract">
+      <p>This is the human-readable version of examples used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
+    </section>
 
-      <section typeof="dcat:Dataset">
-        <p>The dataset description is based on following example:</p>
-        <div class="example">
-          <p>John works for the Transport Agency of MyCity and he is in charge
-            of the publication of data on the Web about bus timetables as well
-            as real time data about the traffic of the city. John decides to
-            create two datasets: one for the bus timetables and other one for
-            the real time traffic data. </p>
+    <section resource="#timetable-001" typeof="dcat:Dataset">
+      <p>The dataset description is based on following example:</p>
+      <div class="example">
+        <p>John works for the Transport Agency of MyCity and he is in charge
+          of the publication of data on the Web about bus timetables as well
+          as real time data about the traffic of the city. John decides to
+          create two datasets: one for the bus timetables and other one for
+          the real time traffic data. </p>
           <p>Some requirements that should be addressed:</p>
           <ul>
             <li>The dataset for bus timetables must be available in two
               languages: english and portuguese; </li>
-            <li>Both datasets must be available in csv and json-ld formats; </li>
-          </ul>
-        </div>
-        <h2 id="dataset-description">Dataset description</h2>
-        <table class="human-readable-example">
-          <tbody>
-            <tr>
-              <td>Title</td>
-              <td property="dct:title">Bus timetable of MyCity</td>
-            </tr>
-            <tr>
-              <td>Keywords</td>
-              <td property="dcat:keyword">transport, mobility, bus</td>
-            </tr>
-            <tr>
-              <td>Publication date</td>
-              <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-            <tr>
-              <td>Last modification</td>
-              <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-            <tr>
-              <td>Publisher</td>
-              <td property="dct:publisher">Transport Agency MyCity</td>
-            </tr>
-            <tr>
-              <td>Contact point</td>
-              <td><a property="dcat:contactPoint" href="http://example.org/transport-agency/contact">http://example.org/transport-agency/contact</a></td>
-            </tr>
-            <tr>
-              <td>Period that the dataset covers</td>
-              <td><a property="dct:temporal" href="http://reference.data.gov.uk/id/year/2014">The
+              <li>Both datasets must be available in csv and json-ld formats; </li>
+            </ul>
+          </div>
+          <h2 id="dataset-description">Dataset description</h2>
+          <table class="human-readable-example">
+            <tbody>
+              <tr>
+                <td>Title</td>
+                <td property="dct:title">Bus timetable of MyCity</td>
+              </tr>
+              <tr>
+                <td>Keywords</td>
+                <td property="dcat:keyword">transport, mobility, bus</td>
+              </tr>
+              <tr>
+                <td>Publication date</td>
+                <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+              </tr>
+              <tr>
+                <td>Last modification</td>
+                <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+              </tr>
+              <tr>
+                <td>Publisher</td>
+                <td property="dct:publisher">Transport Agency MyCity</td>
+              </tr>
+              <tr>
+                <td>Contact point</td>
+                <td><a property="dcat:contactPoint" href="http://example.org/transport-agency/contact">http://example.org/transport-agency/contact</a></td>
+              </tr>
+              <tr>
+                <td>Period that the dataset covers</td>
+                <td><a property="dct:temporal" href="http://reference.data.gov.uk/id/year/2014">The
                   British calendar year of 2014</a></td>
-            </tr>
-            <tr>
-              <td>Spatial coverage</td>
-              <td><a property="dct:spatial" href="http://www.geonames.org/3399415">Fortaleza,
-                  Brazil</a></td>
-            </tr>
-            <tr>
-              <td>Frequency at the dataset is published</td>
-              <td><a property="dct:accrualPeriodicity" href="http://purl.org/linked-data/sdmx/2009/code#freq-A">Annual</a></td>
-            </tr>
-            <tr>
-              <td>Theme</td>
-              <td>Mobility</td>
-            </tr>
-            <tr>
-              <td>Language</td>
-              <td>English, Portuguese</td>
-            </tr>
-             <tr>
-              <td>Version</td>
-              <td>1.0</td>
-            </tr>
-          </tbody>
-        </table>
+                </tr>
+                <tr>
+                  <td>Spatial coverage</td>
+                  <td><a property="dct:spatial" href="http://www.geonames.org/3399415">Fortaleza,
+                    Brazil</a></td>
+                  </tr>
+                  <tr>
+                    <td>Frequency at the dataset is published</td>
+                    <td><a property="dct:accrualPeriodicity" href="http://purl.org/linked-data/sdmx/2009/code#freq-A">Annual</a></td>
+                  </tr>
+                  <tr>
+                    <td>Theme</td>
+                    <td>Mobility</td>
+                  </tr>
+                  <tr>
+                    <td>Language</td>
+                    <td>English, Portuguese</td>
+                  </tr>
+                  <tr>
+                    <td>Version</td>
+                    <td>1.0</td>
+                  </tr>
+                </tbody>
+              </table>
 
-        <h2 id="dataset-distributions">Dataset distributions</h2>
-        <table class="human-readable-example">
-          <tbody>
-            <tr>
-              <td>Title</td>
-              <td property="dct:title">timetable-001-RDF</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td property="dct:description">RDF distribution of the bus timetable dataset of MyCity</td>
-            </tr>
-             <tr>
-              <td>Media type</td>
-              <td property="dcat:mediaType">text/turtle</td>
-            </tr>
-            <tr>
-              <td>License</td>
-              <td> <a href="http://creativecommons.org/licenses/by-sa/3.0/"> CC
-                  BY-SA 3.0 </a></td>
-            </tr>
-             <tr>
-              <td>Publication date</td>
-              <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-            <tr>
-              <td>Last modification</td>
-              <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-             <tr>
-              <td>Download URL</td>
-              <td property="dcat:downloadURL"> <a href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl"> http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl </a>  </td>
-            </tr>
-               </tbody>
-        </table>
+              <h2 id="dataset-distributions">Dataset distributions</h2>
 
-        <h2 id="dataset-version-history">Dataset version history </h2>
-        <table class="human-readable-example">
-        <tbody>
-            <tr>
-              <td>Current Version</td>
-              <td>1.1</td>
-            </tr>
-           </tbody>
-        </table>
+              <h3 property="dcat:distribution" resource="#timetable-001-RDF" > RDF Distribution </h3>
+              <table resource="#timetable-001-RDF" typeof="dcat:Distribution" class="human-readable-example">
+                <tbody>
+                  <tr>
+                    <td>Title</td>
+                    <td property="dct:title">timetable-001-RDF</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td property="dct:description">RDF distribution of the bus timetable dataset of MyCity</td>
+                  </tr>
+                  <tr>
+                    <td>Media type</td>
+                    <td property="dcat:mediaType">text/turtle</td>
+                  </tr>
+                  <tr>
+                    <td>License</td>
+                    <td> <a href="http://creativecommons.org/licenses/by-sa/3.0/"> CC
+                      BY-SA 3.0 </a></td>
+                    </tr>
+                    <tr>
+                      <td>Publication date</td>
+                      <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                    </tr>
+                    <tr>
+                      <td>Last modification</td>
+                      <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                    </tr>
+                    <tr>
+                      <td>Download URL</td>
+                      <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl">http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3 id="timetable-001-CSV" property="dcat:distribution" resource="#timetable-001-CSV"> CSV Distribution </h3>
+                <table about="#timetable-001-CSV" typeof="dcat:Distribution" class="human-readable-example">
+                  <span about="#timetable-001-CSV" property="dqv:hasQualityMeasure" resource="#measure1" />
+                  <span about="#timetable-001-CSV" property="dqv:hasQualityMeasure" resource="#measure2" />
+                  <tbody>
+                    <tr>
+                      <td>Title</td>
+                      <td property="dct:title">timetable-001-CSV</td>
+                    </tr>
+                    <tr>
+                      <td>Description</td>
+                      <td property="dct:description">CSV distribution MyCity_busTimetable dataset.</td>
+                    </tr>
+                    <tr>
+                      <td>Media type</td>
+                      <td property="dcat:mediaType">text/csv</td>
+                    </tr>
+                    <tr>
+                      <td>License</td>
+                      <td> <a href="http://creativecommons.org/licenses/by-sa/3.0/"> CC
+                        BY-SA 3.0 </a></td>
+                      </tr>
+                      <tr>
+                        <td>Publication date</td>
+                        <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                      </tr>
+                      <tr>
+                        <td>Last modification</td>
+                        <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                      </tr>
+                      <tr>
+                        <td>Download URL</td>
+                        <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv">http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv</a>  </td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-      </section>
-    </div>
-  </body>
-</html>
+                  <h2 id="dataset-version-history">Dataset version history </h2>
+                  <table class="human-readable-example">
+                    <tbody>
+                      <tr>
+                        <td>Current Version</td>
+                        <td>1.1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </section>
+
+                <section>
+                  <h2> Dataset /Distribution quality </h2>
+                  <section>
+                    <h3> Quality measure 1 </h3>
+
+                    <table class="human-readable-example" resource="#measure1" typeof="dqv:QualityMeasure">
+                     <tr>
+                       <td property="dqv:metric" resource="#csvCompletenessMetric">Metric</td>
+                       <td about="#csvCompletenessMetric" typeof="dqv:Metric"> <span property="skos:definition">Ratio between the number of real-word objects represented in the cvs and the total number of real objects.</span> </td>
+                     </tr>
+                     <tr>
+                      <td>Value </td>
+                      <td> <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)</td>
+                    </tr>
+                    <tr>
+                      <td>Computed on</td>
+                      <td property="dqv:computedOn" resource="#timetable-001-CSV"><a href="#timetable-001-CSV">timetable-001-CSV </a></td>
+                    </tr>
+                    <tr>
+                     <td about="#csvCompletenessMetric" property="dqv:hasDimension" resource="#completeness"> Dimension </td>
+                     <td>
+                      <table  class="human-readable-example" about="#completeness" typeof="dqv:Dimension" property="dqv:hasCategory" resource="#intrinsicDimensions">
+                        <tr>
+                         <td><span property="skos:prefLabel">Completeness</span></td>
+                       </tr>
+                       <tr>
+                         <td><span property="skos:definition">Completeness refers to the degree to which all required information is present in a particular dataset.</span></td>
+                       </tr>
+                     </table>
+                   </td>
+                 </tr>
+
+               </table>
+
+               <h3> Quality measure 2 </h3>
+               <table class="human-readable-example" resource="#measure2" typeof="dqv:QualityMeasure">
+                 <tr>
+                   <td property="dqv:metric" resource="#availabilityMetric">Metric</td>
+                   <td about="#availabilityMetric" typeof="dqv:Metric"> <span property="skos:definition">It checks if dcat:downloadURL is available and if its value is dereferenceable.</span> </td>
+                 </tr>
+                 <tr>
+                  <td>Value </td>
+                  <td> <span property="dqv:value" datatype="xsd:boolean">true</span> (Boolean)</td>
+                </tr>
+                <tr>
+                  <td>Computed on</td>
+                  <td property="dqv:computedOn" resource="#timetable-001-CSV"><a href="#timetable-001-CSV">timetable-001-CSV </a></td>
+                </tr>
+                <tr>
+                 <td about="#availabilityMetric" property="dqv:hasDimension" resource="#availabity"> Dimension </td>
+                 <td>
+                 <table class="human-readable-example" about="#availabity" typeof="dqv:Dimension" property="dqv:hasCategory" resource="#accessibility">
+                    <tr>
+                     <td><span property="skos:prefLabel">Availability</span></td>
+                   </tr>
+                   <tr>
+                     <td><span property="skos:definition">Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use.</span></td>
+                   </tr>
+                 </table>
+               </td>
+             </tr>
+
+           </table>
+
+
+         </section>
+       </div>
+     </body>
+     </html>
