@@ -1561,50 +1561,49 @@ table.bptable caption {
       <section id="dataVersioning">
         <h3>Data Versioning</h3>
         <p> Datasets published on the Web may change over time. Some datasets
-          are updated on a schedule basis and other datasets are changed as
+          are updated on a scheduled basis, and other datasets are changed as
           improvements in collecting the data make updates worthwhile. In order
           to deal with these changes, new versions of a dataset may be created.
-          Dataset versioning has been the subject of numerous discussions,
-          however there is no consensus about when creating a new version of a
-          dataset. In the following we present some scenarios where a new
-          dataset, i.e. a new version of the existing dataset, should be created
-          to reflect the corresponding update. </p>
+          Unfortunately, there is no consensus about when changes to a dataset should 
+          cause it to be considered a different dataset altogether rather than a new version. 
+          In the following, we present some scenarios where most publishers would agree that
+          the revision should be considered a new version of the existing dataset. </p>
         <ul>
-          <li> Scenario 1: a new bus stop is created and its timetable doesn’t
-            exist on the dataset;</li>
+          <li> Scenario 1: a new bus stop is created and its timetable needs to be added to the dataset;</li>
           <li> Scenario 2: an existing bus stop is removed and its timetable
             should be deleted from the dataset;</li>
           <li> Scenario 3: an error was identified in one of the existing
-            timetables stored in the dataset and this error must be corrected;</li>
+            timetables stored in the dataset and this error must be corrected.</li>
         </ul>
-        <p> The creation of multiple datasets to represent time series as well
-          as spatial series, e.g. the same kind of data for different regions,
-          in general, are not considered as multiple versions for the same
-          dataset. In this case, each dataset covers a different observation
-          about the world and should be treated as a new dataset instead of a
-          new version of an existing dataset. This is the case of a dataset that
-          collects data about weakly weather forecast of a given city, where
-          every week a new dataset should be created to store data about that
+        <p> In general, multiple datasets that represent time series or
+          spatial series, e.g. the same kind of data for different regions
+          or for different years, are not considered multiple versions of the same
+          dataset. In this case, each dataset covers a different set of observations
+          about the world and should be treated as a new dataset. This is also the case with a dataset that
+          collects data about weekly weather forecasts for a given city, where
+          every week a new dataset is created to store data about that
           specific week. </p>
-        <p> Even for small changes it is important to keep track of the
+        <p>Scenarios 1 and 2 might trigger a major version, whereas Scenario 1 would likely trigger only a minor version.
+          But how you decide whether versions are minor or major is less important than that you avoid making
+          changes without incrementing the version indicator. Even for small changes, it is important to keep track of the
           different dataset versions to make the dataset trustworthy. Publishers
-          should remember that a given dataset may be in use for one or more
-          data consumers and they should be notified about the creation of new
-          versions or it should be possible to automatically identify different
-          versions of the same dataset.Different types of dataset updates need a
+          should remember that a given dataset may be in use by one or more
+          data consumers, and they should take reasonable steps to inform those consumers when a new version is released.
+          For real-time data, an automated timestamp can serve as a version identifier. 
+          For each dataset, the publisher should take a
           consistent, informative approach to versioning, so data consumers can
           understand and work with the changing data. </p>
         <p></p>
         <!-- begin of provide Versioning Info BP -->
         <div class="practice">
-          <p><span id="VersioningInfo" class="practicelab">Provide versioning
-              information</span></p>
-          <p class="practicedesc">Information about dataset versioning should be
-            available.</p>
+          <p><span id="VersioningInfo" class="practicelab">Provide a version
+              indicator</span></p>
+          <p class="practicedesc">An indication of the version number or date should be
+            available for each dataset.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Version information makes a dataset uniquely identifiable.
-              Uniqueness can be used by data consumers to determine how data has
+            <p>Version information makes a revision of a dataset uniquely identifiable.
+              Uniqueness can be used by data consumers to determine whether and how data has
               changed over time and to determine specifically which version of a
               dataset they are working with. Good data versioning enables
               consumers to understand if a newer version of a dataset is
@@ -1616,17 +1615,18 @@ table.bptable caption {
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p>It should be possible for data consumers to easily determine
-              which version of the dataset they are working with.</p>
+              which version of a dataset they are working with. It should be possible to determine
+              whether and how a given dataset differs from another of the same set</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <!-- <p>Providing version information is a topic of <a href="https://lists.w3.org/Archives/Public/public-vocabs/2015Jan/0120.html"
                   title="A versioning model for schema.org">much debate</a>. -->
-            <p> The precise method adopted for providing versioning information
-              may vary according to the context, however there are some basic
+            <p> The best method for providing versioning information
+              will vary according to the context; however, there are some basic
               guidelines that can be followed, for example: </p>
             <ul>
-              <li>Include a unique version number as part of the metadata for
+              <li>Include a unique version number or date as part of the metadata for
                 the dataset. </li>
               <li>Use a consistent numbering scheme with a meaningful approach
                 to incrementing digits, such as [[SchemaVer]]. </li>
@@ -1639,15 +1639,15 @@ table.bptable caption {
                 <!--See <a href="#VersioningVocabularies">Vocabulary
                   versioning</a> for more on assigning stable URIs for the 'latest version' and for each snapshot.</p> -->
               </li>
-              <li> Use the Memento [[RFC7089]], or components thereof, to
+              <li> Use Memento [[RFC7089]], or components thereof, to
                 express temporal versioning of a dataset and to access the
                 version that was operational at a given datetime. The Memento
                 protocol aligns closely with the approach for assigning URIs to
-                versions described in the following and used for W3C
-                specifications.</li>
+                versions that is used for W3C
+                specifications, described below.</li>
             </ul>
             <p>The Web Ontology Language [[OWL2-QUICK-REFERENCE]] and the
-              Provenance, authoring and versioning Ontology [[PAV]] provides a
+              Provenance, Authoring and versioning Ontology [[PAV]] provides a
               number of annotation properties for version information.</p>
             <aside class="example">
               <h5>Machine-readable</h5>
@@ -1740,7 +1740,7 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
         <div class="practice">
           <p><span id="VersionHistory" class="practicelab">Provide version
               history</span></p>
-          <p class="practicedesc">A version history about the dataset should be
+          <p class="practicedesc">A version history for the dataset should be
             available.</p>
           <!-- <p class="practicedesc">A version history should
               be available for versioned data.</p> -->
@@ -1770,11 +1770,11 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
-                doesn't exist on the timetable-001. To maintain the
-                timetable-001 up to date a new dataset (timetable-002) was
-                created. timetable-002 includes all the data from timetable-001
+                doesn't exist in timetable-001. To keep
+                timetable-001 up to date, a new version of the dataset (timetable-002) was
+                created. Timetable-002 includes all the data from timetable-001
                 plus the data about the new bus stop. The machine readable
-                metadata of timetable-002 is shown below. </p>
+                metadata for timetable-002 is shown below. </p>
               <pre class="highlight">:timetable-002
        a dcat:Dataset, version:Version;
        dct:title "Bus timetable of MyCity";
@@ -1790,7 +1790,7 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
        ...
        <strong>dct:isVersionOf:timetable-001;
        pav:previousVersion:timetable-001;
-       rdfs:comment "A new timetable was included in the timetable-001 to reflect the creation of a new bus stop."
+       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street."
        pav:version "1.1". </strong>
 </pre>
               <p> Versioning metadata for timetable-001 after the creation of
