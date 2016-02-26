@@ -2994,16 +2994,67 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p class="subhead">Possible Approaches to Implementation</p>
           <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
           <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
+          <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
+            <pre>
+{
+  "code": "200",
+  "text": "OK",
+  "data": {
+    "update_time": "2013-01-01T03:00:02Z",
+    "route_id": "52",
+    "route_name" "Lexington South"
+    "route_description": "Lexington corridor south of Market",
+    "route_type": "3",
+  },
+  "links": [
+    {
+      "href": "https://api.transit.mycity.org/v2/routes/52",
+      "rel": "self",
+      "type": "application/json",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.transit.mycity.org/v2/routes",
+      "rel": "collection",
+      "type": "application/json",
+      "method": "GET"
+    }
+    {
+      "href": "https://api.transit.mycity.org//v2/schedules/52",
+      "rel": "described-by",
+      "type": "application/json",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.transit.mycity.org//v2/maps/52",
+      "rel": "described-by",
+      "type": "application/json",
+      "method": "GET"
+    }
+  ]
+}
+            </pre>
+          </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <aside class="example">Check that the service avoids using http as a tunnel for calls to custom methods, and check that URIs do not contain method names.</aside>
+          <p>Check that the service avoids using http as a tunnel for calls to custom methods, and check that URIs do not contain method names.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
         </section>
-        <div class="note">This BP will be complemented.</div>
+         <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li><li>Linkability</li><li>Interoperability</li>
+            <!--              <li>Comprehension</li>
+                                         <li>Trust</li>-->
+            <li>Discoverability</li> <li>Access</li>
+            <li>Processability</li>
+          </ul>
+        </section>
+       <div class="note">This BP will be complemented.</div>
       </div>
       <!-- end of Web Standards for APIs -->
       <!-- begin of BP Content Negotiation -->
