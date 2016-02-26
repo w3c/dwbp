@@ -1891,30 +1891,42 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <!-- end of provide version history BP -->
         <!-- begin of avoid breaking changes at APIs -->
         <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API, Communicate Changes to Developers</span></p>
-          <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens </p>
+          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API; Communicate Changes to Developers</span></p>
+          <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the details of each response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur allows developers to take action. </p>
+            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the format of a response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur enables developers to take advantage of new features and, in the rare case of a breaking change, take action. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Developer code will continue to work, and if changes are made, developers will have sufficient time and information to adapt their code. That will enable them to address changes that would otherwise cause breakage.</p>
+            <p>Developer code will continue to work. Developers will know of improvements you make and be able to make use of them. Breaking changes to your API will be rare, and if they occur, developers will have sufficient time and information to adapt their code. That will enable them to avoid breakage, enhancing trust.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not call directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is required, and this will be a breaking change. In that case, it’s best to implement the changes as a new API. </p>
-          <p>If using any other architectural style, use versioning to indicate changes that affect client code. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. </p>
+            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
+          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Be sure that client code is still working after changes, ask for feedback from developers</p>
+            <p>Release changes initially to a test version of your API before applying them to the production version. Invite developers to test their applications on the test version and provide feedback.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">R-PersistentIdentification</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
           </section>
-          <div class="note">This BP will be complemented.</div>
+         <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+             <li>Trust</li><li>Interoperability</li> 
+            <!--              <li>Comprehension</li>
+            <li>Reuse</li>
+           <li>Linkability</li>              <li>Discoverability</li> -->
+            <!--              <li>Access</li>
+                         <li>Processability</li> -->
+          </ul>
+        </section>
+         <div class="note">This BP will be complemented.</div>
         </div>
         <!-- end of avoid breaking changes to APIs -->
       <!-- end of versioning section -->
@@ -3203,21 +3215,35 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.</p>
-          <p>It is recommended to show explanation about the architecture chosen for the API design and show how to invoke each API call and what will be returned from those calls.</p>
+          <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p><a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others provide formats for documentation.</p>
-          <aside class="example"><p>To be done</p></aside>
+          <p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p>
+          <aside class="example"><p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p></aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Quality of documentation is related to the usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
+          <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
         </section>
-        <div class="note">This BP will be complemented.</div>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
+        </section>
+          <section class="benefits">
+            <p class="subhead">Benefits</p>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Trust</li>
+              <!--              <li>Comprehension</li>
+              <li>Linkability</li>              <li>Discoverability</li> -->
+              <!--              <li>Access</li>
+              <li>Interoperability</li>              <li>Processability</li> -->
+            </ul>
+          </section>
+       <div class="note">This BP will be complemented.</div>
       </div>
-      <!-- end of document Document API code BP -->
+      <!-- end of Document API code BP -->
       <!-- begin of Use an API -->
       <div class="practice">
         <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
