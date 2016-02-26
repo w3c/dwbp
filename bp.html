@@ -1906,6 +1906,18 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. </p>
             <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
           <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+          <aside clas="example">Some examples of breaking changes to an API include
+            <ul>
+              <li>Removing a call;</li>
+              <li>Changing the method used to make a call;</li>
+              <li>Changing the URI of a resource used in a call;</li>
+              <li>Adding a required parameter for a call;</li>
+              <li>Changing the data type of a parameter;</li>
+              <li>Changing the name of a key in a key-value response;</li>
+              <li>Changing the structure of an XML response</li>
+              <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
+            </ul>
+          </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
