@@ -1479,23 +1479,23 @@ table.bptable caption {
    dct:description "CSV distribution of the bus timetable dataset of MyCity." ;
    dcat:mediaType "text/csv" ;
    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-   <strong>dqv:hasQualityMeasure :measure1, :measure2 </strong>
+   <strong>dqv:hasQualityMeasurement :measure1, :measure2 </strong>
 	.
 :measure1
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :timetable-001-csv ;
-	dqv:metric :availabilityMetric ;
+	dqv:metric :downloadURLAvailabilityMetric ;
 	dqv:value "true"^^xsd:boolean
 	.
 :measure2
-	a dqv:QualityMeasure ;
+	a dqv:QualityMeasurement ;
 	dqv:computedOn :timetable-001-csv ;
 	dqv:metric :csvCompletenessMetric ;
 	dqv:value "0.5"^^xsd:double
 	.
 
 #definition of dimensions and metrics
-:availabity
+:availability
 	a dqv:Dimension ;
 	skos:prefLabel "Availability"@en ;
 	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ;
@@ -1507,14 +1507,15 @@ table.bptable caption {
 	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
 	dqv:hasCategory :intrinsicDimensions	
 	.
-:availabilityMetric
+:downloadURLAvailabilityMetric
 	a dqv:Metric ;
 	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
-	dqv:hasDimension :availabity
+	dqv:hasDimension :availability
 	.
 :csvComplitenessMetric
 	a dqv:Metric ;
-	skos:definition "Ratio between the number of real-word objects represented in the cvs and the total number of real objects."@en ;
+	skos:definition "Ratio between the number of objects represented in the cvs and
+	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
 	dqv:hasDimension :completeness
 	.
 </pre>
