@@ -2600,36 +2600,48 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="MetadataStandardized" class="practicelab">Use
               standardized terms</span></p>
-          <p class="practicedesc"> Standardized terms should be used to provide
+          <p class="practicedesc">Standardized terms should be used to provide
             data and metadata</p>
-          <!--<div class="issue"> A definition for standardized term should be
-            included in the glossary to clarify the difference between            standardized terms and vocabulary. <a href="https://www.w3.org/2013/dwbp/track/issues/209">              Issue-209 </a> </div> -->
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>The need for code lists and other commonly used terms for data
-              values and for describing metadata is to avoid as much as possible
-              ambiguity and clashes in the terms chosen for data and metadata
-              information. The key reason is to be able to refer to the
-              standardized body/organization which defines the term or code as a
-              clear reference.</p>
+            <p>Using standardized lists of codes other commonly used terms for data
+              and metadata values as much as possible helps avoiding 
+              ambiguity and clashes between these values.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p>The benefit of using standardized code lists and other commonly
-              used terms is to enable interoperability and consensus among
-              data publishers and consumers. </p>
+              used terms is to enhance interoperability and consensus among
+              data publishers and consumers.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>An approach to implementation is the case of a vocabulary
-              developed within a Working Group or a standardized body such as
-              the W3C.</p>
-            <p>The Open Geospatial Consortium (OGC) could define the notion of
-              <em>granularity</em> for geospatial datasets, while [DCAT]
-              vocabulary provides a vocabulary reusing the same notion applied
-              to catalogs on the Web.</p>
+            <p>Values in datasets should refer as much as possible to
+              standardization efforts or organizations, which defines terms or codes as a
+              clear reference.</p>
+            <p>Organizations like the Open Geospatial Consortium (OGC), ISO, W3C, libraries and research data services, etc., provide
+              list of codes, terminologies or even Linked Data vocabularies that can be used for this.</p>
+            <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context 
+              for the values, so that data consumers can retrieve and exploit the standardized meaning
+              of these values. In the context of the Web, using unambiguous, web-based identifiers for standardized values
+              is an efficient way to do this.</p>
             <aside class="example">
-              <pre>to be done</pre>
+            <p>The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):</p>
+<pre style="" class="highlight prettyprint prettyprinted">:timetable-001
+    dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
+</pre>
+            <p>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Center Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:</p>
+<pre style="" class="highlight prettyprint prettyprinted">:measurement-001 a prov:Activity ;
+    prov:used :sensor-001 .
+:sensor-001 a prov:Agent ;
+    dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
+</pre>
+           <p>(note that real-life data should use more specific classes and properties than the PROV ones for 
+              typing a measurement activity, an instrument and the relationship between these)</p>
+            <p>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publish a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:</p>
+<pre style="" class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
+    dct:temporal &lt;http://resource.geosciml.org/classifier/ics/ischart/Paleozoic&gt; .
+</pre>
             </aside>
           </section>
           <section class="test"><span style="font-weight: bold;">How to Test </span>

@@ -247,6 +247,11 @@ var respecConfig = {
 	      "title": "General Transit Feed Specification",
      	  "href":"http://vocab.gtfs.org/terms#",
         "authors": ["Pieter Colpaert", "Andrew Byrd"]
-       }
+       },
+      "ISO639-1-LOC": {
+        title: "ISO 639-1: Codes for the Representation of Names of Languages - Part 1: Two-letter codes for languages",
+        authors: ["Library of Congress"],
+        href: "http://id.loc.gov/vocabulary/iso639-1.html"
+      }
     }
 };
