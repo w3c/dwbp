@@ -1069,37 +1069,44 @@ pre red {
 :measure1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
-	dqv:isMeasurementOf :csvAvailabilityMetric ;
-	dqv:value "1.0"^^xsd:double 
+	dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+	dqv:value "true"^^xsd:boolean 
 	.
      	
 :measure2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
-	dqv:isMeasurementOf :csvConsistencyMetric ;
+	dqv:isMeasurementOf :csvCompletenessMetric ;
 	dqv:value "0.5"^^xsd:double 
 	.
 
 #definition of dimensions and metrics
-:availabity
-	a dqv:Dimension ; 
-	dqv:inCategory :category1;
+:availability
+	a dqv:Dimension ;
+	skos:prefLabel "Availability"@en ;
+	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ; 
+	dqv:inCategory :accessibility
 	.
 
-:consistency
+:completeness
 	a dqv:Dimension ;
-	dqv:inCategory :category2
+	skos:prefLabel "Completeness"@en ;
+	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
+	dqv:inCategory :intrinsicDimensions
 	.
 
 	
-:csvAvailabilityMetric 
+:downloadURLAvailabilityMetric 
 	a dqv:Metric ;
-	dqv:inDimension :availabity
+   	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
+	dqv:inDimension :availability
 	.
 
-:csvConsistencyMetric
-	a dqv:Metric ; 
-	dqv:inDimension :consistency
+:csvCompletenessMetric
+	a dqv:Metric ; 	
+	skos:definition "Ratio between the number of objects represented in the cvs and
+	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	dqv:inDimension :completeness
 	.
 	
 </pre>
