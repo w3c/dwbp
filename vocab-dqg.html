@@ -1136,13 +1136,14 @@ pre red {
 :downloadURLAvailabilityMetric 
 	a dqv:Metric ;
    	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
+	dqv:expectedDataType xsd:boolean ;
 	dqv:inDimension :availability
 	.
 
 :csvCompletenessMetric
 	a dqv:Metric ; 	
-	skos:definition "Ratio between the number of objects represented in the cvs and
-	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	skos:definition "Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	dqv:expectedDataType xsd:double ;
 	dqv:inDimension :completeness
 	.
 	
@@ -1354,6 +1355,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 	a dqv:Metric;
 	skos:prefLabel "Conflicting concepts"@en ;
 	skos:definition "Number of concepts having conflicting labels"@en ;
+	dqv:expectedDataType xsd:interger ;
 	dqv:inDimension  :LabelConflicts 
 	.
 
@@ -1361,6 +1363,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 	a dqv:Metric;
 	skos:prefLabel "Language incomplete concepts"@en ;
 	skos:definition "Number of concepts having an incomplete language coverage"@en ;
+	dqv:expectedDataType xsd:interger ;
 	dqv:inDimension  :incompleteLanguageCoverage .
 
 :LabelConflicts
@@ -1378,7 +1381,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :labelingDocumentationIssues
         a  dqv:Category ;
 	skos:prefLabel "Labeling and Documentation Issues"@en ;
-	skos:definition "Category grouping labeling and documentation issues"@en ;
+	skos:definition "Category grouping labeling and documentation issues"@en 
 	. </pre>
 
 			<p>
@@ -2216,6 +2219,10 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 		<h2>Examples of Metrics</h2>
 
 	<p>Some examples of metrics  inspired to those reviewed in Zaveri Et Al. [[ZaveriEtAl]] follows in order to show how dqv:Metric can be instantiated. </p>
+	<div class="note">
+	<p>The examples below are just some of the possible examples. They show metrics for different dimensions, and different kind of distributions. We might consider to reorganize the examples around some specific criteria (e.g. at least include a metric for each dimension or focus on metric for a specific kind of distribition (e.g., RDF, JSON, CSV)). We migh even  consider to add further examples about derived metrics, multivalues,  extra-parameters, once we have solved   <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a>,  <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.   </p>
+	</div>
+
 
 
 <pre>	
@@ -2285,9 +2292,6 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 	dqv:expectedDataType xsd:double
 	.
 </pre>
-	<div class="note">
-	<p> We migh consider to add further examples about derived metrics, multivalues,  extra-parameters, once we have solved   <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a>,  <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>  </p>
-	</div>
 
 </section>
 
