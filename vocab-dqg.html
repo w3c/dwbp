@@ -24,7 +24,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2016-02-23",
+		publishDate : "2016-03-01",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -392,8 +392,8 @@ pre red {
 			<p>Textual description of the diagram will be added.</p>
 		</div>
 		<figure>
-			<a href="images/DataQuality0.2.7.svg"> <img
-				src="images/DataQuality0.2.7.svg" />
+			<a href="images/DataQuality0.2.8.svg"> <img
+				src="images/DataQuality0.2.8.svg" />
 			</a>
 			<figcaption>Data model showing the main relevant classes
 				and their relations.</figcaption>
@@ -463,7 +463,7 @@ pre red {
 
 			<p>
 				The following properties should be used on this class: <a
-					href="#dqv:hasMetric">dqv:hasMetric</a>, <a href="#dqv:value">dqv:value</a>,
+					href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a>, <a href="#dqv:value">dqv:value</a>,
 				<a href="#qb:dataSet">qb:dataSet</a>.
 			</p>
 
@@ -509,21 +509,13 @@ pre red {
 				</tbody>
 			</table>
 
-			<section id="dqv:hasMetric">
-				<h4>Property: hasMetric</h4>
-
-				<div class="issue">
-					Is dqv:hasMetric correct or should it be dqv:metric? The issue is
-					complicated by the relationship between DQV and both QB and daQ. <a
-						href="https://www.w3.org/2013/dwbp/track/issues/231">Issue-231</a>
-				</div>
-
-
+			<section id="dqv:isMeasurementOf">
+				<h4>Property: isMeasurementOf</h4>
 				<table class="definition">
 					<thead>
 						<tr>
 							<th>RDF Property:</th>
-							<th><a href="#dqv:hasMetric">dqv:hasMetric</a></th>
+							<th><a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -673,7 +665,7 @@ pre red {
 
 			<p>
 				The following properties should be used on this class: <a
-					href="#dqv:hasDimension">dqv:hasDimension</a>.
+					href="#dqv:inDimension">dqv:inDimension</a>.
 			</p>
 
 			<div class="issue">
@@ -713,13 +705,13 @@ pre red {
 				</tbody>
 			</table>
 
-			<section id="dqv:hasDimension">
-				<h4>Property: hasDimension</h4>
+			<section id="dqv:inDimension">
+				<h4>Property: inDimension</h4>
 				<table class="definition">
 					<thead>
 						<tr>
 							<th>RDF Property:</th>
-							<th><a href="#dqv:hasDimension">dqv:hasDimension</a></th>
+							<th><a href="#dqv:inDimension">dqv:inDimension</a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -746,7 +738,7 @@ pre red {
 							<td class="prop">Usage note:</td>
 							<td>Dimensions are meant to systematically organize metrics.
 								The Data Quality Vocabulary defines no specific cardinality
-								constraints for dqv:hasDimension, since distinct quality
+								constraints for dqv:inDimension, since distinct quality
 								frameworks might have different perspectives over a metric. A
 								metric may therefore be associated to more than one dimension.
 								However, those who define new quality measures should try to
@@ -763,7 +755,7 @@ pre red {
 			<h3>Class: Dimension</h3>
 			<p>
 				The following properties should be used on this class: <a
-					href="#dqv:hasCategory">dqv:hasCategory</a>.
+					href="#dqv:inCategory">dqv:inCategory</a>.
 			</p>
 			<table class="definition">
 				<thead>
@@ -777,7 +769,7 @@ pre red {
 						<td class="prop">Definition:</td>
 						<td>Represents criteria relevant for assessing quality. Each
 							quality dimension must have one or more metric to measure it. <!-- Dimensions are provided as subclasses of this abstract class, which is not intended for direct usage.-->
-							A dimension is linked with a category using the dqv:hasDimension
+							A dimension is linked with a category using the dqv:inDimension
 							property.
 						</td>
 					</tr>
@@ -789,13 +781,13 @@ pre red {
 				</tbody>
 			</table>
 
-			<section id="dqv:hasCategory">
-				<h4>Property: hasCategory</h4>
+			<section id="dqv:inCategory">
+				<h4>Property: inCategory</h4>
 				<table class="definition">
 					<thead>
 						<tr>
 							<th>RDF Property:</th>
-							<th><a href="#dqv:hasCategory">dqv:hasCategory</a></th>
+							<th><a href="#dqv:inCategory">dqv:inCategory</a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -821,7 +813,7 @@ pre red {
 							<td class="prop">Usage note:</td>
 							<td>Categories are meant to systematically organize
 								dimensions. The Data Quality Vocabulary defines no specific
-								cardinality constraints for dqv:hasCategory, since distinct
+								cardinality constraints for dqv:inCategory, since distinct
 								quality frameworks might have different perspectives over a
 								dimension. A dimension may therefore be associated to more than
 								one category. However, those who define new quality measures
@@ -1077,37 +1069,44 @@ pre red {
 :measure1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
-	dqv:hasMetric :csvAvailabilityMetric ;
-	dqv:value "1.0"^^xsd:double 
+	dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+	dqv:value "true"^^xsd:boolean 
 	.
      	
 :measure2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
-	dqv:hasMetric :csvConsistencyMetric ;
+	dqv:isMeasurementOf :csvCompletenessMetric ;
 	dqv:value "0.5"^^xsd:double 
 	.
 
 #definition of dimensions and metrics
-:availabity
-	a dqv:Dimension ; 
-	dqv:hasCategory :category1;
+:availability
+	a dqv:Dimension ;
+	skos:prefLabel "Availability"@en ;
+	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ; 
+	dqv:inCategory :accessibility
 	.
 
-:consistency
+:completeness
 	a dqv:Dimension ;
-	dqv:hasCategory :category2
+	skos:prefLabel "Completeness"@en ;
+	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
+	dqv:inCategory :intrinsicDimensions
 	.
 
 	
-:csvAvailabilityMetric 
+:downloadURLAvailabilityMetric 
 	a dqv:Metric ;
-	dqv:hasDimension :availabity
+   	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
+	dqv:inDimension :availability
 	.
 
-:csvConsistencyMetric
-	a dqv:Metric ; 
-	dqv:hasDimension :consistency
+:csvCompletenessMetric
+	a dqv:Metric ; 	
+	skos:definition "Ratio between the number of objects represented in the cvs and
+	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	dqv:inDimension :completeness
 	.
 	
 </pre>
@@ -1120,7 +1119,7 @@ pre red {
 				<p>
 					Is there any reason for turning the classes dqv:Dimension,
 					dqv:Metric and dqv:Category as well as the properties
-					dqv:hasDimension and dqv:hasCategory into "abstract" classes and
+					dqv:inDimension and dqv:inCategory into "abstract" classes and
 					properties as they were defined in daQ (see Section "Extending the
 					daQ" <a
 						href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq">here</a>)?
@@ -1158,8 +1157,8 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :CCategory2 rdfs:subClassOf dqv:Category .
 
 
-:prop1 rdfs:subPropertyOf dqv:hasDimension .
-:prop2 rdfs:subPropertyOf dqv:hasCategory .
+:prop1 rdfs:subPropertyOf dqv:inDimension .
+:prop2 rdfs:subPropertyOf dqv:inCategory .
  	
 :availabity
 	a :CAvailability ; 
@@ -1317,32 +1316,32 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :numOfConceptsWithLabelConflicts 
 	a dqv:Metric;
 	rdfs:label "Conflicting concepts"@en ;
-	rdfs:comment "Number of concepts having conflicting labels"@en ;
-	dqv:hasDimension  :LabelConflicts 
+	skos:definition "Number of concepts having conflicting labels"@en ;
+	dqv:inDimension  :LabelConflicts 
 	.
 
 :numOfConceptsWithIncompleteLanguageCoverage
 	a dqv:Metric;
 	rdfs:label "Language incomplete concepts"@en ;
-	rdfs:comment "Number of concepts having an incomplete language coverage"@en ;
-	dqv:hasDimension  :incompleteLanguageCoverage .
+	skos:definition "Number of concepts having an incomplete language coverage"@en ;
+	dqv:inDimension  :incompleteLanguageCoverage .
 
 :LabelConflicts
 	a  dqv:Dimension;
 	rdfs:label "Label Conflicts"@en ;
-	rdfs:comment "Dimension corresponding to the label conflicts quality issue"@en ;
-        dqv:hasCategory :labelingDocumentationIssues .
+	skos:definition "Dimension corresponding to the label conflicts quality issue"@en ;
+        dqv:inCategory :labelingDocumentationIssues .
 
 :incompleteLanguageCoverage
 	a  dqv:Dimension;
 	rdfs:label "Incomplete Language Coverage"@en ;
-	rdfs:comment "Dimension corresponding to the incomplete language coverage issue"@en ;
-        dqv:hasCategory :labelingDocumentationIssues .
+	skos:definition "Dimension corresponding to the incomplete language coverage issue"@en ;
+        dqv:inCategory :labelingDocumentationIssues .
 
 :labelingDocumentationIssues
         a  dqv:Category ;
 	rdfs:label "Labeling and Documentation Issues"@en ;
-	rdfs:comment "Category grouping labeling and documentation issues"@en ;
+	skos:definition "Category grouping labeling and documentation issues"@en ;
 	. </pre>
 
 			<p>
@@ -1360,14 +1359,14 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :measure1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myControlledVocabulary ;
-	dqv:hasMetric :numOfConceptsWithMissingValues ;
+	dqv:isMeasurementOf :numOfConceptsWithMissingValues ;
 	dqv:value "1500"^^xsd:integer  
 	.
      	
 :measure2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
-	dqv:hasMetric :csvConsistencyMetric ;
+	dqv:isMeasurementOf :csvConsistencyMetric ;
 	dqv:value "450"^^xsd:integer 
 	.
 </pre>
@@ -1448,9 +1447,9 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 :LinksetImportingForProperty rdfs:subClassOf dqv:Metric .
 :Completeness rdfs:subClassOf dqv:Dimension .
 :ComplementationGain rdfs:subClassOf dqv:Category .
-# Definition of subproperties for dqv:Dimension and dqv:hasCategory.
-:hasLinksetQualityDimension rdfs:subPropertyOf dqv:hasDimension .
-:hasLinksetQualityCategory rdfs:subPropertyOf dqv:hasCategory .
+# Definition of subproperties for dqv:Dimension and dqv:inCategory.
+:hasLinksetQualityDimension rdfs:subPropertyOf dqv:inDimension .
+:hasLinksetQualityCategory rdfs:subPropertyOf dqv:inCategory .
 -->
 			<!--
 :hasLinksetQualityMetric rdfs:subPropertyOf daq:hasMetric .
@@ -1471,11 +1470,11 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 
 :importingForPropertyPercentage 
 	a dqv:Metric;
-	dqv:hasDimension  :completeness.
+	dqv:inDimension  :completeness.
 
 :completeness
 	a  dqv:Dimension;
-        dqv:hasCategory :complementationGain .
+        dqv:inCategory :complementationGain .
 
 
 :complementationGain
@@ -1515,7 +1514,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
         qb:structure  :dsd .
 
 :importingForPropertyPercentage
-  <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:hasMetric?
+  <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
         dqv:hasObservation  		:exactMatchaltLabelit1 , :exactMatchaltLabelit2 , 
 			   		:exactMatchaltLabelen1 , :exactMatchaltLabelen2,
 			    		:exactMatchprefLabelit1, :exactMatchprefLabelit2 .
@@ -1527,7 +1526,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:altLabel .
@@ -1536,7 +1535,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:altLabel .
@@ -1546,7 +1545,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"en" ;
        :property    	skos:altLabel .
@@ -1555,7 +1554,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"en" ;
        :property    	skos:altLabel .      
@@ -1565,7 +1564,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:prefLabel .
@@ -1574,7 +1573,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
-       dqv:hasMetric      	:importingForPropertyPercentage ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :language    	"it" ;
        :property    	skos:prefLabel .
@@ -1591,7 +1590,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
         qb:component  [ qb:dimension  &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
                         qb:order      3
                       ] ;
-        qb:component  [ qb:dimension  dqv:hasMetric ;
+        qb:component  [ qb:dimension  dqv:isMeasurementOf ;
                         qb:order      1
                       ] ;
        
@@ -1922,7 +1921,7 @@ iso:systemDependentDataQuality a dqv:Category ;
 
 iso:accuracy
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Accuracy"@en;
 	skos:definition "The degree to which data has attributes that correctly represent 
 	the true value of the intended attribute of a concept or event in a specific context of use."@en
@@ -1930,14 +1929,14 @@ iso:accuracy
 
 iso:completeness
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Completeness"@en;
 	skos:definition "The degree to which subject data associated with an entity has 
 	values for all expected attributes and related entity instances in a specific context of use."@en
 
 iso:consistency
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Consistency"@en;
 	skos:definition "The degree to which data has attributes that are free from contradiction and
 	are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities."@en
@@ -2077,7 +2076,7 @@ iso:consistency
 			</table>
 
 		<p>DQV can express the dimensions and categories listed in the
-				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
+				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
 
 
 			<pre>
@@ -2099,38 +2098,35 @@ zaveri:representationalDimensions a dqv:Category ;
 
 
 #definition of dimensions
-
 zaveri:availability
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:inCategory zaveri:accessibility ;
 	skos:prefLabel "Availability"@en;
-	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) 
-	is present, obtainable and ready for use."@en
+	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
 	.
 
 zaveri:licensing
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
-	skos:prefLabel "Completeness"@en;
-	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset
-   	under defined conditions."@en
+	dqv:inCategory zaveri:accessibility  ;
+	skos:prefLabel "Licensing"@en;
+	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
+	.
+
 
 zaveri:interlinking
 	a dqv:Dimension ; 
-	dqv:hasCategory iso:inherentDataQuality ;
+	dqv:inCategory zaveri:accessibility ;
 	skos:prefLabel "Consistency"@en;
-	skos:definition "Interlinking refers to the degree to which entities that represent the same concept 
-	are linked to each other, be it within or between two or more data sources."@en
+	skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
 	.
 
 # ... ect ...
 
 </pre>
- <p>Example of metrics for each of the dimension mentioned above can be found in Zaveri et al. [[ZaveriEtAl]]. </p>
-			<section id="MappingZaveriISO">
+ 			<section id="MappingZaveriISO">
 				<h2>Expressing relations among quality dimensions</h2>
 				<p>As discussed in Zaveri Et Al. [[ZaveriEtAl]] some dimensions
-					are not completely independentand my have relations. These relations can be represented in DQV by exploiting
+					are not completely independent and my have relations. These relations can be represented in DQV by exploiting
 					the proper SKOS relations or by specilizing  the  SKOS relations if a more
 					specific semantic must be enforced. For example, availability is related to performance and semantic accurancy, whilst semantic accurancy is related to zaveri:timeless, 
 					trustworthiness,  consistency, 	syntaticValidity  and completeness.  </p>
@@ -2174,6 +2170,84 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 			</section>
 
 		</section>
+	<section id="ExampleOfMetrics">
+		<h2>Examples of Metrics</h2>
+
+	<p>Some examples of metrics  inspired to those reviewed in Zaveri Et Al. [[ZaveriEtAl]] follows in order to show how dqv:Metric can be instantiated. </p>
+
+
+<pre>	
+:downloadURLAvailabilityMetric
+	a dqv:Metric ;
+	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
+	dqv:inDimension zaveri:availability ;
+	dqv:expectedDataType xsd:boolean
+	.
+
+:sparqlAvailabilityMetric
+	a dqv:Metric ;
+	skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset  and  if the server responds to a SPARQL query."@en ;
+	dqv:inDimension zaveri:availability ;
+	dqv:expectedDataType xsd:boolean
+	.
+
+:misreportedContentTypeMetric
+	a dqv:Metric ;
+	skos:definition "It detects whether the HTTP response contains the header field stating the appropriate content type of the returned file, e.g. application/rdf+xml"@en ;
+	dqv:inDimension zaveri:availability ;
+	dqv:expectedDataType xsd:boolean
+	.
+
+:licensingMetric
+	a dqv:Metric ;
+	skos:definition "It detects the  indication of a license in a the DCAT/VoID description or in the dataset of a license itself."@en ;
+	dqv:inDimension zaveri:licensing ;
+	dqv:expectedDataType xsd:boolean
+	.
+
+:highThroughput
+	a dqv:Metric ;
+	skos:definition "It represents the maximum number  of answered HTTP-requests per second."@en ;
+	dqv:inDimension zaveri:performance ;
+	dqv:expectedDataType xsd:integer  
+	.
+
+:sparqlScalability
+	a dqv:Metric ;
+	skos:definition "It detects  whether the time to answer an amount of ten requests divided by ten is not longer than the time it takes to answer one request."@en ;
+	dqv:inDimension zaveri:performance ;
+	dqv:expectedDataType xsd:boolean 
+	.
+
+:noRDFSyntaxError 
+	a dqv:Metric ;
+	skos:definition "It returns the number of syntax errors detected by an RDF validator."@en ;
+	dqv:inDimension zaveri:syntacticValidity; 
+	dqv:expectedDataType xsd:integer 
+	.
+
+
+:noJSONSyntaxError 
+	a dqv:Metric ;
+	skos:definition "It returns the number of syntax errors detected by an JSON validator."@en ;
+	dqv:inDimension zaveri:syntacticValidity; 
+	dqv:expectedDataType xsd:integer 
+	.
+
+
+:populationComplitenessMetric
+	a dqv:Metric ;
+	skos:definition "Ratio between the number of objects represented in the dataset and
+	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	dqv:inDimension zaveri:completeness ;
+	dqv:expectedDataType xsd:double
+	.
+</pre>
+	<div class="note">
+	<p> We migh consider to add further examples about derived metrics, multivalues,  extra-parameters, once we have solved   <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a>,  <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>  </p>
+	</div>
+
+</section>
 
 
 		<!--
