@@ -2695,20 +2695,18 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Reuse
               vocabularies</span></p>
-          <p class="practicedesc"> Shared vocabularies should be used to provide
-            metadata</p>
-          <section class="axioms">
+          <p class="practicedesc">Shared vocabularies should be used to provide
+            data and metadata</p>
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
             <p class="subhead">Why</p>
-            <p> Reusing vocabularies increases interoperability and reduces
+            <p>Reusing vocabularies increases interoperability and reduces
               redundancies, encouraging reuse of the data. Shared vocabularies
               capture a consensus of the community about a specific domain. The
-              reuse of shared vocabularies to describe metadata helps the
-              automatic processing of data and metadata. Shared vocabularies
-              should be especially used to describe both structural metadata as
-              well as other types of metadata (descriptive, provenance, quality
-              and versioning). </p>
+              use of shared vocabularies in metadata (especially structural, provenance, quality
+              and versioning metadata) helps the
+              automatic processing of data and metadata.</p>
           </section>
-          <section class="outcome">
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> It should be possible to automatically compare two or more
               datasets when they use the same vocabulary to describe metadata. </p>
@@ -2717,18 +2715,36 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <p> It should be possible for machines to automatically process the
               metadata that describes a dataset. </p>
           </section>
-          <section class="how">
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the W3C Best Practices for
-              Publishing Linked Data [[LD-BP]] provides guidance on the
+                Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
+              Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
-            <aside class="example">
-              <pre>to be done</pre>
+            <aside class="example"><div class="example-title"><span>Example 18</span></div>
+	    <p>1. All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused 
+              to express data and metadata statements, instead of minting entirely new classes and properties.</p>
+              <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>] 
+              re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its 
+              <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section. 
+              By reusing Dublin Core properties like <code>dct:title</code> instead of 
+              creating new ones like <code>dcat:title</code>, DCAT allows statements in DCAT-based metadata 
+              to be consumed by any application that can read and manipulate Dublin Core statements.</p>
+              <p>3. In the digital culture sector, the data model for the initiative 
+              <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>) 
+              also massively re-uses existing shared vocabularies 
+              like Dublin Core, FOAF, SKOS, etc. This has facilitated adoption of the data model by Europeana's
+              data providers. It also helped position EDM as a best practice for similar initiatives in 
+              the sector, such as the <a href="http://dp.la">Digital Public Library of America</a> (DPLA). DPLA's 
+              <a href="http://dp.la/info/map/">metadata application profile</a> reuses EDM, and thus reuses 
+              the various vocabularies that EDM builds on. As a result, large amounts of 
+              digital culture data have become more interoperable within the sector. That data is 
+              also easier to reuse by consumers from other communities, who are not familiar
+              with the traditional models and terminologies for library, archive and museum data.</p>
             </aside>
           </section>
-          <section class="test"><span style="font-weight: bold;">How to Test </span>
-            <p>Check that terms or attributes used do not replicate those
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="test"><span style="font-weight: bold;">How to Test </span>
+            <p>Check that classes, properties, terms or attributes used do not replicate those
               defined by vocabularies in common use within the same domain.</p>
           </section>
           <section class="ucr">

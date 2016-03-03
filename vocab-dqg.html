@@ -1829,10 +1829,11 @@ ex:geoDCAT-AP a dcterms:Standard;
 
 		<section id="DimensionsOfISOIEC25012">
 			<h3>Quality dimensions defined in ISO/IEC 25012</h3>
-			<p>ISO/IEC 25012 provides an example of quality dimensions
+			<p><a href="http://iso25000.com/index.php/en/iso-25000-standards/iso-25012">ISO/IEC 25012</a>
+			provides an example of quality dimensions
 				grouped in four categories that can be adopted to document the
-				quality of datasets. The quality dimensions considered in the
-				ISO/IEC 25012 are listed in the table below.</p>
+				quality of datasets. These quality dimensions and categories are 
+				listed in the table below.</p>
 
 			<table style="width: 100%">
 				<thead>
@@ -1947,52 +1948,62 @@ ex:geoDCAT-AP a dcterms:Standard;
 			<p>DQV can express the dimensions and categories listed in the
 				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
 
-			<pre>
+			<pre># definition of ISO categories
 
-#defining iso categories 
 iso:inherentDataQuality a dqv:Category ; 
    skos:prefLabel "Inherent Data Quality"@en. 
 
 iso:inherentSystemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "Inherent and System-Dependent Data Quality"@en. 
 
-
 iso:systemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "System-Dependent Data Quality"@en. 
 
+#definition of ISO dimensions
 
-
-#definition of dimensions
-
-iso:accuracy
-	a dqv:Dimension ; 
+iso:accuracy a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Accuracy"@en;
 	skos:definition "The degree to which data has attributes that correctly represent 
 	the true value of the intended attribute of a concept or event in a specific context of use."@en
 	.
 
-iso:completeness
-	a dqv:Dimension ; 
+iso:completeness a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Completeness"@en;
 	skos:definition "The degree to which subject data associated with an entity has 
 	values for all expected attributes and related entity instances in a specific context of use."@en
+	.
 
-iso:consistency
-	a dqv:Dimension ; 
+iso:consistency a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Consistency"@en;
 	skos:definition "The degree to which data has attributes that are free from contradiction and
 	are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities."@en
 	.
 
-# ... ect ...
-	
-	
+# ... etc ...
 </pre>
 <div class="note">
-<p> Examples of metrics for the aforementioned dimensions can be found in <a href="http://www.semantic-web-journal.net/system/files/swj1247.pdf">Radulovic et al. submited to SWJ</a>. They are related to linked data, it would be interesting to have also some metrics on open  data which  is not do not linked data. </p>
+<p>We could remove <code>iso:inherentSystemDependentDataQuality</code>. Instead we can use only the two basic categories
+  and use dual classification as in this proposal for Precision:</p>
+<pre>iso:precision a dqv:Dimension ; 
+	dqv:inCategory iso:inherentDataQuality ;
+	dqv:inCategory iso:systemDependentDataQuality ;
+	skos:prefLabel "Consistency"@en;
+	skos:definition "The degree to which data has attributes that are exact or that 
+	provide discrimination in a specific context of use."@en
+	.
+</pre>
+<p>If we keep <code>iso:inherentSystemDependentDataQuality</code> then we should use it as an example for skos:broader
+  i.e., it should be connected to both <code>iso:inherentDataQuality</code> and <code>iso:systemDependentDataQuality</code> with this property:</p>
+<pre>iso:inherentSystemDependentDataQuality a dqv:Category ; 
+   skos:prefLabel "Inherent and System-Dependent Data Quality"@en.
+   skos:broader iso:inherentDataQuality, iso:systemDependentDataQuality .
+</pre>
+</div>
+<div class="note">
+<p>Examples of metrics for the aforementioned dimensions can be found in <a href="http://www.semantic-web-journal.net/system/files/swj1247.pdf">Radulovic et al. submited to SWJ</a>. They are closely related to linked data, it would be interesting to have also more technology-neutral metrics on open data.</p>
 </div> 
 
 		</section>
