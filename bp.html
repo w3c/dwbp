@@ -1892,7 +1892,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <!-- end of provide version history BP -->
         <!-- begin of avoid breaking changes at APIs -->
         <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API; Communicate Changes to Developers</span></p>
+          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API</span></p>
           <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1904,7 +1904,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. </p>
+          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
             <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
           <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           <aside class="example">Some examples of breaking changes to an API include
@@ -1919,6 +1919,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
           </aside>
+          <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -3283,20 +3284,21 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       </div>
       <!-- begin of Document API code BP -->
       <div class="practice">
-        <p><span id="documentYourAPI" class="practicelab">Provide your users with information about your API</span></p>
-        <p class="practicedesc">Provide complete information about documentation, maintenance, and contact to the API users</p>
+        <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
+        <p class="practicedesc">Provide complete information on the web about your API. Be sure to update documentation as you add features or make changes.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
-          <p>Developers are the primary consumers of an API and they will need to have access to the API documentation, they need to be able to get in contact with the API owner, and to have information about maintenance, such as change log to show when an new version of the API is released.</p>
+          <p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <!-- <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p> -->
-          <p>The whole set of information related to the API - documentation, contact information, maintenance and so on - should be available on the Web.</p>
-          <p>The API web page should point to the its documentation and should provide mechanism which users could get in contact with API owners.</p>
-          <p>Documentation of the API should to provide a list with the possible calls to the API, it should describe the parameters and expected return of each of the methods.</p>
-          <p>When there are new releases on of the API, it is necessary to have information about the update and its change log.</p>
+          <p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
+          <p>Developers should be able to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return.</p>
+          <p>The API should be self-documenting as well, so that calls return helpful information about errors and usage.</p>
+          <p>Recent changes to the API itself should be readily discoverable by users.</p>
+          <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
