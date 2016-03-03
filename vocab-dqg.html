@@ -477,7 +477,7 @@ pre red {
 			<div class="issue">
 				<p>
 					Should (and if yes, how) DQV represent parameters for a metric
-					applied for computing a specific quality measurement(e.g.,a specific
+					applied for computing a specific quality measurement (e.g.,a specific
 					setting of weights)? (<a
 						href="https://www.w3.org/2013/dwbp/track/issues/223">Issue-223</a>)
 				</p>
@@ -493,7 +493,7 @@ pre red {
 				<tbody>
 					<tr>
 						<td class="prop">Definition:</td>
-						<td>A quality measurementrepresents the evaluation of a given
+						<td>A quality measurement represents the evaluation of a given
 							dataset (or dataset distribution) against a specific quality
 							metric.</td>
 					</tr>
@@ -559,7 +559,7 @@ pre red {
 					<tbody>
 						<tr>
 							<td class="prop">Definition:</td>
-							<td>Indicates the dataset to a quality measurement(which is an
+							<td>Indicates the dataset to a quality measurement (which is an
 								RDF Data Cube observation) belongs.</td>
 						</tr>
 						<tr>
@@ -727,7 +727,7 @@ pre red {
 								constraints for dqv:inDimension, since distinct quality
 								frameworks might have different perspectives over a metric. A
 								metric may therefore be associated to more than one dimension.
-								However, those who define new quality measures should try to
+								However, those who define new quality metrics should try to
 								avoid this as much as possible and assign only one dimension to
 								the metrics they define.</td>
 						</tr>
@@ -849,7 +849,7 @@ pre red {
 								cardinality constraints for dqv:inCategory, since distinct
 								quality frameworks might have different perspectives over a
 								dimension. A dimension may therefore be associated to more than
-								one category. However, those who define new quality measures
+								one category. However, those who define new quality metrics
 								should try to avoid this as much as possible and assign only one
 								category to the dimensions they define.</td>
 						</tr>
@@ -1012,7 +1012,7 @@ pre red {
 		</section>
 
 		<section id="dqv:hasQualityMeasurement">
-			<h3>Property: Has Quality Measure</h3>
+			<h3>Property: Has Quality Measurement</h3>
 			<table class="definition">
 				<thead>
 					<tr>
@@ -1093,24 +1093,24 @@ pre red {
 
 			<p id="twoCSV">
 				An automated quality checker has provided a quality assessment with
-				two (CSV) quality measures for
+				two (CSV) quality measurements for
 				<code>myDatasetDistribution</code>
 				.
 			</p>
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
-:measure1 
+:measurement1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
 	dqv:value "true"^^xsd:boolean 
 	.
      	
-:measure2
+:measurement2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:isMeasurementOf :csvCompletenessMetric ;
@@ -1239,7 +1239,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :myQualityMetadata {
 
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
 <span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
@@ -1393,17 +1393,17 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
-:measure1 
+:measurement1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myControlledVocabulary ;
 	dqv:isMeasurementOf :numOfConceptsWithMissingValues ;
 	dqv:value "1500"^^xsd:integer  
 	.
      	
-:measure2
+:measurement2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
 	dqv:isMeasurementOf :csvConsistencyMetric ;
@@ -1560,14 +1560,14 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 
 :importingForPropertyPercentage
   <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
-        dqv:hasObservation  		:exactMatchaltLabelit1 , :exactMatchaltLabelit2 , 
-			   		:exactMatchaltLabelen1 , :exactMatchaltLabelen2,
-			    		:exactMatchprefLabelit1, :exactMatchprefLabelit2 .
+        dqv:hasObservation :measurement_exactMatchAltLabelItDataset1, :measurement_exactMatchAltLabelItDataset2, 
+		:measurement_exactMatchAltLabelEnDataset1, :measurement_exactMatchAltLabelEnDataset2 ,
+		:measurement_exactMatchPrefLabelItDataset1, :measurement_exactMatchprefLabelItDataset2 .
 	</span>
 
 #Adding quality observations 
 ## for Italian alternative labels
-:measure_exactMatchAltLabelItDataset1 
+:measurement_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1576,7 +1576,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"it" ;
        :property    	skos:altLabel .
 
-:measure_exactMatchAltLabelItDataset2 
+:measurement_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1586,7 +1586,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :property    	skos:altLabel .
 
 ## for English alternative labels
-:measure_exactMatchAltLabelEnDataset1 
+:measurement_exactMatchAltLabelEnDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
@@ -1595,7 +1595,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"en" ;
        :property    	skos:altLabel .
 
-:measure_exactMatchAltLabelEnDataset2  
+:measurement_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1605,7 +1605,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :property    	skos:altLabel .      
 
 ## for Italian preferred labels
-:measure_exactMatchPrefLabelItDataset1 
+:measurement_exactMatchPrefLabelItDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
@@ -1614,7 +1614,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"it" ;
        :property    	skos:prefLabel .
 
-:exactMatchprefLabelit2  
+:measurement_exactMatchprefLabelItDataset2  
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
@@ -1959,7 +1959,7 @@ iso:inherentSystemDependentDataQuality a dqv:Category ;
 iso:systemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "System-Dependent Data Quality"@en. 
 
-#definition of ISO dimensions
+# definition of ISO dimensions
 
 iso:accuracy a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
