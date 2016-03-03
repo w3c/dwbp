@@ -1904,9 +1904,9 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
+          <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
             <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
-          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           <aside class="example">Some examples of breaking changes to an API include
             <ul>
               <li>Removing a call;</li>
