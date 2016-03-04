@@ -477,7 +477,7 @@ pre red {
 			<div class="issue">
 				<p>
 					Should (and if yes, how) DQV represent parameters for a metric
-					applied for computing a specific quality measurement(e.g.,a specific
+					applied for computing a specific quality measurement (e.g.,a specific
 					setting of weights)? (<a
 						href="https://www.w3.org/2013/dwbp/track/issues/223">Issue-223</a>)
 				</p>
@@ -493,7 +493,7 @@ pre red {
 				<tbody>
 					<tr>
 						<td class="prop">Definition:</td>
-						<td>A quality measurementrepresents the evaluation of a given
+						<td>A quality measurement represents the evaluation of a given
 							dataset (or dataset distribution) against a specific quality
 							metric.</td>
 					</tr>
@@ -559,7 +559,7 @@ pre red {
 					<tbody>
 						<tr>
 							<td class="prop">Definition:</td>
-							<td>Indicates the dataset to a quality measurement(which is an
+							<td>Indicates the dataset to a quality measurement (which is an
 								RDF Data Cube observation) belongs.</td>
 						</tr>
 						<tr>
@@ -727,7 +727,7 @@ pre red {
 								constraints for dqv:inDimension, since distinct quality
 								frameworks might have different perspectives over a metric. A
 								metric may therefore be associated to more than one dimension.
-								However, those who define new quality measures should try to
+								However, those who define new quality metrics should try to
 								avoid this as much as possible and assign only one dimension to
 								the metrics they define.</td>
 						</tr>
@@ -849,7 +849,7 @@ pre red {
 								cardinality constraints for dqv:inCategory, since distinct
 								quality frameworks might have different perspectives over a
 								dimension. A dimension may therefore be associated to more than
-								one category. However, those who define new quality measures
+								one category. However, those who define new quality metrics
 								should try to avoid this as much as possible and assign only one
 								category to the dimensions they define.</td>
 						</tr>
@@ -1012,7 +1012,7 @@ pre red {
 		</section>
 
 		<section id="dqv:hasQualityMeasurement">
-			<h3>Property: Has Quality Measure</h3>
+			<h3>Property: Has Quality Measurement</h3>
 			<table class="definition">
 				<thead>
 					<tr>
@@ -1093,24 +1093,24 @@ pre red {
 
 			<p id="twoCSV">
 				An automated quality checker has provided a quality assessment with
-				two (CSV) quality measures for
+				two (CSV) quality measurements for
 				<code>myDatasetDistribution</code>
 				.
 			</p>
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
-:measure1 
+:measurement1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
 	dqv:value "true"^^xsd:boolean 
 	.
      	
-:measure2
+:measurement2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myDatasetDistribution ;
 	dqv:isMeasurementOf :csvCompletenessMetric ;
@@ -1239,7 +1239,7 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 :myQualityMetadata {
 
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
 <span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
@@ -1393,17 +1393,17 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
 
 			<pre>
 :myDatasetDistribution
-	dqv:hasQualityMeasurement :measure1, :measure2
+	dqv:hasQualityMeasurement :measurement1, :measurement2
 	.
 
-:measure1 
+:measurement1 
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :myControlledVocabulary ;
 	dqv:isMeasurementOf :numOfConceptsWithMissingValues ;
 	dqv:value "1500"^^xsd:integer  
 	.
      	
-:measure2
+:measurement2
 	a dqv:QualityMeasurement ;
 	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
 	dqv:isMeasurementOf :csvConsistencyMetric ;
@@ -1560,14 +1560,14 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 
 :importingForPropertyPercentage
   <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
-        dqv:hasObservation  		:exactMatchaltLabelit1 , :exactMatchaltLabelit2 , 
-			   		:exactMatchaltLabelen1 , :exactMatchaltLabelen2,
-			    		:exactMatchprefLabelit1, :exactMatchprefLabelit2 .
+        dqv:hasObservation :measurement_exactMatchAltLabelItDataset1, :measurement_exactMatchAltLabelItDataset2, 
+		:measurement_exactMatchAltLabelEnDataset1, :measurement_exactMatchAltLabelEnDataset2 ,
+		:measurement_exactMatchPrefLabelItDataset1, :measurement_exactMatchprefLabelItDataset2 .
 	</span>
 
 #Adding quality observations 
 ## for Italian alternative labels
-:measure_exactMatchAltLabelItDataset1 
+:measurement_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1576,7 +1576,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"it" ;
        :property    	skos:altLabel .
 
-:measure_exactMatchAltLabelItDataset2 
+:measurement_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1586,7 +1586,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :property    	skos:altLabel .
 
 ## for English alternative labels
-:measure_exactMatchAltLabelEnDataset1 
+:measurement_exactMatchAltLabelEnDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
@@ -1595,7 +1595,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"en" ;
        :property    	skos:altLabel .
 
-:measure_exactMatchAltLabelEnDataset2  
+:measurement_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -1605,7 +1605,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :property    	skos:altLabel .      
 
 ## for Italian preferred labels
-:measure_exactMatchPrefLabelItDataset1 
+:measurement_exactMatchPrefLabelItDataset1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
@@ -1614,7 +1614,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
        :language    	"it" ;
        :property    	skos:prefLabel .
 
-:exactMatchprefLabelit2  
+:measurement_exactMatchprefLabelItDataset2  
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
@@ -1829,10 +1829,11 @@ ex:geoDCAT-AP a dcterms:Standard;
 
 		<section id="DimensionsOfISOIEC25012">
 			<h3>Quality dimensions defined in ISO/IEC 25012</h3>
-			<p>ISO/IEC 25012 provides an example of quality dimensions
+			<p><a href="http://iso25000.com/index.php/en/iso-25000-standards/iso-25012">ISO/IEC 25012</a>
+			provides an example of quality dimensions
 				grouped in four categories that can be adopted to document the
-				quality of datasets. The quality dimensions considered in the
-				ISO/IEC 25012 are listed in the table below.</p>
+				quality of datasets. These quality dimensions and categories are 
+				listed in the table below.</p>
 
 			<table style="width: 100%">
 				<thead>
@@ -1947,61 +1948,70 @@ ex:geoDCAT-AP a dcterms:Standard;
 			<p>DQV can express the dimensions and categories listed in the
 				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
 
-			<pre>
+			<pre># definition of ISO categories
 
-#defining iso categories 
 iso:inherentDataQuality a dqv:Category ; 
    skos:prefLabel "Inherent Data Quality"@en. 
 
 iso:inherentSystemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "Inherent and System-Dependent Data Quality"@en. 
 
-
 iso:systemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "System-Dependent Data Quality"@en. 
 
+# definition of ISO dimensions
 
-
-#definition of dimensions
-
-iso:accuracy
-	a dqv:Dimension ; 
+iso:accuracy a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Accuracy"@en;
 	skos:definition "The degree to which data has attributes that correctly represent 
 	the true value of the intended attribute of a concept or event in a specific context of use."@en
 	.
 
-iso:completeness
-	a dqv:Dimension ; 
+iso:completeness a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Completeness"@en;
 	skos:definition "The degree to which subject data associated with an entity has 
 	values for all expected attributes and related entity instances in a specific context of use."@en
+	.
 
-iso:consistency
-	a dqv:Dimension ; 
+iso:consistency a dqv:Dimension ; 
 	dqv:inCategory iso:inherentDataQuality ;
 	skos:prefLabel "Consistency"@en;
 	skos:definition "The degree to which data has attributes that are free from contradiction and
 	are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities."@en
 	.
 
-# ... ect ...
-	
-	
+# ... etc ...
 </pre>
 <div class="note">
-<p> Examples of metrics for the aforementioned dimensions can be found in <a href="http://www.semantic-web-journal.net/system/files/swj1247.pdf">Radulovic et al. submited to SWJ</a>. They are related to linked data, it would be interesting to have also some metrics on open  data which  is not do not linked data. </p>
+<p>We could remove <code>iso:inherentSystemDependentDataQuality</code>. Instead we can use only the two basic categories
+  and use dual classification as in this proposal for Precision:</p>
+<pre>iso:precision a dqv:Dimension ; 
+	dqv:inCategory iso:inherentDataQuality ;
+	dqv:inCategory iso:systemDependentDataQuality ;
+	skos:prefLabel "Consistency"@en;
+	skos:definition "The degree to which data has attributes that are exact or that 
+	provide discrimination in a specific context of use."@en
+	.
+</pre>
+<p>If we keep <code>iso:inherentSystemDependentDataQuality</code> then we should use it as an example for skos:broader
+  i.e., it should be connected to both <code>iso:inherentDataQuality</code> and <code>iso:systemDependentDataQuality</code> with this property:</p>
+<pre>iso:inherentSystemDependentDataQuality a dqv:Category ; 
+   skos:prefLabel "Inherent and System-Dependent Data Quality"@en.
+   skos:broader iso:inherentDataQuality, iso:systemDependentDataQuality .
+</pre>
+</div>
+<div class="note">
+<p>Examples of metrics for the aforementioned dimensions can be found in <a href="http://www.semantic-web-journal.net/system/files/swj1247.pdf">Radulovic et al. submited to SWJ</a>. They are closely related to linked data, it would be interesting to have also more technology-neutral metrics on open data.</p>
 </div> 
 
 		</section>
 
 		<section id="DimensionsofZaveri">
 			<h2>Quality dimensions defined for linked data</h2>
-			<p>Another example of quality dimensions classification grouped
-				in categories which is specifically suited for linked open data is
-				provided in Zaveri Et Al. [[ZaveriEtAl]]</p>
+			<p>Zaveri et al. provide another example of classification for quality dimensions,
+which is specifically suited for linked open data [[ZaveriEtAl]].</p>
 
 			<table style="width: 100%">
 				<thead>
@@ -2013,8 +2023,8 @@ iso:consistency
 				</thead>
 				<tbody>
 				<tr>
-					<th rowspan="5">Accessibility</th>
-					<td>Availability.</td>
+					<th rowspan="5">Accessibility dimensions</th>
+					<td>Availability</td>
 					<td>Availability of a dataset is the extent to which data (or
 						some portion of it) is present, obtainable and ready for use.</td>
 				</tr>
@@ -2120,18 +2130,16 @@ iso:consistency
 
 			</table>
 
-		<p>DQV can express the dimensions and categories listed in the
-				table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
+		<p>DQV can express these dimensions and categories as shown in the following example.
+		The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
 
+			<pre># definition of categories from Zaveri et al
 
-			<pre>
-#defining  categories as defined in Zaveri et al 
-zaveri:accessibility a dqv:Category ; 
+zaveri:accessibilityDimensions a dqv:Category ; 
    skos:prefLabel "Accessibility"@en. 
 
 zaveri:intrinsicDimensions a dqv:Category ; 
    skos:prefLabel "Intrinsic dimensions"@en. 
-
 
 zaveri:contextualDimensions a dqv:Category ; 
    skos:prefLabel "Contextual dimensions"@en. 
@@ -2139,51 +2147,48 @@ zaveri:contextualDimensions a dqv:Category ;
 zaveri:representationalDimensions a dqv:Category ; 
    skos:prefLabel "Representational Dimensions"@en. 
 
+#definition of dimensions from Zaveri et al
 
-
-
-#definition of dimensions
 zaveri:availability
 	a dqv:Dimension ; 
-	dqv:inCategory zaveri:accessibility ;
+	dqv:inCategory zaveri:accessibilityDimensions ;
 	skos:prefLabel "Availability"@en;
 	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
 	.
 
 zaveri:licensing
 	a dqv:Dimension ; 
-	dqv:inCategory zaveri:accessibility  ;
+	dqv:inCategory zaveri:accessibilityDimensions  ;
 	skos:prefLabel "Licensing"@en;
 	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
 	.
 
-
 zaveri:interlinking
 	a dqv:Dimension ; 
-	dqv:inCategory zaveri:accessibility ;
+	dqv:inCategory zaveri:accessibilityDimensions ;
 	skos:prefLabel "Consistency"@en;
 	skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
 	.
 
-# ... ect ...
+# ... etc ...
 
 </pre>
  			<section id="MappingZaveriISO">
-				<h2>Expressing relations among quality dimensions</h2>
-				<p>As discussed in Zaveri Et Al. [[ZaveriEtAl]] some dimensions
-					are not completely independent and my have relations. These relations can be represented in DQV by exploiting
-					the proper SKOS relations or by specilizing  the  SKOS relations if a more
-					specific semantic must be enforced. For example, availability is related to performance and semantic accurancy, whilst semantic accurancy is related to zaveri:timeless, 
-					trustworthiness,  consistency, 	syntaticValidity  and completeness.  </p>
+				<h2>Expressing relations between quality dimensions</h2>
+				<p>In Zaveri Et Al. [[ZaveriEtAl]] some dimensions
+					are not completely independent and may be related. These relationships can be represented in DQV by using
+					the appropriate SKOS properties or by specilizing the SKOS properties if more
+					specific semantics must be expressed. For example, <code>availability</code> is related to <code>performance</code> and <code>semantic accuracy</code>, whilst <code>semanticAccuracy</code> is related to <code>timeliness</code>, 
+					<code>trustworthiness</code>, <code>consistency</code>, <code>syntaticValidity</code> and <code>completeness</code>.</p>
 
-				<pre>
+<pre>
 zaveri:availability skos:related zaveri:performance ,  
-	zaveri:semanticAccurancy .
+	zaveri:semanticAccuracy .
 
-zaveri:semanticAccuracy  skos:related zaveri:timeless , 
-	zaveri:trustworthiness ,  zaveri:consistency , 
+zaveri:semanticAccuracy skos:related zaveri:timeliness , 
+	zaveri:trustworthiness , zaveri:consistency , 
 	zaveri:syntaticValidity , zaveri:completeness , 
-	zaveri:availability  . 
+	zaveri:availability . 
 
 zaveri:consistency skos:related zaveri:conciseness , 
 	zaveri:syntaticValidity , zaveri:interoperability .
@@ -2191,11 +2196,10 @@ zaveri:consistency skos:related zaveri:conciseness ,
 zaveri:interoperability skos:related zaveri:conciseness , 
 	zaveri:syntaticValidity , zaveri:consistency .
 
-zaveri:conciseness skos:related  zaveri:completeness ,
-	 zaveri:RepresentationalConciseness .
+zaveri:conciseness skos:related zaveri:completeness ,
+	 zaveri:representationalConciseness .
 
-zaveri:interpretability  skos:related  zaveri:versatility. 
-
+zaveri:interpretability skos:related zaveri:versatility .
 </pre>
 
 				<p>The dimensions considered by different categorizations can be
@@ -2210,7 +2214,6 @@ zaveri:interpretability  skos:related  zaveri:versatility.
 zaveri:completeness skos:exactMatch iso:completeness.
 
 zaveri:trustworthiness skos:narrowMatch iso:credibility .
-
 </pre>
 			</section>
 
@@ -2218,24 +2221,22 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 	<section id="ExampleOfMetrics">
 		<h2>Examples of Metrics</h2>
 
-	<p>Some examples of metrics  inspired to those reviewed in Zaveri Et Al. [[ZaveriEtAl]] follows in order to show how dqv:Metric can be instantiated. </p>
+	<p>This section presents examples of metrics inspired by those reviewed in Zaveri Et Al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated.</p>
 	<div class="note">
-	<p>The examples below are just some of the possible examples. They show metrics for different dimensions, and different kind of distributions. We might consider to reorganize the examples around some specific criteria (e.g. at least include a metric for each dimension or focus on metric for a specific kind of distribition (e.g., RDF, JSON, CSV)). We migh even  consider to add further examples about derived metrics, multivalues,  extra-parameters, once we have solved   <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a>,  <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.   </p>
+	<p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
 	</div>
-
-
 
 <pre>	
 :downloadURLAvailabilityMetric
 	a dqv:Metric ;
-	skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
+	skos:definition "It checks if dcat:downloadURL is available and if its value is dereferenceable."@en ;
 	dqv:inDimension zaveri:availability ;
 	dqv:expectedDataType xsd:boolean
 	.
 
 :sparqlAvailabilityMetric
 	a dqv:Metric ;
-	skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset  and  if the server responds to a SPARQL query."@en ;
+	skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset and if the server responds to a SPARQL query."@en ;
 	dqv:inDimension zaveri:availability ;
 	dqv:expectedDataType xsd:boolean
 	.
@@ -2249,14 +2250,14 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 
 :licensingMetric
 	a dqv:Metric ;
-	skos:definition "It detects the  indication of a license in a the DCAT/VoID description or in the dataset of a license itself."@en ;
+	skos:definition "It detects the indication of a license in a the DCAT/VoID description or in the dataset of a license itself."@en ;
 	dqv:inDimension zaveri:licensing ;
 	dqv:expectedDataType xsd:boolean
 	.
 
 :highThroughput
 	a dqv:Metric ;
-	skos:definition "It represents the maximum number  of answered HTTP-requests per second."@en ;
+	skos:definition "It represents the maximum number of answered HTTP-requests per second."@en ;
 	dqv:inDimension zaveri:performance ;
 	dqv:expectedDataType xsd:integer  
 	.
@@ -2284,10 +2285,10 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 	.
 
 
-:populationComplitenessMetric
+:populationCompletenessMetric
 	a dqv:Metric ;
 	skos:definition "Ratio between the number of objects represented in the dataset and
-	 the  number of  objects expected to be represented according to the declared dataset scope."@en ;
+	 the  number of objects expected to be represented according to the declared dataset scope."@en ;
 	dqv:inDimension zaveri:completeness ;
 	dqv:expectedDataType xsd:double
 	.
@@ -2471,8 +2472,8 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 <section id="mapping-ISOZaveri" class="appendix">
 			<h2> Correspondences between Quality Dimensions in ISO/IEC 25012 and Zaveri et al.</h2>
 			<p>
-			The dimensions listed in ISO/IEC 25012 and Zaveri et al. are not completelly disjoint. 
-Assuming that  dimensions are expressed as skos:Concept, the following table includes some of the  correspondences  that can be considered  between these two classifications. </p>
+			The dimensions listed in ISO/IEC 25012 and Zaveri et al. are not disjoint. 
+Assuming that  dimensions are expressed as instance of <code>skos:Concept</code>, the following table includes some of the correspondences that can be considered between these two classifications. </p>
 	<table class="definition"style="width: 100%">
 	<thead>
 				<tr>				
@@ -2505,27 +2506,27 @@ Assuming that  dimensions are expressed as skos:Concept, the following table inc
 					<td>skos:exactMatch</td>
 				</tr>
 				<tr>
-					<td>Iteroperability</td>
+					<td>Interoperability</td>
 					<td>Portability</td>
 					<td>skos:relatedMatch</td>
 				</tr>
 				<tr>
-					<td>Iteroperability</td>
+					<td>Interoperability</td>
 					<td>Compliance</td>
 					<td>skos:relatedMatch</td>
 				</tr>
 				<tr>
-					<td>Semantic Accurancy</td>
-					<td>Accurancy</td>
+					<td>Semantic Accuracy</td>
+					<td>Accuracy</td>
 					<td>skos:broadMatch</td>
 				</tr>
 				<tr>
-					<td>Trustworthliness</td>
+					<td>Trustworthiness</td>
 					<td>Credibility</td>
 					<td>skos:narrowMatch</td>
 				</tr>
 				<tr>
-					<td>Trustworthliness</td>
+					<td>Trustworthiness</td>
 					<td>Traceability</td>
 					<td>skos:relatedMatch</td>
 				</tr>

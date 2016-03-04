@@ -796,10 +796,11 @@ table.bptable caption {
             </ul>
             <aside class="example">
               <h5>Human-readable</h5>
-              <p><a href="dwbp-example.html">Example page</a> with
-                human-readable description of dataset is available.</p>
+              <p><a href="dwbp-example.html">Example page</a> with a
+                human-readable description of an available dataset.</p>
               <h5>Machine-readable</h5>
-              <p>to be done</p>
+              <p><a href="dwbp-example.ttl">Example page</a> with a
+                machine-readable description of an available dataset.</p>
             </aside>
           </section>
           <section class="test">
@@ -1894,7 +1895,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <!-- end of provide version history BP -->
         <!-- begin of avoid breaking changes at APIs -->
         <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API; Communicate Changes to Developers</span></p>
+          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API</span></p>
           <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1906,9 +1907,9 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning. </p>
+          <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
             <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
-          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Major version numbers should be reflected in your URIs or in request headers. When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           <aside class="example">Some examples of breaking changes to an API include
             <ul>
               <li>Removing a call;</li>
@@ -1921,6 +1922,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
           </aside>
+          <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2696,20 +2698,18 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Reuse
               vocabularies</span></p>
-          <p class="practicedesc"> Shared vocabularies should be used to provide
-            metadata</p>
-          <section class="axioms">
+          <p class="practicedesc">Shared vocabularies should be used to provide
+            data and metadata</p>
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
             <p class="subhead">Why</p>
-            <p> Reusing vocabularies increases interoperability and reduces
+            <p>Reusing vocabularies increases interoperability and reduces
               redundancies, encouraging reuse of the data. Shared vocabularies
               capture a consensus of the community about a specific domain. The
-              reuse of shared vocabularies to describe metadata helps the
-              automatic processing of data and metadata. Shared vocabularies
-              should be especially used to describe both structural metadata as
-              well as other types of metadata (descriptive, provenance, quality
-              and versioning). </p>
+              use of shared vocabularies in metadata (especially structural, provenance, quality
+              and versioning metadata) helps the
+              automatic processing of data and metadata.</p>
           </section>
-          <section class="outcome">
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> It should be possible to automatically compare two or more
               datasets when they use the same vocabulary to describe metadata. </p>
@@ -2718,18 +2718,36 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <p> It should be possible for machines to automatically process the
               metadata that describes a dataset. </p>
           </section>
-          <section class="how">
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the W3C Best Practices for
-              Publishing Linked Data [[LD-BP]] provides guidance on the
+                Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
+              Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
-            <aside class="example">
-              <pre>to be done</pre>
+            <aside class="example"><div class="example-title"><span>Example 18</span></div>
+	    <p>1. All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused 
+              to express data and metadata statements, instead of minting entirely new classes and properties.</p>
+              <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>] 
+              re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its 
+              <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section. 
+              By reusing Dublin Core properties like <code>dct:title</code> instead of 
+              creating new ones like <code>dcat:title</code>, DCAT allows statements in DCAT-based metadata 
+              to be consumed by any application that can read and manipulate Dublin Core statements.</p>
+              <p>3. In the digital culture sector, the data model for the initiative 
+              <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>) 
+              also massively re-uses existing shared vocabularies 
+              like Dublin Core, FOAF, SKOS, etc. This has facilitated adoption of the data model by Europeana's
+              data providers. It also helped position EDM as a best practice for similar initiatives in 
+              the sector, such as the <a href="http://dp.la">Digital Public Library of America</a> (DPLA). DPLA's 
+              <a href="http://dp.la/info/map/">metadata application profile</a> reuses EDM, and thus reuses 
+              the various vocabularies that EDM builds on. As a result, large amounts of 
+              digital culture data have become more interoperable within the sector. That data is 
+              also easier to reuse by consumers from other communities, who are not familiar
+              with the traditional models and terminologies for library, archive and museum data.</p>
             </aside>
           </section>
-          <section class="test"><span style="font-weight: bold;">How to Test </span>
-            <p>Check that terms or attributes used do not replicate those
+          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="test"><span style="font-weight: bold;">How to Test </span>
+            <p>Check that classes, properties, terms or attributes used do not replicate those
               defined by vocabularies in common use within the same domain.</p>
           </section>
           <section class="ucr">
@@ -3285,20 +3303,21 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       </div>
       <!-- begin of Document API code BP -->
       <div class="practice">
-        <p><span id="documentYourAPI" class="practicelab">Provide your users with information about your API</span></p>
-        <p class="practicedesc">Provide complete information about documentation, maintenance, and contact to the API users</p>
+        <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
+        <p class="practicedesc">Provide complete information on the web about your API. Be sure to update documentation as you add features or make changes.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
-          <p>Developers are the primary consumers of an API and they will need to have access to the API documentation, they need to be able to get in contact with the API owner, and to have information about maintenance, such as change log to show when an new version of the API is released.</p>
+          <p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <!-- <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p> -->
-          <p>The whole set of information related to the API - documentation, contact information, maintenance and so on - should be available on the Web.</p>
-          <p>The API web page should point to the its documentation and should provide mechanism which users could get in contact with API owners.</p>
-          <p>Documentation of the API should to provide a list with the possible calls to the API, it should describe the parameters and expected return of each of the methods.</p>
-          <p>When there are new releases on of the API, it is necessary to have information about the update and its change log.</p>
+          <p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
+          <p>Developers should be able to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return.</p>
+          <p>The API should be self-documenting as well, so that calls return helpful information about errors and usage.</p>
+          <p>Recent changes to the API itself should be readily discoverable by users.</p>
+          <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3512,28 +3531,28 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           long term preservation must use a well established serialisation</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Web data is an abtract data model that can be expressed in
-            different ways (RDF/XML, JSON-LD, ...). Using a well established
+          <p>Web data follows an abtract data model that can be expressed in
+            different ways (RDF/XML, JSON-LD, ...). Using a well-established
             serialisation of this data increases its chances of reuse. </p>
-          <p>Institute doing digital preservation are tasked with monitoring
-            file format obsolescence. Datasets which have been acquired in some
+          <p>Institutes, such as national archives, that are engaged in digital preservation are tasked with monitoring
+            file formats regularly for potential risk of obsolescence. Datasets which have been acquired in some
             format some years ago may have to be converted into another format
             in order to still be usable with more modern software (see
-            [[ROSENTHAL]]). This tasks can be made more challenge, or even
-            impossible, if non standard serialisation formats are used by data
+            [[ROSENTHAL]]). This task can be made more challenging, or even
+            impossible, if non-standard serialisation formats are used by data
             depositors.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible to read and load the dataset into a database
-            even its software is no longer supported.</p>
+          <p>It should be possible to read and load the dataset into a computer for manipulation
+            even if the original software that was used to create it is no longer available or supported.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Give preference to Web data serialisation formats available as open
+          <p>Give preference to non-binary Web data serialisation formats that are available as open
             standards. For instance those provided by the W3C [[FORMATS]]. </p>
           <aside class="example">
-            <p>Those triples are serialised using the Turtle W3C recommendation.
+            <p>Those triples are serialised as RDf using the Turtle W3C recommendation.
               It is a text-based format which is supported by the majority of
               software able to process Web data. This format can thus be trusted
               for preservation.</p>
@@ -3542,9 +3561,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
                  </pre>
-            <p>A custom-made serialisation of the same data such as what follows
-              should be given a negative appreciation towards preserving the
-              dataset.</p>
+            <p>A custom-made serialisation of the same data such as the comma-delimited example that follows
+              is an example of an inappropriate serialisation of RDF and is neither hrlpful nor good practice for preserving the dataset.</p>
             <pre style="" class="highlight">ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
                  </pre>
           </aside>
@@ -3553,9 +3571,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p class="subhead">How to Test</p>
           <!--<p>Try to open the data dump with different
             software.</p> -->
-          <p>Try to dereference the URI of the data dump with Content-Type
-            header according to the format you expect to get, using for example
-            [[cURL]]</p>
+          <p>Check that the dataset can be read by a standard text editor.  Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3564,7 +3580,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <section class="benefits">
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
-            <li>Reuse</li>
+            <li>Long-term availability of accessible data</li>
             <!--              <li>Comprehension</li>
               <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>              <li>Access</li>
               <li>Interoperability</li>              <li>Processability</li>-->
@@ -3576,35 +3592,35 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <div class="practice">
         <p><span id="ResourceStatus" class="practicelab">Update the status of
             identifiers</span></p>
-        <p class="practicedesc">Preserved resources should be linked with their
+        <p class="practicedesc">Preserved resources should be linked through URIs with their
           "live" counterparts</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>URI dereferencing is a primary interface to data on the Web.
-            Linking preserved datasets with the original URI inform the data
-            consumer of the status of these resources.</p>
-          <p>During its life cycle a dataset may undergo several modifications.
+            Linking preserved datasets with the original URI informs the data
+            consumer (which might be a computer programme) that there are other, more recent, versions and facilitates determining the status of these resources.</p>
+          <p>During its life cycle a dataset may undergo several modifications resulting in multiple versions.
             Although URIs assigned to things are not expected to change, the
             description of these resource will evolve over time.
             <!--There are also some new IRIs that will be put into use, some
               other that will become deprecated, and some that will get deleted. -->
             During this evolution, several snapshots could be made available for
-            preservation and access as versions.</p>
+            preservation and accessed as earlier versions of the current dataset.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>A link is maintained between the URI of a resource, the most
             up-to-date description available for it, and preserved descriptions.
-            If the resource does not exist any more the description should say
+            If the dataset resource does not exist any more then the description should say
             so and refer to the last preserved description that was available.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>There is a variety of HTTP status codes that could be put into use
+          <p>There are a variety of HTTP status codes that could be put into use
             to relate the URI with its preserved description. In particular,
             200, 410 and 303 can be used for different scenarios:</p>
           <ul>
-            <li>200 =&gt; there is a new description which contains pointers to
+            <li>200 =&gt; there is a new description which contains pointers to the
               archived description</li>
             <!--              <li>404 =&gt; the resource just died, the URI consumer has to go
                 find an archive to look for it</li> -->
@@ -3618,10 +3634,10 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 some information about it. The description could include a list                of locations having different preserved descriptions over                different times.</li> -->
           </ul>
           <p>In addition to the status codes, HTTP Link headers can also be used
-            to relate resources to preserved descriptions.</p>
+            to relate resources to their preserved descriptions.</p>
           <aside class="example">
-            <p>One approach with link header is to use the Memento protocol to
-              give a link to a timegate providing access to preserved
+            <p>One approach with a link header is to use the Memento protocol to
+              give a link to a timegate providing access to the preserved
               descriptions of the resource:</p>
             <pre class="highlight">curl -I http://example.org/timetable-001
 
@@ -3652,7 +3668,7 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Check that de-referencing the URI of a preserved dataset returns
+          <p>Check that dereferencing the URI of a preserved dataset returns
             information about its current status and availability.</p>
         </section>
         <section class="ucr">

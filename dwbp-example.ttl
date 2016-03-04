@@ -1,0 +1,55 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix :        <http://mycity.example.org/ns#> .
+
+# Basic facts about the dataset
+<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001>
+  a dcat:Dataset;
+  dcterms:title "Bus timetable of MyCity";
+  dcat:keyword "transport","mobility" ,"bus";
+  dcterms:issued "2015-05-05"^^xsd:date;
+  dcterms:modified "2015-05-05"^^xsd:date;
+  dcat:contactPoint <http://example.org/transport-agency/contact>;
+  dcterms:temporal <http://reference.data.gov.uk/id/year/2014>;
+  dcterms:spatial <http://www.geonames.org/3399415>;
+  dcterms:publisher <http://data.mycity.example/transport-agency-mycity>;
+  dcterms:accrualPeriodicity <http://purl.org/linked-data/sdmx/2009/code#freq-A>;
+  dcat:theme :mobility;
+  dcterms:language <http://publications.europa.eu/resource/authority/language/ENG>, <http://publications.europa.eu/resource/authority/language/POR>;
+  dcat:distribution <http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-csv>.
+
+# A mini SKOS concept scheme to cover the themes
+
+:mobility a skos:Concept;
+  skos:inScheme :themes;
+  skos:prefLabel "Mobility".
+
+:themes a skos:ConceptScheme ;
+  skos:prefLabel "A set of domains to classify documents" .
+
+# Facts about the transport agency
+<http://data.mycity.example/transport-agency-mycity> a dcterms:Agent;
+  foaf:name "MyCity Transport Agency".
+
+# The RDF distribution of the timetable
+<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-rdf>
+  a dcat:Distribution;
+  dcterms:title "RDF distribution MyCity_busTimetable dataset.";
+  dcterms:description "RDF distribution of the bus timetable dataset of MyCity.";
+  dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/>;
+  dcat:mediaType "application/rdf+xml";
+  dcat:downloadURL <http://data.mycity.gov/public-transport/road/bus/dataset/timetable.rdf>.
+
+# The CSV distribution of the timetable
+<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-csv>
+  a dcat:Distribution;
+  dcterms:title "CSV distribution MyCity_busTimetable dataset.";
+  dcterms:description "CSV distribution of the bus timetable dataset of MyCity.";
+  dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/>;
+  dcat:mediaType "text/csv";
+  dcat:downloadURL <http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv>.
