@@ -3529,28 +3529,28 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           long term preservation must use a well established serialisation</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Web data is an abtract data model that can be expressed in
-            different ways (RDF/XML, JSON-LD, ...). Using a well established
+          <p>Web data follows an abtract data model that can be expressed in
+            different ways (RDF/XML, JSON-LD, ...). Using a well-established
             serialisation of this data increases its chances of reuse. </p>
-          <p>Institute doing digital preservation are tasked with monitoring
-            file format obsolescence. Datasets which have been acquired in some
+          <p>Institutes, such as national archives, that are engaged in digital preservation are tasked with monitoring
+            file formats regularly for potential risk of obsolescence. Datasets which have been acquired in some
             format some years ago may have to be converted into another format
             in order to still be usable with more modern software (see
-            [[ROSENTHAL]]). This tasks can be made more challenge, or even
-            impossible, if non standard serialisation formats are used by data
+            [[ROSENTHAL]]). This task can be made more challenging, or even
+            impossible, if non-standard serialisation formats are used by data
             depositors.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible to read and load the dataset into a database
-            even its software is no longer supported.</p>
+          <p>It should be possible to read and load the dataset into a computer for manipulation
+            even if the original software that was used to create it is no longer available or supported.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Give preference to Web data serialisation formats available as open
+          <p>Give preference to non-binary Web data serialisation formats that are available as open
             standards. For instance those provided by the W3C [[FORMATS]]. </p>
           <aside class="example">
-            <p>Those triples are serialised using the Turtle W3C recommendation.
+            <p>Those triples are serialised as RDf using the Turtle W3C recommendation.
               It is a text-based format which is supported by the majority of
               software able to process Web data. This format can thus be trusted
               for preservation.</p>
@@ -3559,9 +3559,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
                  </pre>
-            <p>A custom-made serialisation of the same data such as what follows
-              should be given a negative appreciation towards preserving the
-              dataset.</p>
+            <p>A custom-made serialisation of the same data such as the comma-delimited example that follows
+              is an example of an inappropriate serialisation of RDF and is neither hrlpful nor good practice for preserving the dataset.</p>
             <pre style="" class="highlight">ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
                  </pre>
           </aside>
@@ -3570,9 +3569,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           <p class="subhead">How to Test</p>
           <!--<p>Try to open the data dump with different
             software.</p> -->
-          <p>Try to dereference the URI of the data dump with Content-Type
-            header according to the format you expect to get, using for example
-            [[cURL]]</p>
+          <p>Check that the dataset can be read by a standard text editor.  Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3581,7 +3578,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
         <section class="benefits">
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
-            <li>Reuse</li>
+            <li>Long-term availability of accessible data</li>
             <!--              <li>Comprehension</li>
               <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>              <li>Access</li>
               <li>Interoperability</li>              <li>Processability</li>-->
@@ -3593,35 +3590,35 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
       <div class="practice">
         <p><span id="ResourceStatus" class="practicelab">Update the status of
             identifiers</span></p>
-        <p class="practicedesc">Preserved resources should be linked with their
+        <p class="practicedesc">Preserved resources should be linked through URIs with their
           "live" counterparts</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>URI dereferencing is a primary interface to data on the Web.
-            Linking preserved datasets with the original URI inform the data
-            consumer of the status of these resources.</p>
-          <p>During its life cycle a dataset may undergo several modifications.
+            Linking preserved datasets with the original URI informs the data
+            consumer (which might be a computer programme) that there are other, more recent, versions and facilitates determining the status of these resources.</p>
+          <p>During its life cycle a dataset may undergo several modifications resulting in multiple versions.
             Although URIs assigned to things are not expected to change, the
             description of these resource will evolve over time.
             <!--There are also some new IRIs that will be put into use, some
               other that will become deprecated, and some that will get deleted. -->
             During this evolution, several snapshots could be made available for
-            preservation and access as versions.</p>
+            preservation and accessed as earlier versions of the current dataset.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>A link is maintained between the URI of a resource, the most
             up-to-date description available for it, and preserved descriptions.
-            If the resource does not exist any more the description should say
+            If the dataset resource does not exist any more then the description should say
             so and refer to the last preserved description that was available.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>There is a variety of HTTP status codes that could be put into use
+          <p>There are a variety of HTTP status codes that could be put into use
             to relate the URI with its preserved description. In particular,
             200, 410 and 303 can be used for different scenarios:</p>
           <ul>
-            <li>200 =&gt; there is a new description which contains pointers to
+            <li>200 =&gt; there is a new description which contains pointers to the
               archived description</li>
             <!--              <li>404 =&gt; the resource just died, the URI consumer has to go
                 find an archive to look for it</li> -->
@@ -3635,10 +3632,10 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 some information about it. The description could include a list                of locations having different preserved descriptions over                different times.</li> -->
           </ul>
           <p>In addition to the status codes, HTTP Link headers can also be used
-            to relate resources to preserved descriptions.</p>
+            to relate resources to their preserved descriptions.</p>
           <aside class="example">
-            <p>One approach with link header is to use the Memento protocol to
-              give a link to a timegate providing access to preserved
+            <p>One approach with a link header is to use the Memento protocol to
+              give a link to a timegate providing access to the preserved
               descriptions of the resource:</p>
             <pre class="highlight">curl -I http://example.org/timetable-001
 
@@ -3669,7 +3666,7 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Check that de-referencing the URI of a preserved dataset returns
+          <p>Check that dereferencing the URI of a preserved dataset returns
             information about its current status and availability.</p>
         </section>
         <section class="ucr">
