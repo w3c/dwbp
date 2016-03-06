@@ -1739,12 +1739,22 @@ ex:geoDCAT-AP a dcterms:Standard;
 				href="http://www.w3.org/ns/dqv#Dimension">dqv:Dimension</a>
 			and <a
 				href="http://www.w3.org/ns/dqv#D#Metric">dqv:Metric</a>.
-			The goal is not to define a normative list of dimensions and metrics,
-			rather, the section provides a set of examples starting from use
+			The goal of the Data Quality Vocabulary is not to define a normative list of dimensions and metrics.
+		There are already several reference classifications available, which are the result of 
+		a lot of community work. Unifying them here seems both hard and not desirable, as
+		fundamental approaches to quality vary between domains or even applications.
+		This section provides instead a set of examples, starting from use
 			cases included in the <a href="http://www.w3.org/TR/dwbp-ucr/">Use
-				Cases & Requirements document</a>. In particular, the quality dimension proposed in  ISO 25012
-				[[ISOIEC25012]] and Zaveri et al. [[ZaveriEtAl]] are considered as two starting point examples which can be extended and even fully replaced depending on the need of specific application scenarios.
-</p>
+				Cases & Requirements document</a>. In particular, we offer the quality dimension proposed in ISO 25012
+				[[ISOIEC25012]] and Zaveri et al. [[ZaveriEtAl]] as two starting points.
+		Ultimately, implementers will need to choose themselves the approach that fits best their needs.
+		They can extend on these starting points, creating their own refinements of categories and dimensions,
+		and of course their own metrics. They can mix existing approaches &mdash; we show that
+		the proposals from ISO and Zaveri et al. are not completely disjoint.
+		Implementers can also adopt completely different classifications, if existing ones do not
+		fit their specific application scenarios. They should however be aware that relying on existing classifications and metrics
+		increases interoperability, i.e., the chance that human and machine agents can properly understand and exploit their quality assessments.
+	</p>
 
   <!--and from the following sources:
 		</p>
@@ -2206,17 +2216,16 @@ zaveri:interpretability skos:related zaveri:versatility .
 # the statement ex:object skos:related ex:subject is true.
 </pre>
 
-				<p>The dimensions considered by different categorizations can be
-					also related, for example, in the following, some
-					iter-categorization relations between Zaveri Et Al. [[ZaveriEtAl]]
-					and ISO/IEC 25012 [[ISOIEC25012]] are shown, assuming the dimension
-					completeness provided by the two categorizations are equivalent and
-					that the ISO credibility is a specific part of Zaveri Et Al.'s
-					trustworthiness.</p>
+				<p>Dimensions can also be related across different categorizations.
+					For example, in the following, we present two
+					possible links between dimensions from ISO/IEC 25012 [[ISOIEC25012]] 
+					and Zaveri et al. Here we assume that
+					completeness is equivalent across both classifications and 
+					that ISO's credibility is one specific facet of trustworthiness in Zaveri et al. 
+					(see Definition 12 in [[ZaveriEtAl]]). We pencil more such possible relationships in Annex C.</p>
 
 				<pre>
-zaveri:completeness skos:exactMatch iso:completeness.
-
+zaveri:completeness skos:exactMatch iso:completeness .
 zaveri:trustworthiness skos:narrowMatch iso:credibility .
 </pre>
 			</section>
@@ -2225,7 +2234,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 	<section id="ExampleOfMetrics">
 		<h2>Examples of Metrics</h2>
 
-	<p>This section presents examples of metrics inspired by those reviewed in Zaveri Et Al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated.</p>
+	<p>This section presents examples of metrics inspired by those reviewed in Zaveri et al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated. Note that they are not all specific to linked data quality, as some dimensions in Zaveri et al. matches the dimensions of ISO/IEC 25012 (see previous sub-section and Annex).</p>
 	<div class="note">
 	<p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
 	</div>
@@ -2280,14 +2289,12 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 	dqv:expectedDataType xsd:integer 
 	.
 
-
 :noJSONSyntaxError 
 	a dqv:Metric ;
 	skos:definition "It returns the number of syntax errors detected by an JSON validator."@en ;
 	dqv:inDimension zaveri:syntacticValidity; 
 	dqv:expectedDataType xsd:integer 
 	.
-
 
 :populationCompletenessMetric
 	a dqv:Metric ;
@@ -2474,10 +2481,10 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
 			</ul>
 		</section>
 <section id="mapping-ISOZaveri" class="appendix">
-			<h2> Correspondences between Quality Dimensions in ISO/IEC 25012 and Zaveri et al.</h2>
+			<h2>Correspondences between quality dimensions in ISO/IEC 25012 and Zaveri et al.</h2>
 			<p>
-			The dimensions listed in ISO/IEC 25012 and Zaveri et al. are not disjoint. 
-Assuming that  dimensions are expressed as instance of <code>skos:Concept</code>, the following table includes some of the correspondences that can be considered between these two classifications. </p>
+			The dimensions listed in ISO/IEC 25012 [[ISOIEC25012]] and Zaveri et al. [[ZaveriEtAl]] are not disjoint. 
+Assuming that  dimensions are expressed as instances of <code>skos:Concept</code>, the following table includes some of the correspondences that can be considered between these two classifications. </p>
 	<table class="definition"style="width: 100%">
 	<thead>
 				<tr>				
@@ -2503,8 +2510,8 @@ Assuming that  dimensions are expressed as instance of <code>skos:Concept</code>
 					<td>skos:exactMatch</td>
 				</tr>
 				<tr>
-					<td>Currentness</td>
 					<td>Timeliness</td>
+					<td>Currentness</td>
 					<td>skos:exactMatch</td>
 				</tr>
 				<tr>
