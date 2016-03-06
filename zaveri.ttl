@@ -100,7 +100,7 @@ zaveri:completeness
 	.
 
 
-## under Contextual Dimensions
+## Under Contextual Dimensions
 
 zaveri:relevancy	
 	a dqv:Dimension ; 
@@ -160,3 +160,28 @@ zaveri:versatility
 	skos:prefLabel "Versatility"@en ;
 	skos:definition "Versatility refers to the availability of the data in different representations and in an internationalized way."@en
 	.
+
+## Relations between dimensions
+
+zaveri:availability skos:related zaveri:performance ,  
+	zaveri:interlinking .
+
+zaveri:semanticAccuracy skos:related zaveri:timeliness , 
+	zaveri:trustworthiness , zaveri:consistency , 
+	zaveri:syntaticValidity , zaveri:completeness , 
+	zaveri:interlinking . 
+
+zaveri:consistency skos:related zaveri:conciseness , 
+	zaveri:syntaticValidity , zaveri:interoperability .
+
+zaveri:interoperability skos:related zaveri:conciseness , 
+	zaveri:syntaticValidity .
+
+zaveri:conciseness skos:related zaveri:completeness ,
+	 zaveri:representationalConciseness .
+
+zaveri:interpretability skos:related zaveri:versatility .
+
+# Note: skos:related is a symmetric property, hence from every statement
+# ex:subject skos:related ex:object in this example, one can infer that 
+# the statement ex:object skos:related ex:subject is true.
