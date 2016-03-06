@@ -2183,23 +2183,27 @@ zaveri:interlinking
 
 <pre>
 zaveri:availability skos:related zaveri:performance ,  
-	zaveri:semanticAccuracy .
+	zaveri:interlinking .
 
 zaveri:semanticAccuracy skos:related zaveri:timeliness , 
 	zaveri:trustworthiness , zaveri:consistency , 
 	zaveri:syntaticValidity , zaveri:completeness , 
-	zaveri:availability . 
+	zaveri:interlinking . 
 
 zaveri:consistency skos:related zaveri:conciseness , 
 	zaveri:syntaticValidity , zaveri:interoperability .
 
 zaveri:interoperability skos:related zaveri:conciseness , 
-	zaveri:syntaticValidity , zaveri:consistency .
+	zaveri:syntaticValidity .
 
 zaveri:conciseness skos:related zaveri:completeness ,
 	 zaveri:representationalConciseness .
 
 zaveri:interpretability skos:related zaveri:versatility .
+
+# Note: skos:related is a symmetric property, hence from every statement
+# ex:subject skos:related ex:object in this example, one can infer that 
+# the statement ex:object skos:related ex:subject is true.
 </pre>
 
 				<p>The dimensions considered by different categorizations can be
@@ -2483,8 +2487,6 @@ Assuming that  dimensions are expressed as instance of <code>skos:Concept</code>
 				</tr>
 	</thead>
 	<tbody>
-
-
 				<tr>
 					<td>Availability</td>
 					<td>Availability</td>
