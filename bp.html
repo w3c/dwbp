@@ -2409,60 +2409,21 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <!--<p>Consider which data formats potential users of the data are most
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
             <aside class="example">
-              <p> To provide data about the bus timetables John chooses the <a
-
-                  href="http://www.w3.org/TR/tabular-data-model/"> tabular
-                  format </a> and creates a new distribution for timetable-001.
-                To promote interoperability and to help the automatic data
-                processing, John adopts the GTFS standard to describe the data
-                about the bus time tables. According to GTFS John needs to
-                create several csv files, which describe information about bus
-                stops, routes, trips, stop times, bus frequencies as well as
-                information about the starting and ending time of the bus
-                service during the week, the weekend and holidays. As described
-                in the tabular data model, John creates a group of tables to
-                connect the several csv files used to describe the bus
-                timetables. In this case, the csv distribution
-                (timetable-001-csv) of the timetable-001 corresponds to a group
-                of tables as described below.</p>
-              <pre class="highlight">   :timetable-001
+        <p>The Census Team of the Office for Statistics of MyCity is in charge
+          of the publication of data about census. They decided to
+          publish one dataset about usual resident population collected in the 2001 Census.
+A usual resident was generally defined as someone who spent most of their time at a specific address. This dataset shows both the 2001 population, the 1991 population, along with the rate of change, the split of the population between those living in households and those living in communal establishments, the size of the area in hectares, population density and the number of students away from home in the area.</p>
+              <pre class="highlight">   :census-001
        a dcat:Dataset;
-       dcat:distribution :timetable-001-csv;
+       dcat:distribution :census-001-csv;
        .
-   :timetable-001-csv
+   :census-001-csv
        a dcat:Distribution;
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
-       dct:title "CSV distribution of the bus timetable dataset of MyCity."
-       dcat:mediaType "application/ld+json";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
+       dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
+       dcat:mediaType "text/csv";
+       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
-
-    http://example.org/bus_timetables_mycity.json
-    {
-      "@context": "http://www.w3.org/ns/csvw",
-      "tables": [{
-          "url": "https://example.org/stops.csv",
-          "tableSchema": "https://example.org/stops.json"
-      }, {
-          "url": "https://example.org/routes.csv",
-          "tableSchema": "https://example.org/routes.json"
-      }, {
-          "url": "https://example.org/trips.csv",
-          "tableSchema": "https://example.org/trips.json"
-      }, {
-          "url": "https://example.org/stop_times.csv",
-          "tableSchema": "https://example.org/stop_times.json"
-      }, {
-          "url": "https://example.org/frequencies.csv",
-          "tableSchema": "https://example.org/frequencies.json"
-      }, {
-          "url": "https://example.org/calendar.csv",
-          "tableSchema": "https://example.org/calendar.json"
-      }, {
-          "url": "https://example.org/calendar_dates.csv",
-          "tableSchema": "https://example.org/calendar_dates.json"
-      }]
-    }
 </pre> </aside>
           </section>
           <section class="test">
@@ -2517,34 +2478,27 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               make the data available in many formats, but providing at least
               one alternative will greatly increase the usability of the data.</p>
             <aside class="example">
-              <p> In order to reach a larger number of data consumers John
-                decides to provide RDF and XML distributions for the
-                timetable-001. </p>
-              <pre class="highlight">  :timetable-001
+              <p>In order to reach a larger number of data consumers, the Census Team
+                decided to also provide a XML distribution of the usual resident population
+                dataset.</p>
+              <pre class="highlight">  :census-001
        a dcat:Dataset;
-       dcat:distribution :timetable-001-csv;
-       dcat:distribution :timetable-001-rdf;
-       dcat:distribution :timetable-001-xml;
+       dcat:distribution :census-001-csv;
+       dcat:distribution :census-001-xml;
        .
-  :timetable-001-csv
+   :census-001-csv
        a dcat:Distribution;
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
-       dct:title "CSV distribution of the bus timetable dataset of MyCity."
+       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
+       dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
        dcat:mediaType "text/csv";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
-  :timetable-001-rdf
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.rdf&gt;
-       dct:title "RDF distribution of the bus timetable dataset of MyCity."
-       dcat:mediaType "text/rdf";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
-       .
-  :timetable-001-xml
+   :census-001-xml
        a dcat:Distribution;
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.xml&gt;
-       dct:title "XML distribution of the bus timetable dataset of MyCity."
+       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.xml&gt;;
+       dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census.";
        dcat:mediaType "text/xml";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
             </pre>
             </aside>
