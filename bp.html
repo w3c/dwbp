@@ -2478,34 +2478,27 @@ A usual resident was generally defined as someone who spent most of their time a
               make the data available in many formats, but providing at least
               one alternative will greatly increase the usability of the data.</p>
             <aside class="example">
-              <p> In order to reach a larger number of data consumers John
-                decides to provide RDF and XML distributions for the
-                timetable-001. </p>
-              <pre class="highlight">  :timetable-001
+              <p>In order to reach a larger number of data consumers, the Census Team
+                decided to also provide a XML distribution of the usual resident population
+                dataset.</p>
+              <pre class="highlight">  :census-001
        a dcat:Dataset;
-       dcat:distribution :timetable-001-csv;
-       dcat:distribution :timetable-001-rdf;
-       dcat:distribution :timetable-001-xml;
+       dcat:distribution :census-001-csv;
+       dcat:distribution :census-001-xml;
        .
-  :timetable-001-csv
+   :census-001-csv
        a dcat:Distribution;
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.json&gt;
-       dct:title "CSV distribution of the bus timetable dataset of MyCity."
+       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
+       dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
        dcat:mediaType "text/csv";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
-  :timetable-001-rdf
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.rdf&gt;
-       dct:title "RDF distribution of the bus timetable dataset of MyCity."
-       dcat:mediaType "text/rdf";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
-       .
-  :timetable-001-xml
+   :census-001-xml
        a dcat:Distribution;
-       dcat:downloadURL &lt;http://example.org/bus_timetables_mycity.xml&gt;
-       dct:title "XML distribution of the bus timetable dataset of MyCity."
+       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.xml&gt;;
+       dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census.";
        dcat:mediaType "text/xml";
-       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;;
+       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
             </pre>
             </aside>
