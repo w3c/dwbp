@@ -3778,7 +3778,52 @@ HTTP/1.1 200 Ok
             provided according to the vocabulary that is being developed by the
             DWBP working group , i.e., the Dataset Usage Vocabulary [[DUV]].</p>
           <aside class="example">
-            <p>to be done </p>
+            <pre class="highlight">
+    :timetable-001
+      a dcat:Dataset;
+      dct:title "Bus timetable of MyCity";
+      dcat:keyword "transport","mobility" ,"bus";
+      dct:issued "2015-05-05"^^xsd:date';
+      dct:modified "2015-05-05"^^xsd:date';
+      dcat:contactPoint <http://example.org/transport-agency/contact>;
+      dct:temporal <http://reference.data.gov.uk/id/year/2014>;
+      dct:spatial <http://www.geonames.org/3399415>;
+      dct:publisher:transport-agency-mycity ;
+      dct:accrualPeriodicity <http://purl.org/linked-data/sdmx/2009/code#freq-A> ;
+      dcat:theme :mobility;
+      dcat:distribution :timetable-001-csv;
+      .
+
+    :timetable-001-csv
+      a dcat:Distribution;
+      dct:title "CSV distribution MyCity_busTimetable dataset."
+      dct:description "CSV distribution of the bus timetable dataset of MyCity."
+      dcat:mediaType "text/csv";
+      .
+
+    :comment1Content a cnt:ContentAsText ;
+      cnt:chars "This timetable is missing route 3" .
+
+    :comment1
+       a duv:UserFeedback ;
+       oa:hasBody comment1Content ;
+       oa:hasTarget :timetable-001 ;
+       dct:creator :localresident .
+
+    :comment2Content a cnt:ContentAsText ;
+      cnt:chars "Are tab delimited formats also available?" .
+
+    :comment2
+       a duv:UserFeedback ;
+       oa:hasTarget :timetable-001-csv;
+       oa:hasBody comment1Content ;
+       dct:creator :localresident ;
+    .
+
+    :localresident
+       a foaf:Person  ;
+       foaf:Name "Alan Law"  ;
+    .</pre>
           </aside>
         </section>
         <section class="test">
