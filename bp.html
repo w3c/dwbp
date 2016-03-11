@@ -3067,7 +3067,7 @@ A usual resident was generally defined as someone who spent most of their time a
       <!-- begin of BP Content Negotiation -->
       <div class="practice">
         <p><span id="Conneg" class="practicelab">Serving data and resources with
-            different formats </span></p>
+            different formats</span></p>
         <p class="practicedesc">It is recommended to use content negotiation for
           serving data available in multiple formats</p>
         <section class="axioms">
@@ -3080,10 +3080,8 @@ A usual resident was generally defined as someone who spent most of their time a
             mixed with HTML, but it is possible to have a different
             representation with the same structured data, written in Turtle or
             JSON-LD, it is recommended to serve this page using Content
-            Negotiation. </p>
-          <div class="note">
-            <p>This BP will be complemented.</p>
-          </div>
+            Negotiation.</p>
+          <p>A dataset can also be served in different representations, and can be retrieved by using an API or by direct access to the resource URI. In those cases, HTTP Content Negotiation technique can be used.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -3094,22 +3092,23 @@ A usual resident was generally defined as someone who spent most of their time a
           <p class="subhead">Possible Approach to Implementation</p>
           <p>A possible approach to implementation is to configure the web
             server to deal with content negotiation of the requested resource.</p>
-          <ul>
-            <li>http://example.org/profile_info.html - Personal information
-              represented in HTML + RDFa</li>
-            <li>http://example.org/profile_info.json - The same information of
-              the resource but represented in JSON-LD format</li>
-            <li>http://example.org/profile_info.ttl - The same information of
-              the resource but represented in Turtle format</li>
-          </ul>
-          <p>The specif format of the resource's representation can be accessed
+          <p>The specific format of the resource's representation can be accessed
             by the URI or by the Content-type of the HTTP Request.</p>
           <aside class="example">
-            <p>to be done </p>
+            <p>
+              Different representations of the Bus Timetable dataset can be served according to the specified content type of the HTTP Request: <br>
+
+              Using <code>cURL</code> to get the content of <code>http://example.org/bus_timetables_mycity</code> represented in CSV and in JSON-LD format.
+
+              <pre class="highlight">curl -H "Accept: text/csv" http://example.org/bus_timetables_mycity</pre>
+              <pre class="highlight">curl -H "Accept: application/ld+json" http://example.org/bus_timetables_mycity</pre>
+
+            </p>
           </aside>
         </section>
         <section class="test">
-          <p class="subhead">How to Test</p>
+          <p class="subhead">How to test</p>
+          <p>Check the available representations of the resource and try to get them specifying the accepted content on the HTTP Request header.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
