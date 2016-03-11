@@ -440,8 +440,8 @@ pre red { color: red;
           What would be helpful? </div>
         <p>The citation model is largely based on classes, properties, and
           recommended approaches taken from the SPAR Ontologies.&nbsp; The
-          remainder of the model is composed from the Open
-          Annotation vocabulary, Dublin Core, FOAF and by newly introduced DUV
+          remainder of the model is composed from the Open Annotation
+          vocabulary, Dublin Core, FOAF and by newly introduced DUV
           properties.&nbsp; The model is comprised of the following classes:
           dcat:Dataset, dcat:Distribution, biro:BibliographicReference,
           fabio:Expression, cito:CitationAct, oa:Annotation, oa:Motivation,
@@ -456,9 +456,8 @@ pre red { color: red;
         <h3>Usage Model</h3>
         <p> The following classes constitute the Usage Model: dcat:Dataset,
           dcat:Distribution, duv:Usage, duv:UsageTool, foaf:Agent. Properties
-          include: duv:hasDatasetUsage, duv:has:DistributionUsage,
-          duv:hasUsageType, duv:performedBy, duv:performs, duv:refersToDataset,
-          duv:refersToDistribution.&nbsp;&nbsp; </p>
+          include: duv:hasUsage, duv:hasUsageType, duv:performedBy,
+          duv:performs, duv:refersTo.&nbsp;&nbsp; </p>
       </section>
       <section  id="Feedback_Model">
         <h3>Feedback Model</h3>
@@ -466,7 +465,7 @@ pre red { color: red;
           dcat:Distribution, oa:Annotation, duv:UserFeedback,
           dqv:UserQualityFeedback, duv:RatingFeedback, cnt:ContentAsText.
           Properties include: duv:hasRating, oa:hasTarget, oa:hasBody,
-          duv:hasDatasetFeedback, duv:hasDistributionFeedback, oa:motivatedBy,
+          duv:hasFeedback, duv:hasFeedback, oa:motivatedBy,
           cnt:chars.&nbsp;&nbsp; </p>
       </section>
     </section>
@@ -558,8 +557,6 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <div  class="issue">Stability of rev:Feedback class <a  href="http://www.w3.org/2013/dwbp/track/issues/237">
-          Issue-237 </a> </div>
       <section  id="class-userFeedback">
         <h3>Class: UserFeedback</h3>
         <table  class="definition">
@@ -595,16 +592,11 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-      <div  class="issue">A number of properties have been created to
-        accommodate support for dcat:Distribution and dcat:Dataset. To avoid
-        having multiple classes for the domain and range properties were
-        duplicated such as duv:hasDatasetUsage and duv:hasDistributionUsage. <a
-           href="http://www.w3.org/2013/dwbp/track/issues/238"> Issue-238 </a>
-      </div>
+
       <section  id="Properties">
         <h3>Properties</h3>
         <br>
-        Property: chars
+        <h4  aria-level="3"  id="Property:chars">Property: chars</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -791,127 +783,22 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4  aria-level="3"  id="Property:hasdatasetfeedback">Property:
-          hasDatasetFeedback</h4>
+        <h4  aria-level="3"  id="Property:hasfeedback">Property: hasFeedback</h4>
         <table  class="definition">
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th><a  href="#Property:hasdatasetfeedback">duv:hasDatasetFeedback</a></th>
+              <th><a  href="#Property:hasfeedback">duv:hasFeedback</a></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>User feedback associated with dataset</td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>dcat:Dataset</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:UserFeedback</td>
+              <td>User feedback associated with dataset or distribution</td>
             </tr>
             <tr>
               <td>Label</td>
-              <td>has dataset feedback</td>
-            </tr>
-            <tr>
-              <td>rdfs:isDefinedBy</td>
-              <td>http://www.w3.org/ns/duv</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hasdatasetusage">Property:
-          hasDatasetUsage</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hasdatasetusage">duv:hasDatasetUsage</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>Dataset usage guidance or instructions. </td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>dcat:Dataset</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has dataset usage</td>
-            </tr>
-            <tr>
-              <td>rdfs:isDefinedBy</td>
-              <td>http://www.w3.org/ns/duv</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hasdistributionfeedback">Property:
-          hasDistributionFeedback</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hasdistributionfeedback">duv:hasDistributionFeedback</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>User feedback associated with distribution.</td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>dcat:Distribution</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:UserFeedback</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has target</td>
-            </tr>
-            <tr>
-              <td>rdfs:isDefinedBy</td>
-              <td>http://www.w3.org/ns/duv</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hasdistributionusage">Property:
-          hasDistributionUsage</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hasdistributionusage">duv:hasDistributionUsage</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>Distribution usage guidance or instructions. </td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>dcat:Distribution</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has distribution usage</td>
+              <td>has dataset/distribution feedback</td>
             </tr>
             <tr>
               <td>rdfs:isDefinedBy</td>
@@ -968,10 +855,6 @@ pre red { color: red;
                 data. </td>
             </tr>
             <tr>
-              <td  class="prop">Range</td>
-              <td>foaf:Agent</td>
-            </tr>
-            <tr>
               <td>vann:usageNote</td>
               <td>dcat:Dataset (subject) duv:hasProducer (predicate) foaf:Agent
                 (object)<br>
@@ -996,14 +879,6 @@ pre red { color: red;
             <tr>
               <td  class="prop">Definition</td>
               <td>RatingFeedback has rating opinion</td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>RatingFeedback</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>skos:Concept</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1048,6 +923,29 @@ pre red { color: red;
           </tbody>
         </table>
         <br>
+        <h4  aria-level="3"  id="Property:hasusage">Property: hasUsage</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasusage">duv:hasUsage</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Dataset/distribution usage guidance or instructions. </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has dataset/distribution usage</td>
+            </tr>
+            <tr>
+              <td>rdfs:isDefinedBy</td>
+              <td>http://www.w3.org/ns/duv</td>
+            </tr>
+          </tbody>
+        </table>
         <h4  id="Property:hasusagetool"  aria-level="3">Property: hasUsageTool </h4>
         <table  class="definition">
           <thead>
@@ -1060,14 +958,6 @@ pre red { color: red;
             <tr>
               <td  class="prop">Definition</td>
               <td>Dataset or distribution tool usage synopsys </td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:UsageTool</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1139,7 +1029,7 @@ pre red { color: red;
           </tbody>
         </table>
         <br>
-        <h4  id="Property:performedBy">Property: performedBy</h4>
+        <h4  id="Property:performedBy"  aria-level="3">Property: performedBy</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -1153,14 +1043,6 @@ pre red { color: red;
               <td>Usage performed by agent. </td>
             </tr>
             <tr>
-              <td  class="prop">Domain</td>
-              <td>foaf:Agent</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
               <td>Label</td>
               <td>performed by</td>
             </tr>
@@ -1170,6 +1052,7 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
+        <br>
         <h4  id="Property:performs"  aria-level="3">Property: performs</h4>
         <table  class="definition">
           <thead>
@@ -1184,14 +1067,6 @@ pre red { color: red;
               <td>Agent performs usage </td>
             </tr>
             <tr>
-              <td  class="prop">Domain</td>
-              <td>foaf:Agent</td>
-            </tr>
-            <tr>
-              <td  class="prop">Range</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
               <td>Label</td>
               <td>performs</td>
             </tr>
@@ -1201,7 +1076,8 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4  aria-level="3"  id="Property:publicationdate">Property:
+        <br>
+        <h4  id="Property:publicationdate"  aria-level="3">Property:
           publicationDate</h4>
         <table  class="definition">
           <thead>
@@ -1256,23 +1132,18 @@ pre red { color: red;
           </tbody>
         </table>
         <br>
-        <h4  id="Property:referstodataset"  aria-level="3">Property:
-          refersToDataset </h4>
+        <h4  id="Property:refersto"  aria-level="3">Property: refersTo </h4>
         <table  class="definition">
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th><a  href="#Property:referstodataset">duv:refersToDataset</a></th>
+              <th><a  href="#Property:refersto">duv:refersTo</a></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Dataset associated with Usage. </td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>duv:Usage</td>
+              <td>Dataset/distribution associated with Usage. </td>
             </tr>
             <tr>
               <td>rdfs:isDefinedBy</td>
@@ -1287,39 +1158,6 @@ pre red { color: red;
             <tr>
               <td>Label</td>
               <td>refers to dataset</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  id="Property:referstodistribution"  aria-level="3">Property:
-          refersToDistribution </h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:referstodistribution">duv:refersToDistribution</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>Distribution associated with Usage. </td>
-            </tr>
-            <tr>
-              <td  class="prop">Domain</td>
-              <td>duv:Usage</td>
-            </tr>
-            <tr>
-              <td>rdfs:isDefinedBy</td>
-              <td>http://www.w3.org/ns/duv</td>
-            </tr>
-            <tr>
-              <td  class="prop">vann:usageNotes</td>
-              <td> duv:Usage (subject) duv:refersToDistribution (predicate)
-                dcat:Distribution (object) </td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>refers to distribution</td>
             </tr>
           </tbody>
         </table>
@@ -1350,7 +1188,7 @@ pre red { color: red;
           </tbody>
         </table>
         <br>
-        Property: version
+        <h4  id="Property:version"  aria-level="3">Property: version</h4>
         <table  class="definition">
           <thead>
             <tr>
