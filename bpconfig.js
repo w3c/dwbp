@@ -205,8 +205,6 @@ var respecConfig = {
         "publisher":"W3C/Creative Commons",
         "date":"1 May 2008"
        },
-      
-
       "ODRL":{
         "authors" : [ "Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten" ],
         "href" : "https://www.w3.org/community/odrl/model/2.1/",
@@ -215,8 +213,14 @@ var respecConfig = {
         "publisher":"W3C",
         "date" : "5 March 2015",
       },
-
-
+      "ODRL2":{
+        "authors":["Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten"],
+        "href":"http://www.w3.org/community/odrl/two/model/",
+        "title":"ODRL Version 2.0 Core Model",
+        "status":"W3C Community Group Specification",
+        "publisher":"W3C",
+        "date":"24 April 2012"
+       },
       "ODRS":{
         "authors":["Leigh Dodds"],
         "href":"http://schema.theodi.org/odrs/",
