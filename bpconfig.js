@@ -135,18 +135,24 @@ var respecConfig = {
         href: "http://www.w3.org/TR/dwbp-ucr/",
         status: "Note"
       },
-      "DUV" : { 
-	title: "Data on the Web Best Practices: Dataset Usage Vocabulary",
+      "DUV" : {
+        title: "Data on the Web Best Practices: Dataset Usage Vocabulary",
         authors: ["Bernadette Farias Lóscio", "Eric G. Stephan", "Sumit Purohit"],
         href: "http://www.w3.org/TR/vocab-duv/",
         status: "Public Working Draft"
-     },
-     "DQV" : { 
-	title: "Data Quality Vocabulary",
+       },
+      "DQV" : {
+        title: "Data Quality Vocabulary",
         authors: ["Riccardo Albertoni", "Christophe Guéret", "Antoine Isaac","Jeremy Debattista", "Makx Dekkers", "Deirdre Lee"],
         href: "http://www.w3.org/TR/vocab-dqv/",
         status: "Public Working Draft"
-     },
+      },
+      "SDW" : {
+        title: "Spatial Data on the Web Best Practices",
+        authors: ["Jeremy Tandy", "Payam Barnaghi", "Linda van den Brink"],
+        href: "https://www.w3.org/TR/sdw-bp/",
+        status: "Public Working Draft"
+      },
       "RDA" : {
         title: "Research Data Alliance",
         href: "http://rd-alliance.org"
@@ -169,7 +175,7 @@ var respecConfig = {
      "ZAVERI" : {
 	title: "Quality Assessment for Linked Data: A Survey",
 	authors: ["Amrapali Zaveri", "Anisa Rula", "Andrea Maurino", "Ricardo Pietrobon", "Jens Lehmann", "Sören Auer"],
-	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf", 
+	href: "http://www.semantic-web-journal.net/system/files/swj773.pdf",
 	status: "submitted to Semantic Web Journal"
      },
       "RICHARDSON": {
@@ -190,7 +196,7 @@ var respecConfig = {
         "title":"ISO 25964 – the international standard for thesauri and interoperability with other vocabularies",
         "publisher":"ISO/NISO",
         "id":"ISO 25964"
-       }, 
+       },
       "ccREL":{
         "authors":["Hal Abelson","Ben Adida","Mike Linksvayer","Nathan Yergler"],
         "href":"http://www.w3.org/Submission/ccREL/",
@@ -198,7 +204,7 @@ var respecConfig = {
         "status":"W3C Member Submission",
         "publisher":"W3C/Creative Commons",
         "date":"1 May 2008"
-       }, 
+       },
       "ODRL2":{
         "authors":["Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten"],
         "href":"http://www.w3.org/community/odrl/two/model/",
@@ -206,18 +212,18 @@ var respecConfig = {
         "status":"W3C Community Group Specification",
         "publisher":"W3C",
         "date":"24 April 2012"
-       }, 
+       },
       "ODRS":{
         "authors":["Leigh Dodds"],
         "href":"http://schema.theodi.org/odrs/",
         "title":"Open Data Rights Statement Vocabulary",
         "publisher":"The Open Data Institute",
         "date":"29 July 2013"
-       }, 
+       },
       "SCHEMA-ORG":{
         "href":"http://schema.org/",
         "title":"Schema.org"
-       }, 
+       },
       "OAIS":{
         "authors":["ISO/TC 20/SC 13"],
         "href":"http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=57284",
@@ -226,7 +232,7 @@ var respecConfig = {
         "publisher":"ISO",
         "id":"ISO 14721:2012",
         "date":"21 August 2012"
-       }, 
+       },
        "PAV":{
         "authors":["Paolo Ciccarese", "Stian Soiland-Reyes"],
         "href": "http://purl.org/pav/",
@@ -234,14 +240,14 @@ var respecConfig = {
         "date": "28 August 2014"
        },
        "Navathe": {
-       	"authors": ["Ramez Elmasri", "Shamkant B. Navathe"],        
+        "authors": ["Ramez Elmasri", "Shamkant B. Navathe"],
       	"title": "Fundamentals of Database Systems",
         "date": "2010",
         "publisher": "Addison Wesley"
        },
        "Lexvo": {
      	 "title": "Lexvo.org",
-     	 "href":"http://www.lexvo.org/" 
+       "href":"http://www.lexvo.org/"
        },
        "GTFS": {
 	      "title": "General Transit Feed Specification",
