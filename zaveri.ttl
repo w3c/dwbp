@@ -1,0 +1,187 @@
+
+@prefix dqv:        <http://www.w3.org/ns/dqv#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix zaveri: <http://toBeDecided/> .
+
+# Representation of quality categories and dimensions from Amrapali Zaveri, Anisa Rula, Andrea Maurino, Ricardo Pietrobon, Jens Lehmann, Sören Auer: Quality assessment for Linked Data: A Survey. Semantic Web 7(1): 63-93 (2016) https://dx.doi.org/10.3233/SW-150175
+
+# Definition of categories
+
+zaveri:accessibilityDimensions a dqv:Category ; 
+   skos:prefLabel "Accessibility"@en . 
+
+zaveri:intrinsicDimensions a dqv:Category ; 
+   skos:prefLabel "Intrinsic dimensions"@en . 
+
+zaveri:contextualDimensions a dqv:Category ; 
+   skos:prefLabel "Contextual dimensions"@en . 
+
+zaveri:representationalDimensions a dqv:Category ; 
+   skos:prefLabel "Representational Dimensions"@en . 
+
+# Definition of dimensions
+
+## Under Accessibility Dimensions
+
+zaveri:availability
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:accessibilityDimensions ;
+	skos:prefLabel "Availability"@en ;
+	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
+	.
+
+zaveri:licensing
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:accessibilityDimensions  ;
+	skos:prefLabel "Licensing"@en ;
+	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
+	.
+
+zaveri:interlinking
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:accessibilityDimensions ;
+	skos:prefLabel "Consistency"@en ;
+	skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
+	.
+
+zaveri:security
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:accessibilityDimensions ;
+	skos:prefLabel "Security"@en ;
+	skos:definition "Security is the extent to which data is protected against alteration and misuse."@en
+	.
+
+zaveri:performance
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:accessibilityDimensions ;
+	skos:prefLabel "Performance"@en ;
+	skos:definition "Performance refers to the efficiency of a system that binds to a large dataset, that is, the more performant a data source is the more efficiently a system can process data."@en
+	.
+
+
+## Under Intrinsic Dimensions
+
+zaveri:syntacticValidity
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:intrinsicDimensions ;
+	skos:prefLabel "Syntactic validity"@en;
+	skos:definition "Syntactic validity is defined as the degree to which an RDF document conforms to the specification of the serialization format."@en
+	.
+
+zaveri:semanticAccuracy	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:intrinsicDimensions ;
+	skos:prefLabel "Semantic accuracy"@en ;
+	skos:definition "Semantic accuracy is defined as the degree to which data values correctly represent the real world facts."@en
+	.
+
+zaveri:consistency	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:intrinsicDimensions ;
+	skos:prefLabel "Consistency"@en ;
+	skos:definition "Consistency means that a knowledge base is free of (logical/formal) contradictions with respect to particular knowledge representation and inference mechanisms."@en
+	.
+
+zaveri:conciseness	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:intrinsicDimensions ;
+	skos:prefLabel "Conciseness"@en ;
+	skos:definition "Conciseness refers to the minimization of redundancy of entities at the schema and the data level."@en
+	.
+
+zaveri:completeness	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:intrinsicDimensions ;
+	skos:prefLabel "Completeness"@en;
+	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en
+	.
+
+
+## Under Contextual Dimensions
+
+zaveri:relevancy	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:contextualDimensions  ;
+	skos:prefLabel "Relevancy"@en ;
+	skos:definition "Relevancy refers to the provision of information which is in accordance with the task at hand and important to the users’ query."@en
+	.
+
+zaveri:trustworthiness	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:contextualDimensions  ;
+	skos:prefLabel "Trustworthiness"@en ;
+	skos:definition "Trustworthiness is defined as the degree to which the information is accepted to be correct, true, real and credible."@en
+	.
+
+zaveri:understandability	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:contextualDimensions  ;
+	skos:prefLabel "Understandability"@en ;
+	skos:definition "Understandability refers to the ease with which data can be comprehended without ambiguity and be used by a human information consumer."@en
+	.
+
+zaveri:timeliness	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:contextualDimensions  ;
+	skos:prefLabel "Timeliness"@en ;
+	skos:definition "Timeliness measures how up-to-date data is relative to a specific task."@en
+	.
+
+
+## under Representational dimensions
+
+zaveri:representationalConciseness	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:representationalDimensions  ;
+	skos:prefLabel "Representational-conciseness"@en ;
+	skos:definition "Representational-conciseness refers to the representation of the data, which is compact and well formatted on the one hand and clear and complete on the other hand."@en
+	.
+
+zaveri:interoperability	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:representationalDimensions ;
+	skos:prefLabel "Interoperability"@en ;
+	skos:definition "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources."@en
+	.
+
+zaveri:interpretability	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:representationalDimensions  ;
+	skos:prefLabel "Interpretability"@en ;
+	skos:definition "Interpretability refers to technical aspects of the data, that is, whether information is represented using an appropriate notation and whether the machine is able to process the data."@en
+	.
+
+zaveri:versatility	
+	a dqv:Dimension ; 
+	dqv:inCategory zaveri:representationalDimensions  ;
+	skos:prefLabel "Versatility"@en ;
+	skos:definition "Versatility refers to the availability of the data in different representations and in an internationalized way."@en
+	.
+
+## Relations between dimensions
+
+zaveri:availability skos:related zaveri:performance ,  
+	zaveri:interlinking .
+
+zaveri:semanticAccuracy skos:related zaveri:timeliness , 
+	zaveri:trustworthiness , zaveri:consistency , 
+	zaveri:syntaticValidity , zaveri:completeness , 
+	zaveri:interlinking . 
+
+zaveri:consistency skos:related zaveri:conciseness , 
+	zaveri:syntaticValidity , zaveri:interoperability .
+
+zaveri:interoperability skos:related zaveri:conciseness , 
+	zaveri:syntaticValidity .
+
+zaveri:conciseness skos:related zaveri:completeness ,
+	 zaveri:representationalConciseness .
+
+zaveri:interpretability skos:related zaveri:versatility .
+
+# Note: skos:related is a symmetric property, hence from every statement
+# ex:subject skos:related ex:object in this example, one can infer that 
+# the statement ex:object skos:related ex:subject is true.
