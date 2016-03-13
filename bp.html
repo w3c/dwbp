@@ -2971,6 +2971,47 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
       </div>
       <!-- end of BP Bulk Access -->
+      <!-- begin of BP Subsetting-->
+      <div class="practice">
+        <p><span id="BulkAccess" class="practicelab">Enable Data Subsetting </span></p>
+        <p class="practicedesc">Enable users and applications to readily work with subsets of your data.</p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>The web was not designed as a large-file transfer service, so large datasets can be difficult to move from place to place. It can also be inconvenient for users to store a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users.</p>
+        </section>
+        <section class="how">
+          <p class="subhead">Possible Approaches to Implementation</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation.</p>
+          <p>It is also helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+          <aside class="example">
+            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to Test</p>
+          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-GranularityLevels">R-GranularityLevels</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li><li>Linkability</li> 
+            <!--              <li>Comprehension</li>
+                           <li>Discoverability</li>              <li>Trust</li>-->
+            <li>Access</li>
+            <!--              <li>Interoperability</li> -->
+              <li>Processability</li>
+          </ul>
+        </section>
+      </div>
+      <!-- end of BP Subsetting -->
       <!-- begin of Web Standards for APIs -->
       <div class="practice">
         <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
