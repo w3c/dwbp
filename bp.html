@@ -2636,7 +2636,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Using standardized lists of codes other commonly used terms for data
-              and metadata values as much as possible helps avoiding 
+              and metadata values as much as possible helps avoiding
               ambiguity and clashes between these values.</p>
           </section>
           <section class="outcome">
@@ -2652,7 +2652,7 @@ A usual resident was generally defined as someone who spent most of their time a
               clear reference.</p>
             <p>Organizations like the Open Geospatial Consortium (OGC), ISO, W3C, libraries and research data services, etc., provide
               list of codes, terminologies or even Linked Data vocabularies that can be used for this.</p>
-            <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context 
+            <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context
               for the values, so that data consumers can retrieve and exploit the standardized meaning
               of these values. In the context of the Web, using unambiguous, web-based identifiers for standardized values
               is an efficient way to do this.</p>
@@ -2667,7 +2667,7 @@ A usual resident was generally defined as someone who spent most of their time a
 :sensor-001 a prov:Agent ;
     dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
 </pre>
-           <p>(note that real-life data should use more specific classes and properties than the PROV ones for 
+           <p>(note that real-life data should use more specific classes and properties than the PROV ones for
               typing a measurement activity, an instrument and the relationship between these)</p>
             <p>3. Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publish a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:</p>
 <pre style="" class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
@@ -2682,7 +2682,7 @@ A usual resident was generally defined as someone who spent most of their time a
 <pre style="" class="highlight prettyprint prettyprinted">
 0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
 1 - Subway, Metro. Any underground rail system within a metropolitan area.
-2 - Rail. Used for intercity or long-distance travel. 
+2 - Rail. Used for intercity or long-distance travel.
 </pre>
               <p>Note that in a non-linked data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
              Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.
@@ -2696,7 +2696,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>, 
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></p>
           </section>
           <section class="benefits">
@@ -2718,7 +2718,7 @@ A usual resident was generally defined as someone who spent most of their time a
             data and metadata</p>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
             <p class="subhead">Why</p>
-            <p>Use of shared vocabularies captures and facilitates consensus in communities. 
+            <p>Use of shared vocabularies captures and facilitates consensus in communities.
               Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
               redundancies, encouraging reuse of these data. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
@@ -2726,7 +2726,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Datasets and metadata sets are easier to be compared by humans or machines when 
+            <p>Datasets and metadata sets are easier to be compared by humans or machines when
               they use the same vocabulary to describe metadata.</p>
             <p>When two datasets or metadata sets use the same vocabulary, (automatic) processing tools
               designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.</p>
@@ -2737,38 +2737,38 @@ A usual resident was generally defined as someone who spent most of their time a
               Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
             <aside class="example">
-	    <p>1. All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused 
+	    <p>1. All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
               to express data and metadata statements, instead of minting entirely new classes and properties.</p>
-              <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>] 
-              re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its 
-              <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section. 
-              For example, reusing Dublin Core properties like <code>dct:title</code> instead of 
-              creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata 
+              <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>]
+              re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its
+              <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section.
+              For example, reusing Dublin Core properties like <code>dct:title</code> instead of
+              creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata
               to be consumed by any application that can read and manipulate Dublin Core statements.</p>
-              <p>3. In the digital culture sector, the data model for the initiative 
-              <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>) 
-              also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc. 
-              This has facilitated adoption of EDM by Europeana's data providers and helped 
+              <p>3. In the digital culture sector, the data model for the initiative
+              <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>)
+              also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
+              This has facilitated adoption of EDM by Europeana's data providers and helped
               position it as a best practice for similar initiatives in the same sector.
-              For instance, <a href="http://dp.la/info/map/">metadata application profile</a> from the 
-              <a href="http://dp.la">Digital Public Library of America</a> reuses EDM and thus 
-              the various vocabularies that EDM builds on. As a result, large amounts of 
-              digital culture data have become more interoperable within the sector. That data is 
+              For instance, <a href="http://dp.la/info/map/">metadata application profile</a> from the
+              <a href="http://dp.la">Digital Public Library of America</a> reuses EDM and thus
+              the various vocabularies that EDM builds on. As a result, large amounts of
+              digital culture data have become more interoperable within the sector. That data is
               also easier to reuse by consumers from other communities, who are not familiar
               with the traditional models and terminologies used by library, archives and museums.</p>
             </aside>
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="test"><span style="font-weight: bold;">How to Test </span>
-            <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a> 
-              or lists or services mentioned in technology-specific best practices 
-              such as the Best Practices for Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>], 
+            <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a>
+              or lists or services mentioned in technology-specific best practices
+              such as the Best Practices for Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>],
               or the <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1">Core Initial Context for RDFa and JSON-LD</a>,
               check that classes, properties, terms, elements or attributes used to represent a dataset do not replicate those
               defined by vocabularies used for other datasets.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>, 
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
             </p>
             <p class="subhead">Benefits</p>
@@ -2818,13 +2818,13 @@ A usual resident was generally defined as someone who spent most of their time a
             representing attributes of the resources described in a dataset.
             When simpler data models are enough to convey the necessary semantics,
             represent vocabularies using them.</p>
-          <p>Even when a language with rich formal semantics like OWL is used to 
+          <p>Even when a language with rich formal semantics like OWL is used to
             express a vocabulary, it is preferable that this vocabulary has a minimal
             <emph>ontological commitment</emph>, i.e. by featuring only the formal axioms
             that enable inferences and validation checks
             that have been explicitly identified as relevant for the domain or application at hand.
             The more axioms are used to specify a vocabulary, the narrower its usage is;
-            unnecessary axioms unnecessarily constrain the reuse of a vocabulary 
+            unnecessary axioms unnecessarily constrain the reuse of a vocabulary
             across applications.</p>
           <aside class="example">
           <p>1. For expressing simple vocabularies like thesauri or code lists as Linked Data,
@@ -2833,25 +2833,25 @@ A usual resident was generally defined as someone who spent most of their time a
               schemes and code lists</a> are represented and used in the RDF Data Cube
             Recommendation [[VOCAB-DATA-CUBE]].</p>
           <p>2. Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
-            all formal axioms that were suggested for its classes and properties. Often they have been rejected 
-            because their use, while beneficial to many applications, would have created 
+            all formal axioms that were suggested for its classes and properties. Often they have been rejected
+            because their use, while beneficial to many applications, would have created
             formal inconsistencies for the data from other applications, making SKOS not usable at all
             for these. As an example, the property <code>skos:broader</code> was not defined
             as a transitive property, even though it would have fit the way hierarchical links between concepts
             are created for many thesauri [[SKOS-DESIGN]].</p>
-          <p>3. The vocabularies for Data Quality [[DQV]] and Data Usage [[DUV]] created by the W3C Working 
-            Group publishing this document have also sought to minimize the number of formal 
+          <p>3. The vocabularies for Data Quality [[DQV]] and Data Usage [[DUV]] created by the W3C Working
+            Group publishing this document have also sought to minimize the number of formal
             axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
             has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
             resources that are of type <code>dcat:Dataset</code> or <code>dcat:Distribution</code>.
             This allows application designers to employ it for other types of entities, for which
             quality measurements would also be relevant but that were not in the focus of
             the design process for DQV.</p>
-          <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured 
-            data on the web have adopted an informative rather than normative approach for defining 
-            the types of objects these properties can be used with. For instance, the values of the property 
-            <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be 
-            of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the 
+          <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
+            data on the web have adopted an informative rather than normative approach for defining
+            the types of objects these properties can be used with. For instance, the values of the property
+            <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
+            of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
             type <code>CreativeWork</code> but this is not a strict constraint.</p>
           </aside>
         </section>
@@ -3261,9 +3261,6 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
       </div>
       <!-- end of BP Access Up to date -->
-     
-
-
 
       <!-- begin of BP Subsetting-->
       <div class="practice">
@@ -3296,7 +3293,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <section class="benefits">
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
-            <li>Reuse</li><li>Linkability</li> 
+            <li>Reuse</li><li>Linkability</li>
             <!--              <li>Comprehension</li>
                            <li>Discoverability</li>              <li>Trust</li>-->
             <li>Access</li>
@@ -3306,7 +3303,6 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
       </div>
       <!-- end of BP Subsetting -->
-      
       <h4>Data Access APIs</h4>
       <p> In the following, we present best practices related with the creation of APIs to provide data access.</p>
        <!-- begin of Use an API -->
@@ -3428,7 +3424,6 @@ A usual resident was generally defined as someone who spent most of their time a
        <div class="note">This BP will be complemented.</div>
       </div>
       <!-- end of Web Standards for APIs -->
-     
       <!-- begin of Document API code BP -->
       <div class="practice">
         <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
@@ -4067,7 +4062,7 @@ HTTP/1.1 200 Ok
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
             <li>Reuse</li>
-            <li>Comprehension</li><li>Access</li>   
+            <li>Comprehension</li><li>Access</li>
               <!--                                                   <li>Interoperability</li>
             <li>Linkability</li> <li>Processability</li>-->
             <li>Trust</li>
@@ -4517,8 +4512,8 @@ HTTP/1.1 200 Ok
     </section>
     <section id="requirements" class="informative">
       <h2>Use Cases Requirements x Best Practices</h2>
-      <div class="issue"> Each requirement should be listed as an evidence of at least one BP. 
-        We need to review the requirements that are not associated with a BP to check if they are still in the scope of the BP document. 
+      <div class="issue"> Each requirement should be listed as an evidence of at least one BP.
+        We need to review the requirements that are not associated with a BP to check if they are still in the scope of the BP document.
         <a href="https://www.w3.org/2013/dwbp/track/issues/229"> Issue-229 </a> </div>
       <table id="requirementsbpstable" class="bptable">
         <caption>Requirements x Best Practices</caption>
