@@ -436,33 +436,71 @@ pre red { color: red;
         as a way to more easily reference the document.</div>
       <section  id="Citation_Model">
         <h3>Citation Model</h3>
-        <div  class="note">Does the reader more of an orientation to the model?
-          What would be helpful? </div>
-        <p>The citation model is largely based on classes, properties, and
-          recommended approaches taken from the SPAR Ontologies.&nbsp; The
-          remainder of the model is composed from the Open Annotation
-          vocabulary, Dublin Core, FOAF and by newly introduced DUV
-          properties.&nbsp; The model is comprised of the following classes:
-          dcat:Dataset, dcat:Distribution, biro:BibliographicReference,
-          fabio:Expression, cito:CitationAct, oa:Annotation, oa:Motivation,
-          cnt:ContentAsText, skos:Concept, and foaf:Agent. Properties include:
-          frbr:part, frbr:partOf, biro:references, dct:title, pav:version,
-          prism:publicationDate, dct:created, dct:identifier, dct:creator,
-          dct:publisher, duv:hasDistributor, cito:hasCitingEntity,
-          cito:hasCitedEntity, disco:fundedBy, cnt:chars, oa:hasTarget,
-          oa:hasBody.&nbsp;&nbsp;</p>
+        <br>
+        <p>The citation model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
+            R-Citable&nbsp; </a><em> It should be possible to cite data on the
+            Web.</em> The citation model is largely based on classes,
+          properties, and recommended approaches taken from the SPAR
+          Ontologies.&nbsp; The remainder of the model is composed from the Open
+          Annotation vocabulary, Dublin Core, FOAF and by newly introduced DUV
+          properties.&nbsp; </p>
+        <p>The citation model seeks to meet the needs of:</p>
+        <ol>
+          <li>Data publishers who need to provide basic bibliographic reference
+            criteria for dcat:Dataset and dcat:Distributions.&nbsp; To do this,
+            DUV extensions are added to the DCAT model.&nbsp; Classes
+            include:&nbsp; dcat:Dataset, dcat:Distribution, and
+            foaf:Agent.&nbsp; Properties include:&nbsp;&nbsp; dct:title,
+            pav:version, prism:publicationDate, dct:created, dct:identifier,
+            dct:creator, dct:publisher, disco:fundedBy.&nbsp; </li>
+          <li>Data publishers wanting to annotate
+            dcat:Datasets/dcat:Distributions with bibliographic references that
+            provide data additional insights to data consumers.&nbsp; Classes
+            include:&nbsp; dcat:Dataset, dcat:Distribution,
+            biro:BibliographicReference, fabio:Expression.&nbsp; Properties
+            include: biro:BibliographicReference, frbr:part, frbr:partOf,
+            biro:references.</li>
+          <li>Data consumers who want to understand the rationale as to <span  style="font-style: italic;">why</span>
+            a dcat:Dataset and dcat:Distribution is being cited. Classes
+            include: fabio:Expression, cito:CitationAct, oa:Annotation,
+            oa:Motivation, cnt:ContentAsText.&nbsp; Properties include:&nbsp;
+            cito:hasCitingEntity, cito:hasCitedEntity, cnt:chars, oa:hasTarget,
+            oa:hasBody.</li>
+        </ol>
       </section>
       <section  id="Usage_Model">
         <h3>Usage Model</h3>
-        <p> The following classes constitute the Usage Model: dcat:Dataset,
+        <p>The usage model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
+            R-TrackDataUsage&nbsp; </a> <em>It should be possible to track the
+            usage of data.</em>&nbsp; Sharing and tracking data usage can help
+          enhancing the utility of the datasets by providing help describing how
+          the datasets can be used by a consumer.&nbsp; Usage could be
+          considered as enabling <span  style="font-style: italic;">descriptive</span>
+          information provided by the data publisher to help the consumer
+          community make use of datasets and distributions. &nbsp; Based on the
+          use cases, data usage can help provide guidance information about how
+          to use the dataset and tools that can be used with the dataset. &nbsp;
+          As also stipulated by use cases is the need to track usage
+          metrics&nbsp; </p>
+        <p>The following classes constitute the Usage Model: dcat:Dataset,
           dcat:Distribution, duv:Usage, duv:UsageTool, foaf:Agent. Properties
           include: duv:hasUsage, duv:hasUsageType, duv:performedBy,
-          duv:performs, duv:refersTo.&nbsp;&nbsp; </p>
+          duv:performs, duv:refersTo, dct:uri, dct:title, dct:created,
+          pav:version, and rdfs:comment.&nbsp;&nbsp; </p>
       </section>
       <section  id="Feedback_Model">
         <h3>Feedback Model</h3>
-        <p> The following classes constitute the Feedback Model: dcat:Dataset,
-          dcat:Distribution, oa:Annotation, duv:UserFeedback,
+        <p> The feedback model was motivated by UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a><em>&nbsp;
+            Data consumers should have a way of sharing feedback and rating
+            data.&nbsp; </em>User feedback is important to address data quality
+          concerns about published dataset. Different users may have different
+          experience with the same dataset so it is important to capture the
+          context in which data was used and the profile of the user who uses
+          it. R-UsageFeedback should also provide a way for consumers to
+          communicate suggested corrections or advice back to data
+          publisher.&nbsp;&nbsp; </p>
+        <p>The following classes constitute the Feedback Model: dcat:Dataset,
+          dcat:Distribution, oa:Annotation, oa:Motivation, duv:UserFeedback,
           dqv:UserQualityFeedback, duv:RatingFeedback, cnt:ContentAsText.
           Properties include: duv:hasRating, oa:hasTarget, oa:hasBody,
           duv:hasFeedback, duv:hasFeedback, oa:motivatedBy,
@@ -592,7 +630,6 @@ pre red { color: red;
           </tbody>
         </table>
       </section>
-
       <section  id="Properties">
         <h3>Properties</h3>
         <br>
