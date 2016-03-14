@@ -1663,8 +1663,7 @@ Quality is defined as “fitness for use”.  Depending on the concrete applicat
 
 		</section>
 		<section id="ExpressConformanceWithStandard">
-			<h3>Express the conformance of a dataset's metadata with a
-				standard</h3>
+			<h3>Express the conformance of a dataset's metadata with a standard</h3>
 			<p>
 				It is often desirable to indicate that metadata about datasets in a
 				catalogue are compliant with a metadata standard, or an application
@@ -1729,6 +1728,67 @@ ex:geoDCAT-AP a dcterms:Standard;
 				
 			</div>
 
+		</section>
+		<section id="ExpressConformanceWithPolicy">
+			<h3>Express the conformance of a dataset with a quality policy</h3>
+			<p>DQV introduces the class <code>dqv:QualityPolicy</code> to express that a Dataset or Distribution
+			follows a policy or agreement that is chiefly defined by data quality concerns. 
+			DQV does not provide a complete framework for expressing policies.
+			The class <code>dqv:QualityPolicy</code> is rather meant as an anchor point, through which
+			DQV implementers can relate properties and classes of policy-dedicated vocabularies,
+			such as <a href="http://www.w3.org/community/odrl/model/2/">ODRL</a>, to the core
+			elements that define quality of datasets and distributions.</p>
+			
+			<p>The example below specifies that a data provider grants the permission to access
+			a dataset and commits to serve the data with a certain quality, more concretely,
+			99% availability of a SPARQL endpoint (distribution) associated with the dataset.
+			This is expressed in ODRL as an offer with a duty on the service provider
+			that states a constraint defined using a DQV metric (<code>sparqlEndpointUptime</code>), for which measurements
+			have to be greater than a certain percentage (99). The <code>odrl:assigner</code> is the issuer
+			of the policy statement; it is also the assignee of the duty to deliver the
+			distribution as the policy requires it. There is no explicitly mentioned recipient
+			for the policy itself, since this examples is about a generic data access scenario.
+			Note that instances of <code>dqv:QualityPolicy</code> could be instances of
+			the class <code>odrl:Agreement</code>,
+			in which case an odrl:assignee is likely to appear for the policy.
+			</p>
+
+			<pre>
+:serviceProvider a odrl:Party .
+:myDataset a  dcat:Dataset ;
+  dcat:distribution :myDatasetSparqlDistribution ;
+:myDatasetSparqlDistribution a dcat:Distribution .
+
+:policy1 a odrl:Offer, dqv:QualityPolicy ;
+  odrl:permission [
+    a odrl:Permission ;
+    odrl:target :myDataset ;
+    odrl:action odrl:read ;
+    odrl:assigner :serviceProvider;    
+    odrl:duty [
+      a odrl:Duty; 
+      odrl:assignee :serviceProvider;
+      odrl:target :myDatasetSparqlDistribution ;
+      odrl:constraint [
+        a odrl:Constraint ;
+        (TODO: fit here the general 'is based on' property) :sparqlEndpointUptime;
+        odrl:percentage  "99"^^xsd:double ;
+        odrl:operator odrl:gteq
+      ]     
+    ]
+  ]
+</pre>
+			<div class="issue">
+				<p>The expression of constraints in ODRL seems quite unfit with expressing
+			  general constraints on values in RDF graphs, as we would require here.
+			  On the other hand ODRL can be easily extended, and is schedule to undergo refinement
+			  in the context of the W3C <a href="http://www.w3.org/2016/poe/">Permissions & Obligations
+			  Expression Working Group</a>. We hope that in the future a constraint expression language
+			  such as the coming <a href="https://www.w3.org/2013/dwbp/track/issues/202">SHACL</a>
+			  will provide a more appropriate mechanism to be plugged onto the layer of ODRL permissions
+			  and duties.</p>	
+			</div>
+			
 		</section>
 
 	</section>
