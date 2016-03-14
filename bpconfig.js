@@ -83,7 +83,7 @@ var respecConfig = {
     }],
     wg: "Data on the Web Best Practices Working Group",
     wgURI: "http://www.w3.org/2013/dwbp/",
-    wgPublicList: "public-dwbp-wg",
+    wgPublicList: "public-dwbp-comments", // changed from public-dwbp-wg
     wgPatentURI: "http://www.w3.org/2004/01/pp-impl/68239/status",
     inlineCSS: true,
     noIDLIn: true,
