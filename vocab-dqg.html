@@ -186,8 +186,16 @@
 				title : "Finding Quality Issues in SKOS Vocabularies",
 				authors : [ "Christian Mader", "Bernhard Haslhofer",
 						"Antoine Isaac" ],
-				status : "Theory and Practice of Digital Libraries, Lecture Notes in Computer Science, Vol. 7489, pp 222-233, 2012",
+				status : "Theory and Practice of Digital Libraries, Lecture Notes in Computer Science, Vol. 7489, pp 222-233",
+				date : "2012",
 				href : "https://dx.doi.org/10.1007/978-3-642-33290-6_25"
+			},
+			"SHACL" : {
+				title : "Shapes Constraint Language (SHACL)",
+				authors : [ "Holger Knublauch", "Arthur Ryman" ],
+				date : "28 January 2016",
+				status : "W3C Working Draft",
+				href : "http://www.w3.org/TR/2016/WD-shacl-20160128/"
 			}
 
 		}
@@ -1771,28 +1779,22 @@ ex:geoDCAT-AP a dcterms:Standard;
       odrl:target :myDatasetSparqlDistribution ;
       odrl:constraint [
         a odrl:Constraint ;
-        (TODO: fit here the general 'is based on' property) :sparqlEndpointUptime;
+        prov:wasDerivedFrom :sparqlEndpointUptime;
         odrl:percentage  "99"^^xsd:double ;
         odrl:operator odrl:gteq
       ]     
     ]
   ]
 </pre>
-			<div class="issue">
+			<div class="note">
 				<p>The expression of constraints in ODRL seems quite unfit with expressing
 			  general constraints on values in RDF graphs, as we would require here.
-			  On the other hand ODRL can be easily extended, and is schedule to undergo refinement
+			  However, ODRL can be easily extended, and is schedule to undergo refinement
 			  in the context of the W3C <a href="http://www.w3.org/2016/poe/">Permissions & Obligations
-			  Expression Working Group</a>. We hope that in the future a constraint expression language
-			  such as the coming <a href="https://www.w3.org/2013/dwbp/track/issues/202">SHACL</a>
-			  will provide a more appropriate mechanism to be plugged onto the layer of ODRL permissions
-			  and duties.</p>	
-			</div>
-
-			<div class="issue">
-				<p>This example is still pending a resolution on the best property to use
-			  for the general 'is based on' link. See
-			  <a href="https://www.w3.org/2013/dwbp/track/issues/222">Issue-222</a>.</p>	
+			  Expression Working Group</a>. In the future implementers should investigate whether a
+			  general constraint expression language like the coming SHACL [[SHACL]]
+			  provides a more appropriate mechanism to be
+			  used on top of ODRL permissions and duties.</p>	
 			</div>
 			
 		</section>
