@@ -258,6 +258,14 @@ var respecConfig = {
         title: "ISO 639-1: Codes for the Representation of Names of Languages - Part 1: Two-letter codes for languages",
         authors: ["Library of Congress"],
         href: "http://id.loc.gov/vocabulary/iso639-1.html"
+      },
+      "SKOS-DESIGN": {
+        title: "Key Choices in the Design of Simple Knowledge Organization System (SKOS)",
+        authors: ["Tom Baker", "Sean Bechhofer", "Antoine Isaac", "Alistair Miles", "Guus Schreiber", "Ed Summers"],
+        "date": "May 2013",
+        "publisher": "Elsevier",
+	status: "Journal of Web Semanics 20: 35-49",
+        href: "http://dx.doi.org/10.1016/j.websem.2013.05.001"
       }
     }
 };

@@ -2716,16 +2716,15 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
         </div>
       <!-- end of Reuse vocabularies BP -->
-      <!-- begin of Not Over formalize Vocabularies BP -->
+      <!-- begin of Choose the right formalization level BP -->
       <div class="practice">
-        <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
-            the right formalization level</span></p>
+        <p><span id="ChooseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
         <p class="practicedesc">When reusing a vocabulary, a data publisher
           should opt for a level of formal semantics that fit data and
           applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Formal semantics may help one to establish precise specifications
+          <p>Formal semantics help to establish precise specifications
             that support establishing the intended meaning of the vocabulary and
             the performance of complex tasks such as reasoning. On the other
             hand, complex vocabularies require more effort to produce and
@@ -2752,14 +2751,43 @@ A usual resident was generally defined as someone who spent most of their time a
             the predicates for RDF statements, or elements in an XML Schema, as
             opposed to providing simple concepts or codes that are used for
             representing attributes of the resources described in a dataset.
-            When simpler models are enough to convey the necessary semantics,
-            represent vocabularies using them. For instance, for Linked Data,
-            SKOS may be preferred for simple vocabularies as opposed to formal
-            ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
-              schemes and code lists</a> are used in the RDF Data Cube
-            Recommendation [[VOCAB-DATA-CUBE]].</p>
+            When simpler data models are enough to convey the necessary semantics,
+            represent vocabularies using them.</p>
+          <p>Even when a language with rich formal semantics like OWL is used to 
+            express a vocabulary, it is preferable that this vocabulary has a minimal
+            <emph>ontological commitment</emph>, i.e. by featuring only the formal axioms
+            that enable inferences and validation checks
+            that have been explicitly identified as relevant for the domain or application at hand.
+            The more axioms are used to specify a vocabulary, the narrower its usage is;
+            unnecessary axioms unnecessarily constrain the reuse of a vocabulary 
+            across applications.</p>
           <aside class="example">
-            <pre>to be done</pre>
+          <p>1. For expressing simple vocabularies like thesauri or code lists as Linked Data,
+            a simpler data model like SKOS may be preferred over formal
+            ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
+              schemes and code lists</a> are represented and used in the RDF Data Cube
+            Recommendation [[VOCAB-DATA-CUBE]].</p>
+          <p>2. Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
+            all formal axioms that were suggested for its classes and properties. Often they have been rejected 
+            because their use, while beneficial to many applications, would have created 
+            formal inconsistencies for the data from other applications, making SKOS not usable at all
+            for these. As an example, the property <code>skos:broader</code> was not defined
+            as a transitive property, even though it would have fit the way hierarchical links between concepts
+            are created for many thesauri [[SKOS-DESIGN]].</p>
+          <p>3. The vocabularies for Data Quality [[DQV]] and Data Usage [[DUV]] created by the W3C Working 
+            Group publishing this document have also sought to minimize the number of formal 
+            axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
+            has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
+            resources that are of type <code>dcat:Dataset</code> or <code>dcat:Distribution</code>.
+            This allows application designers to employ it for other types of entities, for which
+            quality measurements would also be relevant but that were not in the focus of
+            the design process for DQV.</p>
+          <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured 
+            data on the web have adopted an informative rather than normative approach for defining 
+            the types of objects these properties can be used with. For instance, the values of the property 
+            <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be 
+            of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the 
+            type <code>CreativeWork</code> but this is not a strict constraint.</p>
           </aside>
         </section>
         <section class="test">
@@ -2772,19 +2800,19 @@ A usual resident was generally defined as someone who spent most of their time a
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>,
-            <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>,
             <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>
           </p>
         </section>
         <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <p> to be done.</p>
+            <p class="subhead">Benefits</p>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+              <!--<li>Linkability</li>  <li>Discoverability</li> <li>Trust</li> <li>Access</li> -->
+              <li>Interoperability</li>
+            </ul>
         </section>
-        <div class="issue">The best practice on formalization above (especially
-          sections "Intended outcome" and "How to test") should be re-written in a
-          more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
-      </div>
-      <!-- end of Not Over formalize Vocabularies BP -->
+      <!-- end of Choose the right formalization level BP -->
     </section>
     <!-- end of Data Vocabularies -->
     <!-- begin of Sensitive Data -->
