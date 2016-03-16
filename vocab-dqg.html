@@ -1315,6 +1315,32 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
         oa:motivatedBy dqv:qualityAssessment .
 		</pre>
 		</section>
+
+	<section id="expressQualityQuestion">
+			<h3>Express a question about dataset quality</h3>
+			<p>Let us ask a question about the completeness of the "City of
+				Raleigh Open Government Data" dataset.
+			</p>
+			<pre>
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+        dqv:hasQualityAnnotation :questionQA .
+
+:questionQA  
+	a dqv:UserQualityFeedback ;
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+	oa:hasBody  :textBody ;
+        oa:motivatedBy dqv:qualityAssessment, oa:questioning ;
+	dqv:inDimension :completeness
+	 .
+
+:textBody a cnt:ContentAsText, dctypes:Text ;
+  cnt:chars "Could you please provide information about the completeness of your dataset?";
+  dc:language "en" ; 
+  dc:format "text/plain" 
+  .
+		</pre>
+		</section>
+
 		<section id="ExpressQualSKOS">
 			<h3>Express quality of SKOS concept schemes</h3>
 
