@@ -1642,19 +1642,20 @@ table.bptable caption {
               <p> The example below shows the metadata for timetable-001 with
                 the inclusion of the <strong>versioning</strong> metadata. </p>
               <pre class="highlight">:timetable-001
-  a dcat:Dataset, prov:Entity, version:VersionedThing;
+  a dcat:Dataset;
   dct:title "Bus timetable of MyCity";
-  dcat:keyword "transport","mobility" ,"bus";
+  dcat:keyword "transport","mobility","bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
   prov:wasAttributedTo :john;
-  <strong>pav:version "1.0"; </strong> </pre>
+  <strong>owlversionInfo: "1.0"; </strong>
+  <strong>pav:version "1.0". </strong>
+   </pre>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
@@ -1758,27 +1759,27 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
-                doesn't exist in timetable-001. To keep
+                doesn't exist in timetable-001, which has data about bus stops from MyCity. To keep
                 timetable-001 up to date, a new version of the dataset (timetable-002) was
                 created. Timetable-002 includes all the data from timetable-001
                 plus the data about the new bus stop. The machine readable
                 metadata for timetable-002 is shown below. </p>
               <pre class="highlight">:timetable-002
-       a dcat:Dataset, version:Version;
+       a dcat:Dataset;
        dct:title "Bus timetable of MyCity";
-       dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-06"^^xsd:date';
-       dct:modified "2015-05-06"^^xsd:date';
+       dcat:keyword "transport","mobility","bus";
+       dct:issued "2015-05-06"^^xsd:date;
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+       dct:publisher :transport-agency-mycity;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
        ...
-       <strong>dct:isVersionOf:timetable-001;
-       pav:previousVersion:timetable-001;
-       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street."
+       <strong>dct:isVersionOf :timetable-001;
+       pav:previousVersion: timetable-001;
+       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
+       owl:versionInfo "1.1";
        pav:version "1.1". </strong>
 </pre>
               <p> Versioning metadata for timetable-001 after the creation of
@@ -1797,8 +1798,9 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
        prov:wasAttributedTo:john; -->
        ...
-       <strong>version:currentVersion:timetable-002;
+       <strong>pav:hasCurrentVersion :timetable-002;
        dct:hasVersion :timetable-002;
+       owl:versionInfo "1.0";
        pav:version "1.0". </strong> </pre>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
