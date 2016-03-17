@@ -24,7 +24,7 @@
 		// subtitle   :  "an excellent document",
 
 		// if you wish the publication date to be other than today, set this
-		publishDate : "2016-03-022",
+		publishDate : "2016-03-17",
 		// prEnd:        "2014-01-12",
 		// lcEnd:        "2013-11-26", 
 		// crEnd:        "2013-11-26",
@@ -697,50 +697,6 @@ pre red {
 					</tr>
 				</tbody>
 			</table>
-
-			<section id="dqv:inDimension">
-				<h4>Property: inDimension</h4>
-				<table class="definition">
-					<thead>
-						<tr>
-							<th>RDF Property:</th>
-							<th><a href="#dqv:inDimension">dqv:inDimension</a></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="prop">Definition:</td>
-							<td>Represents the dimension a metric allows a measurement
-								of.</td>
-						</tr>
-						<tr>
-							<td class="prop">Domain:</td>
-							<td><a href="#dqv:Metric">dqv:Metric</a></td>
-						</tr>
-						<tr>
-							<td class="prop">Range:</td>
-							<td><a href="#dqv:Dimension">dqv:Dimension</a></td>
-						</tr>
-						<tr>
-							<td class="prop">Inverse:</td>
-							<td><a href="http://purl.org/eis/vocab/daq#hasMetric">daq:hasMetric</a></td>
-						</tr>
-						<!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
-			    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
-						<tr>
-							<td class="prop">Usage note:</td>
-							<td>Dimensions are meant to systematically organize metrics.
-								The Data Quality Vocabulary defines no specific cardinality
-								constraints for dqv:inDimension, since distinct quality
-								frameworks might have different perspectives over a metric. A
-								metric may therefore be associated to more than one dimension.
-								However, those who define new quality metrics should try to
-								avoid this as much as possible and assign only one dimension to
-								the metrics they define.</td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
 	<section id="dqv:expectedDataType">
 				<h4>Property: expectedDataType</h4>
 	<div class="issue">
@@ -1018,6 +974,51 @@ pre red {
 			</div>
 		</section>
 
+<section id="dqv:inDimension">
+				<h3>Property: inDimension</h3>
+				<table class="definition">
+					<thead>
+						<tr>
+							<th>RDF Property:</th>
+							<th><a href="#dqv:inDimension">dqv:inDimension</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="prop">Definition:</td>
+							<td>Represents the dimensions a  quality metric, quality certificate and quality annotation allows a measurement
+								of.</td>
+						</tr>
+						<tr>
+							<td class="prop">Range:</td>
+							<td><a href="#dqv:Dimension">dqv:Dimension</a></td>
+						</tr>
+						<tr>
+							<td class="prop">Equivalent to:</td>
+							<td>
+                            <pre>
+SubObjectPropertyOf( 
+   ObjectInverseOf( daq:hasMetric )  
+   dqv:inDimension                                     
+)                           </pre>
+						</tr>
+						<!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
+			    <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
+						<tr>
+							<td class="prop">Usage note:</td>
+							<td>Dimensions are meant to systematically organize metrics, quality certificates and quality annotations.  
+								The Data Quality Vocabulary defines no specific cardinality
+								constraints for dqv:inDimension, since distinct quality
+								frameworks might have different perspectives over a metric. A
+								metric may therefore be associated to more than one dimension.
+								However, those who define new quality metrics should try to
+								avoid this as much as possible and assign only one dimension to
+								the metrics they define.  More than one dimension can be indicated for each quality annotation or certificate.</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+        
 		<section id="dqv:hasQualityMeasurement">
 			<h3>Property: Has Quality Measurement</h3>
 			<table class="definition">
