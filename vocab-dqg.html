@@ -1065,7 +1065,7 @@ SubObjectPropertyOf(
 				<tbody>
 					<tr>
 						<td class="prop">Definition:</td>
-						<td>Motivation that must be specied for quality annotations. 
+						<td>Motivation that must be specified for quality annotations. 
 						</td>
 					</tr>
 					<tr>
@@ -1359,7 +1359,32 @@ In order to ease the ex-post alignment of dimensions, metrics and categories dep
   .
 		</pre>
 		</section>
+<section id="expressQualityRanking">
+			<h3>Express that a dataset fits in a quality classification</h3>
+			<p>Let us express a quality classification about the "City of
+				Raleigh Open Government Data" dataset. 
+			</p>
+			<pre>
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+        dqv:hasQualityAnnotation :questionQA .
 
+:questionQA  
+	a dqv:UserQualityFeedback ;
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+	oa:hasBody  :four_stars ; 
+        oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
+	dqv:inDimension :availability
+	 .
+  
+:four_stars
+   a skos:Concept;
+   skos:inScheme :OpenData5Star ;
+   skos:prefLabel "Four stars"@en ;
+   skos:definition "Dataset available on the web with structured machine-readable
+                    non proprietary format. It uses URIs to denote things."@en 
+   .
+		</pre>
+		</section>
 		<section id="ExpressQualSKOS">
 			<h3>Express quality of SKOS concept schemes</h3>
 
