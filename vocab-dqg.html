@@ -1458,9 +1458,7 @@
                     </p> 
                     <pre>
                     
-        :myDataset
-            dqv:hasQualityMeasurement :measurement3
-            .
+       
          
         :myCSVDatasetDistribution
             dqv:hasQualityMeasurement :measurement1
@@ -1469,7 +1467,10 @@
         :mySPARQLDatasetDistribution
             dqv:hasQualityMeasurement :measurement2
             .
-            
+        
+        :myDataset
+            dqv:hasQualityMeasurement :measurement3
+            .
      
         :measurement1 
             a dqv:QualityMeasurement ;
@@ -1487,12 +1488,12 @@
         :measurement3 
             a dqv:QualityMeasurement ;
             dqv:computedOn :myDataset ;
-            dqv:isMeasurementOf :atasetAvailabilityMetric ;
+            dqv:isMeasurementOf :datasetAvailabilityMetric ;
             prov:wasDerivedFrom measurement2, measurement3 ;
             dqv:value "false"^^xsd:boolean
             .
                     </pre>
-                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be  be derived from the result of a quality measurement <code>:measurement2</code></p>
+                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be sderived from the result of a quality measurement <code>:measurement2</code></p>
                     <pre>
         :myDataset
             dqv:hasQualityAnnotation  :myDatasetClassification .
