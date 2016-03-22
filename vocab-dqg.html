@@ -409,15 +409,15 @@
                     distribution.</li>
                 </ul>
                 <p> 
-                  DQV defines quality measures as specific instances of DQV  Quality Measurements  adapting the DAQ quality metrics framework [[DaQ]], [[DaQ-RDFCUBE]]. It relies on quality dimensions and  quality metrics. </p>
+                  DQV defines quality measures as specific instances of Quality Measurements, adapting the daQ quality framework [[DaQ]], [[DaQ-RDFCUBE]]. It relies on quality dimensions and quality metrics. </p>
                      <ul>
-                        <li>A Quality Dimension  (<a href="#dqv:Dimension">dqv:Dimension</a>) is a characteristic of a dataset
+                        <li>A Quality Dimension (<a href="#dqv:Dimension">dqv:Dimension</a>) is a quality-relaed characteristic of a dataset
                             relevant to the consumer (e.g., the availability of a dataset).</li>
-                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension, which is abstract, by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or that of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
                     </ul>
                     <!--p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number
                         of different language tags".</p-->
-                    <p>Besides quality measurements, DQV considers  certificates, standards,   and quality policies   which can as well be organized according to dimensions. Quality metadata (<a href="#dqv:QualityMetadata">dqv:QualityMetadata</a>) groups  together   different  quality information, so that, their provenance can be tracked jointly. </p>
+                    <p>Besides quality measurements, DQV considers certificates, standards, and quality policies, which can also be organized according to dimensions. Quality metadata containers (<a href="#dqv:QualityMetadata">dqv:QualityMetadata</a>) can group together different quality statements, so that their provenance can be tracked jointly.</p>
                 <figure>
                     <a href="images/DataQuality0.2.9.svg"> <img
                         src="images/DataQuality0.2.9.svg" />
@@ -427,24 +427,24 @@
                 </figure>
                 <p>
                     <em>N.B.: "graph containment" refers to the inclusion of quality
-                        statements in (RDF) graphs, e.g. for capturing the provenance of
+                        statements in (RDF) graphs, e.g., for capturing the provenance of
                         quality statements (see later <a
                         href="#DocumentProvenanceQualityMetadata">example</a>)
                     </em>
                 </p>
                 <div class="note">
                     <p>
-                        <a href="#dqv:QualityMetadata">QualityMetadata</a> graph not necessary contains all of quality statements DQV is supporting and it is left to implementers to decide the granularity of containment. If they want not use graph containment they can consider to use their own property to link instances of quality metadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
+                        <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
                     </p>
                 </div>
                 <p> 
-                Quality information can be  derived from other quality information. For example, a quality annotation can be derived from a standard or a quality measurement. Quality measurements can be derived from other measurements. Metrics can be derived from other metrics. A standard can be derived from another standard or a metric. DQV models derivations through the property <a href="https://www.w3.org/TR/prov-o/#wasDerivedFrom">prov:wasDerivedFrom</a> as illustrated in the  diagram below. 
+                Quality information can be  derived from other quality information. For example, a quality annotation can be derived from a standard or a quality measurement. Quality measurements can be derived from other measurements. Metrics can be derived from other metrics. A standard can be built on another standard or a (set of) metrics. DQV models such derivations through the property <a href="https://www.w3.org/TR/prov-o/#wasDerivedFrom">prov:wasDerivedFrom</a> as illustrated in the diagram below. 
                 </p>
                 <figure>
                     <a href="images/wasDerivedFrom2.svg"> <img
                         src="images/wasDerivedFrom2.svg" />
                     </a>
-                    <figcaption>Data model showing how quality metrics and information can be interrelated by the property <a href="https://www.w3.org/TR/prov-o/#wasDerivedFrom">prov:wasDerivedFrom</a>.</figcaption>
+                    <figcaption>Using the property <a href="https://www.w3.org/TR/prov-o/#wasDerivedFrom">prov:wasDerivedFrom</a> to interrelate quality metrics and other quality statements.</figcaption>
                 </figure>
             </section>
 
