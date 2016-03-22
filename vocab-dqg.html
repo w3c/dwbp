@@ -1392,13 +1392,13 @@
                 </section>
 
                 <section id="expressQualityDerivation">
-                    <h3>Express derivation from quality metrics, measurements and  annotations</h3>
-                    <p>  DQV  models derivation with the property <code>prov:wasDerivedFrom</code>. 
-                        For example, the accessability of the dataset <code>:myDataset</code>  can be derived by the accessability of its distributions <code>:myCSVDatasetDistribution</code> and <code>:mySPARQLDatasetDistribution</code>.    
+                    <h3>Express derivation between quality metrics, measurements and annotations</h3>
+                    <p>DQV models derivation with the property <code>prov:wasDerivedFrom</code>. 
+                        For example, the accessability of the dataset <code>:myDataset</code> can be derived from the accessability of its distributions <code>:myCSVDatasetDistribution</code> and <code>:mySPARQLDatasetDistribution</code>.    
                     </p>
 
                     <pre>
-     :myDataset 
+        :myDataset 
             a  dcat:Dataset ;
             dcterms:title "My dataset" ; 
             dcat:distribution :myDatasetDistribution
@@ -1407,19 +1407,19 @@
         :myCSVDatasetDistribution
             a  dcat:Distribution ;
             dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
-                dcterms:title "CSV distribution of dataset" ;
-                dcat:mediaType "text/csv" ;
-                dcat:byteSize "87120"^^xsd:decimal 
+            dcterms:title "CSV distribution of dataset" ;
+            dcat:mediaType "text/csv" ;
+            dcat:byteSize "87120"^^xsd:decimal 
             .
 
         :mySPARQLDatasetDistribution
             a  dcat:Distribution ;
-            dcat:accessURL &lt;http://www.example.org/sparql&gt; ;
-                dcterms:title "SPARQL access to the dataset" ;
-                dcat:mediaType "sparql-results+json"  
+            dcat:accessURL &lt;http://www.example.org/sparql&gt;
+            dcterms:title "SPARQL access to the dataset" ;
+            dcat:mediaType "sparql-results+json"  
             .
 
-            #definition of dimensions and metrics
+        #definition of dimensions and metrics
         :availability
             a dqv:Dimension ;
             skos:prefLabel "Availability"@en ;
@@ -1430,7 +1430,7 @@
 
         :downloadURLAvailabilityMetric 
             a dqv:Metric ;
-            skos:definition "It checks if dcat:downloadURL  is available and  if its value
+            skos:definition "Checks if dcat:downloadURL is available and if its value
             is dereferenceable."@en ;
             dqv:expectedDataType xsd:boolean ;
             dqv:inDimension :availability
@@ -1438,8 +1438,8 @@
 
         :SPARQLAvailabilityMetric 
             a dqv:Metric ;
-            skos:definition "It checks if an URL specified in dcat:accessURL  is available
-            and  if at that URL a  SPARLQ endpoint answers."@en ;
+            skos:definition "Checks if an URL specified in dcat:accessURL is available
+            and if at that URL a SPARQL endpoint is active."@en ;
             dqv:expectedDataType xsd:boolean ;
             dqv:inDimension :availability
             .
@@ -1447,30 +1447,20 @@
          :datasetAvailabilityMetric 
             a dqv:Metric ;
             prov:wasDerivedFrom :downloadURLAvailabilityMetric, SPARQLAvailabilityMetric;
-            skos:definition "It checks the availabitity of the specified
+            skos:definition "Checks the availabitity of the specified
             distributions."@en ;
             dqv:expectedDataType xsd:boolean ;
             dqv:inDimension :availability
-            .
-                </pre>
+            .</pre>
                      <p>
-                    Depending on the specific application context, that derivation can be  kept also at level of the  quality measurements. The <code>measurement3</code> of <code>:myDataset</code> availability  is derived from  <code>:measurement1</code> and <code>:measurement2</code>.
+                    Depending on the specific application context, the expression of this derivation can be kept at level of the quality measurements. In the following the measurement <code>:measurement3</code> of <code>:myDataset</code>'s availability is derived from  <code>:measurement1</code> and <code>:measurement2</code>.
                     </p> 
                     <pre>
-                    
-       
-         
-        :myCSVDatasetDistribution
-            dqv:hasQualityMeasurement :measurement1
-            .
+        :myCSVDatasetDistribution dqv:hasQualityMeasurement :measurement1 .
         
-        :mySPARQLDatasetDistribution
-            dqv:hasQualityMeasurement :measurement2
-            .
+        :mySPARQLDatasetDistribution dqv:hasQualityMeasurement :measurement2 .
         
-        :myDataset
-            dqv:hasQualityMeasurement :measurement3
-            .
+        :myDataset dqv:hasQualityMeasurement :measurement3 .
      
         :measurement1 
             a dqv:QualityMeasurement ;
@@ -1491,21 +1481,20 @@
             dqv:isMeasurementOf :datasetAvailabilityMetric ;
             prov:wasDerivedFrom measurement2, measurement3 ;
             dqv:value "false"^^xsd:boolean
-            .
-                    </pre>
-                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be sderived from the result of a quality measurement <code>:measurement2</code></p>
+            .</pre>
+                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can besderived from the result of a quality measurement <code>:measurement2</code></p>
                     <pre>
         :myDataset
             dqv:hasQualityAnnotation  :myDatasetClassification .
 
         :myDatasetClassification  
             a dqv:UserQualityFeedback ;
-            prov:wasDerivedFrom   :measurement2  ;
+            prov:wasDerivedFrom  :measurement2 ;
             oa:hasTarget :myDataset ;
-            oa:hasBody  :three_stars ; 
+            oa:hasBody :three_stars ; 
             oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
             dqv:inDimension :availability
-             .
+            .
 
         :three_stars
            a skos:Concept;
@@ -1513,8 +1502,7 @@
            skos:prefLabel "three stars"@en ;
            skos:definition "Dataset available on the web with structured machine-readable
                             non proprietary format."@en 
-           .
-                </pre>
+           .</pre>
                 </section>
                 <section id="ExpressQualSKOS">
                     <h3>Express quality of SKOS concept schemes</h3>
