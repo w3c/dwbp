@@ -426,17 +426,10 @@
                         and their relations.</figcaption>
                 </figure>
                 <p>
-                    <em>N.B.: "graph containment" refers to the inclusion of quality
-                        statements in (RDF) graphs, e.g., for capturing the provenance of
-                        quality statements (see later <a
-                        href="#DocumentProvenanceQualityMetadata">example</a>)
+                    <em>
+                        N.B.: "containment" refers to the inclusion of quality statements into "containers", which may or may not be treated as (RDF) graphs (see later <a href="#DocumentProvenanceQualityMetadata">example</a> and the usage note for the class <a href="#dqv:QualityMetadata">dqv:QualityMetadata</a>).
                     </em>
                 </p>
-                <div class="note">
-                    <p>
-                        <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
-                    </p>
-                </div>
                 <p> 
                 Quality information can be  derived from other quality information. For example, a quality annotation can be derived from a standard or a quality measurement. Quality measurements can be derived from other measurements. Metrics can be derived from other metrics. A standard can be built on another standard or a (set of) metrics. DQV models such derivations through the property <a href="https://www.w3.org/TR/prov-o/#wasDerivedFrom">prov:wasDerivedFrom</a> as illustrated in the diagram below. 
                 </p>
@@ -973,6 +966,14 @@
                                 <td class="prop">Subclass of:</td>
                                 <td><a href="http://www.w3.org/2004/03/trix/rdfg-1/Graph">rdfg:Graph</a></td>
                             </tr>
+                             <tr>
+                                <td class="prop">Usage note:</td>
+                                <td>       
+                    <p>
+                        <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
+                    </p> </td>
+                            </tr>
+                             
                         </tbody>
                     </table>
                 </section>
@@ -1482,7 +1483,7 @@
             prov:wasDerivedFrom measurement2, measurement3 ;
             dqv:value "false"^^xsd:boolean
             .</pre>
-                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can besderived from the result of a quality measurement <code>:measurement2</code></p>
+                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be derived from the result of a quality measurement <code>:measurement2</code></p>
                     <pre>
         :myDataset
             dqv:hasQualityAnnotation  :myDatasetClassification .
