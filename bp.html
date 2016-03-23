@@ -3058,129 +3058,7 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
       </div>
       <!-- end of BP Bulk Access -->
-      <!-- begin of BP Subsetting-->
-      <div class="practice">
-        <p><span id="EnableDataSubsetting" class="practicelab">Enable Data Subsetting </span></p>
-        <p class="practicedesc">Enable users and applications to readily work with subsets of your data.</p>
-        <section class="axioms">
-          <p class="subhead">Why</p>
-          <p>The web was not designed as a large-file transfer service, so large datasets can be difficult to move from place to place. It can also be inconvenient for users to store a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
-        </section>
-        <section class="outcome">
-          <p class="subhead">Intended Outcome</p>
-          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users.</p>
-        </section>
-        <section class="how">
-          <p class="subhead">Possible Approaches to Implementation</p>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation.</p>
-          <p>It is also helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
-          <aside class="example">
-            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate.</p>
-          </aside>
-        </section>
-        <section class="test">
-          <p class="subhead">How to Test</p>
-          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
-        </section>
-        <section class="ucr">
-          <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-GranularityLevels">R-GranularityLevels</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
-        </section>
-        <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <ul class="benefitsList">
-            <li>Reuse</li><li>Linkability</li> 
-            <!--              <li>Comprehension</li>
-                           <li>Discoverability</li>              <li>Trust</li>-->
-            <li>Access</li>
-            <!--              <li>Interoperability</li> -->
-              <li>Processability</li>
-          </ul>
-        </section>
-      </div>
-      <!-- end of BP Subsetting -->
-      <!-- begin of Web Standards for APIs -->
-      <div class="practice">
-        <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
-        <p class="practicedesc">When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the Web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. </p>
-        <section class="axioms">
-          <p class="subhead">Why</p>
-          <p>APIs that are built on Web standards leverage the strengths of the Web. For example, using HTTP verbs as methods and URIs that map directly to individual resources helps to avoid tight coupling between requests and responses, making for an API that is easy to maintain and can readily be understood and used by many developers. The statelessness of the Web can be a strength in enabling quick scaling, and using hypermedia enables rich interactions with your API. </p>
-        </section>
-        <section class="outcome">
-          <p class="subhead">Intended Outcome</p>
-          <ul>
-            <li>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </li>
-          </ul>
-        </section>
-        <section class="how">
-          <p class="subhead">Possible Approaches to Implementation</p>
-          <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
-          <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
-          <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
-            <pre>
-{
-  "code": "200",
-  "text": "OK",
-  "data": {
-    "update_time": "2013-01-01T03:00:02Z",
-    "route_id": "52",
-    "route_name" "Lexington South"
-    "route_description": "Lexington corridor south of Market",
-    "route_type": "3",
-  },
-  "links": [
-    {
-      "href": "https://api.transit.mycity.org/v2/routes/52",
-      "rel": "self",
-      "type": "application/json",
-      "method": "GET"
-    },
-    {
-      "href": "https://api.transit.mycity.org/v2/routes",
-      "rel": "collection",
-      "type": "application/json",
-      "method": "GET"
-    }
-    {
-      "href": "https://api.transit.mycity.org//v2/schedules/52",
-      "rel": "described-by",
-      "type": "application/json",
-      "method": "GET"
-    },
-    {
-      "href": "https://api.transit.mycity.org//v2/maps/52",
-      "rel": "described-by",
-      "type": "application/json",
-      "method": "GET"
-    }
-  ]
-}
-            </pre>
-          </aside>
-        </section>
-        <section class="test">
-          <p class="subhead">How to Test</p>
-          <p>Check that the service avoids using http as a tunnel for calls to custom methods, and check that URIs do not contain method names.</p>
-        </section>
-        <section class="ucr">
-          <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
-        </section>
-         <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <ul class="benefitsList">
-            <li>Reuse</li><li>Linkability</li><li>Interoperability</li>
-            <!--              <li>Comprehension</li>
-                                         <li>Trust</li>-->
-            <li>Discoverability</li> <li>Access</li>
-            <li>Processability</li>
-          </ul>
-        </section>
-       <div class="note">This BP will be complemented.</div>
-      </div>
-      <!-- end of Web Standards for APIs -->
-      <!-- begin of BP Content Negotiation -->
+ <!-- begin of BP Content Negotiation -->
       <div class="practice">
         <p><span id="Conneg" class="practicelab">Serving data and resources with
             different formats</span></p>
@@ -3377,10 +3255,174 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
       </div>
       <!-- end of BP Access Up to date -->
-      <div class="issue">
-        <p> To debate if the goal should be to adhere to a published schedule
-          for updates. <a href="http://www.w3.org/2013/dwbp/track/issues/195">Issue-195</a></p>
+     
+
+
+
+      <!-- begin of BP Subsetting-->
+      <div class="practice">
+        <p><span id="EnableDataSubsetting" class="practicelab">Enable Data Subsetting </span></p>
+        <p class="practicedesc">Enable users and applications to readily work with subsets of your data.</p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>The web was not designed as a large-file transfer service, so large datasets can be difficult to move from place to place. It can also be inconvenient for users to store a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users.</p>
+        </section>
+        <section class="how">
+          <p class="subhead">Possible Approaches to Implementation</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation.</p>
+          <p>It is also helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+          <aside class="example">
+            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to Test</p>
+          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-GranularityLevels">R-GranularityLevels</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li><li>Linkability</li> 
+            <!--              <li>Comprehension</li>
+                           <li>Discoverability</li>              <li>Trust</li>-->
+            <li>Access</li>
+            <!--              <li>Interoperability</li> -->
+              <li>Processability</li>
+          </ul>
+        </section>
       </div>
+      <!-- end of BP Subsetting -->
+      
+      <h4>Data Access APIs</h4>
+      <p> In the following, we present best practices related with the creation of APIs to provide data access.</p>
+       <!-- begin of Use an API -->
+      <div class="practice">
+        <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
+        <p class="practicedesc">Offer an API to serve data if you have the resources to do so.</p>
+        <!-- <p class="practicedesc">When there are resources available, you <em class="rfc2119">should</em> offer an API</p> -->
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be the best option for publishing your data.</p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p>
+        </section>
+        <section class="how">
+          <p class="subhead">Possible Approach to Implementation</p>
+          <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
+          <aside class="example"><p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p></aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to Test</p>
+          <p>It should be possible for Web applications to obtain specific data by querying a programmatic interface. Use a test client to simulate calls and responses, making sure that the performance is acceptable.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUpToDate</a></p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li>  <li>Processability</li><li>Interoperability</li> <li>Access</li>
+
+            <!--              <li>Comprehension</li>
+              <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>-->
+          </ul>
+        </section>
+        <div class="issue">To review the BP "Use an API" and possibly rewrite <em>Possible Approach to Impelmentation</em> section.</div>
+      </div>
+      <!-- end of Use an API -->
+      <!-- begin of Web Standards for APIs -->
+      <div class="practice">
+        <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
+        <p class="practicedesc">When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the Web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. </p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>APIs that are built on Web standards leverage the strengths of the Web. For example, using HTTP verbs as methods and URIs that map directly to individual resources helps to avoid tight coupling between requests and responses, making for an API that is easy to maintain and can readily be understood and used by many developers. The statelessness of the Web can be a strength in enabling quick scaling, and using hypermedia enables rich interactions with your API. </p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <ul>
+            <li>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </li>
+          </ul>
+        </section>
+        <section class="how">
+          <p class="subhead">Possible Approaches to Implementation</p>
+          <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
+          <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
+          <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
+            <pre>
+{
+  "code": "200",
+  "text": "OK",
+  "data": {
+    "update_time": "2013-01-01T03:00:02Z",
+    "route_id": "52",
+    "route_name" "Lexington South"
+    "route_description": "Lexington corridor south of Market",
+    "route_type": "3",
+  },
+  "links": [
+    {
+      "href": "https://api.transit.mycity.org/v2/routes/52",
+      "rel": "self",
+      "type": "application/json",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.transit.mycity.org/v2/routes",
+      "rel": "collection",
+      "type": "application/json",
+      "method": "GET"
+    }
+    {
+      "href": "https://api.transit.mycity.org//v2/schedules/52",
+      "rel": "described-by",
+      "type": "application/json",
+      "method": "GET"
+    },
+    {
+      "href": "https://api.transit.mycity.org//v2/maps/52",
+      "rel": "described-by",
+      "type": "application/json",
+      "method": "GET"
+    }
+  ]
+}
+            </pre>
+          </aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to Test</p>
+          <p>Check that the service avoids using http as a tunnel for calls to custom methods, and check that URIs do not contain method names.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></p>
+        </section>
+         <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li><li>Linkability</li><li>Interoperability</li>
+            <!--              <li>Comprehension</li>
+                                         <li>Trust</li>-->
+            <li>Discoverability</li> <li>Access</li>
+            <li>Processability</li>
+          </ul>
+        </section>
+       <div class="note">This BP will be complemented.</div>
+      </div>
+      <!-- end of Web Standards for APIs -->
+     
       <!-- begin of Document API code BP -->
       <div class="practice">
         <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
@@ -3426,44 +3468,7 @@ A usual resident was generally defined as someone who spent most of their time a
        <div class="note">This BP will be complemented.</div>
       </div>
       <!-- end of Document API code BP -->
-      <!-- begin of Use an API -->
-      <div class="practice">
-        <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
-        <p class="practicedesc">Offer an API to serve data if you have the resources to do so.</p>
-        <!-- <p class="practicedesc">When there are resources available, you <em class="rfc2119">should</em> offer an API</p> -->
-        <section class="axioms">
-          <p class="subhead">Why</p>
-          <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be the best option for publishing your data.</p>
-        </section>
-        <section class="outcome">
-          <p class="subhead">Intended Outcome</p>
-          <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p>
-        </section>
-        <section class="how">
-          <p class="subhead">Possible Approach to Implementation</p>
-          <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
-          <aside class="example"><p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p></aside>
-        </section>
-        <section class="test">
-          <p class="subhead">How to Test</p>
-          <p>It should be possible for Web applications to obtain specific data by querying a programmatic interface. Use a test client to simulate calls and responses, making sure that the performance is acceptable.</p>
-        </section>
-        <section class="ucr">
-          <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUpToDate</a></p>
-        </section>
-        <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <ul class="benefitsList">
-            <li>Reuse</li>  <li>Processability</li><li>Interoperability</li> <li>Access</li>
-
-            <!--              <li>Comprehension</li>
-              <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>-->
-          </ul>
-        </section>
-        <div class="issue">To review the BP "Use an API" and possibly rewrite <em>Possible Approach to Impelmentation</em> section.</div>
-      </div>
-      <!-- end of Use an API -->
+     
     </section>
     <!-- end of Data Access -->
     <!-- begin of Data Preservation -->
