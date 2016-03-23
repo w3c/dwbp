@@ -911,10 +911,11 @@
                             <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
                             <tr>
                                 <td class="prop">Equivalent class</td>
-                                <td><pre>EquivalentClasses(
-           dqv:QualityAnnotation 
-           ObjectHasValue( oa:motivatedBy dqv:qualityAssessment )  	
-        )</pre></td>
+                                <td><pre class="highlight">
+EquivalentClasses(
+    dqv:QualityAnnotation 
+    ObjectHasValue( oa:motivatedBy dqv:qualityAssessment )  	
+)</pre></td>
                             </tr>
                         </tbody>
                     </table>
@@ -999,11 +1000,11 @@
                                 <tr>
                                     <td class="prop">Equivalent to:</td>
                                     <td>
-                                    <pre>
-        SubObjectPropertyOf( 
-           ObjectInverseOf( daq:hasMetric )  
-           dqv:inDimension                                     
-        )                           </pre>
+                                    <pre class="highlight">
+SubObjectPropertyOf( 
+   ObjectInverseOf( daq:hasMetric )  
+   dqv:inDimension                                     
+)                           </pre>
                                 </tr>
                                 <!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
                         <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
@@ -1135,21 +1136,20 @@
                     , and its distribution
                     <code>myDatasetDistribution</code>
                     ,
-                    <pre>
-        :myDataset 
-            a  dcat:Dataset ;
-            dcterms:title "My dataset" ; 
-            dcat:distribution :myDatasetDistribution
-            .
+                    <pre class="highlight">
+:myDataset 
+    a  dcat:Dataset ;
+    dcterms:title "My dataset" ; 
+    dcat:distribution :myDatasetDistribution
+    .
 
-        :myDatasetDistribution
-            a  dcat:Distribution ;
-            dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
-                dcterms:title "CSV distribution of dataset" ;
-                dcat:mediaType "text/csv" ;
-                dcat:byteSize "87120"^^xsd:decimal 
-            .
-        </pre>
+:myDatasetDistribution
+    a  dcat:Distribution ;
+    dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
+    dcterms:title "CSV distribution of dataset" ;
+    dcat:mediaType "text/csv" ;
+    dcat:byteSize "87120"^^xsd:decimal 
+    .</pre>
 
                     <p id="twoCSV">
                         An automated quality checker has provided a quality assessment with
@@ -1158,56 +1158,59 @@
                         .
                     </p>
 
-                    <pre>
-        :myDatasetDistribution
-            dqv:hasQualityMeasurement :measurement1, :measurement2
-            .
+                    <pre class="highlight">
+:myDatasetDistribution
+    dqv:hasQualityMeasurement :measurement1, :measurement2
+    .
 
-        :measurement1 
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :myDatasetDistribution ;
-            dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
-            dqv:value "true"^^xsd:boolean 
-            .
+:measurement1 
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myDatasetDistribution ;
+    dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+    dqv:value "true"^^xsd:boolean 
+    .
 
-        :measurement2
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :myDatasetDistribution ;
-            dqv:isMeasurementOf :csvCompletenessMetric ;
-            dqv:value "0.5"^^xsd:double 
-            .
+:measurement2
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myDatasetDistribution ;
+    dqv:isMeasurementOf :csvCompletenessMetric ;
+    dqv:value "0.5"^^xsd:double 
+    .
 
-        #definition of dimensions and metrics
-        :availability
-            a dqv:Dimension ;
-            skos:prefLabel "Availability"@en ;
-            skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ; 
-            dqv:inCategory :accessibility
-            .
+#definition of dimensions and metrics
+:availability
+    a dqv:Dimension ;
+    skos:prefLabel "Availability"@en ;
+    skos:definition "Availability of a dataset is the extent to which data (or some
+    portion of it) is present, obtainable and ready for use."@en ; 
+    dqv:inCategory :accessibility
+    .
 
-        :completeness
-            a dqv:Dimension ;
-            skos:prefLabel "Completeness"@en ;
-            skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
-            dqv:inCategory :intrinsicDimensions
-            .
+:completeness
+    a dqv:Dimension ;
+    skos:prefLabel "Completeness"@en ;
+    skos:definition "Completeness refers to the degree to which all required information
+    is present in a particular dataset."@en ;
+    dqv:inCategory :intrinsicDimensions
+    .
 
 
-        :downloadURLAvailabilityMetric 
-            a dqv:Metric ;
-            skos:definition "It checks if dcat:downloadURL  is available and  if its value is dereferenceable."@en ;
-            dqv:expectedDataType xsd:boolean ;
-            dqv:inDimension :availability
-            .
+:downloadURLAvailabilityMetric 
+    a dqv:Metric ;
+    skos:definition "It checks if dcat:downloadURL  is available and  if its value is
+    dereferenceable."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
 
-        :csvCompletenessMetric
-            a dqv:Metric ; 	
-            skos:definition "Ratio between the number of objects represented in the csv and the  number of  objects expected to be represented according to the declared dataset scope."@en ;
-            dqv:expectedDataType xsd:double ;
-            dqv:inDimension :completeness
-            .
-
-        </pre>
+:csvCompletenessMetric
+    a dqv:Metric ; 	
+    skos:definition "Ratio between the number of objects represented in the csv and the 
+    number of  objects expected to be represented according to the declared dataset
+    scope."@en ;
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension :completeness
+    .</pre>
                     <p>Categories and dimensions might be more extensively defined,
                         see in the section 'Dimensions and metrics hints' for further
                         examples. Any quality framework is free to define its own dimensions
@@ -1224,25 +1227,11 @@
                             (<a href="https://www.w3.org/2013/dwbp/track/issues/204">Issue-204</a>)
                         </p>
                     </div>
-
-                    <div class="issue">
-                        <p>
-                            Should we represent dimensions and categories as instances of <a
-                                href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>?
-                            This would allow publishers of quality framework to express
-                            (hierarchical) relations between dimensions or categories. This
-                            could also enable to align with quality-focused categorizations
-                            less focused on metrics. Including the <a
-                                href="http://w3c.github.io/dwbp/bp.html">DWBP Best Practices</a>
-                            dimensions, or even the parts of DQV about annotations. (<a
-                                href="https://www.w3.org/2013/dwbp/track/issues/205">Issue-205</a>)
-                        </p>
-                    </div>
                     <!-- Commented part about using DQV classes and properties as abstract constructs
         <p style="color:red">
         In order to ease the ex-post alignment of dimensions, metrics and categories deployed in independently developed quality framework, dqv:Metric, dqv:Dimension, dqv:Category can be considered as a sort of "abstract classes". For example, in the previous example, the part concerning the definition of dimension and metrics can be replaced as shown below. 
         </p>
-        <pre>
+        <pre class="highlight">
         #definition of  dimensions and metrics
 
         :CCsvConsistencyMetric rdfs:subClassOf  dqv:Metric .
@@ -1293,45 +1282,49 @@
                         graph.
                     </p>
 
-                    <pre>
-        # myQualityMatadata is a graph 
+                    <pre class="highlight">
+# myQualityMatadata is a graph 
 
-        :myQualityMetadata {
+:myQualityMetadata {
 
-        :myDatasetDistribution
-            dqv:hasQualityMeasurement :measurement1, :measurement2
-            .
+:myDatasetDistribution
+    dqv:hasQualityMeasurement :measurement1, :measurement2
+    .
 
-        <span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
+<span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
 
-        }
+}
 
-        # myQualityMetadata has been created by: qualityChecker and it is the result of the :qualityChecking activity 
-        :myQualityMetadata 
-            a dqv:QualityMetadata ;
-            prov:wasAttributedTo :qualityChecker ;
-            prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
-            prov:wasGeneratedBy :qualityChecking 
-            .
+# myQualityMetadata has been created by: qualityChecker and it is the result of the
+# :qualityChecking activity 
 
-        # qualityChecker is a service computing some quality metrics 	
-        :qualityChecker
-            a prov:SoftwareAgent ;   
-            rdfs:label "a quality assessment service"^^xsd:string
-            <span class="red"># We should probably suggest to add more info about the services</span>
-            .
+:myQualityMetadata 
+    a dqv:QualityMetadata ;
+    prov:wasAttributedTo :qualityChecker ;
+    prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+    prov:wasGeneratedBy :qualityChecking 
+    .
 
-        # the qualityChecking is the activity that has generated myQualityMetadata starting from  MyDatasetDistribution    
-        :qualityChecking
-            a prov:Activity;
-            rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
-            prov:wasAssociatedWith :qualityChecker;
-            prov:used              :myDatasetDistribution;
-            prov:generated         :myQualityMetadata;
-            prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
-            prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
-            . 
-        </pre>
+# qualityChecker is a service computing some quality metrics 	
+
+:qualityChecker
+    a prov:SoftwareAgent ;   
+    rdfs:label "a quality assessment service"^^xsd:string
+    <span class="red"># We should probably suggest to add more info about the services</span>
+    .
+
+# the qualityChecking is the activity that has generated myQualityMetadata starting from 
+# MyDatasetDistribution
+
+:qualityChecking
+    a prov:Activity;
+    rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
+    prov:wasAssociatedWith :qualityChecker;
+    prov:used              :myDatasetDistribution;
+    prov:generated         :myQualityMetadata;
+    prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
+    prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
+    .  </pre>
                 </section>
                 <section id="DocumentProvSingleQM">
                     <h4>Document the provenance of single quality measurement</h4>
@@ -1361,16 +1354,16 @@
                         Raleigh Open Government Data" dataset is available at the URL
                         &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;.
                     </p>
-                    <pre>
-        &lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
-                dqv:hasQualityAnnotation :myDatasetQA .
+                    <pre class="highlight">
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+    dqv:hasQualityAnnotation :myDatasetQA .
 
-        :myDatasetQA 
-            a dqv:QualityCertificate ;
-            oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
-            oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt; ;
-                oa:motivatedBy dqv:qualityAssessment .
-                </pre>
+:myDatasetQA 
+    a dqv:QualityCertificate ;
+    oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+    oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt; ;
+    oa:motivatedBy dqv:qualityAssessment 
+    .</pre>
                 </section>
 
             <section id="expressQualityQuestion">
@@ -1378,25 +1371,24 @@
                     <p>Let us ask a question about the completeness of the "City of
                         Raleigh Open Government Data" dataset.
                     </p>
-                    <pre>
-        &lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
-                dqv:hasQualityAnnotation :questionQA .
+                    <pre class="highlight">
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+        dqv:hasQualityAnnotation :questionQA .
 
-        :questionQA  
-            a dqv:UserQualityFeedback ;
-            oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
-            oa:hasBody  :textBody ;
-                oa:motivatedBy dqv:qualityAssessment, oa:questioning ;
-            dqv:inDimension :completeness
-             .
+:questionQA  
+    a dqv:UserQualityFeedback ;
+    oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+    oa:hasBody  :textBody ;
+    oa:motivatedBy dqv:qualityAssessment, oa:questioning ;
+    dqv:inDimension :completeness
+    .
 
-        :textBody a cnt:ContentAsText, dctypes:Text ;
-          cnt:chars "Could you please provide information about the completeness of your
-          dataset?";
-          dc:language "en" ; 
-          dc:format "text/plain" 
-          .
-                </pre>
+:textBody a cnt:ContentAsText, dctypes:Text ;
+    cnt:chars "Could you please provide information about the completeness of your
+    dataset?" ;
+    dc:language "en" ; 
+    dc:format "text/plain" 
+    . </pre>
                 </section>
         <section id="expressQualityClassification">
                     <h3>Express that a dataset fits in a quality classification</h3>
@@ -1404,25 +1396,25 @@
                         Raleigh Open Government Data" dataset is classified as a four stars
                         dataset against the 5 Stars linked open data rating system.
                     </p>
-                    <pre>
-        &lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
-                dqv:hasQualityAnnotation :classificationQA .
+                    <pre class="highlight">
+&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;
+        dqv:hasQualityAnnotation :classificationQA .
 
-        :classificationQA  
-            a dqv:UserQualityFeedback ;
-            oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
-            oa:hasBody  :four_stars ; 
-                oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
-            dqv:inDimension :availability
-             .
+:classificationQA  
+    a dqv:UserQualityFeedback ;
+    oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+    oa:hasBody  :four_stars ; 
+    oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
+    dqv:inDimension :availability
+     .
 
-        :four_stars
-           a skos:Concept;
-           skos:inScheme :OpenData5Star ;
-           skos:prefLabel "Four stars"@en ;
-           skos:definition "Dataset available on the web with structured machine-readable
-                            non proprietary format. It uses URIs to denote things."@en 
-           .
+:four_stars
+   a skos:Concept;
+   skos:inScheme :OpenData5Star ;
+   skos:prefLabel "Four stars"@en ;
+   skos:definition "Dataset available on the web with structured machine-readable non
+   proprietary format. It uses URIs to denote things."@en 
+   .
                 </pre>
                 </section>
 
@@ -1432,112 +1424,115 @@
                         For example, the accessability of the dataset <code>:myDataset</code> can be derived from the accessability of its distributions <code>:myCSVDatasetDistribution</code> and <code>:mySPARQLDatasetDistribution</code>.    
                     </p>
 
-                    <pre>
-        :myDataset 
-            a  dcat:Dataset ;
-            dcterms:title "My dataset" ; 
-            dcat:distribution :myDatasetDistribution
-            .
+                    <pre  class="highlight">
+:myDataset 
+    a  dcat:Dataset ;
+    dcterms:title "My dataset" ; 
+    dcat:distribution :myDatasetDistribution
+    .
 
-        :myCSVDatasetDistribution
-            a  dcat:Distribution ;
-            dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
-            dcterms:title "CSV distribution of dataset" ;
-            dcat:mediaType "text/csv" ;
-            dcat:byteSize "87120"^^xsd:decimal 
-            .
+:myCSVDatasetDistribution
+    a  dcat:Distribution ;
+    dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
+    dcterms:title "CSV distribution of dataset" ;
+    dcat:mediaType "text/csv" ;
+    dcat:byteSize "87120"^^xsd:decimal 
+    .
 
-        :mySPARQLDatasetDistribution
-            a  dcat:Distribution ;
-            dcat:accessURL &lt;http://www.example.org/sparql&gt;
-            dcterms:title "SPARQL access to the dataset" ;
-            dcat:mediaType "sparql-results+json"  
-            .
+:mySPARQLDatasetDistribution
+    a  dcat:Distribution ;
+    dcat:accessURL &lt;http://www.example.org/sparql&gt;
+    dcterms:title "SPARQL access to the dataset" ;
+    dcat:mediaType "sparql-results+json"  
+    .
 
-        #definition of dimensions and metrics
-        :availability
-            a dqv:Dimension ;
-            skos:prefLabel "Availability"@en ;
-            skos:definition "Availability of a dataset is the extent to which data (or some
-            portion of it) is present, obtainable and ready for use."@en ; 
-            dqv:inCategory :accessibility
-            .
+#definition of dimensions and metrics
+:availability
+    a dqv:Dimension ;
+    skos:prefLabel "Availability"@en ;
+    skos:definition "Availability of a dataset is the extent to which data (or some
+    portion of it) is present, obtainable and ready for use."@en ; 
+    dqv:inCategory :accessibility
+    .
 
-        :downloadURLAvailabilityMetric 
-            a dqv:Metric ;
-            skos:definition "Checks if dcat:downloadURL is available and if its value
-            is dereferenceable."@en ;
-            dqv:expectedDataType xsd:boolean ;
-            dqv:inDimension :availability
-            .
+:downloadURLAvailabilityMetric 
+    a dqv:Metric ;
+    skos:definition "Checks if dcat:downloadURL is available and if its value
+    is dereferenceable."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
 
-        :SPARQLAvailabilityMetric 
-            a dqv:Metric ;
-            skos:definition "Checks if an URL specified in dcat:accessURL is available
-            and if at that URL a SPARQL endpoint is active."@en ;
-            dqv:expectedDataType xsd:boolean ;
-            dqv:inDimension :availability
-            .
+:SPARQLAvailabilityMetric 
+    a dqv:Metric ;
+    skos:definition "Checks if an URL specified in dcat:accessURL is available
+    and if at that URL a SPARQL endpoint is active."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
 
-         :datasetAvailabilityMetric 
-            a dqv:Metric ;
-            prov:wasDerivedFrom :downloadURLAvailabilityMetric, SPARQLAvailabilityMetric;
-            skos:definition "Checks the availabitity of the specified
-            distributions."@en ;
-            dqv:expectedDataType xsd:boolean ;
-            dqv:inDimension :availability
-            .</pre>
+ :datasetAvailabilityMetric 
+    a dqv:Metric ;
+    prov:wasDerivedFrom :downloadURLAvailabilityMetric, SPARQLAvailabilityMetric;
+    skos:definition "Checks the availabitity of the specified
+    distributions."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
+                    </pre>
                      <p>
                     Depending on the specific application context, the expression of this derivation can be kept at level of the quality measurements. In the following the measurement <code>:measurement3</code> of <code>:myDataset</code>'s availability is derived from  <code>:measurement1</code> and <code>:measurement2</code>.
                     </p> 
-                    <pre>
-        :myCSVDatasetDistribution dqv:hasQualityMeasurement :measurement1 .
-        
-        :mySPARQLDatasetDistribution dqv:hasQualityMeasurement :measurement2 .
-        
-        :myDataset dqv:hasQualityMeasurement :measurement3 .
-     
-        :measurement1 
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :myCSVDatasetDistribution ;
-            dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
-            dqv:value "true"^^xsd:boolean 
+                    <pre class="highlight">
+:myCSVDatasetDistribution dqv:hasQualityMeasurement :measurement1 .
 
-        :measurement2
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :mySPARQLDatasetDistribution ;
-            dqv:isMeasurementOf :SPARQLAvailabilityMetric ;
-            dqv:value "false"^^xsd:boolean
-            .       
-            
-        :measurement3 
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :myDataset ;
-            dqv:isMeasurementOf :datasetAvailabilityMetric ;
-            prov:wasDerivedFrom measurement2, measurement3 ;
-            dqv:value "false"^^xsd:boolean
-            .</pre>
+:mySPARQLDatasetDistribution dqv:hasQualityMeasurement :measurement2 .
+
+:myDataset dqv:hasQualityMeasurement :measurement3 .
+
+:measurement1 
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myCSVDatasetDistribution ;
+    dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+    dqv:value "true"^^xsd:boolean 
+
+:measurement2
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :mySPARQLDatasetDistribution ;
+    dqv:isMeasurementOf :SPARQLAvailabilityMetric ;
+    dqv:value "false"^^xsd:boolean
+    .       
+
+:measurement3 
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myDataset ;
+    dqv:isMeasurementOf :datasetAvailabilityMetric ;
+    prov:wasDerivedFrom measurement2, measurement3 ;
+    dqv:value "false"^^xsd:boolean
+    .
+                    </pre>
                      <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be derived from the result of a quality measurement <code>:measurement2</code></p>
-                    <pre>
-        :myDataset
-            dqv:hasQualityAnnotation  :myDatasetClassification .
+                    <pre class="highlight">
+:myDataset
+    dqv:hasQualityAnnotation  :myDatasetClassification .
 
-        :myDatasetClassification  
-            a dqv:UserQualityFeedback ;
-            prov:wasDerivedFrom  :measurement2 ;
-            oa:hasTarget :myDataset ;
-            oa:hasBody :three_stars ; 
-            oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
-            dqv:inDimension :availability
-            .
+:myDatasetClassification  
+    a dqv:UserQualityFeedback ;
+    prov:wasDerivedFrom  :measurement2 ;
+    oa:hasTarget :myDataset ;
+    oa:hasBody :three_stars ; 
+    oa:motivatedBy dqv:qualityAssessment, oa:classifying ;
+    dqv:inDimension :availability
+    .
 
-        :three_stars
-           a skos:Concept;
-           skos:inScheme :OpenData5Star ;
-           skos:prefLabel "three stars"@en ;
-           skos:definition "Dataset available on the web with structured machine-readable
-                            non proprietary format."@en 
-           .</pre>
+:three_stars
+   a skos:Concept;
+   skos:inScheme :OpenData5Star ;
+   skos:prefLabel "three stars"@en ;
+   skos:definition "Dataset available on the web with structured machine-readable
+   non proprietary format."@en 
+   .
+   </pre>
                 </section>
                 <section id="ExpressQualSKOS">
                     <h3>Express quality of SKOS concept schemes</h3>
@@ -1552,19 +1547,19 @@
                         , a controlled vocabulary made available on the Web using the SKOS
                         [[SKOS-reference]] and DCAT [[vocab-dcat]].
                     </p>
-                    <pre>
-        :myControlledVocabulary 
-            a dcat:Dataset ;
-            dcterms:title "My controlled vocabulary" 
-            .
+                    <pre class="highlight">
+:myControlledVocabulary 
+    a dcat:Dataset ;
+    dcterms:title "My controlled vocabulary" 
+    .
 
-        :myControlledVocabularyDistribution
-            a  dcat:Distribution ;
-            dcat:downloadURL &lt;http://www.example.org/files/myControlledVocabulary.csv&gt; ;
-                dcterms:title "SKOS/RDF distribution of my controlled vocabulary"" ;
-                dcat:mediaType "text/turtle" ;
-                dcat:byteSize "190120"^^xsd:decimal 
-            . </pre>
+:myControlledVocabularyDistribution
+    a  dcat:Distribution ;
+    dcat:downloadURL &lt;http://www.example.org/files/myControlledVocabulary.csv&gt; ;
+    dcterms:title "SKOS/RDF distribution of my controlled vocabulary" ;
+    dcat:mediaType "text/turtle" ;
+    dcat:byteSize "190120"^^xsd:decimal 
+    . </pre>
                     <p>qSKOS is an open source tool, which detects quality issues
                         affecting SKOS vocabularies [[qSKOS]]. It considers 26 quality
                         issues including, for example, “Incomplete Language Coverage” and
@@ -1573,41 +1568,44 @@
                         considered as DQV quality dimensions, whilst the number of concepts
                         in which a quality issue occurs can be the metric deployed for each
                         quality dimension.</p>
-                    <pre>
-        # definition of instances for some of the  metrics, dimensions and categories deployed in qSKOS. 
+                    <pre class="highlight">
+# definition of instances for some of the  metrics, dimensions and categories deployed
+# in qSKOS. 
 
-        :numOfConceptsWithLabelConflicts 
-            a dqv:Metric;
-            skos:prefLabel "Conflicting concepts"@en ;
-            skos:definition "Number of concepts having conflicting labels"@en ;
-            dqv:expectedDataType xsd:interger ;
-            dqv:inDimension  :LabelConflicts 
-            .
+:numOfConceptsWithLabelConflicts 
+    a dqv:Metric;
+    skos:prefLabel "Conflicting concepts"@en ;
+    skos:definition "Number of concepts having conflicting labels"@en ;
+    dqv:expectedDataType xsd:interger ;
+    dqv:inDimension  :LabelConflicts 
+    .
 
-        :numOfConceptsWithIncompleteLanguageCoverage
-            a dqv:Metric;
-            skos:prefLabel "Language incomplete concepts"@en ;
-            skos:definition "Number of concepts having an incomplete language coverage"@en ;
-            dqv:expectedDataType xsd:interger ;
-            dqv:inDimension  :incompleteLanguageCoverage .
+:numOfConceptsWithIncompleteLanguageCoverage
+    a dqv:Metric;
+    skos:prefLabel "Language incomplete concepts"@en ;
+    skos:definition "Number of concepts having an incomplete language coverage"@en ;
+    dqv:expectedDataType xsd:interger ;
+    dqv:inDimension  :incompleteLanguageCoverage .
 
-        :LabelConflicts
-            a  dqv:Dimension;
-            skos:prefLabel "Label Conflicts"@en ;
-            skos:definition "Dimension corresponding to the label conflicts quality issue"@en ;
-                dqv:inCategory :labelingDocumentationIssues .
+:LabelConflicts
+    a  dqv:Dimension;
+    skos:prefLabel "Label Conflicts"@en ;
+    skos:definition "Dimension corresponding to the label conflicts quality issue"@en ;
+    dqv:inCategory :labelingDocumentationIssues .
 
-        :incompleteLanguageCoverage
-            a  dqv:Dimension;
-            skos:prefLabel "Incomplete Language Coverage"@en ;
-            skos:definition "Dimension corresponding to the incomplete language coverage issue"@en ;
-                dqv:inCategory :labelingDocumentationIssues .
+:incompleteLanguageCoverage
+    a  dqv:Dimension;
+    skos:prefLabel "Incomplete Language Coverage"@en ;
+    skos:definition "Dimension corresponding to the incomplete language coverage 
+    issue"@en ;
+    dqv:inCategory :labelingDocumentationIssues .
 
-        :labelingDocumentationIssues
-                a  dqv:Category ;
-            skos:prefLabel "Labeling and Documentation Issues"@en ;
-            skos:definition "Category grouping labeling and documentation issues"@en 
-            . </pre>
+:labelingDocumentationIssues
+    a  dqv:Category ;
+    skos:prefLabel "Labeling and Documentation Issues"@en ;
+    skos:definition "Category grouping labeling and documentation issues"@en 
+    . 
+    </pre>
 
                     <p>
                         DQV represents the qSKOS quality assessment on
@@ -1616,24 +1614,24 @@
                         Conflicts”.
                     </p>
 
-                    <pre>
-        :myDatasetDistribution
-            dqv:hasQualityMeasurement :measurement1, :measurement2
-            .
+                    <pre class="highlight">
+:myDatasetDistribution
+    dqv:hasQualityMeasurement :measurement1, :measurement2
+    .
 
-        :measurement1 
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :myControlledVocabulary ;
-            dqv:isMeasurementOf :numOfConceptsWithMissingValues ;
-            dqv:value "1500"^^xsd:integer  
-            .
+:measurement1 
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myControlledVocabulary ;
+    dqv:isMeasurementOf :numOfConceptsWithMissingValues ;
+    dqv:value "1500"^^xsd:integer  
+    .
 
-        :measurement2
-            a dqv:QualityMeasurement ;
-            dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
-            dqv:isMeasurementOf :csvConsistencyMetric ;
-            dqv:value "450"^^xsd:integer 
-            .
+:measurement2
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
+    dqv:isMeasurementOf :csvConsistencyMetric ;
+    dqv:value "450"^^xsd:integer 
+    .
         </pre>
                 </section>
                 <section id="ExpressQualLinkset">
@@ -1653,50 +1651,50 @@
 
                     <p>Let’s define three DCAT datasets, including one VoID linkset,
                         which connects the two others:</p>
-                    <pre>
-        :myDataset1 
-            a dcat:Dataset ;
-            dcterms:title "My dataset 1" <!--; 
-            dcat:distribution :myDatasetDistributionInRDF -->
-            .
+                    <pre class="highlight">
+:myDataset1 
+    a dcat:Dataset ;
+    dcterms:title "My dataset 1" <!--; 
+    dcat:distribution :myDatasetDistributionInRDF -->
+    .
 
-        :myDataset2 
-            a dcat:Dataset ;
-            dcterms:title "My dataset 2"  <!--; 
-            dcat:distribution :myDataset2DistributionInRDF -->
-            .
+:myDataset2 
+    a dcat:Dataset ;
+    dcterms:title "My dataset 2"  <!--; 
+    dcat:distribution :myDataset2DistributionInRDF -->
+    .
 
-        :myLinkset 
-            a dcat:Dataset, void:Linkset ;
-            dcterms:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
-            dcat:distribution :myLinksetDistribution -->
-            void:linkPredicate skos:exactMatch ;
-            void:target :myDataset1 ;
-            void:target :myDataset2  
-            .
-        <!--
-        :myDataset1InRDF
-            a dcat:Distribution, void:Dataset ;
-            dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
-                dcterms:title "RDF distribution of dataset 1" ;
-                dcat:mediaType "text/csv" ;
-                dcat:byteSize "87120"^^xsd:decimal 
-            .
-
-
-        :myDataset2InRDF
-            a dcat:Distribution, void:Dataset ;
-            dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
-                dcterms:title "RDF distribution of dataset 2" ;
-                dcat:mediaType "text/csv" ;
-                dcat:byteSize "100120"^^xsd:decimal 
-            .
+:myLinkset 
+    a dcat:Dataset, void:Linkset ;
+    dcterms:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
+    dcat:distribution :myLinksetDistribution -->
+    void:linkPredicate skos:exactMatch ;
+    void:target :myDataset1 ;
+    void:target :myDataset2  
+    .
+<!--
+:myDataset1InRDF
+    a dcat:Distribution, void:Dataset ;
+    dcat:downloadURL &lt;http://www.example.org/files/mydataset1.rdf&gt; ;
+        dcterms:title "RDF distribution of dataset 1" ;
+        dcat:mediaType "text/csv" ;
+        dcat:byteSize "87120"^^xsd:decimal 
+    .
 
 
-        :myLinksetDistribution
-            a dcat:Distribution, void:Linkset ;
-            dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
-        -->
+:myDataset2InRDF
+    a dcat:Distribution, void:Dataset ;
+    dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
+        dcterms:title "RDF distribution of dataset 2" ;
+        dcat:mediaType "text/csv" ;
+        dcat:byteSize "100120"^^xsd:decimal 
+    .
+
+
+:myLinksetDistribution
+    a dcat:Distribution, void:Linkset ;
+    dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
+-->
         </pre>
                     <p>We can represent information about the quality of :myLinkset
                         using the “Multilingual importing” [[MultilingualImporting]] linkset
@@ -1730,27 +1728,31 @@
         :complementationGain
                 a  :ComplementationGain .
         -->
-                    <pre>
-        # Definition of instances for Metric, Dimension and Category. 
+                    <pre class="highlight">
+# Definition of instances for Metric, Dimension and Category. 
 
-        :importingForPropertyPercentage 
-            a dqv:Metric ;
-            skos:definition "Ratio between novel preferred labels or the alternative labels gained via skos:exactMatch link and preferred labels or the alternative labels already in the dataset."@en
-            dqv:expectedDataType xsd:double ;
-            dqv:inDimension  :completeness .
+:importingForPropertyPercentage 
+    a dqv:Metric ;
+    skos:definition "Ratio between novel preferred labels or the alternative labels 
+    gained via skos:exactMatch link and preferred labels or the alternative labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
 
-        :completenessGain
-            a  dqv:Dimension ;
-            skos:prefLabel "Completeness Gain"@en ;
-            skos:definition "Completeness Gain refers to the degree to which  a linkset contributes to obtain all required information in a particular dataset."@en ;
-                dqv:inCategory :complementationGain .
+:completenessGain
+    a  dqv:Dimension ;
+    skos:prefLabel "Completeness Gain"@en ;
+    skos:definition "Completeness Gain refers to the degree to which  a linkset 
+    contributes to obtain all required information in a particular dataset."@en ;
+    dqv:inCategory :complementationGain 
+    .
 
-
-        :complementationGain
-                a  dqv:Category ;
-            skos:definition "Category that groups dimensions measuring the quality gain obatined by exploiting linksets."@en .
-
-        </pre>
+:complementationGain
+    a  dqv:Category ;
+    skos:definition "Category that groups dimensions measuring the quality gain 
+    obatined by exploiting linksets."@en
+    .
+</pre>
                     <p>The quality assessment of the "label importing" can be made
                         dependent on two extra parameters: property and language,
                         respectively the SKOS property and the language tag. We extend DQV
@@ -1762,124 +1764,128 @@
                             (postponed issue)</p>
                     </div>
 
-                    <pre>
-        :language
-                a qb:DimensionProperty, owl:DataProperty ;
-                rdfs:comment   "language on which label importing is assessed."@en ;
-                rdfs:domain    dqv:QualityMeasurement;
-                rdfs:label     "label import assessment language"@en .
+                    <pre class="highlight">
+:language
+    a qb:DimensionProperty, owl:DataProperty ;
+    rdfs:comment   "language on which label importing is assessed."@en ;
+    rdfs:domain    dqv:QualityMeasurement;
+    rdfs:label     "label import assessment language"@en 
+    .
 
-
-        :property
-                a qb:DimensionProperty, rdf:Property ;
-                rdfs:comment 	"property which label importing is assessed."@en ;
-                rdfs:domain 	dqv:QualityMeasurement ;
-                rdfs:label  	"label import assessment property"@en ;
-                rdfs:range     	rdf:Property .
-
+:property
+    a qb:DimensionProperty, rdf:Property ;
+    rdfs:comment 	"property which label importing is assessed."@en ;
+    rdfs:domain 	dqv:QualityMeasurement ;
+    rdfs:label  	"label import assessment property"@en ;
+    rdfs:range     	rdf:Property 
+    .
         </pre>
                     <p>Let us add actual quality assessments:</p>
-                    <pre>
-        :qualityMeasurementDataset  a  dqv:QualityMeasurementDataset ;
-                qb:structure  :dsd .
+                    <pre class="highlight">
+:qualityMeasurementDataset  a  dqv:QualityMeasurementDataset ;
+        qb:structure  :dsd .
 
-        :importingForPropertyPercentage
-          <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
-                dqv:hasObservation :measurement_exactMatchAltLabelItDataset1, :measurement_exactMatchAltLabelItDataset2, 
-                :measurement_exactMatchAltLabelEnDataset1, :measurement_exactMatchAltLabelEnDataset2 ,
-                :measurement_exactMatchPrefLabelItDataset1, :measurement_exactMatchprefLabelItDataset2 .
-            </span>
+:importingForPropertyPercentage
+  <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
+    dqv:hasObservation :measurement_exactMatchAltLabelItDataset1,
+    :measurement_exactMatchAltLabelItDataset2, 
+    :measurement_exactMatchAltLabelEnDataset1, 
+    :measurement_exactMatchAltLabelEnDataset2,
+    :measurement_exactMatchPrefLabelItDataset1, 
+    :measurement_exactMatchprefLabelItDataset2 .
+    </span>
 
-        #Adding quality observations 
-        ## for Italian alternative labels
-        :measurement_exactMatchAltLabelItDataset1 
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"1.0"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"it" ;
-               :property    	skos:altLabel .
+#Adding quality observations 
+## for Italian alternative labels
+:measurement_exactMatchAltLabelItDataset1 
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"it" ;
+       :property    	skos:altLabel .
 
-        :measurement_exactMatchAltLabelItDataset2 
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"1.0"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"it" ;
-               :property    	skos:altLabel .
+:measurement_exactMatchAltLabelItDataset2 
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"it" ;
+       :property    	skos:altLabel .
 
-        ## for English alternative labels
-        :measurement_exactMatchAltLabelEnDataset1 
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"0.1"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"en" ;
-               :property    	skos:altLabel .
+## for English alternative labels
+:measurement_exactMatchAltLabelEnDataset1 
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.1"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"en" ;
+       :property    	skos:altLabel .
 
-        :measurement_exactMatchAltLabelEnDataset2  
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"1.0"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"en" ;
-               :property    	skos:altLabel .      
+:measurement_exactMatchAltLabelEnDataset2  
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"en" ;
+       :property    	skos:altLabel .      
 
-        ## for Italian preferred labels
-        :measurement_exactMatchPrefLabelItDataset1 
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"0.5"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"it" ;
-               :property    	skos:prefLabel .
+## for Italian preferred labels
+:measurement_exactMatchPrefLabelItDataset1 
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"it" ;
+       :property    	skos:prefLabel .
 
-        :measurement_exactMatchprefLabelItDataset2  
-               a 		dqv:QualityMeasurement;
-               dqv:computedOn  	:myLinkset ;
-               dqv:value       	"0.5"^^xsd:double ;
-               dqv:isMeasurementOf      	:importingForPropertyPercentage ;
-               qb:dataSet      	:qualityMeasurementDataset;
-               :language    	"it" ;
-               :property    	skos:prefLabel .
+:measurement_exactMatchprefLabelItDataset2  
+       a 		dqv:QualityMeasurement;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasurementDataset;
+       :language    	"it" ;
+       :property    	skos:prefLabel .
 
         </pre>
                     Let us specify the RDF Data Cube data structure:
-                    <pre>
-        :dsd  a     qb:DataStructureDefinition ;
-        ##Copying the structure of daq:dsq
-                qb:component  [ qb:dimension  dqv:computedOn ;
-                                qb:order      2
-                              ] ;
-                qb:component  [ qb:measure  dqv:value] ;
-                qb:component  [ qb:dimension  &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
-                                qb:order      3
-                              ] ;
-                qb:component  [ qb:dimension  dqv:isMeasurementOf ;
-                                qb:order      1
-                              ] ;
+                    <pre class="highlight">
+:dsd  a     qb:DataStructureDefinition ;
+##Copying the structure of daq:dsq
+    qb:component  [ qb:dimension  dqv:computedOn ;
+                    qb:order      2
+                  ] ;
+    qb:component  [ qb:measure  dqv:value] ;
+    qb:component  [ qb:dimension  
+        &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
+                    qb:order      3
+                  ] ;
+    qb:component  [ qb:dimension  dqv:isMeasurementOf ;
+                    qb:order      1
+                  ] ;
 
-            qb:component [ qb:measure dqv:value;];
-            # Attribute (here: unit of measurement)
-            qb:component [
-                qb:attribute sdmx-attribute:unitMeasure
-            ;
-            qb:componentRequired false ;
-            qb:componentAttachment qb:DataSet ; ] ;
+    qb:component [ qb:measure dqv:value;];
+    # Attribute (here: unit of measurement)
+    qb:component [
+        qb:attribute sdmx-attribute:unitMeasure
+    ;
+    qb:componentRequired false ;
+    qb:componentAttachment qb:DataSet ; ] ;
 
 
-        ##Extending  the structure of lds:dsq with two new dimensions
-                qb:component  [ qb:dimension  :property ;
-                                qb:order      4
-                              ] ;
-                qb:component  [ qb:dimension  :language ;
-                                qb:order      5
-                              ] .
+    ##Extending  the structure of lds:dsq with two new dimensions
+    qb:component  [ qb:dimension  :property ;
+                    qb:order      4
+                  ] ;
+    qb:component  [ qb:dimension  :language ;
+                    qb:order      5
+                  ] .
         </pre>
 
                 </section>
@@ -1901,18 +1907,21 @@
                         standard itself.
                     </p>
 
-                    <pre>
-        ex:myDataset a dcat:Dataset;
+                    <pre class="highlight">
+ex:myDataset a dcat:Dataset;
 
-        ex:myDatasetRecord a dcat:CatalogRecord ;
-         foaf:primaryTopic :myDataset ;
-         dcterms:conformsTo :geoDCAT-AP .
+ex:myDatasetRecord a dcat:CatalogRecord ;
+ foaf:primaryTopic :myDataset ;
+ dcterms:conformsTo :geoDCAT-AP .
 
-        ex:geoDCAT-AP a dcterms:Standard;
-          dcterms:title "GeoDCAT Application Profile. Version 1.0" ;
-          dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability Solutions for European Public Administrations (ISA) Programme"@en;
-          dcterms:issued "2015-12-23"^^xsd:date ;
-          foaf:page &lt;https://joinup.ec.europa.eu/asset/dcat_application_profile/asset_release/geodcat-ap-v10&gt; . 
+ex:geoDCAT-AP a dcterms:Standard;
+  dcterms:title "GeoDCAT Application Profile. Version 1.0" ;
+  dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability
+  Solutions for European Public Administrations (ISA) Programme"@en;
+  dcterms:issued "2015-12-23"^^xsd:date ;
+  foaf:page 
+  &lt;https://joinup.ec.europa.eu/asset/dcat_application_profile/asset_release/geodcat-ap-v10&gt;
+  . 
         </pre>
 
                     <p>
@@ -1974,31 +1983,32 @@
                     in which case an odrl:assignee is likely to appear for the policy.
                     </p>
 
-                    <pre>
-        :serviceProvider a odrl:Party .
-        :myDataset a  dcat:Dataset ;
-          dcat:distribution :myDatasetSparqlDistribution ;
-        :myDatasetSparqlDistribution a dcat:Distribution .
+                    <pre class="highlight">
+:serviceProvider a odrl:Party .
+:myDataset a  dcat:Dataset ;
+  dcat:distribution :myDatasetSparqlDistribution ;
+:myDatasetSparqlDistribution a dcat:Distribution .
 
-        :policy1 a odrl:Offer, dqv:QualityPolicy ;
-          odrl:permission [
-            a odrl:Permission ;
-            odrl:target :myDataset ;
-            odrl:action odrl:read ;
-            odrl:assigner :serviceProvider;    
-            odrl:duty [
-              a odrl:Duty; 
-              odrl:assignee :serviceProvider;
-              odrl:target :myDatasetSparqlDistribution ;
-              odrl:constraint [
-                a odrl:Constraint ;
-                prov:wasDerivedFrom :sparqlEndpointUptime;
-                odrl:percentage  "99"^^xsd:double ;
-                odrl:operator odrl:gteq
-              ]     
-            ]
-          ]
-        </pre>
+:policy1 a odrl:Offer, dqv:QualityPolicy ;
+  odrl:permission [
+    a odrl:Permission ;
+    odrl:target :myDataset ;
+    odrl:action odrl:read ;
+    odrl:assigner :serviceProvider;    
+    odrl:duty [
+      a odrl:Duty; 
+      odrl:assignee :serviceProvider;
+      odrl:target :myDatasetSparqlDistribution ;
+      odrl:constraint [
+        a odrl:Constraint ;
+        prov:wasDerivedFrom :sparqlEndpointUptime;
+        odrl:percentage  "99"^^xsd:double ;
+        odrl:operator odrl:gteq
+      ]     
+    ]
+  ]
+  .
+  </pre>
                     <div class="note">
                         <p>The expression of constraints in ODRL seems quite unfit with expressing
                       general constraints on values in RDF graphs, as we would require here.
@@ -2253,41 +2263,46 @@
                     <p>DQV can express the dimensions and categories listed in the
                         table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
 
-                    <pre># definition of ISO categories
+                    <pre class="highlight">
+# definition of ISO categories
 
-        iso:inherentDataQuality a dqv:Category ; 
-           skos:prefLabel "Inherent Data Quality"@en. 
+iso:inherentDataQuality a dqv:Category ; 
+   skos:prefLabel "Inherent Data Quality"@en. 
 
-        iso:inherentSystemDependentDataQuality a dqv:Category ; 
-           skos:prefLabel "Inherent and System-Dependent Data Quality"@en. 
+iso:inherentSystemDependentDataQuality a dqv:Category ; 
+   skos:prefLabel "Inherent and System-Dependent Data Quality"@en. 
 
-        iso:systemDependentDataQuality a dqv:Category ; 
-           skos:prefLabel "System-Dependent Data Quality"@en. 
+iso:systemDependentDataQuality a dqv:Category ; 
+   skos:prefLabel "System-Dependent Data Quality"@en. 
 
-        # definition of ISO dimensions
+# definition of ISO dimensions
 
-        iso:accuracy a dqv:Dimension ; 
-            dqv:inCategory iso:inherentDataQuality ;
-            skos:prefLabel "Accuracy"@en;
-            skos:definition "The degree to which data has attributes that correctly represent 
-            the true value of the intended attribute of a concept or event in a specific context of use."@en
-            .
+iso:accuracy a dqv:Dimension ; 
+    dqv:inCategory iso:inherentDataQuality ;
+    skos:prefLabel "Accuracy"@en;
+    skos:definition "The degree to which data has attributes that correctly represent
+    the true value of the intended attribute of a concept or event in a specific context 
+    of use."@en
+    .
 
-        iso:completeness a dqv:Dimension ; 
-            dqv:inCategory iso:inherentDataQuality ;
-            skos:prefLabel "Completeness"@en;
-            skos:definition "The degree to which subject data associated with an entity has 
-            values for all expected attributes and related entity instances in a specific context of use."@en
-            .
+iso:completeness a dqv:Dimension ; 
+    dqv:inCategory iso:inherentDataQuality ;
+    skos:prefLabel "Completeness"@en;
+    skos:definition "The degree to which subject data associated with an entity has
+    values for all expected attributes and related entity instances in a specific context 
+    of use."@en
+    .
 
-        iso:consistency a dqv:Dimension ; 
-            dqv:inCategory iso:inherentDataQuality ;
-            skos:prefLabel "Consistency"@en;
-            skos:definition "The degree to which data has attributes that are free from contradiction and
-            are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities."@en
-            .
+iso:consistency a dqv:Dimension ; 
+    dqv:inCategory iso:inherentDataQuality ;
+    skos:prefLabel "Consistency"@en;
+    skos:definition "The degree to which data has attributes that are free from
+    contradiction and are coherent with other data in a specific context of use.
+    It can be either or both among data regarding one entity and across similar 
+    data for comparable entities."@en
+    .
 
-        # ... etc ...
+# ... etc ...
         </pre>
         <div class="note">
         <p>We could remove <code>iso:inherentSystemDependentDataQuality</code>. Instead we can use only the two basic categories
@@ -2435,45 +2450,49 @@
                 <p>DQV can express these dimensions and categories as shown in the following example.
                 The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
 
-                    <pre># definition of categories from Zaveri et al
+                    <pre class="highlight">
+# definition of categories from Zaveri et al
 
-        zaveri:accessibilityDimensions a dqv:Category ; 
-           skos:prefLabel "Accessibility"@en. 
+zaveri:accessibilityDimensions a dqv:Category ; 
+   skos:prefLabel "Accessibility"@en. 
 
-        zaveri:intrinsicDimensions a dqv:Category ; 
-           skos:prefLabel "Intrinsic dimensions"@en. 
+zaveri:intrinsicDimensions a dqv:Category ; 
+   skos:prefLabel "Intrinsic dimensions"@en. 
 
-        zaveri:contextualDimensions a dqv:Category ; 
-           skos:prefLabel "Contextual dimensions"@en. 
+zaveri:contextualDimensions a dqv:Category ; 
+   skos:prefLabel "Contextual dimensions"@en. 
 
-        zaveri:representationalDimensions a dqv:Category ; 
-           skos:prefLabel "Representational Dimensions"@en. 
+zaveri:representationalDimensions a dqv:Category ; 
+   skos:prefLabel "Representational Dimensions"@en. 
 
-        #definition of dimensions from Zaveri et al
+#definition of dimensions from Zaveri et al
 
-        zaveri:availability
-            a dqv:Dimension ; 
-            dqv:inCategory zaveri:accessibilityDimensions ;
-            skos:prefLabel "Availability"@en;
-            skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
-            .
+zaveri:availability
+    a dqv:Dimension ; 
+    dqv:inCategory zaveri:accessibilityDimensions ;
+    skos:prefLabel "Availability"@en;
+    skos:definition "Availability of a dataset is the extent to which data (or some
+    portion of it) is present, obtainable and ready for use."@en
+    .
 
-        zaveri:licensing
-            a dqv:Dimension ; 
-            dqv:inCategory zaveri:accessibilityDimensions  ;
-            skos:prefLabel "Licensing"@en;
-            skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
-            .
+zaveri:licensing
+    a dqv:Dimension ; 
+    dqv:inCategory zaveri:accessibilityDimensions  ;
+    skos:prefLabel "Licensing"@en;
+    skos:definition "Licensing is defined as the granting of permission for a consumer to
+    re-use a dataset under defined conditions."@en
+    .
 
-        zaveri:interlinking
-            a dqv:Dimension ; 
-            dqv:inCategory zaveri:accessibilityDimensions ;
-            skos:prefLabel "Consistency"@en;
-            skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
-            .
+zaveri:interlinking
+    a dqv:Dimension ; 
+    dqv:inCategory zaveri:accessibilityDimensions ;
+    skos:prefLabel "Consistency"@en;
+    skos:definition "Interlinking refers to the degree to which entities that represent
+    the same concept are linked to each other, be it within or between two or more data
+    sources."@en
+    .
 
-        # ... etc ...
-
+# ... etc ...
         </pre>
                     <section id="MappingZaveriISO">
                         <h2>Expressing relations between quality dimensions</h2>
@@ -2483,29 +2502,29 @@
                             specific semantics must be expressed. For example, <code>availability</code> is related to <code>performance</code> and <code>semantic accuracy</code>, whilst <code>semanticAccuracy</code> is related to <code>timeliness</code>, 
                             <code>trustworthiness</code>, <code>consistency</code>, <code>syntaticValidity</code> and <code>completeness</code>.</p>
 
-        <pre>
-        zaveri:availability skos:related zaveri:performance ,  
-            zaveri:interlinking .
+        <pre class="highlight">
+zaveri:availability skos:related zaveri:performance ,  
+    zaveri:interlinking .
 
-        zaveri:semanticAccuracy skos:related zaveri:timeliness , 
-            zaveri:trustworthiness , zaveri:consistency , 
-            zaveri:syntaticValidity , zaveri:completeness , 
-            zaveri:interlinking . 
+zaveri:semanticAccuracy skos:related zaveri:timeliness , 
+    zaveri:trustworthiness , zaveri:consistency , 
+    zaveri:syntaticValidity , zaveri:completeness , 
+    zaveri:interlinking . 
 
-        zaveri:consistency skos:related zaveri:conciseness , 
-            zaveri:syntaticValidity , zaveri:interoperability .
+zaveri:consistency skos:related zaveri:conciseness , 
+    zaveri:syntaticValidity , zaveri:interoperability .
 
-        zaveri:interoperability skos:related zaveri:conciseness , 
-            zaveri:syntaticValidity .
+zaveri:interoperability skos:related zaveri:conciseness , 
+    zaveri:syntaticValidity .
 
-        zaveri:conciseness skos:related zaveri:completeness ,
-             zaveri:representationalConciseness .
+zaveri:conciseness skos:related zaveri:completeness ,
+     zaveri:representationalConciseness .
 
-        zaveri:interpretability skos:related zaveri:versatility .
+zaveri:interpretability skos:related zaveri:versatility .
 
-        # Note: skos:related is a symmetric property, hence from every statement
-        # ex:subject skos:related ex:object in this example, one can infer that 
-        # the statement ex:object skos:related ex:subject is true.
+# Note: skos:related is a symmetric property, hence from every statement
+# ex:subject skos:related ex:object in this example, one can infer that 
+# the statement ex:object skos:related ex:subject is true.
         </pre>
 
                         <p>Dimensions can also be related across different categorizations.
@@ -2516,9 +2535,9 @@
                             that ISO's credibility is one specific facet of trustworthiness in Zaveri et al. 
                             (see Definition 12 in [[ZaveriEtAl]]). We pencil more such possible relationships in Annex C.</p>
 
-                        <pre>
-        zaveri:completeness skos:exactMatch iso:completeness .
-        zaveri:trustworthiness skos:narrowMatch iso:credibility .
+                        <pre class="highlight">
+zaveri:completeness skos:exactMatch iso:completeness .
+zaveri:trustworthiness skos:narrowMatch iso:credibility .
         </pre>
                     </section>
 
@@ -2531,70 +2550,79 @@
             <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
             </div>
 
-        <pre>	
-        :downloadURLAvailabilityMetric
-            a dqv:Metric ;
-            skos:definition "It checks if dcat:downloadURL is available and if its value is dereferenceable."@en ;
-            dqv:inDimension zaveri:availability ;
-            dqv:expectedDataType xsd:boolean
-            .
+        <pre class="highlight">	
+:downloadURLAvailabilityMetric
+    a dqv:Metric ;
+    skos:definition "It checks if dcat:downloadURL is available and if its value is
+    dereferenceable."@en ;
+    dqv:inDimension zaveri:availability ;
+    dqv:expectedDataType xsd:boolean
+    .
 
-        :sparqlAvailabilityMetric
-            a dqv:Metric ;
-            skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset and if the server responds to a SPARQL query."@en ;
-            dqv:inDimension zaveri:availability ;
-            dqv:expectedDataType xsd:boolean
-            .
+:sparqlAvailabilityMetric
+    a dqv:Metric ;
+    skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset and 
+    if the server responds to a SPARQL query."@en ;
+    dqv:inDimension zaveri:availability ;
+    dqv:expectedDataType xsd:boolean
+    .
 
-        :misreportedContentTypeMetric
-            a dqv:Metric ;
-            skos:definition "It detects whether the HTTP response contains the header field stating the appropriate content type of the returned file, e.g. application/rdf+xml"@en ;
-            dqv:inDimension zaveri:availability ;
-            dqv:expectedDataType xsd:boolean
-            .
+:misreportedContentTypeMetric
+    a dqv:Metric ;
+    skos:definition "It detects whether the HTTP response contains the header field 
+    stating the appropriate content type of the returned file, e.g. application/rdf+xml"@en ;
+    dqv:inDimension zaveri:availability ;
+    dqv:expectedDataType xsd:boolean
+    .
 
-        :licensingMetric
-            a dqv:Metric ;
-            skos:definition "It detects the indication of a license in a the DCAT/VoID description or in the dataset of a license itself."@en ;
-            dqv:inDimension zaveri:licensing ;
-            dqv:expectedDataType xsd:boolean
-            .
+:licensingMetric
+    a dqv:Metric ;
+    skos:definition "It detects the indication of a license in a the DCAT/VoID 
+    description or in the dataset of a license itself."@en ;
+    dqv:inDimension zaveri:licensing ;
+    dqv:expectedDataType xsd:boolean
+    .
 
-        :highThroughput
-            a dqv:Metric ;
-            skos:definition "It represents the maximum number of answered HTTP-requests per second."@en ;
-            dqv:inDimension zaveri:performance ;
-            dqv:expectedDataType xsd:integer  
-            .
+:highThroughput
+    a dqv:Metric ;
+    skos:definition "It represents the maximum number of answered HTTP-requests per
+    second."@en ;
+    dqv:inDimension zaveri:performance ;
+    dqv:expectedDataType xsd:integer  
+    .
 
-        :sparqlScalability
-            a dqv:Metric ;
-            skos:definition "It detects  whether the time to answer an amount of ten requests divided by ten is not longer than the time it takes to answer one request."@en ;
-            dqv:inDimension zaveri:performance ;
-            dqv:expectedDataType xsd:boolean 
-            .
+:sparqlScalability
+    a dqv:Metric ;
+    skos:definition "It detects  whether the time to answer an amount of ten requests 
+    divided by ten is not longer than the time it takes to answer one request."@en ;
+    dqv:inDimension zaveri:performance ;
+    dqv:expectedDataType xsd:boolean 
+    .
 
-        :noRDFSyntaxError 
-            a dqv:Metric ;
-            skos:definition "It returns the number of syntax errors detected by an RDF validator."@en ;
-            dqv:inDimension zaveri:syntacticValidity; 
-            dqv:expectedDataType xsd:integer 
-            .
+:noRDFSyntaxError 
+    a dqv:Metric ;
+    skos:definition "It returns the number of syntax errors detected by an RDF
+    validator."@en ;
+    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:expectedDataType xsd:integer 
+    .
 
-        :noJSONSyntaxError 
-            a dqv:Metric ;
-            skos:definition "It returns the number of syntax errors detected by an JSON validator."@en ;
-            dqv:inDimension zaveri:syntacticValidity; 
-            dqv:expectedDataType xsd:integer 
-            .
+:noJSONSyntaxError 
+    a dqv:Metric ;
+    skos:definition "It returns the number of syntax errors detected by an JSON
+    validator."@en ;
+    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:expectedDataType xsd:integer 
+    .
 
-        :populationCompletenessMetric
-            a dqv:Metric ;
-            skos:definition "Ratio between the number of objects represented in the dataset and
-             the  number of objects expected to be represented according to the declared dataset scope."@en ;
-            dqv:inDimension zaveri:completeness ;
-            dqv:expectedDataType xsd:double
-            .
+:populationCompletenessMetric
+    a dqv:Metric ;
+    skos:definition "Ratio between the number of objects represented in the dataset and
+     the  number of objects expected to be represented according to the declared dataset
+     scope."@en ;
+    dqv:inDimension zaveri:completeness ;
+    dqv:expectedDataType xsd:double
+    .
         </pre>
 
         </section>
