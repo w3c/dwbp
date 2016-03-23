@@ -930,8 +930,8 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>duv:RatingFeedback (subject) duv:hasRating (predicate) skos:Concept
-                (object)</td>
+              <td>duv:RatingFeedback (subject) duv:hasRating (predicate)
+                skos:Concept (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -983,8 +983,8 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) oa:hasUsage(predicate)
-                duv:Usage (object)<br>
+              <td>dcat:Dataset (subject) oa:hasUsage(predicate) duv:Usage
+                (object)<br>
                 dcat:Distribution (subject) oa:hasUsage (predicate)&nbsp;
                 duv:Usage (object)</td>
             </tr>
@@ -1010,8 +1010,8 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Usage (subject) oa:hasUsageTool(predicate)
-                duv:UsageTool (object)</td>
+              <td>dcat:Usage (subject) oa:hasUsageTool(predicate) duv:UsageTool
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1146,7 +1146,8 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>foaf:Agent (subject) duv:performs (predicate) duv:Usage(object)</td>
+              <td>foaf:Agent (subject) duv:performs (predicate)
+                duv:Usage(object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1269,496 +1270,547 @@ pre red { color: red;
         the vocabulary? Are the examples correct? </div>
       <p> This section shows some examples to illustrate the application of the
         Dataset Usage Vocabulary.</p>
-      <p  id="ex1"> Example 1 - Usage: A 2-D charting application developed to
-        create temperature plots that consumes temperature readings from a
-        dataset to produce the plot. </p>
-      <pre  class="schema turtle">@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms/&gt; .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix prov: &lt;http://www.w3.org/nsprov#&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-:plot-graphic
-   a duv:Usage;
-   rdfs:label "plots a 2d graphic";
-   duv:performedBy  :xyplotter;
-   duv:hasUsageType :application;
-   duv:hasUsageTool :tool1;
-   duv:refersTo :dataset-03312004;
-.
-
-:xyplotter
-   a foaf:Agent;
-   rdfs:label "2dplotter";
-   duv:classification :chart-software;
-.
-
-:tool1    
-   a duv:UsageTool;
-   rdfs:label "";
-.
-
-:usageType
-   a skos:ConceptScheme;
-   skos:prefLabel "A set of concepts to classify the usage of datasets or distributions";
-.
-
-:application
-   a skos:Concept;
-   skos:inScheme :usageType ;
-   skos:prefLabel "Application";
-.
-
-:usageAgent
-   a skos:ConceptScheme;
-   skos:prefLabel "A set of concepts to classify the possible roles of usage agents";
-.
-
-:chart-software
-       a skos:Concept;
-       skos:inScheme :usageAgent ;
-       skos:prefLabel "Chart Software";
-.
-
-:dataset-03312004
-  a dcat:Dataset;
-  dct:title "Quarterly Temperature Plot"; 
-  dcat:distribution :dataset-Jan-Mar-2004-csv;
-  duv:hasUsage: :plot-graphic;
-.
-<!-- :plot-graphic
-  a prov:Activity;
-  rdfs:label "plots a 2d graphic";
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent   :xyplotter;
-        prov:hadRole :chart-software;
-    ];
-.
-<br><br><br>
-:plot-csv-data
-  a duv:Usage;
-  prov:qualifiedUsage :plot-graphic;
-  prov:entity :dataset-03312004
-.
- 
-
-:xyplotter
-  a prov:Agent, prov:SoftwareAgent ;
-  rdfs:label "2dplotter" .
-
-:chart-software 
-   a prov:Role;
-   rdfs:label "software that creates charts" 
-.
-
-
-:dataset-Jan-Mar-2004-csv 
-  a dcat:Distribution;
-. -->
-  </pre>
+      <p  id="ex1"> Example 1 - Citation: Basic reference criteria for a
+        dataset.</p>
+      <pre  class="schema turtle">ex:timetable-001 a dcat:Dataset ;
+        dct:title  "Bus timetable of MyCity"^^xsd:string;
+        prism:doi "10.3456/4567.21"^^xsd:string ;
+        pav:version "series-1.2"^^xsd:string;
+        dct:issued "2015-MAY-05"^^xsd:date;
+        dct:creator &lt;http://example.org/transport-agency/contact&gt;;
+      </pre>
       <pre  class="schema json-ld">{
-  "@graph" : [ {
-    "@id" : "_:b0",
-    "@type" : "prov:Association",
-    "agent" : "http://example.org#xyplotter",
-    "hadRole" : "http://example.org#chart-software"
-  }, {
-    "@id" : "http://example.org#chart-software",
-    "@type" : "prov:Role",
-    "rdfs:label" : "software that creates charts"
-  }, {
-    "@id" : "http://example.org#dataset-03312004",
-    "@type" : "dcat:Dataset",
-    "dct:title" : "Quarterly Temperature Plot",
-    "distribution" : "http://example.org#dataset-Jan-Mar-2004-csv"
-  }, {
-    "@id" : "http://example.org#dataset-Jan-Mar-2004-csv",
-    "@type" : "dcat:Distribution"
-  }, {
-    "@id" : "http://example.org#plot-csv-data",
-    "@type" : "duv:Usage",
-    "entity" : "http://example.org#dataset-03312004",
-    "qualifiedUsage" : "http://example.org#plot-graphic"
-  }, {
-    "@id" : "http://example.org#plot-graphic",
-    "@type" : "prov:Activity",
-    "rdfs:label" : "plots a 2d graphic",
-    "qualifiedAssociation" : "_:b0"
-  }, {
-    "@id" : "http://example.org#xyplotter",
-    "@type" : [ "foaf:Agent", "prov:SoftwareAgent" ],
-    "rdfs:label" : "2dplotter"
-  } ],
+  "@id" : "ex:timetable-001",
+  "@type" : "dcat:Dataset",
+  "pav:version" : "series-1.2",
+  "prism:doi" : "10.3456/4567.21",
+  "creator" : "http://example.org/transport-agency/contact",
+  "issued" : "2015-MAY-05",
+  "dct:title" : "Bus timetable of MyCity",
   "@context" : {
-    "agent" : {
-      "@id" : "http://www.w3.org/nsprov#agent",
-      "@type" : "@id"
-    },
-    "hadRole" : {
-      "@id" : "http://www.w3.org/nsprov#hadRole",
-      "@type" : "@id"
-    },
-    "qualifiedUsage" : {
-      "@id" : "http://www.w3.org/nsprov#qualifiedUsage",
-      "@type" : "@id"
-    },
-    "entity" : {
-      "@id" : "http://www.w3.org/nsprov#entity",
-      "@type" : "@id"
-    },
-    "label" : {
-      "@id" : "http://www.w3.org/2000/01/rdf-schema#label",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
     "title" : {
       "@id" : "http://purl.org/dc/terms/title",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "doi" : {
+      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "version" : {
+      "@id" : "http://pav-ontology.github.io/pav/version",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+  }
+}
+
+      </pre>
+      <p  id="ex2"> Example 2 - Citation:&nbsp; An electronic memorandum that
+        references a dataset.</p>
+      <pre  class="schema turtle">     
+ex:timetable-001 a dcat:Dataset ;
+        dct:title  "Bus timetable of MyCity"^^xsd:string;
+        prism:doi "10.3456/4567.21"^^xsd:string ;
+        pav:version "series-1.2"^^xsd:string;
+        dct:issued "2015-MAY-05"^^xsd:date;
+        dct:creator &lt;http://example.org/transport-agency/contact&gt;;
+.
+
+ex:timetable-memorandum
+      a biro:BibliographicReference;
+      a fabio:Policy  ;
+      dct:bibliographicCitation
+     "Costello, E. Mayor (2015). City Timetable Schedule Change Memorandum Effective <br>      January 1, 2015. Sept 15, 2014. DOI:0.3456/4567.21"^^xsd:string ;
+      biro:references ex:timetable-001 ;
+.
+      </pre>
+      <pre  class="schema json-ld">      
+{
+  "@graph" : [ {
+    "@id" : "ex:timetable-001",
+    "@type" : "dcat:Dataset",
+    "pav:version" : "series-1.2",
+    "prism:doi" : "10.3456/4567.21",
+    "creator" : "http://example.org/transport-agency/contact",
+    "issued" : "2015-MAY-05",
+    "dct:title" : "Bus timetable of MyCity"
+  }, {
+    "@id" : "ex:timetable-memorandum",
+    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
+    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City 
+     Timetable Schedule Change Memorandum Effective January 1, 2015. 
+     Sept 15, 2014. DOI:0.3456/4567.21",
+    "references" : "ex:timetable-001"
+  } ],
+  "@context" : {
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "doi" : {
+      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "version" : {
+      "@id" : "http://pav-ontology.github.io/pav/version",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "bibliographicCitation" : {
+      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "references" : {
+      "@id" : "http://purl.org/spar/biro/references",
+      "@type" : "@id"
+    },
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+  }
+}
+
+      </pre>
+      <p  id="ex3">Example 3 - Citation:  Citation characterization where memoradum is a policy. </p>
+      <pre  class="schema turtle">     
+      ex:timetable-memorandum
+      a biro:BibliographicReference;
+      a fabio:Policy  ;
+      dct:bibliographicCitation
+     "Costello, E. Mayor (2015). City Timetable Schedule Change Memorandum Effective 
+     January 1, 2015. Sept 15, 2014. DOI:0.3456/4567.21"^^xsd:string ;
+      biro:references ex:timetable-001 .
+
+
+ex:memorandum-cites-dataset
+      a cito:CitationAct ;
+      cito:hasCitingEntity ex:timetable-memorandum ;
+      cito:hasCitedEntity ex:timetable-001 .
+
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : "ex:memorandum-cites-dataset",
+    "@type" : "cito:CitationAct",
+    "hasCitedEntity" : "ex:timetable-001",
+    "hasCitingEntity" : "ex:timetable-memorandum"
+  }, {
+    "@id" : "ex:timetable-memorandum",
+    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
+    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City Timetable 
+    Schedule Change Memorandum Effective January 1, 2015. Sept 15, 2014. 
+    DOI:0.3456/4567.21",
+    "references" : "ex:timetable-001"
+  } ],
+  "@context" : {
+    "hasCitingEntity" : {
+      "@id" : "http://purl.org/spar/cito/hasCitingEntity",
+      "@type" : "@id"
+    },
+    "hasCitedEntity" : {
+      "@id" : "http://purl.org/spar/cito/hasCitedEntity",
+      "@type" : "@id"
+    },
+    "bibliographicCitation" : {
+      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "references" : {
+      "@id" : "http://purl.org/spar/biro/references",
+      "@type" : "@id"
+    },
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+  }
+}
+
+      </pre>
+      <p  id="ex4">Example 4 - Feedback:  Providing a mechanism for consumers to comment and ask the dataset publisher questions. </p>
+      <pre  class="schema turtle">      
+ex:timetable-001
+      a dcat:Dataset;
+      dct:title "Bus timetable of MyCity"^^xsd:string;
+      dct:issued "2015-05-05"^^xsd:date;
+      dct:publisher ex:transport-agency-mycity ;
+      dcat:distribution ex:timetable-001-csv;
+      .
+
+    ex:timetable-001-csv
+      a dcat:Distribution;
+      dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
+      dct:description "CSV distribution of the bus timetable 
+                       dataset of MyCity."^^xsd:string ;
+      dcat:mediaType "text/csv"^^xsd:string;
+      .
+
+    ex:comment1Content a cnt:ContentAsText ;
+      cnt:chars "This timetable is missing route 3"^^xsd:string .
+
+    ex:comment1
+       a duv:UserFeedback ;
+       oa:hasBody ex:comment1Content ;
+       oa:hasTarget ex:timetable-001 ;
+       dct:creator ex:localresident .
+
+    ex:comment2Content a cnt:ContentAsText ;
+      cnt:chars "Are tab delimited formats also available?"^^xsd:string .
+
+    ex:comment2
+       a duv:UserFeedback ;
+       oa:hasTarget ex:timetable-001-csv;
+       oa:hasBody ex:comment1Content ;
+       dct:creator ex:localresident ;
+    .
+
+    ex:localresident
+       a foaf:Person  ;
+       foaf:Name "Alan Law"^^xsd:string  ;
+    .
+
+
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : "ex:comment1",
+    "@type" : "duv:UserFeedback",
+    "creator" : "ex:localresident",
+    "hasBody" : "ex:comment1Content",
+    "hasTarget" : "ex:timetable-001"
+  }, {
+    "@id" : "ex:comment1Content",
+    "@type" : "cnt:ContentAsText",
+    "cnt:chars" : "This timetable is missing route 3"
+  }, {
+    "@id" : "ex:comment2",
+    "@type" : "duv:UserFeedback",
+    "creator" : "ex:localresident",
+    "hasBody" : "ex:comment1Content",
+    "hasTarget" : "ex:timetable-001-csv"
+  }, {
+    "@id" : "ex:comment2Content",
+    "@type" : "cnt:ContentAsText",
+    "cnt:chars" : "Are tab delimited formats also available?"
+  }, {
+    "@id" : "ex:localresident",
+    "@type" : "foaf:Person",
+    "foaf:Name" : "Alan Law"
+  }, {
+    "@id" : "ex:timetable-001",
+    "@type" : "dcat:Dataset",
+    "issued" : "2015-05-05",
+    "publisher" : "ex:transport-agency-mycity",
+    "dct:title" : "Bus timetable of MyCity",
+    "distribution" : "ex:timetable-001-csv"
+  }, {
+    "@id" : "ex:timetable-001-csv",
+    "@type" : "dcat:Distribution",
+    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
+    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
+    "dcat:mediaType" : "text/csv"
+  } ],
+  "@context" : {
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "description" : {
+      "@id" : "http://purl.org/dc/terms/description",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "mediaType" : {
+      "@id" : "http://www.w3.org/ns/dcat#mediaType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "contentchars" : {
+      "@id" : "http://www.w3.org/2011/contentchars",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
     },
     "distribution" : {
       "@id" : "http://www.w3.org/ns/dcat#distribution",
       "@type" : "@id"
     },
-    "qualifiedAssociation" : {
-      "@id" : "http://www.w3.org/nsprov#qualifiedAssociation",
-      "@type" : "@id"
-    },
-    "dct" : "http://purl.org/dc/terms/",
-    "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "prov" : "http://www.w3.org/nsprov#"
-  }
-}
-
-  </pre>
-      <p  id="ex2"> Example 2 - Feedback: Laufer provides feedback about the
-        temperature readings dataset. </p>
-      <pre  class="schema turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
-@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
-@prefix duv:  &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix cnt:  &lt;http://www.w3.org/2011/content/&gt; .
-@prefix :     &lt;http://example.org#&gt; .
-
-:dataset-03312004
-   a dcat:Dataset ;
-   dct:title "Quarterly Temperature Plot" ; 
-   duv:hasDatasetFeedback :comment1;
-   duv:hasDatasetFeedback :comment2;
-.
-
-:comment1Content a cnt:ContentAsText ;
-cnt:chars "Written in MS-DOS text format." .
-
-:comment1
-   a duv:UserFeedback ;
-   oa:hasBody comment1Content ;
-   oa:hasTarget :dataset-03312004 ;
-   dct:creator :laufer .
-
-:comment2
-   a duv:UserRatingFeedback;
-   duv:hasRating :three_stars;
-   oa:hasTarget :dataset-03312004;
-   dct:creator :laufer ;
-.
-
-:laufer
-   a foaf:Person  ;
-   foaf:Name "Laufer"  ;
-.
-
-:feedbackRating
-   a skos:ConceptScheme;
-   skos:prefLabel "A set of concepts to rate datasets or distributions";
-.
-
-:three_stars
-   a skos:Concept;
-   skos:inScheme :feedbackRating ;
-   skos:prefLabel "Good dataset or distribution" ;
-.
-<!--
-:laufer
-   a duv:Person  ;
-   foaf:givenName "Laufer"  ;
-   foaf:mbox &lt;mailto:laufer@example.org&gt; ;
-.
-
-:dataset-03312004
-   a dcat:Dataset ;
-   dct:title "Mars Quarterly Temperature Plot" ; 
-.
-
-:comment1
-   a duv:Feedback ;
-   oa:hasBody "Written in MS-DOS text format." ;
-   oa:hasTarget :dataset-03312004 ;
-   oa:annotatedBy :laufer ;
-.
-
-:comment2
-   a duv:Feedback;
-   duv:hasRating "3 Star";
-   oa:hasBody "Linked Data Rating";
-   oa:hasTarget :dataset-03312004;
-. -->
-  </pre>
-      <pre  class="schema json-ld">{
-  "@graph" : [ {
-    "@id" : "http://example.org#comment1",
-    "@type" : "duv:Feedback",
-    "annotatedBy" : "http://example.org#laufer",
-    "oa:hasBody" : "Written in MS-DOS text format.",
-    "hasTarget" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#comment2",
-    "@type" : "duv:Feedback",
-    "duv:hasRating" : "3 Star",
-    "oa:hasBody" : "Linked Data Rating",
-    "hasTarget" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#dataset-03312004",
-    "@type" : "dcat:Dataset",
-    "dct:title" : "Mars Quarterly Temperature Plot"
-  }, {
-    "@id" : "http://example.org#laufer",
-    "@type" : "duv:Person",
-    "foaf:givenName" : "Laufer",
-    "mbox" : "mailto:laufer@example.org"
-  } ],
-  "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms#title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "hasRating" : {
-      "@id" : "http://www.w3.org/ns/duv#hasRating",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
     "hasBody" : {
       "@id" : "http://www.w3.org/ns/oa#hasBody",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+      "@type" : "@id"
     },
     "hasTarget" : {
       "@id" : "http://www.w3.org/ns/oa#hasTarget",
       "@type" : "@id"
     },
-    "annotatedBy" : {
-      "@id" : "http://www.w3.org/ns/oa#annotatedBy",
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
       "@type" : "@id"
     },
-    "givenName" : {
-      "@id" : "http://xmlns.com/foaf/0.1/givenName",
+    "Name" : {
+      "@id" : "http://xmlns.com/foaf/0.1/Name",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
-    "mbox" : {
-      "@id" : "http://xmlns.com/foaf/0.1/mbox",
-      "@type" : "@id"
-    },
-    "oa" : "http://www.w3.org/ns/oa#",
-    "dct" : "http://purl.org/dc/terms#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "foaf" : "http://xmlns.com/foaf/0.1/"
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
   }
 }
-</pre>
-      <p  id="ex3">Example 3 - Citation: A technical report :paperA identified
-        by a DOI cites the dataset. The :dataset-03312013 is also identified by
-        a digital object identifier (DOI).</p>
-      <pre  class="schema turtle">@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dct:  &lt;http://purl.org/dc/terms#&gt; .
-@prefix oa:   &lt;http://www.w3.org/ns/oa#&gt;  .
-@prefix cito: &lt;http://purl.org/spar/cito#&gt; .
-@prefix fabio: &lt;http://purl.org/spar/fabio#&gt;.
-@prefix prism: &lt;http://prismstandard.org/namespaces/basic/2.0/&gt;.
-@prefix duv: &lt;http://www.w3.org/ns/duv#&gt; .
-@prefix : &lt;http://example.org#&gt; .
 
-:dataset-03312013
-    a dcat:Dataset;
-    dct:identifier "doi:10.1038/ex2158";
-    dct:title "Quarterly Temperature Plot"@en ;
-    dct:alternative "Qtrly Temp Plot"@en;
-    dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
-    dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime ;
-    dct:creator "Laufer" ;
-    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    dcat:keyword "Mars";
-    dct:language &lt;http://www.lexvo.org/page/iso639-3/eng&gt; ;
-    cito:isCitedBy :citation1 ; 
-.
 
-:thisCitation 
-    a cito:CitationAct;
-    cito: :dataset-03312004;
-    cito:hasCitedEntity :citation1;
-.
+      </pre>
+      <p  id="ex5">Example 5:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
+      <pre  class="schema turtle">      
 
-:citation1
-   a duv:DataCitation;
-   duv: :paperA;
-   dct:title "Quarterly Temperature Plot";
-   dct:hasVersion "1.0";
-   dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime;
-   dct:identifier "doi:10.1038/ex2158";
-   dct:creator :laufer";
-.
+   ex:timetable-001-csv
+    a dcat:Distribution;
+    dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
+    dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string ;
+    dcat:mediaType "text/csv"^^xsd:string;
+    .
 
-:paperA
-   a fabio:Work;
-   prism:doi "doi:20.1055/ex7758";
-   dct:title "Mars Weather Technical Report"@en;
-.
-<!--
-:dataset-03312013
-    a dcat:Dataset;
-    dct:identifier "doi:10.1038/ex2158";
-    dct:title "Mars Quarterly Temperature Plot"@en ;
-    dct:alternative "Qtrly Temp Plot"@en;
-    dct:description "This plot features average surface temperatures measured by the Mars Land Rover. "@en ;
-    dct:created "2013-03-31T15:18:00Z"^^xsd:dateTime ;
-    dct:creator "Laufer" ;
-    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    dcat:keyword "Mars";
-    dct:language &lt;http://www.lexvo.org/page/iso639-3/eng&gt; ;
-    cito:isCitedAsDataSourceBy :paperA ; 
-.
-
-:thisCitation 
-    a duv:DataCitation;
-    cito: :dataset-03312004;
-    cito:hasCitedEntity :paperA;
-.
-
-:paperA
-   a foaf:document
-   dct:identifier "doi:20.1055/ex7758";
-   dct:title "Mars Weather Technical Report"@en;
-   duv:cites :dataset-03312004;
-.
--->
-</pre>
-      <pre  class="schema json-ld">{
-  "@graph" : [ {
-    "@id" : "http://example.org#dataset-03312013",
-    "@type" : "dcat:Dataset",
-    "dct:alternative" : {
-      "@language" : "en",
-      "@value" : "Qtrly Temp Plot"
-    },
-    "created" : "2013-03-31T15:18:00Z",
-    "dct:creator" : "Laufer",
-    "dct:description" : {
-      "@language" : "en",
-      "@value" : "This plot features average surface temperatures measured by the Mars Land Rover. "
-    },
-    "dct:identifier" : "doi:10.1038/ex2158",
-    "language" : "http://www.lexvo.org/page/iso639-3/eng",
-    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
-    "dct:title" : {
-      "@language" : "en",
-      "@value" : "Mars Quarterly Temperature Plot"
-    },
-    "isCitedAsDataSourceBy" : "http://example.org#paperA",
-    "dcat:keyword" : "Mars"
+  ex:release-notes a duv:Usage;
+  dct:title "New timetable format";
+  dct:created "20-DEC-2014" ;
+  dct:description "The previous proprietary format has been replaced with a 
+                  CVS format to take advantage of new off the shelf tools"^^xsd:string ;
+ .
+      </pre>
+      <pre  class="schema json-ld">  "@graph" : [ {
+    "@id" : "ex:release-notes",
+    "@type" : "duv:Usage",
+    "created" : "20-DEC-2014",
+    "dct:description" : "The previous proprietary format has been replaced with a CVS format to take advantage of new off the shelf tools",
+    "dct:title" : "New timetable format"
   }, {
-    "@id" : "http://example.org#paperA",
-    "@type" : "foaf:document",
-    "dct:identifier" : "doi:20.1055/ex7758",
-    "dct:title" : {
-      "@language" : "en",
-      "@value" : "Mars Weather Technical Report"
-    },
-    "cites" : "http://example.org#dataset-03312004"
-  }, {
-    "@id" : "http://example.org#thisCitation",
-    "@type" : "duv:DataCitation",
-    "hasCitedEntity" : "http://example.org#paperA",
-    "" : "http://example.org#dataset-03312004"
+    "@id" : "ex:timetable-001-csv",
+    "@type" : "dcat:Distribution",
+    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
+    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
+    "dcat:mediaType" : "text/csv"
   } ],
   "@context" : {
-    "identifier" : {
-      "@id" : "http://purl.org/dc/terms#identifier",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
     "title" : {
-      "@id" : "http://purl.org/dc/terms#title",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-    },
-    "cites" : {
-      "@id" : "http://www.w3.org/ns/duv#cites",
-      "@type" : "@id"
-    },
-    "creator" : {
-      "@id" : "http://purl.org/dc/terms#creator",
+      "@id" : "http://purl.org/dc/terms/title",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "keyword" : {
-      "@id" : "http://www.w3.org/ns/dcat#keyword",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "isCitedAsDataSourceBy" : {
-      "@id" : "http://purl.org/spar/cito#isCitedAsDataSourceBy",
-      "@type" : "@id"
-    },
-    "alternative" : {
-      "@id" : "http://purl.org/dc/terms#alternative",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-    },
-    "created" : {
-      "@id" : "http://purl.org/dc/terms#created",
-      "@type" : "http://www.w3.org/2001/XMLSchema#dateTime"
-    },
-    "language" : {
-      "@id" : "http://purl.org/dc/terms#language",
-      "@type" : "@id"
-    },
-    "license" : {
-      "@id" : "http://purl.org/dc/terms#license",
-      "@type" : "@id"
     },
     "description" : {
-      "@id" : "http://purl.org/dc/terms#description",
-      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      "@id" : "http://purl.org/dc/terms/description",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
-    "" : {
-      "@id" : "http://purl.org/spar/cito#",
-      "@type" : "@id"
+    "mediaType" : {
+      "@id" : "http://www.w3.org/ns/dcat#mediaType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
-    "hasCitedEntity" : {
-      "@id" : "http://purl.org/spar/cito#hasCitedEntity",
-      "@type" : "@id"
-    },
-    "oa" : "http://www.w3.org/ns/oa#",
-    "dct" : "http://purl.org/dc/terms#",
+    "created" : "http://purl.org/dc/terms/created",
     "duv" : "http://www.w3.org/ns/duv#",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
-    "cito" : "http://purl.org/spar/cito#"
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
   }
 }
-</pre> </section>
+
+      </pre>
+      <p  id="ex6">Example 6-  Data Usage:  Dataset publisher provides recommendations about a bus route calculator that can be used with a timetable distribution.</p>
+      <pre  class="schema turtle">      
+ex:timetable-001-csv
+      a dcat:Distribution;
+      dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
+      dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string;
+      dcat:mediaType "text/csv"^^xsd:string;
+.
+
+ex:route-calculator a duv:UsageTool;
+    dct:title "Route Calculator"^^xsd:string;
+    dct:created "15-FEB-2004"^^xsd:date ;
+    dct:uri <http://example.org/route-calculator> .
+
+    ex:release-notes a duv:Usage;
+    dct:title "New timetable format"^^xsd:string;
+    dct:created "20-DEC-2014"^^xsd:date ;
+    duv:hasUsageTool ex:route-calculator ;
+.
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : "ex:release-notes",
+    "@type" : "duv:Usage",
+    "created" : "20-DEC-2014",
+    "dct:title" : "New timetable format",
+    "hasUsageTool" : "ex:route-calculator"
+  }, {
+    "@id" : "ex:route-calculator",
+    "@type" : "duv:UsageTool",
+    "created" : "15-FEB-2004",
+    "dct:title" : "Route Calculator",
+    "uri" : "http://example.org/route-calculator"
+  }, {
+    "@id" : "ex:timetable-001-csv",
+    "@type" : "dcat:Distribution",
+    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
+    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
+    "dcat:mediaType" : "text/csv"
+  } ],
+  "@context" : {
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "description" : {
+      "@id" : "http://purl.org/dc/terms/description",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "mediaType" : {
+      "@id" : "http://www.w3.org/ns/dcat#mediaType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "hasUsageTool" : {
+      "@id" : "http://www.w3.org/ns/duv#hasUsageTool",
+      "@type" : "@id"
+    },
+    "uri" : {
+      "@id" : "http://purl.org/dc/terms/uri",
+      "@type" : "@id"
+    },
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dctype" : "http://purl.org/dc/dcmitype/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+  }
+}
+
+      </pre>
+    </section>
     <section  id="duvrequirements">
       <h2>DUV Requirements</h2>
       <div  class="issue">Right now this section is somewhat of a duplication of
@@ -1768,7 +1820,7 @@ cnt:chars "Written in MS-DOS text format." .
       <p> This section shows some of the requirements that motivated the
         development of the Dataset Usage Vocabulary. These requirements were
         derived from the use cases described in <a  href="http://www.w3.org/TR/dwbp-ucr/">Data
-          on the Web Best Practices Use Cases &amp; Requirements document.</a></p>
+          on the Web Best Practices Use Cases & Requirements document.</a></p>
       <p> <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable"> R-TrackDataUsage
         </a> </p>
       <p><em>It should be possible to track the usage of data.</em></p>
@@ -1792,7 +1844,7 @@ cnt:chars "Written in MS-DOS text format." .
               identification of all the decisions and policy changes made by
               authorities based on this data. It will also list applications,
               tools and frameworks suitable for analysis of this kind of
-              &nbsp;data. <br>
+               data. <br>
             </td>
           </tr>
           <tr>
@@ -1848,7 +1900,7 @@ cnt:chars "Written in MS-DOS text format." .
         was used and the profile of the user who uses it. R-UsageFeedback should
         also provide a way to communicate suggested corrections and update to
         the datasets by the users back to data publisher. Data publishers should
-        &nbsp;have a review mechanism to incorporate submitted corrections. </p>
+         have a review mechanism to incorporate submitted corrections. </p>
       <table  class="definition">
         <tbody>
           <tr>
@@ -1868,7 +1920,7 @@ cnt:chars "Written in MS-DOS text format." .
               technologies and formulas used by publishers to provide datasets
               in the portal. User feedback can provided usabilities of those
               technologies and formulas. User feedback can be used to
-              crowdsource discrepancies in the vocabularies &nbsp;used to
+              crowdsource discrepancies in the vocabularies  used to
               describe datasets.</td>
           </tr>
           <tr>
@@ -2032,5 +2084,6 @@ cnt:chars "Written in MS-DOS text format." .
           return true;
         });
         </script>
-  </body>
-</html>
+  
+
+</body></html>
