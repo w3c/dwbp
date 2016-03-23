@@ -1322,9 +1322,8 @@ table.bptable caption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The machine readable version of the data provenance may be
-              provided according to the ontology recommended by W3C to describe
-              provenance information, i.e., the Provenance Ontology [[PROV-O]].
+            <p>The machine readable version of the data provenance can be
+              provided using an ontology recommended to describe provenance information, such as W3C's Provenance Ontology [[PROV-O]].
             </p>
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
@@ -1333,31 +1332,30 @@ table.bptable caption {
               <p> The example below shows the machine readable metadata for the
                 Bus Timetable dataset (timetable-001) with the inclusion of the
                 <strong>provenance</strong> metadata. The metadata specifies
-                that John created the Bus Timetable dataset. </p>
+                that John created the Bus Timetable dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
               <pre class="highlight">:timetable-001
   a dcat:Dataset, prov:Entity;
   dct:title "Bus timetable of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-  <strong>prov:wasAttributedTo :john; </strong>
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
+  <strong>dct:creator :john; </strong>
   .
 
 :john
   a foaf:Person, prov:Agent;
   foaf:givenName "John";
   foaf:mbox &lt;mailto:john@mycitytransport.org&gt;;
-  prov:actedOnBehalfOf :transport-agency-mycity;
+  <strong>prov:actedOnBehalfOf :transport-agency-mycity; </strong>
  .
 :transport-agency-mycity
   a foaf:Organization, prov:Agent;
-  foaf:name "Transport Agency of Mycity";
+  foaf:name "Transport Agency of Mycity"; 
   .
 
 </pre>
@@ -1365,9 +1363,7 @@ table.bptable caption {
               <!--<p><a href="dwbp-example.html">Example page</a> with
                 human-readable data provenance information.</p> -->
               <p> to be done.</p>
-              <div class="issue"> Should we include a more complex example to
-                illustrate provenance? <a href="https://www.w3.org/2013/dwbp/track/issues/220">
-                  Issue-220 </a> </div>
+              
             </aside>
           </section>
           <section class="test">
