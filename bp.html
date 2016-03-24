@@ -629,6 +629,71 @@ table.bptable caption {
         datasets it is important to adopt Data Vocabularies and Standards. </p>
       <img src="images/context.jpg" alt="Our Context" height="440" width="640">
     </section>
+    <section id="namespaces" class="informative">
+      <h2> Namespaces </h2>
+<p> The following namespace prefixes are used throughout this document. </p>
+      <table id="uripatternstable">
+              <caption>Namespaces used in the document</caption>
+              <tbody>
+                <tr>
+                  <th>Prefix</th>
+                  <th>Namespace IRI</th>
+                </tr>
+                <tr>
+                  <td>cnt</td>
+                  <td>http://www.w3.org/2011/content</td>
+                </tr>
+                <tr>
+                  <td>dcat</td>
+                  <td>http://www.w3.org/ns/dcat#</td>
+                </tr>
+                 <tr>
+                  <td>dct</td>
+                  <td>http://purl.org/dc/terms/</td>
+                </tr>
+                <tr>
+                  <td>dqv</td>
+                  <td>http://www.w3.org/ns/dqv#</td>
+                </tr>
+                <tr>
+                  <td>duv</td>
+                  <td>http://www.w3.org/ns/duv#</td>
+                </tr>
+                <tr>
+                  <td>foaf</td>
+                  <td>http://xmlns.com/foaf/0.1/</td>
+                </tr>
+                <tr>
+                  <td>oa</td>
+                  <td>http://www.w3.org/ns/oa#</td>
+                </tr>
+                <tr>
+                  <td>owl</td>
+                  <td>http://www.w3.org/2002/07/owl#</td>
+                </tr>
+                <tr>
+                  <td>pav</td>
+                  <td>http://pav-ontology.github.io/pav/</td>
+                </tr>
+                <tr>
+                  <td>prov</td>
+                  <td>http://www.w3.org/ns/prov#</td>
+                </tr> 
+                 <tr>
+                  <td>rdf</td>
+                  <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                </tr>
+                <tr>
+                  <td>rdfs</td>
+                  <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                </tr>
+                <tr>
+                  <td>skos</td>
+                  <td>http://www.w3.org/2004/02/skos/core#</td>
+                </tr>
+              </tbody>
+       </table>       
+    </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
       <p>This section presents the template used to describe Data on the Web
@@ -1005,7 +1070,6 @@ table.bptable caption {
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
        dct:issued "2015-05-05";
-       dct:modified "2015-05-05";
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
@@ -1015,18 +1079,15 @@ table.bptable caption {
        dcat:distribution :timetable-001-csv;
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;</strong>
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt;;</strong>
+       <strong>dct:conformsTo "ISO 8601"; </strong>
        .
 </pre>
               <p>To declare the languages of the dataset is published using the
                 <code>dct:language</code>. If the dataset is available in multiple languages,
-                use multiple values for this property [[VOCAB-DCAT]]. <!-- As proposed
+                use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. <!-- As proposed
                 in Dataset Descriptions from HCLS Community [[HCLS-DATASET]]
                 values were taken from the Lexvo.org Ontology [[Lexvo]]. --></p>
-              <div class="note">to include date and numbers formats!</div>
-              <div class="issue">DCAT has a property to describe language, but
-                there are no properties to describe date, time and numeric
-                formats. Which vocabulary should be used to provide this type of
-                metadata? This is <a href="https://www.w3.org/2013/dwbp/track/issues/167">Issue-167</a>.</div>
+              
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable description of dataset is available.</p>
@@ -1322,9 +1383,8 @@ table.bptable caption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The machine readable version of the data provenance may be
-              provided according to the ontology recommended by W3C to describe
-              provenance information, i.e., the Provenance Ontology [[PROV-O]].
+            <p>The machine readable version of the data provenance can be
+              provided using an ontology recommended to describe provenance information, such as W3C's Provenance Ontology [[PROV-O]].
             </p>
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
@@ -1333,31 +1393,30 @@ table.bptable caption {
               <p> The example below shows the machine readable metadata for the
                 Bus Timetable dataset (timetable-001) with the inclusion of the
                 <strong>provenance</strong> metadata. The metadata specifies
-                that John created the Bus Timetable dataset. </p>
+                that John created the Bus Timetable dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
               <pre class="highlight">:timetable-001
   a dcat:Dataset, prov:Entity;
   dct:title "Bus timetable of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-  <strong>prov:wasAttributedTo :john; </strong>
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
+  <strong>dct:creator :john; </strong>
   .
 
 :john
   a foaf:Person, prov:Agent;
   foaf:givenName "John";
   foaf:mbox &lt;mailto:john@mycitytransport.org&gt;;
-  prov:actedOnBehalfOf :transport-agency-mycity;
+  <strong>prov:actedOnBehalfOf :transport-agency-mycity; </strong>
  .
 :transport-agency-mycity
   a foaf:Organization, prov:Agent;
-  foaf:name "Transport Agency of Mycity";
+  foaf:name "Transport Agency of Mycity"; 
   .
 
 </pre>
@@ -1365,9 +1424,7 @@ table.bptable caption {
               <!--<p><a href="dwbp-example.html">Example page</a> with
                 human-readable data provenance information.</p> -->
               <p> to be done.</p>
-              <div class="issue"> Should we include a more complex example to
-                illustrate provenance? <a href="https://www.w3.org/2013/dwbp/track/issues/220">
-                  Issue-220 </a> </div>
+              
             </aside>
           </section>
           <section class="test">
@@ -1642,19 +1699,20 @@ table.bptable caption {
               <p> The example below shows the metadata for timetable-001 with
                 the inclusion of the <strong>versioning</strong> metadata. </p>
               <pre class="highlight">:timetable-001
-  a dcat:Dataset, prov:Entity, version:VersionedThing;
+  a dcat:Dataset;
   dct:title "Bus timetable of MyCity";
-  dcat:keyword "transport","mobility" ,"bus";
+  dcat:keyword "transport","mobility","bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
   prov:wasAttributedTo :john;
-  <strong>pav:version "1.0"; </strong> </pre>
+  <strong>owl:versionInfo "1.0"; </strong>
+  <strong>pav:version "1.0". </strong>
+   </pre>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
@@ -1758,30 +1816,30 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
-                doesn't exist in timetable-001. To keep
+                doesn't exist in timetable-001, which has data about bus stops from MyCity. To keep
                 timetable-001 up to date, a new version of the dataset (timetable-002) was
                 created. Timetable-002 includes all the data from timetable-001
                 plus the data about the new bus stop. The machine readable
                 metadata for timetable-002 is shown below. </p>
               <pre class="highlight">:timetable-002
-       a dcat:Dataset, version:Version;
+       a dcat:Dataset;
        dct:title "Bus timetable of MyCity";
-       dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-06"^^xsd:date';
-       dct:modified "2015-05-06"^^xsd:date';
+       dcat:keyword "transport","mobility","bus";
+       dct:issued "2015-05-06"^^xsd:date;
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+       dct:publisher :transport-agency-mycity;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
        ...
-       <strong>dct:isVersionOf:timetable-001;
-       pav:previousVersion:timetable-001;
-       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street."
+       <strong>dct:isVersionOf :timetable-001;
+       pav:previousVersion: timetable-001;
+       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
+       owl:versionInfo "1.1";
        pav:version "1.1". </strong>
 </pre>
-              <p> Versioning metadata for timetable-001 after the creation of
+       <!--       <p> Versioning metadata for timetable-001 after the creation of
                 timetable-002, which is a new version of timetable-001. </p>
               <pre class="highlight">:timetable-001
        a dcat:Dataset, version:VersionedThing;
@@ -1795,11 +1853,13 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
        dct:publisher:transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
-       prov:wasAttributedTo:john; -->
+       prov:wasAttributedTo:john; 
        ...
-       <strong>version:currentVersion:timetable-002;
+       <strong>pav:hasCurrentVersion :timetable-002;
        dct:hasVersion :timetable-002;
-       pav:version "1.0". </strong> </pre>
+       owl:versionInfo "1.0";
+       pav:version "1.0". </strong> --> 
+       </pre>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
@@ -2667,8 +2727,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
+            <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
               Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
             <aside class="example">
