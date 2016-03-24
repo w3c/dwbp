@@ -1100,7 +1100,7 @@ SubObjectPropertyOf(
                         <thead>
                             <tr>
                                 <th>RDF Instance:</th>
-                                <th><a href="">dqv:qualityAssessment</a></th>
+                                <th><a href="#dqv:qualityAssessment">dqv:qualityAssessment</a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1118,6 +1118,32 @@ SubObjectPropertyOf(
                <div class="note">
                         <p> Whenever DQV adopters need to extend the motivations for quality annotations, they  should follow <a href="https://www.w3.org/TR/annotation-model/#extending-motivations">instruction</a> provided in the Web Annotation Data Model, and the concepts in the extension should be specialization of  <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a>.</p>
                     </div>    
+           
+                      <section id="dqv:precision">
+                    <h3>Instance: Precision</h3>
+                    <table class="definition">
+                        <thead>
+                            <tr>
+                                <th>RDF Instance:</th>
+                                <th><a href="#dqv:precision">dqv:precision</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="prop">Definition:</td>
+                                <td>Precision is a quality dimension which referes to the recorded level of details. It represents the exactness of measurement or description.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="prop">Instance of:</td><td><a href="#dqv:Dimension">dqv:Dimension</a></td>
+                            </tr>
+                            <tr>
+                                <td class="prop">Equivalent to</td><td><p>iso:precision</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+               
             </section>
 
             <section id="examples" class="informative">
@@ -1694,8 +1720,7 @@ SubObjectPropertyOf(
 :myLinksetDistribution
     a dcat:Distribution, void:Linkset ;
     dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
--->
-        </pre>
+--></pre>
                     <p>We can represent information about the quality of :myLinkset
                         using the “Multilingual importing” [[MultilingualImporting]] linkset
                         quality metric. This metrics works on linksets between datasets that
@@ -1908,13 +1933,13 @@ SubObjectPropertyOf(
                     </p>
 
                     <pre class="highlight">
-ex:myDataset a dcat:Dataset;
+:myDataset a dcat:Dataset .
 
-ex:myDatasetRecord a dcat:CatalogRecord ;
+:myDatasetRecord a dcat:CatalogRecord ;
  foaf:primaryTopic :myDataset ;
  dcterms:conformsTo :geoDCAT-AP .
 
-ex:geoDCAT-AP a dcterms:Standard;
+:geoDCAT-AP a dcterms:Standard;
   dcterms:title "GeoDCAT Application Profile. Version 1.0" ;
   dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability
   Solutions for European Public Administrations (ISA) Programme"@en;
@@ -2021,6 +2046,38 @@ ex:geoDCAT-AP a dcterms:Standard;
                     </div>
 
                 </section>
+                <section id="ExpressDatasetAccuracyPrecision">
+                    <h3>Express dataset precision and accuracy.</h3>
+                        <p>The need for documenting data accuracy and precison is a common requirement,  in particular,  when dealing with spatial data. This  example show how  DVQ can meet this requirement relying on two distinct quality dimensions.</p>
+                    <pre class="highlight">
+:myDataset a dcat:Dataset;
+    dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
+
+:myDatasetPrecision a dqv:QualityMeasurement ;
+   dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
+   dqv:value "1000"^^xsd:decimal 
+   .
+   
+:spatialResolutionAsDistanceInMetres  a  dqv:Metric;
+    skos:definition "It expresses dataset resolution as distance in Metres"@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension dqv:precision 
+    .
+   
+:myDatasetAccuracy a dqv:QualityMeasurement ;
+   dqv:hasMetric :spatialAccuracy ;
+   dqv:value "98.2"^^xsd:decimal 
+   .
+   
+:spatialAccuracy   a  dqv:Metric;
+    skos:definition "It returns the percentage of special element that are found accurate
+    acconding to  methodology XYZ"@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension zaveri:semanticAccuracy 
+    .
+</pre>
+                </section>
+                        
 
             </section>
 
