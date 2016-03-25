@@ -24,7 +24,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-03-24",
+                publishDate : "2016-03-25",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -2310,7 +2310,7 @@ SubObjectPropertyOf(
                         </tbody>
                     </table>
                     <p>DQV can express the dimensions and categories listed in the
-                        table as shown in the following example. The encoding of all the dimensions and categories mentioned above can be found at <a href="">LinkToTheTurtle</a>.</p>
+                        table above.  The following example includes only an exemplification of the ISO  dimensions and categories which should be authoritatively provided by ISO. Semantic relation defined in SKOS can be exploited to related categories and dimensions, for example,  in the following, <code>skos:broader</code> has been exploited to define <code>iso:inherentSystemDependentDataQuality</code>  as a specialization of <code>iso:inherentDataQuality</code> and <code>iso:systemDependentDataQuality</code>.</p>
 
                     <pre class="highlight">
 # definition of ISO categories
@@ -2318,11 +2318,13 @@ SubObjectPropertyOf(
 iso:inherentDataQuality a dqv:Category ; 
    skos:prefLabel "Inherent Data Quality"@en. 
 
-iso:inherentSystemDependentDataQuality a dqv:Category ; 
-   skos:prefLabel "Inherent and System-Dependent Data Quality"@en. 
-
 iso:systemDependentDataQuality a dqv:Category ; 
    skos:prefLabel "System-Dependent Data Quality"@en. 
+   
+iso:inherentSystemDependentDataQuality a dqv:Category ; 
+           skos:prefLabel "Inherent and System-Dependent Data Quality"@en.
+           skos:broader iso:inherentDataQuality, iso:systemDependentDataQuality .
+
 
 # definition of ISO dimensions
 
@@ -2351,26 +2353,18 @@ iso:consistency a dqv:Dimension ;
     data for comparable entities."@en
     .
 
+# ...  ...
+
+iso:accessibility a  dqv:Dimension ; 
+    dqv:inCategory iso:inherentSystemDependentDataQuality ;
+    skos:prefLabel "Accessibility"@en;
+    skos:definition "The degree to which data can be accessed in a specific context of
+    use, particularly by people who need supporting technology or special configuration
+    because of some disability."@en
+    .
+
 # ... etc ...
         </pre>
-        <div class="note">
-        <p>We could remove <code>iso:inherentSystemDependentDataQuality</code>. Instead we can use only the two basic categories
-          and use dual classification as in this proposal for Precision:</p>
-        <pre>iso:precision a dqv:Dimension ; 
-            dqv:inCategory iso:inherentDataQuality ;
-            dqv:inCategory iso:systemDependentDataQuality ;
-            skos:prefLabel "Consistency"@en;
-            skos:definition "The degree to which data has attributes that are exact or that 
-            provide discrimination in a specific context of use."@en
-            .
-        </pre>
-        <p>If we keep <code>iso:inherentSystemDependentDataQuality</code> then we should use it as an example for skos:broader
-          i.e., it should be connected to both <code>iso:inherentDataQuality</code> and <code>iso:systemDependentDataQuality</code> with this property:</p>
-        <pre>iso:inherentSystemDependentDataQuality a dqv:Category ; 
-           skos:prefLabel "Inherent and System-Dependent Data Quality"@en.
-           skos:broader iso:inherentDataQuality, iso:systemDependentDataQuality .
-        </pre>
-        </div> 
 
         </section>
 
