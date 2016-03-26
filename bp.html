@@ -2985,23 +2985,28 @@ A usual resident was generally defined as someone who spent most of their time a
       <!-- end of BP Bulk Access -->
       <!-- begin of BP Subsetting-->
       <div class="practice">
-        <p><span id="BulkAccess" class="practicelab">Enable Data Subsetting </span></p>
-        <p class="practicedesc">Enable users and applications to readily work with subsets of your data.</p>
+        <p><span id="BulkAccess" class="practicelab">Provide Subsets for Large Datasets</span></p>
+        <p class="practicedesc">If your dataset is large, enable users and applications to readily work with subsets of your data.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>The web was not designed as a large-file transfer service, so large datasets can be difficult to move from place to place. It can also be inconvenient for users to store a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users.</p>
+          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that are large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, depending on the needs of the domain.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approaches to Implementation</p>
           <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation.</p>
-          <p>It is also helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+          <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download. In this case, it is also helpful to mark up the dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
-            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate.</p>
+            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate. Example URIs for the API might be as follows:</p>
+            <ul>
+              <li>http://api.transit.mycity.org/buses/routes/18 for a list of stops along bus route 18.</li>
+              <li>http://api.transit.mycity.org/buses/routes for a list of the available bus routes</li>
           </aside>
+          <aside class="example">
+            <p>The MyCity transit agency may also want to make bus schedule data available as timetables in web pages. Example URIs for such pages might be
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
