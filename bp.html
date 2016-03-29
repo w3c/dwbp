@@ -953,21 +953,21 @@ table.bptable caption {
               <h5>Machine-readable</h5>
               <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
-                the bus stop dataset (bus-stops-001). The dataset has one CSV
-                distribution (bus-stops-001-csv) that is also described using
+                the bus stop dataset (<code>bus-stops</code>). The dataset has one CSV
+                distribution (<code>bus-stops.csv</code>) that is also described using
                 the [[VOCAB-DCAT]].</p>
-              <pre class="highlight">  :bus-stops-001
+              <pre class="highlight">  :bus-stops
        a dcat:Dataset;
        dct:title "Bus stops of MyCity";
-       dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-05"^^xsd:date';
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
+       dcat:keyword "transport","mobility","bus";
+       dct:issued "2015-05-05"^^xsd:date;
+       dcat:contactPoint &lt;http://data.mycity.example/public-transport/contact&gt;;
+       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+       dct:publisher :transport-agency-mycity;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
-       dcat:distribution :bus-stops-001-csv;
+       dcat:distribution :bus-stops.csv;
        .
 
        :mobility
@@ -981,7 +981,7 @@ table.bptable caption {
        skos:prefLabel "A set of domains to classify documents" ;
        .
 
-       :bus-stops-001-csv
+       :bus-stops.csv
        a dcat:Distribution;
        dct:title "CSV distribution MyCity bus stops dataset."
        dct:description "CSV distribution of the bus stops dataset of MyCity."
@@ -1014,7 +1014,7 @@ table.bptable caption {
             <p> Check that the metadata for the dataset itself includes the
               overall features of the dataset.</p>
             <p> Check if a user agent can automatically discover the dataset. </p>
-            <div class="issue">How to test dataset discoverability? (Tracker <a href="https://www.w3.org/2013/dwbp/track/issues/247">ISSUE-247</a>)</div>
+            
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1072,9 +1072,9 @@ table.bptable caption {
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-            bus-stops-001 with the inclusion of the <strong> locale
+            bus-stops dataset with the inclusion of the <strong> locale
                   parameters </strong> metadata. </p>
-              <pre class="highlight">  :bus-stops-001
+              <pre class="highlight">  :bus-stops
        a dcat:Dataset;
        dct:title "Bus stops of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
@@ -1085,7 +1085,7 @@ table.bptable caption {
        dct:publisher :transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
-       dcat:distribution :bus-stops-001-csv;
+       dcat:distribution :bus-stops.csv;
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;</strong>
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt;;</strong>
        <strong>dct:conformsTo "ISO 8601"; </strong>
@@ -1304,9 +1304,9 @@ table.bptable caption {
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for
-                :bus-stop-s001-csv with the inclusion of the <strong> data
+                :bus-stops.csv with the inclusion of the <strong> data
                   license </strong> information. </p>
-              <pre class="highlight">:bus-stops-001-csv
+              <pre class="highlight">:bus-stops.csv
    a dcat:Distribution;
    dct:title "CSV distribution MyCity bus stops dataset."
    dct:description "CSV distribution of the bus stops dataset of MyCity."
@@ -1398,10 +1398,10 @@ table.bptable caption {
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for the
-                bus stops dataset (bus-stops-001) with the inclusion of the
+                bus stops dataset (bus-stops) with the inclusion of the
                 <strong>provenance</strong> metadata. The metadata specifies
                 that John created the bus stops dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
-              <pre class="highlight">:bus-stops-001
+              <pre class="highlight">:bus-stops
   a dcat:Dataset, prov:Entity;
   dct:title "Bus stops of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
@@ -1524,7 +1524,7 @@ table.bptable caption {
                 quality metadata. The metadata was defined according to the Data
                 Quality Vocabulary. Further  examples can be found in the Data
                 Quality Vocabulary document [[DQV]]. </p>
-              <pre class="highlight">:bus-stops-001-csv
+              <pre class="highlight">:bus-stops-00.csv
    a dcat:Distribution ;
    dcat:downloadURL &lt;http://example.org/bus_stops_mycity.csv&gt;
    dct:title "CSV distribution MyCity bus stops dataset." ;
@@ -1535,13 +1535,13 @@ table.bptable caption {
 	.
 :measure1
 	a dqv:QualityMeasurement ;
-	dqv:computedOn :bus-stops-001-csv ;
+	dqv:computedOn :bus-stops.csv ;
 	dqv:metric :downloadURLAvailabilityMetric ;
 	dqv:value "true"^^xsd:boolean
 	.
 :measure2
 	a dqv:QualityMeasurement ;
-	dqv:computedOn :bus-stops-001-csv ;
+	dqv:computedOn :bus-stops.csv ;
 	dqv:metric :csvCompletenessMetric ;
 	dqv:value "0.5"^^xsd:double
 	.
@@ -1703,9 +1703,9 @@ table.bptable caption {
               number of annotation properties for version information.</p>
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows the metadata for bus-stops-001 with
+              <p> The example below shows the metadata for bus-stops with
                 the inclusion of the <strong>versioning</strong> metadata. </p>
-              <pre class="highlight">:bus-stops-001
+              <pre class="highlight">:bus-stops
   a dcat:Dataset;
   dct:title "Bus stops of MyCity";
   dcat:keyword "transport","mobility","bus";
@@ -1839,7 +1839,7 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
        ...
-       <strong>dct:isVersionOf :bus-stops-001;
+       <strong>dct:isVersionOf :bus-stops;
        pav:previousVersion: bus-stops-001;
        rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
        owl:versionInfo "1.1";
@@ -2467,11 +2467,11 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           of the publication of data about census. They decided to
           publish one dataset about usual resident population collected in the 2001 Census.
 A usual resident was generally defined as someone who spent most of their time at a specific address. This dataset shows both the 2001 population, the 1991 population, along with the rate of change, the split of the population between those living in households and those living in communal establishments, the size of the area in hectares, population density and the number of students away from home in the area.</p>
-              <pre class="highlight">   :census-001
+              <pre class="highlight">   :census
        a dcat:Dataset;
-       dcat:distribution :census-001-csv;
+       dcat:distribution :census.csv;
        .
-   :census-001-csv
+   :census.csv
        a dcat:Distribution;
        dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
        dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
@@ -2537,17 +2537,17 @@ A usual resident was generally defined as someone who spent most of their time a
                 dataset.</p>
               <pre class="highlight">  :census-001
        a dcat:Dataset;
-       dcat:distribution :census-001-csv;
-       dcat:distribution :census-001-xml;
+       dcat:distribution :census.csv;
+       dcat:distribution :census.xml;
        .
-   :census-001-csv
+   :census.csv
        a dcat:Distribution;
        dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
        dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
        dcat:mediaType "text/csv";
        dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
        .
-   :census-001-xml
+   :census.xml
        a dcat:Distribution;
        dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.xml&gt;;
        dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census.";
@@ -2658,7 +2658,7 @@ A usual resident was generally defined as someone who spent most of their time a
               is an efficient way to do this.</p>
             <aside class="example">
             <p>1. The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):</p>
-<pre style="" class="highlight prettyprint prettyprinted">:bus-stops-001
+<pre style="" class="highlight prettyprint prettyprinted">:bus-stops
     dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
 </pre>
             <p>2. The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Center Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:</p>
