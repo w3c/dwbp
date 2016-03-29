@@ -209,7 +209,7 @@ var respecConfig = {
 
       "ODRL":{
         "authors" : [ "Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten" ],
-        "href" : "https://www.w3.org/community/odrl/model/2.1/"
+        "href" : "https://www.w3.org/community/odrl/model/2.1/",
         "title" : "ODRL Version 2.1 Core Model",
         "status" : "W3C Community Group Specification",
         "publisher":"W3C",
