@@ -525,16 +525,21 @@ table.bptable caption {
         creates a fundamental need for a common understanding between data
         publishers and data consumers. Without this agreement, data publishers'
         efforts may be incompatible with data consumers' desires.</p>
-      <p>Publishing data on the Web creates new challenges, such as how to
+      <p>The openness and flexibility of the Web creates new challenges for data
+        publishers and data consumers, such as how to
         represent, describe and make data available in a way that it will be
-        easy to find and to understand. In this context, it becomes crucial to
+        easy to find and to understand. In contrast to conventional databases,
+        for example, where there is a single data model to represent the data
+        and a database management system (DBMS) to control data access, data on
+        the Web allows for the existence of multiple ways to represent and to
+        access data. For more details about the challenges see the section <a href="#challenges">Data on the Web Challenges</a>.</p>
+      <p>In this context, it becomes crucial to
         provide guidance to publishers that will improve consistency in the way
         data is managed, thus promoting the reuse of data and also to foster
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
-      <p>This document sets out a series of best practices that will help
-        publishers and consumers face the new challenges and opportunities posed
-        by data on the Web. </p>
+      <p>A general best practice to publish Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains/applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, publishing of timetables have two standards, the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]], that specify, in a mixed way, standardize terms, standardized data formats and standardized data access. As was said before, the Best Practices proposed in this document serve a general purpose of publishing and using Data on the Web. These Best Practices are domain/application independent. They could be extended or complemented by other best practices documents or standards that cover the publishing of datasets in a more restricted universe.</p>
+      <p>Taking that into account, this document sets out a series of best practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW]].</p>
       <p>Best practices cover different aspects related to data publishing and
         consumption, like data formats, data access, data identifiers and
         metadata. In order to delimit the scope and elicit the required features
@@ -551,6 +556,7 @@ table.bptable caption {
         JSON [[RFC4627]]. The Best Practices related to the use of vocabularies
         incorporate practices that stem from Best Practices for Publishing
         Linked Data where appropriate.</p>
+      <p>In order to encourage data publishers to adopt the DWBP, benefits were set: comprehension; processability; discoverability; reuse; trust; linkability; access; and interoperability. They are described and related to the Best Practices in the section <a href="#BP_Benefits">Best Practices Benefits</a>.</p>
     </section>
     <!--     <section id="conformance"> </section> -->
     <section id="audience" class="informative">
@@ -622,9 +628,71 @@ table.bptable caption {
         should be available. Finally, to promote the interoperability among
         datasets it is important to adopt Data Vocabularies and Standards. </p>
       <img src="images/context.jpg" alt="Our Context" height="440" width="640">
-      <div class="issue"> Should we include definitions on the glossary to
-        explain other terms used in this section? <a href="https://www.w3.org/2013/dwbp/track/issues/228"> Issue-228 </a>
-      </div>
+    </section>
+    <section id="namespaces" class="informative">
+      <h2> Namespaces </h2>
+<p> The following namespace prefixes are used throughout this document. </p>
+      <table id="uripatternstable">
+              <caption>Namespaces used in the document</caption>
+              <tbody>
+                <tr>
+                  <th>Prefix</th>
+                  <th>Namespace IRI</th>
+                </tr>
+                <tr>
+                  <td>cnt</td>
+                  <td>http://www.w3.org/2011/content</td>
+                </tr>
+                <tr>
+                  <td>dcat</td>
+                  <td>http://www.w3.org/ns/dcat#</td>
+                </tr>
+                 <tr>
+                  <td>dct</td>
+                  <td>http://purl.org/dc/terms/</td>
+                </tr>
+                <tr>
+                  <td>dqv</td>
+                  <td>http://www.w3.org/ns/dqv#</td>
+                </tr>
+                <tr>
+                  <td>duv</td>
+                  <td>http://www.w3.org/ns/duv#</td>
+                </tr>
+                <tr>
+                  <td>foaf</td>
+                  <td>http://xmlns.com/foaf/0.1/</td>
+                </tr>
+                <tr>
+                  <td>oa</td>
+                  <td>http://www.w3.org/ns/oa#</td>
+                </tr>
+                <tr>
+                  <td>owl</td>
+                  <td>http://www.w3.org/2002/07/owl#</td>
+                </tr>
+                <tr>
+                  <td>pav</td>
+                  <td>http://pav-ontology.github.io/pav/</td>
+                </tr>
+                <tr>
+                  <td>prov</td>
+                  <td>http://www.w3.org/ns/prov#</td>
+                </tr> 
+                 <tr>
+                  <td>rdf</td>
+                  <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                </tr>
+                <tr>
+                  <td>rdfs</td>
+                  <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                </tr>
+                <tr>
+                  <td>skos</td>
+                  <td>http://www.w3.org/2004/02/skos/core#</td>
+                </tr>
+              </tbody>
+       </table>       
     </section>
     <section id="bp-template">
       <h2>Best Practices Template</h2>
@@ -682,20 +750,16 @@ table.bptable caption {
             <li>Interoperability</li>
             <li>Processability</li>
           </ul>
-          <div class="note"> To include links from the icons to the corresponding benefits. </div>
+          <div class="note">To include links from the icons to the corresponding benefits.</div>
         </section>
       </div>
     </section>
     <section id="bp-summary"></section>
+    <div class="issue">To include filters to sort BPs according Benefits or Challenges (Tracker <a href="https://www.w3.org/2013/dwbp/track/issues/245">ISSUE-245</a>).</div>
     <section id="bestPractices">
       <h2>The Best Practices</h2>
-      <p>This section contains the best practices to be used by data publishers
-        in order to help them and data consumers to overcome the different
-        challenges faced when publishing and consuming data on the Web. One or
-        more best practices were proposed for each one of the previously
-        described challenges. Each BP is related to one or more requirements
-        from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best
-          Practices Use Cases &amp; Requirements document.</a></p>
+      <p>This section contains the best practices to be used by data publishers in order to help them and data consumers to overcome the different challenges faced when publishing and consuming data on the Web. One or more best practices were proposed for each one of the challenges, which are described in the section <a href="#challenges">Data on the Web Challenges</a>.</p>
+      <p>Each BP is related to one or more requirements from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best Practices Use Cases &amp; Requirements document</a> document and the development of Data on the Web Best Practices was guided by these requirements, in such a way that each best practice should have at least one of these requirements as an evidence of its relevance.</p>
       <section id="basicExample">
         <h3>Example</h3>
         <p> This example serves as a basis for elaboration that will be
@@ -765,12 +829,7 @@ table.bptable caption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It must be possible for humans to understand the metadata, which
-              makes it <span style="font-style: italic;">human-readable
-                metadata</span>.</p>
-            <p>It should be possible for computer applications, notably user
-              agents, to process the metadata, which makes it <span style="font-style: italic;">machine-readable
-                metadata</span>.</p>
+            <p>The metadata should be coherent with the described resource (i.e. dataset, distribution or the data itself) and it must be possible for humans to interpret the metadata, which makes it human-readable metadata. It also should be possible for computer applications, notably user agents, to process the metadata, which makes it machine-readable metadata.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -799,15 +858,14 @@ table.bptable caption {
               <p><a href="dwbp-example.html">Example page</a> with a
                 human-readable description of an available dataset.</p>
               <h5>Machine-readable</h5>
-              <p><a href="dwbp-example.ttl">Example page</a> with a
+              <p><a href="dwbp-example.ttl">Example file</a> with a
                 machine-readable description of an available dataset.</p>
             </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check if there is metadata available to describe the dataset.</p>
-            <p>When there is <em>machine readable metadata</em>, check if it is possible to retrieve this content using content negotiation, or use a tool to extract the data from the same HTML page which has the <em>human-readable metadata</em>.</p>
-            <p>Check if the <em>machine readable metadata</em> is valid, without any syntax error.</p>
+            <p>Check if there are coherent metadata available, both human and machine readable, for the resource.</p>
+            <p>Check if the metadata is available in a valid machine readable format, without syntax error and processable by machine.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -841,15 +899,12 @@ table.bptable caption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for humans to understand the nature of the
-              dataset and its distributions.</p>
-            <p>It should be possible for user agents be able to automatically
-              discover datasets and distributions.</p>
+            <p>Humans should be able to interpret the nature of the dataset and its distributions and user agents should be able to automatically discover datasets and distributions.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Discovery metadata should include the following overall features
-              of a dataset: </p>
+            <p>Descriptive metadata should include the following overall features
+              of a dataset:</p>
             <ul>
               <li>The <strong>title</strong> and a <strong>description</strong>
                 of the dataset.</li>
@@ -868,17 +923,17 @@ table.bptable caption {
             </ul>
             <!-- <p> The information above should be included both in the human
                 understandable and the machine understandable versions of the                metadata. </p> -->
-            <p> Discovery metadata should include the following overall features
-              of a distribution: </p>
+            <p>Descriptive metadata should include the following overall features
+              of a distribution:</p>
             <ul>
-              <li> The <strong>title</strong> and a <strong>description</strong>
+              <li>The <strong>title</strong> and a <strong>description</strong>
                 of the distribution.</li>
               <li>The <strong>date of publication</strong> of the distribution.
               </li>
               <li>The <strong>media type</strong> of the distribution. </li>
             </ul>
-            <p> The machine readable version of the discovery metadata may be
-              provided according to the vocabulary recommended by W3C to
+            <p>The machine readable version of the descriptive metadata can be
+              provided using the vocabulary recommended by W3C to
               describe datasets, i.e. the Data Catalog Vocabulary
               [[VOCAB-DCAT]]. This provides a framework in which datasets can be
               described as abstract entities. </p>
@@ -930,7 +985,7 @@ table.bptable caption {
                 the URI :themes. <a href="http://www.w3.org/TR/skos-primer/">
                   SKOS </a> can be used to describe both concepts and schema
                 concepts. </div>
-              <div class="note"> Similar to the example of the DCAT
+              <div class="note">Similar to the example of the DCAT
                 specification, in order to express frequency of update we chose
                 to use an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
                   Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr>
@@ -950,6 +1005,7 @@ table.bptable caption {
             <p> Check that the metadata for the dataset itself includes the
               overall features of the dataset.</p>
             <p> Check if a user agent can automatically discover the dataset. </p>
+            <div class="issue">How to test dataset discoverability? (Tracker <a href="https://www.w3.org/2013/dwbp/track/issues/247">ISSUE-247</a>)</div>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1014,7 +1070,6 @@ table.bptable caption {
        dct:title "Bus timetable of MyCity";
        dcat:keyword "transport","mobility" ,"bus";
        dct:issued "2015-05-05";
-       dct:modified "2015-05-05";
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
@@ -1024,18 +1079,15 @@ table.bptable caption {
        dcat:distribution :timetable-001-csv;
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;</strong>
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt;;</strong>
+       <strong>dct:conformsTo "ISO 8601"; </strong>
        .
 </pre>
               <p>To declare the languages of the dataset is published using the
                 <code>dct:language</code>. If the dataset is available in multiple languages,
-                use multiple values for this property [[VOCAB-DCAT]]. <!-- As proposed
+                use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. <!-- As proposed
                 in Dataset Descriptions from HCLS Community [[HCLS-DATASET]]
                 values were taken from the Lexvo.org Ontology [[Lexvo]]. --></p>
-              <div class="note">to include date and numbers formats!</div>
-              <div class="issue">DCAT has a property to describe language, but
-                there are no properties to describe date, time and numeric
-                formats. Which vocabulary should be used to provide this type of
-                metadata? This is <a href="https://www.w3.org/2013/dwbp/track/issues/167">Issue-167</a>.</div>
+              
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable description of dataset is available.</p>
@@ -1080,19 +1132,17 @@ table.bptable caption {
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>It should be possible for humans to understand the internal
-              structure or schema of a distribution. </p>
-            <p> It should be possible for user agents be able to automatically
-              process the structural metadata about a distribution.</p>
+            <p>Humans should be able to interpret the schema of a dataset as well as software agents should be able to automatically process the structural metadata of the dataset distributions</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Structural metadata is available according to the format of a
+            <p>Human readable strucutral metadata usually provides the properties or columns of the dataset schema.</p>
+            <p>Machine readable structural metadata is available according to the format of a
               specific distribution and it may be provided within separate
               documents or embedded into the document. For more details see the
               links below. </p>
             <ul>
-              <li> Tabular data: see <a href="http://www.w3.org/TR/2015/WD-tabular-data-model-20150416/#locating-metadata">
+              <li> Tabular data: see <a href="https://www.w3.org/TR/tabular-data-model/#locating-metadata">
                   Model for Tabular Data and Metadata on the Web </a> </li>
               <li> JSON-LD: see <a href="http://www.w3.org/TR/json-ld/">
                   JSON-LD 1.0 </a> </li>
@@ -1170,10 +1220,8 @@ table.bptable caption {
             </aside>
           </section>
           <section class="test"><span style="font-weight: bold;">How to Test </span>
-            <p> Check that the distribution itself includes structural
-              information about the data organization. </p>
-            <p> Check if a user agent can automatically process the structural
-              information about the distribution.</p>
+          <p>Check if the structural metadata of the dataset is provided in a human-readable format.</p>
+          <p>Check if the machine-readable metadata of the distribution includes structural information about the data organization.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1227,21 +1275,22 @@ table.bptable caption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
+            <p>Data license information can be provided as a link to a human-readable license or as a link/embedded machine-readable license.</p>
             <p>The machine readable version of the data license metadata may be
               provided using one of the following vocabularies that include
               properties for linking to a license: </p>
             <ul>
-              <li> Dublin Core [[DC-TERMS]]</li>
-              <li> Creative Commons [[CC-VOCAB]] </li>
-              <li> schema.org [[SCHEMA-ORG]]</li>
-              <li> XHTML [[XHTML-VOCAB]]</li>
+              <li>Dublin Core [[DC-TERMS]] (<code class="highlith">dct:license</code>)</li>
+              <li>Creative Commons [[CC-VOCAB]] (<code class="highlith">cc:license</code>)</li>
+              <li>schema.org [[SCHEMA-ORG]] (<code class="highlith">schema:license</code>)</li>
+              <li>XHTML [[XHTML-VOCAB]] (<code class="highlith">xhtml:license</code>)</li>
             </ul>
             There are also a number of machine readable rights languages,
             including:
             <ul>
-              <li> The Creative Commons Rights Expression Language [[ccREL]]</li>
-              <li> The Open Data Rights Language [[ODRL2]]</li>
-              <li> The Open Data Rights Statement Vocabulary [[ODRS]].</li>
+              <li>The Creative Commons Rights Expression Language [[ccREL]]</li>
+              <li>The Open Digital Rights Language [[ODRL2]]</li>
+              <li>The Open Data Rights Statement Vocabulary [[ODRS]].</li>
             </ul>
             <!-- <p>Links to the license can be provided from the data itself, from
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
@@ -1334,9 +1383,8 @@ table.bptable caption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>The machine readable version of the data provenance may be
-              provided according to the ontology recommended by W3C to describe
-              provenance information, i.e., the Provenance Ontology [[PROV-O]].
+            <p>The machine readable version of the data provenance can be
+              provided using an ontology recommended to describe provenance information, such as W3C's Provenance Ontology [[PROV-O]].
             </p>
             <!--
               <ol>                <li>Use an appropriate level of detail that will be meaningful                  to the intended audience. </li>                <li>Write the data provenance in either a machine readable form                  such as Turtle or RDF/XML or embed provenance in an HTML page                  using [[JSON-LD]], or [[HTML-RDFA]] </li>                <li>Verify that the data provenance references published data</li>              </ol> -->
@@ -1345,31 +1393,30 @@ table.bptable caption {
               <p> The example below shows the machine readable metadata for the
                 Bus Timetable dataset (timetable-001) with the inclusion of the
                 <strong>provenance</strong> metadata. The metadata specifies
-                that John created the Bus Timetable dataset. </p>
+                that John created the Bus Timetable dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
               <pre class="highlight">:timetable-001
   a dcat:Dataset, prov:Entity;
   dct:title "Bus timetable of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-  <strong>prov:wasAttributedTo :john; </strong>
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
+  <strong>dct:creator :john; </strong>
   .
 
 :john
   a foaf:Person, prov:Agent;
   foaf:givenName "John";
   foaf:mbox &lt;mailto:john@mycitytransport.org&gt;;
-  prov:actedOnBehalfOf :transport-agency-mycity;
+  <strong>prov:actedOnBehalfOf :transport-agency-mycity; </strong>
  .
 :transport-agency-mycity
   a foaf:Organization, prov:Agent;
-  foaf:name "Transport Agency of Mycity";
+  foaf:name "Transport Agency of Mycity"; 
   .
 
 </pre>
@@ -1377,9 +1424,7 @@ table.bptable caption {
               <!--<p><a href="dwbp-example.html">Example page</a> with
                 human-readable data provenance information.</p> -->
               <p> to be done.</p>
-              <div class="issue"> Should we include a more complex example to
-                illustrate provenance? <a href="https://www.w3.org/2013/dwbp/track/issues/220">
-                  Issue-220 </a> </div>
+              
             </aside>
           </section>
           <section class="test">
@@ -1654,19 +1699,20 @@ table.bptable caption {
               <p> The example below shows the metadata for timetable-001 with
                 the inclusion of the <strong>versioning</strong> metadata. </p>
               <pre class="highlight">:timetable-001
-  a dcat:Dataset, prov:Entity, version:VersionedThing;
+  a dcat:Dataset;
   dct:title "Bus timetable of MyCity";
-  dcat:keyword "transport","mobility" ,"bus";
+  dcat:keyword "transport","mobility","bus";
   dct:issued "2015-05-05";
-  dct:modified "2015-05-05";
   dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher:transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+  dct:publisher :transport-agency-mycity;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
   prov:wasAttributedTo :john;
-  <strong>pav:version "1.0"; </strong> </pre>
+  <strong>owl:versionInfo "1.0"; </strong>
+  <strong>pav:version "1.0". </strong>
+   </pre>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
@@ -1770,30 +1816,30 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created and its timetable
-                doesn't exist in timetable-001. To keep
+                doesn't exist in timetable-001, which has data about bus stops from MyCity. To keep
                 timetable-001 up to date, a new version of the dataset (timetable-002) was
                 created. Timetable-002 includes all the data from timetable-001
                 plus the data about the new bus stop. The machine readable
                 metadata for timetable-002 is shown below. </p>
               <pre class="highlight">:timetable-002
-       a dcat:Dataset, version:Version;
+       a dcat:Dataset;
        dct:title "Bus timetable of MyCity";
-       dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-06"^^xsd:date';
-       dct:modified "2015-05-06"^^xsd:date';
+       dcat:keyword "transport","mobility","bus";
+       dct:issued "2015-05-06"^^xsd:date;
        dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
+       dct:publisher :transport-agency-mycity;
+       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
+       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
        ...
-       <strong>dct:isVersionOf:timetable-001;
-       pav:previousVersion:timetable-001;
-       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street."
+       <strong>dct:isVersionOf :timetable-001;
+       pav:previousVersion: timetable-001;
+       rdfs:comment "The timetable was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
+       owl:versionInfo "1.1";
        pav:version "1.1". </strong>
 </pre>
-              <p> Versioning metadata for timetable-001 after the creation of
+       <!--       <p> Versioning metadata for timetable-001 after the creation of
                 timetable-002, which is a new version of timetable-001. </p>
               <pre class="highlight">:timetable-001
        a dcat:Dataset, version:VersionedThing;
@@ -1807,11 +1853,13 @@ Link: &lt;http://example.org/timetable&gt; rel="original" </pre>
        dct:publisher:transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
        dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
-       prov:wasAttributedTo:john; -->
+       prov:wasAttributedTo:john; 
        ...
-       <strong>version:currentVersion:timetable-002;
+       <strong>pav:hasCurrentVersion :timetable-002;
        dct:hasVersion :timetable-002;
-       pav:version "1.0". </strong> </pre>
+       owl:versionInfo "1.0";
+       pav:version "1.0". </strong> --> 
+       </pre>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
@@ -2642,15 +2690,16 @@ A usual resident was generally defined as someone who spent most of their time a
           <section class="ucr">
             <p class="subhead">Evidence</p>
             <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>, 
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></p>
           </section>
           <section class="benefits">
             <p class="subhead">Benefits</p>
             <ul class="benefitsList">
               <li>Reuse</li>
-              <li>Processability</li>
-              <!--              <li>Comprehension</li>
-          <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>              <li>Access</li> -->
+              <li>Comprehension</li>
+              <!--<li>Linkability</li>  <li>Discoverability</li> -->
+              <li>Trust</li> <!-- <li>Access</li> -->
               <li>Interoperability</li>
             </ul>
           </section>
@@ -2658,32 +2707,27 @@ A usual resident was generally defined as someone who spent most of their time a
         <!-- end of Provide Metadata Standardized BP -->
         <!-- begin of Reuse vocabularies BP -->
         <div class="practice">
-          <p><span id="ReuseVocabularies" class="practicelab">Reuse
-              vocabularies</span></p>
-          <p class="practicedesc">Shared vocabularies should be used to provide
+          <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies</span></p>
+          <p class="practicedesc">Shared vocabularies should be used to encode
             data and metadata</p>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
             <p class="subhead">Why</p>
-            <p>Reusing vocabularies increases interoperability and reduces
-              redundancies, encouraging reuse of the data. Shared vocabularies
-              capture a consensus of the community about a specific domain. The
-              use of shared vocabularies in metadata (especially structural, provenance, quality
-              and versioning metadata) helps the
-              automatic processing of data and metadata.</p>
+            <p>Use of shared vocabularies captures and facilitates consensus in communities. 
+              Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
+              redundancies, encouraging reuse of these data. In particular, the
+              use of shared vocabularies for metadata (especially structural, provenance, quality
+              and versioning metadata) helps the automatic processing of both data and metadata.</p>
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> It should be possible to automatically compare two or more
-              datasets when they use the same vocabulary to describe metadata. </p>
-            <p> It should be possible for machines to automatically process the
-              data within a dataset. </p>
-            <p> It should be possible for machines to automatically process the
-              metadata that describes a dataset. </p>
+            <p>Datasets and metadata sets are easier to be compared by humans or machines when 
+              they use the same vocabulary to describe metadata.</p>
+            <p>When two datasets or metadata sets use the same vocabulary, (automatic) processing tools
+              designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.</p>
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Standard
-                Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
+            <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
               Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
             <aside class="example">
@@ -2692,52 +2736,54 @@ A usual resident was generally defined as someone who spent most of their time a
               <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>] 
               re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its 
               <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section. 
-              By reusing Dublin Core properties like <code>dct:title</code> instead of 
-              creating new ones like <code>dcat:title</code>, DCAT allows statements in DCAT-based metadata 
+              For example, reusing Dublin Core properties like <code>dct:title</code> instead of 
+              creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata 
               to be consumed by any application that can read and manipulate Dublin Core statements.</p>
               <p>3. In the digital culture sector, the data model for the initiative 
               <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>) 
-              also massively re-uses existing shared vocabularies 
-              like Dublin Core, FOAF, SKOS, etc. This has facilitated adoption of the data model by Europeana's
-              data providers. It also helped position EDM as a best practice for similar initiatives in 
-              the sector, such as the <a href="http://dp.la">Digital Public Library of America</a> (DPLA). DPLA's 
-              <a href="http://dp.la/info/map/">metadata application profile</a> reuses EDM, and thus reuses 
+              also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc. 
+              This has facilitated adoption of EDM by Europeana's data providers and helped 
+              position it as a best practice for similar initiatives in the same sector.
+              For instance, <a href="http://dp.la/info/map/">metadata application profile</a> from the 
+              <a href="http://dp.la">Digital Public Library of America</a> reuses EDM and thus 
               the various vocabularies that EDM builds on. As a result, large amounts of 
               digital culture data have become more interoperable within the sector. That data is 
               also easier to reuse by consumers from other communities, who are not familiar
-              with the traditional models and terminologies for library, archive and museum data.</p>
+              with the traditional models and terminologies used by library, archives and museums.</p>
             </aside>
           </section>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="test"><span style="font-weight: bold;">How to Test </span>
-            <p>Check that classes, properties, terms or attributes used do not replicate those
-              defined by vocabularies in common use within the same domain.</p>
+            <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a> 
+              or lists or services mentioned in technology-specific best practices 
+              such as the Best Practices for Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>], 
+              or the <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1">Core Initial Context for RDFa and JSON-LD</a>,
+              check that classes, properties, terms, elements or attributes used to represent a dataset do not replicate those
+              defined by vocabularies used for other datasets.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>, 
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
             </p>
             <p class="subhead">Benefits</p>
             <ul class="benefitsList">
               <li>Reuse</li>
               <li>Processability</li>
-              <!-- <li>Comprehension</li>
-                <li>Linkability</li>                <li>Discoverability</li>                <li>Trust</li>                <li>Access</li>-->
+              <!-- <li>Comprehension</li><li>Linkability</li><li>Discoverability</li><li>Trust</li><li>Access</li>-->
               <li>Interoperability</li>
             </ul>
           </section>
         </div>
       <!-- end of Reuse vocabularies BP -->
-      <!-- begin of Not Over formalize Vocabularies BP -->
+      <!-- begin of Choose the right formalization level BP -->
       <div class="practice">
-        <p><span id="ChoseRightFormalizationLevel" class="practicelab">Choose
-            the right formalization level</span></p>
+        <p><span id="ChooseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
         <p class="practicedesc">When reusing a vocabulary, a data publisher
           should opt for a level of formal semantics that fit data and
           applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Formal semantics may help one to establish precise specifications
+          <p>Formal semantics help to establish precise specifications
             that support establishing the intended meaning of the vocabulary and
             the performance of complex tasks such as reasoning. On the other
             hand, complex vocabularies require more effort to produce and
@@ -2764,14 +2810,43 @@ A usual resident was generally defined as someone who spent most of their time a
             the predicates for RDF statements, or elements in an XML Schema, as
             opposed to providing simple concepts or codes that are used for
             representing attributes of the resources described in a dataset.
-            When simpler models are enough to convey the necessary semantics,
-            represent vocabularies using them. For instance, for Linked Data,
-            SKOS may be preferred for simple vocabularies as opposed to formal
-            ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
-              schemes and code lists</a> are used in the RDF Data Cube
-            Recommendation [[VOCAB-DATA-CUBE]].</p>
+            When simpler data models are enough to convey the necessary semantics,
+            represent vocabularies using them.</p>
+          <p>Even when a language with rich formal semantics like OWL is used to 
+            express a vocabulary, it is preferable that this vocabulary has a minimal
+            <emph>ontological commitment</emph>, i.e. by featuring only the formal axioms
+            that enable inferences and validation checks
+            that have been explicitly identified as relevant for the domain or application at hand.
+            The more axioms are used to specify a vocabulary, the narrower its usage is;
+            unnecessary axioms unnecessarily constrain the reuse of a vocabulary 
+            across applications.</p>
           <aside class="example">
-            <pre>to be done</pre>
+          <p>1. For expressing simple vocabularies like thesauri or code lists as Linked Data,
+            a simpler data model like SKOS may be preferred over formal
+            ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
+              schemes and code lists</a> are represented and used in the RDF Data Cube
+            Recommendation [[VOCAB-DATA-CUBE]].</p>
+          <p>2. Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
+            all formal axioms that were suggested for its classes and properties. Often they have been rejected 
+            because their use, while beneficial to many applications, would have created 
+            formal inconsistencies for the data from other applications, making SKOS not usable at all
+            for these. As an example, the property <code>skos:broader</code> was not defined
+            as a transitive property, even though it would have fit the way hierarchical links between concepts
+            are created for many thesauri [[SKOS-DESIGN]].</p>
+          <p>3. The vocabularies for Data Quality [[DQV]] and Data Usage [[DUV]] created by the W3C Working 
+            Group publishing this document have also sought to minimize the number of formal 
+            axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
+            has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
+            resources that are of type <code>dcat:Dataset</code> or <code>dcat:Distribution</code>.
+            This allows application designers to employ it for other types of entities, for which
+            quality measurements would also be relevant but that were not in the focus of
+            the design process for DQV.</p>
+          <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured 
+            data on the web have adopted an informative rather than normative approach for defining 
+            the types of objects these properties can be used with. For instance, the values of the property 
+            <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be 
+            of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the 
+            type <code>CreativeWork</code> but this is not a strict constraint.</p>
           </aside>
         </section>
         <section class="test">
@@ -2784,19 +2859,19 @@ A usual resident was generally defined as someone who spent most of their time a
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>,
-            <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a>,
             <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>
           </p>
         </section>
         <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <p> to be done.</p>
+            <p class="subhead">Benefits</p>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+              <!--<li>Linkability</li>  <li>Discoverability</li> <li>Trust</li> <li>Access</li> -->
+              <li>Interoperability</li>
+            </ul>
         </section>
-        <div class="issue">The best practice on formalization above (especially
-          sections "Intended outcome" and "How to test") should be re-written in a
-          more technology-neutral way. <a href="https://www.w3.org/2013/dwbp/track/issues/144">Issue-144</a></div>
-      </div>
-      <!-- end of Not Over formalize Vocabularies BP -->
+      <!-- end of Choose the right formalization level BP -->
     </section>
     <!-- end of Data Vocabularies -->
     <!-- begin of Sensitive Data -->
@@ -2925,46 +3000,40 @@ A usual resident was generally defined as someone who spent most of their time a
         <p class="practicedesc">Data should be available for bulk download. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>When web data is distributed across many URLs and logically
-            organized as one container, accessing the data in bulk is useful.
+          <p>When web data is distributed across many URIs but might logically
+            be organized as one container, accessing the data in bulk can be useful.
             Bulk access provides a consistent means to handle the data as one
-            container. Without it, individually accessing data is cumbersome
-            leading to inconsistent approaches to handling the container.</p>
+            container. Individually accessing data over many retrievals can be cumbersome
+            and, if used to reassemble the complete dataset, can lead to inconsistent approaches to handling the data.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p> It should be possible to download data on the Web in bulk. Data
-            publishers should provide a way either through bulk file formats or
-            APIs for consumers to access this type of data.</p>
+            publishers should provide a way, through either a single-file download or
+            a single API call, for consumers to access all the data. Large file transfers (which would require more time than a typical user would consider reasonable) should be enabled by dedicated file-transfer protocols. The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk downlaod.
+            </p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Depending on the nature of the data and consumer needs possible
-            approaches could include:</p>
+          <p>Depending on the nature of the data and consumer needs, possible
+            approaches could include the following:</p>
           <ul>
-            <li>Preprocessing a copy of the data in compressed archive format
-              where the data more easily accessible as one URL. This is
-              particularly useful for handling data that changes infrequently or
-              on a scheduled basis.</li>
-            <li>Hosting an API such as a REST or SOAP service that dynamically
-              retrieves individual data and returns a bulk container. This
-              approach is useful when for capturing a snapshot of the data. The
-              API can also be useful for consumers to customize what they want
-              included or excluded. </li>
-            <li>Hosting a database, web page, or SPARQL endpoint that contains
-              discoverable metadata [[VOCAB-DCAT]] describing the container and
-              data URLs associated with the container.</li>
+            <li>Preprocessing a copy of the data into a compressed archive format
+              and making the data accessible from one URI. This is
+              particularly useful for handling data that changes infrequently.</li>
+            <li>Hosting an API that includes the ability to
+              retrieve a bulk download in addition to dynamic queries. This
+              approach is useful for capturing a complete snapshot of dynamic data.</li>
+            <li>For very large datasets, bulk file transfers can be enabled via means other than http, such as <a href="http://www.slac.stanford.edu/~abh/bbcp/">bbcp</a> or <a href="http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/">GridFTP</a>.</li>
           </ul>
           <aside class="example">
-            <p>to be done </p>
+            <p>The MyCity transit agency may want to make historical arrival data for 2015 available as a bulk download containing multiple CSV files for a hackathon. Since all the arrival data for all the transit services would be a lot of data, they might offer it as a compressed archive (tarred and gzipped).</p>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Humans can retrieve copies of preprocessed bulk data through
-            existing tools such as a browser. Clients can test bulk access
-            through an API or queries to web resources with discoverable
-            metadata about the bulk data. </p>
+          <p>Humans can retrieve complete copies of preprocessed bulk data through
+            existing tools such as a browser via a single request. </p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -2986,31 +3055,30 @@ A usual resident was generally defined as someone who spent most of their time a
       <!-- begin of BP Subsetting-->
       <div class="practice">
         <p><span id="BulkAccess" class="practicelab">Provide Subsets for Large Datasets</span></p>
-        <p class="practicedesc">If your dataset is large, enable users and applications to readily work with subsets of your data.</p>
+        <p class="practicedesc">If your dataset is large, enable users and applications to readily work with useful subsets of your data.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>The web was not designed as a large-file transfer service, so large datasets can be difficult to move from place to place. It can also be inconvenient for users to store a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
+          <p>Large datasets can be difficult to move from place to place. It can also be inconvenient for users to store or parse a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p> Both human users and web applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that are large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, depending on the needs of the domain.</p>
+          <p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a web application.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approaches to Implementation</p>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation.</p>
-          <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download. In this case, it is also helpful to mark up the dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <aside class="example">
-            <p>The MyCity transit API can accept a query for a single route’s status rather than the status for all routes at once, enabling web applications to update real-time data quickly and deliver it to riders while it’s still accurate. Example URIs for the API might be as follows:</p>
-            <ul>
-              <li>http://api.transit.mycity.org/buses/routes/18 for a list of stops along bus route 18.</li>
-              <li>http://api.transit.mycity.org/buses/routes for a list of the available bus routes</li>
+            <p>The MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable web applications to update data quickly and deliver it to riders on demand, interactively. </p>
           </aside>
+          <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <aside class="example">
-            <p>The MyCity transit agency may also want to make bus schedule data available as timetables in web pages. Example URIs for such pages might be
+            <p>The MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
+          </aside>
+            <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
+          <p>Check that the full content of the dataset can be recovered by retrieval of multiple subsets.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -4122,7 +4190,7 @@ HTTP/1.1 200 Ok
             messages can be associated with a person or submitted anonymously.</p>
           <p><a href="http://rdfs.org/sioc/spec/#sec-modules-types">SIOC</a>,
             (2) <a href="http://www.w3.org/TR/annotation-model/#creation-reason">Annotation#Motivation</a></p>
-          <p>To better understand why an annotation [[Annotation-Model]] was created, a 
+          <p>To better understand why an annotation [[Annotation-Model]] was created, a
           <a href="http://www.w3.org/TR/skos-reference/">SKOS</a> Concept Scheme is used to
             show inter-related annotations between communities with more
             meaningful distinctions than a simple class/subclass tree.</p>
@@ -4229,30 +4297,17 @@ HTTP/1.1 200 Ok
     </section>
     <section id="challenges" class="informative">
       <h2>Data on the Web Challenges</h2>
-      <p>The openness and flexibility of the Web creates new challenges for data
-        publishers and data consumers. In contrast to conventional databases,
-        for example, where there is a single data model to represent the data
-        and a database management system (DBMS) to control data access, data on
-        the Web allows for the existence of multiple ways to represent and to
-        access data. The following diagram summarizes some of the main
+      <p>The following diagram summarizes some of the main
         challenges faced when publishing or consuming data on the Web. These
         challenges were identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
         Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
         addressed by one or more best practices.</p>
       <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
-      <p> Each one of these challenges originated one or more requirements as
-        documented in <a href="http://www.w3.org/TR/dwbp-ucr/#requirements">the
-          use-cases document</a>. The development of Data on the Web Best
-        Practices were guided by these requirements, in such a way that each
-        best practice should have at least one of these requirements as an
-        evidence of its relevance.</p>
+      <div class="issue">The diagram is too small. What could we do to make it bigger or more readable? (Tracker <a href="https://www.w3.org/2013/dwbp/track/issues/246">ISSUE-246</a>)</div>
     </section>
-    <section id="bp-benefits" class="informative">
+    <section id="BP_Benefits" class="informative">
       <h2>Best Practices Benefits</h2>
-      <p>In order to encourage data publishers to adopt the DWBP, the list below
-        describes the main benefits of applying the DWBP. Each benefit
-        represents an improvement in the way how datasets are available on the
-        Web.</p>
+      <p>The list below describes the main benefits of applying the DWBP, which Each benefit represents an improvement in the way how datasets are available on the Web.</p>
       <ul>
         <li>Comprehension: humans will have a better understanding about the
           data structure, the data meaning, the metadata and the nature of the
@@ -4272,22 +4327,11 @@ HTTP/1.1 200 Ok
         <li>Interoperability: it will be easier to reach consensus among data
           publishers and consumers.</li>
       </ul>
-      <p> The figure below shows the benefits that data publishers will gain
-        with adoption of the best practices. <a href="#BP_Benefits">Section 12</a>
-        presents a table that relates Best Practices to Benefits. </p>
-      <div id="benefitsTables"></div>
-      <div class="note"> Feedback about the association between BP and benefits is welcome!</div>
-      <div class="issue"> Should we remove the Reuse benefit? As one of the goals of the BP is to promote the data reuse, then all BP have this benefit. <a href="https://www.w3.org/2013/dwbp/track/issues/226"> Issue-226 </a> </div>
-      <div class="issue"> Should we consider other BP benefits? <a href="https://www.w3.org/2013/dwbp/track/issues/230"> Issue-230 </a> </div>
-      <div class="issue"> The document has three different indexes for the BP: by challenges, by benefits and the summary.
-          Should we keep the three of them? Are they redundant? <a href="https://www.w3.org/2013/dwbp/track/issues/227"> Issue-227 </a> </div>
-      <!-- This section is auto-generated -->
-    </section>
-    <section id="BP_Benefits" class="informative">
-      <h2>Best Practices x Benefits</h2>
-      <div class="note"> To update the table to use the auto-generate script. </div>
+
+      <div class="note">To update the table to use the auto-generate script.</div>
+      <p>The following table relates Best Practices and Benefits.</p>
       <table id="bpbenefitstable" class="bptable">
-        <caption>Best Practices x Benefits </caption>
+        <caption>Best Practices and Benefits </caption>
         <tbody>
           <tr>
             <th>Best Practice</th>
@@ -4495,6 +4539,15 @@ HTTP/1.1 200 Ok
           </tr>
         </tbody>
       </table>
+
+      <p>The figure below shows the benefits that data publishers will gain
+        with adoption of the best practices.</p>
+      <div id="benefitsTables"></div>
+      <div class="note"> Feedback about the association between BP and benefits is welcome!</div>
+      <div class="issue"> Should we remove the Reuse benefit? As one of the goals of the BP is to promote the data reuse, then all BP have this benefit. <a href="https://www.w3.org/2013/dwbp/track/issues/226"> Issue-226 </a> </div>
+      <div class="issue"> Should we consider other BP benefits? <a href="https://www.w3.org/2013/dwbp/track/issues/230"> Issue-230 </a> </div>
+      <!-- This section is auto-generated -->
+
     </section>
     <section id="requirements" class="informative">
       <h2>Use Cases Requirements x Best Practices</h2>
