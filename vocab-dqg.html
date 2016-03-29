@@ -24,7 +24,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-03-25",
+                publishDate : "2016-03-29",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -526,8 +526,8 @@
                                 <td class="prop">Equivalent class</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td>
                             </tr> 
-                             <tr><td class="prop">Usage note:</td><td>The unit of measure in quality measurement should be specified through the property <code>sdmx-attribute:unitMeasure</code> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
-                            The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures which can be  exploited as values for <code>sdmx-attribute:unitMeasure</code>.</td></tr>
+                             <tr><td class="prop">Usage note:</td><td>The unit of measure in quality measurement should be specified through the property <a href="purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
+                            The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures which can be  exploited as values for <a href="purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a>.</td></tr>
                         </tbody>
                     </table>
 
@@ -1373,11 +1373,56 @@ SubObjectPropertyOf(
     .  </pre>
                 </section>
                 <section id="DocumentProvSingleQM">
-                    <h4>Document the provenance of single quality measurement</h4>
-                    <div class="note">
-                        <p>The group has discussed provenance at different level of
-                            granularity (dqv:QualityMeasurement and dqv:QualityMetadata), so we might consider to add an example of provenance for dqv:QualityMeasurement.</p>
-                    </div>
+                    <h4>Document the provenance of single quality measurement</h4>           
+                    <p>The group has discussed provenance at different level of
+                        granularity (dqv:QualityMeasurement and dqv:QualityMetadata). In the previous example we have shown how to track  provenance at level of quality metadata, in the following, we provide an example of provenance for the quality measurement <code>:measurement</code>.</p>
+                    <pre class="highlight">
+:myDatasetDistribution
+    dqv:hasQualityMeasurement :measurement 
+    .
+
+# :measurement has been created by :qualityChecker and it is the result of the
+# :qualityChecking activity 
+
+
+:measurement
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myDatasetDistribution ;
+    dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+    dqv:value "true"^^xsd:boolean ;
+    prov:wasAttributedTo :qualityChecker ;
+    prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+    prov:wasGeneratedBy :qualityChecking 
+    .
+
+:downloadURLAvailabilityMetric 
+    a dqv:Metric ;
+    skos:definition "It checks if dcat:downloadURL  is available and  if its value is
+    dereferenceable."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
+    
+# qualityChecker is a services computing some quality metrics 	
+
+:qualityChecker
+    a prov:SoftwareAgent ;   
+    rdfs:label "a quality assessment service"^^xsd:string
+    <span class="red"># We should probably suggest to add more info about the services</span>
+    . 
+
+# the qualityChecking is the activity that has generated :measurement starting from 
+# MyDatasetDistribution
+
+:qualityChecking
+    a prov:Activity;
+    rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
+    prov:wasAssociatedWith :qualityChecker;
+    prov:used              :myDatasetDistribution;
+    prov:generated         :measurement;
+    prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
+    prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
+    .  </pre>
                 </section>
                 <section id="DocumentProvDataset">
                     <h4>Document the provenance of a dataset</h4>
