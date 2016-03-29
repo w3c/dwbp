@@ -175,7 +175,7 @@
                         title : "Quality assessment for Linked Data: A Survey",
                         authors : [ "Amrapalia Zaveri", "Anisa Rula", "Andrea Maurino",
                                 "Ricardo Pietrobon", "Jens  Lehmann", "Sören Auer" ],
-                        status : " Semantic Web, vol. 7, no. 1, pp. 63-93, 2015",
+                        status : "Semantic Web, vol. 7, no. 1, pp. 63-93, 2015",
                         href : "https://dx.doi.org/10.3233/SW-150175"
                     },
                     "ISOIEC25012" : {
@@ -204,6 +204,18 @@
                         status : "W3C Community Group Specification",
                         href : "https://www.w3.org/community/odrl/model/2.1/"
                     },
+                    "RijgersbergEtAl": {
+                        title: "Ontology of units of measure and related concepts",
+                        authors: ["Hajo Rijgersberg", "Mark van Assem","Jan L. Top"],
+                        status : "Semantic Web, vol. 4, no. 1, pp. 3-13, 2013",
+                        href : "https://dx.doi.org/10.3233/SW-2012-0069"
+                    },
+                     "Vocab-Data-Cube": {
+                        title: "The RDF Data Cube Vocabulary",
+                        authors: ["Richard Cyganiak","Dave Reynolds"],
+                        status : "W3C Recommendation 16 January 2014",
+                        href : "https://www.w3.org/TR/vocab-data-cube/"
+                    }
                 }
             };
         </script>
@@ -371,7 +383,10 @@
                             <td>prov</td>
                             <td>http://www.w3.org/ns/prov#</td>
                         </tr>
-
+                           <tr>
+                            <td>sdmx-attribute</td>
+                            <td>http://purl.org/linked-data/sdmx/2009/attribute#</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -499,7 +514,6 @@
                                     dataset (or dataset distribution) against a specific quality
                                     metric.</td>
                             </tr>
-                            <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
                             <tr>
                                 <td class="prop">Subclass of:</td>
                                 <td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td>
@@ -507,7 +521,9 @@
                             <tr>
                                 <td class="prop">Equivalent class</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td>
-                            </tr>
+                            </tr> 
+                             <tr><td class="prop">Usage note:</td><td>The unit of measure in quality measurement should be specified through the property <code>sdmx-attribute:unitMeasure</code> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
+                            The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures which can be  exploited as values for <code>sdmx-attribute:unitMeasure</code>.</td></tr>
                         </tbody>
                     </table>
 
@@ -2055,7 +2071,8 @@ SubObjectPropertyOf(
 
 :myDatasetPrecision a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
-   dqv:value "1000"^^xsd:decimal 
+   dqv:value "1000"^^xsd:decimal ;
+    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
    .
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
@@ -2067,6 +2084,7 @@ SubObjectPropertyOf(
 :myDatasetAccuracy a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialAccuracy ;
    dqv:value "98.2"^^xsd:decimal 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt; 
    .
    
 :spatialAccuracy   a  dqv:Metric;
