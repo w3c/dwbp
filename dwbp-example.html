@@ -168,8 +168,6 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 </table>
                 <h3 id="timetable-001-CSV" property="dcat:distribution" resource="#timetable-001-CSV"> CSV Distribution </h3>
                 <table about="#timetable-001-CSV" typeof="dcat:Distribution" class="human-readable-example">
-                  <span about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure1" />
-                  <span about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure2" />
                   <tbody>
                     <tr>
                       <td>Title</td>
@@ -289,9 +287,9 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <section>
                   <h2> Dataset /Distribution quality </h2>
                   <section>
-                    <h3> Quality measure 1 </h3>
+                    <h3 about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure1"> Quality measure 1 </h3>
 
-                    <table class="human-readable-example" resource="#measure1" typeof="dqv:QualityMeasurement">
+                    <table class="human-readable-example" resource="#measure1" typeof="dqv:QualityMeasurement" id="measure1">
                      <tr>
                        <td property="dqv:metric" resource="#csvCompletenessMetric">Metric</td>
                        <td about="#csvCompletenessMetric" typeof="dqv:Metric"> <span property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</span> </td>
@@ -320,8 +318,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
 
                </table>
 
-               <h3> Quality measure 2 </h3>
-               <table class="human-readable-example" resource="#measure2" typeof="dqv:QualityMeasurement">
+               <h3 about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure2">Quality measure 2</h3>
+               <table class="human-readable-example" resource="#measure2" typeof="dqv:QualityMeasurement" id="measure2">
                  <tr>
                    <td property="dqv:metric" resource="#downloadURLAvailabilityMetric">Metric</td>
                    <td about="#downloadURLAvailabilityMetric" typeof="dqv:Metric"> <span property="skos:definition">It checks if dcat:downloadURL is available and if its value is dereferenceable.</span> </td>
@@ -349,6 +347,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
              </tr>
 
            </table>
+           </section>
 
 
          </section>

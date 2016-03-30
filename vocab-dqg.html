@@ -24,7 +24,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-03-25",
+                publishDate : "2016-03-29",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -175,7 +175,7 @@
                         title : "Quality assessment for Linked Data: A Survey",
                         authors : [ "Amrapalia Zaveri", "Anisa Rula", "Andrea Maurino",
                                 "Ricardo Pietrobon", "Jens  Lehmann", "Sören Auer" ],
-                        status : " Semantic Web, vol. 7, no. 1, pp. 63-93, 2015",
+                        status : "Semantic Web, vol. 7, no. 1, pp. 63-93, 2015",
                         href : "https://dx.doi.org/10.3233/SW-150175"
                     },
                     "ISOIEC25012" : {
@@ -204,6 +204,18 @@
                         status : "W3C Community Group Specification",
                         href : "https://www.w3.org/community/odrl/model/2.1/"
                     },
+                    "RijgersbergEtAl": {
+                        title: "Ontology of units of measure and related concepts",
+                        authors: ["Hajo Rijgersberg", "Mark van Assem","Jan L. Top"],
+                        status : "Semantic Web, vol. 4, no. 1, pp. 3-13, 2013",
+                        href : "https://dx.doi.org/10.3233/SW-2012-0069"
+                    },
+                     "Vocab-Data-Cube": {
+                        title: "The RDF Data Cube Vocabulary",
+                        authors: ["Richard Cyganiak","Dave Reynolds"],
+                        status : "W3C Recommendation 16 January 2014",
+                        href : "https://www.w3.org/TR/vocab-data-cube/"
+                    }
                 }
             };
         </script>
@@ -371,7 +383,14 @@
                             <td>prov</td>
                             <td>http://www.w3.org/ns/prov#</td>
                         </tr>
-
+                           <tr>
+                            <td>sdmx-attribute</td>
+                            <td>http://purl.org/linked-data/sdmx/2009/attribute#</td>
+                        </tr>
+                        <tr>
+                            <td>skos</td>
+                            <td>http://www.w3.org/2004/02/skos/core#</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -499,7 +518,6 @@
                                     dataset (or dataset distribution) against a specific quality
                                     metric.</td>
                             </tr>
-                            <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
                             <tr>
                                 <td class="prop">Subclass of:</td>
                                 <td><a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a></td>
@@ -507,7 +525,9 @@
                             <tr>
                                 <td class="prop">Equivalent class</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td>
-                            </tr>
+                            </tr> 
+                             <tr><td class="prop">Usage note:</td><td>The unit of measure in quality measurement should be specified through the property <a href="purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
+                            The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures which can be  exploited as values for <a href="purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a>.</td></tr>
                         </tbody>
                     </table>
 
@@ -1353,11 +1373,56 @@ SubObjectPropertyOf(
     .  </pre>
                 </section>
                 <section id="DocumentProvSingleQM">
-                    <h4>Document the provenance of single quality measurement</h4>
-                    <div class="note">
-                        <p>The group has discussed provenance at different level of
-                            granularity (dqv:QualityMeasurement and dqv:QualityMetadata), so we might consider to add an example of provenance for dqv:QualityMeasurement.</p>
-                    </div>
+                    <h4>Document the provenance of single quality measurement</h4>           
+                    <p>The group has discussed provenance at different level of
+                        granularity (dqv:QualityMeasurement and dqv:QualityMetadata). In the previous example we have shown how to track  provenance at level of quality metadata, in the following, we provide an example of provenance for the quality measurement <code>:measurement</code>.</p>
+                    <pre class="highlight">
+:myDatasetDistribution
+    dqv:hasQualityMeasurement :measurement 
+    .
+
+# :measurement has been created by :qualityChecker and it is the result of the
+# :qualityChecking activity 
+
+
+:measurement
+    a dqv:QualityMeasurement ;
+    dqv:computedOn :myDatasetDistribution ;
+    dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
+    dqv:value "true"^^xsd:boolean ;
+    prov:wasAttributedTo :qualityChecker ;
+    prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+    prov:wasGeneratedBy :qualityChecking 
+    .
+
+:downloadURLAvailabilityMetric 
+    a dqv:Metric ;
+    skos:definition "It checks if dcat:downloadURL  is available and  if its value is
+    dereferenceable."@en ;
+    dqv:expectedDataType xsd:boolean ;
+    dqv:inDimension :availability
+    .
+    
+# qualityChecker is a services computing some quality metrics 	
+
+:qualityChecker
+    a prov:SoftwareAgent ;   
+    rdfs:label "a quality assessment service"^^xsd:string
+    <span class="red"># We should probably suggest to add more info about the services</span>
+    . 
+
+# the qualityChecking is the activity that has generated :measurement starting from 
+# MyDatasetDistribution
+
+:qualityChecking
+    a prov:Activity;
+    rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
+    prov:wasAssociatedWith :qualityChecker;
+    prov:used              :myDatasetDistribution;
+    prov:generated         :measurement;
+    prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
+    prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
+    .  </pre>
                 </section>
                 <section id="DocumentProvDataset">
                     <h4>Document the provenance of a dataset</h4>
@@ -2055,7 +2120,8 @@ SubObjectPropertyOf(
 
 :myDatasetPrecision a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
-   dqv:value "1000"^^xsd:decimal 
+   dqv:value "1000"^^xsd:decimal ;
+    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
    .
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
@@ -2067,13 +2133,14 @@ SubObjectPropertyOf(
 :myDatasetAccuracy a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialAccuracy ;
    dqv:value "98.2"^^xsd:decimal 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt; 
    .
    
 :spatialAccuracy   a  dqv:Metric;
     skos:definition "It returns the percentage of special element that are found accurate
     acconding to  methodology XYZ"@en ;
     dqv:expectedDataType xsd:decimal ;
-    dqv:inDimension zaveri:semanticAccuracy 
+    dqv:inDimension ldqd:semanticAccuracy 
     .
 </pre>
                 </section>
@@ -2491,44 +2558,44 @@ iso:accessibility a  dqv:Dimension ;
                     </table>
 
                 <p>DQV can express these dimensions and categories as shown in the following example.
-                The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
+                The encoding of all the dimensions and categories mentioned above can be found at <a href="ldqd.ttl">ldqd.ttl</a>.</p>
 
                     <pre class="highlight">
 # definition of categories from Zaveri et al
 
-zaveri:accessibilityDimensions a dqv:Category ; 
+ldqd:accessibilityDimensions a dqv:Category ; 
    skos:prefLabel "Accessibility"@en. 
 
-zaveri:intrinsicDimensions a dqv:Category ; 
+ldqd:intrinsicDimensions a dqv:Category ; 
    skos:prefLabel "Intrinsic dimensions"@en. 
 
-zaveri:contextualDimensions a dqv:Category ; 
+ldqd:contextualDimensions a dqv:Category ; 
    skos:prefLabel "Contextual dimensions"@en. 
 
-zaveri:representationalDimensions a dqv:Category ; 
+ldqd:representationalDimensions a dqv:Category ; 
    skos:prefLabel "Representational Dimensions"@en. 
 
 #definition of dimensions from Zaveri et al
 
-zaveri:availability
+ldqd:availability
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions ;
+    dqv:inCategory ldqd:accessibilityDimensions ;
     skos:prefLabel "Availability"@en;
     skos:definition "Availability of a dataset is the extent to which data (or some
     portion of it) is present, obtainable and ready for use."@en
     .
 
-zaveri:licensing
+ldqd:licensing
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions  ;
+    dqv:inCategory ldqd:accessibilityDimensions  ;
     skos:prefLabel "Licensing"@en;
     skos:definition "Licensing is defined as the granting of permission for a consumer to
     re-use a dataset under defined conditions."@en
     .
 
-zaveri:interlinking
+ldqd:interlinking
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions ;
+    dqv:inCategory ldqd:accessibilityDimensions ;
     skos:prefLabel "Consistency"@en;
     skos:definition "Interlinking refers to the degree to which entities that represent
     the same concept are linked to each other, be it within or between two or more data
@@ -2546,24 +2613,24 @@ zaveri:interlinking
                             <code>trustworthiness</code>, <code>consistency</code>, <code>syntaticValidity</code> and <code>completeness</code>.</p>
 
         <pre class="highlight">
-zaveri:availability skos:related zaveri:performance ,  
-    zaveri:interlinking .
+ldqd:availability skos:related ldqd:performance ,  
+    ldqd:interlinking .
 
-zaveri:semanticAccuracy skos:related zaveri:timeliness , 
-    zaveri:trustworthiness , zaveri:consistency , 
-    zaveri:syntaticValidity , zaveri:completeness , 
-    zaveri:interlinking . 
+ldqd:semanticAccuracy skos:related ldqd:timeliness , 
+    ldqd:trustworthiness , ldqd:consistency , 
+    ldqd:syntaticValidity , ldqd:completeness , 
+    ldqd:interlinking . 
 
-zaveri:consistency skos:related zaveri:conciseness , 
-    zaveri:syntaticValidity , zaveri:interoperability .
+ldqd:consistency skos:related ldqd:conciseness , 
+    ldqd:syntaticValidity , ldqd:interoperability .
 
-zaveri:interoperability skos:related zaveri:conciseness , 
-    zaveri:syntaticValidity .
+ldqd:interoperability skos:related ldqd:conciseness , 
+    ldqd:syntaticValidity .
 
-zaveri:conciseness skos:related zaveri:completeness ,
-     zaveri:representationalConciseness .
+ldqd:conciseness skos:related ldqd:completeness ,
+     ldqd:representationalConciseness .
 
-zaveri:interpretability skos:related zaveri:versatility .
+ldqd:interpretability skos:related ldqd:versatility .
 
 # Note: skos:related is a symmetric property, hence from every statement
 # ex:subject skos:related ex:object in this example, one can infer that 
@@ -2579,8 +2646,8 @@ zaveri:interpretability skos:related zaveri:versatility .
                             (see Definition 12 in [[ZaveriEtAl]]). We pencil more such possible relationships in Annex C.</p>
 
                         <pre class="highlight">
-zaveri:completeness skos:exactMatch iso:completeness .
-zaveri:trustworthiness skos:narrowMatch iso:credibility .
+ldqd:completeness skos:exactMatch iso:completeness .
+ldqd:trustworthiness skos:narrowMatch iso:credibility .
         </pre>
                     </section>
 
@@ -2598,7 +2665,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It checks if dcat:downloadURL is available and if its value is
     dereferenceable."@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2606,7 +2673,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset and 
     if the server responds to a SPARQL query."@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2614,7 +2681,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects whether the HTTP response contains the header field 
     stating the appropriate content type of the returned file, e.g. application/rdf+xml"@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2622,7 +2689,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects the indication of a license in a the DCAT/VoID 
     description or in the dataset of a license itself."@en ;
-    dqv:inDimension zaveri:licensing ;
+    dqv:inDimension ldqd:licensing ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2630,7 +2697,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It represents the maximum number of answered HTTP-requests per
     second."@en ;
-    dqv:inDimension zaveri:performance ;
+    dqv:inDimension ldqd:performance ;
     dqv:expectedDataType xsd:integer  
     .
 
@@ -2638,7 +2705,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects  whether the time to answer an amount of ten requests 
     divided by ten is not longer than the time it takes to answer one request."@en ;
-    dqv:inDimension zaveri:performance ;
+    dqv:inDimension ldqd:performance ;
     dqv:expectedDataType xsd:boolean 
     .
 
@@ -2646,7 +2713,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It returns the number of syntax errors detected by an RDF
     validator."@en ;
-    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:inDimension ldqd:syntacticValidity; 
     dqv:expectedDataType xsd:integer 
     .
 
@@ -2654,7 +2721,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It returns the number of syntax errors detected by an JSON
     validator."@en ;
-    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:inDimension ldqd:syntacticValidity; 
     dqv:expectedDataType xsd:integer 
     .
 
@@ -2663,7 +2730,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     skos:definition "Ratio between the number of objects represented in the dataset and
      the  number of objects expected to be represented according to the declared dataset
      scope."@en ;
-    dqv:inDimension zaveri:completeness ;
+    dqv:inDimension ldqd:completeness ;
     dqv:expectedDataType xsd:double
     .
         </pre>
