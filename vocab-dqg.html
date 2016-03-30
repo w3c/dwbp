@@ -2140,7 +2140,7 @@ SubObjectPropertyOf(
     skos:definition "It returns the percentage of special element that are found accurate
     acconding to  methodology XYZ"@en ;
     dqv:expectedDataType xsd:decimal ;
-    dqv:inDimension zaveri:semanticAccuracy 
+    dqv:inDimension ldqd:semanticAccuracy 
     .
 </pre>
                 </section>
@@ -2558,44 +2558,44 @@ iso:accessibility a  dqv:Dimension ;
                     </table>
 
                 <p>DQV can express these dimensions and categories as shown in the following example.
-                The encoding of all the dimensions and categories mentioned above can be found at <a href="zaveri.ttl">zaveri.ttl</a>.</p>
+                The encoding of all the dimensions and categories mentioned above can be found at <a href="ldqd.ttl">ldqd.ttl</a>.</p>
 
                     <pre class="highlight">
 # definition of categories from Zaveri et al
 
-zaveri:accessibilityDimensions a dqv:Category ; 
+ldqd:accessibilityDimensions a dqv:Category ; 
    skos:prefLabel "Accessibility"@en. 
 
-zaveri:intrinsicDimensions a dqv:Category ; 
+ldqd:intrinsicDimensions a dqv:Category ; 
    skos:prefLabel "Intrinsic dimensions"@en. 
 
-zaveri:contextualDimensions a dqv:Category ; 
+ldqd:contextualDimensions a dqv:Category ; 
    skos:prefLabel "Contextual dimensions"@en. 
 
-zaveri:representationalDimensions a dqv:Category ; 
+ldqd:representationalDimensions a dqv:Category ; 
    skos:prefLabel "Representational Dimensions"@en. 
 
 #definition of dimensions from Zaveri et al
 
-zaveri:availability
+ldqd:availability
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions ;
+    dqv:inCategory ldqd:accessibilityDimensions ;
     skos:prefLabel "Availability"@en;
     skos:definition "Availability of a dataset is the extent to which data (or some
     portion of it) is present, obtainable and ready for use."@en
     .
 
-zaveri:licensing
+ldqd:licensing
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions  ;
+    dqv:inCategory ldqd:accessibilityDimensions  ;
     skos:prefLabel "Licensing"@en;
     skos:definition "Licensing is defined as the granting of permission for a consumer to
     re-use a dataset under defined conditions."@en
     .
 
-zaveri:interlinking
+ldqd:interlinking
     a dqv:Dimension ; 
-    dqv:inCategory zaveri:accessibilityDimensions ;
+    dqv:inCategory ldqd:accessibilityDimensions ;
     skos:prefLabel "Consistency"@en;
     skos:definition "Interlinking refers to the degree to which entities that represent
     the same concept are linked to each other, be it within or between two or more data
@@ -2613,24 +2613,24 @@ zaveri:interlinking
                             <code>trustworthiness</code>, <code>consistency</code>, <code>syntaticValidity</code> and <code>completeness</code>.</p>
 
         <pre class="highlight">
-zaveri:availability skos:related zaveri:performance ,  
-    zaveri:interlinking .
+ldqd:availability skos:related ldqd:performance ,  
+    ldqd:interlinking .
 
-zaveri:semanticAccuracy skos:related zaveri:timeliness , 
-    zaveri:trustworthiness , zaveri:consistency , 
-    zaveri:syntaticValidity , zaveri:completeness , 
-    zaveri:interlinking . 
+ldqd:semanticAccuracy skos:related ldqd:timeliness , 
+    ldqd:trustworthiness , ldqd:consistency , 
+    ldqd:syntaticValidity , ldqd:completeness , 
+    ldqd:interlinking . 
 
-zaveri:consistency skos:related zaveri:conciseness , 
-    zaveri:syntaticValidity , zaveri:interoperability .
+ldqd:consistency skos:related ldqd:conciseness , 
+    ldqd:syntaticValidity , ldqd:interoperability .
 
-zaveri:interoperability skos:related zaveri:conciseness , 
-    zaveri:syntaticValidity .
+ldqd:interoperability skos:related ldqd:conciseness , 
+    ldqd:syntaticValidity .
 
-zaveri:conciseness skos:related zaveri:completeness ,
-     zaveri:representationalConciseness .
+ldqd:conciseness skos:related ldqd:completeness ,
+     ldqd:representationalConciseness .
 
-zaveri:interpretability skos:related zaveri:versatility .
+ldqd:interpretability skos:related ldqd:versatility .
 
 # Note: skos:related is a symmetric property, hence from every statement
 # ex:subject skos:related ex:object in this example, one can infer that 
@@ -2646,8 +2646,8 @@ zaveri:interpretability skos:related zaveri:versatility .
                             (see Definition 12 in [[ZaveriEtAl]]). We pencil more such possible relationships in Annex C.</p>
 
                         <pre class="highlight">
-zaveri:completeness skos:exactMatch iso:completeness .
-zaveri:trustworthiness skos:narrowMatch iso:credibility .
+ldqd:completeness skos:exactMatch iso:completeness .
+ldqd:trustworthiness skos:narrowMatch iso:credibility .
         </pre>
                     </section>
 
@@ -2665,7 +2665,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It checks if dcat:downloadURL is available and if its value is
     dereferenceable."@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2673,7 +2673,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It checks if a void:sparqlEndpoint is specified for a dataset and 
     if the server responds to a SPARQL query."@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2681,7 +2681,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects whether the HTTP response contains the header field 
     stating the appropriate content type of the returned file, e.g. application/rdf+xml"@en ;
-    dqv:inDimension zaveri:availability ;
+    dqv:inDimension ldqd:availability ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2689,7 +2689,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects the indication of a license in a the DCAT/VoID 
     description or in the dataset of a license itself."@en ;
-    dqv:inDimension zaveri:licensing ;
+    dqv:inDimension ldqd:licensing ;
     dqv:expectedDataType xsd:boolean
     .
 
@@ -2697,7 +2697,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It represents the maximum number of answered HTTP-requests per
     second."@en ;
-    dqv:inDimension zaveri:performance ;
+    dqv:inDimension ldqd:performance ;
     dqv:expectedDataType xsd:integer  
     .
 
@@ -2705,7 +2705,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It detects  whether the time to answer an amount of ten requests 
     divided by ten is not longer than the time it takes to answer one request."@en ;
-    dqv:inDimension zaveri:performance ;
+    dqv:inDimension ldqd:performance ;
     dqv:expectedDataType xsd:boolean 
     .
 
@@ -2713,7 +2713,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It returns the number of syntax errors detected by an RDF
     validator."@en ;
-    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:inDimension ldqd:syntacticValidity; 
     dqv:expectedDataType xsd:integer 
     .
 
@@ -2721,7 +2721,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     a dqv:Metric ;
     skos:definition "It returns the number of syntax errors detected by an JSON
     validator."@en ;
-    dqv:inDimension zaveri:syntacticValidity; 
+    dqv:inDimension ldqd:syntacticValidity; 
     dqv:expectedDataType xsd:integer 
     .
 
@@ -2730,7 +2730,7 @@ zaveri:trustworthiness skos:narrowMatch iso:credibility .
     skos:definition "Ratio between the number of objects represented in the dataset and
      the  number of objects expected to be represented according to the declared dataset
      scope."@en ;
-    dqv:inDimension zaveri:completeness ;
+    dqv:inDimension ldqd:completeness ;
     dqv:expectedDataType xsd:double
     .
         </pre>
