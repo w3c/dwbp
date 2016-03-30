@@ -247,6 +247,18 @@ var respecConfig = {
         "title": "PAV - Provenance, Authoring and Versioning",
         "date": "28 August 2014"
        },
+       "PURI":{
+        "authors":["Phil Archer", "Nikos Loutas", "Stijn Goedertier", "Saky Kourtidis"],
+        "href": "http://philarcher.org/diary/2013/uripersistence/",
+        "title": "Study On Persistent URIs",
+        "date": "17 December 2012"
+       },
+       "SIRI":{
+        "authors":["CEN"],
+        "href": "http://user47094.vs.easily.co.uk/siri/",
+        "title": "Service Interface for Real Time Information CEN/TS 15531  (prCEN/TS-OO278181 )",
+        "date": "October 2006"
+       },
        "Navathe": {
         "authors": ["Ramez Elmasri", "Shamkant B. Navathe"],
       	"title": "Fundamentals of Database Systems",
