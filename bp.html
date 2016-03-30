@@ -2037,6 +2037,9 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               identification and comparison processes by any stakeholder in a
               reliable way. They are an essential pre-condition for proper data
               management and reuse.</p>
+            <p>Developers may build URIs into their code and so it is important 
+            that those URIs persist and that they dereference to the same 
+            resource over time without the need for human intervention.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -2046,10 +2049,13 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>To be persistent, URIs must be designed as such and backed up by
-              organizational commitments. A lot has been written on this topic
-              as the table below shows. </p>
-            <table id="uripatternstable">
+            <p>To be persistent, URIs must be designed as such. This requires a 
+            different mindset to that used when creating a Web site designed 
+            for humans to navigate their way through. A lot has been 
+            written on this topic, see, for example, the European Commission's
+            Study on Persistent URIs [[PURI]] which in turn links to many other 
+            resources.</p>
+<!--            <table id="uripatternstable">
               <caption>Some sources of information related to URI persistence</caption>
               <tbody>
                 <tr>
@@ -2114,30 +2120,17 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                   <td>Sarven Capadisli, 2012</td>
                 </tr>
               </tbody>
-            </table>
-            <div class="issue">The table links to Designing URI Sets for the UK
-              Public Sector. A newer version of this document (which was the
-              first of its kind) exists but is on a <a href="https://github.com/UKGovLD/URI-patterns-core/blob/master/URI%20Patterns.md">GitHub
-                repository</a>. It seems that this might happen due to changes in
-              organisation behind data.gov.uk. If this happens, we should update
-              the link to point to the new version.</div>
-            <p>URIs can be long. In a dataset of even moderate size, storing
-              each URI is likely to be repetitive and obviously wasteful.
-              Instead, define locally unique identifiers for each element and
-              provide data that allows them to be converted to globally unique
-              URIs programmatically. The Metadata Vocabulary for Tabular Data
-              [[tabular-metadata]] provides mechanisms for doing this within
-              tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
-                template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
-                URL</a> property.</p>
-            <p>Where a data publisher is unable or unwilling to manage its URI
+            </table>-->
+            <p>Where a data publisher is unable or unwilling to manage a URI
               space directly for persistence, an alternative approach is to use
-              a redirection service such as <a href="http://purl.org/">purl.org</a>.
-              This provides persistent URIs that can be redirected as required
+              a redirection service such as 
+              <a href="https://w3id.org/">Permanent Identifiers for the Web</a> 
+              or <a href="http://purl.org/">purl.org</a>.
+              These provide persistent URIs that can be redirected as required
               so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
-                behind such services </a> is freely available so that it can be
+              behind such services </a> is freely available so that it can be
               installed and managed locally if required.</p>
-            <p>Digital Object Identifiers <a href="http://www.doi.org/">(DOIs)</a>
+            <p>Digital Object Identifiers (<a href="http://www.doi.org/">DOI</a>s)
               offer a similar alternative. These identifiers are defined
               independently of any Web technology but can be appended to a 'URI
               stub.' DOIs are an important part of the digital infrastructure
@@ -2151,7 +2144,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                   will continue to exist and that it will continue to have a
                   government. Therefore, while cases like Yugoslavia prove that
                   even country names change and top level domains disappear
-                  (like .yu), <code>mycity.gov</code> is as persistent as any
+                  (like .yu), a domain name based on the city's name is as persistent as any
                   domain name can be.</li>
                 <li>By putting data on the <code>data.mycity.example</code>
                   subdomain, John is creating a specific domain that can be
@@ -2179,11 +2172,10 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                   <code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops.ttl</code>
                   etc.</li>
               </ul>
-              <p>These points cover the design aspects of a persistent URI. To
+<!--              <p>These points cover the design aspects of a persistent URI. To
                 cover the organizational aspect, MyCity should publish
                 information about its URI design principles as well as a
-                commitment to maintain the service in the long term.</p>
-            </aside>
+                commitment to maintain the service in the long term.</p>-->
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2264,12 +2256,21 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
             <ul>
               <li>ensure URI sets you use are published by a trusted group or
                 organization;</li>
-              <li>ensure URI sets have permanent URIs.</li>
+              <li>ensure URI sets have persistent URIs.</li>
             </ul>
             <p>If you can't find an existing set of identifiers that meet your
               needs then you'll need to create your own, following the patterns
               for URI persistence so that others will add value to your data by
               linking to it.</p>
+            <p>URIs can be long. In a dataset of even moderate size, storing
+              each URI is likely to be repetitive and obviously wasteful.
+              Instead, define locally unique identifiers for each element and
+              provide data that allows them to be converted to globally unique
+              URIs programmatically. The Metadata Vocabulary for Tabular Data
+              [[tabular-metadata]] provides mechanisms for doing this within
+              tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
+                template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
+                URL</a> property.</p>
             <aside class="example">
               <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops</code>)
                 identifies a dataset. Much of the URI can be reused to identify
@@ -2301,7 +2302,6 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
                   template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
                   URL</a> property.</p>
-            </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
