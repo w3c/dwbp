@@ -71,6 +71,17 @@ function createBenefitsTable(BPList) {
   });
 }
 
+function updateBenefitListReuse() {
+  var benefitListReuse = document.getElementById('benefitListReuse');
+  var ul = benefitListReuse.getElementsByTagName('ul')[0];
+
+  benefitListReuse.removeChild(ul);
+
+  var p = document.createElement('p');
+  p.appendChild(document.createTextNode('All Best Practices'));
+  benefitListReuse.appendChild(p);
+}
+
 function init() {
 
   // Need an array of objects for the benefits
@@ -175,6 +186,8 @@ function init() {
       }
     }
   }
+
+  updateBenefitListReuse(); // replace ul>li of Benefits Reuse to text "All Best Practices"
 
   // Separately, we need to set up the cross dom for the challenges SVG
 
