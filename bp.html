@@ -3033,7 +3033,7 @@ A usual resident was generally defined as someone who spent most of their time a
             <li>For very large datasets, bulk file transfers can be enabled via means other than http, such as <a href="http://www.slac.stanford.edu/~abh/bbcp/">bbcp</a> or <a href="http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/">GridFTP</a>.</li>
           </ul>
           <aside class="example">
-            <p>The MyCity transit agency may want to make historical arrival data for 2015 available as a bulk download containing multiple CSV files for a hackathon. Since all the arrival data for all the transit services would be a lot of data, they might offer it as a compressed archive (tarred and gzipped).</p>
+            <p>The MyCity transit agency may have a large dataset with arrival times for the various transit modes that was collected over the entire year of 2015. The data might be stored as a CSV file for each month. Suppose the agency wants to make that data available as a bulk download containing all the CSV files, for a hackathon. Since all the arrival data for all the transit services would be a lot of data, and they want to provide all the months together as one dataset, they might offer it as a single-file, compressed archive (tarred and gzipped).</p>
           </aside>
         </section>
         <section class="test">
@@ -4074,47 +4074,147 @@ HTTP/1.1 200 Ok
     <!-- end Enrichment -->
     <!-- begin Re-use -->
     <section id="Re-use">
-      <h3>Data Re-Use</h3>
-      <p>Re-using data is another way of publishing data. Data re-users have some responsibilities that are unique to publishing on the web. This section provides advice to be followed when re-using data.</p>
-      <!-- begin of BP Re-Use Respectfully -->
+      <h3>Data Reuse</h3>
+      <p>Reusing data is another way of publishing data. It can take the form of combining existing data with other datasets, creating web applications or visualizations, or repackaging the data in a new form, such as a translation. Data reusers have some responsibilities that are unique to that form of publishing on the web. This section provides advice to be followed when reusing data. </p>
+      <!-- begin of BP Provide Feedback -->
       <div class="practice">
-        <p><span id="EnrichData" class="practicelab">Reuse Data Respectfully</span></p>
-        <p class="practicedesc">When reusing data, be considerate of the original publisher. Cite the original dataset; give feedback when you find problems; follow licensing constraints. </p>
+        <p><span id="EnrichData" class="practicelab">Provide Feedback to the Original Publisher</span></p>
+        <p class="practicedesc">When using data published by others, let them know that you are reusing their data. If you find an error or have suggestions or compliments, let them know.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Publishers who make data available on the web deserve acknowledgment for enabling others to work with it. Citation also maintains provenance and helps still others to work with the data. Providing feedback repays the publishers for their efforts and allows them to improve the dataset for future users. Following licensing constraints shows respect for the original publisher’s work and prevents legal entanglements.</p>
+          <p>Publishers generally want to know whether the data they publish has been useful. Moreover, they may be required to report usage statistics in order to allocate resources to data publishing activities. Reporting your usage helps them justify putting effort toward data releases. Providing feedback repays the publishers for their efforts by directly helping them to improve their dataset for future users.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Original publishers should be acknowledged by citation. They should be made aware of any known problems with the data. Datasets should not be used in violation of licensing agreements.</p>
+          <p>Better communication will make it easier for original publishers to determine how the data they post is being used, which in turn helps them justify publishing the data. Publishers will also be made aware of steps they can take to improve their data. This leads to more and better data for everyone.</p>
         </section>
         <section class="how">
           <p class="subhead"> Possible Approach to Implementation</p>
-          <p>Provide a textual citation of the source in a readily visible area of the site in which it is used. Read the original license and be sure that you provide any additional acknowledgments required. Follow the publisher’s directions for submitting feedback about a dataset if you find problems with it. </p>
+          <p>When you begin using a dataset in a new product, make a note of the publisher’s contact information, the URI of the dataset you used, and the date on which you contacted them. This can be done in comments within your code where the dataset is used. Follow the publisher’s preferred route to provide feedback. If they do not provide a route, look for contact information for the Web site hosting the data.</p>
           <aside class="example">
-            <p>When publishing a visualization based on bus data from our fictional transit agency, the re-user could include the text “Data Source: MyCity Transport Agency” just beneath the graph and link the citation text back to the original source.</p>
+            <pre># Calling the MyCity transit API, http://api.mycitytransit.example.org/docs/
+# Published by MyCity Transit Agency, 
+# notified of our reuse by email to opendata@mycitytransit.example.org 
+# by Newton Calegari on 3/24/2016.</pre>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to test</p>
-          <p>Verify that the original publisher is cited in a readily discoverable place. Make sure that the licensing for the original permits the re-use to which it is being applied.</p>
+          <p>Check that you have a record of at least one communication informing the publisher of your use of the data.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsages">R-TrackDataUsages</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a></p>
+          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsages">R-TrackDataUsages</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li>
+             <!--   <li>Comprehension</li><li>Access</li>   <li>Discoverability</li>
+                                                             
+            <li>Linkability</li> <li>Processability</li>-->
+            <li>Interoperability</li> <li>Trust</li>
+          </ul>
+        </section>
+      </div>
+      <!-- end of BP Provide Feedback -->
+
+      <!-- begin of BP Follow Licensing -->
+      <div class="practice">
+        <p><span id="EnrichData" class="practicelab">Follow Licensing Terms</span></p>
+        <p class="practicedesc">Find and follow the licensing requirements from the original publisher of the dataset.</p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>Licensing provides a legal framework for using someone else’s work product. By adhering to the original publisher’s requirements, you keep the relationship between yourself and the publisher friendly. You don’t need to worry about legal action from the original publisher if you are following their wishes. Understanding the initial license will help you determine what license to select for your reuse.</p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p>Data publishers will be able to trust that their work is being reused in accordance with their licensing requirements, which will make them more likely to continue to publish data. Reusers of data will themselves be able to properly license their derivative works.</p>
+        </section>
+        <section class="how">
+          <p class="subhead"> Possible Approach to Implementation</p>
+          <p>Read the original license and adhere to its requirements. If the license calls for specific licensing of derivative works, choose your license to be compatible with that requirement. If no license is given, contact the original publisher and ask what the license is.</p>
+          <aside class="example">
+            <p>If a dataset you are reusing is licensed under the Creative Commons Attribution 3.0 License, you will need to meet the terms specified in that <a href="https://creativecommons.org/licenses/by/3.0/us/legalcode">license agreement</a>.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to test</p>
+          <p>Read through the original license and check that your use of the data does not violate any of the terms.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseLiability">R-LicenseLiability</a>, </p>
+        </section>
+        <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+            <li>Reuse</li>
+             <!--   <li>Comprehension</li><li>Access</li>   <li>Discoverability</li>
+                                                             
+            <li>Linkability</li> <li>Processability</li><li>Interoperability</li> -->
+            <li>Trust</li>
+          </ul>
+        </section>
+      </div>
+      <!-- end of BP Follow Licensing -->
+
+      <!-- begin of BP Cite Original-->
+      <div class="practice">
+        <p><span id="EnrichData" class="practicelab">Cite the Original Publication</span></p>
+        <p class="practicedesc">Indicate the source of your data in the metadata for your reuse of the data. If you provide a user interface, include the citation visibly in the interface.</p>
+        <section class="axioms">
+          <p class="subhead">Why</p>
+          <p>Data is only useful when it is trustworthy. Identifying the source is a major indicator of trustworthiness in two ways: first, the user can judge the trustworthiness of the data from the reputation of the source, and second, citing the source suggests that you yourself are trustworthy as a republisher. In addition to informing the end user, citing helps publishers by crediting their work. Publishers who make data available on the web deserve acknowledgment and are more likely to continue to share data if they find they are credited. Citation also maintains provenance and helps still others to work with the data. </p>
+        </section>
+        <section class="outcome">
+          <p class="subhead">Intended Outcome</p>
+          <p>End users should be able to assess the trustworthiness of the data they see, and original publishers should be recognized for their efforts. The chain of provenance for data on the web should be traceable back to its original publisher.</p>
+        </section>
+        <section class="how">
+          <p class="subhead"> Possible Approach to Implementation</p>
+          <p>You can use the Dataset Usage Vocabulary to cite the original publication of the data in metadata.</p>
+          <aside class="example">
+            <pre>foaf:givenname "E"^^xsd:string;
+foaf:family_name "Costello"^^xsd:string;
+foaf:title "Mayor"^^xsd:string .
+
+ex:timetable-001 a dcat:Dataset ;
+        dct:title  "Bus timetable of MyCity"^^xsd:string;
+        prism:doi "10.3456/4567.21"^^xsd:string ;
+        dcat:landingPage <https://example.org/mycity/trans/timetable-001>; 
+        pav:version "series-1.2"^^xsd:string;
+        dct:issued "2015-MAY-05"^^xsd:date;
+        dct:creator ex:author .
+</pre>
+          </aside>
+            <p>You can cite the original source in a user interface by providing bibliographic text and a working link.</p>
+          <aside class="example">
+          <p>Data source: Costello, E.  "Bus timetable of MyCity" (series 1.2). MyCity.  May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <p class="subhead">How to test</p>
+          <p>Check that the original source of any reused data is cited in the metadata provided. Check that a human-readable citation is readily visible in any user interface.</p>
+        </section>
+        <section class="ucr">
+          <p class="subhead">Evidence</p>
+          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></p>
         </section>
         <section class="benefits">
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
             <li>Reuse</li>
              <!--   <li>Comprehension</li><li>Access</li>   
-                                                             <li>Interoperability</li>
-            <li>Linkability</li> <li>Processability</li>-->
-            <li>Discoverability</li> <li>Trust</li>
+                                                             
+            <li>Linkability</li> <li>Processability</li> <li>Interoperability</li>-->
+           <li>Discoverability</li> <li>Trust</li>
           </ul>
         </section>
       </div>
-      <!-- end of BP Re-use -->
+      <!-- end of BP Cite Original -->
+
+
     </section>
     <!-- end Re-use -->
 
