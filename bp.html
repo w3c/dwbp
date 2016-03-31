@@ -989,7 +989,7 @@ table.bptable caption {
               <h5>Machine-readable</h5>
               <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
-                the bus stop dataset (<code>bus-stops-2015-05-05</code>). The dataset has one CSV
+                the bus stops dataset (<code>bus-stops-2015-05-05</code>). The dataset has one CSV
                 distribution (<code>bus-stops-2015-05-05.csv</code>) that is also described using
                 the [[VOCAB-DCAT]].
 The dataset is classified under
@@ -1013,7 +1013,7 @@ The dataset is classified under
        dct:title "Bus stops of MyCity";
        dcat:keyword "transport","mobility","bus";
        dct:issued "2015-05-05"^^xsd:date;
-       dcat:contactPoint &lt;http://data.mycity.example/public-transport/contact&gt;;
+       dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
        dct:publisher :transport-agency-mycity;
@@ -1106,31 +1106,30 @@ The dataset is classified under
               [[VOCAB-DCAT]].</p>
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows the machine readable metadata for
-            bus-stops dataset with the inclusion of the <strong> locale
-                  parameters </strong> metadata. </p>
+              <p> The example below shows the machine readable metadata for the
+            bus stops dataset (<code>bus-stops-2015-05-05</code>) with the inclusion of the <strong> locale
+                  parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
+                use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. </p>
               <pre class="highlight">  :bus-stops-05-05-2015
        a dcat:Dataset;
        dct:title "Bus stops of MyCity";
        dcat:keyword "transport","mobility","bus";
        dct:issued "2015-05-05";
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+       dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
        dct:publisher :transport-agency-mycity ;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
-       dcat:distribution :bus-stops.csv;
+       dcat:distribution :bus-stops-05-05-2015.csv;
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;</strong>
        <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt;;</strong>
        <strong>dct:conformsTo "ISO 8601"; </strong>
        .
 </pre>
-              <p>To declare the languages of the dataset is published using the
-                <code>dct:language</code>. If the dataset is available in multiple languages,
-                use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. <!-- As proposed
+               <!-- As proposed
                 in Dataset Descriptions from HCLS Community [[HCLS-DATASET]]
-                values were taken from the Lexvo.org Ontology [[Lexvo]]. --></p>
+                values were taken from the Lexvo.org Ontology [[Lexvo]]. -->
               
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
