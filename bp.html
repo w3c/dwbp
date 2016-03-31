@@ -824,6 +824,7 @@ table.bptable caption {
           used, for example, discovery and reuse. </p>
         <p> </p>
         <!-- begin of Provide Metadata BP -->
+        
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Metadata must be provided for both human users
@@ -895,6 +896,7 @@ table.bptable caption {
         </div>
         <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
+        
         <div class="practice">
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
@@ -953,10 +955,26 @@ table.bptable caption {
               <h5>Machine-readable</h5>
               <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
-                the bus stop dataset (<code>bus-stops</code>). The dataset has one CSV
-                distribution (<code>bus-stops.csv</code>) that is also described using
-                the [[VOCAB-DCAT]].</p>
-              <pre class="highlight">  :bus-stops
+                the bus stop dataset (<code>bus-stops-2015-05-05</code>). The dataset has one CSV
+                distribution (<code>bus-stops-2015-05-05.csv</code>) that is also described using
+                the [[VOCAB-DCAT]].
+The dataset is classified under
+                the domain represented by the relative URI <code>:mobility </code>. This
+                domain may be defined as part of a set of domains identified by
+                the URI <code>:themes </code>. 
+                  To describe both concepts and schema
+                concepts, John used <a href="http://www.w3.org/TR/skos-primer/">SKOS </a>.
+                To express frequency of update an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
+                  Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr>
+                Data Cube Vocabulary efforts was used. John chose to describe
+                the spatial and temporal coverage of the example dataset using
+                URIs from <a href="http://www.geonames.org/">Geonames</a> and the <a
+
+                  href="http://reference.data.gov.uk/id/interval"> Interval
+                  dataset</a> from data.gov.uk, respectively.
+
+                </p>
+              <pre class="highlight">  :bus-stops-2015-05-05
        a dcat:Dataset;
        dct:title "Bus stops of MyCity";
        dcat:keyword "transport","mobility","bus";
@@ -967,44 +985,28 @@ table.bptable caption {
        dct:publisher :transport-agency-mycity;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
-       dcat:distribution :bus-stops.csv;
+       dcat:distribution :bus-stops-2015-05-05.csv;
        .
 
        :mobility
-          a skos:Concept ;
-          skos:inScheme :themes ;
-          skos:prefLabel "Mobility" ;
+          a skos:Concept;
+          skos:inScheme :themes;
+          skos:prefLabel "Mobility";
        .
 
        :themes
        a skos:ConceptScheme ;
-       skos:prefLabel "A set of domains to classify documents" ;
+       skos:prefLabel "A set of domains to classify documents";
        .
 
-       :bus-stops.csv
+       :bus-stops-2015-05-05.csv
        a dcat:Distribution;
-       dct:title "CSV distribution MyCity bus stops dataset."
-       dct:description "CSV distribution of the bus stops dataset of MyCity."
+       dct:title "CSV distribution MyCity bus stops dataset.";'
+       dct:description "CSV distribution of the bus stops dataset of MyCity.";
        dcat:mediaType "text/csv";
        .
 </pre>
-              <div class="note"> Notice that this dataset is classified under
-                the domain represented by the relative URI :mobility. This
-                domain may be defined as part of a set of domains identified by
-                the URI :themes. <a href="http://www.w3.org/TR/skos-primer/">
-                  SKOS </a> can be used to describe both concepts and schema
-                concepts. </div>
-              <div class="note">Similar to the example of the DCAT
-                specification, in order to express frequency of update we chose
-                to use an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
-                  Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr>
-                Data Cube Vocabulary efforts. Additionally, we chose to describe
-                the spatial and temporal coverage of the example dataset using
-                URIs from <a href="http://www.geonames.org/">Geonames</a> and <a
-
-                  href="http://reference.data.gov.uk/id/interval">the Interval
-                  dataset</a> from data.gov.uk, respectively. </div>
-              <h5>Human-readable</h5>
+                            <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable description of dataset is available.</p>
             </aside>
