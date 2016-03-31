@@ -1844,25 +1844,19 @@ SubObjectPropertyOf(
     .
 </pre>
                     <p>The quality assessment of the "label importing" can be made
-                        dependent on two extra parameters: property and language,
+                        dependent on two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
                         respectively the SKOS property and the language tag. We extend DQV
                         to represent these parameters.</p>
 
-                    <div class="issue">
-                        <p>We need to further evaluate the way we add extra parameters
-                            for the metric and extend the DAQ RDF-CUBE data structure
-                            (postponed issue)</p>
-                    </div>
-
                     <pre class="highlight">
-:language
+:onLanguage
     a qb:DimensionProperty, owl:DataProperty ;
     rdfs:comment   "language on which label importing is assessed."@en ;
     rdfs:domain    dqv:QualityMeasurement;
     rdfs:label     "label import assessment language"@en 
     .
 
-:property
+:onProperty
     a qb:DimensionProperty, rdf:Property ;
     rdfs:comment 	"property which label importing is assessed."@en ;
     rdfs:domain 	dqv:QualityMeasurement ;
@@ -1893,8 +1887,8 @@ SubObjectPropertyOf(
        dqv:value       	"1.0"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"it" ;
-       :property    	skos:altLabel .
+       :onLanguage    	"it" ;
+       :onProperty    	skos:altLabel .
 
 :measurement_exactMatchAltLabelItDataset2 
        a 		dqv:QualityMeasurement;
@@ -1902,8 +1896,8 @@ SubObjectPropertyOf(
        dqv:value       	"1.0"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"it" ;
-       :property    	skos:altLabel .
+       :onLanguage    	"it" ;
+       :onProperty    	skos:altLabel .
 
 ## for English alternative labels
 :measurement_exactMatchAltLabelEnDataset1 
@@ -1912,8 +1906,8 @@ SubObjectPropertyOf(
        dqv:value       	"0.1"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"en" ;
-       :property    	skos:altLabel .
+       :onLanguage    	"en" ;
+       :onProperty    	skos:altLabel .
 
 :measurement_exactMatchAltLabelEnDataset2  
        a 		dqv:QualityMeasurement;
@@ -1921,8 +1915,8 @@ SubObjectPropertyOf(
        dqv:value       	"1.0"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"en" ;
-       :property    	skos:altLabel .      
+       :onLanguage    	"en" ;
+       :onProperty    	skos:altLabel .      
 
 ## for Italian preferred labels
 :measurement_exactMatchPrefLabelItDataset1 
@@ -1931,8 +1925,8 @@ SubObjectPropertyOf(
        dqv:value       	"0.5"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"it" ;
-       :property    	skos:prefLabel .
+       :onLanguage    	"it" ;
+       :onProperty    	skos:prefLabel .
 
 :measurement_exactMatchprefLabelItDataset2  
        a 		dqv:QualityMeasurement;
@@ -1940,11 +1934,11 @@ SubObjectPropertyOf(
        dqv:value       	"0.5"^^xsd:double ;
        dqv:isMeasurementOf      	:importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
-       :language    	"it" ;
-       :property    	skos:prefLabel .
+       :onLanguage    	"it" ;
+       :onProperty    	skos:prefLabel .
 
         </pre>
-                    Let us specify the RDF Data Cube data structure:
+                    Let us specify the RDF Data Cube data structure which includes the two extra parameters:
                     <pre class="highlight">
 :dsd  a     qb:DataStructureDefinition ;
 ##Copying the structure of daq:dsq
@@ -1970,10 +1964,10 @@ SubObjectPropertyOf(
 
 
     ##Extending  the structure of lds:dsq with two new dimensions
-    qb:component  [ qb:dimension  :property ;
+    qb:component  [ qb:dimension  :onProperty ;
                     qb:order      4
                   ] ;
-    qb:component  [ qb:dimension  :language ;
+    qb:component  [ qb:dimension  :onLanguage ;
                     qb:order      5
                   ] .
         </pre>
