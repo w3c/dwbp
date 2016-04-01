@@ -806,11 +806,11 @@ table.bptable caption {
       <p>This section contains the best practices to be used by data publishers in order to help them and data consumers to overcome the different challenges faced when publishing and consuming data on the Web. One or more best practices were proposed for each one of the challenges, which are described in the section <a href="#challenges">Data on the Web Challenges</a>.</p>
       <p>Each BP is related to one or more requirements from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best Practices Use Cases &amp; Requirements document</a> document and the development of Data on the Web Best Practices was guided by these requirements, in such a way that each best practice should have at least one of these requirements as an evidence of its relevance.</p>
       <section id="basicExample">
-        <h3>Examples</h3>
-        <p> These examples serve as a basis for elaboration that will be
+        <h3>Basic Example</h3>
+        <!-- <p> The example below serve as a basis for elaboration that will be
           described in subsequent sections. It helps to illustrate how best
           practices may be applied. </p>
-        <aside class="example">
+        <aside class="example"> -->
           <p> John works for the Transport Agency of MyCity and he is in charge
             of the publication of data on the Web about bus stops as well
             as real time data about the traffic of the city. John decides to
@@ -822,10 +822,7 @@ table.bptable caption {
               languages: English and Portuguese; </li>
             <li> Both datasets must be available in CSV and JSON-LD formats; </li>
           </ul> -->
-        </aside>
-
         
-        </aside>
         When necessary RDF examples in Turtle syntax will be used to show the result of the
         application of some best practices. 
       </section>
@@ -989,8 +986,8 @@ table.bptable caption {
               <h5>Machine-readable</h5>
               <p>The example below shows how to use [[VOCAB-DCAT]] to provide
                 the machine readable <strong> discovery </strong> metadata for
-                the bus stops dataset (<code>bus-stops-2015-05-05</code>). The dataset has one CSV
-                distribution (<code>bus-stops-2015-05-05.csv</code>) that is also described using
+                the bus stops dataset (<code>:bus-stops-2015-05-05</code>). The dataset has one CSV
+                distribution (<code>:bus-stops-2015-05-05.csv</code>) that is also described using
                 the [[VOCAB-DCAT]].
 The dataset is classified under
                 the domain represented by the relative URI <code>:mobility </code>. This
@@ -1035,7 +1032,7 @@ The dataset is classified under
 
        :bus-stops-2015-05-05.csv
        a dcat:Distribution;
-       dct:title "CSV distribution MyCity bus stops dataset.";'
+       dct:title "CSV distribution of bus-stops-05-05-2015 dataset.";
        dct:description "CSV distribution of the bus stops dataset of MyCity.";
        dcat:mediaType "text/csv";
        .
@@ -1107,7 +1104,7 @@ The dataset is classified under
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for the
-            bus stops dataset (<code>bus-stops-2015-05-05</code>) with the inclusion of the <strong> locale
+            bus stops dataset (<code>:bus-stops-2015-05-05</code>) with the inclusion of the <strong> locale
                   parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
                 use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. </p>
               <pre class="highlight">  :bus-stops-05-05-2015
@@ -1118,7 +1115,7 @@ The dataset is classified under
        dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt;;
        dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt;;
        dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher :transport-agency-mycity ;
+       dct:publisher :transport-agency-mycity;
        dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
        dcat:theme :mobility;
        dcat:distribution :bus-stops-05-05-2015.csv;
@@ -1195,13 +1192,13 @@ The dataset is classified under
             </ul>
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> John used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web  </a> for publishing the CSV distribution of the bus stops dataset (<code>bus-stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution .</p>
+              <p> John used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web  </a> for publishing the CSV distribution of the bus stops dataset (<code>:bus-stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution .</p>
               <pre class="highlight">
 
 {
   "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
   "url": "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-05-05-2015.csv",
-  "dc:title": "Bus stops of MyCity",
+  "dc:title": "CSV distribution of bus-stops-05-05-2015 dataset",
   "dcat:keyword": ["bus", "stop", "mobility"],
   "dc:publisher": {
     "schema:name": "Transport Agency of MyCity",
@@ -1336,13 +1333,11 @@ The dataset is classified under
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows the machine readable metadata for
-                :bus-stops.csv with the inclusion of the <strong> data
-                  license </strong> information. </p>
-              <pre class="highlight">:bus-stops.csv
+              <p> The CSV distribution of the bus stops dataset (<code>:bus-stops-05-05-2015.csv</code>) will be published under the <a href= "http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. The property <code>dct:license</code> is used to include this information as part of the distribution metadata. </p>
+              <pre class="highlight">:bus-stops-05-05-2015.csv
    a dcat:Distribution;
-   dct:title "CSV distribution MyCity bus stops dataset."
-   dct:description "CSV distribution of the bus stops dataset of MyCity."
+   dct:title "CSV distribution of bus-stops-05-05-2015 dataset";
+   dct:description "CSV distribution of the bus stops dataset of MyCity.";
    dcat:mediaType "text/csv";
    <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong>;
    .
@@ -1439,7 +1434,7 @@ The dataset is classified under
   dct:title "Bus stops of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
   dct:issued "2015-05-05";
-  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
+  dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt;;
   dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt;;
   dct:spatial &lt;http://www.geonames.org/3399415&gt;;
   dct:publisher :transport-agency-mycity;
