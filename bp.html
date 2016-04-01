@@ -17,7 +17,7 @@ exists as a normal ul. If JS is active, the list is replaced by the icons
 
       window.onload=init;
 
-function bpObject(t,id,b) {
+function bpObject(t,id,b,reqs) {
   this.title = t;   // The BP's title
   this.id = id      // Its id
   if (b != undefined) {
@@ -27,6 +27,11 @@ function bpObject(t,id,b) {
     }
     this.benefits = benefitList;       // Its benefits in an array
   }
+	var requirementList = new Array();
+	for (var i = 0; i < reqs.length; i++) {
+		requirementList.push(reqs[i].hash.substring(1));
+	}
+	this.requirements = requirementList;
 }
 
 function benefitObject(b) {
@@ -82,6 +87,19 @@ function updateBenefitListReuse() {
   benefitListReuse.appendChild(p);
 }
 
+function createRequirementsTable(BPlist) {
+	var reqs = new Array();
+	BPlist.forEach(function(bp){
+		bp.requirements.forEach(function(req){
+			if (reqs[req] === undefined) {
+				reqs[req] = new Array();
+			}
+			reqs[req].push(bp);
+		});
+	});
+	console.log(reqs);
+}
+
 function init() {
 
   // Need an array of objects for the benefits
@@ -100,13 +118,12 @@ function init() {
   // Get list of our BPs and put them in an array of objects
 
   var BPlist = new Array (); // This will be our array of BPs from the document
-
   var BPdivs = new Array ();
   BPdivs = document.getElementsByClassName('practice'); // This is the info we have effectively scraped from the page
 
   // Need the title and id of each one
   for (var i = 0; i < BPdivs.length; i++) {
-    var t; var id; var b;
+    var t; var id; var b; var reqs;
     var BPtop = BPdivs[i].getElementsByClassName('practicelab');
     t = BPtop[0].textContent; // There should only be values in BPtop[0]
     id = BPtop[0].id;
@@ -117,14 +134,16 @@ function init() {
     } else {
       b = undefined;
     }
-    BPlist.push(new bpObject(t, id, b)) ;
+		var BPrequirementsList = BPdivs[i].getElementsByClassName('ucr')[0].getElementsByTagName('a');
+		reqs = BPrequirementsList;
+    BPlist.push(new bpObject(t, id, b, reqs)) ;
   }
 
   createBenefitsTable(BPlist); // Call function to create Benefits Table
+  createRequirementsTable(BPlist); // Call function to create Requirements Table
 
   // Now create the panels
   var r;
-
 
   for (var i = 0; i < theBenefits.length; i++) {               // Working through the list of benefits
     r = document.createElement('div');                         // Need to create the div, ready to add the list items for this benefit
