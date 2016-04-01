@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html  prefix="dcat: http://www.w3.org/ns/dcat#
+dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
+  <head>
+    <meta  content="text/html; charset=utf-8"  http-equiv="content-type">
+    <title>DWBP - Examples</title>
+    <meta  content="width=device-width,initial-scale=1"  name="viewport">
+    <style  type="text/css">
+   .container {
+    font-family: sans-serif;
+    max-width: 968px;
+    margin: 0 auto;
+  }
+
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
+    width: 100%;
+  }
+
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+  }
+
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
+
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+  div.example {
+    padding: 0.5em;
+    border-left: 0.5em solid #E0CB52;
+    border-color: #E0CB52;
+    background: none repeat scroll 0% 0% #FCFAEE;
+  }
+  a {
+    color: #00C;
+    text-decoration: none;
+  }
+  a[href]:hover {
+    background: none repeat scroll 0% 0% #FFA;
+  }
+</style>
+  </head>
+  <body>
+    <div  class="container">
+      <h1>Example of Real-time Data API</h1>
+      <section  id="abstract">
+        <p>This is the human-readable API specification for real-time data<a  href="http://w3.org/TR/dwbp/"><abbr
+               title="Data on the Web Best Practices"></abbr><br>
+          </a></p>
+      </section>
+      <section  resource="#timetable-001"  typeof="dcat:Dataset">
+        <p>This example specification is taken from the UK Environmental Agency
+          flood-monitoring API. </p>
+        <div  class="example">
+          <p>In this example the Transport Agency of MyCity keeps track of river
+            flooding that may cause bridge closures during rainy seasons
+            effecting bus rerouting and schedules. The API provides consumers
+            real-time status information using a REST API.&nbsp; The API allows
+            the consumer to select: </p>
+          <ul>
+            <li>Current flood warnings and alerts</li>
+            <li>All station measurements</li>
+            <li>Latest flooding 3 day forecasts</li>
+          </ul>
+        </div>
+        <h2  id="dataset-description">API Description</h2>
+        <table  style="width: 100%; height: 0%;"  class="human-readable-example"
+           border="0">
+          <thead>
+            <tr>
+              <td  style="text-align: center;"><span  style="font-weight: bold;">Description</span></td>
+              <td  style="text-align: center;"><span  style="font-weight: bold;">API</span></td>
+              <td  style="text-align: center;"><span  style="font-weight: bold;">Parameters</span></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span  style="color: rgb(44, 62, 80); font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 21.4286px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);">flood
+                  warnings and alerts <br>
+                </span></td>
+              <td  property="dct:title">{root}/data/readings</td>
+              <td>min-severity, county, lat=x&amp;long=y&amp;dist=r</td>
+            </tr>
+            <tr>
+              <td>All station measurements</td>
+              <td  property="dcat:keyword">{root}/id/stations/{id}/readings</td>
+              <td>latest, today, date=d, startdate=d1&amp;enddate=d2,
+                _view=full, _sorted</td>
+            </tr>
+            <tr>
+              <td>Latest available forecast</td>
+              <td><span  property="dct:issued"  content="2015-05-05"  datatype="xsd:date">{root}/id/3dayforecast</span></td>
+              <td>n/a</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <section><br>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
