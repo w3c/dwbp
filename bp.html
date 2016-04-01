@@ -1987,59 +1987,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           </section>
         </div>
         <!-- end of provide version history BP -->
-        <!-- begin of avoid breaking changes at APIs -->
-        <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API</span></p>
-          <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
-          <section class="axioms">
-            <p class="subhead">Why</p>
-            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the format of a response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur enables developers to take advantage of new features and, in the rare case of a breaking change, take action. </p>
-          </section>
-          <section class="outcome">
-            <p class="subhead">Intended Outcome</p>
-            <p>Developer code will continue to work. Developers will know of improvements you make and be able to make use of them. Breaking changes to your API will be rare, and if they occur, developers will have sufficient time and information to adapt their code. That will enable them to avoid breakage, enhancing trust.</p>
-          </section>
-          <section class="how">
-            <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
-            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
-          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
-          <aside class="example">Some examples of breaking changes to an API include
-            <ul>
-              <li>Removing a call;</li>
-              <li>Changing the method used to make a call;</li>
-              <li>Changing the URI of a resource used in a call;</li>
-              <li>Adding a required parameter for a call;</li>
-              <li>Changing the data type of a parameter;</li>
-              <li>Changing the name of a key in a key-value response;</li>
-              <li>Changing the structure of an XML response</li>
-              <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
-            </ul>
-          </aside>
-          <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
-          </section>
-          <section class="test">
-            <p class="subhead">How to Test</p>
-            <p>Release changes initially to a test version of your API before applying them to the production version. Invite developers to test their applications on the test version and provide feedback.</p>
-          </section>
-          <section class="ucr">
-            <p class="subhead">Evidence</p>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">R-PersistentIdentification</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
-          </section>
-         <section class="benefits">
-          <p class="subhead">Benefits</p>
-          <ul class="benefitsList">
-             <li>Trust</li><li>Interoperability</li> 
-            <!--              <li>Comprehension</li>
-            <li>Reuse</li>
-           <li>Linkability</li>              <li>Discoverability</li> -->
-            <!--              <li>Access</li>
-                         <li>Processability</li> -->
-          </ul>
-        </section>
-         <div class="note">This BP will be complemented.</div>
-        </div>
-        <!-- end of avoid breaking changes to APIs -->
+
       <!-- end of versioning section -->
       </section>
       <!-- begning of data identifier section -->
@@ -3514,7 +3462,61 @@ A usual resident was generally defined as someone who spent most of their time a
          <div class="note">This BP will be complemented.</div>
         </div>
         <!-- end of Document API code BP -->
+        <!-- begin of avoid breaking changes at APIs -->
+        <div class="practice">
+          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API</span></p>
+          <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
+          <section class="axioms">
+            <p class="subhead">Why</p>
+            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the format of a response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur enables developers to take advantage of new features and, in the rare case of a breaking change, take action. </p>
+          </section>
+          <section class="outcome">
+            <p class="subhead">Intended Outcome</p>
+            <p>Developer code will continue to work. Developers will know of improvements you make and be able to make use of them. Breaking changes to your API will be rare, and if they occur, developers will have sufficient time and information to adapt their code. That will enable them to avoid breakage, enhancing trust.</p>
+          </section>
+          <section class="how">
+            <p class="subhead">Possible Approach to Implementation</p>
+          <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
+            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
+          <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
+          <aside class="example">Some examples of breaking changes to an API include
+            <ul>
+              <li>Removing a call;</li>
+              <li>Changing the method used to make a call;</li>
+              <li>Changing the URI of a resource used in a call;</li>
+              <li>Adding a required parameter for a call;</li>
+              <li>Changing the data type of a parameter;</li>
+              <li>Changing the name of a key in a key-value response;</li>
+              <li>Changing the structure of an XML response</li>
+              <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
+            </ul>
+          </aside>
+          <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
+          </section>
+          <section class="test">
+            <p class="subhead">How to Test</p>
+            <p>Release changes initially to a test version of your API before applying them to the production version. Invite developers to test their applications on the test version and provide feedback.</p>
+          </section>
+          <section class="ucr">
+            <p class="subhead">Evidence</p>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">R-PersistentIdentification</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></p>
+          </section>
+         <section class="benefits">
+          <p class="subhead">Benefits</p>
+          <ul class="benefitsList">
+             <li>Trust</li><li>Interoperability</li>
+            <!--              <li>Comprehension</li>
+            <li>Reuse</li>
+           <li>Linkability</li>              <li>Discoverability</li> -->
+            <!--              <li>Access</li>
+                         <li>Processability</li> -->
+          </ul>
+        </section>
+        </div>
+        <!-- end of avoid breaking changes to APIs -->
+
       </section>
+      <!-- end of Data Access APIs -->
     </section>
     <!-- end of Data Access -->
     <!-- begin of Data Preservation -->
