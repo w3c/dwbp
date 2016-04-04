@@ -50,7 +50,30 @@ dct: http://purl.org/dc/terms/" lang="en" >
   a[href]:hover {
     background: none repeat scroll 0% 0% #FFA;
   }
+  form#duv-feedback {
+    width: 48%;
+    float: left;
+  }
+  form#duv-feedback fieldset label {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+  }
+  form#duv-feedback fieldset input {
+    width: 100%;
+  }
+  form#duv-feedback fieldset textarea {
+    width: 100%;
+  }
+  div#rdf-duv-feedback {
+    float: right;
+    width: 48%;
+  }
+  pre#rdf-duv-feedback-turtle {
+    white-space: pre-wrap;
+  }
 </style>
+
 </head>
 <body>
   <div class="container">
@@ -80,6 +103,10 @@ dct: http://purl.org/dc/terms/" lang="en" >
               <tr>
                 <td>Title</td>
                 <td property="dct:title">Bus timetable of MyCity</td>
+              </tr>
+              <tr>
+                <td>URI</td>
+                <td>http://data.mycity.example/public-transport/road/bus/dataset/timetable</td>
               </tr>
               <tr>
                 <td>Keywords</td>
@@ -335,7 +362,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <tr>
                  <td about="#downloadURLAvailabilityMetric" property="dqv:inDimension" resource="#availability"> Dimension </td>
                  <td>
-                 <table class="human-readable-example" about="#availability" typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
+                   <table class="human-readable-example" about="#availability" typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
                     <tr>
                      <td><span property="skos:prefLabel">Availability</span></td>
                    </tr>
@@ -347,10 +374,81 @@ dct: http://purl.org/dc/terms/" lang="en" >
              </tr>
 
            </table>
-           </section>
-
-
          </section>
-       </div>
-     </body>
-     </html>
+
+         <section>
+           <h3>Data Usage Feedback</h3>
+           <p>The following form is used to get feedback about the dataset Bus timetable of MyCity (http://data.mycity.example/public-transport/road/bus/dataset/timetable)</p>
+            <form id="duv-feedback" onkeyup="fillRDF()">
+              <fieldset>
+                <legend>Personal info</legend>
+                <label for="foaf-name">Name</label>
+                <input type="text" id="foaf-name" value="Bernadette Loscio">
+              </fieldset>
+
+              <fieldset>
+                <legend>Dataset</legend>
+                <label for="feedback-about">Feedback about</label>
+                <select name="feedbackAbout" id="feedback-about">
+                  <option value="timetable-001-RDF">RDF distribution of the bus timetable dataset of MyCity</option>
+                  <option selected value="timetable-001-CSV">CSV distribution MyCity_busTimetable dataset</option>
+                </select>
+
+                <label for="duv-rating">Rating</label>
+                <select id="duv-rating">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5" selected>5</option>
+                </select>
+
+                <label for="duv-userFeedback">Feedback</label>
+                <textarea id="duv-userFeedback">Is there a JSON-LD distribution available for this dataset?</textarea>
+
+                <label for="oa-motivation">Motivation</label>
+                <textarea id="oa-motivation"></textarea>
+             </fieldset>
+           </form>
+
+           <div id="rdf-duv-feedback">
+             <pre id="rdf-duv-feedback-turtle">
+    ex:comment
+       a duv:UserFeedback ;
+       oa:hasTarget ex:<span id="rdf-feedback-about">timetable-001-csv</span>;
+       oa:hasBody ex:comment1Content ;
+       dct:creator ex:author ;
+    .
+
+    ex:comment2Content a cnt:ContentAsText ;
+      cnt:chars "<span id="rdf-duv-userFeedback">Are tab delimited formats also available?</span>"^^xsd:string .
+
+    ex:author
+       a foaf:Person  ;
+       foaf:Name "<span id="rdf-foaf-name">Alan Law</span>"^^xsd:string  ;
+    .
+            </pre>
+           </div>
+         </section>
+
+       </section>
+     </div>
+
+<script>
+
+function fillRDF() {
+  var form = document.getElementById("duv-feedback");
+  var rdfFoafName = document.getElementById("rdf-foaf-name");
+  var rdfDuvUserFeedback = document.getElementById("rdf-duv-userFeedback");
+  var rdfFeedbackAbout = document.getElementById("rdf-feedback-about");
+
+  rdfFoafName.innerHTML = form.elements['foaf-name'].value;
+  rdfDuvUserFeedback.innerHTML = form.elements['duv-userFeedback'].value;
+  rdfFeedbackAbout.innerHTML = form.elements['feedback-about'].value;
+}
+
+fillRDF();
+</script>
+
+   </body>
+   </html>
