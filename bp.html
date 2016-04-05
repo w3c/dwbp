@@ -2661,7 +2661,7 @@ A usual resident was generally defined as someone who spent most of their time a
               list of codes, terminologies or even Linked Data vocabularies that can be used for this.</p>
             <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context
               for the values, so that data consumers can retrieve and exploit the standardized meaning
-              of these values. In the context of the Web, using unambiguous, web-based identifiers for standardized values
+              of these values. In the context of the Web, using unambiguous, Web-based identifiers for standardized values
               is an efficient way to do this.</p>
             <aside class="example">
             <p>1. The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):</p>
@@ -2855,7 +2855,7 @@ A usual resident was generally defined as someone who spent most of their time a
             quality measurements would also be relevant but that were not in the focus of
             the design process for DQV.</p>
           <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
-            data on the web have adopted an informative rather than normative approach for defining
+            data on the Web have adopted an informative rather than normative approach for defining
             the types of objects these properties can be used with. For instance, the values of the property
             <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
             of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
@@ -3013,7 +3013,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p class="practicedesc">Data should be available for bulk download. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>When web data is distributed across many URIs but might logically
+          <p>When Web data is distributed across many URIs but might logically
             be organized as one container, accessing the data in bulk can be useful.
             Bulk access provides a consistent means to handle the data as one
             container. Individually accessing data over many retrievals can be cumbersome
@@ -3072,17 +3072,17 @@ A usual resident was generally defined as someone who spent most of their time a
         <p class="practicedesc">If your dataset is large, enable users and applications to readily work with useful subsets of your data.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Large datasets can be difficult to move from place to place. It can also be inconvenient for users to store or parse a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
+          <p>Large datasets can be difficult to move from place to place. It can also be inconvenient for users to store or parse a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, Web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a web application.</p>
+          <p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a Web application.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approaches to Implementation</p>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <aside class="example">
-            <p>The MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable web applications to update data quickly and deliver it to riders on demand, interactively. </p>
+            <p>The MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
           </aside>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <aside class="example">
@@ -3138,7 +3138,7 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>A possible approach to implementation is to configure the web
+          <p>A possible approach to implementation is to configure the Web
             server to deal with content negotiation of the requested resource.</p>
           <p>The specific format of the resource's representation can be accessed
             by the URI or by the Content-type of the HTTP Request.</p>
@@ -3185,7 +3185,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <p class="subhead">Why</p>
           <p> The presence of real-time data on the Web enables access to
             critical time sensitive data, and encourages the development of
-            real-time web applications. Real-time access is dependent on
+            real-time Web applications. Real-time access is dependent on
             real-time data producers making their data readily available to the
             data publisher. The necessity of providing real-time access for a
             given application will need to be evaluated on a case by case basis
@@ -3366,7 +3366,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="how">
             <p class="subhead">Possible Approaches to Implementation</p>
-            <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
+            <p>REST (REpresentational State Transfer) is an architectural style that, when used in a Web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
             <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
             <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
               <pre>
@@ -3434,7 +3434,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <!-- begin of Document API code BP -->
         <div class="practice">
           <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
-          <p class="practicedesc">Provide complete information on the web about your API. Be sure to update documentation as you add features or make changes.</p>
+          <p class="practicedesc">Provide complete information on the Web about your API. Be sure to update documentation as you add features or make changes.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
@@ -4108,10 +4108,10 @@ HTTP/1.1 200 Ok
       <!-- begin of BP Complementary Presentations -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Provide Complementary Presentations</span></p>
-        <p class="practicedesc">Enrich data by also presenting it in complementary, immediately informative ways, such as visualizations, tables, web applications, or summaries. </p>
+        <p class="practicedesc">Enrich data by also presenting it in complementary, immediately informative ways, such as visualizations, tables, Web applications, or summaries. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Data published online is meant to inform others about its subject. But only posting datasets for download or API access puts the burden on consumers to interpret it. The web offers unparalleled opportunities for presenting data in ways that let users learn and explore without having to create their own tools.</p>
+          <p>Data published online is meant to inform others about its subject. But only posting datasets for download or API access puts the burden on consumers to interpret it. The Web offers unparalleled opportunities for presenting data in ways that let users learn and explore without having to create their own tools.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -4120,9 +4120,9 @@ HTTP/1.1 200 Ok
         <section class="how">
           <p class="subhead"> Possible Approaches to Implementation</p>
           <p> One very simple way to provide immediate insight is to publish an analytical summary in an HTML page. Including summative data in graphs or tables can help users scan the summary and quickly understand the meaning of the data.</p>
-          <p>If you have the means to create interactive visualizations or web applications that use the data, you can give consumers of your data greater ability to understand it and discover patterns in it. These approaches also demonstrate its suitability for processing and encourage reuse.</p>
+          <p>If you have the means to create interactive visualizations or Web applications that use the data, you can give consumers of your data greater ability to understand it and discover patterns in it. These approaches also demonstrate its suitability for processing and encourage reuse.</p>
           <aside class="example">
-            <p>The MyCity transit agency publishes detailed data about all its transit lines through an API, but it also has many users who are not web developers and who want to know how to use the system to move about the city. The transit agency could build a web application that allows users to enter a departure address and a destination and receive step-by-step directions for making their journey via public transit. </p>
+            <p>The MyCity transit agency publishes detailed data about all its transit lines through an API, but it also has many users who are not Web developers and who want to know how to use the system to move about the city. The transit agency could build a Web application that allows users to enter a departure address and a destination and receive step-by-step directions for making their journey via public transit. </p>
           </aside>
         </section>
         <section class="test">
@@ -4151,7 +4151,7 @@ HTTP/1.1 200 Ok
     <section id="Reuse">
       <h3>Data Usage/Data Reuse</h3>
       <div class="note"> We're keen for comments about the title of this section. Which one is more suitable: Data Usage or Data Reuse? </div>
-      <p>Reusing data is another way of publishing data. It can take the form of combining existing data with other datasets, creating web applications or visualizations, or repackaging the data in a new form, such as a translation. Data reusers have some responsibilities that are unique to that form of publishing on the web. This section provides advice to be followed when reusing data. </p>
+      <p>Reusing data is another way of publishing data. It can take the form of combining existing data with other datasets, creating Web applications or visualizations, or repackaging the data in a new form, such as a translation. Data reusers have some responsibilities that are unique to that form of publishing on the Web. This section provides advice to be followed when reusing data. </p>
       <!-- begin of BP Provide Feedback -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Provide Feedback to the Original Publisher</span></p>
@@ -4240,11 +4240,11 @@ HTTP/1.1 200 Ok
         <p class="practicedesc">Indicate the source of your data in the metadata for your reuse of the data. If you provide a user interface, include the citation visibly in the interface.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Data is only useful when it is trustworthy. Identifying the source is a major indicator of trustworthiness in two ways: first, the user can judge the trustworthiness of the data from the reputation of the source, and second, citing the source suggests that you yourself are trustworthy as a republisher. In addition to informing the end user, citing helps publishers by crediting their work. Publishers who make data available on the web deserve acknowledgment and are more likely to continue to share data if they find they are credited. Citation also maintains provenance and helps still others to work with the data. </p>
+          <p>Data is only useful when it is trustworthy. Identifying the source is a major indicator of trustworthiness in two ways: first, the user can judge the trustworthiness of the data from the reputation of the source, and second, citing the source suggests that you yourself are trustworthy as a republisher. In addition to informing the end user, citing helps publishers by crediting their work. Publishers who make data available on the Web deserve acknowledgment and are more likely to continue to share data if they find they are credited. Citation also maintains provenance and helps still others to work with the data. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>End users should be able to assess the trustworthiness of the data they see, and original publishers should be recognized for their efforts. The chain of provenance for data on the web should be traceable back to its original publisher.</p>
+          <p>End users should be able to assess the trustworthiness of the data they see, and original publishers should be recognized for their efforts. The chain of provenance for data on the Web should be traceable back to its original publisher.</p>
         </section>
         <section class="how">
           <p class="subhead"> Possible Approach to Implementation</p>
