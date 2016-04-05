@@ -3135,10 +3135,10 @@ A usual resident was generally defined as someone who spent most of their time a
             <p>
               Different representations of the bus stops dataset can be served according to the specified content type of the HTTP Request: <br>
 
-              Using <code>cURL</code> to get the content of <code>http://example.org/bus-stops</code> represented in CSV and in JSON-LD format.
+              Using <code>cURL</code> to get the content of <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> represented in CSV and in JSON-LD format.
 
-              <pre class="highlight">curl -H "Accept: text/csv" http://example.org/bus-stops</pre>
-              <pre class="highlight">curl -H "Accept: application/ld+json" http://example.org/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: text/csv" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: application/ld+json" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
 
             </p>
           </aside>
@@ -3573,23 +3573,25 @@ A usual resident was generally defined as someone who spent most of their time a
           <aside class="example">
             <p>A dataset targetted for preservation is made of the following
               triples:</p>
-            <pre style="" class="highlight prettyprint prettyprinted">&lt;http://data.mycity.example.com/public-transport/road/bus/route/ABtimetable&gt; a gtfs:Route;
-  gtfs:color "ff0000";
-  gtfs:shortname "10";
-  gtfs:longName "Airport - Bullfrog";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Roumaster;
-  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+            <pre class="highlight"> &lt;http://data.mycity.example.com/public-transport/road/bus/route/ABtimetable&gt; 
+      a gtfs:Route ;
+      gtfs:color "ff0000" ;
+      gtfs:shortname "10" ;
+      gtfs:longName "Airport - Bullfrog" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Roumaster ;
+      foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
 
-&lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
-  gtfs:color "ffff00";
-  gtfs:shortname "20";
-  gtfs:longName "Bullfrog - Furnace Creek Resort";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Articulated_bus;
-  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+&lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+      a gtfs:Route ;
+      gtfs:color "ffff00" ;
+      gtfs:shortname "20" ;
+      gtfs:longName "Bullfrog - Furnace Creek Resort" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Articulated_bus ;
+      foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
 
   …
 </pre>
@@ -3615,23 +3617,24 @@ A usual resident was generally defined as someone who spent most of their time a
             <p>Considering this assessment, a revised dataset including the
               definition of "ex:usualVehicleType" can be considered for
               preservation:</p>
-            <pre style="" class="highlight prettyprint prettyprinted">&lt;http://data.mycity.example.com/public-transport/road/bus/route/AB&gt; a gtfs:Route;
-  gtfs:color "ff0000";
-  gtfs:shortname "10";
-  gtfs:longName "Airport - Bullfrog";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Roumaster;
-  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+            <pre class="highlight">&lt;http://data.mycity.example.com/public-transport/road/bus/route/AB&gt; a gtfs:Route;
+      gtfs:color "ff0000" ;
+      gtfs:shortname "10" ;
+      gtfs:longName "Airport - Bullfrog" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Roumaster ;
+      foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
 
-&lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
-  gtfs:color "ffff00";
-  gtfs:shortname "20";
-  gtfs:longName "Bullfrog - Furnace Creek Resort";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Articulated_bus;
-  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+&lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+      a gtfs:Route;
+      gtfs:color "ffff00";
+      gtfs:shortname "20";
+      gtfs:longName "Bullfrog - Furnace Creek Resort";
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt;;
+      gtfs:routeType ex:three;
+      ex:usualVehicleType dbpedia:Articulated_bus;
+      foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
 
   …
 
@@ -3780,6 +3783,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </ul>
           <p>In addition to the status codes, HTTP Link headers can also be used
             to relate resources to their preserved descriptions.</p>
+            <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
           <aside class="example">
             <p>One approach with a link header is to use the Memento protocol to
               give a link to a timegate providing access to the preserved
