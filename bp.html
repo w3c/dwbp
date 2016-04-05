@@ -964,7 +964,7 @@ table.bptable caption {
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Descriptive metadata should include the following overall features
+            <p>Descriptive metadata can include the following overall features
               of a dataset:</p>
             <ul>
               <li>The <strong>title</strong> and a <strong>description</strong>
@@ -982,9 +982,11 @@ table.bptable caption {
               <!--<li>Any <strong>variants</strong> (e.g. different
                   human-language translations) of data.</li>                <li><strong>Access mechanisms</strong> through which the data be                  accessed (see <a href="#access">Data Access</a>). </li> -->
             </ul>
+
+
             <!-- <p> The information above should be included both in the human
                 understandable and the machine understandable versions of the                metadata. </p> -->
-            <p>Descriptive metadata should include the following overall features
+            <p>Descriptive metadata can include the following overall features
               of a distribution:</p>
             <ul>
               <li>The <strong>title</strong> and a <strong>description</strong>
@@ -1514,10 +1516,7 @@ The dataset is classified under
       <!-- begin of Data Quality -->
       <section id="quality">
         <h3>Data Quality</h3>
-        <p> <a href="#data_quality"> Data quality </a> can affect the
-          potentiality of the application that use data, as a consequence, its
-          inclusion in the data publishing and consumption pipelines is of
-          primary importance. Usually, the assessment of quality involves
+        <p> The quality of a dataset can have a big impact on the quality of applications that use it. As a consequence, the inclusion of <a href="#data_quality"> data quality </a> considerations in data publishing and consumption pipelines is of primary importance. Usually, the assessment of quality involves
           different kinds of quality dimensions, each representing groups of
           characteristics that are relevant to publishers and consumers.
           Measures and metrics are defined to assess the quality for each
@@ -3524,6 +3523,15 @@ A usual resident was generally defined as someone who spent most of their time a
       This section describes best practices related to <a href="#data_preservation">data
         preservation</a>. Albeit being a closely related topic <a href="#data_archiving">archiving</a>
       is considered out of scope for this group and therefore not covered here.
+
+      <div class="note"> Data Preservation Best Practices are still under discussion (see <a href="https://www.w3.org/2013/dwbp/track/issues/251"> ISSUE-251 </a>). We're keen to hear comments about the following questions:
+<ul>
+<li> Do we need the BP "Use a trusted serialization format for preserved data dumps" or this should be covered under the BP about using standardized formats? </li>
+<li> Do we need the BP "Update the status of identifiers" or this should be covered under versioning or unavailability? </li>
+<li> Do we need to rewrite the BP Assess dataset coverage to make it more clear that datasets should have minimal dependencies on external entities that may not be preserved? </li>
+</ul>
+       </div>
+      
       <!-- end of list of resources BP -->
       <!-- begin of assess dataset BP -->
       <div class="practice">
@@ -3848,7 +3856,7 @@ HTTP/1.1 200 Ok
         consumers are currently relying upon. Feedback such as this establishes
         a line of communication channel between data publishers and data
         consumers. In order to quantify and analyze usage feedback, it should be
-        recorded in a machine-readable format. Blogs and other publicly
+        recorded in a machine-readable format. Publicly
         available feedback should be displayed in a human-readable form through
         the user interface. </p>
       <p> This section provides some BP to be followed by data publishers in
@@ -3923,27 +3931,21 @@ HTTP/1.1 200 Ok
       <!-- end of BP Gather Feedback -->
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
-        <p><span id="FeedbackInformation" class="practicelab"> Provide
-            information about feedback </span></p>
-        <p class="practicedesc"> Information about feedback should be provided.</p>
+        <p><span id="FeedbackInformation" class="practicelab"> Make feedback available </span></p>
+        <p class="practicedesc"> Feedback  should be available for both human users and computer applications</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Sharing information about feedback allows data consumers to be
-            aware of feedback given by other consumers. </p>
+          <p>Making feedback about datasets and distributions publicly available allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed. Providing feedback in a machine-readable format allows computer applications to automatically collect and process feedback about datasets. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible for humans to have access to information that
-            describes feedback on a dataset given by one or more data consumers.
+          <p>It should be possible for humans to have access to feedback on a dataset or distribution given by one or more data consumers. 
           </p>
-          <p>It should be possible for machines to automatically process
-            feedback information about a dataset.</p>
+          <p>It should be possible for machines to automatically process feedback  about a dataset or distribution.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>The machine readable version of the feedback metadata may be
-            provided according to the vocabulary that is being developed by the
-            DWBP working group , i.e., the Dataset Usage Vocabulary [[DUV]].</p>
+          <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[DUV]].</p>
           <aside class="example">
             <pre class="highlight">
     :bus-stops-001
@@ -3994,12 +3996,9 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <ul>
-            <li>Check that the metadata for the dataset itself includes feedback
-              information about the dataset.</li>
-            <li>Check if a computer application can automatically process
-              feedback information about the dataset. </li>
-          </ul>
+          
+            Check if a human consumer can access the feedback about the dataset or distribution and check if a computer application can automatically process the feedback. 
+          
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
