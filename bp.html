@@ -2935,18 +2935,23 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Data publishers may publish an HTML document that gives a
-            human-readable explanation for data unavailability. RDF may be used
+          <p> Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a
+            human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 404 (file not found), 410 (permanently removed), 503 (service *providing data* unavailable).
+
+   
+
+<!-- p> RDF may be used
             to provide a machine readable version of the same information. If
             appropriate, consider editing the server's 4xx response page(s) to
-            provide the information.</p>
+            provide the information. </p>
+            <p> </p> -->
+            </p>
           <aside class="example">
-            <p>The datasets created for the bus stops contain sensitive
-              data, for instance privacy information about the bus` driver, so
-              it has a description informing that the personal data about the
-              bus` driver is not available.</p>
-            <p>The information bellow was omitted from the dataset:</p>
-            <p>driver_id, driver_name, driver_address, driver_license.</p>
+            <p>The dataset created for the bus stops can contain sensitive
+              data, for instance, privacy information about the bus' driver. In this case, the publisher provides an explanation informing that the personal data about the
+              bus' driver is not available.</p>
+            <!--<p>The information bellow was omitted from the dataset:</p>
+            <p>driver_id, driver_name, driver_address, driver_license.</p> -->
           </aside>
         </section>
         <section class="test">
@@ -3088,7 +3093,7 @@ A usual resident was generally defined as someone who spent most of their time a
             <p> 1. Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
                    
       
-            <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in CSV format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
+            <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
           </aside>
             
         </section>
