@@ -4249,7 +4249,7 @@ HTTP/1.1 200 Ok
           <p class="subhead"> Possible Approach to Implementation</p>
           <p>You can use the Dataset Usage Vocabulary to cite the original publication of the data in metadata.</p>
           <aside class="example">
-            <pre>foaf:givenname "E"^^xsd:string;
+            <!-- <pre>foaf:givenname "E"^^xsd:string;
 foaf:family_name "Costello"^^xsd:string;
 foaf:title "Mayor"^^xsd:string .
 
@@ -4260,11 +4260,34 @@ ex:timetable-001 a dcat:Dataset ;
         pav:version "series-1.2"^^xsd:string;
         dct:issued "2015-MAY-05"^^xsd:date;
         dct:creator ex:author .
-</pre>
-          </aside>
+</pre> -->
+
+<pre class="highlight">
+
+  :bus-stops-2015-05-05 
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      prism:doi "10.3456/4567.21"^^xsd:string ;
+      dct:creator :john ;
+      owl:versionInfo "1.0" ; 
+      pav:version "1.0" ;
+      . 
+
+  ex:bus-stops-memorandum
+      a biro:BibliographicReference ;
+      a fabio:Policy  ;
+      dct:bibliographicCitation
+      "Costello, E. Mayor (2016). City Bust Stops Memorandum 
+      January, 2016. DOI:0.3456/4567.21"^^xsd:string ;
+      biro:references :bus-stops-2015-05-05 ;
+      .
+      </pre>
+
             <p>You can cite the original source in a user interface by providing bibliographic text and a working link.</p>
-          <aside class="example">
-          <p>Data source: Costello, E.  "Bus timetable of MyCity" (series 1.2). MyCity.  May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001.</p>
+            <p>Data source: Costello, E. Mayor (2016)  "City Bust Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
+
+            <!-- p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001. <p> -->
           </aside>
         </section>
         <section class="test">
