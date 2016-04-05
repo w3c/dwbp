@@ -3957,50 +3957,53 @@ HTTP/1.1 200 Ok
           <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[DUV]].</p>
           <aside class="example">
             <pre class="highlight">
-    :bus-stops-001
-      a dcat:Dataset;
-      dct:title "Bus stops of MyCity";
-      dcat:keyword "transport","mobility" ,"bus";
-      dct:issued "2015-05-05"^^xsd:date';
-      dcat:contactPoint <http://example.org/transport-agency/contact>;
-      dct:temporal <http://reference.data.gov.uk/id/year/2014>;
-      dct:spatial <http://www.geonames.org/3399415>;
-      dct:publisher:transport-agency-mycity ;
-      dct:accrualPeriodicity <http://purl.org/linked-data/sdmx/2009/code#freq-A> ;
-      dcat:theme :mobility;
-      dcat:distribution :bus-stops-001-csv;
+  :bus-stops-2015-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact>&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dcat:theme :mobility ;
+      dcat:distribution :bus-stops-2015-05-05.csv ;
       .
 
-    :bus-stops-001-csv
-      a dcat:Distribution;
-      dct:title "CSV distribution MyCity bus stops dataset."
-      dct:description "CSV distribution of the bus bus stops dataset of MyCity."
-      dcat:mediaType "text/csv";
+  :bus-stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ; 
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
       .
 
-    :comment1Content a cnt:ContentAsText;
-      cnt:chars "This bus stop is missing stop 3".
+  :comment1Content a cnt:ContentAsText ;
+      cnt:chars "This dataset is missing stop 3" ; 
+      .
 
-    :comment1
-       a duv:UserFeedback;
-       oa:hasBody comment1Content;
-       oa:hasTarget :bus-stops-001;
-       dct:creator :localresident.
+  :comment1
+      a duv:UserFeedback ;
+      oa:hasBody comment1Content ;
+      oa:hasTarget :bus-stops-2015-05-05 ;
+      dct:creator :localresident ;
+      .
 
-    :comment2Content a cnt:ContentAsText;
-      cnt:chars "Are tab delimited formats also available?".
+  :comment2Content a cnt:ContentAsText ;
+      cnt:chars "Are tab delimited formats also available?" ;
+      .
 
-    :comment2
-       a duv:UserFeedback ;
-       oa:hasTarget :bus-stops-001-csv;
-       oa:hasBody comment1Content ;
-       dct:creator :localresident ;
-    .
+  :comment2
+      a duv:UserFeedback ;
+      oa:hasTarget :bus-stops-2015-05-05.csv ;
+      oa:hasBody comment2Content ;
+      dct:creator :localresident ;
+      .
 
-    :localresident
-       a foaf:Person  ;
-       foaf:Name "Alan Law"  ;
-    .</pre>
+  :localresident
+      a foaf:Person ;
+      foaf:Name "Alan Law" ;
+      .</pre>
           </aside>
         </section>
         <section class="test">
