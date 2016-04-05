@@ -1711,7 +1711,7 @@ The dataset is classified under
             <p class="subhead">Intended Outcome</p>
             <p>It should be possible for data consumers to easily determine
               which version of a dataset they are working with. It should be possible to determine
-              whether and how a given dataset differs from another of the same set</p>
+              whether and how a given dataset differs from another of the same set.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1746,23 +1746,25 @@ The dataset is classified under
               number of annotation properties for version information.</p>
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows the metadata for bus-stops with
-                the inclusion of the <strong>versioning</strong> metadata. </p>
+              <p> The example below shows the metadata for bus stops with
+                the inclusion of the versioning metadata. The properties <code>owl:versionInfo</code> and <code>pav:version</code> are used to denote the version of the dataset. </p>
               <pre class="highlight">:bus-stops
-  a dcat:Dataset;
-  dct:title "Bus stops of MyCity";
-  dcat:keyword "transport","mobility","bus";
-  dct:issued "2015-05-05";
-  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-  dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-  dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher :transport-agency-mycity;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
-  prov:wasAttributedTo :john;
-  <strong>owl:versionInfo "1.0"; </strong>
+  a dcat:Dataset ;
+  dct:title "Bus stops of MyCity" ;
+  dcat:keyword "transport","mobility","bus" ;
+  dct:issued "2015-05-05" ;
+  dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+  dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+  dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+  dct:publisher :transport-agency-mycity ;
+  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+  dct:creator :john ;
+  <strong>owl:versionInfo "1.0" ; </strong>
   <strong>pav:version "1.0". </strong>
    </pre>
+
+   <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
@@ -1866,26 +1868,27 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created. To keep
-                bus-stops-001 up to date, a new version of the dataset (bus-stops-002) was
-                created. bus-stops-002 includes all the data from bus-stops-001
+                bus-stops-2015-05-05 up to date, a new version of the dataset (bus-stops-2015-12-17) was
+                created. bus-stops-2015-12-17 includes all the data from bus-stops-2015-05-05
                 plus the data about the new bus stop. The machine readable
-                metadata for bus-stops-002 is shown below. </p>
-              <pre class="highlight">:bus-stops-002
-       a dcat:Dataset;
-       dct:title "Bus stops of MyCity";
-       dcat:keyword "transport","mobility","bus";
-       dct:issued "2015-05-06"^^xsd:date;
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher :transport-agency-mycity;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
+                metadata for bus-stops-2015-12-17 is shown below. </p>
+              <pre class="highlight">:bus-stops-2015-12-17
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-12-17" ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+      dct:creator :john ;
        ...
-       <strong>dct:isVersionOf :bus-stops;
-       pav:previousVersion: bus-stops-001;
-       rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
-       owl:versionInfo "1.1";
+       <strong>dct:isVersionOf :bus-stops-2015-05-05 ;
+       pav:previousVersion: bus-stops-2015-05-05 ;
+       rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street." ;
+       owl:versionInfo "1.1" ;
        pav:version "1.1". </strong>
 </pre>
        <!--       <p> Versioning metadata for timetable-001 after the creation of
@@ -1908,7 +1911,7 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
        dct:hasVersion :timetable-002;
        owl:versionInfo "1.0";
        pav:version "1.0". </strong> -->
-
+<div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
