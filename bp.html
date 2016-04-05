@@ -3523,6 +3523,15 @@ A usual resident was generally defined as someone who spent most of their time a
       This section describes best practices related to <a href="#data_preservation">data
         preservation</a>. Albeit being a closely related topic <a href="#data_archiving">archiving</a>
       is considered out of scope for this group and therefore not covered here.
+
+      <div class="note"> Data Preservation Best Practices are still under discussion (see <a href="https://www.w3.org/2013/dwbp/track/issues/251"> ISSUE-251 </a>). We're keen to hear comments about the following questions:
+<ul>
+<li> Do we need the BP "Use a trusted serialization format for preserved data dumps" or this should be covered under the BP about using standardized formats? </li>
+<li> Do we need the BP "Update the status of identifiers" or this should be covered under versioning or unavailability? </li>
+<li> Do we need to rewrite the BP Assess dataset coverage to make it more clear that datasets should have minimal dependencies on external entities that may not be preserved? </li>
+</ul>
+       </div>
+      
       <!-- end of list of resources BP -->
       <!-- begin of assess dataset BP -->
       <div class="practice">
@@ -3922,27 +3931,21 @@ HTTP/1.1 200 Ok
       <!-- end of BP Gather Feedback -->
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
-        <p><span id="FeedbackInformation" class="practicelab"> Provide
-            information about feedback </span></p>
-        <p class="practicedesc"> Information about feedback should be provided.</p>
+        <p><span id="FeedbackInformation" class="practicelab"> Make feedback available </span></p>
+        <p class="practicedesc"> Feedback  should be available for both human users and computer applications</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Sharing information about feedback allows data consumers to be
-            aware of feedback given by other consumers. </p>
+          <p>Making feedback about datasets and distributions publicly available allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed. Providing feedback in a machine-readable format allows computer applications to automatically collect and process feedback about datasets. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible for humans to have access to information that
-            describes feedback on a dataset given by one or more data consumers.
+          <p>It should be possible for humans to have access to feedback on a dataset or distribution given by one or more data consumers. 
           </p>
-          <p>It should be possible for machines to automatically process
-            feedback information about a dataset.</p>
+          <p>It should be possible for machines to automatically process feedback  about a dataset or distribution.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>The machine readable version of the feedback metadata may be
-            provided according to the vocabulary that is being developed by the
-            DWBP working group , i.e., the Dataset Usage Vocabulary [[DUV]].</p>
+          <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[DUV]].</p>
           <aside class="example">
             <pre class="highlight">
     :bus-stops-001
@@ -3993,12 +3996,9 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <ul>
-            <li>Check that the metadata for the dataset itself includes feedback
-              information about the dataset.</li>
-            <li>Check if a computer application can automatically process
-              feedback information about the dataset. </li>
-          </ul>
+          
+            Check if a human consumer can access the feedback about the dataset or distribution and check if a computer application can automatically process the feedback. 
+          
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
