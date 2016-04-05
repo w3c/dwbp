@@ -803,6 +803,7 @@ table.bptable caption {
         </section>
         <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
           <p class="subhead">Benefits</p>
+          A <a href="#BP_Benefits"> benefit </a> represents an improvement in the way how datasets are available on the Web. A Best Practice can have one or more benefits. 
           <ul class="benefitsList">
             <!-- This text list is replaced by the icons by scripting -->
             <li>Reuse</li>
@@ -814,7 +815,6 @@ table.bptable caption {
             <li>Interoperability</li>
             <li>Processability</li>
           </ul>
-          <div class="note">To include links from the icons to the corresponding benefits.</div>
         </section>
       </div>
     </section>
@@ -877,7 +877,7 @@ table.bptable caption {
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Metadata must be provided for both human users
-            and computer applications</p>
+            and computer applications.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Providing metadata is a fundamental requirement when publishing
@@ -950,7 +950,7 @@ table.bptable caption {
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
           <p class="practicedesc">The overall features of datasets and
-            distributions must be described by metadata</p>
+            distributions must be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Explicitly providing dataset descriptive information allows user
@@ -1025,37 +1025,38 @@ The dataset is classified under
                   dataset</a> from data.gov.uk, respectively.
 
                 </p>
-              <pre class="highlight">  :bus-stops-2015-05-05
-       a dcat:Dataset ;
-       dct:title "Bus stops of MyCity" ;
-       dcat:keyword "transport","mobility","bus" ;
-       dct:issued "2015-05-05"^^xsd:date ;
-       dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-       dct:publisher :transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dcat:theme :mobility ;
-       dcat:distribution :bus-stops-2015-05-05.csv ;
-       .
+              <pre class="highlight">
+  :bus-stops-2015-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dcat:theme :mobility ;
+      dcat:distribution :bus-stops-2015-05-05.csv ;
+      .
 
-       :mobility
-          a skos:Concept ;
-          skos:inScheme :themes ;
-          skos:prefLabel "Mobility" ;
-       .
+  :mobility
+      a skos:Concept ;
+      skos:inScheme :themes ;
+      skos:prefLabel "Mobility" ;
+      .
 
-       :themes
-       a skos:ConceptScheme ;
-       skos:prefLabel "A set of domains to classify documents" ;
-       .
+  :themes
+      a skos:ConceptScheme ;
+      skos:prefLabel "A set of domains to classify documents" ;
+      .
 
-       :bus-stops-2015-05-05.csv
-       a dcat:Distribution ;
-       dct:title "CSV distribution of bus-stops-05-05-2015 dataset" ;
-       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-       dcat:mediaType "text/csv" ;
-       .
+  :bus-stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
+      .
 </pre>
                             <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
@@ -1127,22 +1128,23 @@ The dataset is classified under
             bus stops dataset (<code>:bus-stops-2015-05-05</code>) with the inclusion of the <strong> locale
                   parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
                 use multiple values for this property [[VOCAB-DCAT]]. The property <a href="  http://purl.org/dc/terms/conformsTo"> dct:conformsTo </a> is used to specify the standard adopted for date and time formats. </p>
-              <pre class="highlight">  :bus-stops-05-05-2015
-       a dcat:Dataset ;
-       dct:title "Bus stops of MyCity" ;
-       dcat:keyword "transport","mobility","bus" ;
-       dct:issued "2015-05-05" ;
-       dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-       dct:publisher :transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dcat:theme :mobility ;
-       dcat:distribution :bus-stops-05-05-2015.csv ;
-       <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
-       <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
-       <strong>dct:conformsTo "ISO 8601" ; </strong>
-       .
+              <pre class="highlight">  
+  :bus-stops-2015-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dcat:theme :mobility ;
+      dcat:distribution :bus-stops-2015-05-05.csv ;
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
+      <strong>dct:conformsTo "ISO 8601" ; </strong>
+      .
 </pre>
                <!-- As proposed
                 in Dataset Descriptions from HCLS Community [[HCLS-DATASET]]
@@ -1182,7 +1184,7 @@ The dataset is classified under
           <p><span id="StructuralMetadata" class="practicelab">Provide
               structural metadata </span> </p>
           <p class="practicedesc"> Information about the schema and internal
-            structure of a distribution must be described by metadata</p>
+            structure of a distribution must be described by metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p> Providing information about the internal structure of a
@@ -1217,8 +1219,8 @@ The dataset is classified under
 
 {
   "@context": ["http://www.w3.org/ns/csvw", {"@language": "en"}],
-  "url": "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-05-05-2015.csv",
-  "dc:title": "CSV distribution of bus-stops-05-05-2015 dataset",
+  "url": "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv",
+  "dc:title": "CSV distribution of bus-stops-2015-05-05 dataset",
   "dcat:keyword": ["bus", "stop", "mobility"],
   "dc:publisher": {
     "schema:name": "Transport Agency of MyCity",
@@ -1311,7 +1313,7 @@ The dataset is classified under
         <div class="practice">
           <p><span id="DataLicense" class="practicelab">Provide data license
               information</span></p>
-          <p class="practicedesc"> Data license information should be available
+          <p class="practicedesc"> Data license information should be available.
           </p>
           <section class="axioms">
             <p class="subhead">Why</p>
@@ -1353,14 +1355,15 @@ The dataset is classified under
                 an HTML page that describes the data (via a Link element), or                via an HTTP Link Header, the latter two with a <code>@rel</code>                value of <code>license</code>. </p>                Further information about open data licensing can be found in                the Publisher's Guide to Open Data Licensing, published by the                Open Data Institute [[ODI-LICENSING]]. -->
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The CSV distribution of the bus stops dataset (<code>:bus-stops-05-05-2015.csv</code>) will be published under the <a href= "http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. The property <code>dct:license</code> is used to include this information as part of the distribution metadata. </p>
-              <pre class="highlight">:bus-stops-05-05-2015.csv
-   a dcat:Distribution ;
-   dct:title "CSV distribution of bus-stops-05-05-2015 dataset" ;
-   dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-   dcat:mediaType "text/csv" ;
-   <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong> ;
-   .
+              <p> The CSV distribution of the bus stops dataset (<code>:bus-stops-2015-05-05.csv</code>) will be published under the <a href= "http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. The property <code>dct:license</code> is used to include this information as part of the distribution metadata. </p>
+              <pre class="highlight">
+  :bus-stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
+      <strong>dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;</strong> ;
+      .
 </pre>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
@@ -1449,30 +1452,31 @@ The dataset is classified under
                 bus stops dataset (bus-stops) with the inclusion of the
                 <strong>provenance</strong> metadata. The metadata specifies
                 that John created the bus stops dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
-              <pre class="highlight">:bus-stops-05-05-2015
-  a dcat:Dataset, prov:Entity ;
-  dct:title "Bus stops of MyCity" ;
-  dcat:keyword "transport","mobility","bus" ;
-  dct:issued "2015-05-05" ;
-  dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
-  dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-  dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-  dct:publisher :transport-agency-mycity ;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-  <strong>dct:creator :john ; </strong>
-  .
+              <pre class="highlight">
+  :bus-stops-2015-05-05
+      a dcat:Dataset, prov:Entity ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport", "mobility", "bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+      <strong>dct:creator :john ; </strong>
+      .
 
-:john
-  a foaf:Person, prov:Agent ;
-  foaf:givenName "John" ;
-  foaf:mbox &lt;mailto:john@mycitytransport.org&gt; ;
-  <strong>prov:actedOnBehalfOf :transport-agency-mycity ; </strong>
- .
-:transport-agency-mycity
-  a foaf:Organization, prov:Agent ;
-  foaf:name "Transport Agency of Mycity" ;
-  .
+  :john
+      a foaf:Person, prov:Agent ;
+      foaf:givenName "John" ;
+      foaf:mbox &lt;mailto:john@mycitytransport.org&gt; ;
+      <strong>prov:actedOnBehalfOf :transport-agency-mycity ; </strong>
+      .
+  :transport-agency-mycity
+      a foaf:Organization, prov:Agent ;
+      foaf:name "Transport Agency of Mycity" ;
+      .
 
 </pre>
               <h5>Human-readable</h5>
@@ -1569,51 +1573,52 @@ The dataset is classified under
                 quality metadata. The metadata was defined according to the Data
                 Quality Vocabulary. Further  examples can be found in the Data
                 Quality Vocabulary document [[DQV]]. </p>
-              <pre class="highlight">:bus-stops-05-05-2015.csv
-   a dcat:Distribution ;
-   dcat:downloadURL &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-05-05-2015.csv&gt; ;
-   dct:title "CSV distribution of bus-stops-05-05-2015 dataset" ;
-   dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-   dcat:mediaType "text/csv" ;
-   dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-   <strong>dqv:hasQualityMeasurement :measure1, :measure2 </strong>
-	.
-:measure1
-	a dqv:QualityMeasurement ;
-	dqv:computedOn :bus-stops.csv ;
-	dqv:metric :downloadURLAvailabilityMetric ;
-	dqv:value "true"^^xsd:boolean
-	.
-:measure2
-	a dqv:QualityMeasurement ;
-	dqv:computedOn :bus-stops.csv ;
-	dqv:metric :csvCompletenessMetric ;
-	dqv:value "0.5"^^xsd:double
-	.
+              <pre class="highlight">
+  :bus-stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv&gt; ;
+      dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      <strong>dqv:hasQualityMeasurement :measure1, :measure2 </strong> 
+      .
+  :measure1
+      a dqv:QualityMeasurement ;
+      dqv:computedOn :bus-stops.csv ;
+      dqv:metric :downloadURLAvailabilityMetric ;
+      dqv:value "true"^^xsd:boolean 
+      .
+  :measure2
+      a dqv:QualityMeasurement ;
+      dqv:computedOn :bus-stops.csv ;
+      dqv:metric :csvCompletenessMetric ;
+      dqv:value "0.5"^^xsd:double 
+      .
 
 #definition of dimensions and metrics
-:availability
-	a dqv:Dimension ;
-	skos:prefLabel "Availability"@en ;
-	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ;
-	dqv:inCategory :accessibility 
-	.
-:completeness
-	a dqv:Dimension ;
-   	skos:prefLabel "Completeness"@en ;
-	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
-	dqv:inCategory :intrinsicDimensions	
-	.
-:downloadURLAvailabilityMetric
-	a dqv:Metric ;
-	skos:definition "It checks if dcat:downloadURL is available and if its value is dereferenceable."@en ;
-	dqv:inDimension :availability
-	.
-:csvComplitenessMetric
-	a dqv:Metric ;
-	skos:definition "Ratio between the number of objects represented in the cvs and the number of objects expected to be represented according to the declared dataset scope."@en ;
-	dqv:inDimension :completeness
-	.
+  :availability
+      a dqv:Dimension ;
+      skos:prefLabel "Availability"@en ;
+      skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ;
+      dqv:inCategory :accessibility 
+      .
+  :completeness
+      a dqv:Dimension ;
+      skos:prefLabel "Completeness"@en ;
+      skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
+      dqv:inCategory :intrinsicDimensions	
+      .
+  :downloadURLAvailabilityMetric
+      a dqv:Metric ;
+      skos:definition "It checks if dcat:downloadURL is available and if its value is dereferenceable."@en ;
+      dqv:inDimension :availability
+      .
+  :csvComplitenessMetric
+      a dqv:Metric ;
+      skos:definition "Ratio between the number of objects represented in the cvs and the number of objects expected to be represented according to the declared dataset scope."@en ;
+      dqv:inDimension :completeness
+      .
 </pre>
               <h5>Human-readable</h5>
                <p><a href="dwbp-example.html">Example page</a> with
@@ -1711,7 +1716,7 @@ The dataset is classified under
             <p class="subhead">Intended Outcome</p>
             <p>It should be possible for data consumers to easily determine
               which version of a dataset they are working with. It should be possible to determine
-              whether and how a given dataset differs from another of the same set</p>
+              whether and how a given dataset differs from another of the same set.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -1746,23 +1751,27 @@ The dataset is classified under
               number of annotation properties for version information.</p>
             <aside class="example">
               <h5>Machine-readable</h5>
-              <p> The example below shows the metadata for bus-stops with
-                the inclusion of the <strong>versioning</strong> metadata. </p>
-              <pre class="highlight">:bus-stops
-  a dcat:Dataset;
-  dct:title "Bus stops of MyCity";
-  dcat:keyword "transport","mobility","bus";
-  dct:issued "2015-05-05";
-  dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-  dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-  dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-  dct:publisher :transport-agency-mycity;
-  dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
-  dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
-  prov:wasAttributedTo :john;
-  <strong>owl:versionInfo "1.0"; </strong>
-  <strong>pav:version "1.0". </strong>
+              <p> The example below shows the metadata for bus stops with
+                the inclusion of the versioning metadata. The properties <code>owl:versionInfo</code> and <code>pav:version</code> are used to denote the version of the dataset. </p>
+              <pre class="highlight">
+  :bus-stops-2015-05-05 
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+      dct:creator :john ;
+      <strong>owl:versionInfo "1.0" ; </strong>
+      <strong>pav:version "1.0" ; </strong>
+      . 
    </pre>
+
+   <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
@@ -1866,27 +1875,30 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
             <aside class="example">
               <h5> Machine-readable</h5>
               <p> Suppose that a new bus stop was created. To keep
-                bus-stops-001 up to date, a new version of the dataset (bus-stops-002) was
-                created. bus-stops-002 includes all the data from bus-stops-001
+                bus-stops-2015-05-05 up to date, a new version of the dataset (bus-stops-2015-12-17) was
+                created. bus-stops-2015-12-17 includes all the data from bus-stops-2015-05-05
                 plus the data about the new bus stop. The machine readable
-                metadata for bus-stops-002 is shown below. </p>
-              <pre class="highlight">:bus-stops-002
-       a dcat:Dataset;
-       dct:title "Bus stops of MyCity";
-       dcat:keyword "transport","mobility","bus";
-       dct:issued "2015-05-06"^^xsd:date;
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher :transport-agency-mycity;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt;;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;;
+                metadata for bus-stops-2015-12-17 is shown below. </p>
+              <pre class="highlight">
+  :bus-stops-2015-12-17
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-12-17"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
+      dct:creator :john ;
        ...
-       <strong>dct:isVersionOf :bus-stops;
-       pav:previousVersion: bus-stops-001;
-       rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street.";
-       owl:versionInfo "1.1";
-       pav:version "1.1". </strong>
+      <strong>dct:isVersionOf :bus-stops-2015-05-05 ;
+      pav:previousVersion: bus-stops-2015-05-05 ;
+      rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street." ;
+      owl:versionInfo "1.1" ;
+      pav:version "1.1" ; </strong>
+      . 
 </pre>
        <!--       <p> Versioning metadata for timetable-001 after the creation of
                 timetable-002, which is a new version of timetable-001. </p>
@@ -1908,7 +1920,7 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
        dct:hasVersion :timetable-002;
        owl:versionInfo "1.0";
        pav:version "1.0". </strong> -->
-
+<div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
@@ -2127,7 +2139,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
             <aside class="example">
-              <p>The URI <code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops</code>
+              <p>The URI <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
                 has several features that support persistence:</p>
               <ul>
                 <li>All names are subject to change over time but in choosing a
@@ -2158,9 +2170,9 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 <li>In DCAT terms, this would be the identifier for the dataset.
                   Specific distributions of the dataset are likely to be
                   identified by adding the relevant file extension to the URI,
-                  such as <code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops.csv</code>,
-                  <code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops.json</code>,
-                  <code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops.ttl</code>
+                  such as <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.csv</code>,
+                  <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.json</code>,
+                  <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.ttl</code>
                   etc.</li>
               </ul>
 <!--              <p>These points cover the design aspects of a persistent URI. To
@@ -2263,12 +2275,12 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
                 URL</a> property.</p>
             <aside class="example">
-              <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops</code>)
+              <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>)
                 identifies a dataset. Much of the URI can be reused to identify
                 bus stops, routes and the type of bus used on a given service.
                 For example, a suitable persistent URI for the 'Airport -
                 Bullfrog' route would be:</p>
-              <p><code>http://data.mycity.example/public-transport/road/bus/route/id/AB</code></p>
+              <p><code>http://data.mycity.example.com/public-transport/road/bus/route/id/AB</code></p>
               <p>This has the same initial structure as for the dataset but
                 rather than <code>/dataset</code> it now includes the path
                 segment <code>/route</code> so that humans can see that the
@@ -2277,7 +2289,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
                 an information resource, i.e. something you cannot retrieve over
                 the Internet, and <code>/AB</code> is the local identifier for
                 the actual bus route. Dereferencing this URI should result in an
-                HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example/public-transport/road/bus/route/doc/AB</code>
+                HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example.com/public-transport/road/bus/route/doc/AB</code>
                 that <em>describes</em>, i.e. gives information about, the AB
                 bus route (note the substitution of <code>/doc</code> for <code>/id</code>).
                 Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs
@@ -2360,6 +2372,8 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               document. However, when the next version of this document is
               published, the 'latest version' URI will be changed to point to
               that. </p>
+            
+<div class="note"> This example needs to be rewritten. </div>
             <aside class="example">
               <p>To complete the London temperature example, one might imagine
                 URIs as follows: </p>
@@ -2458,17 +2472,18 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
           of the publication of data about census. They decided to
           publish one dataset about usual resident population collected in the 2001 Census.
 A usual resident was generally defined as someone who spent most of their time at a specific address. This dataset shows both the 2001 population, the 1991 population, along with the rate of change, the split of the population between those living in households and those living in communal establishments, the size of the area in hectares, population density and the number of students away from home in the area.</p>
-              <pre class="highlight">   :census
-       a dcat:Dataset;
-       dcat:distribution :census.csv;
-       .
+              <pre class="highlight">   
+  :census
+      a dcat:Dataset ;
+      dcat:distribution :census.csv ;
+      .
    :census.csv
-       a dcat:Distribution;
-       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
-       dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
-       dcat:mediaType "text/csv";
-       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
-       .
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/census/2001/population.csv&gt; ;
+      dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
+      .
 </pre> </aside>
           </section>
           <section class="test">
@@ -2526,25 +2541,26 @@ A usual resident was generally defined as someone who spent most of their time a
               <p>In order to reach a larger number of data consumers, the Census Team
                 decided to also provide a XML distribution of the usual resident population
                 dataset.</p>
-              <pre class="highlight">  :census-001
-       a dcat:Dataset;
-       dcat:distribution :census.csv;
-       dcat:distribution :census.xml;
-       .
-   :census.csv
-       a dcat:Distribution;
-       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.csv&gt;;
-       dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census.";
-       dcat:mediaType "text/csv";
-       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
-       .
-   :census.xml
-       a dcat:Distribution;
-       dcat:downloadURL &lt;http://data.mycity.example/census/2001/population.xml&gt;;
-       dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census.";
-       dcat:mediaType "text/xml";
-       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;;
-       .
+              <pre class="highlight">
+  :census-001
+      a dcat:Dataset;
+      dcat:distribution :census.csv ;
+      dcat:distribution :census.xml ;
+      .
+  :census.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/census/2001/population.csv&gt; ;
+      dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
+      .
+  :census.xml
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/census/2001/population.xml&gt; ;
+      dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
+      dcat:mediaType "text/xml" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
+      .
             </pre>
             </aside>
           </section>
@@ -2623,7 +2639,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <p><span id="MetadataStandardized" class="practicelab">Use
               standardized terms</span></p>
           <p class="practicedesc">Standardized terms should be used to provide
-            data and metadata</p>
+            data and metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>Using standardized lists of codes other commonly used terms for data
@@ -2645,7 +2661,7 @@ A usual resident was generally defined as someone who spent most of their time a
               list of codes, terminologies or even Linked Data vocabularies that can be used for this.</p>
             <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context
               for the values, so that data consumers can retrieve and exploit the standardized meaning
-              of these values. In the context of the Web, using unambiguous, web-based identifiers for standardized values
+              of these values. In the context of the Web, using unambiguous, Web-based identifiers for standardized values
               is an efficient way to do this.</p>
             <aside class="example">
             <p>1. The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):</p>
@@ -2706,7 +2722,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies</span></p>
           <p class="practicedesc">Shared vocabularies should be used to encode
-            data and metadata</p>
+            data and metadata.</p>
           <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
             <p class="subhead">Why</p>
             <p>Use of shared vocabularies captures and facilitates consensus in communities.
@@ -2839,7 +2855,7 @@ A usual resident was generally defined as someone who spent most of their time a
             quality measurements would also be relevant but that were not in the focus of
             the design process for DQV.</p>
           <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
-            data on the web have adopted an informative rather than normative approach for defining
+            data on the Web have adopted an informative rather than normative approach for defining
             the types of objects these properties can be used with. For instance, the values of the property
             <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
             of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
@@ -2919,18 +2935,23 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Data publishers may publish an HTML document that gives a
-            human-readable explanation for data unavailability. RDF may be used
+          <p> Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a
+            human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 404 (file not found), 410 (permanently removed), 503 (service *providing data* unavailable).
+
+   
+
+<!-- p> RDF may be used
             to provide a machine readable version of the same information. If
             appropriate, consider editing the server's 4xx response page(s) to
-            provide the information.</p>
+            provide the information. </p>
+            <p> </p> -->
+            </p>
           <aside class="example">
-            <p>The datasets created for the bus stops contain sensitive
-              data, for instance privacy information about the bus` driver, so
-              it has a description informing that the personal data about the
-              bus` driver is not available.</p>
-            <p>The information bellow was omitted from the dataset:</p>
-            <p>driver_id, driver_name, driver_address, driver_license.</p>
+            <p>The dataset created for the bus stops can contain sensitive
+              data, for instance, privacy information about the bus' driver. In this case, the publisher provides an explanation informing that the personal data about the
+              bus' driver is not available.</p>
+            <!--<p>The information bellow was omitted from the dataset:</p>
+            <p>driver_id, driver_name, driver_address, driver_license.</p> -->
           </aside>
         </section>
         <section class="test">
@@ -2997,7 +3018,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p class="practicedesc">Data should be available for bulk download. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>When web data is distributed across many URIs but might logically
+          <p>When Web data is distributed across many URIs but might logically
             be organized as one container, accessing the data in bulk can be useful.
             Bulk access provides a consistent means to handle the data as one
             container. Individually accessing data over many retrievals can be cumbersome
@@ -3056,23 +3077,25 @@ A usual resident was generally defined as someone who spent most of their time a
         <p class="practicedesc">If your dataset is large, enable users and applications to readily work with useful subsets of your data.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Large datasets can be difficult to move from place to place. It can also be inconvenient for users to store or parse a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
+          <p>Large datasets can be difficult to move from place to place. It can also be inconvenient for users to store or parse a large dataset. Users should not have to download a complete dataset if they only need a subset of it. Moreover, Web applications that tap into large datasets will perform better if their developers can take advantage of “lazy loading”, working with smaller pieces of a whole and pulling in new pieces only as needed. The ability to work with subsets of the data also enables offline processing to work more efficiently. Real-time applications benefit in particular, as they can update more quickly.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a web application.</p>
+          <p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a Web application.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approaches to Implementation</p>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
-          <aside class="example">
-            <p>The MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable web applications to update data quickly and deliver it to riders on demand, interactively. </p>
-          </aside>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
+          <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
-            <p>The MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
+           
+            <p> 1. Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
+                   
+      
+            <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
           </aside>
-            <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+            
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
@@ -3101,7 +3124,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p><span id="Conneg" class="practicelab">Serving data and resources with
             different formats</span></p>
         <p class="practicedesc">It is recommended to use content negotiation for
-          serving data available in multiple formats</p>
+          serving data available in multiple formats.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>It is possible to have data being served in a HTML page mixed with
@@ -3122,7 +3145,7 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>A possible approach to implementation is to configure the web
+          <p>A possible approach to implementation is to configure the Web
             server to deal with content negotiation of the requested resource.</p>
           <p>The specific format of the resource's representation can be accessed
             by the URI or by the Content-type of the HTTP Request.</p>
@@ -3130,10 +3153,10 @@ A usual resident was generally defined as someone who spent most of their time a
             <p>
               Different representations of the bus stops dataset can be served according to the specified content type of the HTTP Request: <br>
 
-              Using <code>cURL</code> to get the content of <code>http://example.org/bus-stops</code> represented in CSV and in JSON-LD format.
+              Using <code>cURL</code> to get the content of <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> represented in CSV and in JSON-LD format.
 
-              <pre class="highlight">curl -H "Accept: text/csv" http://example.org/bus-stops</pre>
-              <pre class="highlight">curl -H "Accept: application/ld+json" http://example.org/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: text/csv" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: application/ld+json" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
 
             </p>
           </aside>
@@ -3169,7 +3192,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <p class="subhead">Why</p>
           <p> The presence of real-time data on the Web enables access to
             critical time sensitive data, and encourages the development of
-            real-time web applications. Real-time access is dependent on
+            real-time Web applications. Real-time access is dependent on
             real-time data producers making their data readily available to the
             data publisher. The necessity of providing real-time access for a
             given application will need to be evaluated on a case by case basis
@@ -3344,13 +3367,13 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <ul>
-              <li>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </li>
-            </ul>
+            
+              Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </li>
+            
           </section>
           <section class="how">
             <p class="subhead">Possible Approaches to Implementation</p>
-            <p>REST (REpresentational State Transfer) is an architectural style that, when used in a web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
+            <p>REST (REpresentational State Transfer) is an architectural style that, when used in a Web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
             <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
             <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
               <pre>
@@ -3412,13 +3435,13 @@ A usual resident was generally defined as someone who spent most of their time a
               <li>Processability</li>
             </ul>
           </section>
-         <div class="note">This BP will be complemented.</div>
+         
         </div>
         <!-- end of Web Standards for APIs -->
         <!-- begin of Document API code BP -->
         <div class="practice">
           <p><span id="documentYourAPI" class="practicelab">Provide complete documentation for your API</span></p>
-          <p class="practicedesc">Provide complete information on the web about your API. Be sure to update documentation as you add features or make changes.</p>
+          <p class="practicedesc">Provide complete information on the Web about your API. Be sure to update documentation as you add features or make changes.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
@@ -3457,7 +3480,6 @@ A usual resident was generally defined as someone who spent most of their time a
                 <li>Interoperability</li>              <li>Processability</li> -->
               </ul>
             </section>
-         <div class="note">This BP will be complemented.</div>
         </div>
         <!-- end of Document API code BP -->
         <!-- begin of avoid breaking changes at APIs -->
@@ -3538,7 +3560,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p><span id="EvaluateCoverage" class="practicelab">Assess dataset
             coverage</span></p>
         <p class="practicedesc">The coverage of a dataset should be assessed
-          prior to its preservation</p>
+          prior to its preservation.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>A chunk of Web data is by definition dependent on the rest of the
@@ -3568,23 +3590,28 @@ A usual resident was generally defined as someone who spent most of their time a
           <aside class="example">
             <p>A dataset targetted for preservation is made of the following
               triples:</p>
-            <pre style="" class="highlight prettyprint prettyprinted">&lt;http://data.mycity.example/public-transport/road/bus/route/ABtimetable&gt; a gtfs:Route;
-  gtfs:color "ff0000";
-  gtfs:shortname "10";
-  gtfs:longName "Airport - Bullfrog";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Roumaster;
-  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+            <pre class="highlight"> 
+  &lt;http://data.mycity.example.com/public-transport/road/bus/route/ABtimetable&gt; 
+      a gtfs:Route ;
+      gtfs:color "ff0000" ;
+      gtfs:shortname "10" ;
+      gtfs:longName "Airport - Bullfrog" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Roumaster ;
+      foaf:isPrimaryTopicOf ex:Airport_Bullfrog
+      .
 
-&lt;http://data.mycity.example/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
-  gtfs:color "ffff00";
-  gtfs:shortname "20";
-  gtfs:longName "Bullfrog - Furnace Creek Resort";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Articulated_bus;
-  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+  &lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+      a gtfs:Route ;
+      gtfs:color "ffff00" ;
+      gtfs:shortname "20" ;
+      gtfs:longName "Bullfrog - Furnace Creek Resort" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Articulated_bus ;
+      foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort
+      .
 
   …
 </pre>
@@ -3610,30 +3637,35 @@ A usual resident was generally defined as someone who spent most of their time a
             <p>Considering this assessment, a revised dataset including the
               definition of "ex:usualVehicleType" can be considered for
               preservation:</p>
-            <pre style="" class="highlight prettyprint prettyprinted">&lt;http://data.mycity.example/public-transport/road/bus/route/AB&gt; a gtfs:Route;
-  gtfs:color "ff0000";
-  gtfs:shortname "10";
-  gtfs:longName "Airport - Bullfrog";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Roumaster;
-  foaf:isPrimaryTopicOf ex:Airport_Bullfrog.
+            <pre class="highlight">
+  &lt;http://data.mycity.example.com/public-transport/road/bus/route/AB&gt; a gtfs:Route;
+      gtfs:color "ff0000" ;
+      gtfs:shortname "10" ;
+      gtfs:longName "Airport - Bullfrog" ;
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
+      gtfs:routeType ex:three ;
+      ex:usualVehicleType dbpedia:Roumaster ;
+      foaf:isPrimaryTopicOf ex:Airport_Bullfrog
+      .
 
-&lt;http://data.mycity.example/public-transport/road/bus/route/BFC&gt; a gtfs:Route;
-  gtfs:color "ffff00";
-  gtfs:shortname "20";
-  gtfs:longName "Bullfrog - Furnace Creek Resort";
-  gtfs:agency &lt;http://example.org/transport-agency/DTA&gt;;
-  gtfs:routeType ex:three;
-  ex:usualVehicleType dbpedia:Articulated_bus;
-  foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort.
+  &lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+      a gtfs:Route;
+      gtfs:color "ffff00";
+      gtfs:shortname "20";
+      gtfs:longName "Bullfrog - Furnace Creek Resort";
+      gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt;;
+      gtfs:routeType ex:three;
+      ex:usualVehicleType dbpedia:Articulated_bus;
+      foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort
+      .
 
   …
 
   # Custom vocabulary element
-  ex:usualVehicleType a rdf:Property;
-    rdfs:subPropertyOf gtfs:routeType;
-    rdfs:range gtfs:Bus.
+  ex:usualVehicleType 
+      a rdf:Property ;
+      rdfs:subPropertyOf gtfs:routeType ;
+      rdfs:range gtfs:Bus.
 </pre>
             <p>This second, more complete, dataset is better suited for
               preservation as it is more self-describing and only makes use of
@@ -3668,7 +3700,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p><span id="Serialisation" class="practicelab">Use a trusted
             serialisation format for preserved data dumps</span></p>
         <p class="practicedesc">Data depositors willing to send a data dump for
-          long term preservation must use a well established serialisation</p>
+          long term preservation must use a well established serialisation.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Web data follows an abtract data model that can be expressed in
@@ -3733,7 +3765,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <p><span id="ResourceStatus" class="practicelab">Update the status of
             identifiers</span></p>
         <p class="practicedesc">Preserved resources should be linked through URIs with their
-          "live" counterparts</p>
+          "live" counterparts.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>URI dereferencing is a primary interface to data on the Web.
@@ -3775,6 +3807,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </ul>
           <p>In addition to the status codes, HTTP Link headers can also be used
             to relate resources to their preserved descriptions.</p>
+            <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
           <aside class="example">
             <p>One approach with a link header is to use the Memento protocol to
               give a link to a timegate providing access to the preserved
@@ -3932,7 +3965,7 @@ HTTP/1.1 200 Ok
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
         <p><span id="FeedbackInformation" class="practicelab"> Make feedback available </span></p>
-        <p class="practicedesc"> Feedback  should be available for both human users and computer applications</p>
+        <p class="practicedesc"> Feedback  should be available for both human users and computer applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Making feedback about datasets and distributions publicly available allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed. Providing feedback in a machine-readable format allows computer applications to automatically collect and process feedback about datasets. </p>
@@ -3948,50 +3981,53 @@ HTTP/1.1 200 Ok
           <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[DUV]].</p>
           <aside class="example">
             <pre class="highlight">
-    :bus-stops-001
-      a dcat:Dataset;
-      dct:title "Bus stops of MyCity";
-      dcat:keyword "transport","mobility" ,"bus";
-      dct:issued "2015-05-05"^^xsd:date';
-      dcat:contactPoint <http://example.org/transport-agency/contact>;
-      dct:temporal <http://reference.data.gov.uk/id/year/2014>;
-      dct:spatial <http://www.geonames.org/3399415>;
-      dct:publisher:transport-agency-mycity ;
-      dct:accrualPeriodicity <http://purl.org/linked-data/sdmx/2009/code#freq-A> ;
-      dcat:theme :mobility;
-      dcat:distribution :bus-stops-001-csv;
+  :bus-stops-2015-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact>&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dcat:theme :mobility ;
+      dcat:distribution :bus-stops-2015-05-05.csv ;
       .
 
-    :bus-stops-001-csv
-      a dcat:Distribution;
-      dct:title "CSV distribution MyCity bus stops dataset."
-      dct:description "CSV distribution of the bus bus stops dataset of MyCity."
-      dcat:mediaType "text/csv";
+  :bus-stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ; 
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
       .
 
-    :comment1Content a cnt:ContentAsText;
-      cnt:chars "This bus stop is missing stop 3".
+  :comment1Content a cnt:ContentAsText ;
+      cnt:chars "This dataset is missing stop 3" ; 
+      .
 
-    :comment1
-       a duv:UserFeedback;
-       oa:hasBody comment1Content;
-       oa:hasTarget :bus-stops-001;
-       dct:creator :localresident.
+  :comment1
+      a duv:UserFeedback ;
+      oa:hasBody comment1Content ;
+      oa:hasTarget :bus-stops-2015-05-05 ;
+      dct:creator :localresident ;
+      .
 
-    :comment2Content a cnt:ContentAsText;
-      cnt:chars "Are tab delimited formats also available?".
+  :comment2Content a cnt:ContentAsText ;
+      cnt:chars "Are tab delimited formats also available?" ;
+      .
 
-    :comment2
-       a duv:UserFeedback ;
-       oa:hasTarget :bus-stops-001-csv;
-       oa:hasBody comment1Content ;
-       dct:creator :localresident ;
-    .
+  :comment2
+      a duv:UserFeedback ;
+      oa:hasTarget :bus-stops-2015-05-05.csv ;
+      oa:hasBody comment2Content ;
+      dct:creator :localresident ;
+      .
 
-    :localresident
-       a foaf:Person  ;
-       foaf:Name "Alan Law"  ;
-    .</pre>
+  :localresident
+      a foaf:Person ;
+      foaf:Name "Alan Law" ;
+      .</pre>
           </aside>
         </section>
         <section class="test">
@@ -4032,7 +4068,7 @@ HTTP/1.1 200 Ok
       <!-- begin of BP Enrich data -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Enrich data by generating
-            new data.</span></p>
+            new data</span></p>
         <p class="practicedesc">Enrich your data by generating new data from the raw data when doing so will enhance its value.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
@@ -4049,10 +4085,9 @@ HTTP/1.1 200 Ok
           <p> Machine learning can be readily applied to the enrichment of data. Methods include those focused on data categorization, disambiguation, entity recognition, sentiment analysis, and topification, among others. After new data is extracted, it can be provided as part of any open data format.</p>
           <p>New data values may be derivable as simply as performing a mathematical calculation across existing columns. Other examples include visual inspection to identify features in spatial data and cross-reference to external databases for demographic information. </p>
           <aside class="example">
-            <p>The MyCity transport agency has street addresses for each of its transit stops. It wants to make it easier for consumers of its data to combine the data with maps, so it adds latitude and longitude information for each stop by utilizing a geographic database.</p>
-          </aside>
-          <aside class="example">
-            <p>The transit agency has a large collection of email correspondence from transit riders. Some of the correspondence is complementary, some is complaints, and some is requesting information. The agency conducts a combination of sentiment analysis and categorization to extract metadata for each of the messages, such as transit mode, route number, and rider positivity, to create a semistructured dataset.</p>
+            <p>1. The MyCity transport agency has street addresses for each of its transit stops. It wants to make it easier for consumers of its data to combine the data with maps, so it adds latitude and longitude information for each stop by utilizing a geographic database.</p>
+          
+            <p>2. The transit agency has a large collection of email correspondence from transit riders. Some of the correspondence is complementary, some is complaints, and some is requesting information. The agency conducts a combination of sentiment analysis and categorization to extract metadata for each of the messages, such as transit mode, route number, and rider positivity, to create a semistructured dataset.</p>
           </aside>
         </section>
         <section class="test">
@@ -4078,10 +4113,10 @@ HTTP/1.1 200 Ok
       <!-- begin of BP Complementary Presentations -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Provide Complementary Presentations</span></p>
-        <p class="practicedesc">Enrich data by also presenting it in complementary, immediately informative ways, such as visualizations, tables, web applications, or summaries. </p>
+        <p class="practicedesc">Enrich data by also presenting it in complementary, immediately informative ways, such as visualizations, tables, Web applications, or summaries. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Data published online is meant to inform others about its subject. But only posting datasets for download or API access puts the burden on consumers to interpret it. The web offers unparalleled opportunities for presenting data in ways that let users learn and explore without having to create their own tools.</p>
+          <p>Data published online is meant to inform others about its subject. But only posting datasets for download or API access puts the burden on consumers to interpret it. The Web offers unparalleled opportunities for presenting data in ways that let users learn and explore without having to create their own tools.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -4090,9 +4125,9 @@ HTTP/1.1 200 Ok
         <section class="how">
           <p class="subhead"> Possible Approaches to Implementation</p>
           <p> One very simple way to provide immediate insight is to publish an analytical summary in an HTML page. Including summative data in graphs or tables can help users scan the summary and quickly understand the meaning of the data.</p>
-          <p>If you have the means to create interactive visualizations or web applications that use the data, you can give consumers of your data greater ability to understand it and discover patterns in it. These approaches also demonstrate its suitability for processing and encourage reuse.</p>
+          <p>If you have the means to create interactive visualizations or Web applications that use the data, you can give consumers of your data greater ability to understand it and discover patterns in it. These approaches also demonstrate its suitability for processing and encourage reuse.</p>
           <aside class="example">
-            <p>The MyCity transit agency publishes detailed data about all its transit lines through an API, but it also has many users who are not web developers and who want to know how to use the system to move about the city. The transit agency could build a web application that allows users to enter a departure address and a destination and receive step-by-step directions for making their journey via public transit. </p>
+            <p>The MyCity transit agency publishes detailed data about all its transit lines through an API, but it also has many users who are not Web developers and who want to know how to use the system to move about the city. The transit agency could build a Web application that allows users to enter a departure address and a destination and receive step-by-step directions for making their journey via public transit. </p>
           </aside>
         </section>
         <section class="test">
@@ -4118,9 +4153,10 @@ HTTP/1.1 200 Ok
     </section>
     <!-- end Enrichment -->
     <!-- begin Re-use -->
-    <section id="Re-use">
-      <h3>Data Reuse</h3>
-      <p>Reusing data is another way of publishing data. It can take the form of combining existing data with other datasets, creating web applications or visualizations, or repackaging the data in a new form, such as a translation. Data reusers have some responsibilities that are unique to that form of publishing on the web. This section provides advice to be followed when reusing data. </p>
+    <section id="Reuse">
+      <h3>Data Usage/Data Reuse</h3>
+      <div class="note"> We're keen for comments about the title of this section. Which one is more suitable: Data Usage or Data Reuse? </div>
+      <p>Reusing data is another way of publishing data. It can take the form of combining existing data with other datasets, creating Web applications or visualizations, or repackaging the data in a new form, such as a translation. Data reusers have some responsibilities that are unique to that form of publishing on the Web. This section provides advice to be followed when reusing data. </p>
       <!-- begin of BP Provide Feedback -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Provide Feedback to the Original Publisher</span></p>
@@ -4209,17 +4245,17 @@ HTTP/1.1 200 Ok
         <p class="practicedesc">Indicate the source of your data in the metadata for your reuse of the data. If you provide a user interface, include the citation visibly in the interface.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Data is only useful when it is trustworthy. Identifying the source is a major indicator of trustworthiness in two ways: first, the user can judge the trustworthiness of the data from the reputation of the source, and second, citing the source suggests that you yourself are trustworthy as a republisher. In addition to informing the end user, citing helps publishers by crediting their work. Publishers who make data available on the web deserve acknowledgment and are more likely to continue to share data if they find they are credited. Citation also maintains provenance and helps still others to work with the data. </p>
+          <p>Data is only useful when it is trustworthy. Identifying the source is a major indicator of trustworthiness in two ways: first, the user can judge the trustworthiness of the data from the reputation of the source, and second, citing the source suggests that you yourself are trustworthy as a republisher. In addition to informing the end user, citing helps publishers by crediting their work. Publishers who make data available on the Web deserve acknowledgment and are more likely to continue to share data if they find they are credited. Citation also maintains provenance and helps still others to work with the data. </p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>End users should be able to assess the trustworthiness of the data they see, and original publishers should be recognized for their efforts. The chain of provenance for data on the web should be traceable back to its original publisher.</p>
+          <p>End users should be able to assess the trustworthiness of the data they see, and original publishers should be recognized for their efforts. The chain of provenance for data on the Web should be traceable back to its original publisher.</p>
         </section>
         <section class="how">
           <p class="subhead"> Possible Approach to Implementation</p>
           <p>You can use the Dataset Usage Vocabulary to cite the original publication of the data in metadata.</p>
           <aside class="example">
-            <pre>foaf:givenname "E"^^xsd:string;
+            <!-- <pre>foaf:givenname "E"^^xsd:string;
 foaf:family_name "Costello"^^xsd:string;
 foaf:title "Mayor"^^xsd:string .
 
@@ -4230,11 +4266,34 @@ ex:timetable-001 a dcat:Dataset ;
         pav:version "series-1.2"^^xsd:string;
         dct:issued "2015-MAY-05"^^xsd:date;
         dct:creator ex:author .
-</pre>
-          </aside>
+</pre> -->
+
+<pre class="highlight">
+
+  :bus-stops-2015-05-05 
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      prism:doi "10.3456/4567.21"^^xsd:string ;
+      dct:creator :john ;
+      owl:versionInfo "1.0" ; 
+      pav:version "1.0" ;
+      . 
+
+  ex:bus-stops-memorandum
+      a biro:BibliographicReference ;
+      a fabio:Policy  ;
+      dct:bibliographicCitation
+      "Costello, E. Mayor (2016). City Bust Stops Memorandum 
+      January, 2016. DOI:0.3456/4567.21"^^xsd:string ;
+      biro:references :bus-stops-2015-05-05 ;
+      .
+      </pre>
+
             <p>You can cite the original source in a user interface by providing bibliographic text and a working link.</p>
-          <aside class="example">
-          <p>Data source: Costello, E.  "Bus timetable of MyCity" (series 1.2). MyCity.  May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001.</p>
+            <p>Data source: Costello, E. Mayor (2016)  "City Bust Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
+
+            <!-- p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001. <p> -->
           </aside>
         </section>
         <section class="test">
@@ -4459,7 +4518,7 @@ ex:timetable-001 a dcat:Dataset ;
 
     <section id="BP_Benefits" class="informative">
       <h2>Best Practices Benefits</h2>
-      <p>The list below describes the main benefits of applying the DWBP, which Each benefit represents an improvement in the way how datasets are available on the Web.</p>
+      <p>The list below describes the main benefits of applying the DWBP. Each benefit represents an improvement in the way how datasets are available on the Web.</p>
       <ul>
         <li>Comprehension: humans will have a better understanding about the
           data structure, the data meaning, the metadata and the nature of the
