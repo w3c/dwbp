@@ -39,6 +39,9 @@ var respecConfig = {
         name: "Christophe Guéret"
       },
       {
+        name: "Deirdre Lee"
+      },
+      {
         name: "Eric G. Stephan"
       },
       {
@@ -48,6 +51,9 @@ var respecConfig = {
         name: "Ghislain A. Atemezing"
       },
       {
+        name: "Hadley Beeman"
+      },
+      {
         name: "Ig Ibert Bittencourt"
       },
       {
@@ -55,6 +61,12 @@ var respecConfig = {
       },
       {
         name: "Manuel Tomas Carrasco"
+      },
+      {
+        name: "Makx Dekkers"
+      },
+      {
+        name: "Peter Winstanley"
       },
       {
         name: "Phil Archer"
