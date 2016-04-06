@@ -89,15 +89,43 @@ function updateBenefitListReuse() {
 
 function createRequirementsTable(BPlist) {
 	var reqs = new Array();
+  var requirmentsTable = document.getElementById('requirementsbpstable');
+  var tbody = requirmentsTable.getElementsByTagName('tbody')[0];
+
 	BPlist.forEach(function(bp){
 		bp.requirements.forEach(function(req){
-			if (reqs[req] === undefined) {
-				reqs[req] = new Array();
+			if (reqs[req] !== undefined) {
+				reqs[req].push(bp);
 			}
-			reqs[req].push(bp);
+			else {
+        reqs.push(req);
+        reqs[req] = new Array();
+        reqs[req].push(bp);
+      }
+
 		});
 	});
-	console.log(reqs);
+  reqs.forEach(function(req){
+    var row = tbody.insertRow(tbody.rows.length); // new row for the table
+    var cellReq = row.insertCell(0);         // cell for requirement
+    var cellBps = row.insertCell(1);               // cell for BPs
+    var reqLink = document.createElement('a');
+
+    reqLink.setAttribute('href', 'https://www.w3.org/TR/dwbp-ucr/#'+req);
+    reqLink.appendChild(document.createTextNode(req));
+    cellReq.appendChild(reqLink);
+
+    reqs[req].forEach(function(bp){
+      var p = document.createElement('p');
+      var bpLink = document.createElement('a');
+
+      bpLink.setAttribute('href', '#'+bp.id);
+      bpLink.appendChild(document.createTextNode(bp.title));
+      p.appendChild(bpLink);
+      cellBps.appendChild(p);
+    });
+  });
+
 }
 
 function init() {
@@ -4561,199 +4589,11 @@ ex:timetable-001 a dcat:Dataset ;
       <h2>Use Cases Requirements x Best Practices</h2>
       <table id="requirementsbpstable" class="bptable">
         <caption>Requirements x Best Practices</caption>
+        <thead>
+          <th>Requirement</th>
+          <th>Best Practices</th>
+        </thead>
         <tbody>
-          <tr>
-            <th>UC Requirement</th>
-            <th>Best Practice</th>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessBulk">R-AccessBulk</a></td>
-            <td> Best Practice 19: Provide bulk download, Best Practice 20:
-              Follow REST principles when designing APIs</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a></td>
-            <td> Best Practice 18: Provide data unavailability reference, Best
-              Practice 26: Update the status of identifier</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessRealTime">R-AccessRealTime</a></td>
-            <td> Best Practice 21: Provide real-time access</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessUpToDate">R-AccessUpToDate</a></td>
-            <td> Best Practice 22: Provide data up to date</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-APIDocumented">R-APIDocumented</a></td>
-            <td> Best Practice 20: Follow REST principles when designing APIs</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a></td>
-            <td> Best Practice 10: Use persistent URIs as identifiers, Best
-              Practice 11: Assign URIs to dataset versions and series</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataEnrichment">R-DataEnrichment</a></td>
-            <td> Best Practice 29: Enrich data by generating new metadata</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataIrreproducibility">R-DataIrreproducibility</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataLifecyclePrivacy">R-DataLifecyclePrivacy</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataLifecycleStage">R-DataLifecycleStage</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataMissingIncomplete">R-DataMissingIncomplete</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-DataVersion">R-DataVersion</a></td>
-            <td> Best Practice 8: Provide versioning information, Best Practice
-              9: Provide version history, Best Practice 23: Maintain separate
-              versions for a data API</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a></td>
-            <td> Best Practice 3: Provide locale parameters metadata, Best
-              Practice 9: Provide version history, Best Practice 23: Maintain
-              separate versions for a data API</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></td>
-            <td> Best Practice 12: Use machine-readable standardized data
-              formats </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a></td>
-            <td> Best Practice 13: Provide data in multiple formats </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatStandardized">R-FormatStandardized</a></td>
-            <td> Best Practice 12: Use machine-readable standardized data
-              formats, Best Practice 25: Use a trusted serialisation format for
-              preserved data dumps</td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatOpen">R-FormatOpen</a></td>
-            <td> Best Practice 12: Use machine-readable standardized data
-              formats </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-GeographicalContext">R-GeographicalContext</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-GranularityLevels">R-GranularityLevels</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a></td>
-            <td> Best Practice 1: Provide metadata, Best Practice 2: Provide
-              descriptive metadata, Best Practice 3: Provide locale parameters
-              metadata, Best Practice 4: Provide structural metadata, Best
-              Practice 6: Provide data provenance information </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a></td>
-            <td> Best Practice 1: Provide metadata </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataMachineRead">R-MetadataMachineRead</a></td>
-            <td> Best Practice 1: Provide metadata, Best Practice 2: Provide
-              descriptive metadata, Best Practice 5: Provide data license
-              information </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a></td>
-            <td> Best Practice 2: Provide descriptive metadata, Best Practice 5:
-              Provide data license information, Best Practice 14: Use
-              standardized terms </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-PersistentIdentification">R-PersistentIdentification</a></td>
-            <td> Best Practice 26: Update the status of identifiers </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></td>
-            <td> Best Practice 16: Choose the right formalization level </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityMetrics">R-QualityMetrics</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></td>
-            <td> Best Practice 27: Gather feedback from data consumers, Best
-              Practice 28: Provide information about feedback </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsage">R-TrackDataUsages</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a></td>
-            <td> Best Practice 27: Gather feedback from data consumers, Best
-              Practice 28: Provide information about feedback </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabDocum">R-VocabDocum</a></td>
-            <td> Best Practice 16: Choose the right formalization level </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a></td>
-            <td> Best Practice 15: Reuse vocabularies, Best Practice 16: Choose
-              the right formalization level </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabVersion">R-VocabVersion</a></td>
-            <td> Best Practice 24: Assess dataset coverage </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-UniqueIdentifier">R-UniqueIdentifier</a></td>
-            <td> Best Practice 10: Use persistent URIs as identifiers, Best
-              Practice 11: Assign URIs to dataset versions and series </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseAvailable">R-LicenseAvailable</a></td>
-            <td> Best Practice 5: Provide data license information </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-LicenseLiability">R-LicenseLiability</a></td>
-            <td> <br>
-            </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a></td>
-            <td> Best Practice 6: Provide data provenance information </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a></td>
-            <td> Best Practice 17: Preserve people's right to privacy </td>
-          </tr>
-          <tr>
-            <td> <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></td>
-            <td> Best Practice 17: Preserve people's right to privacy </td>
-          </tr>
         </tbody>
       </table>
     </section>
