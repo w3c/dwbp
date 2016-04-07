@@ -1792,51 +1792,59 @@ The dataset is classified under
       dct:creator :john ;
       <strong>owl:versionInfo "1.0" ; </strong>
       <strong>pav:version "1.0" ; </strong>
-      . 
+      .
    </pre>
 
-   <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <strong>Using Memento</strong>
               <p> Assume: </p>
               <ul>
-                <li> http://example.org/dataset is the “generic URI” at which
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
+is the “generic URI” at which
                   the current version of a dataset is always available </li>
-                <li> http://example.org/bus-stops-002 is the versioned URI for
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code>
+is the versioned URI for
                   the current dataset </li>
-                <li> http://example.org/bus-stops-001 is the versioned URI of
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code>
+is the versioned URI of
                   the prior version of the dataset </li>
-                <li> http://example.org/bus-stops-000 is the versioned URI of
-                  the first version of the dataset </li>
               </ul>
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -I http://example.org/bus-stops-001
+              <pre class="highlight">curl -I
+http://example.org/bus-stops-2015-12-17
 
 HTTP/1.1 200 OK
-Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: &lt;http://example.org/bus-stops&gt;; rel=“original” </pre>
-              <p> The versioned URIs can provide a link to a TimeGate, which
+Memento-Datetime: Thu, 17 Dec 2015 00:00:00 GMT
+Link:&lt;http://example.org/bus-stops&gt;; rel=“original”</pre>
+              <p> The generic URI provides a link to a TimeGate, which
                 supports datetime negotiation as a means to determine which
-                version of a dataset was operational at a given datetime: </p>
-              <pre class="highlight">curl -I http://example.org/bus-stops-001
-
-HTTP/1.1 200 OK
-Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link:&lt;http://example.org/bus-stops&gt;; rel=“original”,
-&lt;http://example.org/timegate/bus-stops&gt;; rel=“timegate” </pre>
-              <p> The generic URI can also provide a link to a TimeGate: </p>
+                version of a dataset was operational at a given datetime.
+                Since the generic URI is not versioned,
+                no version datetime is provided in the headers.</p>
               <pre class="highlight">curl -i -H http://example.org/bus-stops
 
 HTTP/1.1 200 OK
 Link: &lt;http://example.org/timegate/bus-stops&gt;; rel=“timegate” </pre>
+              <p> The versioned URIs can also provide a link to a TimeGate: </p>
+              <pre class="highlight">curl -I
+http://example.org/bus-stops-2015-05-05
+
+HTTP/1.1 200 OK
+Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
+Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
+&nbsp;&lt;http://example.org/timegate/bus-stops&gt;; rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
-                operational on March 20 2015: </p>
-              <pre class="highlight">curl -I -H "Accept-Datetime: Fri, 20 Mar 2015  12:00:00 GMT" http://example.org/timegate/dataset
+                operational on June 20 2015: </p>
+              <pre class="highlight">curl -I -H "Accept-Datetime: Sat,
+20 Jun 2015  12:00:00 GMT" http://example.org/timegate/bus-stops
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
-Location: http://example.org/bus-stops-000
+Location: http://example.org/bus-stops-2015-05-05
 Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
@@ -1922,79 +1930,68 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
       rdfs:comment "The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street." ;
       owl:versionInfo "1.1" ;
       pav:version "1.1" ; </strong>
-      . 
+      .
 </pre>
-       <!--       <p> Versioning metadata for timetable-001 after the creation of
-                timetable-002, which is a new version of timetable-001. </p>
-              <pre class="highlight">:timetable-001
-       a dcat:Dataset, version:VersionedThing;
-       dct:title "Bus timetable of MyCity";
-       <!-- dcat:keyword "transport","mobility" ,"bus";
-       dct:issued "2015-05-05"^^xsd:date';
-       dct:modified "2015-05-05"^^xsd:date';
-       dcat:contactPoint &lt;http://example.org/transport-agency/contact&gt;;
-       dct:temporal &lt;http://reference.data.gov.uk/id/year/2014&gt;;
-       dct:spatial &lt;http://www.geonames.org/3399415&gt;;
-       dct:publisher:transport-agency-mycity ;
-       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt;
-       prov:wasAttributedTo:john; 
-       ...
-       <strong>pav:hasCurrentVersion :timetable-002;
-       dct:hasVersion :timetable-002;
-       owl:versionInfo "1.0";
-       pav:version "1.0". </strong> -->
-<div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
               <p> <strong> Using Memento:</strong> </p>
               Assume:
               <ul>
-                <li> <code>http://example.org/bus-stops</code> is the “generic
-                  URI” at which the current version of a dataset is always
-                  available </li>
-                <li> <code>http://example.org/bus-stops-002</code> is the
-                  versioned URI for the current dataset </li>
-                <li> <code>http://example.org/bus-stops-001</code> is the
-                  versioned URI of the prior version of the dataset </li>
-                <li> <code>http://example.org/bus-stops-000</code> is the
-                  versioned URI of the first version of the dataset </li>
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
+is the “generic URI” at which
+                  the current version of a dataset is always available </li>
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code>
+is the versioned URI for
+                  the current dataset </li>
+                <li>
+<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code>
+is the versioned URI of
+                  the prior version of the dataset </li>
+                <li> http://example.org/bus-stops-2015-01-01 is the
+versioned URI of
+                  the first version of the dataset </li>
               </ul>
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -I http://example.org/bus-stops-001
+              <pre class="highlight">curl -I
+http://example.org/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
-Date: Sat, 24 Oct 2015 16:23:30 GMT
-Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
 Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
  &lt;http://example.org/timemap/bus-stops&gt;; rel=“timemap”;
-type="application/link-format"
-
-curl -I http://example.org/timemap/bus-stops
+&nbsp;type="application/link-format" </pre>
+<p> This is how the TimeMap is retrieved: </p>
+<pre class="highlight">curl -I http://example.org/timemap/bus-stops
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
 
 &lt;http://example.org/bus-stops&gt;;rel="original”,
-&lt;http://example.org/timedate/bus-stops&gt;;rel="timegate”,
-&lt;http://example.org/timedate/bus-stops&gt;;rel="timemap”;
-type="application/link-format",
-&lt;http://example.org/bus-stops-000&gt;; rel=“first memento"; datetime="Thu,05 Mar 2015 00:00:00 GMT",
-&lt;http://example.org/bus-stops-002&gt;; rel=“memento"; datetime=“Sun, 05 Apr2015 00:00:00 GMT"
-&lt;http://example.org/bus-stops-002&gt;; rel=“last memento"; datetime="Tue,05 May 2015 00:00:00 GMT"
+&lt;http://example.org/timegate/bus-stops&gt;;rel="timegate”,
+&lt;http://example.org/timemap/bus-stops&gt;;rel="timemap”;
+&nbsp;type="application/link-format",
+&lt;http://example.org/bus-stops-2015-01-01&gt;; rel=“first memento";
+datetime="Thu, 01 Jan 2015 00:00:00 GMT",
+&lt;http://example.org/bus-stops-2015-05-05&gt;; rel=“memento";
+datetime=“Tue, 05 May 2015 00:00:00 GMT"
+&lt;http://example.org/bus-stops-2015-12-07&gt;; rel=“last memento";
+datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -I http://example.org/bus-stops-001
+              <pre class="highlight">curl -I
+http://example.org/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
-Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
+Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
 Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
-&lt;http://example.org/bus-stops-000&gt;; rel=“prev first memento";
-datetime="Thu, 05 Mar 2015 00:00:00 GMT",
-&lt;http://example.org/bus-stops-002&gt;; rel=“next last memento";
-datetime="Tue, 05 May 2015 00:00:00 GMT"
-</pre>
+&nbsp;&lt;http://example.org/bus-stops-2015-01-01&gt;; rel=“prev first memento";
+&nbsp;datetime="Thu, 01 Jan 2015 00:00:00 GMT",
+&nbsp;&lt;http://example.org/bus-stops-2015-12-17&gt;; rel=“next last memento";
+&nbsp;datetime="Thu, 17 Dec 2015 00:00:00 GMT"</pre>
+
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable data versioning history information.</p>
@@ -3551,7 +3548,7 @@ A usual resident was generally defined as someone who spent most of their time a
         <!-- end of Document API code BP -->
         <!-- begin of avoid breaking changes at APIs -->
         <div class="practice">
-          <p><span id="provideVersioningInfo" class="practicelab">Avoid Breaking Changes to Your API</span></p>
+          <p><span id="avoidBreakingChangesAPI" class="practicelab">Avoid Breaking Changes to Your API</span></p>
           <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
