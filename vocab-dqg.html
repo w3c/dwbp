@@ -24,7 +24,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-03-31",
+                publishDate : "2016-04-07",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -874,7 +874,13 @@
                             
                         </tbody>
                     </table>
-                </section>
+                </section> 
+                <div class="note">
+                        <p>
+                           The working group acknowledge the abstractness of dqv:Dimension and dqv:Category. Looking at daQ we also think there is no fundamental feature of daQ that it lost in DQV if we represent instances dqv:Dimension and dqv:Category as skos:Concepts which is a way to express that they are abstract entities. Matters are different for metrics. daQ uses classes and subclasses to represent constraints on specific measurement (e.g. type of values). With new languages being currently defined to properly represent constraints (SHACL) we think it is appropriate not to recommend anything now about treating metrics as subclasses of dqv:Metric, and thus to postpone discussion referring implementers to future progress on SHACL and related technology.
+
+                        </p>
+                    </div>
 
                 <section id="dqv:QualityMeasurementDataset">
                     <h3>Class: Quality Measurement Dataset</h3>
@@ -1263,18 +1269,6 @@ SubObjectPropertyOf(
                         see in the section 'Dimensions and metrics hints' for further
                         examples. Any quality framework is free to define its own dimensions
                         and categories.</p>
-
-                    <div class="issue">
-                        <p>
-                            Is there any reason for turning the classes dqv:Dimension,
-                            dqv:Metric and dqv:Category as well as the properties
-                            dqv:inDimension and dqv:inCategory into "abstract" classes and
-                            properties as they were defined in daQ (see Section "Extending the
-                            daQ" <a
-                                href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq">here</a>)?
-                            (<a href="https://www.w3.org/2013/dwbp/track/issues/204">Issue-204</a>)
-                        </p>
-                    </div>
                     <!-- Commented part about using DQV classes and properties as abstract constructs
         <p style="color:red">
         In order to ease the ex-post alignment of dimensions, metrics and categories deployed in independently developed quality framework, dqv:Metric, dqv:Dimension, dqv:Category can be considered as a sort of "abstract classes". For example, in the previous example, the part concerning the definition of dimension and metrics can be replaced as shown below. 
@@ -2111,7 +2105,7 @@ SubObjectPropertyOf(
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. This  example shows how  DVQ can meet this requirement relying on two distinct quality dimensions.</p>
+                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. This  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
                     <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
@@ -2135,7 +2129,7 @@ SubObjectPropertyOf(
    .
    
 :spatialAccuracy   a  dqv:Metric;
-    skos:definition "It returns the percentage of special element that are found accurate
+    skos:definition "It returns the percentage of spatial element that are found accurate
     acconding to  methodology XYZ"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension ldqd:semanticAccuracy 
