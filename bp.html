@@ -1799,15 +1799,15 @@ The dataset is classified under
               <p> Assume: </p>
               <ul>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 is the “generic URI” at which
                   the current version of a dataset is always available </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
 is the versioned URI for
                   the current dataset </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 is the versioned URI of
                   the prior version of the dataset </li>
               </ul>
@@ -1815,37 +1815,45 @@ is the versioned URI of
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
               <pre class="highlight">curl -I
-http://example.org/bus-stops-2015-12-17
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
 
 HTTP/1.1 200 OK
 Memento-Datetime: Thu, 17 Dec 2015 00:00:00 GMT
-Link:&lt;http://example.org/bus-stops&gt;; rel=“original”</pre>
+Link:&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+rel=“original”</pre>
               <p> The generic URI provides a link to a TimeGate, which
                 supports datetime negotiation as a means to determine which
                 version of a dataset was operational at a given datetime.
                 Since the generic URI is not versioned,
                 no version datetime is provided in the headers.</p>
-              <pre class="highlight">curl -i -H http://example.org/bus-stops
+              <pre class="highlight">curl -i -H
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 
 HTTP/1.1 200 OK
-Link: &lt;http://example.org/timegate/bus-stops&gt;; rel=“timegate” </pre>
+Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
+rel=“timegate” </pre>
               <p> The versioned URIs can also provide a link to a TimeGate: </p>
               <pre class="highlight">curl -I
-http://example.org/bus-stops-2015-05-05
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
-&nbsp;&lt;http://example.org/timegate/bus-stops&gt;; rel=“timegate” </pre>
+Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+rel=“original”,
+&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
+rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on June 20 2015: </p>
               <pre class="highlight">curl -I -H "Accept-Datetime: Sat,
-20 Jun 2015  12:00:00 GMT" http://example.org/timegate/bus-stops
+20 Jun 2015  12:00:00 GMT"
+
+http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
-Location: http://example.org/bus-stops-2015-05-05
-Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
+Location: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;
+rel="original" </pre>
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
                 human-readable data versioning information.</p>
@@ -1936,15 +1944,15 @@ Link: &lt;http://example.org/bus-stops&gt; rel="original" </pre>
               Assume:
               <ul>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 is the “generic URI” at which
                   the current version of a dataset is always available </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
 is the versioned URI for
                   the current dataset </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code>
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 is the versioned URI of
                   the prior version of the dataset </li>
                 <li> http://example.org/bus-stops-2015-01-01 is the
@@ -1955,42 +1963,49 @@ versioned URI of
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
               <pre class="highlight">curl -I
-http://example.org/bus-stops-2015-05-05
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
- &lt;http://example.org/timemap/bus-stops&gt;; rel=“timemap”;
+Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+rel=“original”,
+ &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops&gt;;
+rel=“timemap”;
 &nbsp;type="application/link-format" </pre>
 <p> This is how the TimeMap is retrieved: </p>
-<pre class="highlight">curl -I http://example.org/timemap/bus-stops
+<pre class="highlight">curl -I
+http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
 
-&lt;http://example.org/bus-stops&gt;;rel="original”,
-&lt;http://example.org/timegate/bus-stops&gt;;rel="timegate”,
-&lt;http://example.org/timemap/bus-stops&gt;;rel="timemap”;
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;rel="original”,
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;rel="timegate”,
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops&gt;;rel="timemap”;
 &nbsp;type="application/link-format",
-&lt;http://example.org/bus-stops-2015-01-01&gt;; rel=“first memento";
-datetime="Thu, 01 Jan 2015 00:00:00 GMT",
-&lt;http://example.org/bus-stops-2015-05-05&gt;; rel=“memento";
-datetime=“Tue, 05 May 2015 00:00:00 GMT"
-&lt;http://example.org/bus-stops-2015-12-07&gt;; rel=“last memento";
-datetime="Thu, 17 Dec 2015 00:00:00 GMT"
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-01-01&gt;;
+rel=“first memento"; datetime="Thu, 01 Jan 2015 00:00:00 GMT",
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05&gt;;
+rel=“memento"; datetime=“Tue, 05 May 2015 00:00:00 GMT"
+&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-07&gt;;
+rel=“last memento"; datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
               <pre class="highlight">curl -I
-http://example.org/bus-stops-2015-05-05
+http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://example.org/bus-stops&gt;; rel=“original”,
-&nbsp;&lt;http://example.org/bus-stops-2015-01-01&gt;; rel=“prev first memento";
+Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+rel=“original”,
+&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-01-01&gt;;
+rel=“prev first memento";
 &nbsp;datetime="Thu, 01 Jan 2015 00:00:00 GMT",
-&nbsp;&lt;http://example.org/bus-stops-2015-12-17&gt;; rel=“next last memento";
-&nbsp;datetime="Thu, 17 Dec 2015 00:00:00 GMT"</pre>
+&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17&gt;;
+rel=“next last memento";
+&nbsp;datetime="Thu, 17 Dec 2015 00:00:00 GMT"
+</pre>
 
               <h5>Human-readable</h5>
               <p><a href="dwbp-example.html">Example page</a> with
