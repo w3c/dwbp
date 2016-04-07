@@ -2491,7 +2491,7 @@ datetime="Tue, 05 May 2015 00:00:00 GMT"
               XML, Turtle, NetCDF, JSON and RDF. </p>
             <!--<p>Consider which data formats potential users of the data are most
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
-            <aside class="example">
+            <!--<aside class="example">
         <p>The Census Team of the Office for Statistics of MyCity is in charge
           of the publication of data about census. They decided to
           publish one dataset about usual resident population collected in the 2001 Census.
@@ -2508,7 +2508,23 @@ A usual resident was generally defined as someone who spent most of their time a
       dcat:mediaType "text/csv" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
       .
+</pre> </aside> -->
+<aside class="example">
+        <p>John decides to provide data about the bus stops of the route that goes from the airport to the central bus station of MyCity. The information provided includes, besides others, the name, the description, the latitude and the longitude of the bus stops.</p>
+              <pre class="highlight">   
+  :busstops_airport_to_centralstation
+      a dcat:Dataset ;
+      dcat:distribution :busstops_airport_to_centralstation.csv
+      .
+  :busstops_airport_to_centralstation.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
+      dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
+      .
 </pre> </aside>
+
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -2561,7 +2577,34 @@ A usual resident was generally defined as someone who spent most of their time a
               the future. Data publishers must balance the effort required to
               make the data available in many formats, but providing at least
               one alternative will greatly increase the usability of the data.</p>
-            <aside class="example">
+            
+<aside class="example">
+              <p>In order to reach a larger number of data consumers, John
+                decided to also provide a XML distribution of bus stops of the route that goes from the airport to the central bus station of MyCity.</p>
+              <pre class="highlight">
+  :busstops_airport_to_centralstation
+      a dcat:Dataset ;
+      dcat:distribution :busstops_airport_to_centralstation.csv ;
+      dcat:distribution :busstops_airport_to_centralstation.xml
+      .
+  :busstops_airport_to_centralstation.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
+      dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
+      .
+  :busstops_airport_to_centralstation.xml
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.xml&gt; ;
+      dct:title "XML distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
+      dcat:mediaType "text/xml" ;
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
+      .
+           </pre>
+            </aside>
+
+            <!-- <aside class="example">
               <p>In order to reach a larger number of data consumers, the Census Team
                 decided to also provide a XML distribution of the usual resident population
                 dataset.</p>
@@ -2586,7 +2629,7 @@ A usual resident was generally defined as someone who spent most of their time a
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
       .
             </pre>
-            </aside>
+            </aside> -->
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
