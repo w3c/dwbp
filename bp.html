@@ -3070,23 +3070,23 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         published system metrics. In general, APIs should be available to allow
         third parties to automatically search and retrieve data published on the
         Web. </p>
-      <p>On a further note, it can be observed that data on the Web is
+      <!--p>On a further note, it can be observed that data on the Web is
         essentially about the description of entities identified by a unique,
         Web-based, identifier (an URI). Once the data is dumped and sent to an
         institute specialised in digital preservation the link with the Web is
         broken (dereferencing) but the role of the URI as a unique identifier
         still remains. In order to increase the usability of preserved dataset
-        dumps it is relevant to maintain a list of these identifiers. </p>
+        dumps it is relevant to maintain a list of these identifiers. </p-->
       <!-- begin of BP Bulk Access-->
       <div class="practice">
         <p><span id="BulkAccess" class="practicelab">Provide bulk download </span></p>
-        <p class="practicedesc">Data should be available for bulk download. </p>
+        <p class="practicedesc">Datasets should be available for bulk download. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>When Web data is distributed across many URIs but might logically
             be organized as one container, accessing the data in bulk can be useful.
             Bulk access provides a consistent means to handle the data as one
-            container. Individually accessing data over many retrievals can be cumbersome
+            dataset. Individually accessing data over many retrievals can be cumbersome
             and, if used to reassemble the complete dataset, can lead to inconsistent approaches to handling the data.</p>
         </section>
         <section class="outcome">
@@ -3273,10 +3273,11 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Data should be available at real time or near real time, where
+          <p> Real-time access will enable data to be  available at real time or near real time, where real-time means a range from milliseconds to a few seconds after the data creation, and near real time is a predetermined delay for expected data delivery.</p>
+          <!--<p>Data should be available at real time or near real time, where
             real-time means a range from milliseconds to a few seconds after the
             data creation, and near real time is a predetermined delay for
-            expected data delivery. </p>
+            expected data delivery. </p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3388,7 +3389,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
       <!-- begin Data Access APIs group -->
       <div>
         <h4>Data Access APIs</h4>
-        <p> In the following, we present best practices related with the creation of APIs to provide data access.</p>
+        <!--p> In the following, we present best practices related with the creation of APIs to provide data access.</p>
          <!-- begin of Use an API -->
         <div class="practice">
           <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
@@ -3400,7 +3401,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p>
+            <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers. Web applications will be able to obtain specific data by querying a programmatic interface.
+</p>
+            <!--p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -3424,20 +3427,23 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
                 <li>Linkability</li>              <li>Discoverability</li>              <li>Trust</li>-->
             </ul>
           </section>
-          <div class="issue">To review the BP "Use an API" and possibly rewrite <em>Possible Approach to Impelmentation</em> section.</div>
         </div>
         <!-- end of Use an API -->
         <!-- begin of Web Standards for APIs -->
         <div class="practice">
           <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
-          <p class="practicedesc">When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the Web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. </p>
+          <p class="practicedesc">
+When designing APIs, use an architectural style that is founded on the technologies of the Web itself.
+
+          <!--When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the Web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. --> </p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>APIs that are built on Web standards leverage the strengths of the Web. For example, using HTTP verbs as methods and URIs that map directly to individual resources helps to avoid tight coupling between requests and responses, making for an API that is easy to maintain and can readily be understood and used by many developers. The statelessness of the Web can be a strength in enabling quick scaling, and using hypermedia enables rich interactions with your API. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-              <p>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </p>
+              <p> Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use the API because it uses a standardized interface. The API will also be easier to maintain.</p>
+              <!--<p>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </p>-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approaches to Implementation</p>
@@ -3512,25 +3518,49 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <section class="axioms">
             <p class="subhead">Why</p>
             <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
-            <p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p>
+            <p> Developers are the primary consumers of an API and the API documentation is the first clue about the quality and usefulness of the API. When API documentation is complete and easy to understand, developers are probably more willing to continue their journey implementing it. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed.</p>
+
+
+            <!--p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p-->
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> API documentation will enable developers to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return, i.e., the whole set of information related to the API—set of values, how to use it, notices of recent changes, contact information, and so on—should be described and easily browsable on the Web. It will also enables machines to access the API documentaion in order to help developers build API client software.</p>
             <!-- <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p> -->
-            <p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
+            <!--p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
             <p>Developers should be able to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return.</p>
             <p>The API should be self-documenting as well, so that calls return helpful information about errors and usage.</p>
             <p>Recent changes to the API itself should be readily discoverable by users.</p>
-            <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
+            <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p>
-            <aside class="example"><p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p></aside>
+<p> A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as Swagger, io-docs, OpenApis, and others. It is important to say that The API should be self-documenting as well, so that calls return helpful information about errors and usage (e.g. .API users should be able to contact the maintainers with questions, suggestions, or bug reports).</p>
+<p> The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation. </p>
+
+            <!--p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p-->
+            <aside class="example">
+<ul>
+<li> OGC 'capabilities documents' provide an example of a standardized API description. EveryWFS or WMS service, for example, understands the request 'getCapabilities', and then returns an XML document giving information about the service such as the Coordinate Reference system used, the data structure schema, available map layers, and so on. </li>
+<li>Use of void:TechnicalFeature to describe the API for a (VoID) Dataset (or subset); providing a set of values, terms or entities for each API parameter (ref. CSIRO's Spatial Identifier Reference Framework). Use [RFC6570] URI Templates to bind API parameters to RESTful URLs. A 'short-form' of the identifier may be required for usage in the API; this may be defined as a SKOS notation. </li>
+<li> Use of Data Cube with Dimensions (as specified in [vocab-data-cube]) to define the data available from a predicably structured dataset - "what, where, when", and so on (ref. CSIRO'sSpatial Identifier Reference Framework); each Dimension of the Data Cube is bound to a parameter in the API method. The "where" Dimension of a Data Cube, if specified as aqb:CodedProperty, may bound to a set of SpatialThings (e.g. using the property qb:codeList). The URI Set (the set of all SpatialThings mentioned in the Data Cube) provides a 'controlled vocabulary' of locations for which 'observations' (data points) in the Data Cube are available (e.g. air quality data is available at these locations). </li>
+<li> A versioned API: OpenStreetMap API </li>
+<li> Use of HAL: 'JSON Hypertext Application Language', see IETF draft. </li>
+<li> Use of Swagger and swaggerhub; the Dutch Cadastre has published the WFS services in its national geo-portal, PDOK, as Swagger APIs on Swaggerhub, for example an API to get data about noise pollution near highways. Swagger also offers an example reference for a pet store API. </li>
+<li> Packaging a coordinate transformation API for simple re-use. </li>
+<li> Relating the API to its description using HTTP link headers. </li>
+
+</ul>
+
+
+            <!--p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p--></aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
+            <p> Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns.  </p>
+<p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
+</p>
+            <!--p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p-->
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3566,7 +3596,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
             <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
           <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
-          <aside class="example">Some examples of breaking changes to an API include
+          <aside class="example">Some examples of breaking changes to an API include:
             <ul>
               <li>Removing a call;</li>
               <li>Changing the method used to make a call;</li>
@@ -3577,6 +3607,8 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               <li>Changing the structure of an XML response</li>
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
+<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>. </p>
+
           </aside>
           <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
           </section>
@@ -3643,8 +3675,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible to appreciate the coverage and external
-            dependencies of a given dataset.</p>
+          <p>Assessing dataset coverage will enable data consumers to appreciate the coverage and external dependencies of a given dataset.</p>
+          <!--<p>It should be possible to appreciate the coverage and external
+            dependencies of a given dataset.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3782,8 +3815,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible to read and load the dataset into a computer for manipulation
-            even if the original software that was used to create it is no longer available or supported.</p>
+          <p>Trusted serialisation formats will enable machines to process a datasets even if the original software that was used to create it is no longer available or supported.</p>
+          <!--<p>It should be possible to read and load the dataset into a computer for manipulation
+            even if the original software that was used to create it is no longer available or supported.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3977,10 +4011,12 @@ HTTP/1.1 200 Ok
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible for data consumers to provide feedback and
+          <p> Data consumers will be able to provide feedback and ratings about datasets and distributions.  </p>
+
+          <!--p>It should be possible for data consumers to provide feedback and
             rate data in both human and machine-readable formats. The feedback
             should be Web accessible and it should provide a URL reference to
-            the corresponding dataset.</p>
+            the corresponding dataset.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -4038,9 +4074,13 @@ HTTP/1.1 200 Ok
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>It should be possible for humans to have access to feedback on a dataset or distribution given by one or more data consumers. 
+          
+          <p> Making feedback about a dataset or distribution publicly available will enable the sharing of feedback given by different data consumers.  
+</p>
+
+          <!--<p>It should be possible for humans to have access to feedback on a dataset or distribution given by one or more data consumers. 
           </p>
-          <p>It should be possible for machines to automatically process feedback  about a dataset or distribution.</p>
+          <p>It should be possible for machines to automatically process feedback  about a dataset or distribution.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -4185,7 +4225,8 @@ HTTP/1.1 200 Ok
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Besides making datasets available for download, processing, and reuse, publishers should give human consumers immediate insight into the data by presenting it in ways that are readily understood. Data consumers should not have to create their own tools to understand the meaning of the data.</p>
+          <p> Complementary data presentations will enable human consumers to have immediate insight into the data by presenting it in ways that are readily understood. </p>
+          <!--p>Besides making datasets available for download, processing, and reuse, publishers should give human consumers immediate insight into the data by presenting it in ways that are readily understood. Data consumers should not have to create their own tools to understand the meaning of the data.</p-->
         </section>
         <section class="how">
           <p class="subhead"> Possible Approaches to Implementation</p>
