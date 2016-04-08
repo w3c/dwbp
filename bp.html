@@ -895,9 +895,7 @@ table.bptable caption {
           descriptive, structural and administrative features. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and reuse. </p>
-        <p> </p>
         <!-- begin of Provide Metadata BP -->
-        
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Metadata must be provided for both human users
@@ -948,8 +946,9 @@ table.bptable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check if there are coherent metadata available, both human and machine readable, for the resource.</p>
-            <p>Check if the metadata is available in a valid machine readable format, without syntax error and processable by machine.</p>
+            <p>Check if all provided metadata are coherent with the described resource.</p>
+            <p>Check if the metadata is available in a valid machine-readable format and without syntax error.</p>
+
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -969,7 +968,6 @@ table.bptable caption {
         </div>
         <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
-        
         <div class="practice">
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
@@ -1089,9 +1087,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              overall features of the dataset.</p>
-            <p> Check if a user agent can automatically discover the dataset. </p>
+            <p>Check if the metadata for the dataset itself includes the overall features of the dataset in a human-readable format.</p>
+            <p>Check if the descriptive metadata is available in a valid machine-readable.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1179,10 +1176,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              language in which it is published and that all numeric, date, and
-              time fields have locale metadata provided either with each field
-              or as a general rule. </p>
+            <p>Check if the metadata for the dataset itself includes information about local parameters (i.e. data, time, number formats, and language) in a human-readable format).</p>
+            <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1299,9 +1294,10 @@ The dataset is classified under
                 human-readable structural metadata is available.</p>
             </aside>
           </section>
-          <section class="test"><span style="font-weight: bold;">How to Test </span>
-          <p>Check if the structural metadata of the dataset is provided in a human-readable format.</p>
-          <p>Check if the machine-readable metadata of the distribution includes structural information about the data organization.</p>
+          <section class="test">
+            <p class="subhead">How to Test </p>
+            <p>Check if the structural metadata of the dataset is provided in a human-readable format.</p>
+            <p>Check if the metadata of the distribution includes structural information about the dataset in a machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1390,10 +1386,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the data
-              license information. </p>
-            <p> Check if a user agent can automatically detect the data license
-              of the dataset.</p>
+            <p>Check if the metadata for the dataset itself includes the data license information in a human-readable format.</p>
+            <p>Check if a user agent can automatically detect /discover the data license of the dataset.</p>
           </section>
           <section class="ucr">
               <p class="subhead">Evidence</p>
@@ -1500,12 +1494,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              provenance information about the dataset.</p>
-            <p> Check if a computer application can automatically process the
-              provenance information about the dataset. </p>
-            <!--<p>The PROV Implementation Report [[PROV-IMP]] lists a number of
-                validator tools that can be used to test for the presence of                provenance information provided using [[PROV-O]].</p> -->
+            <p>Check that the metadata for the dataset itself includes the provenance information about the dataset in a human-readable format.</p>
+            <p>Check if a computer application can automatically process the provenance information about the dataset.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1797,8 +1787,7 @@ is the versioned URI of
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
 
 HTTP/1.1 200 OK
 Memento-Datetime: Thu, 17 Dec 2015 00:00:00 GMT
@@ -1809,15 +1798,13 @@ rel=“original”</pre>
                 version of a dataset was operational at a given datetime.
                 Since the generic URI is not versioned,
                 no version datetime is provided in the headers.</p>
-              <pre class="highlight">curl -i -H
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
+              <pre class="highlight">curl -i -H http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 
 HTTP/1.1 200 OK
 Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
 rel=“timegate” </pre>
               <p> The versioned URIs can also provide a link to a TimeGate: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -1827,10 +1814,7 @@ rel=“original”,
 rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on June 20 2015: </p>
-              <pre class="highlight">curl -I -H "Accept-Datetime: Sat,
-20 Jun 2015  12:00:00 GMT"
-
-http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
+              <pre class="highlight">curl -I -H "Accept-Datetime: Sat, 20 Jun 2015  12:00:00 GMT" http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
@@ -1943,8 +1927,7 @@ versioned URI of
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -1954,8 +1937,7 @@ rel=“original”,
 rel=“timemap”;
 &nbsp;type="application/link-format" </pre>
 <p> This is how the TimeMap is retrieved: </p>
-<pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
+<pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
@@ -1973,8 +1955,7 @@ rel=“last memento"; datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -4389,14 +4370,14 @@ ex:timetable-001 a dcat:Dataset ;
       a biro:BibliographicReference ;
       a fabio:Policy  ;
       dct:bibliographicCitation
-      "Costello, E. Mayor (2016). City Bust Stops Memorandum 
+      "Costello, E. Mayor (2016). City Bus Stops Memorandum
       January, 2016. DOI:0.3456/4567.21"^^xsd:string ;
       biro:references :bus-stops-2015-05-05 ;
       .
       </pre>
 
             <p>You can cite the original source in a user interface by providing bibliographic text and a working link.</p>
-            <p>Data source: Costello, E. Mayor (2016)  "City Bust Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
+            <p>Data source: Costello, E. Mayor (2016)  "City Bus Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
 
             <!-- p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001. <p> -->
           </aside>
@@ -4413,8 +4394,7 @@ ex:timetable-001 a dcat:Dataset ;
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
             <li>Reuse</li>
-             <!--   <li>Comprehension</li><li>Access</li>   
-                                                             
+             <!--   <li>Comprehension</li><li>Access</li>
             <li>Linkability</li> <li>Processability</li> <li>Interoperability</li>-->
            <li>Discoverability</li> <li>Trust</li>
           </ul>
