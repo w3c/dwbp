@@ -3091,10 +3091,12 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p> It should be possible to download data on the Web in bulk. Data
+          <p> Bulk download will enable large file transfers (which would require more time than a typical user would consider reasonable) by dedicated file-transfer protocols. </p> 
+
+          <!--<p> It should be possible to download data on the Web in bulk. Data
             publishers should provide a way, through either a single-file download or
             a single API call, for consumers to access all the data. Large file transfers (which would require more time than a typical user would consider reasonable) should be enabled by dedicated file-transfer protocols. The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk downlaod.
-            </p>
+            </p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3109,6 +3111,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               approach is useful for capturing a complete snapshot of dynamic data.</li>
             <li>For very large datasets, bulk file transfers can be enabled via means other than http, such as <a href="http://www.slac.stanford.edu/~abh/bbcp/">bbcp</a> or <a href="http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/">GridFTP</a>.</li>
           </ul>
+          <p> The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk downlaod.</p>
           <aside class="example">
             <p>The MyCity transit agency may have a large dataset with arrival times for the various transit modes that was collected over the entire year of 2015. The data might be stored as a CSV file for each month. Suppose the agency wants to make that data available as a bulk download containing all the CSV files, for a hackathon. Since all the arrival data for all the transit services would be a lot of data, and they want to provide all the months together as one dataset, they might offer it as a single-file, compressed archive (tarred and gzipped).</p>
           </aside>
