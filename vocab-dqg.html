@@ -434,7 +434,7 @@
                      <ul>
                         <li>A Quality Dimension (<a href="#dqv:Dimension">dqv:Dimension</a>) is a quality-related characteristic of a dataset
                             relevant to the consumer (e.g., the availability of a dataset).</li>
-                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or that of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension, which is abstract,  by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or that of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an rdfs:label or rdfs:comment) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
                     </ul>
                     <!--p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number
                         of different language tags".</p-->
@@ -1562,7 +1562,7 @@ SubObjectPropertyOf(
 
  :datasetAvailabilityMetric 
     a dqv:Metric ;
-    prov:wasDerivedFrom :downloadURLAvailabilityMetric, SPARQLAvailabilityMetric;
+    prov:wasDerivedFrom :downloadURLAvailabilityMetric, :SPARQLAvailabilityMetric;
     skos:definition "Checks the availabitity of the specified
     distributions."@en ;
     dqv:expectedDataType xsd:boolean ;
@@ -1868,14 +1868,13 @@ SubObjectPropertyOf(
         qb:structure  :dsd .
 
 :importingForPropertyPercentage
-  <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:isMeasurementOf?
     dqv:hasObservation :measurement_exactMatchAltLabelItDataset1,
     :measurement_exactMatchAltLabelItDataset2, 
     :measurement_exactMatchAltLabelEnDataset1, 
     :measurement_exactMatchAltLabelEnDataset2,
     :measurement_exactMatchPrefLabelItDataset1, 
     :measurement_exactMatchprefLabelItDataset2 .
-    </span>
+
 
 #Adding quality observations 
 ## for Italian alternative labels
