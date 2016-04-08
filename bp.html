@@ -1456,18 +1456,17 @@ The dataset is classified under
               <h5>Machine-readable</h5>
               <p> The example below shows the machine readable metadata for the
                 bus stops dataset (bus-stops) with the inclusion of the
-                <strong>provenance</strong> metadata. The metadata specifies
-                that John created the bus stops dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
+                <strong>provenance</strong> metadata. The properties <code>dct:creator</code>, <code> dct:publisher</code> and <code>dct:issued </code> are used to give information about the origin of the dataset. The property <a href = " https://www.w3.org/TR/2013/REC-prov-o-20130430/#actedOnBehalfOf"> prov:actedOnBehalfOf </a> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
               <pre class="highlight">
   :bus-stops-2015-05-05
       a dcat:Dataset, prov:Entity ;
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport", "mobility", "bus" ;
-      dct:issued "2015-05-05"^^xsd:date ;
+      <strong>dct:issued "2015-05-05"^^xsd:date ; </strong>
       dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-      dct:publisher :transport-agency-mycity ;
+      <strong>dct:publisher :transport-agency-mycity ; </strong>
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
       <strong>dct:creator :john ; </strong>
