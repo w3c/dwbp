@@ -3515,25 +3515,48 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <section class="axioms">
             <p class="subhead">Why</p>
             <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
-            <p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p>
+            <p> Developers are the primary consumers of an API and the API documentation is the first clue about the quality and usefulness of the API. When API documentation is complete and easy to understand, developers are probably more willing to continue their journey implementing it. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed.</p>
+
+
+            <!--p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p-->
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
+            <p> API documentation will enable developers to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return, i.e., the whole set of information related to the API—set of values, how to use it, notices of recent changes, contact information, and so on—should be described and easily browsable on the Web. It will also enables machines to access the API documentaion in order to help developers build API client software.</p>
             <!-- <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p> -->
-            <p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
+            <!--p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
             <p>Developers should be able to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return.</p>
             <p>The API should be self-documenting as well, so that calls return helpful information about errors and usage.</p>
             <p>Recent changes to the API itself should be readily discoverable by users.</p>
-            <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
+            <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p>
-            <aside class="example"><p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p></aside>
+<p> A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as Swagger, io-docs, OpenApis, and others. It is important to say that The API should be self-documenting as well, so that calls return helpful information about errors and usage (e.g. .API users should be able to contact the maintainers with questions, suggestions, or bug reports).</p>
+
+            <!--p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p-->
+            <aside class="example">
+<ul>
+<li> OGC 'capabilities documents' provide an example of a standardized API description. EveryWFS or WMS service, for example, understands the request 'getCapabilities', and then returns an XML document giving information about the service such as the Coordinate Reference system used, the data structure schema, available map layers, and so on. </li>
+<li>Use of void:TechnicalFeature to describe the API for a (VoID) Dataset (or subset); providing a set of values, terms or entities for each API parameter (ref. CSIRO's Spatial Identifier Reference Framework). Use [RFC6570] URI Templates to bind API parameters to RESTful URLs. A 'short-form' of the identifier may be required for usage in the API; this may be defined as a SKOS notation. </li>
+<li> Use of Data Cube with Dimensions (as specified in [vocab-data-cube]) to define the data available from a predicably structured dataset - "what, where, when", and so on (ref. CSIRO'sSpatial Identifier Reference Framework); each Dimension of the Data Cube is bound to a parameter in the API method. The "where" Dimension of a Data Cube, if specified as aqb:CodedProperty, may bound to a set of SpatialThings (e.g. using the property qb:codeList). The URI Set (the set of all SpatialThings mentioned in the Data Cube) provides a 'controlled vocabulary' of locations for which 'observations' (data points) in the Data Cube are available (e.g. air quality data is available at these locations). </li>
+<li> A versioned API: OpenStreetMap API </li>
+<li> Use of HAL: 'JSON Hypertext Application Language', see IETF draft. </li>
+<li> Use of Swagger and swaggerhub; the Dutch Cadastre has published the WFS services in its national geo-portal, PDOK, as Swagger APIs on Swaggerhub, for example an API to get data about noise pollution near highways. Swagger also offers an example reference for a pet store API. </li>
+<li> Packaging a coordinate transformation API for simple re-use. </li>
+<li> Relating the API to its description using HTTP link headers. </li>
+
+</ul>
+
+
+            <!--p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p--></aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p>
+            <p> Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation. </p>
+<p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
+</p>
+            <!--p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p-->
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
