@@ -895,9 +895,7 @@ table.bptable caption {
           descriptive, structural and administrative features. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and reuse. </p>
-        <p> </p>
         <!-- begin of Provide Metadata BP -->
-        
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
           <p class="practicedesc">Metadata must be provided for both human users
@@ -948,8 +946,9 @@ table.bptable caption {
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check if there are coherent metadata available, both human and machine readable, for the resource.</p>
-            <p>Check if the metadata is available in a valid machine readable format, without syntax error and processable by machine.</p>
+            <p>Check if all provided metadata are coherent with the described resource.</p>
+            <p>Check if the metadata is available in a valid machine-readable format and without syntax error.</p>
+
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -969,7 +968,6 @@ table.bptable caption {
         </div>
         <!-- end of BP -->
         <!-- begin Discovery Metadata BP -->
-        
         <div class="practice">
           <p><span id="DescriptiveMetadata" class="practicelab">Provide
               descriptive metadata</span></p>
@@ -1089,9 +1087,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              overall features of the dataset.</p>
-            <p> Check if a user agent can automatically discover the dataset. </p>
+            <p>Check if the metadata for the dataset itself includes the overall features of the dataset in a human-readable format.</p>
+            <p>Check if the descriptive metadata is available in a valid machine-readable.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1179,10 +1176,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              language in which it is published and that all numeric, date, and
-              time fields have locale metadata provided either with each field
-              or as a general rule. </p>
+            <p>Check if the metadata for the dataset itself includes information about local parameters (i.e. data, time, number formats, and language) in a human-readable format).</p>
+            <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1299,9 +1294,10 @@ The dataset is classified under
                 human-readable structural metadata is available.</p>
             </aside>
           </section>
-          <section class="test"><span style="font-weight: bold;">How to Test </span>
-          <p>Check if the structural metadata of the dataset is provided in a human-readable format.</p>
-          <p>Check if the machine-readable metadata of the distribution includes structural information about the data organization.</p>
+          <section class="test">
+            <p class="subhead">How to Test </p>
+            <p>Check if the structural metadata of the dataset is provided in a human-readable format.</p>
+            <p>Check if the metadata of the distribution includes structural information about the dataset in a machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1390,10 +1386,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the data
-              license information. </p>
-            <p> Check if a user agent can automatically detect the data license
-              of the dataset.</p>
+            <p>Check if the metadata for the dataset itself includes the data license information in a human-readable format.</p>
+            <p>Check if a user agent can automatically detect /discover the data license of the dataset.</p>
           </section>
           <section class="ucr">
               <p class="subhead">Evidence</p>
@@ -1500,12 +1494,8 @@ The dataset is classified under
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes the
-              provenance information about the dataset.</p>
-            <p> Check if a computer application can automatically process the
-              provenance information about the dataset. </p>
-            <!--<p>The PROV Implementation Report [[PROV-IMP]] lists a number of
-                validator tools that can be used to test for the presence of                provenance information provided using [[PROV-O]].</p> -->
+            <p>Check that the metadata for the dataset itself includes the provenance information about the dataset in a human-readable format.</p>
+            <p>Check if a computer application can automatically process the provenance information about the dataset.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1632,17 +1622,12 @@ The dataset is classified under
               <h5>Human-readable</h5>
                <p><a href="dwbp-example.html">Example page</a> with
                 human-readable data quality information.</p>
-              
             </aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the metadata for the dataset itself includes quality
-              information about the dataset.</p>
-            <p> Check if a computer application can automatically process the
-              quality information about the dataset. </p>
-            <!--<p>Check whether the metadata explicitly includes a description of
-                the quality of the data.</p> -->
+            <p>Check that the metadata for the dataset itself includes quality information about the dataset.</p>
+            <p>Check if a computer application can automatically process the quality information about the dataset.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1761,7 +1746,7 @@ The dataset is classified under
               <p> The example below shows the metadata for bus stops with
                 the inclusion of the versioning metadata. The properties <code>owl:versionInfo</code> and <code>pav:version</code> are used to denote the version of the dataset. </p>
               <pre class="highlight">
-  :bus-stops-2015-05-05 
+  :bus-stops-2015-05-05
       a dcat:Dataset ;
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
@@ -1797,8 +1782,7 @@ is the versioned URI of
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
 
 HTTP/1.1 200 OK
 Memento-Datetime: Thu, 17 Dec 2015 00:00:00 GMT
@@ -1809,15 +1793,13 @@ rel=“original”</pre>
                 version of a dataset was operational at a given datetime.
                 Since the generic URI is not versioned,
                 no version datetime is provided in the headers.</p>
-              <pre class="highlight">curl -i -H
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
+              <pre class="highlight">curl -i -H http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 
 HTTP/1.1 200 OK
 Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
 rel=“timegate” </pre>
               <p> The versioned URIs can also provide a link to a TimeGate: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -1827,10 +1809,7 @@ rel=“original”,
 rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on June 20 2015: </p>
-              <pre class="highlight">curl -I -H "Accept-Datetime: Sat,
-20 Jun 2015  12:00:00 GMT"
-
-http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
+              <pre class="highlight">curl -I -H "Accept-Datetime: Sat, 20 Jun 2015  12:00:00 GMT" http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
@@ -1844,8 +1823,8 @@ rel="original" </pre>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that a unique version number or date is provided with the
-              metadata describing the dataset.</p>
+            <p>Check if the metadata for the dataset/distribution provides a unique version number or date in a human-readable format.</p>
+            <p>Check if a computer application can automatically detect/discover the unique version number or date of a dataset or distribution.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -1943,8 +1922,7 @@ versioned URI of
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -1954,8 +1932,7 @@ rel=“original”,
 rel=“timemap”;
 &nbsp;type="application/link-format" </pre>
 <p> This is how the TimeMap is retrieved: </p>
-<pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
+<pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
@@ -1973,8 +1950,7 @@ rel=“last memento"; datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -I
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
@@ -1995,7 +1971,7 @@ rel=“next last memento";
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that a list of published versions is available as well as a <em>change log</em> describing precisely how each version differs from the previous one.</p>
+            <p>Check that a list of published versions is available as well as a change log describing precisely how each version differs from the previous one.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2197,12 +2173,7 @@ rel=“next last memento";
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that each dataset in question is identified using a URI
-              that has been assigned under a controlled process as set out in
-              the previous section. Ideally, the relevant Web site includes a
-              description of the process and a credible pledge of persistence
-              should the publisher no longer be able to maintain the URI space
-              themselves.</p>
+            <p>Check that each dataset in question is identified using a URI that has been assigned under a controlled process as set out in the previous section. Ideally, the relevant Web site includes a description of the process and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2321,12 +2292,7 @@ rel=“next last memento";
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>Check that within the dataset, references to things that don't
-              change or that change slowly, such as countries, regions,
-              organizations and people, as referred to by URIs or by short
-              identifiers that can be appended to a URI stub. Ideally the URIs
-              should resolve, however, they have value as globally scoped
-              variables whether they resolve or not.</p>
+            <p>Check that within the dataset, references to things that don't change or that change slowly, such as countries, regions, organizations and people, as referred to by URIs or by short identifiers that can be appended to a URI stub. Ideally the URIs should resolve, however, they have value as globally scoped variables whether they resolve or not.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2383,7 +2349,7 @@ rel=“next last memento";
               document. However, when the next version of this document is
               published, the 'latest version' URI will be changed to point to
               that. </p>
-            
+
 <div class="note"> This example needs to be rewritten. </div>
             <aside class="example">
               <p>To complete the London temperature example, one might imagine
@@ -2395,8 +2361,7 @@ rel=“next last memento";
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that each version of a dataset has its own URI, and that
-              logical groups of datasets are also identifiable. </p>
+            <p>Check that each version of a dataset has its own URI, and that logical groups of datasets are also identifiable.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2457,7 +2422,7 @@ rel=“next last memento";
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            
+
             <p> Machine-readable standardized data formats will enable machines to easily read and process data published on the Web and humans to use computational tools typically available in the relevant domain to work with the data. </p>
 
 
@@ -2518,8 +2483,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the data format conforms to a known machine-readable
-              data format specification. </p>
+            <p>Check if the data format conforms to a known machine-readable data format specification.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2624,8 +2588,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that the complete dataset is available in more than one
-              data format.</p>
+            <p>Check if the complete dataset is available in more than one data format.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2692,7 +2655,7 @@ A usual resident was generally defined as someone who spent most of their time a
           needed. Simpler models have thus been proposed to represent and
           exchange them, such as the ISO 25964 data model [[ISO-25964]] or W3C's
           Simple Knowledge Organization System [[SKOS-PRIMER]].</p>
-        
+
 <div class="note"> There is an ongoing discussion about Use
               standardized terms x Reuse Vocabularies <a href="https://www.w3.org/2013/dwbp/track/issues/253"> ISSUE-253 </a>. We are keen to have comments about this issue. </div>
         <!-- begin of Provide Metadata Standardized BP -->
@@ -2758,10 +2721,9 @@ A usual resident was generally defined as someone who spent most of their time a
              Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.
             </aside>
           </section>
-          <section class="test"><span style="font-weight: bold;">How to Test </span>
-            <p>Check that the terms or codes to be used are defined in a
-              standard organization/working group of body such as IETF, OGC,
-              W3C, etc.</p>
+          <section class="test">
+            <p class="subhead">How to Test </p>
+            <p>Check if the terms or codes to be used are defined in a standard organization/working group of body such as IETF, OGC, W3C, etc.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2786,7 +2748,7 @@ A usual resident was generally defined as someone who spent most of their time a
           <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies</span></p>
           <p class="practicedesc">Shared vocabularies should be used to encode
             data and metadata.</p>
-          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="axioms">
+          <section class="axioms">
             <p class="subhead">Why</p>
             <p>Use of shared vocabularies captures and facilitates consensus in communities.
               Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
@@ -2794,7 +2756,7 @@ A usual resident was generally defined as someone who spent most of their time a
               use of shared vocabularies for metadata (especially structural, provenance, quality
               and versioning metadata) helps the automatic processing of both data and metadata.</p>
           </section>
-          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="outcome">
+          <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> Using the same vocabulary to describe metadata will make datasets and metadata sets easier to be compared by humans or machines. 
 When two datasets or metadata sets use the same vocabulary, (automatic) processing tools designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.
@@ -2804,7 +2766,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
             <p>When two datasets or metadata sets use the same vocabulary, (automatic) processing tools
               designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.</p>-->
           </section>
-          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="how">
+          <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
               Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
@@ -2831,7 +2793,8 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               with the traditional models and terminologies used by library, archives and museums.</p>
             </aside>
           </section>
-          <section property="bibo:hasPart" resource="" typeof="bibo:Chapter" class="test"><span style="font-weight: bold;">How to Test </span>
+          <section>
+            <p class="subhead">How to Test</p>
             <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a>
               or lists or services mentioned in technology-specific best practices
               such as the Best Practices for Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>],
@@ -2930,10 +2893,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>For formal knowledge representation languages, applying an
-            inference engine on top of the data that uses a given vocabulary
-            does not produce too many statements that are unnecessary for target
-            applications.</p>
+          <p>For formal knowledge representation languages, applying an inference engine on top of the data that uses a given vocabulary does not produce too many statements that are unnecessary for target applications.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3021,9 +2981,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>If the dataset includes references to other data that is
-            unavailable, check whether an explanation is available in the
-            metadata and/or description of it.</p>
+          <p>Check if the dataset includes references to other data that is unavailable in a human-readable way.</p>
+          <p>Check whether an explanation is available in the metadata and/or description of it in a machine-readable format and without syntax error.</p>
+
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3118,8 +3078,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Humans can retrieve complete copies of preprocessed bulk data through
-            existing tools such as a browser via a single request. </p>
+          <p>Check if humans can retrieve copies of preprocessed bulk data through existing tools (such as a browser).</p>
+          <p>Check if clients can test bulk access (through an API or queries to web resources with discoverable metadata about the bulk data).</p>
+
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3157,17 +3118,13 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
-           
             <p> 1. Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
-                   
-      
             <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
           </aside>
-            
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Check that the full content of the dataset can be recovered by retrieval of multiple subsets.</p>
+          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3360,13 +3317,13 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p class="subhead">How to Test</p>
           <p>Write test standard operating procedure for data publisher to keep
             test data on Web site up to date.</p>
-          <p> Following standard operating procedure:</p>
+          <p>Following standard operating procedure:</p>
           <ul>
-            <li> Write test client to access published data. </li>
-            <li> Access data and save first copy locally. </li>
-            <li> Publish an updated version of data.</li>
-            <li> Access data and save second copy locally.</li>
-            <li> Compare first copy to second copy to verify change.</li>
+            <li>Write test client to access published data. </li>
+            <li>Access data and save first copy locally. </li>
+            <li>Publish an updated version of data.</li>
+            <li>Access data and save second copy locally.</li>
+            <li>Compare first copy to second copy to verify change.</li>
           </ul>
         </section>
         <section class="ucr">
@@ -3412,7 +3369,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>It should be possible for Web applications to obtain specific data by querying a programmatic interface. Use a test client to simulate calls and responses, making sure that the performance is acceptable.</p>
+            <p>Check if a test client can simulate calls and responses.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3431,7 +3388,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <!-- end of Use an API -->
         <!-- begin of Web Standards for APIs -->
         <div class="practice">
-          <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
+          <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of APIs</span></p>
           <p class="practicedesc">
 When designing APIs, use an architectural style that is founded on the technologies of the Web itself.
 
@@ -3558,9 +3515,9 @@ When designing APIs, use an architectural style that is founded on the technolog
           <section class="test">
             <p class="subhead">How to Test</p>
             <p> Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns.  </p>
-<p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
-</p>
-            <!--p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p-->
+            <p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
+            </p>
+            <!-- <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p> -->
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3776,6 +3733,7 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p>Datasets making references to portions of the Web of Data which are
             not preserved should receive a lower score than those using common
             resources.</p>
+          <div class="note">To review this test</div>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3843,7 +3801,7 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p class="subhead">How to Test</p>
           <!--<p>Try to open the data dump with different
             software.</p> -->
-          <p>Check that the dataset can be read by a standard text editor.  Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
+          <p>Check that the dataset can be read by a standard text editor. Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -4066,7 +4024,7 @@ HTTP/1.1 200 Ok
       <!-- end of BP Gather Feedback -->
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
-        <p><span id="FeedbackInformation" class="practicelab"> Make feedback available </span></p>
+        <p><span id="FeedbackInformation" class="practicelab">Make feedback available</span></p>
         <p class="practicedesc"> Feedback  should be available for both human users and computer applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
@@ -4074,7 +4032,6 @@ HTTP/1.1 200 Ok
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          
           <p> Making feedback about a dataset or distribution publicly available will enable the sharing of feedback given by different data consumers.  
 </p>
 
@@ -4138,9 +4095,8 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          
-            Check if a human consumer can access the feedback about the dataset or distribution and check if a computer application can automatically process the feedback. 
-          
+          <p>Check that the metadata for the dataset itself includes feedback information about the dataset in a human-redable format.</p>
+          <p>Check if a computer application can automatically process feedback information about the dataset.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -4389,14 +4345,14 @@ ex:timetable-001 a dcat:Dataset ;
       a biro:BibliographicReference ;
       a fabio:Policy  ;
       dct:bibliographicCitation
-      "Costello, E. Mayor (2016). City Bust Stops Memorandum 
+      "Costello, E. Mayor (2016). City Bus Stops Memorandum
       January, 2016. DOI:0.3456/4567.21"^^xsd:string ;
       biro:references :bus-stops-2015-05-05 ;
       .
       </pre>
 
             <p>You can cite the original source in a user interface by providing bibliographic text and a working link.</p>
-            <p>Data source: Costello, E. Mayor (2016)  "City Bust Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
+            <p>Data source: Costello, E. Mayor (2016)  "City Bus Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p>
 
             <!-- p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: https://example.org/mycity/trans/timetable-001. <p> -->
           </aside>
@@ -4413,8 +4369,7 @@ ex:timetable-001 a dcat:Dataset ;
           <p class="subhead">Benefits</p>
           <ul class="benefitsList">
             <li>Reuse</li>
-             <!--   <li>Comprehension</li><li>Access</li>   
-                                                             
+             <!--   <li>Comprehension</li><li>Access</li>
             <li>Linkability</li> <li>Processability</li> <li>Interoperability</li>-->
            <li>Discoverability</li> <li>Trust</li>
           </ul>
