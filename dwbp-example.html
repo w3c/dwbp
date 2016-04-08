@@ -85,11 +85,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
     <section resource="#timetable-001" typeof="dcat:Dataset">
       <p>The dataset description is based on following example:</p>
       <div class="example">
-        <p>John works for the Transport Agency of MyCity and he is in charge
-          of the publication of data on the Web about bus timetables as well
-          as real time data about the traffic of the city. John decides to
-          create two datasets: one for the bus timetables and other one for
-          the real time traffic data. </p>
+        <p>John works for the Transport Agency of MyCity and he is in charge of publishing the data about bus stops of the city on the Web. John wants to publish these data for different types of data consumers such as developers interested on creating applications but also for software agents. It is really important that both humans and software agents can easily understand and process the data. He also expects the data to be available up to date and to be easily discoverable on the Web.</p>
           <p>Some requirements that should be addressed:</p>
           <ul>
             <li>The dataset for bus timetables must be available in two
@@ -110,7 +106,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
               </tr>
               <tr>
                 <td>Keywords</td>
-                <td property="dcat:keyword">transport, mobility, bus</td>
+                <td><span property="dcat:keyword">transport</span>, <span property="dcat:keyword">mobility</span>, <span property="dcat:keyword">bus</span></td>
               </tr>
               <tr>
                 <td>Publication date</td>
@@ -121,8 +117,12 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
               </tr>
               <tr>
-                <td>Publisher</td>
-                <td property="dct:publisher">Transport Agency MyCity</td>
+                <td id="publisher">Publisher</td>
+                <td property="dct:publisher" resource="#publisher" typeof="foaf:Organization prov:Agent"><span property="foaf:name">Transport Agency MyCity</span></td>
+              </tr>
+              <tr>
+                <td>Creator</td>
+                <td property="dct:creator" typeof="foaf:Person"><span property="foaf:name">John</span> &lt;<a href="mailto:john@mycitytransport.org" property="foaf:mail">john@mycitytransport.org</a>&gt;<span property="prov:onBehalfOf" resource="#publisher"></span></td>
               </tr>
               <tr>
                 <td>Contact point</td>
