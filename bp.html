@@ -2981,9 +2981,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>If the dataset includes references to other data that is
-            unavailable, check whether an explanation is available in the
-            metadata and/or description of it.</p>
+          <p>Check if the dataset includes references to other data that is unavailable in a human-readable way.</p>
+          <p>Check whether an explanation is available in the metadata and/or description of it in a machine-readable format and without syntax error.</p>
+
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3078,8 +3078,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Humans can retrieve complete copies of preprocessed bulk data through
-            existing tools such as a browser via a single request. </p>
+          <p>Check if humans can retrieve copies of preprocessed bulk data through existing tools (such as a browser).</p>
+          <p>Check if clients can test bulk access (through an API or queries to web resources with discoverable metadata about the bulk data).</p>
+
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3117,17 +3118,13 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
-           
             <p> 1. Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
-                   
-      
             <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
           </aside>
-            
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Check that the full content of the dataset can be recovered by retrieval of multiple subsets.</p>
+          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3320,13 +3317,13 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p class="subhead">How to Test</p>
           <p>Write test standard operating procedure for data publisher to keep
             test data on Web site up to date.</p>
-          <p> Following standard operating procedure:</p>
+          <p>Following standard operating procedure:</p>
           <ul>
-            <li> Write test client to access published data. </li>
-            <li> Access data and save first copy locally. </li>
-            <li> Publish an updated version of data.</li>
-            <li> Access data and save second copy locally.</li>
-            <li> Compare first copy to second copy to verify change.</li>
+            <li>Write test client to access published data. </li>
+            <li>Access data and save first copy locally. </li>
+            <li>Publish an updated version of data.</li>
+            <li>Access data and save second copy locally.</li>
+            <li>Compare first copy to second copy to verify change.</li>
           </ul>
         </section>
         <section class="ucr">
@@ -3372,7 +3369,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p>It should be possible for Web applications to obtain specific data by querying a programmatic interface. Use a test client to simulate calls and responses, making sure that the performance is acceptable.</p>
+            <p>Check if a test client can simulate calls and responses.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3391,7 +3388,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <!-- end of Use an API -->
         <!-- begin of Web Standards for APIs -->
         <div class="practice">
-          <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of your API</span></p>
+          <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of APIs</span></p>
           <p class="practicedesc">
 When designing APIs, use an architectural style that is founded on the technologies of the Web itself.
 
@@ -3518,9 +3515,9 @@ When designing APIs, use an architectural style that is founded on the technolog
           <section class="test">
             <p class="subhead">How to Test</p>
             <p> Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns.  </p>
-<p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
-</p>
-            <!--p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p-->
+            <p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
+            </p>
+            <!-- <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p> -->
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3736,6 +3733,7 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p>Datasets making references to portions of the Web of Data which are
             not preserved should receive a lower score than those using common
             resources.</p>
+          <div class="note">To review this test</div>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -3803,7 +3801,7 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p class="subhead">How to Test</p>
           <!--<p>Try to open the data dump with different
             software.</p> -->
-          <p>Check that the dataset can be read by a standard text editor.  Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
+          <p>Check that the dataset can be read by a standard text editor. Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -4026,7 +4024,7 @@ HTTP/1.1 200 Ok
       <!-- end of BP Gather Feedback -->
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
-        <p><span id="FeedbackInformation" class="practicelab"> Make feedback available </span></p>
+        <p><span id="FeedbackInformation" class="practicelab">Make feedback available</span></p>
         <p class="practicedesc"> Feedback  should be available for both human users and computer applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
@@ -4034,7 +4032,6 @@ HTTP/1.1 200 Ok
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          
           <p> Making feedback about a dataset or distribution publicly available will enable the sharing of feedback given by different data consumers.  
 </p>
 
@@ -4098,9 +4095,8 @@ HTTP/1.1 200 Ok
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          
-            Check if a human consumer can access the feedback about the dataset or distribution and check if a computer application can automatically process the feedback. 
-          
+          <p>Check that the metadata for the dataset itself includes feedback information about the dataset in a human-redable format.</p>
+          <p>Check if a computer application can automatically process feedback information about the dataset.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
