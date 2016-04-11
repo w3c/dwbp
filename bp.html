@@ -631,12 +631,12 @@ table.bptable caption {
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
       <p>A general best practice to publish Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains/applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, publishing of timetables have two standards, the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]], that specify, in a mixed way, standardize terms, standardized data formats and standardized data access. As was said before, the Best Practices proposed in this document serve a general purpose of publishing and using Data on the Web. These Best Practices are domain/application independent. They could be extended or complemented by other best practices documents or standards that cover the publishing of datasets in a more restricted universe.</p>
-      <p>Taking that into account, this document sets out a series of best practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW]].</p>
+      <p>Taking that into account, this document sets out a series of best practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>
       <p>Best practices cover different aspects related to data publishing and
         consumption, like data formats, data access, data identifiers and
         metadata. In order to delimit the scope and elicit the required features
         for Data on the Web Best Practices, the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-        working group compiled a set of use cases [[UCR]] that represent
+        working group compiled a set of use cases [[DWBP-UCR]] that represent
         scenarios of how data is commonly published on the Web and how it is
         used. The set of requirements derived from these use cases were used to
         guide the development of the best practices.</p>
@@ -826,8 +826,8 @@ table.bptable caption {
         <section class="ucr">
           <p class="subhead">Evidence</p>
           <p>Information about the relevance of the BP. It is described by one
-            or more relevant requirements as documented in the <a href="http://www.w3.org/TR/dwbp-ucr/">Data
-              on the Web Best Practices Use Cases &amp; Requirements document</a></p>
+            or more relevant requirements as documented in the Data
+              on the Web Best Practices Use Cases &amp; Requirements document [[DWBP-UCR]]</p>
         </section>
         <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
           <p class="subhead">Benefits</p>
@@ -850,7 +850,7 @@ table.bptable caption {
     <section id="bestPractices">
       <h2>The Best Practices</h2>
       <p>This section contains the best practices to be used by data publishers in order to help them and data consumers to overcome the different challenges faced when publishing and consuming data on the Web. One or more best practices were proposed for each one of the challenges, which are described in the section <a href="#challenges">Data on the Web Challenges</a>.</p>
-      <p>Each BP is related to one or more requirements from the <a href="http://www.w3.org/TR/dwbp-ucr/">Data on the Web Best Practices Use Cases &amp; Requirements document</a> document and the development of Data on the Web Best Practices was guided by these requirements, in such a way that each best practice should have at least one of these requirements as an evidence of its relevance.</p>
+      <p>Each BP is related to one or more requirements from the Data on the Web Best Practices Use Cases &amp; Requirements document [[DWBP-UCR]] document and the development of Data on the Web Best Practices was guided by these requirements, in such a way that each best practice should have at least one of these requirements as an evidence of its relevance.</p>
       <section id="basicExample">
         <h3>Basic Example</h3>
         <!-- <p> The example below serve as a basis for elaboration that will be
@@ -1523,7 +1523,7 @@ The dataset is classified under
           different kinds of quality dimensions, each representing groups of
           characteristics that are relevant to publishers and consumers.
           Measures and metrics are defined to assess the quality for each
-          dimension [[DQV]]. There are heuristics designed to fit specific
+          dimension [[VOCAB-DQV]]. There are heuristics designed to fit specific
           assessment situations that rely on quality indicators, namely, pieces
           of data content, pieces of data meta-information, and human ratings
           that give indications about the suitability of data for some intended
@@ -1561,14 +1561,14 @@ The dataset is classified under
             <p>The machine readable version of the dataset quality metadata may
               be provided according to the vocabulary that is being developed by
               the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-              working group , i.e., the Data Quality Vocabulary [[DQV]]. </p>
+              working group , i.e., the Data Quality Vocabulary [[VOCAB-DQV]]. </p>
             <aside class="example">
               <h5>Machine-readable</h5>
               <p> The example below shows the metadata for the CSV distribution
                 of the bus stops dataset with the inclusion of the data
                 quality metadata. The metadata was defined according to the Data
                 Quality Vocabulary. Further  examples can be found in the Data
-                Quality Vocabulary document [[DQV]]. </p>
+                Quality Vocabulary document [[VOCAB-DQV]]. </p>
               <pre class="highlight">
   :bus-stops-2015-05-05.csv
       a dcat:Distribution ;
@@ -2759,19 +2759,19 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
-              Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>] provides guidance on the
+              Publishing Linked Data [[LD-BP]] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
-            <aside class="example">
-	    <p>1. All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
-              to express data and metadata statements, instead of minting entirely new classes and properties.</p>
-              <p>2. The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>]
+            <aside class="example"><ol>
+	    <li>All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
+              to express data and metadata statements, instead of minting entirely new classes and properties.</li>
+              <li>The DCAT vocabulary to express metadata on datasets [<cite><a href="#bib-VOCAB-DCAT" class="bibref">VOCAB-DCAT</a></cite>]
               re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its
               <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section.
               For example, reusing Dublin Core properties like <code>dct:title</code> instead of
               creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata
-              to be consumed by any application that can read and manipulate Dublin Core statements.</p>
-              <p>3. In the digital culture sector, the data model for the initiative
-              <a href="http://europeana.eu">Europeana</a> (<a href="http://www.europeana.eu/schemas/edm/">EDM</a>)
+              to be consumed by any application that can read and manipulate Dublin Core statements.</li>
+              <li>In the digital culture sector, the data model for the initiative
+              <a href="http://europeana.eu">Europeana</a> (<a href="http://pro.europeana.eu/page/edm-documentation">EDM</a>)
               also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
               This has facilitated adoption of EDM by Europeana's data providers and helped
               position it as a best practice for similar initiatives in the same sector.
@@ -2780,14 +2780,14 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               the various vocabularies that EDM builds on. As a result, large amounts of
               digital culture data have become more interoperable within the sector. That data is
               also easier to reuse by consumers from other communities, who are not familiar
-              with the traditional models and terminologies used by library, archives and museums.</p>
+              with the traditional models and terminologies used by library, archives and museums.</li>
             </aside>
           </section>
           <section>
             <p class="subhead">How to Test</p>
             <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a>
               or lists or services mentioned in technology-specific best practices
-              such as the Best Practices for Publishing Linked Data [<cite><a href="#bib-LD-BP" class="bibref">LD-BP</a></cite>],
+              such as the Best Practices for Publishing Linked Data [[LD-BP]],
               or the <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1">Core Initial Context for RDFa and JSON-LD</a>,
               check that classes, properties, terms, elements or attributes used to represent a dataset do not replicate those
               defined by vocabularies used for other datasets.</p>
@@ -2865,7 +2865,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
             for these. As an example, the property <code>skos:broader</code> was not defined
             as a transitive property, even though it would have fit the way hierarchical links between concepts
             are created for many thesauri [[SKOS-DESIGN]].</p>
-          <p>3. The vocabularies for Data Quality [[DQV]] and Data Usage [[DUV]] created by the W3C Working
+          <p>3. The vocabularies for Data Quality [[VOCAB-DQV]] and Data Usage [[VOCAB-DUV]] created by the W3C Working
             Group publishing this document have also sought to minimize the number of formal
             axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
             has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
@@ -4029,7 +4029,7 @@ HTTP/1.1 200 Ok
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[DUV]].</p>
+          <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format according to the vocabulary to describe dataset usage [[VOCAB-DUV]].</p>
           <aside class="example">
             <pre class="highlight">
   :bus-stops-2015-05-05
@@ -4558,7 +4558,7 @@ ex:timetable-001 a dcat:Dataset ;
       <p>The following diagram summarizes some of the main
         challenges faced when publishing or consuming data on the Web. These
         challenges were identified from the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-        Use Cases and Requirements [[UCR]] and, as presented in the diagram, is
+        Use Cases and Requirements [[DWBP-UCR]] and, as presented in the diagram, is
         addressed by one or more best practices.</p>
         <div class="note">The diagram will de redesigned to be more legible.</div>
         <embed type="image/svg+xml" src="challenges.svg" style="width:100%" id="challengesSVG">
