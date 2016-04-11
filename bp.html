@@ -2679,36 +2679,35 @@ A usual resident was generally defined as someone who spent most of their time a
               for the values, so that data consumers can retrieve and exploit the standardized meaning
               of these values. In the context of the Web, using unambiguous, Web-based identifiers for standardized values
               is an efficient way to do this.</p>
-            <aside class="example">
-            <p>1. The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):</p>
+            <aside class="example"><ol>
+            <li>The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):<br />
 <pre class="highlight prettyprint prettyprinted">:bus-stops
     dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
-</pre>
-            <p>2. The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Center Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:</p>
+</pre></li>
+            <li>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Center Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:<br />
 <pre class="highlight prettyprint prettyprinted">:measurement-001 a prov:Activity ;
     prov:used :sensor-001 .
 :sensor-001 a prov:Agent ;
     dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
 </pre>
            <p>(note that real-life data should use more specific classes and properties than the PROV ones for
-              typing a measurement activity, an instrument and the relationship between these)</p>
-            <p>3. Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publish a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:</p>
+              typing a measurement activity, an instrument and the relationship between these)</p></li>
+            <li>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publish a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:<br />
 <pre class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
     dct:temporal &lt;http://resource.geosciml.org/classifier/ics/ischart/Paleozoic&gt; .
-</pre>
-            <p>4. Google maintains a <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
+</pre></li>
+            <li>Google maintains a <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
               a format for publishing public transportation data. This format relies on a set of fields like <code>route_short_name</code> or
-              <code>route_type</code> that are
-              <a href="https://developers.google.com/transit/gtfs/reference#field-definitions">carefully defined</a>
+              <code>route_type</code> that are carefully defined
               and exposed to constant community feedback in order to facilitate consensus, which leads to easier adoption and greater interoperability.
-              Definitions include specifications of coded values for some fields, as in the following extract for <code>route_type</code> codes:</p>
+              Definitions include specifications of coded values for some fields, as in the following extract for <code>route_type</code> codes:<br />
 <pre class="highlight prettyprint prettyprinted">
 0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
 1 - Subway, Metro. Any underground rail system within a metropolitan area.
 2 - Rail. Used for intercity or long-distance travel.
 </pre>
               <p>Note that in a non-linked data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
-             Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.
+             Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.</li></ol>
             </aside>
           </section>
           <section class="test">
@@ -2775,7 +2774,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
               This has facilitated adoption of EDM by Europeana's data providers and helped
               position it as a best practice for similar initiatives in the same sector.
-              For instance, <a href="http://dp.la/info/map/">metadata application profile</a> from the
+              For instance, <a href="http://dp.la/info/developers/map/">metadata application profile</a> from the
               <a href="http://dp.la">Digital Public Library of America</a> reuses EDM and thus
               the various vocabularies that EDM builds on. As a result, large amounts of
               digital culture data have become more interoperable within the sector. That data is
@@ -4235,7 +4234,7 @@ HTTP/1.1 200 Ok
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsages">R-TrackDataUsages</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
+          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsage">R-TrackDataUsage</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityOpinions">R-QualityOpinions</a></p>
         </section>
         <section class="benefits">
           <p class="subhead">Benefits</p>
@@ -4351,7 +4350,7 @@ ex:timetable-001 a dcat:Dataset ;
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
-          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsages">R-TrackDataUsages</a></p>
+          <p><span>Relevant requirements:</span> <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">R-Citable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-ProvAvailable">R-ProvAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-TrackDataUsage">R-TrackDataUsage</a></p>
         </section>
         <section class="benefits">
           <p class="subhead">Benefits</p>
@@ -4410,7 +4409,7 @@ ex:timetable-001 a dcat:Dataset ;
             representation i.e. the way that information is encoded and stored
             for use in a computer system, possibly constrained by a formal data
             type or set of standards."</p>
-          <p>From: <a href="http://guide.dhcuration.org/representation/">DH
+          <p>From: <a href="https://guide.dhcuration.org/representation/">DH
               Curation Guide</a></p>
         </dd>
         <dt><dfn id="data_producer">Data producer</dfn></dt>
@@ -4458,7 +4457,7 @@ ex:timetable-001 a dcat:Dataset ;
           <p> Data Preservation is defined by <a href="http://www.alliancepermanentaccess.org/index.php/consultancy/dpglossary/#Preservation">APA</a>
             as "The processes and operations in ensuring the technical and
             intellectual survival of objects through time". This is part of a
-            data management plan <a href="http://guide.dhcuration.org/preservation/">focusing
+            data management plan <a href="https://guide.dhcuration.org/preservation/">focusing
               on preservation planning and meta-data</a>. Whether it is
             worthwhile to put effort into preservation depends on the (future)
             value of the data, the resources available and the opinion of the
