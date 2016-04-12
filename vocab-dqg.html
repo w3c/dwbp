@@ -1325,7 +1325,7 @@ SubObjectPropertyOf(
                     </p>
 
                     <pre class="highlight">
-# myQualityMatadata is a graph 
+# :myQualityMatadata is a graph 
 
 :myQualityMetadata {
 
@@ -1337,7 +1337,7 @@ SubObjectPropertyOf(
 
 }
 
-# myQualityMetadata has been created by: qualityChecker and it is the result of the
+# :myQualityMetadata has been created by :qualityChecker and it is the result of the
 # :qualityChecking activity 
 
 :myQualityMetadata 
@@ -1347,7 +1347,7 @@ SubObjectPropertyOf(
     prov:wasGeneratedBy :qualityChecking 
     .
 
-# qualityChecker is a service computing some quality metrics 	
+# :qualityChecker is a service computing some quality metrics 	
 
 :qualityChecker
     a prov:SoftwareAgent ;   
@@ -1356,8 +1356,8 @@ SubObjectPropertyOf(
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
     .
 
-# the qualityChecking is the activity that has generated myQualityMetadata starting from 
-# MyDatasetDistribution
+# the :qualityChecking is the activity that has generated :myQualityMetadata starting from 
+# :myDatasetDistribution
 
 :qualityChecking
     a prov:Activity;
@@ -1400,7 +1400,7 @@ SubObjectPropertyOf(
     dqv:inDimension :availability
     .
     
-# qualityChecker is a services computing some quality metrics 	
+# :qualityChecker is a services computing some quality metrics 	
 
 :qualityChecker
     a prov:SoftwareAgent ;   
@@ -1409,8 +1409,8 @@ SubObjectPropertyOf(
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
     . 
 
-# the qualityChecking is the activity that has generated :measurement starting from 
-# MyDatasetDistribution
+# the :qualityChecking is the activity that has generated :measurement starting from 
+# :myDatasetDistribution
 
 :qualityChecking
     a prov:Activity;
@@ -2091,7 +2091,7 @@ SubObjectPropertyOf(
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. This  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
+                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. The following  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
                     <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
@@ -2099,27 +2099,44 @@ SubObjectPropertyOf(
 :myDatasetPrecision a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
    dqv:value "1000"^^xsd:decimal ;
-    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
-   .
+   sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
+   . 
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
-    skos:definition "It expresses dataset resolution as distance in Metres"@en ;
+    skos:definition "It expresses dataset spatial resolution as distance"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
-   
+
 :myDatasetAccuracy a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialAccuracy ;
    dqv:value "98.2"^^xsd:decimal 
-   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt; 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
    .
    
 :spatialAccuracy   a  dqv:Metric;
     skos:definition "It returns the percentage of spatial element that are found accurate
-    acconding to  methodology XYZ"@en ;
+    according to  methodology XYZ"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension ldqd:semanticAccuracy 
     .
+    
+</pre>
+<p>Precision can be alternatively expressed  specifying spatial resolution as "equivalent scale" (e.g., 1:1,000, 1:1,000,000, etc.) - i.e., with a fraction, without unit of measure.  </p>
+                                        <pre class="highlight">
+:myDataset a dcat:Dataset;
+    dqv:hasQualityMeasurement :myDatasetPrecisionES .
+
+:spatialResolutionAsEquivalentScale a dqv:Metric;
+    skos:definition "It expresses dataset spatial resolution as equivalent scale, by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension dqv:precision 
+    .
+    
+:myDatasetPrecisionES  dqv:QualityMeasurement ;
+    dqv:hasMetric :spatialResolutionAsEquivalentScale ;
+    dqv:value "0.000001"^^xsd:decimal
+    .   
 </pre>
                 </section>
                         
