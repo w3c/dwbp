@@ -1,7 +1,7 @@
 var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-//    publishDate:  "2015-12-17",
+    publishDate:  "2016-04-09",
     previousPublishDate: "2015-06-25",
     previousMaturity: "WD",
     previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20150625/",
@@ -134,36 +134,6 @@ var respecConfig = {
         title: "The Linking Open Data Cloud Diagram",
         authors: ["Max Schmachtenberg", "Christian Bizer", "Anja Jentzsch", "Richard Cyganiak"],
         href: "http://lod-cloud.net/"
-      },
-      "UCR" : {
-        title: "Data on the Web Best Practices Use Cases & Requirements",
-        authors: ["Deirdre Lee", "Bernadette Farias Lóscio", "Phil Archer"],
-        href: "http://www.w3.org/TR/dwbp-ucr/",
-        status: "Note"
-      },
-      "UCR" : {
-        title: "Data on the Web Best Practices Use Cases & Requirements",
-        authors: ["Deirdre Lee", "Bernadette Farias Lóscio", "Phil Archer"],
-        href: "http://www.w3.org/TR/dwbp-ucr/",
-        status: "Note"
-      },
-      "DUV" : {
-        title: "Data on the Web Best Practices: Dataset Usage Vocabulary",
-        authors: ["Bernadette Farias Lóscio", "Eric G. Stephan", "Sumit Purohit"],
-        href: "http://www.w3.org/TR/vocab-duv/",
-        status: "Public Working Draft"
-       },
-      "DQV" : {
-        title: "Data Quality Vocabulary",
-        authors: ["Riccardo Albertoni", "Christophe Guéret", "Antoine Isaac","Jeremy Debattista", "Makx Dekkers", "Deirdre Lee"],
-        href: "http://www.w3.org/TR/vocab-dqv/",
-        status: "Public Working Draft"
-      },
-      "SDW" : {
-        title: "Spatial Data on the Web Best Practices",
-        authors: ["Jeremy Tandy", "Payam Barnaghi", "Linda van den Brink"],
-        href: "https://www.w3.org/TR/sdw-bp/",
-        status: "Public Working Draft"
       },
       "RDA" : {
         title: "Research Data Alliance",

@@ -85,17 +85,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
     <section resource="#timetable-001" typeof="dcat:Dataset">
       <p>The dataset description is based on following example:</p>
       <div class="example">
-        <p>John works for the Transport Agency of MyCity and he is in charge
-          of the publication of data on the Web about bus timetables as well
-          as real time data about the traffic of the city. John decides to
-          create two datasets: one for the bus timetables and other one for
-          the real time traffic data. </p>
-          <p>Some requirements that should be addressed:</p>
-          <ul>
-            <li>The dataset for bus timetables must be available in two
-              languages: english and portuguese; </li>
-              <li>Both datasets must be available in csv and json-ld formats; </li>
-            </ul>
+        <p>John works for the Transport Agency of MyCity and he is in charge of publishing the data about bus stops of the city on the Web. John wants to publish these data for different types of data consumers such as developers interested on creating applications but also for software agents. It is really important that both humans and software agents can easily understand and process the data. He also expects the data to be available up to date and to be easily discoverable on the Web.</p>
+          
           </div>
           <h2 id="dataset-description">Dataset description</h2>
           <table class="human-readable-example">
@@ -106,11 +97,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
               </tr>
               <tr>
                 <td>URI</td>
-                <td>http://data.mycity.example/public-transport/road/bus/dataset/timetable</td>
+                <td>http://data.mycity.example/public-transport/road/bus/dataset/bus-stops-2015-05-05</td>
               </tr>
               <tr>
                 <td>Keywords</td>
-                <td property="dcat:keyword">transport, mobility, bus</td>
+                <td><span property="dcat:keyword">transport</span>, <span property="dcat:keyword">mobility</span>, <span property="dcat:keyword">bus</span></td>
               </tr>
               <tr>
                 <td>Publication date</td>
@@ -121,12 +112,16 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
               </tr>
               <tr>
-                <td>Publisher</td>
-                <td property="dct:publisher">Transport Agency MyCity</td>
+                <td id="publisher">Publisher</td>
+                <td property="dct:publisher" resource="#publisher" typeof="foaf:Organization prov:Agent"><span property="foaf:name">Transport Agency MyCity</span></td>
+              </tr>
+              <tr>
+                <td>Creator</td>
+                <td property="dct:creator" typeof="foaf:Person"><span property="foaf:name">John</span> &lt;<a href="mailto:john@mycitytransport.org" property="foaf:mail">john@mycitytransport.org</a>&gt;<span property="prov:onBehalfOf" resource="#publisher"></span></td>
               </tr>
               <tr>
                 <td>Contact point</td>
-                <td><a property="dcat:contactPoint" href="http://example.org/transport-agency/contact">http://example.org/transport-agency/contact</a></td>
+                <td><a property="dcat:contactPoint" href="http://data.mycity.example.com/public-transport/contact">http://data.mycity.example.com/public-transport/contact</a></td>
               </tr>
               <tr>
                 <td>Period that the dataset covers</td>
@@ -164,11 +159,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <tbody>
                   <tr>
                     <td>Title</td>
-                    <td property="dct:title">timetable-001-RDF</td>
+                    <td property="dct:title">bus-stops-2015-05-05.ttl</td>
                   </tr>
                   <tr>
                     <td>Description</td>
-                    <td property="dct:description">RDF distribution of the bus timetable dataset of MyCity</td>
+                    <td property="dct:description">RDF distribution of bus-stops-2015-05-05 dataset.</td>
                   </tr>
                   <tr>
                     <td>Media type</td>
@@ -189,7 +184,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
                     </tr>
                     <tr>
                       <td>Download URL</td>
-                      <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl">http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl</a></td>
+                      <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.ttl">http://data.mycity.gov/public-transport/road/bus/dataset/bus-stops-2015-05-05.ttl</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -198,11 +193,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   <tbody>
                     <tr>
                       <td>Title</td>
-                      <td property="dct:title">timetable-001-CSV</td>
+                      <td property="dct:title">bus-stops-2015-05-05.csv</td>
                     </tr>
                     <tr>
                       <td>Description</td>
-                      <td property="dct:description">CSV distribution MyCity_busTimetable dataset.</td>
+                      <td property="dct:description">CSV distribution of bus-stops-2015-05-05 dataset.</td>
                     </tr>
                     <tr>
                       <td>Media type</td>
@@ -223,7 +218,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
                       </tr>
                       <tr>
                         <td>Download URL</td>
-                        <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv">http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv</a>  </td>
+                        <td> <a property="dcat:downloadURL" href="http://data.mycity.gov/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv">http://data.mycity.gov/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv</a>  </td>
                       </tr>
                     </tbody>
                   </table>
@@ -239,7 +234,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   </table>
 
                   <h2 id="dataset-strucutral-metadata">Dataset structural metadata</h2>
-                  <p>Table schema of the dataset "Bus stops from bus timetable of MyCity" (https://example.org/stops.csv).</p>
+                  <!--<p>Schema of the dataset "Bus stops of MyCity".</p> -->
                   <table class="human-readable-example">
                     <tbody>
                       <tr>
@@ -390,8 +385,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
                 <legend>Dataset</legend>
                 <label for="feedback-about">Feedback about</label>
                 <select name="feedbackAbout" id="feedback-about">
-                  <option value="timetable-001-RDF">RDF distribution of the bus timetable dataset of MyCity</option>
-                  <option selected value="timetable-001-CSV">CSV distribution MyCity_busTimetable dataset</option>
+                  <option value="timetable-001-RDF">RDF distribution of bus-stops-2015-05-05 datase</option>
+                  <option selected value="timetable-001-CSV">CSV distribution of bus-stops-2015-05-05 datase</option>
                 </select>
 
                 <label for="duv-rating">Rating</label>
@@ -411,7 +406,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
              </fieldset>
            </form>
 
-           <div id="rdf-duv-feedback">
+  <!--         <div id="rdf-duv-feedback">
              <pre id="rdf-duv-feedback-turtle">
     ex:comment
        a duv:UserFeedback ;
@@ -432,7 +427,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
          </section>
 
        </section>
-     </div>
+     </div> -->
 
 <script>
 
