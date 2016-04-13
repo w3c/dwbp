@@ -5,9 +5,6 @@
         <meta charset='utf-8'>
         <script src="https://www.w3.org/Tools/respec/respec-w3c-common"
             class="remove">
-            <script>
-
-
         </script>
         <script class='remove'>
             var respecConfig = {
@@ -24,7 +21,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-04-07",
+                publishDate : "2016-04-12",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -1324,7 +1321,7 @@ SubObjectPropertyOf(
                     </p>
 
                     <pre class="highlight">
-# myQualityMatadata is a graph 
+# :myQualityMatadata is a graph 
 
 :myQualityMetadata {
 
@@ -1336,7 +1333,7 @@ SubObjectPropertyOf(
 
 }
 
-# myQualityMetadata has been created by: qualityChecker and it is the result of the
+# :myQualityMetadata has been created by :qualityChecker and it is the result of the
 # :qualityChecking activity 
 
 :myQualityMetadata 
@@ -1346,7 +1343,7 @@ SubObjectPropertyOf(
     prov:wasGeneratedBy :qualityChecking 
     .
 
-# qualityChecker is a service computing some quality metrics 	
+# :qualityChecker is a service computing some quality metrics 	
 
 :qualityChecker
     a prov:SoftwareAgent ;   
@@ -1355,8 +1352,8 @@ SubObjectPropertyOf(
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
     .
 
-# the qualityChecking is the activity that has generated myQualityMetadata starting from 
-# MyDatasetDistribution
+# the :qualityChecking is the activity that has generated :myQualityMetadata starting from 
+# :myDatasetDistribution
 
 :qualityChecking
     a prov:Activity;
@@ -1399,7 +1396,7 @@ SubObjectPropertyOf(
     dqv:inDimension :availability
     .
     
-# qualityChecker is a services computing some quality metrics 	
+# :qualityChecker is a services computing some quality metrics 	
 
 :qualityChecker
     a prov:SoftwareAgent ;   
@@ -1408,8 +1405,8 @@ SubObjectPropertyOf(
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
     . 
 
-# the qualityChecking is the activity that has generated :measurement starting from 
-# MyDatasetDistribution
+# the :qualityChecking is the activity that has generated :measurement starting from 
+# :myDatasetDistribution
 
 :qualityChecking
     a prov:Activity;
@@ -2090,7 +2087,7 @@ SubObjectPropertyOf(
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. This  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
+                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. The following  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
                     <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
@@ -2098,27 +2095,44 @@ SubObjectPropertyOf(
 :myDatasetPrecision a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
    dqv:value "1000"^^xsd:decimal ;
-    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
-   .
+   sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
+   . 
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
-    skos:definition "It expresses dataset resolution as distance in Metres"@en ;
+    skos:definition "It expresses dataset spatial resolution as distance"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
-   
+
 :myDatasetAccuracy a dqv:QualityMeasurement ;
    dqv:hasMetric :spatialAccuracy ;
    dqv:value "98.2"^^xsd:decimal 
-   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt; 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
    .
    
 :spatialAccuracy   a  dqv:Metric;
     skos:definition "It returns the percentage of spatial element that are found accurate
-    acconding to  methodology XYZ"@en ;
+    according to  methodology XYZ"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension ldqd:semanticAccuracy 
     .
+    
+</pre>
+<p>Precision can be alternatively expressed  specifying spatial resolution as "equivalent scale" (e.g., 1:1,000, 1:1,000,000, etc.) - i.e., with a fraction, without unit of measure.  </p>
+                                        <pre class="highlight">
+:myDataset a dcat:Dataset;
+    dqv:hasQualityMeasurement :myDatasetPrecisionES .
+
+:spatialResolutionAsEquivalentScale a dqv:Metric;
+    skos:definition "It expresses dataset spatial resolution as equivalent scale, by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension dqv:precision 
+    .
+    
+:myDatasetPrecisionES  dqv:QualityMeasurement ;
+    dqv:hasMetric :spatialResolutionAsEquivalentScale ;
+    dqv:value "0.000001"^^xsd:decimal
+    .   
 </pre>
                 </section>
                         
@@ -2144,7 +2158,7 @@ SubObjectPropertyOf(
                     instances of <a href="http://www.w3.org/ns/dqv#Category">dqv:Category </a>,  <a
                         href="http://www.w3.org/ns/dqv#Dimension">dqv:Dimension</a>
                     and <a
-                        href="http://www.w3.org/ns/dqv#D#Metric">dqv:Metric</a>.
+                        href="http://www.w3.org/ns/dqv#Metric">dqv:Metric</a>.
                     The goal of the Data Quality Vocabulary is not to define a normative list of dimensions and metrics.
                 There are already several reference classifications available, which are the result of 
                 a lot of community work. Unifying them here seems both hard and not desirable, as
@@ -2241,7 +2255,7 @@ SubObjectPropertyOf(
                             <td>Accuracy</td>
                             <td>The degree to which data has attributes that correctly
                                 represent the true value of the intended attribute of a concept or
-                                event in a specific context of use.<F11>
+                                event in a specific context of use.
                             </td>
                         </tr>
                         <tr>
@@ -2398,7 +2412,7 @@ iso:accessibility a  dqv:Dimension ;
 
                 <section id="DimensionsofZaveri">
                     <h2>Quality dimensions defined for linked data</h2>
-                    <p>Zaveri et al. provide another example of classification for quality dimensions,
+                    <p>Zaveri et al. provides a review of quality dimensions,
         which is specifically suited for linked open data [[ZaveriEtAl]].</p>
 
                     <table style="width: 100%">
@@ -2834,28 +2848,35 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                 </section>
                 <section id="acknowledgements" class="appendix">
                     <h2>Acknowledgements</h2>
+                    <p> The editors acknowledge the chairs of this Working Group: Hadley Beeman, Yaso Córdova, Deirdre Lee and the staff contact Phil Archer.</p>
+
+                    <p>The editors also gratefully acknowledge the contributions made to this document by all members of the working group, specially the contributions received from  Ghislain Auguste Atemezing, Carlos Laufer, Annette Greiner,  Michel Dumontier, Eric Stephan.</p>
+
+                    <p>The editors would also like to thank comments received from non-members of this working group, such as Andrea Perego, Rachel E. Heaven, Linda van den Brink, Werner Bailer, Jon Blower, Guillaume Duffes, Davide Ceolin.</p>
+
+
                 </section>
                 <section id="change-history" class="appendix">
                     <h2>Change history</h2>
                     <p>
                         Changes since the <a
-                            href="http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/">previous
+                            href="https://www.w3.org/TR/2015/WD-vocab-dqv-20151217/">previous
                             version</a> include:
                     </p>
                     <ul>
-                        <li>Revision of the Data Model in Fig 1.</li>
+                        <li>Revision of the Data Model in Fig 1 and related description.</li>
                         <li>Revision of the section "Vocabulary Specification".</li>
                         <li>Inclusion of "Vocabulary Specification" subsections
-                            describing Dimension, Category, Quality Measurement Dataset, Quality
-                            Annotation, User Quality Feedback.</li>
-                        <li>Inclusion of new examples to express (i) that a dataset
-                            received an ODI certificate, (ii) the quality of SKOS concept
-                            schemes, (iii) the quality of linksets, (iv) the conformance of a
-                            dataset's metadata with a standard.</li>
+                            describing the property prov:wasDerivedFrom, and the instances dqv:qualityAssessment and dqv:precision.</li>
+                        <li>Revision of examples, and inclusion of new examples to express (i) questions about dataset quality, (ii) quality classification, (iii) derivation between quality metrics, measurements and annotations, (iv) conformance of a dataset with a quality policy, (v) dataset precision and accuracy.</li>
+                        <li>Inclusion of the sections "Quality dimensions defined in ISO/IEC 25012", "Quality dimensions defined for linked data" and  "Examples of Metrics".</li>
+                        <li>Inclusion of the appendix "Correspondences between quality dimensions".</li>
                         <li>Revision of the document according to resolved issues.</li>
                         <li>Inclusion of new open issues arising from group discussion
                             and external feedback.</li>
                         <li>Creation of an RDF file for DQV at
+                            http://www.w3.org/ns/dqv#.</li>
+                         <li>Creation of an RDF file for DQV at
                             http://www.w3.org/ns/dqv#.</li>
                     </ul>
                 </section>
@@ -2864,7 +2885,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                     <p>
                     The dimensions listed in ISO/IEC 25012 [[ISOIEC25012]] and Zaveri et al. [[ZaveriEtAl]] are not disjoint. 
         Assuming that  dimensions are expressed as instances of <code>skos:Concept</code>, the following table includes some of the correspondences that can be considered between these two classifications. </p>
-            <table class="definition"style="width: 100%">
+            <table class="definition" style="width: 100%">
             <thead>
                         <tr>				
                             <th>Dimension from Zaveri et al.</th>
