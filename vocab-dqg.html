@@ -194,7 +194,7 @@
                         authors : [ "Holger Knublauch", "Arthur Ryman" ],
                         date : "28 January 2016",
                         status : "W3C Working Draft",
-                        href : "http://www.w3.org/community/odrl/two/model/"
+                        href : "https://www.w3.org/TR/shacl/"
                     },
                     "ODRL" : {
                         title : "ODRL Version 2.1 Core Model",
@@ -890,7 +890,7 @@
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Represents a dataset of quality measures, evaluations of
+                                <td>Represents a dataset of quality measurements, evaluations of
                                     a given dataset (or dataset distribution) against a specific
                                     quality metric.</td>
                             </tr>
@@ -2089,7 +2089,7 @@ SubObjectPropertyOf(
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
 
 :myDatasetPrecision a dqv:QualityMeasurement ;
-   dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
+   dqv:isMeasurementOf :spatialResolutionAsDistanceInMetres ;
    dqv:value "1000"^^xsd:decimal ;
    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
    . 
@@ -2101,7 +2101,7 @@ SubObjectPropertyOf(
     .
 
 :myDatasetAccuracy a dqv:QualityMeasurement ;
-   dqv:hasMetric :spatialAccuracy ;
+   dqv:isMeasurementOf :spatialAccuracy ;
    dqv:value "98.2"^^xsd:decimal 
    sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
    .
@@ -2125,8 +2125,8 @@ SubObjectPropertyOf(
     dqv:inDimension dqv:precision 
     .
     
-:myDatasetPrecisionES  dqv:QualityMeasurement ;
-    dqv:hasMetric :spatialResolutionAsEquivalentScale ;
+:myDatasetPrecisionES a dqv:QualityMeasurement ;
+    dqv:isMeasurementOf :spatialResolutionAsEquivalentScale ;
     dqv:value "0.000001"^^xsd:decimal
     .   
 </pre>
@@ -2617,7 +2617,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
             <p>This section presents examples of metrics inspired by those reviewed in Zaveri et al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated. Note that they are not all specific to linked data quality, as some dimensions in Zaveri et al. matches the dimensions of ISO/IEC 25012 (see previous sub-section and Annex).</p>
             <div class="note">
-            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
+            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
             </div>
 
         <pre class="highlight">	
@@ -2697,92 +2697,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
         </section>
 
-
-                <!--
-
-        </section>
-
-
-
-                <section id="Availability">
-                <h3>Availability</h3>
-                <p>
-                    <em>Can the data be accessed now and over time?</em>
-                </p>
-                <ul>
-                    <li>Yes/no, maybe with explanation why the data is not available
-                        (privacy, security, archived, lost, not yet captured etc.)</li>
-                    <li>Open/restricted/registration, again possibly with
-                        explanation</li>
-                    <li>For access/re-use</li>
-                    <li>Indication of persistence and longevity</li>
-                </ul>
-                <p>Since a dcat:Dataset is an abstract thing, it might be
-                    available at any point in time, past present or future. We already
-                    have dcterms:issued so two properties come to mind:</p>
-                <ul>
-                    <li>dcat:verifiedAvailableOn {date} (the last time
-                        someone/something checked that the dataset was accessible, probably
-                        applies to a dcat:Distribution, not dcat:Dataset)</li>
-                    <li>dcat:availableUntilAtLeast {date} (Potentially a data on
-                        which the dataset is expected to be withdrawn)</li>
-                </ul>
-                <p>Other questions that come to mind: how do we indicate that the
-                    dataset is expected to be available 'for the foreseeable future?'</p>
-            </section>
-            <section id="Processability">
-                <h3>Processability</h3>
-                <p>
-                    <em>Is the data machine readable ?</em>
-                </p>
-                <ul>
-                    <li>Level on the 5-star scale (although there were opinions that
-                        it is dangerous to attach value to the linking because the data
-                        might be good but link to ‘bad’ data)</li>
-                    <li>Links to metadata standards used and data model/schema to
-                        enable automatic processing</li>
-                </ul>
-            </section>
-            <section id="Accuracy">
-                <h3>Accuracy</h3>
-                <p>
-                    <em>is the data correctly representing the real-world entity or event?</em>
-                </p>
-            </section>
-            <section id="Consistency">
-                <h3>Consistency</h3>
-                <p>
-                    <em>Is the data not containing contradictions?</em>
-                </p>
-                <p><em>Can I use it readily in an analysis tool? Can I open the dataset in R and do some statistical manipulations? Can I open it in Tableau and make a visualization without doing a lot of cleaning?</em></p>
-                <p>There could be some overlap with accuracy.</p>
-            </section>
-            <section id="Relevance">
-                <h3>Relevance</h3>
-                <p><em>Does the dataset include an appropriate amount of data?</em></p>
-                <p>It might be useful to include some information about the
-                    context (e.g., why was the data created and what purpose is it
-                    supposed to serve).</p>
-            </section>
-            <section id="Completeness">
-                <h3>Completeness</h3>
-                <p><em>Does the data include all data items representing the entity or event ?</em></p>
-            </section>
-            <section id="Conformance">
-                <h3>Conformance</h3>
-                <p><em>Is the data following accepted standards ?</em></p>
-            </section>
-            <section id="Credibility">
-                <h3>Credibility</h3>
-                <p><em>Is the data based on trustworthy sources ?</em></p>
-                <p>This is described using the provenance vocabulary PROV-O</p>
-            </section>
-            <section id="Timeliness">
-                <h3>Timeliness</h3>
-                <p><em>Is the data representing the actual situation and it is published soon enough ?</em></p>
-            </section>
-        -->
-        </section>
+</section>
 
 
                 <section id="requirements" class="informative">
@@ -2860,7 +2775,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                         <li>Inclusion of new open issues arising from group discussion
                             and external feedback.</li>
                         <li>Creation of an RDF file for linked data dimensions.</li>
-                         <li>Creation of an RDF file for DQV at
+                         <li>Update  of the RDF file for DQV at
                             http://www.w3.org/ns/dqv#.</li>
                     </ul>
                 </section>
