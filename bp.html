@@ -2385,7 +2385,7 @@ http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-
       <!-- begin of Data Formats -->
       <section id="dataFormats">
         <h3>Data Formats</h3>
-        <p>The formats in which data is made available to consumers are a key
+        <p>The format in which data is made available to consumers is a key
           aspect of making that data usable. The best, most flexible access
           mechanism in the world is pointless unless it serves data in formats
           that enable use and reuse. Below we detail best practices in selecting
@@ -2411,13 +2411,13 @@ http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-
               severe limitations on the continuing usefulness of the data. Data
               becomes useful when it has been processed and transformed into
               information. </p>
-            <p> Using non-standard data formats is costly and inefficient, and
+            <p>Using non-standard data formats is costly and inefficient, and
               the data may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
               cannot be anticipated when the data is first published. The use of
               non-proprietary data formats should also be considered since it
-              increases the possibilities for use and reuse of data </p>
+              increases the possibilities for use and reuse of data.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -2427,9 +2427,9 @@ http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p> Make data available in a machine readable standardized data
+            <p>Make data available in a machine readable standardized data
               format that is easily parseable including but not limited to CSV,
-              XML, Turtle, NetCDF, JSON and RDF. </p>
+              XML, Turtle, NetCDF, JSON and RDF.</p>
             <!--<p>Consider which data formats potential users of the data are most
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
             <!--<aside class="example">
@@ -2516,8 +2516,9 @@ A usual resident was generally defined as someone who spent most of their time a
             <p> Consider the data formats most likely to be needed by intended
               users, and consider alternatives that are likely to be useful in
               the future. Data publishers must balance the effort required to
-              make the data available in many formats, but providing at least
+              make the data available in many formats against the cost of doing so, but providing at least
               one alternative will greatly increase the usability of the data.</p>
+            <p>A word of warning: local identifiers within the dataset, which may be exposed as fragment identifiers in URIs, must be consistent across the various formats.</p>
             
 <aside class="example">
               <p>In order to reach a larger number of data consumers, John
@@ -2597,29 +2598,26 @@ A usual resident was generally defined as someone who spent most of their time a
       <!-- begin of Data Vocabularies -->
       <section id="dataVocabularies">
         <h3>Data Vocabularies</h3>
-        <!--<div class="issue"> There is a discussion going on in the group if the
-          creation (and publication) of vocabularies is in the scope of the DWBP          document.</div>-->
-        <p>Data is often represented in a structured and controlled way, making
-          reference to a range of vocabularies, for example, by defining types
-          of nodes and links in a data graph or types of values for columns in a
-          table, such as the subject of a book, or a relationship “knows”
-          between two persons. Additionally, the values used may come from a
+        <p><a href="http://www.w3.org/standards/semanticweb/ontology">Vocabularies</a>
+          define the concepts and relationships (also referred to as “terms” or
+          “attributes”) used to describe and represent an area of interest.
+          They are used to classify the terms that can be used in a
+          particular application, characterize possible relationships, and
+          define possible constraints on using those terms. Several near-synonyms
+          for 'vocabular' have been coined, for example, ontology, controlled
+          vocabulary, thesaurus, taxonomy, code list, semantic network.</p>
+<!--        <p>Data is often represented in a structured and controlled way, making
+          use of one or more vocabularies to provide, for example, the types
+          of nodes and links in a data graph or the types of values for columns in a
+          table. A vocabulary for describing books may include the term 'subject' rather than 'topic', one describing people may include the relationship “knows”
+          between two persons and so on. Additionally, the values used may come from a
           limited set of pre-existing values or resources: for example object
           types, roles of a person, countries in a geographic area, or possible
           subjects for books. Such vocabularies ensure a level of control,
-          standardization and interoperability in the data. They can also serve
-          to improve the usability of datasets. Say, a dataset contains a
-          reference to a concept described in several languages. Such reference
-          allows applications to localize their display of their search
-          depending on the language of the user. </p>
-        <p>According to W3C, <a href="http://www.w3.org/standards/semanticweb/ontology">vocabularies</a>
-          define the concepts and relationships (also referred to as “terms” or
-          “attributes”) used to describe and represent an area of concern.
-          Vocabularies are used to classify the terms that can be used in a
-          particular application, characterize possible relationships, and
-          define possible constraints on using those terms. Several categories
-          of vocabularies have been coined, for example, ontology, controlled
-          vocabulary, thesaurus, taxonomy, code list, semantic network.</p>
+          standardization and interoperability in the data, and they can also serve
+          to improve the usability of datasets. If a vocabulary defines a
+          concept described in several languages, then the use of that vocabulary
+          allows applications to localize their application more easily than otherwise.</p> -->
         <p>There is no strict division between the artifacts referred to by
           these names. “Ontology” tends however to denote the vocabularies of
           classes and properties that structure the descriptions of resources in
@@ -2631,7 +2629,7 @@ A usual resident was generally defined as someone who spent most of their time a
           It is possible to define more expressive ontologies with additional
           axioms using languages such as those in The Web Ontology Language
           [[OWL2-OVERVIEW]]. </p>
-        <p>On the other hand, “controlled vocabularies”, “concept schemes”,
+        <p>On the other hand, “controlled vocabularies”, “concept schemes” and
           “knowledge organization systems” enumerate and define resources that
           can be employed in the descriptions made with the former kind of
           vocabulary. A concept from a thesaurus, say, “architecture”, will for
@@ -2652,47 +2650,41 @@ A usual resident was generally defined as someone who spent most of their time a
             data and metadata.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>Using standardized lists of codes other commonly used terms for data
-              and metadata values as much as possible helps avoiding
-              ambiguity and clashes between these values.</p>
+            <p>Using standardized code lists and commonly used terms for data
+              and metadata values, wherever possible, helps to avoid ambiguity and clashes between similar values.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> Standardized code lists and other commonly used terms will enhance interoperability and consensus among data publishers and consumers. </p>
-
-            <!--<p>The benefit of using standardized code lists and other commonly
-              used terms is to enhance interoperability and consensus among
-              data publishers and consumers.</p>-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-            <p>Values in datasets should refer as much as possible to
+<!--            <p>Values in datasets should refer as much as possible to
               standardization efforts or organizations, which defines terms or codes as a
-              clear reference.</p>
-            <p>Organizations like the Open Geospatial Consortium (OGC), ISO, W3C, libraries and research data services, etc., provide
-              list of codes, terminologies or even Linked Data vocabularies that can be used for this.</p>
-            <p>A key point is to make sure the dataset or its documentation provides enough (human- and machine-readable) context
-              for the values, so that data consumers can retrieve and exploit the standardized meaning
-              of these values. In the context of the Web, using unambiguous, Web-based identifiers for standardized values
+              clear reference.</p> -->
+            <p>Organizations such as the Open Geospatial Consortium (OGC), ISO, W3C, libraries and research data services, etc. provide
+              list of codes, terminologies and Linked Data vocabularies that can be used by everyone.</p>
+            <p>A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context
+              so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized values
               is an efficient way to do this.</p>
             <aside class="example"><ol>
             <li>The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):<br />
 <pre class="highlight prettyprint prettyprinted">:bus-stops
     dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
 </pre></li>
-            <li>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Center Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:<br />
+            <li>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Centre Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:<br />
 <pre class="highlight prettyprint prettyprinted">:measurement-001 a prov:Activity ;
     prov:used :sensor-001 .
 :sensor-001 a prov:Agent ;
     dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
 </pre>
-           <p>(note that real-life data should use more specific classes and properties than the PROV ones for
-              typing a measurement activity, an instrument and the relationship between these)</p></li>
-            <li>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publish a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:<br />
+           <p>Note that real-life data should use more specific classes and properties than the PROV terms shown here for
+              typing a measurement activity, an instrument and the relationship between these.</p></li>
+            <li>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publishes a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:<br />
 <pre class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
     dct:temporal &lt;http://resource.geosciml.org/classifier/ics/ischart/Paleozoic&gt; .
 </pre></li>
-            <li>Google maintains a <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
+            <li>Google maintains the <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
               a format for publishing public transportation data. This format relies on a set of fields like <code>route_short_name</code> or
               <code>route_type</code> that are carefully defined
               and exposed to constant community feedback in order to facilitate consensus, which leads to easier adoption and greater interoperability.
@@ -2708,7 +2700,7 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="test">
             <p class="subhead">How to Test </p>
-            <p>Check if the terms or codes to be used are defined in a standard organization/working group of body such as IETF, OGC, W3C, etc.</p>
+            <p>Check if the terms or codes to be used are defined in a standards development organization such as IETF, OGC &amp; W3C etc., or are published by a suitable authority, such as a government agency.</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -2737,19 +2729,17 @@ A usual resident was generally defined as someone who spent most of their time a
             <p class="subhead">Why</p>
             <p>Use of shared vocabularies captures and facilitates consensus in communities.
               Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
-              redundancies, encouraging reuse of these data. In particular, the
+              redundancies, encouraging reuse. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
               and versioning metadata) helps the automatic processing of both data and metadata.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p> Using the same vocabulary to describe metadata will make datasets and metadata sets easier to be compared by humans or machines. 
-When two datasets or metadata sets use the same vocabulary, (automatic) processing tools designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.
-</p>
-            <!--<p>Datasets and metadata sets are easier to be compared by humans or machines when
-              they use the same vocabulary to describe metadata.</p>
-            <p>When two datasets or metadata sets use the same vocabulary, (automatic) processing tools
-              designed for one can be more easily applied to the other. This greatly facilitates re-use of datasets.</p>-->
+            <p>Using the same vocabulary to describe metadata will make datasets and metadata easier to be compared by humans or machines. 
+               When two datasets or metadata sets use the same vocabulary, 
+              (automatic) processing tools designed for one can be more easily 
+              applied to the other. This greatly facilitates re-use of 
+              datasets.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
@@ -2765,12 +2755,12 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               For example, reusing Dublin Core properties like <code>dct:title</code> instead of
               creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata
               to be consumed by any application that can read and manipulate Dublin Core statements.</li>
-              <li>In the digital culture sector, the data model for the initiative
+              <li>In the digital culture sector, the data model for 
               <a href="http://europeana.eu">Europeana</a> (<a href="http://pro.europeana.eu/page/edm-documentation">EDM</a>)
-              also widely re-uses existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
+              also makes extensive uses of existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
               This has facilitated adoption of EDM by Europeana's data providers and helped
               position it as a best practice for similar initiatives in the same sector.
-              For instance, <a href="http://dp.la/info/developers/map/">metadata application profile</a> from the
+              For instance, the <a href="http://dp.la/info/developers/map/">metadata application profile</a> from the
               <a href="http://dp.la">Digital Public Library of America</a> reuses EDM and thus
               the various vocabularies that EDM builds on. As a result, large amounts of
               digital culture data have become more interoperable within the sector. That data is
@@ -2781,7 +2771,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <section>
             <p class="subhead">How to Test</p>
             <p>Using vocabulary repositories like the <a href="http://lov.okfn.org">Linked Open Vocabularies repository</a>
-              or lists or services mentioned in technology-specific best practices
+              or lists of services mentioned in technology-specific best practices
               such as the Best Practices for Publishing Linked Data [[LD-BP]],
               or the <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1">Core Initial Context for RDFa and JSON-LD</a>,
               check that classes, properties, terms, elements or attributes used to represent a dataset do not replicate those
@@ -2806,12 +2796,12 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
       <div class="practice">
         <p><span id="ChooseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
         <p class="practicedesc">When reusing a vocabulary, a data publisher
-          should opt for a level of formal semantics that fit data and
+          should opt for a level of formal semantics that fit both data and
           applications.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Formal semantics help to establish precise specifications
-            that support establishing the intended meaning of the vocabulary and
+            that convey the intended meaning of the vocabulary and
             the performance of complex tasks such as reasoning. On the other
             hand, complex vocabularies require more effort to produce and
             understand, which could hamper their reuse, as well as the
@@ -2828,7 +2818,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>The data supports all application cases but should not be more
-            complex to produce and reuse than necessary;</p>
+            complex to produce and reuse than necessary.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -2847,38 +2837,41 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
             The more axioms are used to specify a vocabulary, the narrower its usage is;
             unnecessary axioms unnecessarily constrain the reuse of a vocabulary
             across applications.</p>
-          <aside class="example">
-          <p>1. For expressing simple vocabularies like thesauri or code lists as Linked Data,
+          <aside class="example"><ol>
+          <li>For expressing simple vocabularies like thesauri or code lists as Linked Data,
             a simpler data model like SKOS may be preferred over formal
             ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
               schemes and code lists</a> are represented and used in the RDF Data Cube
-            Recommendation [[VOCAB-DATA-CUBE]].</p>
-          <p>2. Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
+            Recommendation [[VOCAB-DATA-CUBE]].</li>
+          <li>Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
             all formal axioms that were suggested for its classes and properties. Often they have been rejected
             because their use, while beneficial to many applications, would have created
             formal inconsistencies for the data from other applications, making SKOS not usable at all
             for these. As an example, the property <code>skos:broader</code> was not defined
             as a transitive property, even though it would have fit the way hierarchical links between concepts
-            are created for many thesauri [[SKOS-DESIGN]].</p>
-          <p>3. The vocabularies for Data Quality [[VOCAB-DQV]] and Data Usage [[VOCAB-DUV]] created by the W3C Working
+            are created for many thesauri [[SKOS-DESIGN]].</li>
+          <li>The Data Quality [[VOCAB-DQV]] and Data Usage vocabularies [[VOCAB-DUV]] created by the W3C Working
             Group publishing this document have also sought to minimize the number of formal
             axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
             has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
             resources that are of type <code>dcat:Dataset</code> or <code>dcat:Distribution</code>.
             This allows application designers to employ it for other types of entities, for which
             quality measurements would also be relevant but that were not in the focus of
-            the design process for DQV.</p>
-          <p>4. The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
+            the design process for DQV.</li>
+          <li>The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
             data on the Web have adopted an informative rather than normative approach for defining
             the types of objects these properties can be used with. For instance, the values of the property
             <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
             of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
-            type <code>CreativeWork</code> but this is not a strict constraint.</p>
+            type <code>CreativeWork</code> but this is not a strict constraint.</li></ol>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>For formal knowledge representation languages, applying an inference engine on top of the data that uses a given vocabulary does not produce too many statements that are unnecessary for target applications.</p>
+          <p>For formal knowledge representation languages, applying an 
+          inference engine on top of the data that uses a given vocabulary does 
+          not produce too many statements that are unnecessary for target 
+          applications.</p>
         </section>
         <section class="ucr">
           <p class="subhead">Evidence</p>
@@ -2906,7 +2899,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         publishers should identify all sensitive data, assess the exposure risk,
         determine the intended usage, data user audience and any related usage
         policies, obtain appropriate approval, and determine the appropriate
-        security measures needed to taken to protect the data, which should also
+        security measures needed to be taken to protect the data, which should also
         account for secure authentication and use of HTTPS.</p>
       <p>Data publishers should preserve the privacy of individuals where the
         release of personal information would endanger safety (unintended
@@ -2917,7 +2910,7 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         numbers, digital identity, date of birth, birthplace, genetic
         information, telephone number, login name, screen name, nickname, health
         records etc.</p>
-      <p> At times, because of sharing policies sensitive data may not be
+      <p> At times, because of sharing policies, sensitive data may not be
         available in part or in its entirety. Data unavailability represents
         gaps that may affect the overall analysis of datasets. To account for
         unavailable data, data publishers should publish information about
@@ -2927,10 +2920,8 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
             data unavailability reference</span></p>
         <p class="practicedesc">References to data that is not open, or
           available under different restrictions to the origin of the reference,
-          should provide explanation about how the referred data can be accessed
-          and who can access it. </p>
-        <!-- <p> This best practice is a specialization of the higher level <a href="#ProvideMetadataHumanMachine">Provide
-              metadata for both humans and machines</a> best practice. </p> -->
+          should provide an explanation about how the referred to data can be accessed
+          and who can access it.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Publishing online documentation about unavailable data due to
@@ -2942,33 +2933,19 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p>
-          <!--<p>Publishers should provide information about data that is referred
-            to from the current dataset but that is unavailable or only
-            available under different conditions.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p> Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a
-            human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 404 (file not found), 410 (permanently removed), 503 (service *providing data* unavailable).
-
-<!-- p> RDF may be used
-            to provide a machine readable version of the same information. If
-            appropriate, consider editing the server's 4xx response page(s) to
-            provide the information. </p>
-            <p> </p> -->
-            </p>
+          <p>Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 303 (see other), 410 (permanently removed), 503 (service *providing data* unavailable).</p>
           <aside class="example">
             <p>The dataset created for the bus stops can contain sensitive
-              data, for instance, privacy information about the bus' driver. In this case, the publisher provides an explanation informing that the personal data about the
-              bus' driver is not available.</p>
-            <!--<p>The information bellow was omitted from the dataset:</p>
-            <p>driver_id, driver_name, driver_address, driver_license.</p> -->
+              data, for instance, information about the bus driver. In this case, the publisher provides an explanation informing potential users that the personal data about the bus driver is not available.</p>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
           <p>Check if the dataset includes references to other data that is unavailable in a human-readable way.</p>
-          <p>Check whether an explanation is available in the metadata and/or description of it in a machine-readable format and without syntax error.</p>
+          <p>Check whether an explanation is available in the metadata and/or description of it in a machine-readable format.</p>
 
         </section>
         <section class="ucr">
@@ -3039,10 +3016,6 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p class="subhead">Intended Outcome</p>
           <p> Bulk download will enable large file transfers (which would require more time than a typical user would consider reasonable) by dedicated file-transfer protocols. </p> 
 
-          <!--<p> It should be possible to download data on the Web in bulk. Data
-            publishers should provide a way, through either a single-file download or
-            a single API call, for consumers to access all the data. Large file transfers (which would require more time than a typical user would consider reasonable) should be enabled by dedicated file-transfer protocols. The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk downlaod.
-            </p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3057,9 +3030,9 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
               approach is useful for capturing a complete snapshot of dynamic data.</li>
             <li>For very large datasets, bulk file transfers can be enabled via means other than http, such as <a href="http://www.slac.stanford.edu/~abh/bbcp/">bbcp</a> or <a href="http://toolkit.globus.org/toolkit/docs/latest-stable/gridftp/">GridFTP</a>.</li>
           </ul>
-          <p> The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk downlaod.</p>
+          <p> The bulk download should include the metadata describing the dataset. Discovery metadata [[VOCAB-DCAT]] should also be available outside the bulk download.</p>
           <aside class="example">
-            <p>The MyCity transit agency may have a large dataset with arrival times for the various transit modes that was collected over the entire year of 2015. The data might be stored as a CSV file for each month. Suppose the agency wants to make that data available as a bulk download containing all the CSV files, for a hackathon. Since all the arrival data for all the transit services would be a lot of data, and they want to provide all the months together as one dataset, they might offer it as a single-file, compressed archive (tarred and gzipped).</p>
+            <p>The MyCity transit agency may have a large dataset with arrival times for the various transit modes that was collected over an entire year. The data might be stored as a CSV file for each month. Suppose the agency wants to make that data available as a bulk download containing all the CSV files, for a hackathon. Since all the arrival data for all the transit services would be a lot of data, and they want to provide all the months together as one dataset, they might offer it as a single-file, compressed archive (tarred and gzipped).</p>
           </aside>
         </section>
         <section class="test">
@@ -3100,12 +3073,12 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         </section>
         <section class="how">
           <p class="subhead">Possible Approaches to Implementation</p>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data--and little unneeded data--for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data &ndash; and little unneeded data &ndash; for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
-          <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="https://www.w3.org/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
-          <aside class="example">
-            <p> 1. Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </p>
-            <p>2. Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</p>
+          <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
+          <aside class="example"><ol>
+            <li>Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </li>
+            <li>Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</li></ol>
           </aside>
         </section>
         <section class="test">
@@ -3137,16 +3110,14 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           serving data available in multiple formats.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>It is possible to have data being served in a HTML page mixed with
-            human-readable and machine-readable data. RDFa could be used to mix
-            HTML content with semantic data. </p>
-          <p>But, in some cases this page is subject of scraping by some
-            applications in order to get data available. When structured data is
-            mixed with HTML, but it is possible to have a different
-            representation with the same structured data, written in Turtle or
-            JSON-LD, it is recommended to serve this page using Content
-            Negotiation.</p>
-          <p>A dataset can also be served in different representations, and can be retrieved by using an API or by direct access to the resource URI. In those cases, HTTP Content Negotiation technique can be used.</p>
+          <p>It is possible to serve data in an HTML page mixed with
+            human-readable and machine-readable data, using RDFa for example. 
+            However, as the Architecture of the Web [[WEBARCH]] and DCAT [[VOCAB-DCAT]] make clear,
+            a resource, such as a dataset, can have many representations. The same data might be available
+            as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via and API but should be made available
+            from <em>the same</em> URL using <a href="/DesignIssues/Conneg">content negotiation</a> to return the appropriate representation (what
+            DCAT calls a distribution). Specific URIs can be used to identify individual representations of the data directly, by-passing
+            content negotiation.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -3224,17 +3195,16 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p class="subhead">Possible Approach to Implementation</p>
           <p>Real-time data accessibility may be achieved through two means: </p>
           <ul>
-            <li> Push - as data is produced the producers communicates data to
-              the data publisher either by disseminating data to the publisher
-              or making storage available accessible to the data producer.</li>
+            <li> Push - as data is produced, it is communicated to
+              the data publisher either directly or by storage in a location accessible to the data publisher.</li>
             <li>On-Demand (Pull) - available real-time data is made available
               upon request. In this case, data publishers will provide an API to
               facilitate these read-only requests.</li>
           </ul>
-          In addition to data access, to ensure credibility providing access to
-          error conditions, anomalies, and instrument "house keeping" data
-          enhance real-time applications ability to interpret and convey
-          real-time data quality to consumers.
+          <p>To engender greater credibility, in addition to data itself, publishers should provide access to
+          error conditions, anomalies, and instrument "house keeping" data. This will 
+          enhance real-time applications' ability to interpret and convey
+          real-time data quality to consumers.</p>
           <aside class="example">
             <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>
           </aside>
@@ -3275,10 +3245,10 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           and the update frequency made explicit. </p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>Data on the Web availability should closely coincide with data
-            provided at creation time, collection time, or after it has been
+          <p>The availability of data on the Web should closely match the data
+            creation or collection time, perhaps after it has been
             processed or changed. Carefully synchronizing data publication to
-            the update frequency encourages data consumer confidence and reuse.</p>
+            the update frequency encourages consumer confidence and data reuse.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
@@ -3290,24 +3260,24 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
           <p>Implement an API to enable data access. When data is provided by
             bulk access, new files with new data should be provided as soon as
             additional data is created or updated. Or, use technologies that are intended to expose data on the Web using interlinked resources, like Activity Streams or Atom.</p>
-          <p>If the site provides multiple data feeds providing multiple updates, the last update date time stamp should be co-located with each separate data feed. The international date format is recommended to avoid any ambiguity <a href="https://www.w3.org/International/questions/qa-date-format">https://www.w3.org/International/questions/qa-date-format</a>.</p>
+          <p>If the site provides multiple data feeds with multiple updates, the last update date time stamp should be co-located with each separate data feed. The international date format is recommended to avoid any ambiguity <a href="https://www.w3.org/International/questions/qa-date-format">https://www.w3.org/International/questions/qa-date-format</a>.</p>
           <aside class="example">
-            <p>A real world example: <br>
-            The weather services such as the U.S. based National Oceanic and Atmospheric Administration (NOAA) provides regional forecast and current weather condition information (<a href="http://www.wrh.noaa.gov/sew/">http://www.wrh.noaa.gov/sew/</a>).</p>
+            <p>A real world example: <br />
+            Weather services such as the U.S. based National Oceanic and Atmospheric Administration (NOAA) provides regional forecast and current weather condition information (<a href="http://www.wrh.noaa.gov/sew/">http://www.wrh.noaa.gov/sew/</a>).</p>
             <p>Information in the form of weather condition maps are periodically updated to keep residents informed of changing weather conditions. Data publishers provide a timezone specific date time stamp of the latest condition updates <em>"Last map update: Mar, 3rd 2016 at 9:03:07 pm PST"</em>.</p>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <p>Write test standard operating procedure for data publisher to keep
-            test data on Web site up to date.</p>
-          <p>Following standard operating procedure:</p>
+          <p>Write and test a standard operating procedure to keep
+            data on Web site up to date.</p>
+          <p>An example standard operating procedure might be:</p>
           <ul>
-            <li>Write test client to access published data. </li>
-            <li>Access data and save first copy locally. </li>
+            <li>Write a test client to access published data. </li>
+            <li>Access data and save a first copy locally. </li>
             <li>Publish an updated version of data.</li>
-            <li>Access data and save second copy locally.</li>
-            <li>Compare first copy to second copy to verify change.</li>
+            <li>Access data and save a second copy locally.</li>
+            <li>Compare first copy to second copy to verify changes have been reflected.</li>
           </ul>
         </section>
         <section class="ucr">
@@ -3334,21 +3304,18 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <div class="practice">
           <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
           <p class="practicedesc">Offer an API to serve data if you have the resources to do so.</p>
-          <!-- <p class="practicedesc">When there are resources available, you <em class="rfc2119">should</em> offer an API</p> -->
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>An API offers the greatest flexibility and processability for consumers of your data. It can enable real-time data usage, filtering on request, and the ability to work with the data at an atomic level. If your dataset is large, frequently updated, or highly complex, an API is likely to be the best option for publishing your data.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-            <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers. Web applications will be able to obtain specific data by querying a programmatic interface.
-</p>
-            <!--p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers.</p-->
+            <p>Developers will have programmatic access to the data for use in their own applications. Data can be updated without requiring effort on the part of consumers. Web applications will be able to obtain specific data by querying a programmatic interface.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
             <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
-            <aside class="example"><p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p></aside>
+            <aside class="example"><p>Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p></aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
@@ -3372,23 +3339,19 @@ When two datasets or metadata sets use the same vocabulary, (automatic) processi
         <!-- begin of Web Standards for APIs -->
         <div class="practice">
           <p><span id="APIHttpVerbs" class="practicelab">Use Web Standards as the foundation of APIs</span></p>
-          <p class="practicedesc">
-When designing APIs, use an architectural style that is founded on the technologies of the Web itself.
-
-          <!--When designing APIs, it is recommended to use an architectural style that is founded on the technologies of the Web itself. Web standards such as URIs, HTTP verbs, HTTP response codes, MIME types, typed HTTP Links, and content negotiation can all help solve difficult problems and enable you to build a flexible and useful data service. --> </p>
+          <p class="practicedesc">When designing APIs, use an architectural style that is founded on the technologies of the Web itself.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
             <p>APIs that are built on Web standards leverage the strengths of the Web. For example, using HTTP verbs as methods and URIs that map directly to individual resources helps to avoid tight coupling between requests and responses, making for an API that is easy to maintain and can readily be understood and used by many developers. The statelessness of the Web can be a strength in enabling quick scaling, and using hypermedia enables rich interactions with your API. </p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
-              <p> Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use the API because it uses a standardized interface. The API will also be easier to maintain.</p>
-              <!--<p>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use your API because it uses a standardized interface. Your API will also be easier to maintain. </p>-->
+              <p>Developers who have some experience with APIs based on Web standards, such as REST, will have an initial understanding of how to use the API because it uses a standardized interface. The API will also be easier to maintain.</p>
           </section>
           <section class="how">
             <p class="subhead">Possible Approaches to Implementation</p>
             <p>REST (REpresentational State Transfer) is an architectural style that, when used in a Web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
-            <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links rather than data alone. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
+            <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links as well as data. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting. </p>
             <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
               <pre>
   {
@@ -3457,50 +3420,33 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p class="practicedesc">Provide complete information on the Web about your API. Be sure to update documentation as you add features or make changes.</p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <!-- <p>The primary consumers of an API are developers. In order to develop against your API, a developer will need to understand how to use it.</p> -->
-            <p> Developers are the primary consumers of an API and the API documentation is the first clue about the quality and usefulness of the API. When API documentation is complete and easy to understand, developers are probably more willing to continue their journey implementing it. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed.</p>
-
-
-            <!--p>Developers are the primary consumers of an API. In order to develop against it, they will need to understand how to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed. </p-->
+            <p>Developers are the primary consumers of an API and the documentation is the first clue about its quality and usefulness. When API documentation is complete and easy to understand, developers are probably more willing to continue their journey to use it. Providing comprehensive documentation in one place allows developers to code efficiently. Highlighting changes enables your users to take advantage of new features and adapt their code if needed.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
             <p> API documentation will enable developers to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return, i.e., the whole set of information related to the API—set of values, how to use it, notices of recent changes, contact information, and so on—should be described and easily browsable on the Web. It will also enables machines to access the API documentaion in order to help developers build API client software.</p>
-            <!-- <p>Developers will be able to code efficiently against your API, and they will make best use of the features you have provided.Your documentation should explain the architecture chosen for the API and show how to invoke each API call and what will be returned from each call.</p> -->
-            <!--p>The whole set of information related to the API&mdash;how to use it, notices of recent changes, contact information, and so on&mdash;should be easily browsable on the Web.</p>
-            <p>Developers should be able to obtain detailed information about each call to the API, including the parameters it takes and what it is expected to return.</p>
-            <p>The API should be self-documenting as well, so that calls return helpful information about errors and usage.</p>
-            <p>Recent changes to the API itself should be readily discoverable by users.</p>
-            <p>API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p-->
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-<p> A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs"> io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others. It is important to say that The API should be self-documenting as well, so that calls return helpful information about errors and usage (e.g. .API users should be able to contact the maintainers with questions, suggestions, or bug reports).</p>
+<p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others. It is important to say that the API should be self-documenting as well, so that calls return helpful information about errors and usage. API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
 <p> The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation. </p>
-
-            <!--p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others.</p-->
             <aside class="example">
 <ul>
-<li> OGC 'capabilities documents' provide an example of a standardized API description. Every <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wfs">WFS</a> or <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wms">WMS service</a>, for example, understands the request 'getCapabilities', and then returns an XML document giving information about the service such as the Coordinate Reference system used, the data structure schema, available map layers, and so on. </li>
-<li>Use of <code>void:TechnicalFeature</code> to describe the API for a (<a href="http://www.w3.org/TR/void/#dataset">VoID</a>) Dataset (or subset); providing a set of values, terms or entities for each API parameter (<a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>). Use URI Templates [[RFC6570]] to bind API parameters to RESTful URLs. A 'short-form' of the identifier may be required for usage in the API; this may be defined as a SKOS notation. </li>
-<li> Use of <a href="http://www.w3.org/TR/vocab-data-cube/#data-cubes">Data Cube</a> with Dimensions to define the data available from a predicably structured dataset - "what, where, when", and so on (ref. <a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>); each Dimension of the <a href="http://www.w3.org/TR/vocab-data-cube/#data-cubes">Data Cube</a> is bound to a parameter in the API method. The "where" Dimension of a Data Cube, if specified as <code>qb:CodedProperty</code>, may bound to a set of SpatialThings (e.g. using the property <code>qb:codeList</code>). The URI Set (the set of all SpatialThings mentioned in the <a href="http://www.w3.org/TR/vocab-data-cube/#data-cubes">Data Cube</a>) provides a 'controlled vocabulary' of locations for which 'observations' (data points) in the <a href="http://www.w3.org/TR/vocab-data-cube/#data-cubes">Data Cube</a> are available (e.g. air quality data is available at these locations). </li>
-<li> A versioned API: <a href="http://wiki.openstreetmap.org/wiki/API">OpenStreetMap API </a></li>
-<li> Use of HAL: 'JSON Hypertext Application Language', see <a href="https://tools.ietf.org/html/draft-kelly-json-hal-07">IETF draft</a>. </li>
-<li> Use of <a href="http://swagger.io/">Swagger</a> and <a href="https://swaggerhub.com/">swaggerhub</a>; the Dutch Cadastre has published the WFS services in its national geo-portal, PDOK, as Swagger APIs on Swaggerhub, for example an API to get data about noise pollution near highways. Swagger also offers an example reference for a pet store API. </li>
-<li> Packaging a coordinate transformation API for simple re-use. </li>
-<li> Relating the API to its description using HTTP link headers. </li>
-
+<li>OGC 'capabilities documents' provide an example of a standardized API description. Every <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wfs">WFS</a> or <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wms">WMS service</a>, for example, understands the request 'getCapabilities', and then returns an XML document giving information about the service such as the Coordinate Reference system used, the data structure schema, available map layers, and so on. </li>
+<li>Use of <code>void:TechnicalFeature</code> to describe the API for a (<a href="/TR/void/#dataset">VoID</a>) Dataset (or subset); providing a set of values, terms or entities for each API parameter (<a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>). Use URI Templates [[RFC6570]] to bind API parameters to RESTful URLs. A 'short-form' of the identifier may be required for usage in the API; this may be defined as a SKOS notation. </li>
+<li>Use of <a href="/TR/vocab-data-cube/#data-cubes">Data Cube</a> with Dimensions to define the data available from a predictably structured dataset - "what, where, when", and so on (ref. <a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>); each Dimension of the Data Cube is bound to a parameter in the API method. The "where" Dimension of a Data Cube, if specified as <code>qb:CodedProperty</code>, may bound to a set of SpatialThings (e.g. using the property <code>qb:codeList</code>). The URI Set (the set of all SpatialThings mentioned in the Data Cube) provides a 'controlled vocabulary' of locations for which 'observations' (data points) in the Data Cube are available (e.g. air quality data is available at these locations). </li>
+<li>A versioned API: <a href="http://wiki.openstreetmap.org/wiki/API">OpenStreetMap API </a></li>
+<li>Use of HAL: 'JSON Hypertext Application Language', see <a href="https://tools.ietf.org/html/draft-kelly-json-hal-07">IETF draft</a>. </li>
+<li>Use of <a href="http://swagger.io/">Swagger</a> and <a href="https://swaggerhub.com/">swaggerhub</a>; the Dutch Cadastre has published the WFS services in its national geo-portal, PDOK, as Swagger APIs on Swaggerhub, for example an API to get data about noise pollution near highways. Swagger also offers an example reference for a pet store API. </li>
+<li>Packaging a coordinate transformation API for simple reuse. </li>
+<li>Relating the API to its description using HTTP link headers. </li>
 </ul>
 
-
-            <!--p>Swagger offers an example reference for a <a href="http://petstore.swagger.io/#/">pet store API</a>.</p--></aside>
           </section>
           <section class="test">
             <p class="subhead">How to Test</p>
-            <p> Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns.  </p>
-            <p> Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).
-            </p>
-            <!-- <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns. The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation.</p> -->
+            <p>Check that every call enabled by your API is described in your documentation. Make sure you provide details of what parameters are required or optional and what each call returns.</p>
+            <p>Check the Time To First Successful Call (i.e. being capable of doing a successful request to the API within a few minutes will increase the chances that the developer will stick to your API).</p>
           </section>
           <section class="ucr">
             <p class="subhead">Evidence</p>
@@ -3525,7 +3471,7 @@ When designing APIs, use an architectural style that is founded on the technolog
           <p class="practicedesc">Avoid changes to your API that break client code, and communicate any changes in your API to your developers when evolution happens. </p>
           <section class="axioms">
             <p class="subhead">Why</p>
-            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the format of a response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur enables developers to take advantage of new features and, in the rare case of a breaking change, take action. </p>
+            <p>When developers implement a client for your API, they may rely on specific characteristics that you have built into it, such as the schema or the format of a response. Avoiding breaking changes in your API minimizes breakage to client code. Communicating changes when they do occur enables developers to take advantage of new features and, in the rare case of a breaking change, take action.</p>
           </section>
           <section class="outcome">
             <p class="subhead">Intended Outcome</p>
@@ -3533,8 +3479,8 @@ When designing APIs, use an architectural style that is founded on the technolog
           </section>
           <section class="how">
             <p class="subhead">Possible Approach to Implementation</p>
-          <p>When improving your API, focus on adding new calls or new, unrequired options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
-            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI. </p>
+          <p>When improving your API, focus on adding new calls or new options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
+            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI.</p>
           <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           <aside class="example">Some examples of breaking changes to an API include:
             <ul>
@@ -3547,7 +3493,7 @@ When designing APIs, use an architectural style that is founded on the technolog
               <li>Changing the structure of an XML response</li>
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
-<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>. </p>
+<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>.</p>
 
           </aside>
           <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
@@ -3581,11 +3527,11 @@ When designing APIs, use an architectural style that is founded on the technolog
     <!-- begin of Data Preservation -->
     <section id="dataPreservation">
       <h3>Data Preservation</h3>
-      This section describes best practices related to <a href="#data_preservation">data
+      <p>This section describes best practices related to <a href="#data_preservation">data
         preservation</a>. Albeit being a closely related topic <a href="#data_archiving">archiving</a>
-      is considered out of scope for this group and therefore not covered here.
+      is considered out of scope for this group and therefore not covered here.</p>
 
-      <div class="note"> Data Preservation Best Practices are still under discussion (see <a href="https://www.w3.org/2013/dwbp/track/issues/251"> ISSUE-251 </a>). We're keen to hear comments about the following questions:
+      <div class="note"><p>Data Preservation Best Practices are still under discussion (see <a href="/2013/dwbp/track/issues/251"> ISSUE-251 </a>). We're keen to hear comments about the following questions:</p>
 <ul>
 <li> Do we need the BP "Use a trusted serialization format for preserved data dumps" or this should be covered under the BP about using standardized formats? </li>
 <li> Do we need the BP "Update the status of identifiers" or this should be covered under versioning or unavailability? </li>
@@ -3606,9 +3552,9 @@ When designing APIs, use an architectural style that is founded on the technolog
             description of the resources found in the dataset. Ideally, the
             preservation of a particular dataset would involve preserving all
             its context. That is the entire Web of Data. </p>
-          <p>At ingestion time an evaluation of the linkage of Web data dataset
+          <p>At ingestion time an evaluation of the linkage of the dataset
             dump to already preserved resources is assessed. The presence of all
-            the vocabularies and target resources in uses is sought in a set of
+            the vocabularies and target resources it uses is sought in a set of
             digital archives taking care of preserving Web data. Datasets for
             which very few of the vocabularies used and/or resources pointed out
             are already preserved somewhere should be flagged as being at risk.</p>
@@ -3616,8 +3562,6 @@ When designing APIs, use an architectural style that is founded on the technolog
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
           <p>Assessing dataset coverage will enable data consumers to appreciate the coverage and external dependencies of a given dataset.</p>
-          <!--<p>It should be possible to appreciate the coverage and external
-            dependencies of a given dataset.</p> -->
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
@@ -3651,7 +3595,6 @@ When designing APIs, use an architectural style that is founded on the technolog
       ex:usualVehicleType dbpedia:Articulated_bus ;
       foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort
       .
-
   …
 </pre>
             <p>Those triples make use of the "gtfs" vocabulary and a custom one
@@ -3697,7 +3640,6 @@ When designing APIs, use an architectural style that is founded on the technolog
       ex:usualVehicleType dbpedia:Articulated_bus;
       foaf:isPrimaryTopicOf ex:Bullfrog_Furnace_Creek_Resort
       .
-
   …
 
   # Custom vocabulary element
@@ -3738,34 +3680,32 @@ When designing APIs, use an architectural style that is founded on the technolog
       <!-- begin of serialisation BP -->
       <div class="practice">
         <p><span id="Serialisation" class="practicelab">Use a trusted
-            serialisation format for preserved data dumps</span></p>
+            serialization format for preserved data dumps</span></p>
         <p class="practicedesc">Data depositors willing to send a data dump for
-          long term preservation must use a well established serialisation.</p>
+          long term preservation must use a well established serialization.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
           <p>Web data follows an abtract data model that can be expressed in
             different ways (RDF/XML, JSON-LD, ...). Using a well-established
-            serialisation of this data increases its chances of reuse. </p>
+            serialization of this data increases its chances of reuse. </p>
           <p>Institutes, such as national archives, that are engaged in digital preservation are tasked with monitoring
-            file formats regularly for potential risk of obsolescence. Datasets which have been acquired in some
+            file formats regularly for potential risk of obsolescence. Datasets that have been acquired in some
             format some years ago may have to be converted into another format
             in order to still be usable with more modern software (see
             [[ROSENTHAL]]). This task can be made more challenging, or even
-            impossible, if non-standard serialisation formats are used by data
+            impossible, if non-standard serialization formats are used by data
             depositors.</p>
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>Trusted serialisation formats will enable machines to process a datasets even if the original software that was used to create it is no longer available or supported.</p>
-          <!--<p>It should be possible to read and load the dataset into a computer for manipulation
-            even if the original software that was used to create it is no longer available or supported.</p> -->
+          <p>Trusted serialization formats will enable machines to process a dataset even if the original software that was used to create it is no longer available or supported.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>Give preference to non-binary Web data serialisation formats that are available as open
+          <p>Give preference to non-binary Web data serialization formats that are available as open
             standards. For instance those provided by the W3C [[FORMATS]]. </p>
           <aside class="example">
-            <p>Those triples are serialised as RDf using the Turtle W3C recommendation.
+            <p>Those triples are serialized as RDF using the Turtle W3C Recommendation.
               It is a text-based format which is supported by the majority of
               software able to process Web data. This format can thus be trusted
               for preservation.</p>
@@ -3774,16 +3714,14 @@ When designing APIs, use an architectural style that is founded on the technolog
      foaf:basedNear dbpedia:Cardiff;
      foaf:knows ex:john.
                  </pre>
-            <p>A custom-made serialisation of the same data such as the comma-delimited example that follows
-              is an example of an inappropriate serialisation of RDF and is neither hrlpful nor good practice for preserving the dataset.</p>
+            <p>A custom-made serialization of the same data such as the comma-delimited example that follows
+              is an example of an inappropriate serialization of RDF and is neither helpful nor good practice for preserving the dataset.</p>
             <pre class="highlight">ex:bob,a,ex:staff;###,foaf:basedNear,dbpedia:Cardiff;###,foaf:knows,ex:john.
                  </pre>
           </aside>
         </section>
         <section class="test">
           <p class="subhead">How to Test</p>
-          <!--<p>Try to open the data dump with different
-            software.</p> -->
           <p>Check that the dataset can be read by a standard text editor. Try to dereference the HTTP URIs present in the data dump using for example [[cURL]], confirming that the Content-Type header matches the format you expect to get.</p>
         </section>
         <section class="ucr">
