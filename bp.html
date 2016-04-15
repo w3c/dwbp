@@ -3747,7 +3747,7 @@ A usual resident was generally defined as someone who spent most of their time a
           "live" counterparts.</p>
         <section class="axioms">
           <p class="subhead">Why</p>
-          <p>URI dereferencing is a primary interface to data on the Web.
+          <p>URI dereferencing is the primary interface to data on the Web.
             Linking preserved datasets with the original URI informs the data
             consumer (which might be a computer programme) that there are other, more recent, versions and facilitates determining the status of these resources.</p>
           <p>During its life cycle a dataset may undergo several modifications resulting in multiple versions.
@@ -3760,61 +3760,57 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="outcome">
           <p class="subhead">Intended Outcome</p>
-          <p>A link is maintained between the URI of a resource, the most
-            up-to-date description available for it, and preserved descriptions.
-            If the dataset resource does not exist any more then the description should say
+          <p>When dereferenced, the URI of a resource should provide the most
+            up-to-date description available for it and link to preserved descriptions.
+            If the dataset resource no longer exists then the description should say
             so and refer to the last preserved description that was available.</p>
         </section>
         <section class="how">
           <p class="subhead">Possible Approach to Implementation</p>
-          <p>There are a variety of HTTP status codes that could be put into use
+          <p>There are a variety of HTTP status codes that could be used
             to relate the URI with its preserved description. In particular,
             200, 410 and 303 can be used for different scenarios:</p>
           <ul>
-            <li>200 =&gt; there is a new description which contains pointers to the
+            <li>200 (OK) =&gt; there is a new description which contains pointers to the
               archived description</li>
-            <!--              <li>404 =&gt; the resource just died, the URI consumer has to go
-                find an archive to look for it</li> -->
-            <li>410 =&gt; the resource is no longer available but it has been
+            <li>410 (Gone) =&gt; the resource is no longer available but it has been
               removed under a controlled process cf. 404 which simply states
               that something is not available.</li>
-            <li>303 =&gt; the resource identified by this URI is no longer
+            <li>303 (See other) =&gt; the resource identified by this URI is no longer
               served here but there is a preserved description at a different
               location.</li>
-            <!--              <li>209 =&gt; this resource does not exist any more but we have
-                some information about it. The description could include a list                of locations having different preserved descriptions over                different times.</li> -->
           </ul>
           <p>In addition to the status codes, HTTP Link headers can also be used
             to relate resources to their preserved descriptions.</p>
-            <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div>
+<!--            <div class="note"> The following example needs to be updated to use the URI http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05. </div> -->
           <aside class="example">
             <p>One approach with a link header is to use the Memento protocol to
               give a link to a timegate providing access to the preserved
               descriptions of the resource:</p>
-            <pre class="highlight">curl -I http://example.org/bus-stops-001
+            <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 
 HTTP/1.1 200 OK
 Memento-Datetime: Sun, 05 April 2015 00:00:00 GMT
-Link: http://example.org/bus-stops; rel=“original”, http://example.org/timegate/dataset; rel=“timegate”
+Link: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05; rel=“original”, http://data.mycity.example.com/timegate/public-transport/road/bus/dataset/bus-stops; rel=“timegate”
             </pre>
             <p>Using HTTP status code the data consumer can be redirected to the
               most recent description of the entity. In the following example a
-              request for the resource "http://example.org/bus-stops-001" is
+              request for the resource "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops" is
               first redirected to the description
-              "http://example.org/data/bus-stops-001" which, as it has been
+              "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05" which, as it has been
               preserved and flagged as invalid, redirects the client to the
-              newer description "http://example.org/newdata/bus-stops-001"</p>
-            <pre class="highlight">curl -L -I http://example.org/bus-stops-001
+              newer description "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2016-04-15"</p>
+            <pre class="highlight">curl -L -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
 
 HTTP/1.1 303 See Other
-Location: http://example.org/data/bus-stops-001
+Location: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
 Link: http://example.org/newdata/bus-stops-001, rel="new"
 
 HTTP/1.1 303 See Other
-Location: http://example.org/newdata/bus-stops-001
-Link: http://example.org/data/bus-stops-001, rel="previous"
+Location: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2016-04-15
+Link: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05, rel="previous"
 
-HTTP/1.1 200 Ok
+HTTP/1.1 200 OK
            </pre>
           </aside>
         </section>
