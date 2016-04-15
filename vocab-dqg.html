@@ -21,7 +21,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-04-12",
+                publishDate : "2016-04-15",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -194,7 +194,7 @@
                         authors : [ "Holger Knublauch", "Arthur Ryman" ],
                         date : "28 January 2016",
                         status : "W3C Working Draft",
-                        href : "http://www.w3.org/community/odrl/two/model/"
+                        href : "https://www.w3.org/TR/shacl/"
                     },
                     "ODRL" : {
                         title : "ODRL Version 2.1 Core Model",
@@ -838,9 +838,6 @@
                         </table>
                     </section>
 
-
-
-
                 </section>
 
                 <section id="dqv:Category">
@@ -890,7 +887,7 @@
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Represents a dataset of quality measures, evaluations of
+                                <td>Represents a dataset of quality measurements, evaluations of
                                     a given dataset (or dataset distribution) against a specific
                                     quality metric.</td>
                             </tr>
@@ -904,6 +901,23 @@
                             <tr>
                                 <td class="prop">Equivalent class</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#QualityGraph">daq:QualityGraph</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                  <section id="dqv:QualityPolicy">
+                    <h3>Class: Quality Policy</h3>
+                    <table class="definition">
+                        <thead>
+                            <tr>
+                                <th>RDF Class:</th>
+                                <th><a href="#dqv:QualityPolicy">dqv:QualityPolicy</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="prop">Definition:</td>
+                                <td>Represents a policy or agreement that is chiefly governed by data quality concerns.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -950,6 +964,27 @@ EquivalentClasses(
                             hasTarget.</p>
                     </div>
 
+                </section>
+                <section id="dqv:QualityCertificate">
+                    <h3>Class: Quality Certificate</h3>
+                    <table class="definition">
+                        <thead>
+                            <tr>
+                                <th>RDF Class:</th>
+                                <th><a href="#dqv:UserQualityFeedback">dqv:QualityCertificate</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="prop">Definition:</td>
+                                <td>An annotation that associates a resource (especially, a dataset or a distribution) to another resource (for example, a document) that certifies the resource's quality according to a set of quality assessment rules.</td>
+                            </tr>
+                            <tr>
+                                <td class="prop">Subclass of:</td>
+                                <td><a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
                 <section id="dqv:UserQualityFeedback">
                     <h3>Class: User Quality Feedback</h3>
@@ -1115,7 +1150,9 @@ SubObjectPropertyOf(
                             </tr>
                         </tbody>
                     </table>
+                     <p> The section entitled <a href="#expressQualityDerivation">"Expressing derivation between quality metrics, measurements and annotations"</a> shows examples of uses of this property. 
 
+</p>
                 </section>
                 
                 <section id="dqv:qualityAssessment">
@@ -1817,8 +1854,8 @@ SubObjectPropertyOf(
 
 :importingForPropertyPercentage 
     a dqv:Metric ;
-    skos:definition "Ratio between novel preferred labels or the alternative labels 
-    gained via skos:exactMatch link and preferred labels or the alternative labels 
+    skos:definition "Ratio between novel preferred or alternative labels 
+    gained via skos:exactMatch links and preferred or alternative labels 
     already in the dataset."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension  :completeness .
@@ -1826,20 +1863,20 @@ SubObjectPropertyOf(
 :completenessGain
     a  dqv:Dimension ;
     skos:prefLabel "Completeness Gain"@en ;
-    skos:definition "Completeness Gain refers to the degree to which  a linkset 
-    contributes to obtain all required information in a particular dataset."@en ;
+    skos:definition "Degree to which a linkset 
+    contributes to obtaining all required information in a particular dataset."@en ;
     dqv:inCategory :complementationGain 
     .
 
 :complementationGain
     a  dqv:Category ;
-    skos:definition "Category that groups dimensions measuring the quality gain 
+    skos:definition "Category that groups dimensions measuring the data quality gain 
     obatined by exploiting linksets."@en
     .
 </pre>
-                    <p>The quality assessment of the "label importing" can be made
-                        dependent on two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
-                        respectively the SKOS property and the language tag. We extend DQV
+                    <p>The quality assessment of the "label importing" can depend on
+two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
+                        respectively the SKOS property and the language tag considered for measuring the completeness gains. We extend DQV
                         to represent these parameters.</p>
 
                     <pre class="highlight">
@@ -1852,7 +1889,7 @@ SubObjectPropertyOf(
 
 :onProperty
     a qb:DimensionProperty, rdf:Property ;
-    rdfs:comment 	"property which label importing is assessed."@en ;
+    rdfs:comment 	"property on which label importing is assessed."@en ;
     rdfs:domain 	dqv:QualityMeasurement ;
     rdfs:label  	"label import assessment property"@en ;
     rdfs:range     	rdf:Property 
@@ -2013,13 +2050,7 @@ SubObjectPropertyOf(
                         locally introduced URI.
                     </p>
                 <div class="note">
-                    <p>
-                        Finer-grained representation of conformance statements can be found in
-                        the literature, and applications with more complex requirements may implement them.
-                        The GeoDCAT Application Profile, for example, suggests a "provisional mapping" for extended profiles,
-                        which re-uses the PROV data model for provenance (see Annex II.14 at [[GeoDCAT-AP]]).
-                        Such patterns come however at the cost of having to publish and exchange representations that
-                        are much more elaborate.
+                    <p>Finer-grained representation of conformance statements can be found in the literature, and applications with more complex requirements may implement them, including for example the requirement of representing 'non-conformance' tested by specific procedures. The GeoDCAT Application Profile, for example, suggests a "provisional mapping" for extended profiles, which re-uses the PROV data model for provenance (see Annex II.14 at [[GeoDCAT-AP]]). Such patterns come however at the cost of having to publish and exchange representations that are much more elaborate. They will also have to be aligned with the result of another ongoing efforts on data validation and the reporting thereof, as currently discussed around SHACL, for example. We have thus decided to postpone addressing these requirements for now.
                     </p>
                     </div>
                 </section>
@@ -2087,52 +2118,55 @@ SubObjectPropertyOf(
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. The following  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
+                        <p>The need for documenting data precision (also sometimes refered to as "resolution") is a common requirement, in particular, when dealing with spatial data. The following example shows how DQV can meet this requirement relying on two distinct quality dimensions.</p>
                     <pre class="highlight">
-:myDataset a dcat:Dataset;
+:myDataset a dcat:Dataset ;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
 
 :myDatasetPrecision a dqv:QualityMeasurement ;
-   dqv:hasMetric :spatialResolutionAsDistanceInMetres ;
+   dqv:isMeasurementOf :spatialResolutionAsDistanceInMetres ;
    dqv:value "1000"^^xsd:decimal ;
    sdmx-attribute:unitMeasure  &lt;http://www.wurvoc.org/vocabularies/om-1.8/metre&gt; 
    . 
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
-    skos:definition "It expresses dataset spatial resolution as distance"@en ;
+    skos:definition "Spatial resolution of a dataset expressed as distance"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
-
-:myDatasetAccuracy a dqv:QualityMeasurement ;
-   dqv:hasMetric :spatialAccuracy ;
-   dqv:value "98.2"^^xsd:decimal 
-   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
-   .
-   
-:spatialAccuracy   a  dqv:Metric;
-    skos:definition "It returns the percentage of spatial element that are found accurate
-    according to  methodology XYZ"@en ;
-    dqv:expectedDataType xsd:decimal ;
-    dqv:inDimension ldqd:semanticAccuracy 
-    .
-    
 </pre>
-<p>Precision can be alternatively expressed  specifying spatial resolution as "equivalent scale" (e.g., 1:1,000, 1:1,000,000, etc.) - i.e., with a fraction, without unit of measure.  </p>
+
+<p>Precision can be alternatively expressed specifying spatial resolution by means of an "equivalent scale", i.e., with a fraction, without unit of measure (e.g., 1:1,000, 1:1,000,000, etc.).</p>
                                         <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecisionES .
 
 :spatialResolutionAsEquivalentScale a dqv:Metric;
-    skos:definition "It expresses dataset spatial resolution as equivalent scale, by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
+    skos:definition "Spatial resolution of a dataset expressed as equivalent scale,
+		    by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
     
-:myDatasetPrecisionES  dqv:QualityMeasurement ;
-    dqv:hasMetric :spatialResolutionAsEquivalentScale ;
+:myDatasetPrecisionES a dqv:QualityMeasurement ;
+    dqv:isMeasurementOf :spatialResolutionAsEquivalentScale ;
     dqv:value "0.000001"^^xsd:decimal
     .   
+</pre>
+<p>Note that the precision (or resolution) of a dataset is not equivalent to its accuracy. High precision values are not necessarily accurate. High precision values can even be pointless, as when one asserts that Magna Carta was signed at <code>1215-06-15T00:00:00</code>. Accuracy is nonetheless an important dimension of data quality. Data accuracy metrics and measurements can be represented with DQV, as in the following example:</p>
+<pre class="highlight">
+:myDatasetAccuracy a dqv:QualityMeasurement ;
+   dqv:isMeasurementOf :spatialAccuracy ;
+   dqv:value "98.2"^^xsd:decimal 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
+   .
+   
+:spatialAccuracy   a  dqv:Metric;
+    skos:definition "Percentage of spatial elements that are found accurate
+    according to  methodology XYZ"@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension ldqd:semanticAccuracy 
+    .
 </pre>
                 </section>
                         
@@ -2141,17 +2175,6 @@ SubObjectPropertyOf(
 
             <section id="DimentsionsMetricsHints" class="informative">
                 <h2>Dimensions and metrics hints</h2>
-                <div class="note">
-                    <p>
-                        <!--This section will be refined, especially considering public feedback. -->
-                        Examples in this  section will be refined as soon as <a
-                            href="https://www.w3.org/2013/dwbp/track/issues/204">Issue-204</a>
-                        and <a href="https://www.w3.org/2013/dwbp/track/issues/205">Issue-205</a>
-                        are solved. Suggestions and revisions of the
-                        mappings between ISO 25012 and Zaveri et al.'s dimensions as well as
-                        any other well-known classification are welcome.
-                    </p>
-                </div>
                 <p>
                     This section gathers relevant quality dimensions and ideas for
                     corresponding metrics, which might be eventually represented as
@@ -2628,11 +2651,11 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
                 </section>
             <section id="ExampleOfMetrics">
-                <h2>Examples of Metrics</h2>
+                <h2>Examples of metrics</h2>
 
             <p>This section presents examples of metrics inspired by those reviewed in Zaveri et al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated. Note that they are not all specific to linked data quality, as some dimensions in Zaveri et al. matches the dimensions of ISO/IEC 25012 (see previous sub-section and Annex).</p>
             <div class="note">
-            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/222">issue 222</a>, <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
+            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved <a href="https://www.w3.org/2013/dwbp/track/issues/223">issue 223</a> and <a href="https://www.w3.org/2013/dwbp/track/issues/224">issue 224</a>.</p>
             </div>
 
         <pre class="highlight">	
@@ -2712,92 +2735,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
         </section>
 
-
-                <!--
-
-        </section>
-
-
-
-                <section id="Availability">
-                <h3>Availability</h3>
-                <p>
-                    <em>Can the data be accessed now and over time?</em>
-                </p>
-                <ul>
-                    <li>Yes/no, maybe with explanation why the data is not available
-                        (privacy, security, archived, lost, not yet captured etc.)</li>
-                    <li>Open/restricted/registration, again possibly with
-                        explanation</li>
-                    <li>For access/re-use</li>
-                    <li>Indication of persistence and longevity</li>
-                </ul>
-                <p>Since a dcat:Dataset is an abstract thing, it might be
-                    available at any point in time, past present or future. We already
-                    have dcterms:issued so two properties come to mind:</p>
-                <ul>
-                    <li>dcat:verifiedAvailableOn {date} (the last time
-                        someone/something checked that the dataset was accessible, probably
-                        applies to a dcat:Distribution, not dcat:Dataset)</li>
-                    <li>dcat:availableUntilAtLeast {date} (Potentially a data on
-                        which the dataset is expected to be withdrawn)</li>
-                </ul>
-                <p>Other questions that come to mind: how do we indicate that the
-                    dataset is expected to be available 'for the foreseeable future?'</p>
-            </section>
-            <section id="Processability">
-                <h3>Processability</h3>
-                <p>
-                    <em>Is the data machine readable ?</em>
-                </p>
-                <ul>
-                    <li>Level on the 5-star scale (although there were opinions that
-                        it is dangerous to attach value to the linking because the data
-                        might be good but link to ‘bad’ data)</li>
-                    <li>Links to metadata standards used and data model/schema to
-                        enable automatic processing</li>
-                </ul>
-            </section>
-            <section id="Accuracy">
-                <h3>Accuracy</h3>
-                <p>
-                    <em>is the data correctly representing the real-world entity or event?</em>
-                </p>
-            </section>
-            <section id="Consistency">
-                <h3>Consistency</h3>
-                <p>
-                    <em>Is the data not containing contradictions?</em>
-                </p>
-                <p><em>Can I use it readily in an analysis tool? Can I open the dataset in R and do some statistical manipulations? Can I open it in Tableau and make a visualization without doing a lot of cleaning?</em></p>
-                <p>There could be some overlap with accuracy.</p>
-            </section>
-            <section id="Relevance">
-                <h3>Relevance</h3>
-                <p><em>Does the dataset include an appropriate amount of data?</em></p>
-                <p>It might be useful to include some information about the
-                    context (e.g., why was the data created and what purpose is it
-                    supposed to serve).</p>
-            </section>
-            <section id="Completeness">
-                <h3>Completeness</h3>
-                <p><em>Does the data include all data items representing the entity or event ?</em></p>
-            </section>
-            <section id="Conformance">
-                <h3>Conformance</h3>
-                <p><em>Is the data following accepted standards ?</em></p>
-            </section>
-            <section id="Credibility">
-                <h3>Credibility</h3>
-                <p><em>Is the data based on trustworthy sources ?</em></p>
-                <p>This is described using the provenance vocabulary PROV-O</p>
-            </section>
-            <section id="Timeliness">
-                <h3>Timeliness</h3>
-                <p><em>Is the data representing the actual situation and it is published soon enough ?</em></p>
-            </section>
-        -->
-        </section>
+</section>
 
 
                 <section id="requirements" class="informative">
@@ -2852,7 +2790,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
                     <p>The editors also gratefully acknowledge the contributions made to this document by all members of the working group, specially the contributions received from  Ghislain Auguste Atemezing, Carlos Laufer, Annette Greiner,  Michel Dumontier, Eric Stephan.</p>
 
-                    <p>The editors would also like to thank comments received from non-members of this working group, such as Andrea Perego, Rachel E. Heaven, Linda van den Brink, Werner Bailer, Jon Blower, Guillaume Duffes, Davide Ceolin.</p>
+                    <p>The editors would also like to thank comments received from non-members of this working group, such as Andrea Perego, Rachel E. Heaven, Linda van den Brink, Werner Bailer, Jon Blower, Guillaume Duffes, Davide Ceolin, Anisa Rula.</p>
 
 
                 </section>
@@ -2867,16 +2805,15 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                         <li>Revision of the Data Model in Fig 1 and related description.</li>
                         <li>Revision of the section "Vocabulary Specification".</li>
                         <li>Inclusion of "Vocabulary Specification" subsections
-                            describing the property prov:wasDerivedFrom, and the instances dqv:qualityAssessment and dqv:precision.</li>
+                            describing the classes  dqv:QualityCertificate and dqv:QualityPolicy, the property prov:wasDerivedFrom,  the instances dqv:qualityAssessment and dqv:precision.</li>
                         <li>Revision of examples, and inclusion of new examples to express (i) questions about dataset quality, (ii) quality classification, (iii) derivation between quality metrics, measurements and annotations, (iv) conformance of a dataset with a quality policy, (v) dataset precision and accuracy.</li>
-                        <li>Inclusion of the sections "Quality dimensions defined in ISO/IEC 25012", "Quality dimensions defined for linked data" and  "Examples of Metrics".</li>
+                        <li>Inclusion of the sections "Quality dimensions defined in ISO/IEC 25012", "Quality dimensions defined for linked data" and  "Examples of metrics".</li>
                         <li>Inclusion of the appendix "Correspondences between quality dimensions".</li>
                         <li>Revision of the document according to resolved issues.</li>
                         <li>Inclusion of new open issues arising from group discussion
                             and external feedback.</li>
-                        <li>Creation of an RDF file for DQV at
-                            http://www.w3.org/ns/dqv#.</li>
-                         <li>Creation of an RDF file for DQV at
+                        <li>Creation of an RDF file for linked data dimensions.</li>
+                         <li>Update  of the RDF file for DQV at
                             http://www.w3.org/ns/dqv#.</li>
                     </ul>
                 </section>
