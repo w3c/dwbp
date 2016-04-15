@@ -1854,8 +1854,8 @@ SubObjectPropertyOf(
 
 :importingForPropertyPercentage 
     a dqv:Metric ;
-    skos:definition "Ratio between novel preferred labels or the alternative labels 
-    gained via skos:exactMatch link and preferred labels or the alternative labels 
+    skos:definition "Ratio between novel preferred or alternative labels 
+    gained via skos:exactMatch links and preferred or alternative labels 
     already in the dataset."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension  :completeness .
@@ -1863,20 +1863,20 @@ SubObjectPropertyOf(
 :completenessGain
     a  dqv:Dimension ;
     skos:prefLabel "Completeness Gain"@en ;
-    skos:definition "Completeness Gain refers to the degree to which  a linkset 
-    contributes to obtain all required information in a particular dataset."@en ;
+    skos:definition "Degree to which a linkset 
+    contributes to obtaining all required information in a particular dataset."@en ;
     dqv:inCategory :complementationGain 
     .
 
 :complementationGain
     a  dqv:Category ;
-    skos:definition "Category that groups dimensions measuring the quality gain 
+    skos:definition "Category that groups dimensions measuring the data quality gain 
     obatined by exploiting linksets."@en
     .
 </pre>
-                    <p>The quality assessment of the "label importing" can be made
-                        dependent on two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
-                        respectively the SKOS property and the language tag. We extend DQV
+                    <p>The quality assessment of the "label importing" can depend on
+two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
+                        respectively the SKOS property and the language tag considered for measuring the completeness gains. We extend DQV
                         to represent these parameters.</p>
 
                     <pre class="highlight">
@@ -1889,7 +1889,7 @@ SubObjectPropertyOf(
 
 :onProperty
     a qb:DimensionProperty, rdf:Property ;
-    rdfs:comment 	"property which label importing is assessed."@en ;
+    rdfs:comment 	"property on which label importing is assessed."@en ;
     rdfs:domain 	dqv:QualityMeasurement ;
     rdfs:label  	"label import assessment property"@en ;
     rdfs:range     	rdf:Property 
@@ -2050,7 +2050,7 @@ SubObjectPropertyOf(
                         locally introduced URI.
                     </p>
                 <div class="note">
-                    <p>Finer-grained representation of conformance statements can be found in the literature, and applications with more complex requirements may implement them, including for example the requirement of representing 'non-conformance' tested by specific procedures. The GeoDCAT Application Profile, for example, suggests a "provisional mapping" for extended profiles, which re-uses the PROV data model for provenance (see Annex II.14 at [GeoDCAT-AP]). Such patterns come however at the cost of having to publish and exchange representations that are much more elaborate. They will also have to be aligned with the result of another ongoing efforts on data validation and the reporting thereof, as currently discussed around SHACL, for example. We have thus decided to postpone addressing these requirements for now.
+                    <p>Finer-grained representation of conformance statements can be found in the literature, and applications with more complex requirements may implement them, including for example the requirement of representing 'non-conformance' tested by specific procedures. The GeoDCAT Application Profile, for example, suggests a "provisional mapping" for extended profiles, which re-uses the PROV data model for provenance (see Annex II.14 at [[GeoDCAT-AP]]). Such patterns come however at the cost of having to publish and exchange representations that are much more elaborate. They will also have to be aligned with the result of another ongoing efforts on data validation and the reporting thereof, as currently discussed around SHACL, for example. We have thus decided to postpone addressing these requirements for now.
                     </p>
                     </div>
                 </section>
@@ -2118,9 +2118,9 @@ SubObjectPropertyOf(
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data accuracy and precision is a common requirement,  in particular,  when dealing with spatial data. The following  example shows how  DQV can meet this requirement relying on two distinct quality dimensions.</p>
+                        <p>The need for documenting data precision (also sometimes refered to as "resolution") is a common requirement, in particular, when dealing with spatial data. The following example shows how DQV can meet this requirement relying on two distinct quality dimensions.</p>
                     <pre class="highlight">
-:myDataset a dcat:Dataset;
+:myDataset a dcat:Dataset ;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
 
 :myDatasetPrecision a dqv:QualityMeasurement ;
@@ -2130,32 +2130,20 @@ SubObjectPropertyOf(
    . 
    
 :spatialResolutionAsDistanceInMetres  a  dqv:Metric;
-    skos:definition "It expresses dataset spatial resolution as distance"@en ;
+    skos:definition "Spatial resolution of a dataset expressed as distance"@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
-
-:myDatasetAccuracy a dqv:QualityMeasurement ;
-   dqv:isMeasurementOf :spatialAccuracy ;
-   dqv:value "98.2"^^xsd:decimal 
-   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
-   .
-   
-:spatialAccuracy   a  dqv:Metric;
-    skos:definition "It returns the percentage of spatial element that are found accurate
-    according to  methodology XYZ"@en ;
-    dqv:expectedDataType xsd:decimal ;
-    dqv:inDimension ldqd:semanticAccuracy 
-    .
-    
 </pre>
-<p>Precision can be alternatively expressed  specifying spatial resolution as "equivalent scale" (e.g., 1:1,000, 1:1,000,000, etc.) - i.e., with a fraction, without unit of measure.  </p>
+
+<p>Precision can be alternatively expressed specifying spatial resolution by means of an "equivalent scale", i.e., with a fraction, without unit of measure (e.g., 1:1,000, 1:1,000,000, etc.).</p>
                                         <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecisionES .
 
 :spatialResolutionAsEquivalentScale a dqv:Metric;
-    skos:definition "It expresses dataset spatial resolution as equivalent scale, by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
+    skos:definition "Spatial resolution of a dataset expressed as equivalent scale,
+		    by using a representative fraction (e.g., 1:1,000, 1:1,000,000)."@en ;
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
@@ -2164,6 +2152,21 @@ SubObjectPropertyOf(
     dqv:isMeasurementOf :spatialResolutionAsEquivalentScale ;
     dqv:value "0.000001"^^xsd:decimal
     .   
+</pre>
+<p>Note that the precision (or resolution) of a dataset is not equivalent to its accuracy. High precision values are not necessarily accurate. High precision values can even be pointless, as when one asserts that Magna Carta was signed at <code>1215-06-15T00:00:00</code>. Accuracy is nonetheless an important dimension of data quality. Data accuracy metrics and measurements can be represented with DQV, as in the following example:</p>
+<pre class="highlight">
+:myDatasetAccuracy a dqv:QualityMeasurement ;
+   dqv:isMeasurementOf :spatialAccuracy ;
+   dqv:value "98.2"^^xsd:decimal 
+   sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/Percentage&gt;
+   .
+   
+:spatialAccuracy   a  dqv:Metric;
+    skos:definition "Percentage of spatial elements that are found accurate
+    according to  methodology XYZ"@en ;
+    dqv:expectedDataType xsd:decimal ;
+    dqv:inDimension ldqd:semanticAccuracy 
+    .
 </pre>
                 </section>
                         
