@@ -256,7 +256,7 @@ var respecConfig = {
      	  "href":"http://vocab.gtfs.org/terms#",
         "authors": ["Pieter Colpaert", "Andrew Byrd"]
        },
-       "NETDFC": {
+       "NETCDF": {
 	      "title": "NetCDF",
      	  "href":"http://www.unidata.ucar.edu/software/netcdf/docs/",
         "authors": ["Russ Rew", "Glenn Davis", "Steve Emmerson", "Harvey Davies", "Ed Hartnett", "Dennis Heimbigner", "Ward Fisher"],
