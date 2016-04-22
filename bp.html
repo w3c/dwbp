@@ -909,7 +909,7 @@ table.bptable caption {
               <li> when defining machine readable metadata, reusing existing
                 standard terms and popular vocabularies are strongly
                 recommended. For example, Dublin Core Metadata (DCMI) terms
-                [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] should
+                [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] can
                 be used to provide descriptive metadata.</li>
             </ul>
             <aside class="example">
@@ -1090,7 +1090,9 @@ The dataset is classified under
           </p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Providing <a href="#locale_parameter">locale</a> parameters
+            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+
+            <!-- <p>Providing <a href="#locale_parameter">locale</a> parameters
               helps humans and computer applications to understand and to
               manipulate the data, improving the reuse of the data. Providing
               information about the locality for which the data is currently
@@ -1098,15 +1100,16 @@ The dataset is classified under
               and number formats can have very different meanings, despite
               similar appearances. Making the language explicit allows users to
               determine how readily they can work with the data and may enable
-              automated translation services.</p>
+              automated translation services.</p> -->
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Locale parameters metadata will enable humans and software agents to interpret the meaning of dates, times and numbers accurately by referring to locale information.</p>
+            <p>To enable humans and software agents accurately to interpret the meaning of strings representing dates, times, currencies and numbers etc.</p>
+            <!-- <p>Locale parameters metadata will enable humans and software agents to interpret the meaning of dates, times and numbers accurately by referring to locale information.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Locale parameters metadata should include the following
+            <p>Locale parameters metadata can include the following
               information: </p>
             <ul>
               <li>The language(s) of the dataset.</li>
@@ -1175,14 +1178,16 @@ The dataset is classified under
             structure of a distribution must be described by metadata.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Providing information about the internal structure of a
+            <p>Providing information about the internal structure of a distribution is essential for others wishing to explore or query the dataset. It also helps people to understand the meaning of the data.</p>
+            <!--<p>Providing information about the internal structure of a
               distribution can be helpful when exploring or querying the
               dataset. Besides, structural metadata provides information that
-              helps to understand the meaning of the data.</p>
+              helps to understand the meaning of the data.</p> -->
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Structural metadata will enable humans to interpret the schema of a dataset and software agents to automatically process schema distributions.</p>
+            <p>To enable humans to interpret the schema of a dataset and software agents to automatically process distributions.</p>
+            <!--<p>Structural metadata will enable humans to interpret the schema of a dataset and software agents to automatically process schema distributions.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -1297,7 +1302,7 @@ The dataset is classified under
           information to be attached to data on the Web. According to the type
           of license adopted by the publisher, there might be more or fewer
           restrictions on sharing and reusing data. In the context of data on
-          the Web, the license of a dataset can be specified within the data, or
+          the Web, the license of a dataset can be specified within the metadata, or
           outside of it, in a separate document to which it is linked.
           <!-- begin of machine detectable license BP --> </p>
         <div class="practice">
@@ -1306,11 +1311,7 @@ The dataset is classified under
           <p class="practicedesc">Data license information should be available.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>The presence of license information is essential for data
-              consumers to assess the usability of data. User agents, for
-              example, may use the presence/absence of license information as a
-              trigger for inclusion or exclusion of data presented to a
-              potential consumer.</p>
+            <p>The presence of license information is essential for data consumers to assess the usability of data. User agents may use the presence/absence of license information as a trigger for inclusion or exclusion of data presented to a potential consumer.</p>
             <!--Even though the license may be presented in natural
                 language, where data links to the URL of a well known license,                the user agent may be able to present the well known features to                the potential consumer.-->
           </section>
@@ -1321,7 +1322,7 @@ The dataset is classified under
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
             <p>Data license information can be provided as a link to a human-readable license or as a link/embedded machine-readable license.</p>
-            <p>The machine readable version of the data license metadata may be
+            <p>The machine readable version of the data license metadata can be
               provided using one of the following vocabularies that include
               properties for linking to a license: </p>
             <ul>
@@ -1382,18 +1383,18 @@ The dataset is classified under
       <!-- begin of Data Provenance -->
       <section id="provenance">
         <h3>Data Provenance</h3>
-        <p><a href="#data_provenance">Data provenance</a> becomes particularly
+        <!--<p><a href="#data_provenance">Data provenance</a> becomes particularly
           important when data is shared between collaborators who might not have
           direct contact with one another either due to proximity or because the
           published data outlives the lifespan of the data provider projects or
-          organizations.</p>
+          organizations.</p> -->
         <p>The Web brings together business, engineering, and scientific
           communities creating collaborative opportunities that were previously
           unimaginable. The challenge in publishing data on the Web is providing
           an appropriate level of detail about its origin. The <a href="#data_producer">
           data producer</a> may not necessarily be the data provider and so
           collecting and conveying this corresponding metadata is particularly
-          important. Without provenance, consumers have no inherent way to trust
+          important. Without <a href="#data_provenance">provenance</a>, consumers have no inherent way to trust
           the integrity and credibility of the data being shared. Data
           publishers in turn need to be aware of the needs of prospective
           consumer communities to know how much provenance detail is
@@ -1406,14 +1407,16 @@ The dataset is classified under
             available. </p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Without accessible data provenance, data consumers will not know
-              the origin or history of the published data.</p>
+            <p>Provenance is one means by which consumers of a dataset judge its quality. Understanding its origin and history helps one determine whether to trust the data and provides important interpretive context.</p>
+            <!-- <p>Without accessible data provenance, data consumers will not know
+              the origin or history of the published data.</p> -->
             <!-- <p>Data provenance is metadata that corresponds to data. Data
                 provenance relies upon existing vocabularies that make                provenance easily identifiable such as the Provenance Ontology                [[PROV-O]].</p> -->
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Data provenance information will enable humans to know the origin or history of the dataset and will enable software agents to automatically process provenance information about the dataset.</p>
+            <p>To enable humans to know the origin or history of the dataset and to enable software agents to automatically process provenance information.</p>
+            <!-- <p>Data provenance information will enable humans to know the origin or history of the dataset and will enable software agents to automatically process provenance information about the dataset.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -1490,15 +1493,7 @@ The dataset is classified under
       <!-- begin of Data Quality -->
       <section id="quality">
         <h3>Data Quality</h3>
-        <p>The quality of a dataset can have a big impact on the quality of applications that use it. As a consequence, the inclusion of <a href="#data_quality"> data quality</a> information in data publishing and consumption pipelines is of primary importance. Usually, the assessment of quality involves
-          different kinds of quality dimensions, each representing groups of
-          characteristics that are relevant to publishers and consumers.
-          Measures and metrics are defined to assess the quality for each
-          dimension [[VOCAB-DQV]]. There are heuristics designed to fit specific
-          assessment situations that rely on quality indicators, namely, pieces
-          of data content, pieces of data meta-information, and human ratings
-          that give indications about the suitability of data for some intended
-          use.</p>
+        <p>The quality of a dataset can have a big impact on the quality of applications that use it. As a consequence, the inclusion of <a href="#data_quality">data quality</a> information in data publishing and consumption pipelines is of primary importance. Usually, the assessment of quality involves different kinds of quality dimensions, each representing groups of characteristics that are relevant to publishers and consumers. The Data Quality Vocabulary defines concepts such as measures and metrics to assess the quality for each quality dimension VOCAB-DQV. There are heuristics designed to fit specific assessment situations that rely on quality indicators, namely, pieces of data content, pieces of data meta-information, and human ratings that give indications about the suitability of data for some intended use.</p>
         <!--<p>Dimensions and metrics to adopt might largely depend on the
             specific application scenario, or even on the data domain. A            systematic review of dimensions, metrics adopted in the context of            Linked Open Data can be found in the recent literature (e.g., see            [[ZAVERI]]). </p> -->
         <!-- begin of Provide Data Quality BP -->
@@ -1519,20 +1514,22 @@ The dataset is classified under
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Data quality information will enable humans to know the quality of the dataset and its distributions, and software agents to automatically process quality information about the dataset and its distributions.</p>
+            <p>To enable people and software to assess the quality and therefore suitability of a dataset for their application. </p>
+            <!-- <p>Data quality information will enable humans to know the quality of the dataset and its distributions, and software agents to automatically process quality information about the dataset and its distributions.</p> -->
             <!--<p> Information about the quality of the data should be provided
                 for humans. Ideally it is also made available in machine                readable manner for processing by applications.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
+            <p>The machine readable version of the dataset quality metadata may be provided using the Data Quality Vocabulary developed by the <abbr title="Data on the Web Best Practices">DWBP</abbr> working group [[VOCAB-DQV]]. </p>
             <!-- <p>Depending on the application domain, information pertaining to
                 the quality may rely on specific quality metrics or                feedback-opinion. Specific quality metadata fields may or may                not be explicitly included in the metadata vocabularies adopted                by catalogs. Independently from domain-specific peculiarities,                the quality of data should be documented and known quality                issues should be explicitly stated in metadata. </p> -->
             <!--            <p>The definition of a Quality Vocabulary is included in the
               activity of the DWBP group in order to support in the              implementation of this Best Practice. The Quality Vocabulary is              foreseen as an extension to DCAT to cover the quality of the data,              how frequently is it updated, whether it accepts user corrections,              persistence commitments etc. When used by publishers, this              vocabulary will foster trust in the data amongst developers. </p> -->
-            <p>The machine readable version of the dataset quality metadata may
+            <!--<p>The machine readable version of the dataset quality metadata may
               be provided according to the vocabulary that is being developed by
               the <abbr title="Data on the Web Best Practices">DWBP</abbr>
-              working group , i.e., the Data Quality Vocabulary [[VOCAB-DQV]]. </p>
+              working group , i.e., the Data Quality Vocabulary [[VOCAB-DQV]]. </p> -->
             <aside class="example">
               <h5 class="subhead">Machine-readable</h5>
               <p> The example below shows the metadata for the CSV distribution
@@ -1631,10 +1628,10 @@ The dataset is classified under
           In the following, we present some scenarios where most publishers would agree that
           the revision should be considered a new version of the existing dataset. </p>
         <ul>
-          <li> Scenario 1: a new bus stop is created and it should to be added to the dataset;</li>
-          <li> Scenario 2: an existing bus stop is removed and it
+          <li>Scenario 1: a new bus stop is created and it should to be added to the dataset;</li>
+          <li>Scenario 2: an existing bus stop is removed and it
             should be deleted from the dataset;</li>
-          <li> Scenario 3: an error was identified in one of the existing
+          <li>Scenario 3: an error was identified in one of the existing
             bus stops stored in the dataset and this error must be corrected.</li>
         </ul>
         <p>In general, multiple datasets that represent time series or
@@ -1676,11 +1673,12 @@ The dataset is classified under
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Version indicators will enable humans and software agents to easily determine which version of a dataset they are working with.</p>
+            <p>To enable humans and software agents to easily determine which version of a dataset they are working with.</p>
+            <!--<p>Version indicators will enable humans and software agents to easily determine which version of a dataset they are working with.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p> The best method for providing versioning information
+            <p>The best method for providing versioning information
               will vary according to the context; however, there are some basic
               guidelines that can be followed, for example: </p>
             <ul>
@@ -1709,7 +1707,7 @@ The dataset is classified under
               number of annotation properties for version information.</p>
             <aside class="example">
               <h5 class="subhead">Machine-readable</h5>
-              <p> The example below shows the metadata for bus stops with
+              <p>The example below shows the metadata for bus stops with
                 the inclusion of the versioning metadata. The properties <code>owl:versionInfo</code> and <code>pav:version</code> are used to denote the version of the dataset. </p>
               <pre class="highlight">
   :bus-stops-2015-05-05
@@ -2407,17 +2405,21 @@ A usual resident was generally defined as someone who spent most of their time a
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Data in multiple formats will enable data consumers to work with the data without transforming it.</p>
+            <p>As many users as possible will be able to use the data without first having to transform it into their preferred format.</p>
+            <!--<p>Data in multiple formats will enable data consumers to work with the data without transforming it.</p> -->
             <!--<p> It should be possible for data consumers to work with the data
               without transforming it.</p> -->
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p> Consider the data formats most likely to be needed by intended
+            <p>Consider the data formats most likely to be needed and consider alternatives that are likely to be useful in the future. Data   publishers must balance the effort required to
+              make the data available in many formats against the cost of doing so, but providing at least
+              one alternative will greatly increase the usability of the data. </p>
+            <!--<p> Consider the data formats most likely to be needed by intended
               users, and consider alternatives that are likely to be useful in
               the future. Data publishers must balance the effort required to
               make the data available in many formats against the cost of doing so, but providing at least
-              one alternative will greatly increase the usability of the data.</p>
+              one alternative will greatly increase the usability of the data.</p> -->
             <p>A word of warning: local identifiers within the dataset, which may be exposed as fragment identifiers in URIs, must be consistent across the various formats.</p>
             
 <aside class="example">
@@ -2816,8 +2818,9 @@ A usual resident was generally defined as someone who spent most of their time a
         unavailable data, data publishers should publish information about
         unavoidable data gaps.</p>
       <div class="practice">
-        <p><span id="DataUnavailabilityReference" class="practicelab">Provide
-            data unavailability reference</span></p>
+        <span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span>
+        <!--<p><span id="DataUnavailabilityReference" class="practicelab">Provide
+            data unavailability reference</span></p> -->
         <p class="practicedesc">References to data that is not open, or
           available under different restrictions to the origin of the reference,
           should provide an explanation about how the referred to data can be accessed
@@ -2832,7 +2835,8 @@ A usual resident was generally defined as someone who spent most of their time a
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p>
+          <p>To enable data consumers to know that data that is referred to from the current dataset is unavailable or only available under different conditions.</p>
+          <!--<p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p> -->
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -3101,7 +3105,7 @@ A usual resident was generally defined as someone who spent most of their time a
               upon request. In this case, data publishers will provide an API to
               facilitate these read-only requests.</li>
           </ul>
-          <p>To engender greater credibility, in addition to data itself, publishers should provide access to
+          <p>To engender greater credibility, in addition to data itself, publishers can provide access to
           error conditions, anomalies, and instrument "house keeping" data. This will 
           enhance real-time applications' ability to interpret and convey
           real-time data quality to consumers.</p>
