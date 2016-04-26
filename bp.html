@@ -2542,115 +2542,42 @@ A usual resident was generally defined as someone who spent most of their time a
           exchange them, such as the ISO 25964 data model [[ISO-25964]] or W3C's
           Simple Knowledge Organization System [[SKOS-PRIMER]].</p>
 
-<div class="note"> There is an ongoing discussion about Use
-              standardized terms x Reuse Vocabularies <a href="https://www.w3.org/2013/dwbp/track/issues/253"> ISSUE-253 </a>. We are keen to have comments about this issue. </div>
-        <!-- begin of Provide Metadata Standardized BP -->
-        <div class="practice">
-          <p><span id="MetadataStandardized" class="practicelab">Use
-              standardized terms</span></p>
-          <p class="practicedesc">Standardized terms should be used to provide
-            data and metadata.</p>
-          <section class="axioms">
-            <h4 class="subhead">Why</h4>
-            <p>Using standardized code lists and commonly used terms for data
-              and metadata values, wherever possible, helps to avoid ambiguity and clashes between similar values.</p>
-          </section>
-          <section class="outcome">
-            <h4 class="subhead">Intended Outcome</h4>
-            <p> Standardized code lists and other commonly used terms will enhance interoperability and consensus among data publishers and consumers. </p>
-          </section>
-          <section class="how">
-            <h4 class="subhead">Possible Approach to Implementation</h4>
-<!--            <p>Values in datasets should refer as much as possible to
-              standardization efforts or organizations, which defines terms or codes as a
-              clear reference.</p> -->
-            <p>Organizations such as the Open Geospatial Consortium (OGC), <abbr title="International Standards Organization">ISO</abbr>, W3C, <abbr title="World Meteorological Organization">WMO</abbr> libraries and research data services, etc. provide
-              list of codes, terminologies and Linked Data vocabularies that can be used by everyone.</p>
-            <p>A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context
-              so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized values
-              is an efficient way to do this.</p>
-            <aside class="example"><ol>
-            <li>The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):<br />
-<pre class="highlight prettyprint prettyprinted">:bus-stops
-    dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
-</pre></li>
-            <li>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Centre Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:<br />
-<pre class="highlight prettyprint prettyprinted">:measurement-001 a prov:Activity ;
-    prov:used :sensor-001 .
-:sensor-001 a prov:Agent ;
-    dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
-</pre>
-           <p>Note that real-life data should use more specific classes and properties than the PROV terms shown here for
-              typing a measurement activity, an instrument and the relationship between these.</p></li>
-            <li>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publishes a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:<br />
-<pre class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
-    dct:temporal &lt;http://resource.geosciml.org/classifier/ics/ischart/Paleozoic&gt; .
-</pre></li>
-            <li>Google maintains the <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
-              a format for publishing public transportation data. This format relies on a set of fields like <code>route_short_name</code> or
-              <code>route_type</code> that are carefully defined
-              and exposed to constant community feedback in order to facilitate consensus, which leads to easier adoption and greater interoperability.
-              Definitions include specifications of coded values for some fields, as in the following extract for <code>route_type</code> codes:<br />
-<pre class="highlight prettyprint prettyprinted">
-0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
-1 - Subway, Metro. Any underground rail system within a metropolitan area.
-2 - Rail. Used for intercity or long-distance travel.
-</pre>
-              <p>Note that in a non-linked data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
-             Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.</li></ol>
-            </aside>
-          </section>
-          <section class="test">
-            <h4 class="subhead">How to Test</h4>
-            <p>Check if the terms or codes to be used are defined in a standards development organization such as IETF, OGC &amp; W3C etc., or are published by a suitable authority, such as a government agency.</p>
-          </section>
-          <section class="ucr">
-            <h4 class="subhead">Evidence</h4>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a></p>
-          </section>
-          <section class="benefits">
-            <h4 class="subhead">Benefits</h4>
-            <ul class="benefitsList">
-              <li>Reuse</li>
-              <li>Comprehension</li>
-              <!--<li>Linkability</li>  <li>Discoverability</li> -->
-              <li>Trust</li> <!-- <li>Access</li> -->
-              <li>Interoperability</li>
-            </ul>
-          </section>
-        </div>
-        <!-- end of Provide Metadata Standardized BP -->
         <!-- begin of Reuse vocabularies BP -->
         <div class="practice">
-          <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies</span></p>
-          <p class="practicedesc">Shared vocabularies should be used to encode
+          <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies, preferably standardized ones</span></p>
+          <p class="practicedesc">Shared vocabularies, ideally backed by standards, should be used to provide
             data and metadata.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Use of shared vocabularies captures and facilitates consensus in communities.
+            <p>Use of shared vocabularies captures and facilitates consensus in communities. 
               Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
               redundancies, encouraging reuse. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
-              and versioning metadata) helps the automatic processing of both data and metadata.</p>
+              and versioning metadata) helps the automatic processing of both data and metadata. In addition, refering to codes and terms from standards helps to avoid ambiguity and clashes between similar elements or values.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Using the same vocabulary to describe metadata will make datasets and metadata easier to be compared by humans or machines. 
+            <p>Using the same vocabulary to describe metadata will make datasets and metadata easier to be compared by humans or machines.
                When two datasets or metadata sets use the same vocabulary, 
               (automatic) processing tools designed for one can be more easily 
               applied to the other. This greatly facilitates re-use of 
-              datasets.</p>
+              datasets. Using codes and terms from standardized vocabularies enhances consensus among data publishers and consumers.</p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p> The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
+            <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for
               Publishing Linked Data [[LD-BP]] provides guidance on the
               discovery, evaluation and selection of existing vocabularies.</p>
+            <p>Organizations such as the Open Geospatial Consortium (OGC), 
+            <abbr title="International Standards Organization">ISO</abbr>, W3C,
+            <abbr title="World Meteorological Organization">WMO</abbr> libraries and research data services, etc.
+            provide list of codes, terminologies and Linked Data vocabularies that can be used by everyone.
+            A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context
+              so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized vocabulary resources
+              is an efficient way to do this.</p>
             <aside class="example"><ol>
-	    <li>All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
-              to express data and metadata statements, instead of minting entirely new classes and properties.</li>
+	    <!--<li>All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
+              to express data and metadata statements, instead of minting entirely new classes and properties.</li>-->
               <li>The DCAT vocabulary to express metadata on datasets [[VOCAB-DCAT]]
               re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its
               <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section.
@@ -2667,7 +2594,35 @@ A usual resident was generally defined as someone who spent most of their time a
               the various vocabularies that EDM builds on. As a result, large amounts of
               digital culture data have become more interoperable within the sector. That data is
               also easier to reuse by consumers from other communities, who are not familiar
-              with the traditional models and terminologies used by library, archives and museums.</li></ol>
+              with the traditional models and terminologies used by library, archives and museums.</li>
+	      <li>The Library of Congress publishes lists of ISO 639 country codes as Linked Data (see [[ISO639-1-LOC]] for two-letter codes):<br/>
+<pre class="highlight prettyprint prettyprinted">:bus-stops
+    dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; .
+</pre></li>
+            <!--<li>The <a href="http://www.bodc.ac.uk/products/web_services/">British Oceanographic Data Centre Web Services</a> publishes a reference list of URIs for types of tools to perform scientific measures, such as <code>http://vocab.nerc.ac.uk/collection/L05/current/357/</code> for acoustic tracking systems:<br />
+<pre class="highlight prettyprint prettyprinted">:measurement-001 a prov:Activity ;
+    prov:used :sensor-001 .
+:sensor-001 a prov:Agent ;
+    dct:type &lt;http://vocab.nerc.ac.uk/collection/L05/current/357/&gt; .
+</pre>
+           <p>Note that real-life data should use more specific classes and properties than the PROV terms shown here for
+              typing a measurement activity, an instrument and the relationship between these.</p></li>-->
+            <li>Australia's <a href="http://www.bodc.ac.uk/products/web_services/">Solid Earth and Environment Grid</a> publishes a reference list of URIs for geologic timescale elements from the International Commission on Stratigraphy's Chronostratigraphic Chart, such as <code>http://resource.geosciml.org/classifier/ics/ischart/Paleozoic</code> for the Paleozoic Era:<br />
+<pre class="highlight prettyprint prettyprinted">:dataset-005 a dcat:Dataset ;
+    dct:temporal &lt;http://resource.geosciml.org/classifier/ics/ischart/Paleozoic&gt; .
+</pre></li>
+            <li>Google maintains the <a href="https://developers.google.com/transit/gtfs/">General Transit Feed Specification</a> that defines
+              a format for publishing public transportation data. This format relies on a set of fields like <code>route_short_name</code> or
+              <code>route_type</code> that are carefully defined
+              and exposed to constant community feedback in order to facilitate consensus.
+              Definitions include specifications of coded values, as the ones used with <code>route_type</code>:<br />
+<pre class="highlight prettyprint prettyprinted">
+0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
+1 - Subway, Metro. Any underground rail system within a metropolitan area.
+2 - Rail. Used for intercity or long-distance travel.
+</pre>
+              <p>Note that in a non-linked data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
+             Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.</li></ol>
             </aside>
           </section>
           <section>
@@ -2678,17 +2633,27 @@ A usual resident was generally defined as someone who spent most of their time a
               or the <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1">Core Initial Context for RDFa and JSON-LD</a>,
               check that classes, properties, terms, elements or attributes used to represent a dataset do not replicate those
               defined by vocabularies used for other datasets.</p>
+	    <p>Check if the terms or codes in the vocabulary to be used are defined in a standards development organization such as IETF, OGC &amp; W3C etc., or are published by a suitable authority, such as a government agency.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a>,
+            <p><span>Relevant requirements</span>:
+	     <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataStandardized">R-MetadataStandardized</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataDocum">R-MetadataDocum</a>,
+	     <a href="http://www.w3.org/TR/dwbp-ucr/#R-QualityComparable">R-QualityComparable</a>,
+	     <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabOpen">R-VocabOpen</a>,
               <a href="http://www.w3.org/TR/dwbp-ucr/#R-VocabReference">R-VocabReference</a>
             </p>
+	  </section>
+	  <section class="benefits">
             <h4 class="subhead">Benefits</h4>
             <ul class="benefitsList">
               <li>Reuse</li>
               <li>Processability</li>
-              <!-- <li>Comprehension</li><li>Linkability</li><li>Discoverability</li><li>Trust</li><li>Access</li>-->
+              <li>Comprehension</li>
+	      <!-- <li>Linkability</li><li>Discoverability</li> -->
+	      <li>Trust</li>
+	      <!-- <li>Access</li>-->
               <li>Interoperability</li>
             </ul>
           </section>
