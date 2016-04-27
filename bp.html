@@ -682,8 +682,7 @@ table.bptable caption {
       <h2>Context</h2>
       <p>In general, the Best Practices proposed for publication and usage of
         Data on the Web refer to <a href="#dataset">datasets</a> and <a href="#distribution">
-          distributions</a>. Data is published in different distributions, which
-        is a specific physical form of a dataset. By data, "we mean known facts
+          distributions</a>. Data is published in different distributions, which are specific physical form of a dataset. By data, "we mean known facts
         that can be recorded and that have implicit meaning" [[Navathe]]. These
         distributions facilitate the sharing of data on a large scale, which
         allows datasets to be used for several groups of <a href="#data_consumer">
@@ -710,7 +709,7 @@ table.bptable caption {
         dataset and dataset distributions, helping the manipulation and the
         reuse of the data. In order to allow easy access to the dataset and
         its corresponding distributions, multiple dataset access mechanisms
-        should be available. Finally, to promote the interoperability among
+        can be available. Finally, to promote the interoperability among
         datasets it is important to adopt data vocabularies and standards. </p>
       <img src="images/context.jpg" alt="Our Context" height="280" width="480">
     </section>
@@ -888,7 +887,7 @@ table.bptable caption {
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Human-readable metadata will enable humans to understand the metadata and machine-readable metadata will enable computer applications, notably user agents, to process the metadata.</p>
+            <p>Humans and machines are able to understand the data.</p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -901,9 +900,7 @@ table.bptable caption {
             <ul>
               <li> machine readable metadata may be provided in a serialization
                 format such as Turtle and JSON, or it can be embedded in the
-                HTML page using [[HTML-RDFA]] or [[JSON-LD]]. If multiple
-                formats are published separately, they should be served from the
-                same URL using content negotiation. Maintenance of multiple
+                HTML page using [[HTML-RDFA]] or [[JSON-LD]]. If multiple formats are published separately, they should be served from the same URL using content negotiation and made available under separate URIs, distinguished by filename extension. Maintenance of multiple
                 formats is best achieved by generating each available format on
                 the fly based on a single source of the metadata.</li>
               <li> when defining machine readable metadata, reusing existing
@@ -923,7 +920,7 @@ table.bptable caption {
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if all provided metadata are coherent with the described resource.</p>
+            <p>Check if human readable metadata is available.</p>
             <p>Check if the metadata is available in a valid machine-readable format and without syntax error.</p>
           </section>
           <section class="ucr">
@@ -1063,7 +1060,7 @@ The dataset is classified under
           <section class="test">
             <h4 class="subhead">How to Test</h4>
             <p>Check if the metadata for the dataset itself includes the overall features of the dataset in a human-readable format.</p>
-            <p>Check if the descriptive metadata is available in a valid machine-readable.</p>
+            <p>Check if the descriptive metadata is available in a valid machine-readable format.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -1125,7 +1122,7 @@ The dataset is classified under
             bus stops dataset (<code>bus-stops-2015-05-05</code>) with the inclusion of the <strong> locale
                   parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
                 use multiple values for this property. The property <code><a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a></code> is used to specify the standard adopted for date and time formats. </p>
-              <pre class="highlight">  
+              <pre class="highlight">
   :bus-stops-2015-05-05
       a dcat:Dataset ;
       dct:title "Bus stops of MyCity" ;
@@ -1150,7 +1147,7 @@ The dataset is classified under
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if the metadata for the dataset itself includes information about local parameters (i.e. data, time, number formats, and language) in a human-readable format).</p>
+            <p>Check if the metadata for the dataset itself includes information about local parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
             <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
@@ -1975,12 +1972,7 @@ rel=“next last memento";
             the most appropriate format based on <a href="http://www.w3.org/Protocols/HTTP/Negotiation">
               content negotiation </a>.</li>
           <li>One URI may redirect to another.</li>
-          <li>De-referencing a URI triggers a computer program to run on a
-            server so that the URI acts as a call to an API. The server may
-            therefore do something as simple as return a single, static file, or
-            it may carry out complex processing. Precisely what processing is
-            carried out, i.e. the software on the server, is completely
-            independent of the URI itself.</li>
+          <li>De-referencing a URI triggers a computer program to run on a server that may do something as simple as return a single, static file, or it may carry out complex processing. Precisely what processing is carried out, i.e. the software on the server, is completely independent of the URI itself.</li>
         </ol>
         <!-- begin of Data Identification BP -->
         <div class="practice">
@@ -2109,21 +2101,12 @@ rel=“next last memento";
               your identifiers can be referred to by other datasets. When those
               identifiers are HTTP URIs, they can be looked up and more data
               discovered.</p>
-            <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5
-                Stars of Linked Data</a> where one data point links to another,
-              and of <a href="http://dret.github.io/webdata/">Hypermedia</a>
-              where links may be to further data or to services (or more
-              generally 'affordances') that act on or relate to the data in some
-              way. Examples include a bug reporting mechanisms, processors, a
-              visualization engine, a sensor, an actuator etc. In both Linked
-              Data and Hypermedia, the emphasis is put on the ability for
-              machines to traverse from one resource to another following links
-              that express relationships.</p>
-            <p>That's the Web of Data.</p>
+              <p>These ideas are at the heart of the <a href="http://www.w3.org/DesignIssues/LinkedData.html">5 Stars of Linked Data</a> where one data point links to another, and of <a href="http://dret.github.io/webdata/">Hypermedia</a> where links may be to further data or to services that can act on or relate to the data in some way.</p>
+              <p>That's the Web of Data.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>One data item can be related to others across the Web creating a global information space accessible to humans and machines alike.</p>
+            <p>One data item can be related to others across the Web, creating a global information space accessible to humans and machines alike.</p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -2221,13 +2204,11 @@ rel=“next last memento";
             <p>Like documents, many datasets fall into natural series or groups.
               For example:</p>
             <ul>
-              <li>noon temperature readings in central London 1850 to the
-                present day;</li>
-              <li>today's noon temperature in London;</li>
-              <li>the temperature in London at noon on 3rd June 2015.</li>
+              <li>bus stops in my city (that change over time);</li>
+              <li>a list of elected officials in My City</li>
+              <li>evolving versions of a document through to completion.</li>
             </ul>
-            <p>In different circumstances, it will be appropriate to refer
-              separately to each of these examples (and many like them). </p>
+            <p>In different circumstances, it will be appropriate to refer to the current situation (the current set of bus stops, the current elected officials etc.). In others, it may be appropriate to refer to the situation as it existed at a specific time.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -2248,17 +2229,15 @@ rel=“next last memento";
               that, but the dated URI remains unchanged.</p>
 
 <aside class = "example">
-              
-<p> Suppose that a new bus stop is created. To keep <code>bus-stops-2015-05-05 </code> up to date, a new version of the dataset (<code>bus-stops-2015-12-17</code>) is created. <code>bus-stops-2015-12-17 </code> includes all the data from <code>bus-stops-2015-05-05 </code> plus the data about the new bus stop. The two versions can be identified by the following URIs: </p>
-<pre class="highlight">  
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05 is the versioned URI of the first version of the dataset 
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17 is the version URI of the current version of the dataset 
-    </pre>
+<p>Suppose that a new bus stop is created. To keep <code>bus-stops-2015-05-05 </code> up to date, a new version of the dataset (<code>bus-stops-2015-12-17</code>) is created. <code>bus-stops-2015-12-17 </code> includes all the data from <code>bus-stops-2015-05-05 </code> plus the data about the new bus stop. The two versions can be identified by the following URIs: </p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code> is the versioned URI of the first version of the dataset</p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code> is the version URI of the updated version of the dataset</p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> always resolves to the latest version so it pointed to  resolved to <code>bus-stops-2015-05-05</code> <em>until</em> 17 December 2015 when the server configuration was updated to point that URL to <code>bus-stops-2015-12-17</code>.</p>
             </aside>
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check that each version of a dataset has its own URI, and that logical groups of datasets are also identifiable.</p>
+            <p>Check that each version of a dataset has its own URI, and that there is also a "latest version" URI.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -2325,9 +2304,7 @@ http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Make data available in a machine readable standardized data
-              format that is easily parseable including but not limited to CSV,
-              XML, Turtle, NetCDF, JSON and RDF.</p>
+            <p>Make data available in a machine readable standardized data format that is easily parseable including but not limited to CSV, XML, NetCDF, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, Turtle.</p>
             <!--<p>Consider which data formats potential users of the data are most
               likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
             <!--<aside class="example">
@@ -2832,9 +2809,7 @@ Highly
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Check if the dataset includes references to other data that is unavailable in a human-readable way.</p>
-          <p>Check whether an explanation is available in the metadata and/or description of it in a machine-readable format.</p>
-
+          <p>Where the dataset includes references to data that is no longer available or is not available to all users, check that an explanation of what is missing and instructions for obtaining access (if possible) are given. Check if a legitimate http response code in the 400 or 500 range is returned when trying to get unavailable data.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
@@ -2902,7 +2877,7 @@ Highly
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p> Bulk download will enable large file transfers (which would require more time than a typical user would consider reasonable) by dedicated file-transfer protocols. </p> 
+          <p>To enable consumers to access the complete dataset for local processing with a single request.</p>
 
         </section>
         <section class="how">
@@ -2910,9 +2885,7 @@ Highly
           <p>Depending on the nature of the data and consumer needs, possible
             approaches could include the following:</p>
           <ul>
-            <li>Preprocessing a copy of the data into a compressed archive format
-              and making the data accessible from one URI. This is
-              particularly useful for handling data that changes infrequently.</li>
+            <li>For datasets that exist initially as multiple files, preprocessing a copy of the data into a single file and making the data accessible for download from one URI. For larger datasets, the file can also be compressed.</li>
             <li>Hosting an API that includes the ability to
               retrieve a bulk download in addition to dynamic queries. This
               approach is useful for capturing a complete snapshot of dynamic data.</li>
@@ -2925,8 +2898,7 @@ Highly
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Check if humans can retrieve copies of preprocessed bulk data through existing tools (such as a browser).</p>
-          <p>Check if clients can test bulk access (through an API or queries to Web resources with discoverable metadata about the bulk data).</p>
+          <p>Check if the full dataset can be retrieved with a single request.</p>
 
         </section>
         <section class="ucr">
@@ -2957,7 +2929,7 @@ Highly
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p> Subsetting of large datasets will enable both human users and applications to be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large will be downloadable in smaller pieces. APIs will make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a Web application.</p><!--p> Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Subsetting approaches should aim for a high ratio of needed data to unneeded data for the largest number of users. Static datasets that users in the domain would consider to be large should be downloadable in smaller pieces. APIs should make slices or filtered subsets of the data available, the granularity depending on the needs of the domain and the demands of performance in a Web application.</p> -->
+          <p>Both human users and applications should be able to access subsets of a dataset, rather than the entire thing, as needed. Available subsets should maximize the ratio of needed data to unneeded data in responses to consumer requests. Static file downloads should be kept to reasonable download times, and APIs should return results of appropriate granularity to suit the domain and Web application performance.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approaches to Implementation</h4>
@@ -3190,7 +3162,7 @@ Highly
         <h4>Data Access APIs</h4>
          <!-- begin of Use an API -->
         <div class="practice">
-          <p><span id="useanAPI" class="practicelab">Make Data Available through an API</span></p>
+          <p><span id="useanAPI" class="practicelab">Make data available through an API</span></p>
           <p class="practicedesc">Offer an API to serve data if you have the resources to do so.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
@@ -3207,7 +3179,7 @@ Highly
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if a test client can simulate calls and responses.</p>
+            <p>Check if a test client can simulate calls and the API returns the expected responses.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -3744,8 +3716,7 @@ HTTP/1.1 200 OK
         metrics on data usage or information about specific applications
         that use the data. Feedback such as this establishes
         a communication channel between data publishers and data
-        consumers. In order to quantify and analyze usage feedback, it should be
-        recorded in a machine-readable format. Publicly
+        consumers. Publicly
         available feedback should be displayed in a human-readable form.</p>
       <p>This section provides some Best Practices to be followed by data publishers in
         order to enable consumers to provide feedback. This feedback can be for humans or machines. </p>
@@ -3757,11 +3728,7 @@ HTTP/1.1 200 OK
           consumers to offer feedback.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
-          <p>Providing feedback contributes to improving the quality of
-            published data, may encourage publication of new data, helps data
-            publishers understand data consumers' needs better and, when feedback
-            is made publicly available, enhances the consumers' collaborative
-            experience.</p>
+          <p>Obtaining feedback helps publishers understand the needs of their data consumers and can help them improve the quality of their published data. It also enhances trust by showing consumers that the publisher cares about addressing their needs. Specifying a clear feedback mechanism removes the barrier of having to search for a way to provide feedback.</p>
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
@@ -3769,27 +3736,15 @@ HTTP/1.1 200 OK
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Provide data consumers with one or more feedback mechanisms
-            including, but not limited to: a registration form, contact form,
-            point and click data quality rating buttons, or a comment box for
-            blogging.</p>
-          <p>Collect feedback in machine-readable formats to represent the
-            feedback and use a vocabulary to capture the semantics of the
-            feedback information.</p>
+          <p>Provide data consumers with one or more feedback mechanisms including, but not limited to, a contact form, point and click data quality rating buttons, or a comment box. In order to make the most of feedback received from consumers, it's a good idea to collect the feedback with a tracking system that captures each item in a database, enabling quantification and analysis. It is also a good idea to capture the type of each item of feedback, i.e., its motivation (editing, classifying [rating], commenting or questioning), so that each item can be expressed using the Dataset Usage Vocabulary [VOCAB-DUV].</p>
           <aside class="example">
-            <p>to be done </p>
+            <p><a href="./dwbp-example.html#duv-feedback">Example feedback form</a></p>
           </aside>
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
           <ul>
-            <li>Demonstrate how feedback can be collected from data consumers. </li>
-            <li>Verify that the feedback is persistently stored. If the feedback
-              is made publicly available verify that a URL links back to the
-              published data being referenced.</li>
-            <li>Check that the feedback format conforms to a known
-              machine-readable format specification in current use among
-              anticipated data users.</li>
+            <li>Check that at least one feedback mechanism is provided and readily discoverable by data consumers.</li>
           </ul>
         </section>
         <section class="ucr">
@@ -3918,13 +3873,13 @@ HTTP/1.1 200 OK
         <p class="practicedesc">Enrich your data by generating new data from the raw data when doing so will enhance its value.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
-          <p>Enrichment can greatly enhance processability, particularly for unstructured data. Missing values can be filled in, and new attributes and measures can be added. Publishing more complete datasets enhances trust. Deriving additional values that are of general utility saves users time and encourages more kinds of reuse. There are many intelligent techniques that can be used to enrich data, making the dataset an even more valuable asset.</p>
+          <p>Enrichment can greatly enhance processability, particularly for unstructured data. Under some circumstances, missing values can be filled in, and new attributes and measures can be added. Publishing more complete datasets can enhance trust, if done properly and ethically. Deriving additional values that are of general utility saves users time and encourages more kinds of reuse. There are many intelligent techniques that can be used to enrich data, making the dataset an even more valuable asset.</p>
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>A dataset that has missing values is enhanced if it is possible to fill in those values. Additional relevant measures or attributes should be added if they enhance utility. Unstructured data can be given structure in this way as well.</p>
-          <p>Because inference-based enrichment may introduce errors into the data, values generated by such techniques should be labeled as such, and it should be possible to retrieve any original values replaced by enrichment.</p>
-          <p>Whenever licensing permits, the code used to enrich the data should be made available along with the dataset. Sharing such code is particularly important for scientific data. </p>
+          <p>Data that is unstructured should be given structure if possible. In structured data, missing values should be added if they enhance utility, but only if the addition does not distort analytical results, significance, or statistical power.</p>
+          <p>Values generated by inference-based techniques should be labeled as such, and it should be possible to retrieve any original values replaced by enrichment.</p>
+          <p>Whenever licensing permits, the code used to enrich the data should be made available along with the dataset.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approaches to Implementation</h4>
@@ -4299,7 +4254,7 @@ ex:timetable-001 a dcat:Dataset ;
             <a href="https://en.wikipedia.org/wiki/GIF">gif</a> or <a href="https://en.wikipedia.org/wiki/JPEG">jpg</a>-->
           </p>
         </dd>
-        <dt><dfn id="license">License </dfn></dt>
+        <dt><dfn id="license">License</dfn></dt>
         <dd>
           <p>A license is a legal document giving official permission to do
             something with the data with which it is associated.</p>
@@ -4308,9 +4263,7 @@ ex:timetable-001 a dcat:Dataset ;
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
-          <p>A locale is a set of parameters that defines specific data
-            aspects, such as language and formatting used for numeric values and
-            dates.</p>
+          <p>A set of parameters that clarifies aspects of the data that may be interpreted differently in different geographic locations, such as language and formatting used for numeric values or dates.</p>
         </dd>
         <dt><dfn id="machine_readable">Machine Readable Data</dfn></dt>
         <dd>
