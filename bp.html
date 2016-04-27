@@ -2545,23 +2545,22 @@ A usual resident was generally defined as someone who spent most of their time a
         <!-- begin of Reuse vocabularies BP -->
         <div class="practice">
           <p><span id="ReuseVocabularies" class="practicelab">Reuse vocabularies, preferably standardized ones</span></p>
-          <p class="practicedesc">Shared vocabularies, ideally backed by standards, should be used to provide
-            data and metadata.</p>
+          <p class="practicedesc">Wherever possible, provide data and metadata using existing terms, identifiers, values etc. especially if they are part of a formal or widely used standard.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Use of shared vocabularies captures and facilitates consensus in communities. 
-              Reusing existing vocabularies to encode datasets and metadata increases interoperability and reduces
-              redundancies, encouraging reuse. In particular, the
+            <p>Use of vocabularies already in use by others captures and facilitates consensus in communities. 
+              It increases interoperability and reduces
+              redundancies, thereby encouraging reuse of your own data. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
               and versioning metadata) helps the automatic processing of both data and metadata. In addition, refering to codes and terms from standards helps to avoid ambiguity and clashes between similar elements or values.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Using the same vocabulary to describe metadata will make datasets and metadata easier to be compared by humans or machines.
-               When two datasets or metadata sets use the same vocabulary, 
+            <p>To make it easier to compare and integrate datasets; to create the network effect.
+<!--               When two datasets or metadata sets use the same vocabulary, 
               (automatic) processing tools designed for one can be more easily 
               applied to the other. This greatly facilitates re-use of 
-              datasets. Using codes and terms from standardized vocabularies enhances consensus among data publishers and consumers.</p>
+              datasets. Using codes and terms from standardized vocabularies enhances consensus among data publishers and consumers.--></p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -2570,18 +2569,17 @@ A usual resident was generally defined as someone who spent most of their time a
               discovery, evaluation and selection of existing vocabularies.</p>
             <p>Organizations such as the Open Geospatial Consortium (OGC), 
             <abbr title="International Standards Organization">ISO</abbr>, W3C,
-            <abbr title="World Meteorological Organization">WMO</abbr> libraries and research data services, etc.
-            provide list of codes, terminologies and Linked Data vocabularies that can be used by everyone.
+            <abbr title="World Meteorological Organization">WMO</abbr>, libraries and research data services, etc.
+            provide lists of codes, terminologies and Linked Data vocabularies that can be used by everyone.
             A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context
               so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized vocabulary resources
               is an efficient way to do this.</p>
             <aside class="example"><ol>
 	    <!--<li>All examples in this document show how common vocabularies (PROV, SKOS, etc) can be reused
               to express data and metadata statements, instead of minting entirely new classes and properties.</li>-->
-              <li>The DCAT vocabulary to express metadata on datasets [[VOCAB-DCAT]]
-              re-uses elements from Dublin Core, FOAF, SKOS and vCard, see its
-              <a href="https://www.w3.org/TR/vocab-dcat/#namespaces-1">namespaces</a> section.
-              For example, reusing Dublin Core properties like <code>dct:title</code> instead of
+              <li>The DCAT vocabulary expresses metadata concerning datasets [[VOCAB-DCAT]] and
+              re-uses elements from several pre-existing vocabularies: Dublin Core, FOAF, SKOS and vCard.
+              Reusing Dublin Core properties like <code>dct:title</code> instead of
               creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata
               to be consumed by any application that can read and manipulate Dublin Core statements.</li>
               <li>In the digital culture sector, the data model for 
@@ -2621,7 +2619,7 @@ A usual resident was generally defined as someone who spent most of their time a
 1 - Subway, Metro. Any underground rail system within a metropolitan area.
 2 - Rail. Used for intercity or long-distance travel.
 </pre>
-              <p>Note that in a non-linked data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
+              <p>Note that in a non-Linked Data fashion, these fields and codes have no individual Web identifiers nor machine-readable semantics.
              Exploiting them thus requires implementers to parse the documentation and encode interpretations in each individual application consuming the data.</li></ol>
             </aside>
           </section>
@@ -2662,17 +2660,23 @@ A usual resident was generally defined as someone who spent most of their time a
       <!-- begin of Choose the right formalization level BP -->
       <div class="practice">
         <p><span id="ChooseRightFormalizationLevel" class="practicelab">Choose the right formalization level</span></p>
-        <p class="practicedesc">When reusing a vocabulary, a data publisher
-          should opt for a level of formal semantics that fit both data and
-          applications.</p>
+        <p class="practicedesc">Opt for a level of formal semantics that fits both data and the most likely applications.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
+          <p>As Albert Einstein may or may not have said: everything should be made as simple as possible, but not simpler.</p>
           <p>Formal semantics help to establish precise specifications
-            that convey the intended meaning of the vocabulary and
-            the performance of complex tasks such as reasoning. On the other
-            hand, complex vocabularies require more effort to produce and
-            understand, which could hamper their reuse, as well as the
-            comparison and linking of datasets exploiting them. Highly
+            that convey detailed meaning and using a complex vocabulary (ontology)
+            will facilitate complex tasks such as reasoning. On the other
+            hand, such complex vocabularies require more effort to produce and
+            understand, which could hamper their reuse and
+            comparison and linking of datasets exploiting them.</p>
+          <p>If the nature of the data is such that the likely use is in a research 
+          context where the fact that A, B and C are true, and that D is not true, leads to the conclusion E, then
+          something like an OWL Profile would clearly be appropriate [[OWL2-PROFILES]].</p>
+          <p>But a list of bus stops is a list of bus stops.</p>
+          <p>Keeping things very simple is always attractive but there is a danger. The drive for simplicity might lose some data that provides important information, such as the geographical location of the bus stops that would prevent showing them on a map. It is always simpler to create your own vocabulary than to reuse someone else's, but in doing so, you isolate your data from the rest of the Web and make it harder for others to use. Therefore, a balance has to be struck, remembering that the goal is not simply to share your data, but for others to reuse it.</p>
+<!--
+Highly
             formalized data is also harder to exploit by inference engines: for
             example, using an OWL class in a position where a SKOS concept is
             enough, or using OWL classes with complex OWL axioms raises the
@@ -2680,15 +2684,27 @@ A usual resident was generally defined as someone who spent most of their time a
             [[OWL2-PROFILES]]. Data producers should therefore seek to identify
             the right level of formalization for particular domains, audiences
             and tasks, and maybe offer different formalization levels when one
-            size does not fit all.</p>
+            size does not fit all.</p>-->
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>The data supports all application cases but should not be more
+          <p>The data supports the most likely application cases but should not be more
             complex to produce and reuse than necessary.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
+          <p>Look at what your peers do already. It's likely you'll see that there is a commonly used vocabulary that matches, or nearly matches, your current needs. That's probably the one to use.</p>
+          <p>You may find a vocabulary that you'd like to use but you notice a semantic constraint that makes it difficult to do so, such as a domain or range restriction that doesn't apply to your case. In that scenario, it's often worth contacting the vocabulary publisher and talking to them about it. They may well be able to lift that restriction and provide further guidance on how the vocabulary is used more broadly.</p>
+        <p>W3C operates a mailing list at <a href="mailto:public-vocabs@w3.org">public-vocabs@w3.org</a> [<a href="https://lists.w3.org/Archives/Public/public-dwbp-vocabs/">archive</a>] where issues around vocabulary usage and development can be discussed.</p>
+<p>If you are creating a vocabulary of your own, keep the semantic restrictions to the minimum that works for you, again, so as to increase the possibility of reuse by others. As an example, the designers of the (very widely used) SKOS ontology itself have minimized its ontological commitment by questioning
+            all formal axioms that were suggested for its classes and properties. Often they were rejected
+            because their use, while beneficial to many applications, would have created
+            formal inconsistencies for the data from other applications, making SKOS not usable at all
+            for these. As an example, the property <code>skos:broader</code> was not defined
+            as a transitive property, even though it would have fitted the way hierarchical links between concepts
+            are created for many thesauri [[SKOS-DESIGN]]. Look for evidence of that kind of "design for wide use" when selecting a vocabulary.</p>
+
+<!--
           <p>Identify the "role" played by the vocabulary for the datasets, say,
             providing classes and properties used to type resources and provide
             the predicates for RDF statements, or elements in an XML Schema, as
@@ -2703,21 +2719,14 @@ A usual resident was generally defined as someone who spent most of their time a
             that have been explicitly identified as relevant for the domain or application at hand.
             The more axioms are used to specify a vocabulary, the narrower its usage is;
             unnecessary axioms unnecessarily constrain the reuse of a vocabulary
-            across applications.</p>
-          <aside class="example"><ol>
+            across applications.</p> -->
+          <aside class="example"><!--<ol>
           <li>For expressing simple vocabularies like thesauri or code lists as Linked Data,
             a simpler data model like SKOS may be preferred over formal
             ontology languages like OWL; see for example how <a href="http://www.w3.org/TR/vocab-data-cube/#schemes">concept
               schemes and code lists</a> are represented and used in the RDF Data Cube
             Recommendation [[VOCAB-DATA-CUBE]].</li>
-          <li>Designers of the SKOS ontology itself have minimized its ontological commitment by questioning
-            all formal axioms that were suggested for its classes and properties. Often they have been rejected
-            because their use, while beneficial to many applications, would have created
-            formal inconsistencies for the data from other applications, making SKOS not usable at all
-            for these. As an example, the property <code>skos:broader</code> was not defined
-            as a transitive property, even though it would have fit the way hierarchical links between concepts
-            are created for many thesauri [[SKOS-DESIGN]].</li>
-          <li>The Data Quality [[VOCAB-DQV]] and Data Usage vocabularies [[VOCAB-DUV]] created by the W3C Working
+          <li>The Data Quality [[VOCAB-DQV]] and Dataset Usage vocabularies [[VOCAB-DUV]] created by the W3C Working
             Group publishing this document have also sought to minimize the number of formal
             axioms involved in their definition. For instance, the property <code>dqv:hasQualityMeasurement</code>
             has no formal domain in the RDFS/OWL sense, even though it is expected to be most often used with
@@ -2730,15 +2739,25 @@ A usual resident was generally defined as someone who spent most of their time a
             the types of objects these properties can be used with. For instance, the values of the property
             <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
             of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
-            type <code>CreativeWork</code> but this is not a strict constraint.</li></ol>
+            type <code>CreativeWork</code> but this is not a strict constraint.</li></ol>-->
+
+          <p>John encodes the bus stop data using GTFS [[GTFS]] because:</p><ul>
+            <li>it is in widespread use;</li>
+            <li>it offers a level of detail that matches his data;</li>
+            <li>a motivation for publishing bus stop data is to support the development of applications to help bus users and GTFS is designed for just that purpose.</li>
+            </ul>
+
           </aside>
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>For formal knowledge representation languages, applying an 
+          <p>This is almost always a matter of subjective judgement with no objective test. As a general guideline:</p><ul>
+            <li>Are common vocabularies used such as Dublin Core and schema.org?</li>
+            <li>Are simple facts stated simply and retrieved easily?</li>
+            <li>For formal knowledge representation languages, applying an 
           inference engine on top of the data that uses a given vocabulary does 
           not produce too many statements that are unnecessary for target 
-          applications.</p>
+          applications.</li></ul>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
