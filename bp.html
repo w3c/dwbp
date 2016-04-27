@@ -2204,13 +2204,11 @@ rel=“next last memento";
             <p>Like documents, many datasets fall into natural series or groups.
               For example:</p>
             <ul>
-              <li>noon temperature readings in central London 1850 to the
-                present day;</li>
-              <li>today's noon temperature in London;</li>
-              <li>the temperature in London at noon on 3rd June 2015.</li>
+              <li>bus stops in my city (that change over time);</li>
+              <li>a list of elected officials in My City</li>
+              <li>evolving versions of a document through to completion.</li>
             </ul>
-            <p>In different circumstances, it will be appropriate to refer
-              separately to each of these examples (and many like them). </p>
+            <p>In different circumstances, it will be appropriate to refer to the current situation (the current set of bus stops, the current elected officials etc.). In others, it may be appropriate to refer to the situation as it existed at a specific time.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -2231,17 +2229,15 @@ rel=“next last memento";
               that, but the dated URI remains unchanged.</p>
 
 <aside class = "example">
-              
-<p> Suppose that a new bus stop is created. To keep <code>bus-stops-2015-05-05 </code> up to date, a new version of the dataset (<code>bus-stops-2015-12-17</code>) is created. <code>bus-stops-2015-12-17 </code> includes all the data from <code>bus-stops-2015-05-05 </code> plus the data about the new bus stop. The two versions can be identified by the following URIs: </p>
-<pre class="highlight">  
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05 is the versioned URI of the first version of the dataset 
-http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17 is the version URI of the current version of the dataset 
-    </pre>
+<p>Suppose that a new bus stop is created. To keep <code>bus-stops-2015-05-05 </code> up to date, a new version of the dataset (<code>bus-stops-2015-12-17</code>) is created. <code>bus-stops-2015-12-17 </code> includes all the data from <code>bus-stops-2015-05-05 </code> plus the data about the new bus stop. The two versions can be identified by the following URIs: </p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code> is the versioned URI of the first version of the dataset</p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code> is the version URI of the updated version of the dataset</p>
+<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> always resolves to the latest version so it pointed to  resolved to <code>bus-stops-2015-05-05</code> <em>until</em> 17 December 2015 when the server configuration was updated to point that URL to <code>bus-stops-2015-12-17</code>.</p>
             </aside>
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check that each version of a dataset has its own URI, and that logical groups of datasets are also identifiable.</p>
+            <p>Check that each version of a dataset has its own URI, and that there is also a "latest version" URI.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
