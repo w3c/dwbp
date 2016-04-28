@@ -123,7 +123,11 @@ var respecConfig = {
         title: "Global Open Data Index",
         href: "http://index.okfn.org/",
         authors: ["Open Knowledge Foundation"]
-
+      },
+      "ODB": {
+        title: "Open Data Barometer",
+        href: "http://opendatabarometer.org",
+        authors: ["World Wide Web Foundation"]
       },
       "BNF" : {
         title: "Reference information about authors, works, topics",
