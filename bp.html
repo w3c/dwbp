@@ -599,17 +599,18 @@ table.bptable caption {
       <h2>Introduction</h2>
       <p>The Best Practices described below have been developed to encourage and
         enable the continued expansion of the Web as a medium for the exchange
-        of data. The growth of open data by governments across the world
-        [[OKFN-INDEX]], the increasing publication of research data encouraged
-        by organizations like the Research Data Alliance [[RDA]], the harvesting
-        and analysis of social media, crowd-sourcing of information, the
-        provision of important cultural heritage collections such as at the
+        of data. The growth in online sharing of open data by governments across the world
+        [[OKFN-INDEX]], [[ODB]], the increasing online publication of research data encouraged
+        by organizations like the Research Data Alliance [[RDA]], the harvesting,
+        analysis and online publishing of social media, crowd-sourcing of information, the
+        increasing presence on the Web of important cultural heritage collections such as at the
         Bibliothèque nationale de France [[BNF]] and the sustained growth in the
         Linked Open Data Cloud [[LODC]], provide some examples of this growth in
         the use of Web for publishing data.</p>
+<p>However, this growth is not consistent in style and in many cases does not make use of the full potential of the Open Web Platform's ability to link one fact to another, to discover related resources and to create interactive visualizations.</p>
       <p>In broad terms, data publishers aim to share data either openly or with
         controlled access. Data consumers (who may also be producers themselves)
-        want to be able to find and use data, especially if it is accurate,
+        want to be able to find, use and link to the data, especially if it is accurate,
         regularly updated and guaranteed to be available at all times. This
         creates a fundamental need for a common understanding between data
         publishers and data consumers. Without this agreement, data publishers'
@@ -2061,7 +2062,7 @@ rel=“next last memento";
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check that each dataset in question is identified using a URI that has been assigned under a controlled process as set out in the previous section. Ideally, the relevant Web site includes a description of the process and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
+            <p>Check that each dataset is identified using a URI that has been designed for persistence. Ideally the relevant Web site includes a description of the design scheme and a credible pledge of persistence should the publisher no longer be able to maintain the URI space themselves.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -2645,13 +2646,13 @@ A usual resident was generally defined as someone who spent most of their time a
             that convey detailed meaning and using a complex vocabulary (ontology)
             will facilitate complex tasks such as reasoning. On the other
             hand, such complex vocabularies require more effort to produce and
-            understand, which could hamper their reuse and
-            comparison and linking of datasets exploiting them.</p>
+            understand, which could hamper their reuse,
+            comparison and linking of datasets that use them.</p>
           <p>If the nature of the data is such that the likely use is in a research 
           context where the fact that A, B and C are true, and that D is not true, leads to the conclusion E, then
           something like an OWL Profile would clearly be appropriate [[OWL2-PROFILES]].</p>
           <p>But a list of bus stops is a list of bus stops.</p>
-          <p>Keeping things very simple is always attractive but there is a danger. The drive for simplicity might lose some data that provides important information, such as the geographical location of the bus stops that would prevent showing them on a map. It is always simpler to create your own vocabulary than to reuse someone else's, but in doing so, you isolate your data from the rest of the Web and make it harder for others to use. Therefore, a balance has to be struck, remembering that the goal is not simply to share your data, but for others to reuse it.</p>
+          <p>Keeping things very simple is always attractive but there is a danger: the drive for simplicity might lose some data that provides important information, such as the geographical location of the bus stops that would prevent showing them on a map. Therefore, a balance has to be struck, remembering that the goal is not simply to share your data, but for others to reuse it.</p>
 <!--
 Highly
             formalized data is also harder to exploit by inference engines: for
@@ -2680,6 +2681,8 @@ Highly
             for these. As an example, the property <code>skos:broader</code> was not defined
             as a transitive property, even though it would have fitted the way hierarchical links between concepts
             are created for many thesauri [[SKOS-DESIGN]]. Look for evidence of that kind of "design for wide use" when selecting a vocabulary.</p>
+
+<p>Another example of this "design for wide use" can be seen in <a href="http://schema.org">schema.org</a>. Launched in June 2011, schema.org was massively adopted in a very short time in part because of its informative rather than normative approach for defining the types of objects that properties can be used with. For instance, the values of the property <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the type <code>CreativeWork</code> but this is not a strict constraint. Again, that approach to design makes schema.org a good choice as a vocabulary to use when encoding data for sharing.</p>
 
 <!--
           <p>Identify the "role" played by the vocabulary for the datasets, say,
@@ -2711,12 +2714,7 @@ Highly
             This allows application designers to employ it for other types of entities, for which
             quality measurements would also be relevant but that were not in the focus of
             the design process for DQV.</li>
-          <li>The <a href="http://schema.org">Schema.org</a> schemas for publishing structured
-            data on the Web have adopted an informative rather than normative approach for defining
-            the types of objects these properties can be used with. For instance, the values of the property
-            <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be
-            of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the
-            type <code>CreativeWork</code> but this is not a strict constraint.</li></ol>-->
+</ol>-->
 
           <p>John encodes the bus stop data using GTFS [[GTFS]] because:</p><ul>
             <li>it is in widespread use;</li>
