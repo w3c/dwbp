@@ -123,7 +123,11 @@ var respecConfig = {
         title: "Global Open Data Index",
         href: "http://index.okfn.org/",
         authors: ["Open Knowledge Foundation"]
-
+      },
+      "ODB": {
+        title: "Open Data Barometer",
+        href: "http://opendatabarometer.org",
+        authors: ["World Wide Web Foundation"]
       },
       "BNF" : {
         title: "Reference information about authors, works, topics",
@@ -186,22 +190,6 @@ var respecConfig = {
         "status":"W3C Member Submission",
         "publisher":"W3C/Creative Commons",
         "date":"1 May 2008"
-       },
-      "ODRL":{
-        "authors" : [ "Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten" ],
-        "href" : "https://www.w3.org/community/odrl/model/2.1/",
-        "title" : "ODRL Version 2.1 Core Model",
-        "status" : "W3C Community Group Specification",
-        "publisher":"W3C",
-        "date" : "5 March 2015",
-      },
-      "ODRL2":{
-        "authors":["Renato Iannella","Susanne Guth","Daniel Paehler","Andreas Kasten"],
-        "href":"http://www.w3.org/community/odrl/two/model/",
-        "title":"ODRL Version 2.0 Core Model",
-        "status":"W3C Community Group Specification",
-        "publisher":"W3C",
-        "date":"24 April 2012"
        },
       "ODRS":{
         "authors":["Leigh Dodds"],
