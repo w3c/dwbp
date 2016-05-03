@@ -1,4 +1,4 @@
-<!DOCTYPE html>
++----------<!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -3041,14 +3041,14 @@ Highly
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>New or updated data will be published to coincide with the update frequency.</p>
+          <p>Data on the Web will be updated in a timely manner so that the most recent data available online generally reflects the most recent data released via any other channel. When new data becomes available, it will be published on the Web as soon as practical thereafter.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>A new version of the dataset can be created according to its update frequency and following the <a href="#dataVersioning">Best Practices for Data Versioning</a>. When data is provided by bulk access, follow the update frequency to provide new files with the new data. When data is provided by an API, make sure the data is being updated according to the update frequency.</p>
+          <p>New versions of the dataset can be posted to the Web on a regular schedule, following the <a href="#dataVersioning">Best Practices for Data Versioning</a>. Posting to the Web can be made a part of the release process for new versions of the data. Making Web publication a deliverable item in the process and assigning an individual person as responsible for the task can help prevent data becoming out of date. To set consumer expectations for updates going forward, you can include human-readable text stating the expected publication frequency, and you can provide machine-readable metadata indicating the frequency as well. </p>
           
           <aside class="example">
-            <p> Suppose that the update frequency of the bus stops dataset is annual. The property <code>dct:accrualPeriodicity</code> can be used to describe the frequency with which new data is added to the dataset. The issue date (<code>dct:issued</code>) of the dataset can be used as the basis for the creation of new versions. It is important to note that new versions can be created when necessary, however the publisher must ensure that the dataset will be updated according to the predefined update frequency.
+            <p>Suppose that the update frequency of the bus stops dataset is annual. In order to describe the frequency with which new data is added to the dataset, the property <code>dct:accrualPeriodicity</code> can be used. A new version of the dataset (<code>bus-stops-2016-05-05</code>) is created to reflect the update schedule of the data. It is important to note that new versions can be created sooner than the schedule calls for, but the publisher should ensure that extra versions are published to the Web as quickly as their scheduled counterparts.
              <pre class="highlight">
    :bus-stops-2016-05-05
       a dcat:Dataset ;
@@ -3060,7 +3060,7 @@ Highly
       ...
       dct:isVersionOf :bus-stops-2015-05-05 ;
       pav:previousVersion bus-stops-2015-12-17 ;
-      rdfs:comment "The bus stops dataset was updated to reflect the creation of new bus stops since the last update and the update frequency" ;
+      rdfs:comment "The bus stops dataset was updated to reflect the creation of new bus stops since the last update and to follow the update frequency" ;
       owl:versionInfo "1.2" ;
       pav:version "1.2" ; 
       .
@@ -3070,7 +3070,7 @@ Highly
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Check if there is a version of the dataset whose issue date coincides with the expected date according to the pre-defined update frequency.</p>
+          <p>Check that the update frequency is stated and that the most recently published copy on the Web is no older than the date predicted by the stated update frequency.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
@@ -3670,14 +3670,14 @@ HTTP/1.1 200 OK
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
         <p><span id="FeedbackInformation" class="practicelab">Make feedback available</span></p>
-        <p class="practicedesc">Make feedback about datasets and distributions publicly available.</p>
+        <p class="practicedesc">Make consumerfeedback about datasets and distributions publicly available.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
-          <p>Making feedback about datasets and distributions publicly available allows consumers to become aware of other data consumers and supports a collaborative environment. User community experiences, concerns or questions currently being addressed can also be shared. </p>
+          <p>By sharing feedback with consumers, publishers can demonstrate to users that their concerns are being addressed, and they can avoid submission of duplicate bug reports. Sharing feedback also helps consumers understand any issues that may affect their ability to use the data, and it can foster a sense of community among them.</p>
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>Data consumers will be able to assess feedback provided by other data consumers and therefore to know their opinion about a specific dataset or distribution.</p>
+          <p>Consumers will be able to assess the kinds of errors that affect the dataset as well as consumers ratings and opinions, and be reassured that the publisher is actively addressing issues as needed.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -3735,7 +3735,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Check if the feedback given by a data consumer on a specific dataset or distribution is publicly available. </p>
+          <p>Check that any feedback given by data consumers for a specific dataset or distribution is publicly available.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
