@@ -55,12 +55,13 @@ dct: http://purl.org/dc/terms/" lang="en" >
     display: block;
   }
   form#duv-feedback fieldset label {
-    margin-top: 10px;
+    margin-top: 16px;
     width: 100%;
     display: block;
   }
-  form#duv-feedback fieldset input {
-    width: 100%;
+  form#duv-feedback fieldset label.radio-motivation {
+    display: inline;
+    margin-right: 10px;
   }
   form#duv-feedback fieldset textarea {
     width: 100%;
@@ -75,12 +76,16 @@ dct: http://purl.org/dc/terms/" lang="en" >
     padding: 10px;
     border-top-right-radius: 15px;
   }
+
+  #td-version {
+    width: 16px;
+  }
 </style>
 
 </head>
 <body>
   <div class="container">
-    <h1>Example of Dataset - Human-readable</h1>
+    <h1>Bus stops of MyCity</h1>
     <section id="abstract">
       <p>This is the human-readable version of examples used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
     </section>
@@ -88,7 +93,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
     <section resource="#timetable-001" typeof="dcat:Dataset" id="dataset-section">
       <p>The dataset description is based on following example:</p>
       <div class="example">
-        <p>John works for the Transport Agency of MyCity and he is in charge of publishing the data about bus stops of the city on the Web. John wants to publish these data for different types of data consumers such as developers interested on creating applications but also for software agents. It is really important that both humans and software agents can easily understand and process the data. He also expects the data to be available up to date and to be easily discoverable on the Web.</p>
+        <p>John works for the Transport Agency of MyCity and is in charge of publishing data about public transport. John wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web.</p>
       </div>
       <div id="dataset-description">
         <h2 id="dataset-description">Dataset description</h2>
@@ -109,10 +114,6 @@ dct: http://purl.org/dc/terms/" lang="en" >
             <tr>
               <td>Publication date</td>
               <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
-            </tr>
-            <tr>
-              <td>Last modification</td>
-              <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
             </tr>
             <tr>
               <td id="publisher">Publisher</td>
@@ -149,8 +150,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   <td>English, Portuguese</td>
                 </tr>
                 <tr>
-                  <td>Version</td>
-                  <td>1.0</td>
+                  <td>Date and time formats</td>
+                  <td>ISO 8601</td>
                 </tr>
               </tbody>
             </table>
@@ -164,11 +165,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
               <tbody>
                 <tr>
                   <td>Title</td>
-                  <td property="dct:title">bus-stops-2015-05-05.ttl</td>
+                  <td property="dct:title">RDF distribution of stops-2015-05-05 dataset</td>
                 </tr>
                 <tr>
                   <td>Description</td>
-                  <td property="dct:description">RDF distribution of bus-stops-2015-05-05 dataset.</td>
+                  <td property="dct:description">RDF distribution of the stops dataset of MyCity.</td>
                 </tr>
                 <tr>
                   <td>Media type</td>
@@ -200,11 +201,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
               <tbody>
                 <tr>
                   <td>Title</td>
-                  <td property="dct:title">bus-stops-2015-05-05.csv</td>
+                  <td property="dct:title">CSV distribution of stops-2015-05-05 dataset</td>
                 </tr>
                 <tr>
                   <td>Description</td>
-                  <td property="dct:description">CSV distribution of bus-stops-2015-05-05 dataset.</td>
+                  <td property="dct:description">CSV distribution of the bus stops dataset of MyCity.</td>
                 </tr>
                 <tr>
                   <td>Media type</td>
@@ -234,7 +235,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
 
             <div id="dataset-versioning-information">
               <h2>Dataset version history </h2>
-              <table class="human-readable-example">
+<!--               <table class="human-readable-example">
                 <tbody>
                   <tr>
                     <td>Current version</td>
@@ -244,9 +245,31 @@ dct: http://purl.org/dc/terms/" lang="en" >
                     <td>Previous version</td>
                     <td>stops-2015-05-05</td>
                   </tr>
+                </tbody>
+              </table> -->
+
+              <h3>Change history</h3>
+              <table class="human-readable-example">
+                <thead>
                   <tr>
-                    <td>Change history</td>
+                    <th>Version</th>
+                    <th>Issue date</th>
+                    <th>URI</th>
+                    <th>Change history</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="td-version">1.1</td>
+                    <td>2015-05-05</td>
+                    <td><code>http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05</code></td>
                     <td>The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street.</td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>2016-05-05</td>
+                    <td><code>http://data.mycity.example.com/transport/dataset/bus/stops-2016-05-05</code></td>
+                    <td>The bus stops dataset was updated to reflect the creation of new bus stops since the last update and to follow the update frequency</td>
                   </tr>
                 </tbody>
               </table>
@@ -393,7 +416,6 @@ dct: http://purl.org/dc/terms/" lang="en" >
 
   <section id="duv-section">
     <h2>Feedback</h2>
-    <p>The following form is used to get feedback about the dataset Bus timetable of MyCity (http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05)</p>
     <form id="duv-feedback">
       <fieldset>
         <legend>Feedback</legend>
@@ -412,15 +434,15 @@ dct: http://purl.org/dc/terms/" lang="en" >
          <option value="5" selected>5</option>
        </select>
 
+       <label for="oa-motivation">Which kind of feedback would you like to give?</label>
+       <input type="radio" name="oa-motivation" value="correction" id="radio-correction"><label for="radio-correction" class="radio-motivation" >Correction</label>
+       <input type="radio" name="oa-motivation" value="question" id="radio-question"><label for="radio-question" class="radio-motivation" >Question</label>
+       <input type="radio" name="oa-motivation" value="review" id="radio-review"><label for="radio-review" class="radio-motivation" >Review</label>
+
+
        <label for="duv-userFeedback">Your feedback:</label>
        <textarea id="duv-userFeedback">Is there a JSON-LD distribution available for this dataset?</textarea>
 
-       <label for="oa-motivation">Which kind of feedback would you like to give?</label>
-       <select name="oa-motivation" id="oa-motivation">
-         <option value="correction">correction</option>
-         <option value="question" selected>question</option>
-         <option value="review">review</option>
-       </select>
      </fieldset>
    </form>
  </section>
