@@ -1079,7 +1079,7 @@ The dataset is classified under
         <div class="practice">
           <p><span id="LocaleParametersMetadata" class="practicelab">Provide
               locale parameters metadata </span></p>
-          <p class="practicedesc">IProvide metadata about locale parameters (date, time, and number formats, language).</p>
+          <p class="practicedesc">Provide metadata about locale parameters (date, time, and number formats, language).</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
             <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
@@ -3041,32 +3041,36 @@ Highly
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>New or updated data will be published to coincide with the data changes.</p>
+          <p>New or updated data will be published to coincide with the update frequency.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Implement an API to enable data access. When data is provided by
-            bulk access, new files with new data should be provided as soon as
-            additional data is created or updated. Or, use technologies that are intended to expose data on the Web using interlinked resources, like Activity Streams or Atom.</p>
-          <p>If the site provides multiple data feeds with multiple updates, the last update date time stamp should be co-located with each separate data feed. The international date format is recommended to avoid any ambiguity <a href="https://www.w3.org/International/questions/qa-date-format">https://www.w3.org/International/questions/qa-date-format</a>.</p>
+          <p>A new version of the dataset can be created according to its update frequency and following the <a href="#dataVersioning">Best Practices for Data Versioning</a>. When data is provided by bulk access, follow the update frequency to provide new files with the new data. When data is provided by an API, make sure the data is being updated according to the update frequency.</p>
+          
           <aside class="example">
-            <p>A real world example: <br />
-            Weather services such as the U.S. based National Oceanic and Atmospheric Administration (NOAA) provides regional forecast and current weather condition information (<a href="http://www.wrh.noaa.gov/sew/">http://www.wrh.noaa.gov/sew/</a>).</p>
-            <p>Information in the form of weather condition maps are periodically updated to keep residents informed of changing weather conditions. Data publishers provide a timezone specific date time stamp of the latest condition updates <em>"Last map update: Mar, 3rd 2016 at 9:03:07 pm PST"</em>.</p>
+            <p> Suppose that the update frequency of the bus stops dataset is annual. The property <code>dct:accrualPeriodicity</code> can be used to describe the frequency with which new data is added to the dataset. The issue date (<code>dct:issued</code>) of the dataset can be used as the basis for the creation of new versions. It is important to note that new versions can be created when necessary, however the publisher must ensure that the dataset will be updated according to the predefined update frequency.
+             <pre class="highlight">
+   :bus-stops-2016-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2016-05-05"^^xsd:date ;
+      ...
+      <strong>dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;</strong>
+      ...
+      dct:isVersionOf :bus-stops-2015-05-05 ;
+      pav:previousVersion bus-stops-2015-12-17 ;
+      rdfs:comment "The bus stops dataset was updated to reflect the creation of new bus stops since the last update and the update frequency" ;
+      owl:versionInfo "1.2" ;
+      pav:version "1.2" ; 
+      .
+      </pre>      
+            </p>
           </aside>
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Write and test a standard operating procedure to keep
-            data on Web site up to date.</p>
-          <p>An example standard operating procedure might be:</p>
-          <ul>
-            <li>Write a test client to access published data. </li>
-            <li>Access data and save a first copy locally. </li>
-            <li>Publish an updated version of data.</li>
-            <li>Access data and save a second copy locally.</li>
-            <li>Compare first copy to second copy to verify changes have been reflected.</li>
-          </ul>
+          <p>Check if there is a version of the dataset whose issue date coincides with the expected date according to the pre-defined update frequency.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
@@ -3642,9 +3646,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <ul>
-            <li>Check that at least one feedback mechanism is provided and readily discoverable by data consumers.</li>
-          </ul>
+          <p>Check that at least one feedback mechanism is provided and readily discoverable by data consumers.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
@@ -3668,14 +3670,14 @@ HTTP/1.1 200 OK
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
         <p><span id="FeedbackInformation" class="practicelab">Make feedback available</span></p>
-        <p class="practicedesc">Make consumer feedback available to both human users and computer applications.</p>
+        <p class="practicedesc">Make feedback about datasets and distributions publicly available.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
-          <p>Making feedback about datasets and distributions publicly available allows users to become aware of other data consumers, supports a collaborative environment, and allows user community experiences, concerns or questions are currently being addressed. Providing feedback in a machine-readable format allows computer applications to automatically collect and process feedback about datasets. </p>
+          <p>Making feedback about datasets and distributions publicly available allows consumers to become aware of other data consumers and supports a collaborative environment. User community experiences, concerns or questions currently being addressed can also be shared. </p>
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>Feedback will be accessible and shared between different data consumers.</p>
+          <p>Data consumers will be able to assess feedback provided by other data consumers and therefore to know their opinion about a specific dataset or distribution.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -3733,8 +3735,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Check that the metadata for the dataset itself includes feedback information about the dataset in a human-readable format.</p>
-          <p>Check if a computer application can automatically process feedback information about the dataset.</p>
+          <p>Check if the feedback given by a data consumer on a specific dataset or distribution is publicly available. </p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
