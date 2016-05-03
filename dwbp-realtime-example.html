@@ -62,15 +62,13 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
         <p>This example specification is taken from the UK Environmental Agency
           flood-monitoring API.</p>
         <div class="example">
-          <p>In this example the Transport Agency of MyCity keeps track of river
-            flooding that may cause bridge closures during rainy seasons
-            effecting bus rerouting and schedules. The API provides consumers
-            real-time status information using a REST API. The API allows
+          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data. 
+            The API provides consumers real-time status information using a REST API. The API allows
             the consumer to select: </p>
           <ul>
-            <li>Current flood warnings and alerts</li>
-            <li>All station measurements</li>
-            <li>Latest flooding 3 day forecasts</li>
+            <li>Current position of the bus</li>
+            <li>Bus arrival time</li>
+            <!-- <li>Trip's status</li> -->
           </ul>
         </div>
         <h2 id="dataset-description">API Description</h2>
@@ -84,20 +82,14 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
           </thead>
           <tbody>
             <tr>
-              <td>Flood warnings and alerts</td>
-              <td>{root}/data/readings</td>
-              <td>min-severity, county, lat=<em>x</em>&amp;long=<em>y</em>&amp;dist=<em>r</em></td>
+              <td>Bus position</td>
+              <td><code>{root}/bus/position/current</code></td>
+              <td>bus_id</td>
             </tr>
             <tr>
-              <td>All station measurements</td>
-              <td>{root}/id/stations/{id}/readings</td>
-              <td>latest, today, date=<em>d</em>, startdate=<em>d1</em>&amp;enddate=<em>d2</em>,
-                _view=<em>full</em>, _sorted</td>
-            </tr>
-            <tr>
-              <td>Latest available forecast</td>
-              <td>{root}/id/3dayforecast</td>
-              <td>n/a</td>
+              <td>Bus arrival time to some stop</td>
+              <td><code>{root}/bus/arrival_time</code></td>
+              <td>bus_id, stop_id</td>
             </tr>
           </tbody>
         </table>
