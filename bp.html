@@ -1020,7 +1020,7 @@ The dataset is classified under
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
       dct:issued "2015-05-05"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
@@ -1122,7 +1122,7 @@ The dataset is classified under
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
       dct:issued "2015-05-05"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
@@ -1199,7 +1199,7 @@ The dataset is classified under
 	"@context": ["http://www.w3.org/ns/csvw", {
 		"@language": "en"
 	}],
-	"url": "http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv",
+	"url": "http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05.csv",
 	"dc:title": "CSV distribution of bus-stops-2015-05-05 dataset",
 	"dcat:keyword": ["bus", "stop", "mobility"],
 	"dc:publisher": {
@@ -1416,7 +1416,7 @@ The dataset is classified under
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport", "mobility", "bus" ;
       <strong>dct:issued "2015-05-05"^^xsd:date ; </strong>
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       <strong>dct:publisher :transport-agency-mycity ; </strong>
@@ -1516,7 +1516,7 @@ The dataset is classified under
               <pre class="highlight">
   :bus-stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.csv&gt; ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05.csv&gt; ;
       dct:title "CSV distribution of bus-stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv" ;
@@ -1688,7 +1688,7 @@ The dataset is classified under
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
       dct:issued "2015-05-05"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
@@ -1704,54 +1704,54 @@ The dataset is classified under
               <p> Assume: </p>
               <ul>
                 <li>
-<code> http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops </code>
+<code> http://data.mycity.example.com/transport/dataset/bus/bus-stops </code>
 is the “generic URI” at which
                   the current version of a dataset is always available </li>
                 <li>
-<code> http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17 </code>
+<code> http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-17 </code>
 is the versioned URI for
                   the current dataset </li>
                 <li>
-<code> http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05 </code>
+<code> http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05 </code>
 is the versioned URI of
                   the prior version of the dataset </li>
               </ul>
               <p> In the Memento protocol, the versioned URIs provide HTTP
                 response header information to express their version datetime
                 and their relation to the generic URI: </p>
-              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17
+              <pre class="highlight">curl -I http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-17
 
 HTTP/1.1 200 OK
 Memento-Datetime: Thu, 17 Dec 2015 00:00:00 GMT
-Link:&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+Link:&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;;
 rel=“original”</pre>
               <p> The generic URI provides a link to a TimeGate, which
                 supports datetime negotiation as a means to determine which
                 version of a dataset was operational at a given datetime.
                 Since the generic URI is not versioned,
                 no version datetime is provided in the headers.</p>
-              <pre class="highlight">curl -i -H http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops
+              <pre class="highlight">curl -i -H http://data.mycity.example.com/transport/dataset/bus/bus-stops
 
 HTTP/1.1 200 OK
-Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
+Link: &lt;http://data.mycity.example.com/transport/dataset/bus/timegate/bus-stops&gt;;
 rel=“timegate” </pre>
               <p> The versioned URIs can also provide a link to a TimeGate: </p>
-              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+Link: &lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;;
 rel=“original”,
-&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;
+&nbsp;&lt;http://data.mycity.example.com/transport/dataset/bus/timegate/bus-stops&gt;;
 rel=“timegate” </pre>
               <p>This is how a client determines which dataset version was
                 operational on June 20 2015: </p>
-              <pre class="highlight">curl -I -H "Accept-Datetime: Sat, 20 Jun 2015  12:00:00 GMT" http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops
+              <pre class="highlight">curl -I -H "Accept-Datetime: Sat, 20 Jun 2015  12:00:00 GMT" http://data.mycity.example.com/transport/dataset/bus/timegate/bus-stops
 
 HTTP/1.1 302 Found
 Vary: accept-datetime
-Location: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
-Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;
+Location: http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05
+Link: &lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;
 rel="original" </pre>
               <h5 class="subhead">Human-readable</h5>
               <p><a href="dwbp-example.html#dataset-versioning-information">Example page</a> with
@@ -1817,7 +1817,7 @@ rel="original" </pre>
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
       dct:issued "2015-12-17"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
@@ -1836,15 +1836,15 @@ rel="original" </pre>
               Assume:
               <ul>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops </code>
+<code>http://data.mycity.example.com/transport/dataset/bus/bus-stops </code>
 is the “generic URI” at which
                   the current version of a dataset is always available </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code>
+<code>http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-17</code>
 is the versioned URI for
                   the current dataset </li>
                 <li>
-<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code>
+<code>http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05</code>
 is the versioned URI of
                   the prior version of the dataset </li>
                 <li> http://example.org/bus-stops-2015-01-01 is the
@@ -1854,44 +1854,44 @@ versioned URI of
               <p> The versioned URIs, the generic URI, and the TimeGate can
                 provide a link to a TimeMap that provides an overview of all
                 temporal versions of the dataset: </p>
-              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+Link: &lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;;
 rel=“original”,
- &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops&gt;;
+ &lt;http://data.mycity.example.com/transport/dataset/bus/timemap/bus-stops&gt;;
 rel=“timemap”;
 &nbsp;type="application/link-format" </pre>
 <p> This is how the TimeMap is retrieved: </p>
-<pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops
+<pre class="highlight">curl -I http://data.mycity.example.com/transport/dataset/bus/timemap/bus-stops
 
 HTTP/1.1 200 OK
 Content-Type: application/link-format
 
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;rel="original”,
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timegate/bus-stops&gt;;rel="timegate”,
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/timemap/bus-stops&gt;;rel="timemap”;
+&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;;rel="original”,
+&lt;http://data.mycity.example.com/transport/dataset/bus/timegate/bus-stops&gt;;rel="timegate”,
+&lt;http://data.mycity.example.com/transport/dataset/bus/timemap/bus-stops&gt;;rel="timemap”;
 &nbsp;type="application/link-format",
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-01-01&gt;;
+&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-01-01&gt;;
 rel=“first memento"; datetime="Thu, 01 Jan 2015 00:00:00 GMT",
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05&gt;;
+&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05&gt;;
 rel=“memento"; datetime=“Tue, 05 May 2015 00:00:00 GMT"
-&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-07&gt;;
+&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-07&gt;;
 rel=“last memento"; datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
               <p> The versioned URI can provide information regarding relations
                 with other dataset versions: </p>
-              <pre class="highlight">curl -I http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05
+              <pre class="highlight">curl -I http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05
 
 HTTP/1.1 200 OK
 Memento-Datetime: Tue, 05 May 2015 00:00:00 GMT
-Link: &lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops&gt;;
+Link: &lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops&gt;;
 rel=“original”,
-&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-01-01&gt;;
+&nbsp;&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-01-01&gt;;
 rel=“prev first memento";
 &nbsp;datetime="Thu, 01 Jan 2015 00:00:00 GMT",
-&nbsp;&lt;http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17&gt;;
+&nbsp;&lt;http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-17&gt;;
 rel=“next last memento";
 &nbsp;datetime="Thu, 17 Dec 2015 00:00:00 GMT"
 </pre>
@@ -1987,7 +1987,7 @@ rel=“next last memento";
               stub.' DOIs are an important part of the digital infrastructure
               for research data and and libraries. </p>
             <aside class="example">
-              <p>The URI <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>
+              <p>The URI <code>http://data.mycity.example.com/transport/dataset/bus/bus-stops</code>
                 has several features that support persistence:</p>
               <ul>
                 <li>All names are subject to change over time but in choosing a
@@ -2007,20 +2007,20 @@ rel=“next last memento";
                   therefore, not to include the name of the Transport Agency in
                   the URI, but to include the task from which the data comes, in
                   this case that of providing public transport.</li>
-                <li>Likewise, the path segments of <code>/road</code> and <code>/bus</code>
-                  take us further towards the specific dataset for which John is
-                  responsible.</li>
                 <li>The <code>/dataset</code> path segment is an indication
                   that the URI identifies a dataset, rather than, say, a
                   specific bus route.</li>
+                <li>Likewise, the path segment of <code>/bus</code>
+                  take us further towards the specific dataset for which John is
+                  responsible.</li> 
                 <li>Finally <code>/bus-stops</code> leads us to the dataset
                   concerning bus stops in MyCity.</li>
                 <li>In DCAT terms, this would be the identifier for the dataset.
                   Specific distributions of the dataset are likely to be
                   identified by adding the relevant file extension to the URI,
-                  such as <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.csv</code>,
-                  <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.json</code>,
-                  <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops.ttl</code>
+                  such as <code>http://data.mycity.example.com/transport/dataset/bus/bus-stops.csv</code>,
+                  <code>http://data.mycity.example.com/transport/dataset/bus/bus-stops.json</code>,
+                  <code>http://data.mycity.example.com/transport/dataset/bus/bus-stops.ttl</code>
                   etc.</li>
               </ul>
             </aside>
@@ -2102,12 +2102,12 @@ rel=“next last memento";
                 template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
                 URL</a> property.</p>
             <aside class="example">
-              <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code>)
+              <p>The URI given as an example in the previous Best Practice (<code>http://data.mycity.example.com/transport/dataset/bus/bus-stops</code>)
                 identifies a dataset. Much of the URI can be reused to identify
                 bus stops, routes and the type of bus used on a given service.
                 For example, a suitable persistent URI for the 'Airport -
                 Bullfrog' route would be:</p>
-              <p><code>http://data.mycity.example.com/public-transport/road/bus/route/id/AB</code></p>
+              <p><code>http://data.mycity.example.com/transport/route/bus/id/AB</code></p>
               <p>This has the same initial structure as for the dataset but
                 rather than <code>/dataset</code> it now includes the path
                 segment <code>/route</code> so that humans can see that the
@@ -2116,7 +2116,7 @@ rel=“next last memento";
                 an information resource, i.e. something you cannot retrieve over
                 the Internet, and <code>/AB</code> is the local identifier for
                 the actual bus route. Dereferencing this URI should result in an
-                HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example.com/public-transport/road/bus/route/doc/AB</code>
+                HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example.com/transport/route/bus/doc/AB</code>
                 that <em>describes</em>, i.e. gives information about, the AB
                 bus route (note the substitution of <code>/doc</code> for <code>/id</code>).
                 Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs
@@ -2192,9 +2192,9 @@ rel=“next last memento";
 
 <aside class = "example">
 <p>Suppose that a new bus stop is created. To keep <code>bus-stops-2015-05-05 </code> up to date, a new version of the dataset (<code>bus-stops-2015-12-17</code>) is created. <code>bus-stops-2015-12-17 </code> includes all the data from <code>bus-stops-2015-05-05 </code> plus the data about the new bus stop. The two versions can be identified by the following URIs: </p>
-<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05</code> is the versioned URI of the first version of the dataset</p>
-<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-12-17</code> is the version URI of the updated version of the dataset</p>
-<p><code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> always resolves to the latest version so it pointed to  resolved to <code>bus-stops-2015-05-05</code> <em>until</em> 17 December 2015 when the server configuration was updated to point that URL to <code>bus-stops-2015-12-17</code>.</p>
+<p><code>http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-05-05</code> is the versioned URI of the first version of the dataset</p>
+<p><code>http://data.mycity.example.com/transport/dataset/bus/bus-stops-2015-12-17</code> is the version URI of the updated version of the dataset</p>
+<p><code>http://data.mycity.example.com/transport/dataset/bus/bus-stops</code> always resolves to the latest version so it pointed to  resolved to <code>bus-stops-2015-05-05</code> <em>until</em> 17 December 2015 when the server configuration was updated to point that URL to <code>bus-stops-2015-12-17</code>.</p>
             </aside>
           </section>
           <section class="test">
@@ -2932,10 +2932,10 @@ Highly
           <aside class="example">
             <p>Different representations of the bus stops dataset can be served according to the specified content type of the HTTP Request: <br />
 
-              Using <code>cURL</code> to get the content of <code>http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</code> represented in CSV and in JSON-LD format.
+              Using <code>cURL</code> to get the content of <code>http://data.mycity.example.com/transport/dataset/bus/bus-stops</code> represented in CSV and in JSON-LD format.
 
-              <pre class="highlight">curl -H "Accept: text/csv" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
-              <pre class="highlight">curl -H "Accept: application/ld+json" http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: text/csv" http://data.mycity.example.com/transport/dataset/bus/bus-stops</pre>
+              <pre class="highlight">curl -H "Accept: application/ld+json" http://data.mycity.example.com/transport/dataset/bus/bus-stops</pre>
 
           </aside>
         </section>
@@ -3428,7 +3428,7 @@ HTTP/1.1 200 OK
             <p>An RDF dataset targeted for preservation is made of the following
               triples:</p>
             <pre class="highlight"> 
-  &lt;http://data.mycity.example.com/public-transport/road/bus/route/ABtimetable&gt; 
+  &lt;http://data.mycity.example.com/transport/route/bus/ABtimetable&gt; 
       a gtfs:Route ;
       gtfs:color "ff0000" ;
       gtfs:shortname "10" ;
@@ -3439,7 +3439,7 @@ HTTP/1.1 200 OK
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
-  &lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+  &lt;http://data.mycity.example.com/ransport/route/bus/BFC&gt; 
       a gtfs:Route ;
       gtfs:color "ffff00" ;
       gtfs:shortname "20" ;
@@ -3474,7 +3474,7 @@ HTTP/1.1 200 OK
               definition of "ex:usualVehicleType" can be considered for
               preservation:</p>
             <pre class="highlight">
-  &lt;http://data.mycity.example.com/public-transport/road/bus/route/AB&gt; a gtfs:Route;
+  &lt;http://data.mycity.example.com/transport/route/bus/AB&gt; a gtfs:Route;
       gtfs:color "ff0000" ;
       gtfs:shortname "10" ;
       gtfs:longName "Airport - Bullfrog" ;
@@ -3484,7 +3484,7 @@ HTTP/1.1 200 OK
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
-  &lt;http://data.mycity.example.com/public-transport/road/bus/route/BFC&gt; 
+  &lt;http://data.mycity.example.com/transport/route/bus/BFC&gt; 
       a gtfs:Route;
       gtfs:color "ffff00";
       gtfs:shortname "20";
@@ -3689,7 +3689,7 @@ HTTP/1.1 200 OK
       dct:title "Bus stops of MyCity" ;
       dcat:keyword "transport","mobility","bus" ;
       dct:issued "2015-05-05"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/public-transport/contact&gt; ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
       dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
@@ -3990,9 +3990,9 @@ ex:timetable-001 a dcat:Dataset ;
       </pre> -->
 
             <p>You can present the citation to the original source in a user interface by providing bibliographic text and a working link.</p>
-            <!--p>Data source: Costello, E. Mayor (2016)  "City Bus Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops-2015-05-05.</p-->
+            <!--p>Data source: Costello, E. Mayor (2016)  "City Bus Stops Memorandum". January, 2016. References dataset: http://data.mycity.example.com/transport/road/bus/dataset/bus-stops-2015-05-05.</p-->
 
-            <p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: http://data.mycity.example.com/public-transport/road/bus/dataset/bus-stops. </p>
+            <p> Data source: Costello, E. "Bus timetable of MyCity" (series 1.2). MyCity. May 5, 2015. Available from: http://data.mycity.example.com/transport/dataset/bus/stops. </p>
           </aside>
         </section>
         <section class="test">
