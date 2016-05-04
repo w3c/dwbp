@@ -2273,13 +2273,13 @@ A usual resident was generally defined as someone who spent most of their time a
       .
 </pre> </aside> -->
 <aside class="example">
-        <p>John decides to provide data about the bus stops of the route that goes from the airport to the central bus station of MyCity. The information provided includes, besides others, the name, the description, the latitude and the longitude of the bus stops.</p>
+        <p>John decides to provide data about the bus stops of the route that goes from the airport to the central bus station of MyCity. The information provided includes, besides others, the name, the description, the latitude and the longitude of the bus stops and he uses CSV as the data format. </p>
               <pre class="highlight">   
-  :busstops_airport_to_centralstation
+  :stops_airport_to_centralstation
       a dcat:Dataset ;
       dcat:distribution :busstops_airport_to_centralstation.csv
       .
-  :busstops_airport_to_centralstation.csv
+  :stops_airport_to_centralstation.csv
       a dcat:Distribution ;
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
       dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
@@ -2343,25 +2343,25 @@ A usual resident was generally defined as someone who spent most of their time a
             
 <aside class="example">
               <p>In order to reach a larger number of data consumers, John
-                decided to also provide a XML distribution of bus stops of the route that goes from the airport to the central bus station of MyCity.</p>
+                decided to also provide a JSON distribution of bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
               <pre class="highlight">
-  :busstops_airport_to_centralstation
+  :stops_airport_to_centralstation
       a dcat:Dataset ;
       dcat:distribution :busstops_airport_to_centralstation.csv ;
-      dcat:distribution :busstops_airport_to_centralstation.xml
+      dcat:distribution :busstops_airport_to_centralstation.json
       .
-  :busstops_airport_to_centralstation.csv
+  :stops_airport_to_centralstation.csv
       a dcat:Distribution ;
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
       dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
       dcat:mediaType "text/csv" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
       .
-  :busstops_airport_to_centralstation.xml
+  :stops_airport_to_centralstation.json
       a dcat:Distribution ;
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.xml&gt; ;
-      dct:title "XML distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
-      dcat:mediaType "text/xml" ;
+      dct:title "JSON distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
+      dcat:mediaType "application/json" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
       .
            </pre>
@@ -2425,7 +2425,7 @@ A usual resident was generally defined as someone who spent most of their time a
           They are used to classify the terms that can be used in a
           particular application, characterize possible relationships, and
           define possible constraints on using those terms. Several near-synonyms
-          for 'vocabular' have been coined, for example, ontology, controlled
+          for 'vocabulary' have been coined, for example, ontology, controlled
           vocabulary, thesaurus, taxonomy, code list, semantic network.</p>
 <!--        <p>Data is often represented in a structured and controlled way, making
           use of one or more vocabularies to provide, for example, the types
@@ -2453,7 +2453,8 @@ A usual resident was generally defined as someone who spent most of their time a
         <p>On the other hand, “controlled vocabularies”, “concept schemes” and
           “knowledge organization systems” enumerate and define resources that
           can be employed in the descriptions made with the former kind of
-          vocabulary. A concept from a thesaurus, say, “architecture”, will for
+          vocabulary, i.e. vocabularies that structure the descriptions of resources in
+          (linked) datasets. A concept from a thesaurus, say, “architecture”, will for
           example be used in the subject field for a book description (where
           “subject” has been defined in an ontology for books). For defining the
           terms in these vocabularies, complex formalisms are most often not
@@ -2863,14 +2864,18 @@ Highly
           <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data &ndash; and little unneeded data &ndash; for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
-          <aside class="example"><ol>
-            <li>Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </li>
-            <li>Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</li></ol>
+          <aside class="example">
+            
+
+<p> The MyCity transit agency has been collecting detailed data about passenger usage for several years. This is a very large dataset, containing values for numbers of passengers by transit type, route, vehicle, driver, entry stop, exit stop, transit pass type, entry time, etc.  They have found that a wide variety of stakeholders are interested in downloading various subsets of the data. The folks who run each transit system want only the data for their transit mode, the city planners only want the numbers of entries and exits at each stop, the city budget office wants only the numbers for the various types of passes sold, and others want still different subsets. The agency created a Web site where users can select which variables are of interest to them, set ranges on some variables, and download only the subset they need. </p>
+
+
+
           </aside>
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
+          <p>Check that the entire dataset can be recovered by making multiple requests that retrieve smaller units.</p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
@@ -3096,9 +3101,12 @@ Highly
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
             <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
-            <aside class="example"><p>Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p>
+            <p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet. </p>
+            <aside class="example">
+            Besides providing bulk download to data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. Examples of its use are presented <a href="./dwbp-api-example.html">here</a>.
+            <!--<p>Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p> -->
 
-            <p>Example of an <a href="./dwbp-api-example.html">API documentation</a> page.</p>
+            
             </aside>
           </section>
           <section class="test">
@@ -3134,9 +3142,9 @@ Highly
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approaches to Implementation</h4>
-            <p>REST (REpresentational State Transfer) is an architectural style that, when used in a Web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
+            <p>REST (REpresentational State Transfer)[[Fielding]][[Richardson]] is an architectural style that, when used in a Web API, takes advantage of the architecture of the Web itself. A full discussion of how to build a RESTful API is beyond the scope of this document, but there are many resources and a strong community that can help in getting started. There are also many RESTful development frameworks available. If you are already using a Web development framework that supports building REST APIs, consider using that. If not, consider an API-only framework that uses REST.</p>
             <p>Another aspect of implementation to consider is making a hypermedia API, one that responds with links as well as data. Links are what make the Web a web, and data APIs can be more useful and usable by including links in their responses. The links can offer additional resources, documentation, and navigation. Even for an API that does not meet all the constraints of REST, returning links in responses can make for a service that is rich and self-documenting.</p>
-            <p>Complementary references about REST are [[Fielding]] and [[Richardson]].</p>
+            <!--<p>Complementary references about REST are [[Fielding]] and [[Richardson]].</p>-->
             <aside class="example">An example response for information about a certain bus route from a hypermedia API might look like the following:
               <pre> {
  	"code": "200",
@@ -3171,7 +3179,6 @@ Highly
  	}]
  }</pre>
 
- <p>Example of an <a href="./dwbp-api-example.html">API documentation</a> page.</p>
             </aside>
           </section>
           <section class="test">
@@ -3211,7 +3218,13 @@ Highly
 <p>A typical API reference provides a comprehensive list of the calls the API can handle, describing the purpose of each one, detailing the parameters it allows and what it returns, and giving one or more examples of its use. One nice trend in API documentation is to provide a form in which developers can enter specific calls for testing, to see what the API returns for their use case. There are now tools available for quickly creating this type of documentation, such as <a href="http://swagger.io/">Swagger</a>, <a href="https://www.mashery.com/api/io-docs">io-docs</a>, <a href="https://openapis.org/">OpenApis</a>, and others. It is important to say that the API should be self-documenting as well, so that calls return helpful information about errors and usage. API users should be able to contact the maintainers with questions, suggestions, or bug reports.</p>
 <p> The quality of documentation is also related to usage and feedback from developers. Try to get constant feedback from your users about the documentation. </p>
             <aside class="example">
-<ul>
+
+
+In order to help developers, the transport agency offers a complete documentation about the API that provides access to data about bus stops and routes. The <a href="./dwbp-api-example.html">API documentation</a> includes a list of the calls handled by the API, the corresponding parameters and some examples. 
+             
+             <!--<p>Example of an <a href="./dwbp-api-example.html">API documentation</a> page.</p> -->
+
+<!--<ul>
 <li>OGC 'capabilities documents' provide an example of a standardized API description. Every <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wfs">WFS</a> or <a href="/TR/2016/WD-sdw-bp-20160119/#dfn-wms">WMS service</a>, for example, understands the request 'getCapabilities', and then returns an XML document giving information about the service such as the Coordinate Reference system used, the data structure schema, available map layers, and so on. </li>
 <li>Use of <code>void:TechnicalFeature</code> to describe the API for a (<a href="/TR/void/#dataset">VoID</a>) Dataset (or subset); providing a set of values, terms or entities for each API parameter (<a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>). Use URI Templates [[RFC6570]] to bind API parameters to RESTful URLs. A 'short-form' of the identifier may be required for usage in the API; this may be defined as a SKOS notation. </li>
 <li>Use of <a href="/TR/vocab-data-cube/#data-cubes">Data Cube</a> with Dimensions to define the data available from a predictably structured dataset - "what, where, when", and so on (ref. <a href="http://portal.sirf.net/about-sirf">CSIRO's Spatial Identifier Reference Framework</a>); each Dimension of the Data Cube is bound to a parameter in the API method. The "where" Dimension of a Data Cube, if specified as <code>qb:CodedProperty</code>, may bound to a set of SpatialThings (e.g. using the property <code>qb:codeList</code>). The URI Set (the set of all SpatialThings mentioned in the Data Cube) provides a 'controlled vocabulary' of locations for which 'observations' (data points) in the Data Cube are available (e.g. air quality data is available at these locations). </li>
@@ -3220,7 +3233,7 @@ Highly
 <li>Use of <a href="http://swagger.io/">Swagger</a> and <a href="https://swaggerhub.com/">swaggerhub</a>; the Dutch Cadastre has published the WFS services in its national geo-portal, PDOK, as Swagger APIs on Swaggerhub, for example an API to get data about noise pollution near highways. Swagger also offers an example reference for a pet store API. </li>
 <li>Packaging a coordinate transformation API for simple reuse. </li>
 <li>Relating the API to its description using HTTP link headers. </li>
-</ul>
+</ul> -->
 </aside>
           </section>
           <section class="test">
@@ -3278,7 +3291,6 @@ Highly
           </aside>
           <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
 
-          <p>Example of an <a href="./dwbp-api-example.html">API documentation</a> page.</p>
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
