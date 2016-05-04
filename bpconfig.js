@@ -223,6 +223,20 @@ var respecConfig = {
         "title": "Study On Persistent URIs",
         "date": "17 December 2012"
        },
+       "Richardson": {
+        "authors": ["Richardson L.", "Sam Ruby"],
+        "href": "http://restfulwebapis.org/rws.html",
+        "title": "RESTful Web Services",
+        "date": "2007",
+        "publisher": "O'Reilly"
+       },
+       "Fielding": {
+        "authors": ["Roy Thomas Fielding"],
+        "title": "Representational State Transfer (REST), Chapter 5 of Architectural Styles and the Design of Network-based Software Architectures",
+        "href": "https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+        "publisher": "University of California, Irvine",
+        "date": "2000"
+       },
        "SIRI":{
         "authors":["CEN"],
         "href": "http://user47094.vs.easily.co.uk/siri/",
