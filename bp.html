@@ -2863,14 +2863,18 @@ Highly
           <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data &ndash; and little unneeded data &ndash; for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
-          <aside class="example"><ol>
-            <li>Using an API: the MyCity transit API offers information about individual buses, bus stops, and time points. It can accept a query for all the timepoints for a single stop on a single bus route, or it can accept one for all the buses along one route at one time point, or it can accept one for all the time points for a single bus on a single route. These small slices through the data enable Web applications to update data quickly and deliver it to riders on demand, interactively. </li>
-            <li>Splitting the datset: the MyCity transit agency has a set of nicely formatted single-route schedules available in PDF format. Users can select the route they plan to ride from a menu and view or download the schedule for that route alone.</li></ol>
+          <aside class="example">
+            
+
+<p> The MyCity transit agency has been collecting detailed data about passenger usage for several years. This is a very large dataset, containing values for numbers of passengers by transit type, route, vehicle, driver, entry stop, exit stop, transit pass type, entry time, etc.  They have found that a wide variety of stakeholders are interested in downloading various subsets of the data. The folks who run each transit system want only the data for their transit mode, the city planners only want the numbers of entries and exits at each stop, the city budget office wants only the numbers for the various types of passes sold, and others want still different subsets. The agency created a Web site where users can select which variables are of interest to them, set ranges on some variables, and download only the subset they need. </p>
+
+
+
           </aside>
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>Compare your assessment of the expected use cases and check that each of the subsets that you expect to be requested can be returned from a single identifier. Check also that the granularity of subsetting is consistent throughout the dataset.</p>
+          <p>Check that subsets of the dataset can be recovered making smaller requests or downloading smaller units. </p>
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
