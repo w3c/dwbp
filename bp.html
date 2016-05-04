@@ -2343,25 +2343,25 @@ A usual resident was generally defined as someone who spent most of their time a
             
 <aside class="example">
               <p>In order to reach a larger number of data consumers, John
-                decided to also provide a XML distribution of bus stops of the route that goes from the airport to the central bus station of MyCity.</p>
+                decided to also provide a JSON distribution of bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
               <pre class="highlight">
-  :busstops_airport_to_centralstation
+  :stops_airport_to_centralstation
       a dcat:Dataset ;
       dcat:distribution :busstops_airport_to_centralstation.csv ;
-      dcat:distribution :busstops_airport_to_centralstation.xml
+      dcat:distribution :busstops_airport_to_centralstation.json
       .
-  :busstops_airport_to_centralstation.csv
+  :stops_airport_to_centralstation.csv
       a dcat:Distribution ;
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
       dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
       dcat:mediaType "text/csv" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
       .
-  :busstops_airport_to_centralstation.xml
+  :stops_airport_to_centralstation.json
       a dcat:Distribution ;
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.xml&gt; ;
-      dct:title "XML distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
-      dcat:mediaType "text/xml" ;
+      dct:title "JSON distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
+      dcat:mediaType "application/json" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
       .
            </pre>
