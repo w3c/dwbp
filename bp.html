@@ -1181,10 +1181,12 @@ The dataset is classified under
               <li>JSON-LD: see <a href="http://www.w3.org/TR/json-ld/">
                   JSON-LD 1.0</a> </li>
               <li>XML: see <a href="http://www.w3.org/XML/Schema"> XML Schema</a></li>
+              <li>Multi-dimensional data: see <a href="https://www.w3.org/TR/vocab-data-cube/">Data Cube</a>
+
             </ul>
             <aside class="example">
               <h5 class="subhead">Machine-readable</h5>
-              <p> John used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/>Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution .</p>
+              <p> John used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/>Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution.</p>
               <pre class="highlight">{
 	"@context": ["http://www.w3.org/ns/csvw", {
 		"@language": "en"
@@ -2241,9 +2243,7 @@ rel=“next last memento";
               the data may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
-              cannot be anticipated when the data is first published. The use of
-              non-proprietary data formats should also be considered since it
-              increases the possibilities for use and reuse of data.</p>
+              cannot be anticipated when the data is first published.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -2273,6 +2273,16 @@ A usual resident was generally defined as someone who spent most of their time a
       .
 </pre> </aside> -->
 <aside class="example">
+
+John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.
+
+<pre>
+Identifier,Name,Description,Latitude,Longitude,ZONE,URL 
+345,Castle Avenue,Sunset Drive,-3.731862,-38.526670,x20,http://data.mycity.example.com/transport/road/bus/stop/id/345
+483,Main Street,Lily Park,-3.731541,-38.535157,x20,http://data.mycity.example.com/transport/road/bus/stop/id/483
+
+</pre>
+        <!--
         <p>John decides to provide data about the bus stops of the route that goes from the airport to the central bus station of MyCity. The information provided includes, besides others, the name, the description, the latitude and the longitude of the bus stops and he uses CSV as the data format. </p>
               <pre class="highlight">   
   :stops_airport_to_centralstation
@@ -2284,9 +2294,9 @@ A usual resident was generally defined as someone who spent most of their time a
       dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
       dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
       dcat:mediaType "text/csv" ;
-      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt;
-      .
-</pre> </aside>
+      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; 
+      .-->
+ </aside>
 
           </section>
           <section class="test">
@@ -2342,8 +2352,34 @@ A usual resident was generally defined as someone who spent most of their time a
             <p>A word of warning: local identifiers within the dataset, which may be exposed as fragment identifiers in URIs, must be consistent across the various formats.</p>
             
 <aside class="example">
+             
+<p>In order to reach a larger number of data consumers, John
+                decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code><p></p></p>
+              <pre class="highlight">
+  :stops-2015-05-05
+      a dcat:Dataset ;
+      dcat:distribution :stops-2015-05-05.csv ;
+      dcat:distribution :stops-2015-05-05.json
+      .
+  :stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
+      dct:title "CSV distribution of stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      .
+  :stops-2015-05-05.json
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.json&gt; ;
+      dct:title "JSON distribution of stops-2015-05-05 dataset" ;
+      dct:description "JSON distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "application/json" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      .
+<!--
               <p>In order to reach a larger number of data consumers, John
-                decided to also provide a JSON distribution of bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
+                decided to also provide a JSON distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
               <pre class="highlight">
   :stops_airport_to_centralstation
       a dcat:Dataset ;
@@ -2390,9 +2426,9 @@ A usual resident was generally defined as someone who spent most of their time a
       dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
       dcat:mediaType "text/xml" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
-      .
+      .-->
             </pre>
-            </aside> -->
+            </aside> 
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
