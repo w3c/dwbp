@@ -2352,8 +2352,34 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             <p>A word of warning: local identifiers within the dataset, which may be exposed as fragment identifiers in URIs, must be consistent across the various formats.</p>
             
 <aside class="example">
+             
+<p>In order to reach a larger number of data consumers, John
+                decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code><p></p></p>
+              <pre class="highlight">
+  :stops-2015-05-05
+      a dcat:Dataset ;
+      dcat:distribution :stops-2015-05-05.csv ;
+      dcat:distribution :stops-2015-05-05.json
+      .
+  :stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
+      dct:title "CSV distribution of stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      .
+  :stops-2015-05-05.json
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.json&gt; ;
+      dct:title "JSON distribution of stops-2015-05-05 dataset" ;
+      dct:description "JSON distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "application/json" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      .
+<!--
               <p>In order to reach a larger number of data consumers, John
-                decided to also provide a JSON distribution of bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
+                decided to also provide a JSON distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops_airport_to_centralstation</code> with its two distributions <code>stops_airport_to_centralstation.csv</code> and <code>stops_airport_to_centralstation.json.</code><p></p></p>
               <pre class="highlight">
   :stops_airport_to_centralstation
       a dcat:Dataset ;
@@ -2400,9 +2426,9 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
       dct:title "XML distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
       dcat:mediaType "text/xml" ;
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
-      .
+      .-->
             </pre>
-            </aside> -->
+            </aside> 
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
