@@ -3268,12 +3268,12 @@ In order to help developers, the transport agency offers a complete documentatio
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Developer code will continue to work. Developers will know of improvements you make and be able to make use of them. Breaking changes to your API will be rare, and if they occur, developers will have sufficient time and information to adapt their code. That will enable them to avoid breakage, enhancing trust.</p>
+            <p>Developer code will continue to work. Developers will know of improvements you make and be able to make use of them. Breaking changes to your API will be rare, and if they occur, developers will have sufficient time and information to adapt their code. That will enable them to avoid breakage, enhancing trust. Changes to the API will be announced on the API's documentation site. </p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
           <p>When improving your API, focus on adding new calls or new options rather than changing how existing calls work. Existing clients can ignore such changes and will continue functioning.</p>
-            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping home resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different home resource URI.</p>
+            <p>If using a fully RESTful style, you should be able to avoid changes that affect developers by keeping resource URIs constant and changing only elements that your users do not code to directly. If you need to change your data in ways that are not compatible with the extension points that you initially designed, then a completely new design is called for, and that means changes that break client code. In that case, it’s best to implement the changes as a new REST API, with a different resource URI.</p>
           <p>If using an architectural style that does not allow you to make moderately significant changes without breaking client code, use versioning. Indicate the version in the response header. Version numbers should be reflected in your URIs or in request "accept" headers (using content negotiation). When versioning in URIs, include the version number as far to the left as possible. Keep the previous version available for developers whose code has not yet been adapted to the new version.</p>
           <aside class="example">Some examples of breaking changes to an API include:
             <ul>
@@ -3289,7 +3289,7 @@ In order to help developers, the transport agency offers a complete documentatio
 <p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>.</p>
 
           </aside>
-          <p>Changes to the API should be announced on your API documentation site. To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
+          <p>To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
 
           </section>
           <section class="test">
