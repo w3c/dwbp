@@ -894,7 +894,7 @@ table.bptable caption {
               <li> when defining machine-readable metadata, reusing existing
                 standard terms and popular vocabularies are strongly
                 recommended. For example, Dublin Core Metadata (DCMI) terms
-                [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] can
+                [[DCTERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] can
                 be used to provide descriptive metadata.</li>
             </ul>
             <aside class="example">
@@ -1306,16 +1306,16 @@ The dataset is classified under
             <p> One of the following vocabularies that include
               properties for linking to a license can be used: </p>
             <ul>
-              <li>Dublin Core [[DC-TERMS]] (<code class="highlith">dct:license</code>)</li>
-              <li>Creative Commons [[CC-VOCAB]] (<code class="highlith">cc:license</code>)</li>
+              <li>Dublin Core [[DCTERMS]] (<code class="highlith">dct:license</code>)</li>
+              <li>Creative Commons [[CCREL]] (<code class="highlith">cc:license</code>)</li>
               <li>schema.org [[SCHEMA-ORG]] (<code class="highlith">schema:license</code>)</li>
               <li>XHTML [[XHTML-VOCAB]] (<code class="highlith">xhtml:license</code>)</li>
             </ul>
             <p>There are also a number of machine-readable rights languages,
             including:</p>
             <ul>
-              <li>The Creative Commons Rights Expression Language [[ccREL]]</li>
-              <li>The Open Digital Rights Language [[odrl21-model]]</li>
+              <li>The Creative Commons Rights Expression Language [[CCREL]]</li>
+              <li>The Open Digital Rights Language [[ODRL21-model]]</li>
               <li>The Open Data Rights Statement Vocabulary [[ODRS]]</li>
             </ul>
             <aside class="example">
@@ -2070,7 +2070,7 @@ rel=“next last memento";
               solve will have already been solved by other people. In the same
               way, if you're looking for a set of identifiers for obvious things
               like countries, currencies, subjects, species, proteins, cities
-              and regions, Nobel prize winners – someone's done it already. The
+              and regions, Nobel prize winners and products – someone's done it already. The
               steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering
                 existing vocabularies</a> [[LD-BP]] can readily be adapted.</p>
             <ul>
@@ -2087,7 +2087,7 @@ rel=“next last memento";
               Instead, define locally unique identifiers for each element and
               provide data that allows them to be converted to globally unique
               URIs programmatically. The Metadata Vocabulary for Tabular Data
-              [[tabular-metadata]] provides mechanisms for doing this within
+              [[Tabular-Metadata]] provides mechanisms for doing this within
               tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
                 template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
                 URL</a> property.</p>
@@ -2105,19 +2105,27 @@ rel=“next last memento";
                 segment indicates that the URI identifies something that is not
                 an information resource, i.e. something you cannot retrieve over
                 the Internet, and <code>/AB</code> is the local identifier for
-                the actual bus route. Dereferencing this URI should result in an
+                the actual bus route. 
+
+                This is consistent with advice from GS1's SmartSearch Implementation Guideline [[GS1]]
+                which says that where standard identifiers are used for a product, location etc., 
+                it is recommended that the URI includes the type of identifier 
+                being used.  For example, if a <abbr title="Global Trade Identification Number">GTIN</abbr> is 
+                being used to identify a product then the URI should be of the form: 
+                <code>http://data.myproduct.example.com/gtin/05011476100885</code>.
+
+                Dereferencing URIs for non-information resources should result in an
                 HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example.com/transport/route/bus/doc/AB</code>
                 that <em>describes</em>, i.e. gives information about, the AB
                 bus route (note the substitution of <code>/doc</code> for <code>/id</code>).
-                Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs
-                  in Data</a> has more to say on this topic.</p>
+                Jeni Tennison's work on URLs in Data has more to say on this topic [[URLs-in-data]].</p>
               <p>In offering this advice, it is recognized that URIs can be
                 long. In a dataset of even moderate size, storing each URI is
                 likely to be repetitive and obviously wasteful. Instead, define
                 locally unique identifiers for each element (such as <code>AB</code>
                 in this example) and provide data that allows them to be
                 converted to globally unique URIs programmatically. The Metadata
-                Vocabulary for Tabular Data [[tabular-metadata]] provides
+                Vocabulary for Tabular Data [[Tabular-Metadata]] provides
                 mechanisms for doing this within tabular data such as CSV files,
                 in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
                   template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
@@ -4195,7 +4203,7 @@ ex:timetable-001 a dcat:Dataset ;
           <p>A license is a legal document giving official permission to do
             something with the data with which it is associated.</p>
           <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
-              DC-TERMS</a></p>
+              DCTERMS</a></p>
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
