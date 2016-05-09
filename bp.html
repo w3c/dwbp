@@ -2734,7 +2734,7 @@ Highly
     </section>
     <!-- end of Data Vocabularies -->
     <!-- begin of Sensitive Data -->
-    <section id="sensitive">
+<!--    <section id="sensitive">
       <h3>Sensitive Data</h3>
       <p>To support Best Practices for publishing sensitive data, data
         publishers should identify all sensitive data, assess the exposure risk,
@@ -2755,55 +2755,8 @@ Highly
         available in part or in its entirety. Data unavailability represents
         gaps that may affect the overall analysis of datasets. To account for
         unavailable data, data publishers should publish information about
-        unavoidable data gaps.</p>
-      <div class="practice">
-        <span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span>
-        <!--<p><span id="DataUnavailabilityReference" class="practicelab">Provide
-            data unavailability reference</span></p> -->
-        <p class="practicedesc">For data that is not open, provide an explanation about how the data can be accessed and who can access it.</p>
-        <section class="axioms">
-          <h4 class="subhead">Why</h4>
-          <p>Publishing online documentation about unavailable data due to
-            sensitivity issues provides a means for publishers to explicitly
-            identify knowledge gaps. This provides a contextual explanation for
-            consumer communities thus encouraging use of the data that <em>is</em>
-            available.</p>
-        </section>
-        <section class="outcome">
-          <h4 class="subhead">Intended Outcome</h4>
-          <p>Consumers will know that data that is referred to from the current dataset is unavailable or only available under different conditions.</p>
-          <!--<p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p> -->
-        </section>
-        <section class="how">
-          <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 303 (see other), 410 (permanently removed), 503 (service *providing data* unavailable).</p>
-          <aside class="example">
-            <p>The dataset created for the bus stops can contain sensitive
-              data, for instance, information about the bus driver. In this case, the publisher provides an explanation informing potential users that the personal data about the bus driver is not available.</p>
-          </aside>
-        </section>
-        <section class="test">
-          <h4 class="subhead">How to Test</h4>
-          <p>Where the dataset includes references to data that is no longer available or is not available to all users, check that an explanation of what is missing and instructions for obtaining access (if possible) are given. Check if a legitimate http response code in the 400 or 500 range is returned when trying to get unavailable data.</p>
-        </section>
-        <section class="ucr">
-          <h4 class="subhead">Evidence</h4>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>
-        </section>
-        <section class="benefits">
-          <h4 class="subhead">Benefits</h4>
-          <ul class="benefitsList">
-            <li>Reuse</li>
-            <!--              <li>Comprehension</li>
-              <li>Linkability</li>              <li>Discoverability</li>-->
-            <li>Trust</li>
-            <!--              <li>Access</li>
-              <li>Interoperability</li>              <li>Processability</li>-->
-          </ul>
-        </section>
-      </div>
-      <!-- end of versions For API BP -->
-    </section>
+        unavoidable data gaps.</p> -->
+<!--    </section> -->
     <!-- end of Data Sensitive -->
     <!-- begin of Data Access -->
     <section id="dataAccess">
@@ -3124,8 +3077,57 @@ Highly
         </section>
       </div>
       <!-- end of BP Access Up to date -->
+
+<!-- Unavailability reference -->
+      <div class="practice">
+        <p><span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span></p>
+        <p class="practicedesc">For data that is not open, provide an explanation about how the data can be accessed and who can access it.</p>
+        <section class="axioms">
+          <h4 class="subhead">Why</h4>
+          <p>Publishing online documentation about unavailable data due to
+            sensitivity issues provides a means for publishers to explicitly
+            identify knowledge gaps. This provides a contextual explanation for
+            consumer communities thus encouraging use of the data that <em>is</em>
+            available.</p>
+        </section>
+        <section class="outcome">
+          <h4 class="subhead">Intended Outcome</h4>
+          <p>Consumers will know that data that is referred to from the current dataset is unavailable or only available under different conditions.</p>
+          <!--<p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p> -->
+        </section>
+        <section class="how">
+          <h4 class="subhead">Possible Approach to Implementation</h4>
+          <p>Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 303 (see other), 410 (permanently removed), 503 (service *providing data* unavailable).</p>
+          <aside class="example">
+            <p>The dataset created for the bus stops can contain sensitive
+              data, for instance, information about the bus driver. In this case, the publisher provides an explanation informing potential users that the personal data about the bus driver is not available.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <h4 class="subhead">How to Test</h4>
+          <p>Where the dataset includes references to data that is no longer available or is not available to all users, check that an explanation of what is missing and instructions for obtaining access (if possible) are given. Check if a legitimate http response code in the 400 or 500 range is returned when trying to get unavailable data.</p>
+        </section>
+        <section class="ucr">
+          <h4 class="subhead">Evidence</h4>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>
+        </section>
+        <section class="benefits">
+          <h4 class="subhead">Benefits</h4>
+          <ul class="benefitsList">
+            <li>Reuse</li>
+            <!--              <li>Comprehension</li>
+              <li>Linkability</li>              <li>Discoverability</li>-->
+            <li>Trust</li>
+            <!--              <li>Access</li>
+              <li>Interoperability</li>              <li>Processability</li>-->
+          </ul>
+        </section>
+      </div>
+<!-- end unavailability reference -->
+
+
       <!-- begin Data Access APIs group -->
-      <div>
+      <section id="accessAPIs">
         <h4>Data Access APIs</h4>
          <!-- begin of Use an API -->
         <div class="practice">
@@ -3355,7 +3357,7 @@ In order to help developers, the transport agency offers a complete documentatio
         </div>
         <!-- end of avoid breaking changes to APIs -->
 
-      </div>
+      </section>
       <!-- end of Data Access APIs group -->
     </section>
     <!-- end of Data Access -->
