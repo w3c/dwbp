@@ -628,6 +628,10 @@ table.bptable caption {
         data is managed. Such guidance will promote the reuse of data and foster
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
+      <p> Not all data should be shared openly, however. Security, commercial sensitivity and, above all, individuals' privacy need to be taken into account. It is for data publishers, not a technical standards working group, to determine policy on which data should be shared and under what circumstances. Data sharing policies are likely to assess the exposure risk and determine the appropriate security measures to be taken to protect sensitive data, such as secure authentication and authorization.</p>
+
+<p>Depending on circumstances, sensitive information about individuals might include full name, home address, email address, national identification number, IP address, vehicle registration plate number, driver's license number, face, fingerprints, or handwriting, credit card numbers, digital identity, date of birth, birthplace, genetic information, telephone number, login name, screen name, nickname, health records etc. Although it is likely to be safe to share some of that information openly, and even more within a controlled environment, publishers should bear in mind that combining data from multiple sources may allow inadvertent identification of individuals.</p>
+
       <p>A general Best Practice to publish Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
 <!--      <p>Taking that into account, this document sets out a series of Best Practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>-->
       <p>Best Practices cover different aspects related to data publishing and
@@ -3806,10 +3810,7 @@ HTTP/1.1 200 OK
     <!-- begin enrichment -->
     <section id="enrichment">
       <h3>Data Enrichment</h3>
-      <p>Data enrichment refers to a set of processes that can be used to
-        enhance, refine or otherwise improve raw or previously processed data.
-        This idea and other similar concepts contribute to making data a
-        valuable asset for almost any modern business or enterprise.</p>
+      <p>Data enrichment refers to a set of processes that can be used to enhance, refine or otherwise improve raw or previously processed data. This idea and other similar concepts contribute to making data a valuable asset for almost any modern business or enterprise. It is a diverse topic in itself, details of which are beyond the scope of the current document. However, it is worth noting that some of these techniques should be approached with caution, as ethical concerns may arise. In scientific research, care must be taken to avoid enrichment that distorts results or statistical outcomes. For data about individuals, privacy issues may arise when combining datasets. That is, enriching one dataset with another, when neither contains sufficient information about any individual to identify them, may yield a combined dataset that compromises privacy. Furthermore, these techniqes can be carried out at scale, which in turn highlights the need for caution.</p>
       <p>This section provides some advice to be followed by data publishers in
         order to enrich data.</p>
       <!-- begin of BP Enrich data -->
@@ -3826,7 +3827,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approaches to Implementation</h4>
-          <p>Techniques for data enrichment is a topic in itself and goes well beyond the scope of this document which can only highlight the possibilities.</p>
+          <p>Techniques for data enrichment are complex and go well beyond the scope of this document, which can only highlight the possibilities.</p>
           <p>Machine learning can readily be applied to the enrichment of data. Methods include those focused on data categorization, disambiguation, entity recognition, sentiment analysis and topification, among others. New data values may be derived as simply as performing a mathematical calculation across existing columns. Other examples include visual inspection to identify features in spatial data and cross-reference to external databases for demographic information.</p>
           <p>Values generated by inference-based techniques should be labeled as such, and it should be possible to retrieve any original values replaced by enrichment.</p>
           <p>Whenever licensing permits, the code used to enrich the data should be made available along with the dataset. Sharing such code is particularly important for scientific data.</p>
