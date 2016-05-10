@@ -246,28 +246,31 @@ dct: http://purl.org/dc/terms/" lang="en" >
 
                 <table class="human-readable-example">
                 <tbody>
-                <tr>
-                  <td><strong>Completeness</strong></td>
-                  <td>Refers to the degree to which all required information is present in a particular dataset.</td>
+                <tr about="#completeness"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#intrinsicDimensions">
+                  <td><strong><span property="skos:prefLabel">Completeness</span></strong></td>
+                  <td property="skos:definition">Refers to the degree to which all required information is present in a particular dataset.</td>
                 </tr>
-                <tr>
+                <tr about="#csvCompletenessMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#completeness">
+                  <td >Metric</td>
+                  <td property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
+                </tr>
+                <tr about="#measure2"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#csvCompletenessMetric">
+                  <span  about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                  <td>Value</td>
+                  <td> <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)</td>
+                </tr>
+                <tr about="#availability"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
+                  <td><strong><span property="skos:prefLabel">Availability</span></strong></td>
+                  <td property="skos:definition">Refers to the extent to which data (or some portion of it) is present, obtainable and ready for use.</td>
+                </tr>
+                <tr about="#downloadURLAvailabilityMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#availability">
                   <td>Metric</td>
-                  <td>Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
+                  <td property="skos:definition">dcat:downloadURL is available and its value is dereferenceable.</td>
                 </tr>
-                   <tr>
-                  <td>Value</strong></td>
-                  <td>0.5 (Double)</td>
-                </tr>
-                <tr>
-                  <td><strong>Availability</strong></td>
-                  <td> Refers to the extent to which data (or some portion of it) is present, obtainable and ready for use.</td></tr>
-                <tr>
-                  <td>Metric</td>
-                  <td>dcat:downloadURL is available and if its value is dereferenceable.</td>
-                </tr>
-                   <tr>
-                  <td>Value</strong></td>
-                  <td>true (Boolean)</td>
+                <tr about="#measure1"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
+                    <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                  <td>Value</td>
+                  <td> <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)</td>
                 </tr>
                 </tbody>
               </table>
