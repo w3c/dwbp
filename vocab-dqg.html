@@ -319,7 +319,7 @@
                     exchange and consume quality metadata, for every step of a dataset's
                     lifecycle. This is why next to rather expected constructs like
                     quality measures, the Data Quality Vocabulary puts an emphasis
-                    on feedback, annotation, agreements</p>
+                    on feedback, annotation, agreements.</p>
                 <p>Note that DQV elements can be applied not only to
                     express metadata on the quality of datasets; they can also be used to express
                     statements about the quality of that metadata itself. This is especially true when it
@@ -401,7 +401,7 @@
                     it extends with a number of additional properties and classes
                     suitable for expressing the quality of a dataset.</p>
                 <p>
-                    The quality of a given dataset of distribution is assessed via a
+                    The quality of a given dataset or distribution is assessed via a
                     number of observed properties. For instance, one may consider a
                     dataset to be of high quality because it complies to a specific
                     standard while for other use-cases the quality of the data will
@@ -409,11 +409,11 @@
                     these properties an instance of a <a
                         href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">dcat:Dataset</a>
                     or <a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">dcat:Distribution</a>
-                    can be related to four different types of quality information represented by the following  classes:
+                    can be related to five different types of quality information represented by the following  classes:
                 </p>
                 <ul>
                     <li><a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a>
-                        represents feedbacks and quality certificates given about the
+                        represents feedback and quality certificates given about the
                         dataset or its distribution.</li>
                     <li><a href="http://purl.org/dc/terms/Standard">dcterms:Standard</a>
                         represents a standard the dataset or its distribution conforms to.</li>
@@ -856,7 +856,7 @@
                 </section> 
                 <div class="note">
                         <p>
-                           Dimension and category are abstract entities. We represent instances dqv:Dimension and dqv:Category as instances of <code>skos:Concept</code>, which we think enable similar features as these for dimensions and categories in daQ. Our representation choice differs more significantly for metrics, however. daQ uses RDFS/OWL classes and subclasses to represent constraints on measurements (e.g., on the type of values). RDFS/OWL however make an 'open world' assumption that does not allow one to capture entirely all constraints. Additionally, languages are currently being defined to represent constraints in more appropriate ways (SHACL). We think it is therefore not appropriate now to recommend to treat specific metrics as subclasses of dqv:Metric, and we refer implementers to future progress on SHACL and related technology.
+                           Dimension and category are abstract entities. We represent instances dqv:Dimension and dqv:Category as instances of <code>skos:Concept</code>, which we think enable similar features as these for dimensions and categories in daQ. Our representation choice differs more significantly for metrics, however. daQ uses RDFS/OWL classes and subclasses to represent constraints on measurements (e.g., on the type of values). RDFS/OWL however makes an 'open world' assumption that does not allow one to capture entirely all constraints. Additionally, languages are currently being defined to represent constraints in more appropriate ways (SHACL). We think it is therefore not appropriate now to recommend to treat specific metrics as subclasses of dqv:Metric, and we refer implementers to future progress on SHACL and related technology.
                         </p>
                     </div>
 
@@ -1735,8 +1735,8 @@ SubObjectPropertyOf(
 
 :measurement2
     a dqv:QualityMeasurement ;
-    dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
-    dqv:isMeasurementOf :csvConsistencyMetric ;
+    dqv:computedOn :myControlledVocabulary ;
+    dqv:isMeasurementOf :numOfConceptsWithIncompleteLanguageCoverage ;
     dqv:value "450"^^xsd:integer 
     .
         </pre>
@@ -2262,7 +2262,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
                     <h3>Quality dimensions defined in ISO/IEC 25012</h3>
                     <p><a href="http://iso25000.com/index.php/en/iso-25000-standards/iso-25012">ISO/IEC 25012</a>
                     provides an example of quality dimensions
-                        grouped in four categories that can be adopted to document the
+                        grouped in three categories that can be adopted to document the
                         quality of datasets. These quality dimensions and categories are 
                         listed in the table below.</p>
 
