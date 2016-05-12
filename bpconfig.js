@@ -60,9 +60,6 @@ var respecConfig = {
         name: "João Paulo Almeida"
       },
       {
-        name: "Manuel Tomas Carrasco"
-      },
-      {
         name: "Makx Dekkers"
       },
       {
