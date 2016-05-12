@@ -3200,22 +3200,22 @@ Highly
  		"route_type": "3"
  	},
  	"links": [{
- 		"href": "https://api.transit.mycity.org/v2/routes/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/routes/52",
  		"rel": "self",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org/v2/routes",
+  "href": "http://data.mycity.example.com/transport/api/v2/routes",
  		"rel": "collection",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org//v2/schedules/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/schedules/52",
  		"rel": "describedby",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org//v2/maps/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/maps/52",
  		"rel": "describedby",
  		"type": "application/json",
  		"method": "GET"
@@ -3329,7 +3329,7 @@ In order to help developers, the transport agency offers a complete documentatio
               <li>Changing the structure of an XML response</li>
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
-<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>.</p>
+<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stops/1-12 </code>.</p>
 
           </aside>
           <p>To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
@@ -3922,7 +3922,7 @@ HTTP/1.1 200 OK
           <h4 class="subhead"> Possible Approach to Implementation</h4>
           <p>When you begin using a dataset in a new product, make a note of the publisher’s contact information, the URI of the dataset you used, and the date on which you contacted them. This can be done in comments within your code where the dataset is used. Follow the publisher’s preferred route to provide feedback. If they do not provide a route, look for contact information for the Web site hosting the data.</p>
           <aside class="example">
-            <pre># Calling the MyCity transit API, http://api.mycitytransit.example.org/docs/
+            <pre># Calling the MyCity transit API, http://data.mycity.example.com/transport/api/docs/
 # Published by MyCity Transit Agency,
 # notified of our reuse by email to opendata@mycitytransit.example.org
 # by Newton Calegari on 3/24/2016.</pre>
@@ -4301,7 +4301,6 @@ ex:timetable-001 a dcat:Dataset ;
       <p>The figure below shows the benefits that data publishers will gain
         with adoption of the Best Practices.</p>
       <div id="benefitsTables"></div>
-      
      <!-- This section is auto-generated -->
 
     </section>
