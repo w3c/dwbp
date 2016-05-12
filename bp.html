@@ -628,6 +628,10 @@ table.bptable caption {
         data is managed. Such guidance will promote the reuse of data and foster
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
+      <p> Not all data and metadata should be shared openly, however. Security, commercial sensitivity and, above all, individuals' privacy need to be taken into account. It is for data publishers to determine policy on which data should be shared and under what circumstances. Data sharing policies are likely to assess the exposure risk and determine the appropriate security measures to be taken to protect sensitive data, such as secure authentication and authorization.</p>
+
+<p>Depending on circumstances, sensitive information about individuals might include full name, home address, email address, national identification number, IP address, vehicle registration plate number, driver's license number, face, fingerprints, or handwriting, credit card numbers, digital identity, date of birth, birthplace, genetic information, telephone number, login name, screen name, nickname, health records etc. Although it is likely to be safe to share some of that information openly, and even more within a controlled environment, publishers should bear in mind that combining data from multiple sources may allow inadvertent identification of individuals.</p>
+
       <p>A general Best Practice to publish Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
 <!--      <p>Taking that into account, this document sets out a series of Best Practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>-->
       <p>Best Practices cover different aspects related to data publishing and
@@ -644,7 +648,7 @@ table.bptable caption {
         practices for data on the Web in other open formats such as CSV. <!--The Best Practices related to the use of vocabularies
         incorporate practices that stem from Best Practices for Publishing
         Linked Data where appropriate.</p>-->
-      <p>In order to encourage data publishers to adopt the DWBP, benefits were set: comprehension; processability; discoverability; reuse; trust; linkability; access; and interoperability. They are described and related to the Best Practices in the section <a href="#BP_Benefits">Best Practices Benefits</a>.</p>
+      <p>In order to encourage data publishers to adopt the DWBP, a number of distinct benefits were identified: comprehension; processability; discoverability; reuse; trust; linkability; access; and interoperability. They are described and related to the Best Practices in the section <a href="#BP_Benefits">Best Practices Benefits</a>.</p>
     </section>
     <section id="audience" class="informative">
       <h2>Audience</h2>
@@ -894,7 +898,7 @@ table.bptable caption {
               <li> when defining machine-readable metadata, reusing existing
                 standard terms and popular vocabularies are strongly
                 recommended. For example, Dublin Core Metadata (DCMI) terms
-                [[DC-TERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] can
+                [[DCTERMS]] and Data Catalog Vocabulary [[VOCAB-DCAT]] can
                 be used to provide descriptive metadata.</li>
             </ul>
             <aside class="example">
@@ -1306,16 +1310,16 @@ The dataset is classified under
             <p> One of the following vocabularies that include
               properties for linking to a license can be used: </p>
             <ul>
-              <li>Dublin Core [[DC-TERMS]] (<code class="highlith">dct:license</code>)</li>
-              <li>Creative Commons [[CC-VOCAB]] (<code class="highlith">cc:license</code>)</li>
+              <li>Dublin Core [[DCTERMS]] (<code class="highlith">dct:license</code>)</li>
+              <li>Creative Commons [[CCREL]] (<code class="highlith">cc:license</code>)</li>
               <li>schema.org [[SCHEMA-ORG]] (<code class="highlith">schema:license</code>)</li>
               <li>XHTML [[XHTML-VOCAB]] (<code class="highlith">xhtml:license</code>)</li>
             </ul>
             <p>There are also a number of machine-readable rights languages,
             including:</p>
             <ul>
-              <li>The Creative Commons Rights Expression Language [[ccREL]]</li>
-              <li>The Open Digital Rights Language [[odrl21-model]]</li>
+              <li>The Creative Commons Rights Expression Language [[CCREL]]</li>
+              <li>The Open Digital Rights Language [[ODRL21-model]]</li>
               <li>The Open Data Rights Statement Vocabulary [[ODRS]]</li>
             </ul>
             <aside class="example">
@@ -2070,7 +2074,7 @@ rel=“next last memento";
               solve will have already been solved by other people. In the same
               way, if you're looking for a set of identifiers for obvious things
               like countries, currencies, subjects, species, proteins, cities
-              and regions, Nobel prize winners – someone's done it already. The
+              and regions, Nobel prize winners and products – someone's done it already. The
               steps described for <a href="http://www.w3.org/TR/ld-bp/#how-to-find-existing-vocabularies">discovering
                 existing vocabularies</a> [[LD-BP]] can readily be adapted.</p>
             <ul>
@@ -2087,7 +2091,7 @@ rel=“next last memento";
               Instead, define locally unique identifiers for each element and
               provide data that allows them to be converted to globally unique
               URIs programmatically. The Metadata Vocabulary for Tabular Data
-              [[tabular-metadata]] provides mechanisms for doing this within
+              [[Tabular-Metadata]] provides mechanisms for doing this within
               tabular data such as CSV files, in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
                 template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
                 URL</a> property.</p>
@@ -2105,19 +2109,27 @@ rel=“next last memento";
                 segment indicates that the URI identifies something that is not
                 an information resource, i.e. something you cannot retrieve over
                 the Internet, and <code>/AB</code> is the local identifier for
-                the actual bus route. Dereferencing this URI should result in an
+                the actual bus route. 
+
+                This is consistent with advice from GS1's SmartSearch Implementation Guideline [[GS1]]
+                which says that where standard identifiers are used for a product, location etc., 
+                it is recommended that the URI includes the type of identifier 
+                being used.  For example, if a <abbr title="Global Trade Identification Number">GTIN</abbr> is 
+                being used to identify a product then the URI should be of the form: 
+                <code>http://data.myproduct.example.com/gtin/05011476100885</code>.
+
+                Dereferencing URIs for non-information resources should result in an
                 HTTP 303 redirect to a similar URL such as <code>http://data.mycity.example.com/transport/route/bus/doc/AB</code>
                 that <em>describes</em>, i.e. gives information about, the AB
                 bus route (note the substitution of <code>/doc</code> for <code>/id</code>).
-                Jeni Tennison's work on <a href="http://www.w3.org/TR/urls-in-data/">URLs
-                  in Data</a> has more to say on this topic.</p>
+                Jeni Tennison's work on URLs in Data has more to say on this topic [[URLs-in-data]].</p>
               <p>In offering this advice, it is recognized that URIs can be
                 long. In a dataset of even moderate size, storing each URI is
                 likely to be repetitive and obviously wasteful. Instead, define
                 locally unique identifiers for each element (such as <code>AB</code>
                 in this example) and provide data that allows them to be
                 converted to globally unique URIs programmatically. The Metadata
-                Vocabulary for Tabular Data [[tabular-metadata]] provides
+                Vocabulary for Tabular Data [[Tabular-Metadata]] provides
                 mechanisms for doing this within tabular data such as CSV files,
                 in particular using <a href="http://www.w3.org/TR/tabular-metadata/#uri-template-properties">URI
                   template properties</a> such as the <a href="http://www.w3.org/TR/tabular-metadata/#cell-aboutUrl">about
@@ -2722,7 +2734,7 @@ Highly
     </section>
     <!-- end of Data Vocabularies -->
     <!-- begin of Sensitive Data -->
-    <section id="sensitive">
+<!--    <section id="sensitive">
       <h3>Sensitive Data</h3>
       <p>To support Best Practices for publishing sensitive data, data
         publishers should identify all sensitive data, assess the exposure risk,
@@ -2743,55 +2755,8 @@ Highly
         available in part or in its entirety. Data unavailability represents
         gaps that may affect the overall analysis of datasets. To account for
         unavailable data, data publishers should publish information about
-        unavoidable data gaps.</p>
-      <div class="practice">
-        <span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span>
-        <!--<p><span id="DataUnavailabilityReference" class="practicelab">Provide
-            data unavailability reference</span></p> -->
-        <p class="practicedesc">For data that is not open, provide an explanation about how the data can be accessed and who can access it.</p>
-        <section class="axioms">
-          <h4 class="subhead">Why</h4>
-          <p>Publishing online documentation about unavailable data due to
-            sensitivity issues provides a means for publishers to explicitly
-            identify knowledge gaps. This provides a contextual explanation for
-            consumer communities thus encouraging use of the data that <em>is</em>
-            available.</p>
-        </section>
-        <section class="outcome">
-          <h4 class="subhead">Intended Outcome</h4>
-          <p>Consumers will know that data that is referred to from the current dataset is unavailable or only available under different conditions.</p>
-          <!--<p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p> -->
-        </section>
-        <section class="how">
-          <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 303 (see other), 410 (permanently removed), 503 (service *providing data* unavailable).</p>
-          <aside class="example">
-            <p>The dataset created for the bus stops can contain sensitive
-              data, for instance, information about the bus driver. In this case, the publisher provides an explanation informing potential users that the personal data about the bus driver is not available.</p>
-          </aside>
-        </section>
-        <section class="test">
-          <h4 class="subhead">How to Test</h4>
-          <p>Where the dataset includes references to data that is no longer available or is not available to all users, check that an explanation of what is missing and instructions for obtaining access (if possible) are given. Check if a legitimate http response code in the 400 or 500 range is returned when trying to get unavailable data.</p>
-        </section>
-        <section class="ucr">
-          <h4 class="subhead">Evidence</h4>
-          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>
-        </section>
-        <section class="benefits">
-          <h4 class="subhead">Benefits</h4>
-          <ul class="benefitsList">
-            <li>Reuse</li>
-            <!--              <li>Comprehension</li>
-              <li>Linkability</li>              <li>Discoverability</li>-->
-            <li>Trust</li>
-            <!--              <li>Access</li>
-              <li>Interoperability</li>              <li>Processability</li>-->
-          </ul>
-        </section>
-      </div>
-      <!-- end of versions For API BP -->
-    </section>
+        unavoidable data gaps.</p> -->
+<!--    </section> -->
     <!-- end of Data Sensitive -->
     <!-- begin of Data Access -->
     <section id="dataAccess">
@@ -3112,8 +3077,57 @@ Highly
         </section>
       </div>
       <!-- end of BP Access Up to date -->
+
+<!-- Unavailability reference -->
+      <div class="practice">
+        <p><span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span></p>
+        <p class="practicedesc">For data that is not open, provide an explanation about how the data can be accessed and who can access it.</p>
+        <section class="axioms">
+          <h4 class="subhead">Why</h4>
+          <p>Publishing online documentation about unavailable data due to
+            sensitivity issues provides a means for publishers to explicitly
+            identify knowledge gaps. This provides a contextual explanation for
+            consumer communities thus encouraging use of the data that <em>is</em>
+            available.</p>
+        </section>
+        <section class="outcome">
+          <h4 class="subhead">Intended Outcome</h4>
+          <p>Consumers will know that data that is referred to from the current dataset is unavailable or only available under different conditions.</p>
+          <!--<p> Data unavailability reference will enable data consumers to know data that is referred to from the current dataset but that is unavailable or only available under different conditions.</p> -->
+        </section>
+        <section class="how">
+          <h4 class="subhead">Possible Approach to Implementation</h4>
+          <p>Depending on the machine/human context there are a variety of ways to indicate data unavailability. Data publishers may publish an HTML document that gives a human-readable explanation for data unavailability.  From a machine application interface perspective, appropriate HTTP status codes with customized human readable messages can be used.  Examples of status codes include: 303 (see other), 410 (permanently removed), 503 (service *providing data* unavailable).</p>
+          <aside class="example">
+            <p>The dataset created for the bus stops can contain sensitive
+              data, for instance, information about the bus driver. In this case, the publisher provides an explanation informing potential users that the personal data about the bus driver is not available.</p>
+          </aside>
+        </section>
+        <section class="test">
+          <h4 class="subhead">How to Test</h4>
+          <p>Where the dataset includes references to data that is no longer available or is not available to all users, check that an explanation of what is missing and instructions for obtaining access (if possible) are given. Check if a legitimate http response code in the 400 or 500 range is returned when trying to get unavailable data.</p>
+        </section>
+        <section class="ucr">
+          <h4 class="subhead">Evidence</h4>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-AccessLevel">R-AccessLevel</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitivePrivacy">R-SensitivePrivacy</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-SensitiveSecurity">R-SensitiveSecurity</a></p>
+        </section>
+        <section class="benefits">
+          <h4 class="subhead">Benefits</h4>
+          <ul class="benefitsList">
+            <li>Reuse</li>
+            <!--              <li>Comprehension</li>
+              <li>Linkability</li>              <li>Discoverability</li>-->
+            <li>Trust</li>
+            <!--              <li>Access</li>
+              <li>Interoperability</li>              <li>Processability</li>-->
+          </ul>
+        </section>
+      </div>
+<!-- end unavailability reference -->
+
+
       <!-- begin Data Access APIs group -->
-      <div>
+      <section id="accessAPIs">
         <h4>Data Access APIs</h4>
          <!-- begin of Use an API -->
         <div class="practice">
@@ -3343,7 +3357,7 @@ In order to help developers, the transport agency offers a complete documentatio
         </div>
         <!-- end of avoid breaking changes to APIs -->
 
-      </div>
+      </section>
       <!-- end of Data Access APIs group -->
     </section>
     <!-- end of Data Access -->
@@ -3798,10 +3812,7 @@ HTTP/1.1 200 OK
     <!-- begin enrichment -->
     <section id="enrichment">
       <h3>Data Enrichment</h3>
-      <p>Data enrichment refers to a set of processes that can be used to
-        enhance, refine or otherwise improve raw or previously processed data.
-        This idea and other similar concepts contribute to making data a
-        valuable asset for almost any modern business or enterprise.</p>
+      <p>Data enrichment refers to a set of processes that can be used to enhance, refine or otherwise improve raw or previously processed data. This idea and other similar concepts contribute to making data a valuable asset for almost any modern business or enterprise. It is a diverse topic in itself, details of which are beyond the scope of the current document. However, it is worth noting that some of these techniques should be approached with caution, as ethical concerns may arise. In scientific research, care must be taken to avoid enrichment that distorts results or statistical outcomes. For data about individuals, privacy issues may arise when combining datasets. That is, enriching one dataset with another, when neither contains sufficient information about any individual to identify them, may yield a combined dataset that compromises privacy. Furthermore, these techniqes can be carried out at scale, which in turn highlights the need for caution.</p>
       <p>This section provides some advice to be followed by data publishers in
         order to enrich data.</p>
       <!-- begin of BP Enrich data -->
@@ -3818,7 +3829,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approaches to Implementation</h4>
-          <p>Techniques for data enrichment is a topic in itself and goes well beyond the scope of this document which can only highlight the possibilities.</p>
+          <p>Techniques for data enrichment are complex and go well beyond the scope of this document, which can only highlight the possibilities.</p>
           <p>Machine learning can readily be applied to the enrichment of data. Methods include those focused on data categorization, disambiguation, entity recognition, sentiment analysis and topification, among others. New data values may be derived as simply as performing a mathematical calculation across existing columns. Other examples include visual inspection to identify features in spatial data and cross-reference to external databases for demographic information.</p>
           <p>Values generated by inference-based techniques should be labeled as such, and it should be possible to retrieve any original values replaced by enrichment.</p>
           <p>Whenever licensing permits, the code used to enrich the data should be made available along with the dataset. Sharing such code is particularly important for scientific data.</p>
@@ -4195,7 +4206,7 @@ ex:timetable-001 a dcat:Dataset ;
           <p>A license is a legal document giving official permission to do
             something with the data with which it is associated.</p>
           <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
-              DC-TERMS</a></p>
+              DCTERMS</a></p>
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>

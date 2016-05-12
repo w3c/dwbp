@@ -1,7 +1,7 @@
 var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-    publishDate:  "2016-04-09",
+    publishDate:  "2016-05-09",
     previousPublishDate: "2015-06-25",
     previousMaturity: "WD",
     previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20150625/",
@@ -183,7 +183,7 @@ var respecConfig = {
         "publisher":"ISO/NISO",
         "id":"ISO 25964"
        },
-      "ccREL":{
+      "CCREL":{
         "authors":["Hal Abelson","Ben Adida","Mike Linksvayer","Nathan Yergler"],
         "href":"http://www.w3.org/Submission/ccREL/",
         "title":"ccREL: The Creative Commons Rights Expression Language",
@@ -276,6 +276,13 @@ var respecConfig = {
         "publisher": "Elsevier",
 	status: "Journal of Web Semanics 20: 35-49",
         href: "http://dx.doi.org/10.1016/j.websem.2013.05.001"
+      },
+      "GS1": {
+        title: "SmartSearch Implementation Guideline",
+        authors: ["Mark Harrison", "Ken Traub"],
+        "date": "November 2015",
+        "publisher": "GS1",
+        href: "http://www.gs1.org/gs1-smartsearch/guideline/gtin-web-implementation-guideline"
       }
     }
 };
