@@ -77,8 +77,9 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
         <p>API URL: <code>http://data.mycity.example.com/transport/api/</code></p>
 
         <h2>List all bus routes</h2>
-        <code>GET /bus/routes</code>
-        <h3>Parameters</h3>
+        <code>GET http://data.mycity.example.com/transport/api/bus/routes</code>
+        <!--<code>GET /bus/routes</code> -->
+        <!--<h3>Parameters</h3>
         <table class="human-readable-example">
           <thead>
             <tr>
@@ -102,13 +103,26 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
               <td>If set to true, all details for each route is returned. Default is false</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
 
         <h3>Example</h3>
-        <code>http://data.mycity.example.com/transport/api/bus/routes?transport-agency=DTA&full-details=false</code>
+        <!--<code>http://data.mycity.example.com/transport/api/bus/routes?transport-agency=DTA&full-details=false</code>-->
+        <!--<code>GET http://data.mycity.example.com/transport/api/bus/routes</code>-->
+
 
         <h3>Response</h3>
 <pre>
+{
+   "routes":[
+      {"id":"1", "uri": "http://data.mycity.example.com/transport/bus/route/id/1"},
+      {"id":"3", "uri": "http://data.mycity.example.com/transport/bus/route/id/3"},
+      {"id":"5", "uri": "http://data.mycity.example.com/transport/bus/route/id/5"},
+      {"id":"8", "uri": "http://data.mycity.example.com/transport/bus/route/id/8"},
+      {"id":"10", "uri": "http://data.mycity.example.com/transport/bus/route/id/10"},
+      {"id":"12a", "uri": "http://data.mycity.example.com/transport/bus/route/id/12"}
+    ]
+}
+<!--
 {
   "results": {"transport-agency": "http://data.mycity.example.com/transport-agency/DTA",
     "routes":[
@@ -120,14 +134,15 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
       {"id":"12a", "uri": "http://data.mycity.example.com/transport/road/bus/route/id/12a"}
     ]
   }
-}
+}-->
 </pre>
 </section>
 <section>
       <h2>List all bus stops</h2>
-      <code>GET /bus/stops</code>
+      <code>GET http://data.mycity.example.com/transport/api/bus/stops</code>
+      <!--<code>GET /bus/stops</code> -->
 
-      <h3>Parameters</h3>
+ <!--     <h3>Parameters</h3>
       <table class="human-readable-example">
         <thead>
           <tr>
@@ -138,12 +153,12 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!--<tr>
             <td>transport-agency</td>
             <td>string</td>
             <td>optional</td>
             <td>If provided, retrieves data only for the given transport agency</td>
-          </tr>
+          </tr> 
           <tr>
             <td>route </td>
             <td>string</td>
@@ -157,20 +172,52 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
             <td>If set to true, all details for each stop is returned. Default is false</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
-      <h3>Example</h3>
-      <code>http://data.mycity.example.com/transport/api/bus/stops?transport-agency=DTA&route=5&full-details=true</code>
+     <h3>Example</h3>
+      <!--<code>http://data.mycity.example.com/transport/api/bus/stops/route=5&full-details=true</code> -->
+      <code>http://data.mycity.example.com/transport/api/bus/stops/route/id/5</code>
 
-      <h3>Response</h3>
-      <p>Three different ways to describe stops:</p>
+
+      <h3>Response using fields defined in <a href="./dwbp-example.html">dwbp-example.html</a></li></h3>
+      <!--<p>Three different ways to describe stops:</p>
       <ul>
         <li>using simple fields</li>
         <li>using fields defined in <a href="./dwbp-example.html">dwbp-example.html</a></li>
-        <li>using geojson.</li>
-      </ul>
+        <li>using geojson</li>
+      </ul> -->
 
 <pre>{
+  "results": {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+    "stops":[
+      {"id":"345",
+      "uri": "http://data.mycity.example.com/transport/bus/stop/id/345",
+      "name": "Castle Avenue, Sunset Drive",
+      "description": "Castle Avenue, Sunset Drive",
+      "latitude": "-3.731862",
+      "longitude": "-38.526670",
+      "zone_id": "x20"
+      },
+      {"stop_id":"483",
+      "stop_uri": "http://data.mycity.example.com/transport/bus/stop/id/483",
+      "stop_name": "Main Street, Lily Park",
+      "stop_desc": "Main Street, Lily Park",
+      "stop_lat": "-3.731541",
+      "stop_long": "-38.535157",
+      "zone_id": "x20"
+      },
+      {"id":"541",
+      "uri": "http://data.mycity.example.com/transport/bus/stop/id/541",
+      "name": "West Avenue, Beech Road",
+      "desc": "West Avenue, Beech Road",
+      "location": { "type": "Point",
+        "coordinates": [-38.514354, -3.734957] },
+      "zone_id": "x22"
+      }
+    ]
+  }
+}</pre>
+<!--<pre>{
   "results": {"transport-agency": "http://data.mycity.example.com/transport-agency/DTA",
     "route": "http://data.mycity.example.com/transport/road/bus/route/id/5",
     "stops":[
@@ -200,14 +247,14 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
       }
     ]
   }
-}</pre>
+}</pre> -->
       </section>
 
       <section>
         <h2>Get real-time info for bus stop</h2>
-        <code>GET /bus/realtime/{stopid}</code>
+        <code>GET http://data.mycity.example.com/transport/api/bus/stops/realtime/{stopid}</code>
 
-        <h3>Parameters</h3>
+        <!--<h3>Parameters</h3>
         <table class="human-readable-example">
           <tr>
             <th>Name</th>
@@ -220,12 +267,6 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
             <td>boolean</td>
             <td>optional</td>
             <td>If set to true, all details for each stop is returned. Default is false </td>
-          </tr>
-          <tr>
-            <td>transport-agency</td>
-            <td>string</td>
-            <td>optional</td>
-            <td>If provided, retrieves data only for the given transport agency</td>
           </tr>
           <tr>
             <td>route </td>
@@ -245,6 +286,27 @@ route - string - optional, if provided retrieves data only for given route. -->
 
         <h3>Response</h3>
 <pre>{
+  "results": {"id":"345",
+    "uri":"http://data.mycity.example.com/transport/bus/stop/id/345",
+    "timestamp":"2016-05-03T13:54:16Z",
+    "realtime":[
+      {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+      "duetime":"2016-05-03T14:00Z"
+      },
+      {"route": "http://data.mycity.example.com/transport/bus/route/id/8",
+      "duetime":"2016-05-03T14:03Z"
+      },
+      {"route": "http://data.mycity.example.com/transport/bus/route/id/12",
+      "duetime":"2016-05-03T14:05Z"
+      },
+      {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+      "duetime":"2016-05-03T14:06Z"
+      }
+    ]
+  }
+}
+</pre>
+<!--<pre>{
   "results": {"id":"345",
     "uri":"http://data.mycity.example.com/transport/road/bus/stop/id/345",
     "timestamp":"2016-05-03T13:54:16Z",
@@ -268,7 +330,7 @@ route - string - optional, if provided retrieves data only for given route. -->
     ]
   }
 }
-</pre>
+</pre> -->
       </section>
     </div>
   </body>
