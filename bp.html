@@ -3200,22 +3200,22 @@ Highly
  		"route_type": "3"
  	},
  	"links": [{
- 		"href": "https://api.transit.mycity.org/v2/routes/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/routes/52",
  		"rel": "self",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org/v2/routes",
+  "href": "http://data.mycity.example.com/transport/api/v2/routes",
  		"rel": "collection",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org//v2/schedules/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/schedules/52",
  		"rel": "describedby",
  		"type": "application/json",
  		"method": "GET"
  	}, {
- 		"href": "https://api.transit.mycity.org//v2/maps/52",
+    "href": "http://data.mycity.example.com/transport/api/v2/maps/52",
  		"rel": "describedby",
  		"type": "application/json",
  		"method": "GET"
@@ -3329,7 +3329,7 @@ In order to help developers, the transport agency offers a complete documentatio
               <li>Changing the structure of an XML response</li>
               <li>Changing the data type of a value in a response, such as changing a string to an array;</li>
             </ul>
-<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://api.mycitytransit.example.org/arrivals/buses/53/stops/1-12 </code>.</p>
+<p>Suppose the MyCity transit agency's API responds to a request for a certain bus's arrival time at a single station as <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stop/12 </code>, but the agency decides it wants to make it possible to query for a range of stops at once. Rather than change the form of the request to require a range, like <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stop/12-12 </code>, the agency can keep the old API call and add a new one for multiple arrivals, like <code>http://data.mycity.example.com/transport/api/arrivals/buses/53/stops/1-12 </code>.</p>
 
           </aside>
           <p>To notify users directly of changes, it's a good idea to create a mailing list and encourage developers to join. You can then announce changes there, and this provides a nice mechanism for feedback as well. It also allows your users to help each other.</p>
@@ -3922,7 +3922,7 @@ HTTP/1.1 200 OK
           <h4 class="subhead"> Possible Approach to Implementation</h4>
           <p>When you begin using a dataset in a new product, make a note of the publisher’s contact information, the URI of the dataset you used, and the date on which you contacted them. This can be done in comments within your code where the dataset is used. Follow the publisher’s preferred route to provide feedback. If they do not provide a route, look for contact information for the Web site hosting the data.</p>
           <aside class="example">
-            <pre># Calling the MyCity transit API, http://api.mycitytransit.example.org/docs/
+            <pre># Calling the MyCity transit API, http://data.mycity.example.com/transport/api/docs/
 # Published by MyCity Transit Agency,
 # notified of our reuse by email to opendata@mycitytransit.example.org
 # by Newton Calegari on 3/24/2016.</pre>
@@ -4301,7 +4301,6 @@ ex:timetable-001 a dcat:Dataset ;
       <p>The figure below shows the benefits that data publishers will gain
         with adoption of the Best Practices.</p>
       <div id="benefitsTables"></div>
-      
      <!-- This section is auto-generated -->
 
     </section>
@@ -4319,19 +4318,18 @@ ex:timetable-001 a dcat:Dataset ;
     </section>
     <section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements" rel="bibo:Chapter" property="bibo:hasPart">
       <h2>Acknowledgements</h2>
-    <p>The editors gratefully acknowledge the chairs of this Working Group: Hadley Beeman, Yaso Córdova, Deirdre Lee and the staff contact Phil Archer. </p>
+      <p>The editors gratefully acknowledge the contributions made to this document by all members of the working group. Especially Annette Greiner's great effort and the contributions received from Antoine Isaac, Eric Stephan and Phil Archer.</p>
 
-<p> The editors also gratefully acknowledge the contributions made to this document by all members of the working group, specially the contributions received from Adriano Machado, Adriano Veloso, Makx Dekkers, Peter Winstanley, Bart van Leeuwen, Giancarlo Guizzardi, Gisele Pappa, Lewis John McGibbney, Manuel Carrasco-Benitez, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Steven Adler, Vagner Diniz and Wagner Meira. </p>
+      <p>This document has benefited from inputs from many members of the Spatial Data on the Web Working Group. Specific thanks are due to Andrea Perego, Dan Brickley, Linda van den Brink and Jeremy Tandy.</p>
 
-<p>This document has benefited from inputs from many members of the <a href="/2015/spatial/">Spatial Data on the Web</a> Working Group. Specific thanks are due to Andrea Perego, Dan Brickley, Linda van den Brink and Jeremy Tandy. </p>
+      <p>The editors would also like to thank comments received from Adriano Machado, Adriano Veloso, Andreas Kuckartz, Augusto Herrmann, Bart van Leeuwen, Erik Wilde, Giancarlo Guizzardi, Gisele Pappa, Gregg Kellogg, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Lewis John McGibbney, Makx Dekkers, Manuel Carrasco-Benitez, Maurino Andrea, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Peter Winstanley, Renato Iannella, Steven Adler, Vagner Diniz and Wagner Meira.</p>
 
-<p>The editors would also like to thank comments received from Andreas Kuckartz, Augusto Herrmann, Gregg Kellogg, Erik Wilde, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Maurino Andrea and Renato Iannella.</p>
+      <p>The editors also gratefully acknowledge the chairs of this Working Group: Deirdre Lee, Hadley Beeman, Yaso Córdova and the staff contact Phil Archer.</p>
       </section>
     <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history" rel="bibo:Chapter" property="bibo:hasPart">
       <h2>Change history</h2>
       <p>Changes since the <a href="http://www.w3.org/TR/2016/WD-dwbp-20160112/">previous version</a> include:</p>
       <ul>
-        
         <li>Inclusion of two Best Practices in the <a href ="#enrichment">Data Enrichment </a> section: "Enrich data by generating new data" and "Provide Complementary Presentations". </li>
         <li>A new section about <a href="#Reuse">Republication </a> with three new Best Practices: "Provide Feedback to the Original Publisher"; "Follow Licensing Terms"; "Cite the Original Publication". </li>
         <li>Inclusion of new examples and updating of some of the existing examples. </li>

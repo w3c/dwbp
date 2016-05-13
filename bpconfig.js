@@ -22,65 +22,66 @@ var respecConfig = {
       company: "NIC.br, Brazil",
       companyURL: "http://nic.br/",
     }],
-    authors: [
-      {
-        name: "Annette Greiner"
-      },
-      {
-        name: "Antoine Isaac"
-      },
-      {
-        name: "Carlos Iglesias"
-      },
-      {
-        name: "Carlos Laufer"
-      },
-      {
-        name: "Christophe Guéret"
-      },
-      {
-        name: "Deirdre Lee"
-      },
-      {
-        name: "Eric G. Stephan"
-      },
-      {
-        name: "Eric Kauz"
-      },
-      {
-        name: "Ghislain A. Atemezing"
-      },
-      {
-        name: "Hadley Beeman"
-      },
-      {
-        name: "Ig Ibert Bittencourt"
-      },
-      {
-        name: "João Paulo Almeida"
-      },
-      {
-        name: "Manuel Tomas Carrasco"
-      },
-      {
-        name: "Makx Dekkers"
-      },
-      {
-        name: "Peter Winstanley"
-      },
-      {
-        name: "Phil Archer"
-      },
-      {
-        name: "Riccardo Albertoni"
-      },
-      {
-        name: "Sumit Purohit"
-      },
-      {
-        name: "Yasodara Córdova"
-      }],
     otherLinks: [
+    {
+      key: "Contributors",
+      data: [
+      {
+        value: "Annette Greiner"
+      },
+      {
+        value: "Antoine Isaac"
+      },
+      {
+        value: "Carlos Iglesias"
+      },
+      {
+        value: "Carlos Laufer"
+      },
+      {
+        value: "Christophe Guéret"
+      },
+      {
+        value: "Deirdre Lee"
+      },
+      {
+        value: "Eric G. Stephan"
+      },
+      {
+        value: "Eric Kauz"
+      },
+      {
+        value: "Ghislain A. Atemezing"
+      },
+      {
+        value: "Hadley Beeman"
+      },
+      {
+        value: "Ig Ibert Bittencourt"
+      },
+      {
+        value: "João Paulo Almeida"
+      },
+      {
+        value: "Makx Dekkers"
+      },
+      {
+        value: "Peter Winstanley"
+      },
+      {
+        value: "Phil Archer"
+      },
+      {
+        value: "Riccardo Albertoni"
+      },
+      {
+        value: "Sumit Purohit"
+      },
+      {
+        value: "Yasodara Córdova"
+      }
+      ]
+    },
     {
        key: "Changes",
        data: [

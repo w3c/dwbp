@@ -86,14 +86,13 @@ dct: http://purl.org/dc/terms/" lang="en" >
 <body>
   <div class="container">
     <h1>Bus stops of MyCity</h1>
-    <section id="abstract">
+    <div id="abstract">
       <p>This is the human-readable version of <a href="http://w3.org/TR/dwbp/#basicExample">examples</a> used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>.</p>
-    </section>
+    </div>
 
     <section resource="#timetable-001" typeof="dcat:Dataset" id="dataset-section">
-      
       <div id="dataset-description">
-        <h2 id="dataset-description">Dataset description</h2>
+        <h2>Dataset description</h2>
         <table class="human-readable-example">
           <tbody>
             <tr>
@@ -255,9 +254,11 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   <td property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
                 </tr>
                 <tr about="#measure2"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#csvCompletenessMetric">
-                  <span  about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
                   <td>Value</td>
-                  <td><span property="dqv:value" datatype="xsd:double">0.5</span> (Double)</td>
+                  <td>
+                    <span about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                    <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)
+                  </td>
                 </tr>
                 <tr about="#availability"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
                   <td><strong><span property="skos:prefLabel">Availability</span></strong></td>
@@ -267,13 +268,16 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   <td>Metric</td>
                   <td property="skos:definition">dcat:downloadURL is available and its value is dereferenceable.</td>
                 </tr>
-                <tr about="#measure1"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
-                    <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                <tr about="#measure1" typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
                   <td>Value</td>
-                  <td> <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)</td>
+                  <td>
+                    <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                    <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)
+                  </td>
                 </tr>
                 </tbody>
               </table>
+              </div>
 
               <div id="dataset-structural-metadata">
               <h4>Structural metadata - CSV Distribution</h4>
@@ -350,7 +354,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
 
             <div id="dataset-versioning-information">
               <h2>Dataset version history </h2>
-              <!--<table class="human-readable-example">
+              <!-- <table class="human-readable-example">
                 <tbody>
                   <tr>
                     <td>Current version</td>
@@ -391,8 +395,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
             </div>
 
             <!--<div id="dataset-structural-metadata">
-              <h2>Dataset structural metadata</h2>
-              <!--<p>Schema of the dataset "Bus stops of MyCity".</p>
+              <h2>Dataset structural metadata</h2> -->
+              <!-- <p>Schema of the dataset "Bus stops of MyCity".</p>
               <table class="human-readable-example">
                 <tbody>
                   <tr>
@@ -546,8 +550,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
        </td>
      </tr>
 
-   </table> -->
- </section>
+   </table>
+ </section> -->
 
   <section id="duv-section">
     <h2>Feedback</h2>
@@ -569,7 +573,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
          <option value="5" selected>5</option>
        </select>
 
-       <label for="oa-motivation">Which kind of feedback would you like to give?</label>
+       <label>Which kind of feedback would you like to give?</label>
        <input type="radio" name="oa-motivation" value="correction" id="radio-correction"><label for="radio-correction" class="radio-motivation" >Correction</label>
        <input type="radio" name="oa-motivation" value="question" id="radio-question"><label for="radio-question" class="radio-motivation" >Question</label>
        <input type="radio" name="oa-motivation" value="review" id="radio-review"><label for="radio-review" class="radio-motivation" >Review</label>
