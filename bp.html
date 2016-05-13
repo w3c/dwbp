@@ -2972,7 +2972,12 @@ Highly
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Real-time data accessibility may be achieved through two means: </p>
+          <p>A possible approach to implementation is for publishers to configure a Web Service that provides a connection so as real-time data is received by the web service it can be instantly made available to consumers by polling or streaming. </p>
+
+          <p>If data is checked infrequently by consumers, real-time data can be polled upon consumer request for the most recent data through an API.  The data publishers will provide an API to facilitate these read-only requests.</p>
+
+          <p>If data is checked frequently by consumers, a streaming data implementation may be more appropriate where data is pushed through an API.  While streaming techniques are beyond the scope of this best practice, there are many standard protocols and technologies available (for example Server-sent Events, WebSocket, EventSourceAPI) for clients receiving automatic updates from the server.</p>
+          <!--<p>Real-time data accessibility may be achieved through two means: </p>
           <ul>
             <li> Push - as data is produced, it is communicated to
               the data publisher either directly or by storage in a location accessible to the data publisher.</li>
@@ -2983,7 +2988,7 @@ Highly
           <p>To engender greater credibility, in addition to data itself, publishers can provide access to
           error conditions, anomalies, and instrument "house keeping" data. This will 
           enhance real-time applications' ability to interpret and convey
-          real-time data quality to consumers.</p>
+          real-time data quality to consumers.</p> -->
           <aside class="example">
             <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>
           </aside>
