@@ -70,7 +70,7 @@ dct: http://purl.org/dc/terms/" lang="en" >
     white-space: pre-wrap;
   }
 
-  section:target, div:target, tr:target {
+  section:target, div:target, tbody:target, tr:target {
     background: #F7F1D0;
     border: 1px dashed red;
     padding: 10px;
@@ -107,11 +107,13 @@ dct: http://purl.org/dc/terms/" lang="en" >
               <td>Keywords</td>
               <td><span property="dcat:keyword">transport</span>, <span property="dcat:keyword">mobility</span>, <span property="dcat:keyword">bus</span></td>
             </tr>
+          </tbody>
+          <tbody id="provenance-info">
             <tr>
               <td>Publication date</td>
               <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
             </tr>
-            <tr id="publisher-info">
+            <tr>
               <td id="publisher">Publisher</td>
               <td property="dct:publisher" resource="#publisher" typeof="foaf:Organization prov:Agent"><span property="foaf:name">Transport Agency MyCity</span></td>
             </tr>
@@ -119,6 +121,8 @@ dct: http://purl.org/dc/terms/" lang="en" >
               <td>Creator</td>
               <td property="dct:creator" typeof="foaf:Person"><span property="foaf:name">John</span> &lt;<a href="mailto:john@mycitytransport.org" property="foaf:mail">john@mycitytransport.org</a>&gt;<span property="prov:onBehalfOf" resource="#publisher"></span></td>
             </tr>
+          </tbody>
+          <tbody>
             <tr>
               <td>Contact point</td>
               <td><a property="dcat:contactPoint" href="http://data.mycity.example.com/transport/contact">http://data.mycity.example.com/transport/contact</a></td>
@@ -241,42 +245,44 @@ dct: http://purl.org/dc/terms/" lang="en" >
                   <th>Value</th>
                   <th>Metric</th>
                 </tr> -->
-                <h4>Data Quality - CSV Distribution</h4>
+                <div id="dqv-info">
+                  <h4>Data Quality - CSV Distribution</h4>
 
-                <table class="human-readable-example">
-                <tbody>
-                <tr about="#completeness"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#intrinsicDimensions">
-                  <td><strong><span property="skos:prefLabel">Completeness</span></strong></td>
-                  <td property="skos:definition">Refers to the degree to which all required information is present in a particular dataset.</td>
-                </tr>
-                <tr about="#csvCompletenessMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#completeness">
-                  <td >Metric</td>
-                  <td property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
-                </tr>
-                <tr about="#measure2"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#csvCompletenessMetric">
-                  <td>Value</td>
-                  <td>
-                    <span about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
-                    <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)
-                  </td>
-                </tr>
-                <tr about="#availability"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
-                  <td><strong><span property="skos:prefLabel">Availability</span></strong></td>
-                  <td property="skos:definition">Refers to the extent to which data (or some portion of it) is present, obtainable and ready for use.</td>
-                </tr>
-                <tr about="#downloadURLAvailabilityMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#availability">
-                  <td>Metric</td>
-                  <td property="skos:definition">dcat:downloadURL is available and its value is dereferenceable.</td>
-                </tr>
-                <tr about="#measure1" typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
-                  <td>Value</td>
-                  <td>
-                    <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
-                    <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+                  <table class="human-readable-example">
+                  <tbody>
+                  <tr about="#completeness"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#intrinsicDimensions">
+                    <td><strong><span property="skos:prefLabel">Completeness</span></strong></td>
+                    <td property="skos:definition">Refers to the degree to which all required information is present in a particular dataset.</td>
+                  </tr>
+                  <tr about="#csvCompletenessMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#completeness">
+                    <td >Metric</td>
+                    <td property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
+                  </tr>
+                  <tr about="#measure2"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#csvCompletenessMetric">
+                    <td>Value</td>
+                    <td>
+                      <span about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                      <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)
+                    </td>
+                  </tr>
+                  <tr about="#availability"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
+                    <td><strong><span property="skos:prefLabel">Availability</span></strong></td>
+                    <td property="skos:definition">Refers to the extent to which data (or some portion of it) is present, obtainable and ready for use.</td>
+                  </tr>
+                  <tr about="#downloadURLAvailabilityMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#availability">
+                    <td>Metric</td>
+                    <td property="skos:definition">dcat:downloadURL is available and its value is dereferenceable.</td>
+                  </tr>
+                  <tr about="#measure1" typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
+                    <td>Value</td>
+                    <td>
+                      <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                      <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
               </div>
 
               <div id="dataset-structural-metadata">
