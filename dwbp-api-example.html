@@ -103,7 +103,7 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
               <td>If set to true, all details for each route is returned. Default is false</td>
             </tr>
           </tbody>
-        </table> -->
+        </table> 
 
         <h3>Example</h3>
         <!--<code>http://data.mycity.example.com/transport/api/bus/routes?transport-agency=DTA&full-details=false</code>-->
@@ -114,12 +114,12 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
 <pre>
 {
    "routes":[
-      {"id":"1", "uri": "http://data.mycity.example.com/transport/bus/route/id/1"},
-      {"id":"3", "uri": "http://data.mycity.example.com/transport/bus/route/id/3"},
-      {"id":"5", "uri": "http://data.mycity.example.com/transport/bus/route/id/5"},
-      {"id":"8", "uri": "http://data.mycity.example.com/transport/bus/route/id/8"},
-      {"id":"10", "uri": "http://data.mycity.example.com/transport/bus/route/id/10"},
-      {"id":"12a", "uri": "http://data.mycity.example.com/transport/bus/route/id/12"}
+      {"id":"1", "uri": "http://data.mycity.example.com/transport/bus/routes/1"},
+      {"id":"3", "uri": "http://data.mycity.example.com/transport/bus/routes/3"},
+      {"id":"5", "uri": "http://data.mycity.example.com/transport/bus/routes/5"},
+      {"id":"8", "uri": "http://data.mycity.example.com/transport/bus/routes/8"},
+      {"id":"10", "uri": "http://data.mycity.example.com/transport/bus/routes/10"},
+      {"id":"12a", "uri": "http://data.mycity.example.com/transport/bus/routes/12"}
     ]
 }
 <!--
@@ -172,11 +172,11 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
             <td>If set to true, all details for each stop is returned. Default is false</td>
           </tr>
         </tbody>
-      </table> -->
+      </table> 
 
      <h3>Example</h3>
-      <!--<code>http://data.mycity.example.com/transport/api/bus/stops/route=5&full-details=true</code> -->
-      <code>http://data.mycity.example.com/transport/api/bus/stops/route/id/5</code>
+      <!--<code>http://data.mycity.example.com/transport/api/bus/stops/route=5&full-details=true</code> 
+      <code>http://data.mycity.example.com/transport/api/bus/stops/route/id/5</code> -->
 
 
       <h3>Response using fields defined in <a href="./dwbp-example.html">dwbp-example.html</a></li></h3>
@@ -188,31 +188,31 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
       </ul> -->
 
 <pre>{
-  "results": {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+  <!--"results": {"route": "http://data.mycity.example.com/transport/bus/route/id/5", -->
     "stops":[
-      {"id":"345",
-      "uri": "http://data.mycity.example.com/transport/bus/stop/id/345",
-      "name": "Castle Avenue, Sunset Drive",
-      "description": "Castle Avenue, Sunset Drive",
-      "latitude": "-3.731862",
-      "longitude": "-38.526670",
-      "zone_id": "x20"
+      {"stop_id":"345",
+      "stop_name": "Castle Avenue, Sunset Drive",
+      "stop_desc": "Castle Avenue, Sunset Drive",
+      "stop_lat": "-3.731862",
+      "stop_long": "-38.526670",
+      "zone_id": "x20",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/345"
       },
       {"stop_id":"483",
-      "stop_uri": "http://data.mycity.example.com/transport/bus/stop/id/483",
       "stop_name": "Main Street, Lily Park",
       "stop_desc": "Main Street, Lily Park",
       "stop_lat": "-3.731541",
       "stop_long": "-38.535157",
-      "zone_id": "x20"
+      "zone_id": "x20",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/483"
       },
-      {"id":"541",
-      "uri": "http://data.mycity.example.com/transport/bus/stop/id/541",
-      "name": "West Avenue, Beech Road",
-      "desc": "West Avenue, Beech Road",
-      "location": { "type": "Point",
-        "coordinates": [-38.514354, -3.734957] },
-      "zone_id": "x22"
+      {"stop_id":"541",
+      "stop_name": "West Avenue, Beech Road",
+      "stop_desc": "West Avenue, Beech Road",
+      "stop_lat":"-3.734957"
+      "stop_long":"-38.514354",
+      "zone_id": "x22",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/541"
       }
     ]
   }
@@ -250,6 +250,90 @@ dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
 }</pre> -->
       </section>
 
+
+
+      <section>
+      <h2>List all bus stops along a single route</h2>
+      <code>GET http://data.mycity.example.com/transport/api/bus/stops/routes/{id}</code>
+      <!--<code>GET /bus/stops</code> -->
+
+ <!--     <h3>Parameters</h3>
+      <table class="human-readable-example">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Optional</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--<tr>
+            <td>transport-agency</td>
+            <td>string</td>
+            <td>optional</td>
+            <td>If provided, retrieves data only for the given transport agency</td>
+          </tr> 
+          <tr>
+            <td>route </td>
+            <td>string</td>
+            <td>optional</td>
+            <td>If provided, retrieves data only for the given route</td>
+          </tr>
+          <tr>
+            <td>full-details</td>
+            <td>boolean</td>
+            <td>optional</td>
+            <td>If set to true, all details for each stop is returned. Default is false</td>
+          </tr>
+        </tbody>
+      </table> 
+
+     <h3>Example</h3>
+      <!--<code>http://data.mycity.example.com/transport/api/bus/stops/route=5&full-details=true</code> 
+      <code>http://data.mycity.example.com/transport/api/bus/stops/route/id/5</code> 
+
+
+      <h3>Response using fields defined in <a href="./dwbp-example.html">dwbp-example.html</a></li></h3>
+      <!--<p>Three different ways to describe stops:</p>
+      <ul>
+        <li>using simple fields</li>
+        <li>using fields defined in <a href="./dwbp-example.html">dwbp-example.html</a></li>
+        <li>using geojson</li>
+      </ul> -->
+<h3>Response </h3> 
+<pre>{
+  <"results": {"route": "http://data.mycity.example.com/transport/bus/stops/routes/5",
+    "stops":[
+      {"stop_id":"345",
+      "stop_name": "Castle Avenue, Sunset Drive",
+      "stop_desc": "Castle Avenue, Sunset Drive",
+      "stop_lat": "-3.731862",
+      "stop_long": "-38.526670",
+      "zone_id": "x20",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/345"
+      },
+      {"stop_id":"483",
+      "stop_name": "Main Street, Lily Park",
+      "stop_desc": "Main Street, Lily Park",
+      "stop_lat": "-3.731541",
+      "stop_long": "-38.535157",
+      "zone_id": "x20",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/483"
+      },
+      {"stop_id":"541",
+      "stop_name": "West Avenue, Beech Road",
+      "stop_desc": "West Avenue, Beech Road",
+      "stop_lat":"-3.734957"
+      "stop_long":"-38.514354",
+      "zone_id": "x22",
+      "stop_url": "http://data.mycity.example.com/transport/bus/stops/541"
+      }
+    ]
+  }
+}</pre>
+
+
       <section>
         <h2>Get real-time info for bus stop</h2>
         <code>GET http://data.mycity.example.com/transport/api/bus/stops/realtime/{stopid}</code>
@@ -282,24 +366,24 @@ transport agency - string - optional, if provided retrieves data only for given 
 route - string - optional, if provided retrieves data only for given route. -->
 
         <h3>Example</h3>
-        <code>http://data.mycity.example.com/transport/api/bus/realtime/345</code>
+        <code>http://data.mycity.example.com/transport/api/bus/stops/realtime/345</code>
 
         <h3>Response</h3>
 <pre>{
   "results": {"id":"345",
-    "uri":"http://data.mycity.example.com/transport/bus/stop/id/345",
+    "uri":"http://data.mycity.example.com/transport/bus/stops/345",
     "timestamp":"2016-05-03T13:54:16Z",
     "realtime":[
-      {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+      {"route": "http://data.mycity.example.com/transport/bus/stops/routes/5",
       "duetime":"2016-05-03T14:00Z"
       },
-      {"route": "http://data.mycity.example.com/transport/bus/route/id/8",
+      {"route": "http://data.mycity.example.com/transport/bus/stops/routes/8",
       "duetime":"2016-05-03T14:03Z"
       },
-      {"route": "http://data.mycity.example.com/transport/bus/route/id/12",
+      {"route": "http://data.mycity.example.com/transport/bus/stops/routes/12",
       "duetime":"2016-05-03T14:05Z"
       },
-      {"route": "http://data.mycity.example.com/transport/bus/route/id/5",
+      {"route": "http://data.mycity.example.com/transport/bus/stops/routes/9",
       "duetime":"2016-05-03T14:06Z"
       }
     ]
