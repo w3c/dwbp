@@ -5,51 +5,97 @@
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix :        <http://mycity.example.org/ns#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix pav:     <http://pav-ontology.github.io/pav/> .
+@prefix dqv:     <http://www.w3.org/ns/dqv#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix :        <http://data.mycity.example.com/ns#> .
 
-# Basic facts about the dataset
-<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001>
+# Basic facts about the dataset stops-2015-05-05
+<http://http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05>
   a dcat:Dataset;
-  dcterms:title "Bus timetable of MyCity";
+  dcterms:title "Bus stops of MyCity";
   dcat:keyword "transport","mobility" ,"bus";
   dcterms:issued "2015-05-05"^^xsd:date;
-  dcterms:modified "2015-05-05"^^xsd:date;
-  dcat:contactPoint <http://example.org/transport-agency/contact>;
-  dcterms:temporal <http://reference.data.gov.uk/id/year/2014>;
+  dcat:contactPoint <http://data.mycity.example.com/transport/contact>;
+  dcterms:temporal <http://reference.data.gov.uk/id/year/2015>;
   dcterms:spatial <http://www.geonames.org/3399415>;
-  dcterms:publisher <http://data.mycity.example/transport-agency-mycity>;
+  dcterms:publisher <http://data.mycity.example.com/transport-agency-mycity>;
   dcterms:accrualPeriodicity <http://purl.org/linked-data/sdmx/2009/code#freq-A>;
   dcat:theme :mobility;
-  dcterms:language <http://publications.europa.eu/resource/authority/language/ENG>, <http://publications.europa.eu/resource/authority/language/POR>;
-  dcat:distribution <http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-csv>.
+  dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en>, <http://id.loc.gov/vocabulary/iso639-1/pt>;
+  dcterms:conformsTo "ISO 8601";
+  dcat:distribution <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv>;
+  dcat:distribution <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.json>;
+  dcterms:creator <http://data.mycity.example.com/transport/people/john>;
+  owl:versionInfo "1.0";
+  pav:version "1.0".
 
 # A mini SKOS concept scheme to cover the themes
-
 :mobility a skos:Concept;
   skos:inScheme :themes;
   skos:prefLabel "Mobility".
 
 :themes a skos:ConceptScheme ;
-  skos:prefLabel "A set of domains to classify documents" .
+  skos:prefLabel "A set of domains to classify documents".
 
 # Facts about the transport agency
-<http://data.mycity.example/transport-agency-mycity> a dcterms:Agent;
+<http://data.mycity.example.com/transport-agency-mycity> a foaf:Organization, prov:Agent;
   foaf:name "MyCity Transport Agency".
 
-# The RDF distribution of the timetable
-<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-rdf>
-  a dcat:Distribution;
-  dcterms:title "RDF distribution MyCity_busTimetable dataset.";
-  dcterms:description "RDF distribution of the bus timetable dataset of MyCity.";
-  dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/>;
-  dcat:mediaType "application/rdf+xml";
-  dcat:downloadURL <http://data.mycity.gov/public-transport/road/bus/dataset/timetable.rdf>.
+# Facts about the creator
+<http://data.mycity.example.com/transport/people/john> a foaf:Person, prov:Agent;
+  foaf:givenName "John";
+  foaf:mbox "mailto:john@mycitytransport.org";
+  prov:actedOnBehalfOf <http://data.mycity.example.com/transport-agency-mycity>.
 
-# The CSV distribution of the timetable
-<http://data.mycity.example/public-transport/road/bus/dataset/timetable-001-csv>
+# The CSV distribution of the bus stops dataset
+<http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv>
   a dcat:Distribution;
-  dcterms:title "CSV distribution MyCity_busTimetable dataset.";
-  dcterms:description "CSV distribution of the bus timetable dataset of MyCity.";
+  dcterms:title "CSV distribution of stops-2015-05-05 dataset";
+  dcterms:description "CSV distribution of the bus stops dataset of MyCity";
   dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/>;
   dcat:mediaType "text/csv";
-  dcat:downloadURL <http://data.mycity.gov/public-transport/road/bus/dataset/timetable.csv>.
+  dcat:downloadURL <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv>;
+  dqv:hasQualityMeasurement :measure1, :measure2.
+
+# Definition of Measures
+:measure1 a dqv:QualityMeasurement;
+  dqv:computedOn <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv>;
+  dqv:isMeasurementOf :downloadURLAvailabilityMetric;
+  dqv:value "true"^^xsd:boolean.
+
+:measure2 a dqv:QualityMeasurement;
+  dqv:computedOn <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv>;
+  dqv:isMeasurementOf :csvCompletenessMetric;
+  dqv:value "0.5"^^xsd:double.
+
+# Definition of dimensions and metrics
+:availability a dqv:Dimension;
+  skos:prefLabel "Availability"@en;
+  skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en;
+  dqv:inCategory :accessibility.
+
+:completeness a dqv:Dimension;
+  skos:prefLabel "Completeness"@en;
+  skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en;
+  dqv:inCategory :intrinsicDimensions.
+
+:downloadURLAvailabilityMetric a dqv:Metric;
+  skos:definition "It checks if dcat:downloadURL is available and if its value is dereferenceable."@en;
+  dqv:inDimension :availability.
+
+:csvCompletenessMetric a dqv:Metric;
+  skos:definition "Ratio between the number of objects represented in the cvs and the number of objects expected to be represented according to the declared dataset scope."@en;
+  dqv:inDimension :completeness.
+
+# The JSON distribution of the bus stops dataset
+<http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.json>
+  a dcat:Distribution;
+  dcterms:title "JSON distribution of stops-2015-05-05 dataset";
+  dcterms:description "JSON distribution of the bus stops dataset of MyCity";
+  dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/>;
+  dcat:mediaType "application/json";
+  dcat:downloadURL <http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.json>.
+
+
