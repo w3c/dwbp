@@ -245,6 +245,33 @@ function init() {
     </script>
     <style type="text/css">
 
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
+    width: 100%;
+  }
+
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+    letter-spacing: all;
+  }
+
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
+
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+
+
 #bp-summary ul {
   list-style-type: none;
   padding-left: 0;
@@ -450,8 +477,7 @@ table.bptable {
   border-collapse: collapse;
   caption-side:bottom;
 }
-table#uripatternstable th, table#uripatternstable td,
-table.bptable th, table.bptable td {
+table#uripatternstable th, table#uripatternstable td, table.bptable th, table.bptable td {
   border: 1px solid black;
   padding:0.3em;
 }
@@ -2990,7 +3016,42 @@ Highly
           enhance real-time applications' ability to interpret and convey
           real-time data quality to consumers.</p> -->
           <aside class="example">
-            <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>
+          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data. 
+            The API provides consumers real-time status information using a REST API. The API allows
+            the consumer to select: </p>
+          <ul>
+            <li>Current position of the bus</li>
+            <li>Bus arrival time</li>
+            <li>Bus status</li>
+          </ul>
+        <h5 id="dataset-description">API Description</h5>
+        <table class="human-readable-example">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>API</th>
+              <th>Parameters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bus position</td>
+              <td><code>{root}/bus/position/current</code></td>
+              <td>bus_id</td>
+            </tr>
+            <tr>
+              <td>Bus arrival time to some stop</td>
+              <td><code>{root}/bus/arrival_time</code></td>
+              <td>bus_id, stop_id</td>
+            </tr>
+            <tr>
+              <td>Bus status <br>(Possible return: "on-schedule", "delay", "out-of-service")</td>
+              <td><code>{root}/bus/status</code></td>
+              <td>bus_id</td>
+            </tr>
+          </tbody>
+        </table>
+<!-- <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>-->
           </aside>
         </section>
         <section class="test">
@@ -3151,10 +3212,7 @@ Highly
             <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
             <p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet. </p>
             <aside class="example">
-            Besides providing bulk download to data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. Examples of its use are presented <a href="./dwbp-api-example.html">here</a>.
-            <!--<p>Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p> -->
-
-            
+            <p>Besides providing bulk downloads of data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
             </aside>
           </section>
           <section class="test">
