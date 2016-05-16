@@ -1282,7 +1282,7 @@ pre red { color: red;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
         pav:version "series-1.2"^^xsd:string;
-        dct:issued "2015-MAY-05"^^xsd:date;
+        dct:issued "2015-05-05"^^xsd:date;
         dct:creator &lt;http://example.org/transport-agency/contact&gt;;
       </pre>
       <pre  class="schema json-ld">{
@@ -1291,7 +1291,7 @@ pre red { color: red;
   "pav:version" : "series-1.2",
   "prism:doi" : "10.3456/4567.21",
   "creator" : "http://example.org/transport-agency/contact",
-  "issued" : "2015-MAY-05",
+  "issued" : "2015-05-05",
   "dct:title" : "Bus timetable of MyCity",
   "@context" : {
     "title" : {
@@ -1346,7 +1346,7 @@ ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
         pav:version "series-1.2"^^xsd:string;
-        dct:issued "2015-MAY-05"^^xsd:date;
+        dct:issued "2015-05-05"^^xsd:date;
         dct:creator &lt;http://example.org/transport-agency/contact&gt;;
 .
 
@@ -1366,7 +1366,7 @@ ex:timetable-memorandum
     "pav:version" : "series-1.2",
     "prism:doi" : "10.3456/4567.21",
     "creator" : "http://example.org/transport-agency/contact",
-    "issued" : "2015-MAY-05",
+    "issued" : "2015-05-05",
     "dct:title" : "Bus timetable of MyCity"
   }, {
     "@id" : "ex:timetable-memorandum",
@@ -1432,12 +1432,12 @@ ex:timetable-memorandum
       </pre>
       <p  id="ex3">Example 3 - Citation:  Citation characterization where memoradum is a policy. </p>
       <pre  class="schema turtle">     
-      ex:timetable-memorandum
+ex:timetable-memorandum
       a biro:BibliographicReference;
       a fabio:Policy  ;
       dct:bibliographicCitation
-     "Costello, E. Mayor (2015). City Timetable Schedule Change Memorandum Effective 
-     January 1, 2015. Sept 15, 2014. DOI:0.3456/4567.21"^^xsd:string ;
+      "Costello, E. Mayor (2015). City Timetable Schedule Change Memorandum Effective 
+      January 1, 2015. Sept 15, 2014. DOI:0.3456/4567.21"^^xsd:string ;
       biro:references ex:timetable-001 .
 
 
@@ -1513,7 +1513,7 @@ ex:timetable-001
       dcat:distribution ex:timetable-001-csv;
       .
 
-    ex:timetable-001-csv
+ex:timetable-001-csv
       a dcat:Distribution;
       dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
       dct:description "CSV distribution of the bus timetable 
@@ -1521,31 +1521,29 @@ ex:timetable-001
       dcat:mediaType "text/csv"^^xsd:string;
       .
 
-    ex:comment1Content a cnt:ContentAsText ;
+ex:comment1Content a cnt:ContentAsText ;
       cnt:chars "This timetable is missing route 3"^^xsd:string .
 
-    ex:comment1
+ex:comment1
        a duv:UserFeedback ;
        oa:hasBody ex:comment1Content ;
        oa:hasTarget ex:timetable-001 ;
        dct:creator ex:localresident .
 
-    ex:comment2Content a cnt:ContentAsText ;
+ex:comment2Content a cnt:ContentAsText ;
       cnt:chars "Are tab delimited formats also available?"^^xsd:string .
 
-    ex:comment2
+ex:comment2
        a duv:UserFeedback ;
        oa:hasTarget ex:timetable-001-csv;
        oa:hasBody ex:comment1Content ;
        dct:creator ex:localresident ;
     .
 
-    ex:localresident
+ex:localresident
        a foaf:Person  ;
        foaf:Name "Alan Law"^^xsd:string  ;
     .
-
-
       </pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
@@ -1654,20 +1652,18 @@ ex:timetable-001
     "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
   }
 }
-
-
       </pre>
       <p  id="ex5">Example 5:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
       <pre  class="schema turtle">      
 
-   ex:timetable-001-csv
+ex:timetable-001-csv
     a dcat:Distribution;
     dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
     dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string ;
     dcat:mediaType "text/csv"^^xsd:string;
     .
 
-  ex:release-notes a duv:Usage;
+ex:release-notes a duv:Usage;
   dct:title "New timetable format";
   dct:created "20-DEC-2014" ;
   dct:description "The previous proprietary format has been replaced with a 
@@ -1726,7 +1722,7 @@ ex:timetable-001
 }
 
       </pre>
-      <p  id="ex6">Example 6-  Data Usage:  Dataset publisher provides recommendations about a bus route calculator that can be used with a timetable distribution.</p>
+      <p  id="ex6">Example 6 - Data Usage:  Dataset publisher provides recommendations about a bus route calculator that can be used with a timetable distribution.</p>
       <pre  class="schema turtle">      
 ex:timetable-001-csv
       a dcat:Distribution;
@@ -1738,14 +1734,14 @@ ex:timetable-001-csv
 ex:route-calculator a duv:UsageTool;
     dct:title "Route Calculator"^^xsd:string;
     dct:created "15-FEB-2004"^^xsd:date ;
-    dct:uri <http:  example.org=""  route-calculator=""> .
+    dct:uri &lt;http://example.org/route-calculator&gt; .
 
     ex:release-notes a duv:Usage;
     dct:title "New timetable format"^^xsd:string;
     dct:created "20-DEC-2014"^^xsd:date ;
     duv:hasUsageTool ex:route-calculator ;
 .
-      </http:></pre>
+</pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
     "@id" : "ex:release-notes",
@@ -1814,14 +1810,11 @@ ex:route-calculator a duv:UsageTool;
     "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
   }
 }
-
       </pre>
     </section>
           <section  id="conclusion"  class="informative">
             <h2> Future Work</h2>
-            <p>In the near future,  the editors want to internationalize the terms in the DUV as broadly as possible.  As a technical note this DUV activity officially concludes April 2016 according to the Data on the Web Best Practices (DWBP) Working Group Schedule.  It is the opinion of the DUV editors that the concepts of usage, feedback, and citation are still evolving and are considering forming a W3C Community Group to focus on: 1) the application of the DUV 2) based on future external community feedback make formal requests to the W3C to continue making minor vocabulary revisions. </p>
-    <!--    <section id="references" class="appendix">
-      <h2> References</h2>      <section id="normative-references" class="appendix">        <h3>Normative references</h3>        <dl about="" class="bibliography">        </dl>      </section>      <section id="informative-references">        <h3>Informative references</h3>        <dl about="" class="bibliography">        </dl>      </section>    </section>-->
+            <p>In the near future,  the editors want to internationalize the terms in the DUV as broadly as possible.  As a technical note this DUV activity officially concludes July 2016 according to the Data on the Web Best Practices (DWBP) Working Group Schedule.  It is the opinion of the DUV editors that the concepts of usage, feedback, and citation are still evolving and are considering forming a W3C Community Group to focus on: 1) the application of the DUV 2) based on future external community feedback make formal requests to the W3C to continue making minor vocabulary revisions. </p>
     <script  type="application/javascript">
         var bodyKeypressCallbacks = {};
 
