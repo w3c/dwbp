@@ -245,6 +245,32 @@ function init() {
     </script>
     <style type="text/css">
 
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
+    width: 100%;
+  }
+
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+  }
+
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
+
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+
+
 #bp-summary ul {
   list-style-type: none;
   padding-left: 0;
@@ -450,8 +476,7 @@ table.bptable {
   border-collapse: collapse;
   caption-side:bottom;
 }
-table#uripatternstable th, table#uripatternstable td,
-table.bptable th, table.bptable td {
+table#uripatternstable th, table#uripatternstable td, table.bptable th, table.bptable td {
   border: 1px solid black;
   padding:0.3em;
 }
@@ -590,10 +615,7 @@ table.bptable caption {
         interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
-      <p>This version of the document shows its expected scope and future
-        direction. A template is used to show the "what", "why" and "how" of
-        each Best Practice. Comments are sought on the usefulness of this
-        approach and the expected scope of the final document.</p>
+      <p>The Working Group believes that this document is now <strong>complete and ready to advance to Candidate Recommendation</strong> (call for implementations). If you have comments to make before that step is taken, please make them before <strong>Sunday 12 June 2016</strong>.</p>
     </section>
     <section id="intro" class="informative">
       <h2>Introduction</h2>
@@ -706,7 +728,7 @@ table.bptable caption {
         should be published with stable URIs, so that they can be referenced and
         make links, via URIs, between two or more resources. Finally, to promote the interoperability among datasets it is important to adopt data vocabularies and standards. </p>
       <!--<p>The following is a composite diagram illustrating the anatomy of a published and acessible Web dataset. Data values correspond to the data itself and may be available in one or more distributions, which should be defined by the publisher considering data consumer's expectations. The Metadata component corresponds to the additional information that describes the dataset and dataset distributions, helping consumers manipulate and reuse the data. In order to allow easy access to the dataset and its corresponding distributions, multiple dataset access mechanisms can  be available. Finally, to promote the interoperability among datasets it is important to adopt data vocabularies and standards.  </p>-->
-      <img src="images/context.png" alt="Our Context" height="280" width="680">
+      <img src="images/context.png" alt="Our Context" height="280" width="680" style="margin: 0 auto; display:block">
     </section>
     <section id="namespaces" class="informative">
       <h2> Namespaces </h2>
@@ -2364,8 +2386,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             
 <aside class="example">
              
-<p>In order to reach a larger number of data consumers, John
-                decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code><p></p></p>
+<p>In order to reach a larger number of data consumers, John decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
               <pre class="highlight">
   :stops-2015-05-05
       a dcat:Dataset ;
@@ -2414,7 +2435,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
            </pre>
             </aside>
 
-            <!-- <aside class="example">
+             <aside class="example">
               <p>In order to reach a larger number of data consumers, the Census Team
                 decided to also provide a XML distribution of the usual resident population
                 dataset.</p>
@@ -2990,7 +3011,42 @@ Highly
           enhance real-time applications' ability to interpret and convey
           real-time data quality to consumers.</p> -->
           <aside class="example">
-            <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>
+          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data. 
+            The API provides consumers real-time status information using a REST API. The API allows
+            the consumer to select: </p>
+          <ul>
+            <li>Current position of the bus</li>
+            <li>Bus arrival time</li>
+            <li>Bus status</li>
+          </ul>
+        <h5 id="dataset-description">API Description</h5>
+        <table class="human-readable-example">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>API</th>
+              <th>Parameters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bus position</td>
+              <td><code>{root}/bus/position/current</code></td>
+              <td>bus_id</td>
+            </tr>
+            <tr>
+              <td>Bus arrival time to some stop</td>
+              <td><code>{root}/bus/arrival_time</code></td>
+              <td>bus_id, stop_id</td>
+            </tr>
+            <tr>
+              <td>Bus status <br>(Possible return: "on-schedule", "delay", "out-of-service")</td>
+              <td><code>{root}/bus/status</code></td>
+              <td>bus_id</td>
+            </tr>
+          </tbody>
+        </table>
+<!-- <p><a href="dwbp-realtime-example.html">Example page</a> showing an API specification for real-time data.</p>-->
           </aside>
         </section>
         <section class="test">
@@ -3057,8 +3113,7 @@ Highly
       owl:versionInfo "1.2" ;
       pav:version "1.2" ; 
       .
-      </pre>      
-            </p>
+      </pre>
           </aside>
         </section>
         <section class="test">
@@ -3151,10 +3206,7 @@ Highly
             <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily build from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
             <p> Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet. </p>
             <aside class="example">
-            Besides providing bulk download to data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. Examples of its use are presented <a href="./dwbp-api-example.html">here</a>.
-            <!--<p>Rails, Django, and Express are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet.</p> -->
-
-            
+            <p>Besides providing bulk downloads of data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
             </aside>
           </section>
           <section class="test">
@@ -3394,7 +3446,7 @@ In order to help developers, the transport agency offers a complete documentatio
           <p>In the second case, where data has been archived, it is more appropriate to redirect requests to a Web page giving information about the archive that holds the data and how a potential user can access it.</p>
           <p>In both cases, the original URI continues to identify the dataset and leads to useful information, even though that dataset is no longer directly available.</p>
 
-          <aside class="example" id="archiveEg">
+          <aside class="example" id="archiveExample">
           <p>John decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
 
 <div style="border:thin solid black; padding:0 0.3em; font-family:serif">
@@ -4197,7 +4249,7 @@ ex:timetable-001 a dcat:Dataset ;
             proprietary or free and may be either unpublished or open.</p>
           <p>Examples of file formats include: plain text (in a specified character encoding, ideally UTF-8),
           Comma Separated Variable (CSV) [[RFC4180]], Portable Document Format (<a href="http://partners.adobe.com/public/developer/tips/topic_tip31.html">PDF</a>)
-          <a href="https://www.w3.org/standards/xml/">XML</a>, JSON [[RFC4627]], Turtle [[Turtle]] and <a href="" ="https://www.hdfgroup.org/HDF5/">HDF5</a>.
+          <a href="https://www.w3.org/standards/xml/">XML</a>, JSON [[RFC4627]], Turtle [[Turtle]] and <a href="https://www.hdfgroup.org/HDF5/">HDF5</a>.
 <!--
 
  <a href="https://en.wikipedia.org/wiki/Text_file">txt</a>,
