@@ -4,9 +4,9 @@ var respecConfig = {
     publishDate:  "2016-05-09",
     previousPublishDate: "2015-06-25",
     previousMaturity: "WD",
-    previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20150625/",
+    previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20160112/",
     edDraftURI: "http://w3c.github.io/dwbp/bp.html",
-    // lcEnd: "3000-01-01",
+     lcEnd: "2016-06-12",
     // crEnd: "3000-01-01",
     editors: [
     {
