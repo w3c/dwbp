@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html prefix="dcat: http://www.w3.org/ns/dcat#
+dqv: http://www.w3.org/ns/dqv#
+dct: http://purl.org/dc/terms/" lang="en" >
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <title>DWBP - Examples</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <style type="text/css">
+   .container {
+    font-family: sans-serif;
+    max-width: 968px;
+    margin: 0 auto;
+  }
+
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
+    width: 100%;
+  }
+
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+  }
+
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
+
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+  div.example {
+    padding: 0.5em;
+    border-left: 0.5em solid #E0CB52;
+    border-color: #E0CB52;
+    background: none repeat scroll 0% 0% #FCFAEE;
+  }
+  a {
+    color: #00C;
+    text-decoration: none;
+  }
+  a[href]:hover {
+    background: none repeat scroll 0% 0% #FFA;
+  }
+  form#duv-feedback {
+    width: 48%;
+    display: block;
+  }
+  form#duv-feedback fieldset label {
+    margin-top: 16px;
+    width: 100%;
+    display: block;
+  }
+  form#duv-feedback fieldset label.radio-motivation {
+    display: inline;
+    margin-right: 10px;
+  }
+  form#duv-feedback fieldset textarea {
+    width: 100%;
+  }
+  pre#rdf-duv-feedback-turtle {
+    white-space: pre-wrap;
+  }
+
+  section:target, div:target, tbody:target, tr:target {
+    background: #F7F1D0;
+    border: 1px dashed red;
+    padding: 10px;
+    border-top-right-radius: 15px;
+  }
+
+  #td-version {
+    width: 16px;
+  }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Bus stops of MyCity</h1>
+    <div id="abstract">
+      <p>This is the human-readable version of <a href="http://w3.org/TR/dwbp/#basicExample">examples</a> used in the <a href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP</abbr> document</a>. Please note that, as this is a fictional example, hyperlinks to the data.mycity.example.com domain simply link to example.com which defreferences to an explanation that the domain is designed for use in examples and serves no other function. </p>
+    </div>
+
+    <section resource="#timetable-001" typeof="dcat:Dataset" id="dataset-section">
+      <div id="dataset-description">
+        <h2>Dataset description</h2>
+        <table class="human-readable-example">
+          <tbody>
+            <tr>
+              <td>Title</td>
+              <td property="dct:title">Bus timetable of MyCity</td>
+            </tr>
+            <tr>
+              <td>URI</td>
+              <td>http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05</td>
+            </tr>
+            <tr>
+              <td>Keywords</td>
+              <td><span property="dcat:keyword">transport</span>, <span property="dcat:keyword">mobility</span>, <span property="dcat:keyword">bus</span></td>
+            </tr>
+          </tbody>
+          <tbody id="provenance-info">
+            <tr>
+              <td>Publication date</td>
+              <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+            </tr>
+            <tr>
+              <td id="publisher">Publisher</td>
+              <td property="dct:publisher" resource="#publisher" typeof="foaf:Organization prov:Agent"><span property="foaf:name">Transport Agency MyCity</span></td>
+            </tr>
+            <tr>
+              <td>Creator</td>
+              <td property="dct:creator" typeof="foaf:Person"><span property="foaf:name">John</span> &lt;<a href="mailto:john@mycitytransport.org" property="foaf:mail">john@mycitytransport.org</a>&gt;<span property="prov:onBehalfOf" resource="#publisher"></span></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>Contact point</td>
+              <td><a property="dcat:contactPoint" href="http://example.com/transport/contact">http://data.mycity.example.com/transport/contact</a></td>
+            </tr>
+            <tr>
+              <td>Period that the dataset covers</td>
+              <td><a property="dct:temporal" href="http://reference.data.gov.uk/id/year/2014">The
+                British calendar year of 2014</a></td>
+              </tr>
+              <tr>
+                <td>Spatial coverage</td>
+                <td><a property="dct:spatial" href="http://www.geonames.org/3399415">Fortaleza,
+                  Brazil</a></td>
+                </tr>
+                <tr>
+                  <td>Update frequency</td>
+                  <td><a property="dct:accrualPeriodicity" href="http://purl.org/linked-data/sdmx/2009/code#freq-A">Annual</a></td>
+                </tr>
+                <tr>
+                  <td>Theme</td>
+                  <td>Mobility</td>
+                </tr>
+                <tr id="locale-parameters">
+                  <td>Language</td>
+                  <td>English, Portuguese</td>
+                </tr>
+                <tr>
+                  <td>Date and time formats</td>
+                  <td>ISO 8601</td>
+                </tr>
+                <tr>
+                    <td>Current version</td>
+                    <td>1.2</td>
+                  </tr>
+                  <!--<tr>
+                    <td>Previous version</td>
+                    <td>1.1 stops-2015-05-05</td>
+                  </tr>-->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="dataset-distributions">
+            <h2>Dataset distributions</h2>
+
+            <h3 property="dcat:distribution" resource="#timetable-001-RDF">RDF Distribution</h3>
+            <table resource="#timetable-001-RDF" typeof="dcat:Distribution" class="human-readable-example">
+              <tbody>
+                <tr>
+                  <td>Title</td>
+                  <td property="dct:title">RDF distribution of stops-2015-05-05 dataset</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td property="dct:description">RDF distribution of the stops dataset of MyCity.</td>
+                </tr>
+                <tr>
+                  <td>Media type</td>
+                  <td property="dcat:mediaType">text/turtle</td>
+                </tr>
+                <tr>
+                  <td>License</td>
+                  <td> <a href="http://creativecommons.org/licenses/by-sa/3.0/"> CC
+                    BY-SA 3.0 </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Publication date</td>
+                  <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                </tr>
+                <tr>
+                  <td>Last modification</td>
+                  <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                </tr>
+                <tr>
+                  <td>Download URL</td>
+                  <td><a property="dcat:downloadURL" href="http://example.com/transport/dataset/bus/stops-2015-05-05.ttl">http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.ttl</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 id="timetable-001-CSV" property="dcat:distribution" resource="#timetable-001-CSV"> CSV Distribution </h3>
+            <table about="#timetable-001-CSV" typeof="dcat:Distribution" class="human-readable-example">
+              <tbody>
+                <tr>
+                  <td>Title</td>
+                  <td property="dct:title">CSV distribution of stops-2015-05-05 dataset</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td property="dct:description">CSV distribution of the bus stops dataset of MyCity.</td>
+                </tr>
+                <tr>
+                  <td>Media type</td>
+                  <td property="dcat:mediaType">text/csv</td>
+                </tr>
+                <tr id="license-info">
+                  <td>License</td>
+                  <td><a href="http://creativecommons.org/licenses/by-sa/3.0/">CC
+                    BY-SA 3.0</a></td>
+                  </tr>
+                  <tr>
+                    <td>Publication date</td>
+                    <td><span property="dct:issued" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                  </tr>
+                  <tr>
+                    <td>Last modification</td>
+                    <td><span property="dct:modified" content="2015-05-05" datatype="xsd:date">2015-05-05</span></td>
+                  </tr>
+                  <tr>
+                    <td>Download URL</td>
+                    <td> <a property="dcat:downloadURL" href="http://example.com/transport/dataset/bus/stops-2015-05-05.csv">http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv</a>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+                <!--<table>
+                <tr>
+                  <th>Dimension</strong></th>
+                  <th>Value</th>
+                  <th>Metric</th>
+                </tr> -->
+                <div id="dqv-info">
+                  <h4>Data Quality - CSV Distribution</h4>
+
+                  <table class="human-readable-example">
+                  <tbody>
+                  <tr about="#completeness"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#intrinsicDimensions">
+                    <td><strong><span property="skos:prefLabel">Completeness</span></strong></td>
+                    <td property="skos:definition">Refers to the degree to which all required information is present in a particular dataset.</td>
+                  </tr>
+                  <tr about="#csvCompletenessMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#completeness">
+                    <td >Metric</td>
+                    <td property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
+                  </tr>
+                  <tr about="#measure2"  typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#csvCompletenessMetric">
+                    <td>Value</td>
+                    <td>
+                      <span about="#measure2" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                      <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)
+                    </td>
+                  </tr>
+                  <tr about="#availability"  typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
+                    <td><strong><span property="skos:prefLabel">Availability</span></strong></td>
+                    <td property="skos:definition">Refers to the extent to which data (or some portion of it) is present, obtainable and ready for use.</td>
+                  </tr>
+                  <tr about="#downloadURLAvailabilityMetric"  typeof="dqv:Metric" property="dqv:inDimension" resource="#availability">
+                    <td>Metric</td>
+                    <td property="skos:definition">dcat:downloadURL is available and its value is dereferenceable.</td>
+                  </tr>
+                  <tr about="#measure1" typeof="dqv:QualityMeasurement" property="dqv:isMeasurementOf" resource="#downloadURLAvailabilityMetric">
+                    <td>Value</td>
+                    <td>
+                      <span  about="#measure1" property="dqv:computedOn" resource="#timetable-001-CSV"></span>
+                      <span property="dqv:value" datatype="xsd:boolean">true</span>(Boolean)
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+
+              <div id="dataset-structural-metadata">
+              <h4>Structural metadata - CSV Distribution</h4>
+              <!--<p>Schema of the dataset "Bus stops of MyCity".</p> -->
+              <table class="human-readable-example">
+                <tbody>
+                  <tr>
+                    <th>Field</th>
+                    <th>Titles</th>
+                    <th>Description</th>
+                    <th>Datatype</th>
+                    <th>Primary key</th>
+                    <th>Required</th>
+                  </tr>
+                  <tr>
+                    <td>stop_id</td>
+                    <td>Identifier</td>
+                    <td>An identifier for the bus stop.</td>
+                    <td>string</td>
+                    <td>true</td>
+                    <td>true</td>
+                  </tr>
+                  <tr>
+                    <td>stop_name</td>
+                    <td>Name</td>
+                    <td>The name of the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_desc</td>
+                    <td>Description</td>
+                    <td>A description for the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_lat</td>
+                    <td>Latitude</td>
+                    <td>The latitude of the bus stop.</td>
+                    <td>numeric</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_long</td>
+                    <td>Longitude</td>
+                    <td>The longitude of the bus stop.</td>
+                    <td>numeric</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>zone_id</td>
+                    <td>Zone</td>
+                    <td>An identifier for the zone where the bus stop is located.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_url</td>
+                    <td>URL</td>
+                    <td>URL that identifies the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="dataset-versioning-information">
+              <h2>Dataset version history </h2>
+              <!-- <table class="human-readable-example">
+                <tbody>
+                  <tr>
+                    <td>Current version</td>
+                    <td>stops-2016-05-05</td>
+                  </tr>
+                  <tr>
+                    <td>Previous version</td>
+                    <td>stops-2015-05-05</td>
+                  </tr>
+                </tbody>
+              </table> -->
+
+              <!--<h3>Change history</h3>-->
+              <table class="human-readable-example">
+                <thead>
+                  <tr>
+                    <th>Version</th>
+                    <th>Issue date</th>
+                    <th>URI</th>
+                    <th>Change history</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="td-version">1.1</td>
+                    <td>2015-05-05</td>
+                    <td>http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05</td>
+                    <td>The bus stops dataset was updated to reflect the creation of a new bus stop at 1115 Pearl Street.</td>
+                  </tr>
+                  <tr>
+                    <td>1.2</td>
+                    <td>2016-05-05</td>
+                    <td>http://data.mycity.example.com/transport/dataset/bus/stops-2016-05-05</td>
+                    <td>The bus stops dataset was updated to reflect the creation of new bus stops since the last update and to follow the update frequency</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!--<div id="dataset-structural-metadata">
+              <h2>Dataset structural metadata</h2> -->
+              <!-- <p>Schema of the dataset "Bus stops of MyCity".</p>
+              <table class="human-readable-example">
+                <tbody>
+                  <tr>
+                    <th>Field</th>
+                    <th>Titles</th>
+                    <th>Description</th>
+                    <th>Datatype</th>
+                    <th>Primary key</th>
+                    <th>Required</th>
+                  </tr>
+                  <tr>
+                    <td>stop_id</td>
+                    <td>Identifier</td>
+                    <td>An identifier for the bus stop.</td>
+                    <td>string</td>
+                    <td>true</td>
+                    <td>true</td>
+                  </tr>
+                  <tr>
+                    <td>stop_name</td>
+                    <td>Name</td>
+                    <td>The name of the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_desc</td>
+                    <td>Description</td>
+                    <td>A description for the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_lat</td>
+                    <td>Latitude</td>
+                    <td>The latitude of the bus stop.</td>
+                    <td>numeric</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_long</td>
+                    <td>Longitude</td>
+                    <td>The longitude of the bus stop.</td>
+                    <td>numeric</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>zone_id</td>
+                    <td>Zone</td>
+                    <td>An identifier for the zone where the bus stop is located.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>stop_url</td>
+                    <td>URL</td>
+                    <td>URL that identifies the bus stop.</td>
+                    <td>string</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>-->
+
+          </section>
+
+          <!--<section id="dqv-section">
+            <h2>Quality Dimensions and Metrics</h2>
+            <table class="human-readable-example">
+               <tr>
+                 <th>Dimension</th>
+                 <th>Definition</th>
+                 <th>Metric</th>
+               </tr>
+               <tr>
+                 <td>Completeness</td>
+                 <td>Refers to the degree to which all required information is present in a particular dataset.</td>
+                 <td>Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</td>
+               </tr>
+                 <tr>
+                 <td>Availability</td>
+                 <td>Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use.</td>
+                 <td>It checks if dcat:downloadURL is available and if its value is dereferenceable.</td>
+               </tr>
+
+</table>-->
+
+
+            <!--<h3 about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure1">Quality measure 1</h3>
+
+            <table class="human-readable-example" resource="#measure1" typeof="dqv:QualityMeasurement" id="measure1">
+             <tr>
+               <td property="dqv:metric" resource="#csvCompletenessMetric">Metric</td>
+               <td about="#csvCompletenessMetric" typeof="dqv:Metric"> <span property="skos:definition">Ratio between the number of objects represented in the cvs and the  number of  objects expected to be represented according to the declared dataset scope.</span> </td>
+             </tr>
+             <tr>
+              <td>Value </td>
+              <td> <span property="dqv:value" datatype="xsd:double">0.5</span> (Double)</td>
+            </tr>
+            <tr>
+              <td>Computed on</td>
+              <td property="dqv:computedOn" resource="#timetable-001-CSV"><a href="#timetable-001-CSV">bus-stops-2015-05-05.csv</a></td>
+            </tr>
+            <tr>
+             <td about="#csvCompletenessMetric" property="dqv:inDimension" resource="#completeness"> Dimension </td>
+             <td>
+              <table  class="human-readable-example" about="#completeness" typeof="dqv:Dimension" property="dqv:inCategory" resource="#intrinsicDimensions">
+                <tr>
+                 <td><span property="skos:prefLabel">Completeness</span></td>
+               </tr>
+               <tr>
+                 <td><span property="skos:definition">Completeness refers to the degree to which all required information is present in a particular dataset.</span></td>
+               </tr>
+             </table>
+           </td>
+         </tr>
+
+       </table>
+
+       <h3 about="#timetable-001-CSV" property="dqv:hasQualityMeasurement" resource="#measure2">Quality measure 2</h3>
+       <table class="human-readable-example" resource="#measure2" typeof="dqv:QualityMeasurement" id="measure2">
+         <tr>
+           <td property="dqv:metric" resource="#downloadURLAvailabilityMetric">Metric</td>
+           <td about="#downloadURLAvailabilityMetric" typeof="dqv:Metric"> <span property="skos:definition">It checks if dcat:downloadURL is available and if its value is dereferenceable.</span> </td>
+         </tr>
+         <tr>
+          <td>Value </td>
+          <td> <span property="dqv:value" datatype="xsd:boolean">true</span> (Boolean)</td>
+        </tr>
+        <tr>
+          <td>Computed on</td>
+          <td property="dqv:computedOn" resource="#timetable-001-CSV"><a href="#timetable-001-CSV">bus-stops-2015-05-05.csv</a></td>
+        </tr>
+        <tr>
+         <td about="#downloadURLAvailabilityMetric" property="dqv:inDimension" resource="#availability"> Dimension </td>
+         <td>
+           <table class="human-readable-example" about="#availability" typeof="dqv:Dimension" property="dqv:inCategory" resource="#accessibility">
+            <tr>
+             <td><span property="skos:prefLabel">Availability</span></td>
+           </tr>
+           <tr>
+             <td><span property="skos:definition">Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use.</span></td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+
+   </table>
+ </section> -->
+
+  <section id="duv-section">
+    <h2>Feedback</h2>
+    <form id="duv-feedback">
+      <fieldset>
+        <!--<legend>Feedback</legend> -->
+        <label for="feedback-about">Choose a dataset or distribution:</label>
+        <select name="feedbackAbout" id="feedback-about">
+          <option value="timetable-001-RDF">RDF distribution of bus-stops-2015-05-05 dataset</option>
+          <option selected="selected" value="timetable-001-CSV">CSV distribution of bus-stops-2015-05-05 dataset</option>
+        </select>
+
+        <label for="duv-rating">How do you classify the dataset or distribution?</label>
+        <select id="duv-rating">
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5" selected="selected">5</option>
+       </select>
+
+       <label>Which kind of feedback would you like to give?</label>
+       <input type="radio" name="oa-motivation" value="correction" id="radio-correction" /><label for="radio-correction" class="radio-motivation" >Correction</label>
+       <input type="radio" name="oa-motivation" value="question" id="radio-question" checked="checked" /><label for="radio-question" class="radio-motivation">Question</label>
+       <input type="radio" name="oa-motivation" value="review" id="radio-review" /><label for="radio-review" class="radio-motivation">Review</label>
+
+
+       <label for="duv-userFeedback">Your feedback:</label>
+       <textarea id="duv-userFeedback">Is there a JSON-LD distribution available for this dataset?</textarea>
+
+     </fieldset>
+   </form>
+ </section>
+
+</div>
+
+
+</body>
+</html>
