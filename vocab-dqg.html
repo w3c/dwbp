@@ -21,7 +21,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-05-05",
+                publishDate : "2016-05-31",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -626,7 +626,7 @@
                                     <td class="prop">Domain:</td>
                                     <td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
                                 </tr>
-                                <!--<tr><td class="prop">Range:</td><td><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>, <a href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a></td></tr>-->
+                                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr>
                                 <tr>
                                     <td class="prop">Equivalent property:</td>
                                     <td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td>
@@ -1868,7 +1868,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
     a qb:DimensionProperty, owl:DataProperty ;
     rdfs:comment   "language on which label importing is assessed."@en ;
     rdfs:domain    dqv:QualityMeasurement;
-    rdfs:label     "label import assessment language"@en 
+    rdfs:label     "label import assessment language"@en ;
+    rdfs:range       xsd:string ;
     .
 
 :onProperty
@@ -1899,7 +1900,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date      "2016-01-10"^^xsd:date ;
+       dqv:isMeasurementOf    :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
@@ -1908,7 +1910,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date      "2016-03-10"^^xsd:date ;
+       dqv:isMeasurementOf    :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
@@ -1918,7 +1921,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date     "2016-01-10"^^xsd:date;
+       dqv:isMeasurementOf     :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .
@@ -1927,7 +1931,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date      "2016-03-10"^^xsd:date ;
+       dqv:isMeasurementOf    :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .      
@@ -1937,7 +1942,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date     "2016-01-10"^^xsd:date ;
+       dqv:isMeasurementOf    :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:prefLabel .
@@ -1946,7 +1952,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
-       dqv:isMeasurementOf      	:importingForPropertyPercentage ;
+       dcterms:date     "2016-03-10"^^xsd:date ;
+       dqv:isMeasurementOf    :importingForPropertyPercentage ;
        qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:prefLabel .
@@ -1954,21 +1961,23 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>,
         </pre>
                     Let us specify the RDF Data Cube data structure which includes the two extra parameters:
                     <pre class="highlight">
-:dsd  a     qb:DataStructureDefinition ;
+
+ex:dsd  a     qb:DataStructureDefinition ;
 ##Copying the structure of daq:dsq
+ ##the dimensions
     qb:component  [ qb:dimension  dqv:computedOn ;
                     qb:order      2
                   ] ;
-    qb:component  [ qb:measure  dqv:value] ;
-    qb:component  [ qb:dimension  
-        &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
+    qb:component  [ qb:dimension       dcterms:date;
                     qb:order      3
                   ] ;
     qb:component  [ qb:dimension  dqv:isMeasurementOf ;
                     qb:order      1
                   ] ;
+    #The measure
+   qb:component  [ qb:measure  dqv:value ; ] ;
 
-    qb:component [ qb:measure dqv:value;];
+
     # Attribute (here: unit of measurement)
     qb:component [
         qb:attribute sdmx-attribute:unitMeasure
