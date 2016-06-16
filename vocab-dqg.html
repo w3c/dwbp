@@ -626,7 +626,7 @@
                                     <td class="prop">Domain:</td>
                                     <td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
                                 </tr>
-                                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td></tr>
+                                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> (introduced for <a href="#datacube-compatibility">compatibility with RDF Data Cube</a>)</td></tr>
                                 <tr>
                                     <td class="prop">Equivalent to:</td>
                                     <td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td>
@@ -1904,8 +1904,7 @@ SubObjectPropertyOf(
 </pre>
                     <p>The quality assessment of the "label importing" depends on
 two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which are 
-                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We extend DQV
-                        to represent these parameters.</p>
+                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We extend add the following statements to represent these parameters (note that range definitions are firstly needed for <a href="#datacube-compatibility">compatibility with RDF Data Cube</a>).</p>
 
                     <pre class="highlight">
 :onLanguage
@@ -1913,7 +1912,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
     rdfs:comment   "language on which label importing is assessed."@en ;
     rdfs:domain    dqv:QualityMeasurement;
     rdfs:label     "label import assessment language"@en ;
-    rdfs:range       xsd:string ;
+    rdfs:range       xsd:string 
     .
 
 :onProperty
@@ -2986,11 +2985,18 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                             <td>Compliance</td>
                             <td>skos:broadMatch</td>
                         </tr>
-            </tbody>
+             </tbody>
 
-                    </table>
+             </table>
 
-                        </section>
+             </section>
+
+	     <section id="datacube-compatibility" class="appendix">
+                    <h2>Compatibility with RDF Data Cube</h2>
+                <div class="note">
+                 <p>@@TODO@@</p>
+                </div>
+              </section>
             
 
         </body>
