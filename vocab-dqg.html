@@ -2005,32 +2005,32 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
         </pre>
                     Let us specify the RDF Data Cube data structure which includes the two extra parameters:
                     <pre class="highlight">
-
 ex:dsd  a     qb:DataStructureDefinition ;
-##Copying the structure of daq:dsq
- ##the dimensions
-    qb:component  [ qb:dimension  dqv:computedOn ;
-                    qb:order      2
-                  ] ;
-    qb:component  [ qb:dimension       dcterms:date;
-                    qb:order      3
-                  ] ;
+
+## Derived from the structure of daq:dsq
+  ## The dimensions
     qb:component  [ qb:dimension  dqv:isMeasurementOf ;
                     qb:order      1
                   ] ;
-    #The measure
-   qb:component  [ qb:measure  dqv:value ; ] ;
+    qb:component  [ qb:dimension  dqv:computedOn ;
+                    qb:order      2
+                  ] ;
+    qb:component  [ qb:dimension  dcterms:date ;
+                    qb:order      3
+                  ] ;
+    
+  ## The measure
+    qb:component  [ qb:measure  dqv:value ; ] ;
 
 
-    # Attribute (here: unit of measurement)
+  ## The attribute (unit of measurement)
     qb:component [
-        qb:attribute sdmx-attribute:unitMeasure
-    ;
-    qb:componentRequired false ;
-    qb:componentAttachment qb:DataSet ; ] ;
+        qb:attribute sdmx-attribute:unitMeasure ;
+        qb:componentRequired false ;
+        qb:componentAttachment qb:DataSet ; ] ;
 
 
-    ##Extending  the structure of lds:dsq with two new dimensions
+  ## Extending the structure of daq:dsq with two new dimensions
     qb:component  [ qb:dimension  :onProperty ;
                     qb:order      4
                   ] ;
@@ -2992,6 +2992,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                     </table>
 
                         </section>
+            
 
         </body>
         </html>
