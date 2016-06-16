@@ -120,7 +120,7 @@
   rdfs:label "computed on"@en ;
   rdfs:comment "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset and dcat:Distribution."@en ;
   rdfs:domain :QualityMeasurement ;
-  rdfs:range  rdfs:Resource ;
+  rdfs:range  rdfs:Resource ; #introduced for compatibility with RDF Data Cube
   owl:equivalentProperty daq:computedOn;
   owl:inverseOf :hasQualityMeasurement .
 
@@ -171,11 +171,12 @@
 
 :qualityAssessment a oa:Motivation ;
   skos:prefLabel "Quality assessment"@en ;
-  skos:definition "Motivation that must be specified for quality annotations"@en ;
-  skos:closeMatch oa:moderating .
+  skos:definition "The motivation for when a user intends to assess the quality of a resource, for example a dataset"@en
+  skos:scopeNote "This motivation must be specified for quality annotations"@en ;
+  skos:broader oa:assessing .
 
-:precision a oa:Motivation ;
+:precision a dqv:Dimension ;
   skos:prefLabel "Precision"@en ;
-  skos:definition "Precision is a quality dimension which refers to the recorded level of details. It represents the exactness of measurement or description."@en 
+  skos:definition "Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of measurement or description."@en 
 .
 
