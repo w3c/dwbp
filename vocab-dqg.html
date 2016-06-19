@@ -322,10 +322,10 @@
                     on feedback, annotation, agreements.</p>
                 <p>DQV draws inspiration from and is aligned with existing work on representating data quality, notably
                     the daQ ontology for representing information (especially metrics) on the quality
-                    of linked open datasets [<cite><a href="#bib-DaQ" class="bibref">DaQ</a></cite>].
+                    of linked open datasets [[DaQ]].
                     daQ is itself anchored in the RDF Data Cube framework
                     for publishing statistical data
-                    [<cite><a href="#bib-Vocab-Data-Cube" class="bibref">Vocab-Data-Cube</a></cite>].    
+                    [[Vocab-Data-Cube]].    
                     Note that DQV elements can be applied not only to
                     express metadata on the quality of datasets; they can also be used to express
                     statements about the quality of that metadata itself. This is especially true when it
@@ -635,7 +635,7 @@
                                     <td class="prop">Domain:</td>
                                     <td><a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a></td>
                                 </tr>
-                                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> (introduced for <a href="#datacube-compatibility">compatibility with RDF Data Cube</a>)</td></tr>
+                                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a> (introduced for <a href="#Compatibility_with_RDF_Data_Cube">compatibility with RDF Data Cube</a>)</td></tr>
                                 <tr>
                                     <td class="prop">Equivalent to:</td>
                                     <td><a href="http://purl.org/eis/vocab/daq#computedOn">daq:computedOn</a></td>
@@ -1916,7 +1916,7 @@ SubObjectPropertyOf(
 </pre>
                     <p>The quality assessment of the "label importing" depends on
 two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which are 
-                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We extend add the following statements to represent these parameters (note that range definitions are firstly needed for <a href="#datacube-compatibility">compatibility with RDF Data Cube</a>).</p>
+                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We  add the following statements to represent these parameters (note that type <code>qb:DimensionProperty</code> and the range definitions are firstly needed for <a href="#Compatibility_with_RDF_Data_Cube">compatibility with RDF Data Cube</a>).</p>
 
                     <pre class="highlight">
 :onLanguage
@@ -2014,42 +2014,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        :onProperty    	skos:prefLabel .
 
         </pre>
-                    Let us specify the RDF Data Cube data structure which includes the two extra parameters:
-                    <pre class="highlight">
-ex:dsd  a     qb:DataStructureDefinition ;
-
-## Derived from the structure of daq:dsq
-  ## The dimensions
-    qb:component  [ qb:dimension  dqv:isMeasurementOf ;
-                    qb:order      1
-                  ] ;
-    qb:component  [ qb:dimension  dqv:computedOn ;
-                    qb:order      2
-                  ] ;
-    qb:component  [ qb:dimension  dcterms:date ;
-                    qb:order      3
-                  ] ;
-    
-  ## The measure
-    qb:component  [ qb:measure  dqv:value ; ] ;
-
-
-  ## The attribute (unit of measurement)
-    qb:component [
-        qb:attribute sdmx-attribute:unitMeasure ;
-        qb:componentRequired false ;
-        qb:componentAttachment qb:DataSet ; ] ;
-
-
-  ## Extending the structure of daq:dsq with two new dimensions
-    qb:component  [ qb:dimension  :onProperty ;
-                    qb:order      4
-                  ] ;
-    qb:component  [ qb:dimension  :onLanguage ;
-                    qb:order      5
-                  ] .
-        </pre>
-
                 </section>
                 <section id="ExpressConformanceWithStandard">
                     <h3>Express the conformance of a dataset's metadata with a standard</h3>
@@ -3001,8 +2965,8 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 		</section>
                 <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
-                    <p>The RDF Data Cube vocabulary [<cite><a href="#bib-Vocab-Data-Cube" class="bibref">Vocab-Data-Cube</a></cite>] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
-		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [<cite><a href="#bib-DaQ" class="bibref">DaQ</a></cite>]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 5.10:</p>
+                    <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
+		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 5.10:</p>
                     <pre class="highlight">
 ex:linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
     qb:structure  ex:dsd .
@@ -3052,10 +3016,7 @@ ex:dsd a qb:DataStructureDefinition ;
            qb:component [ qb:dimension  :onLanguage ;
                           qb:order      5
                         ] .     
-        </pre>
-
-		    <p>@@TODO: the above triples need to be removed from the examples in 5.10!@@</a>
-		    
+        </pre>		    
                     <p>Alternatively, data publishers can keep to the original Data Structure. But in this case
 		    they should be prepared to not use the parameter properties introduced in 5.10.
 		    Instead, in order to tackle the variation of possible measurements implied by different properties
