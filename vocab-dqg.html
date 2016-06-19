@@ -1937,9 +1937,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
         </pre>
                     <p>Let us add actual quality assessments:</p>
                     <pre class="highlight">
-:qualityMeasurementDataset  a  dqv:QualityMeasurementDataset ;
-        qb:structure  :dsd .
-
 :importingForPropertyPercentage
     dqv:hasObservation :measurement_exactMatchAltLabelItDataset1,
     :measurement_exactMatchAltLabelItDataset2, 
@@ -1948,8 +1945,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
     :measurement_exactMatchPrefLabelItDataset1, 
     :measurement_exactMatchprefLabelItDataset2 .
 
-
-#Adding quality observations 
+# Adding quality observations 
 ## for Italian alternative labels
 :measurement_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasurement;
@@ -1957,7 +1953,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"1.0"^^xsd:double ;
        dcterms:date      "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
 
@@ -1967,7 +1962,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"1.0"^^xsd:double ;
        dcterms:date      "2016-03-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
 
@@ -1978,7 +1972,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"0.1"^^xsd:double ;
        dcterms:date     "2016-01-10"^^xsd:date;
        dqv:isMeasurementOf     :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .
 
@@ -1988,7 +1981,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"1.0"^^xsd:double ;
        dcterms:date      "2016-03-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .      
 
@@ -1999,7 +1991,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"0.5"^^xsd:double ;
        dcterms:date     "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:prefLabel .
 
@@ -2009,10 +2000,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dqv:value       	"0.5"^^xsd:double ;
        dcterms:date     "2016-03-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       qb:dataSet      	:qualityMeasurementDataset;
        :onLanguage    	"it" ;
        :onProperty    	skos:prefLabel .
-
         </pre>
                 </section>
                 <section id="ExpressConformanceWithStandard">
@@ -2968,7 +2957,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                     <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
 		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 5.10:</p>
                     <pre class="highlight">
-ex:linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
+:linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
     qb:structure  ex:dsd .
 		    
 ex:dsd a qb:DataStructureDefinition ;
@@ -2993,8 +2982,16 @@ ex:dsd a qb:DataStructureDefinition ;
         qb:componentAttachment qb:DataSet ]
 
 </pre>
-                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty.</a>
-                    <p>DQV users should be however aware that applying Data Cube Data Structure Definitions to their quality information datasets has an broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
+                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 5.10 to the dataset specified by the Data Structure Definition:</a>
+                    <pre class="highlight">
+:measurement_exactMatchAltLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
+:measurement_exactMatchAltLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
+:measurement_exactMatchAltLabelEnDataset1 qb:dataSet :linksetQualityMeasurements .
+:measurement_exactMatchAltLabelEnDataset2 qb:dataSet :linksetQualityMeasurements .
+:measurement_exactMatchPrefLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
+:measurement_exactMatchprefLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
+</pre>
+                    <p>DQV users should be aware that applying Data Cube Data Structure Definitions to their quality information datasets has an broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
                     <p>RDF Data Cube also states that "no two qb:Observations in the same qb:DataSet may have the same value for all dimensions". This integrity constraint implies that it is not allowed to have two distinct measurements for the same metric, resource and date. Metrics depending on parameters such as the ones from <a href="#ExpressQualLinkset">Section 5.10</a> shall be used with extra care so as to adhere to this constraint: data publishers will probably need to represent quality measurements for the same resource and date, but which are obtained by applying distinct parameters.
                     </p>
                     <p>Adopters of DQV and Data Cube can consider two modelling options for addressing this:</p>
