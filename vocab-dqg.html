@@ -21,7 +21,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-06-16",
+                publishDate : "2016-06-19",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -2992,12 +2992,112 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
              </section>
 
-	     <section id="datacube-compatibility" class="appendix">
+	    <section id="parameters" class="appendix">
+                    <h2>Defining and using parameters on metrics</h2>
+		    <p>@@Introduce problem of parameters, refering to 5.10@@</p>
+		    <p>@@Example from 5.10 (extract) specific properties to be applied on measurement of parameter-generic metrics. This is what is currently in 5.10</p>
+		    <p>@@meta-modeling remarqs: sub-property vs instance of meta-class. Note that says we postpone decision@@</p>
+		   <p>@@say there are solution for folding parameters in the definition of new metrics that embody them, as in the section on Data cube@@</p>
+		</section>
+                <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
-                <div class="note">
-                 <p>@@TODO@@</p>
-                </div>
-              </section>
+                    <p>The RDF Data Cube vocabulary [<cite><a href="#bib-Vocab-Data-Cube" class="bibref">Vocab-Data-Cube</a></cite>] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
+		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [<cite><a href="#bib-DaQ" class="bibref">DaQ</a></cite>]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 5.10:</p>
+                    <pre class="highlight">
+ex:linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
+    qb:structure  ex:dsd .
+		    
+ex:dsd a qb:DataStructureDefinition ;
+    ## Expressing Data Cube dimensions
+    qb:component [ qb:dimension  dqv:isMeasurementOf ;
+                   qb:order      1
+                 ] ;
+    qb:component [ qb:dimension  dqv:computedOn ;
+                   qb:order      2
+                 ] ;
+    qb:component [ qb:dimension  dcterms:date ;
+                   qb:order      3
+                 ] ;
+    
+    ## Expressing the Data Cube measure 
+    qb:component [ qb:measure  dqv:value ; ] ;
+
+    ## Expressing the Data Cube attribute (here, unit of measurement)
+    qb:component [
+        qb:attribute sdmx-attribute:unitMeasure ;
+        qb:componentRequired false ;
+        qb:componentAttachment qb:DataSet ]
+
+</pre>
+                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty.</a>
+                    <p>DQV users should be however aware that applying Data Cube Data Structure Definitions to their quality information datasets has an broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
+                    <p>RDF Data Cube also states that "no two qb:Observations in the same qb:DataSet may have the same value for all dimensions". This integrity constraint implies that it is not allowed to have two distinct measurements for the same metric, resource and date. Metrics depending on parameters such as the ones from <a href="#ExpressQualLinkset">Section 5.10</a> shall be used with extra care so as to adhere to this constraint: data publishers will probably need to represent quality measurements for the same resource and date, but which are obtained by applying distinct parameters.
+                    </p>
+                    <p>Adopters of DQV and Data Cube can consider two modelling options for addressing this:</p>
+                    <ul>
+                        <li>To extend the above Data Structure with the desired parameters;</li>
+                        <li>To define a new Metric for each combination of the parameters values.</li>
+                    </ul>
+         <p>Let's apply the first option to the example of Section <a href="#ExpressQualLinkset">5.10</a>.
+		    The “Multilingual importing” metric there requires to manage two parameters, <code>onProperty</code> and <code>onLanguage</code>, which gave raise to one instance of <code>owl:DataProperty</code> each. These parameters can be also expressed as instances <code>qb:DimensionProperty</code> and the above Data Structure extended as follows:</p>
+                     <pre class="highlight">
+    ## Adding a new type to the parameter properties
+    :onLanguage a qb:DimensionProperty .
+    :onProperty a qb:DimensionProperty .
+
+    ## Extending the structure of daq:dsq with two new dimensions
+    ex:dsd qb:component [ qb:dimension  :onProperty ;
+                          qb:order      4
+                        ] ;
+           qb:component [ qb:dimension  :onLanguage ;
+                          qb:order      5
+                        ] .     
+        </pre>
+
+		    <p>@@TODO: the above triples need to be removed from the examples in 5.10!@@</a>
+		    
+                    <p>Alternatively, data publishers can keep to the original Data Structure. But in this case
+		    they should be prepared to not use the parameter properties introduced in 5.10.
+		    Instead, in order to tackle the variation of possible measurements implied by different properties
+		    (i.e., skos:prefLabel and skos:altLabel) and different languages (say, English and Italian),
+		    metrics like <code>importingForPropertyPercentage</code> should be "split" in distinct metrics,
+		    one for each relevant combination of parameters, as in the following:</p> 
+                    <pre class="highlight">
+:importingForPropertyPercentagePrefLabelIt a dqv:Metric ;
+    skos:definition "Ratio between novel Italian preferred labels 
+    gained via skos:exactMatch links and Italian preferred labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
+    
+:importingForPropertyPercentagePrefLabelEn a dqv:Metric ;
+    skos:definition "Ratio between novel English preferred labels 
+    gained via skos:exactMatch links and English preferred labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
+    
+:importingForPropertyPercentageAltLabelIt a dqv:Metric ;
+    skos:definition "Ratio between novel Italian alternative labels 
+    gained via skos:exactMatch links and Italian alternative labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
+    
+:importingForPropertyPercentageAltLabelEn a dqv:Metric ;
+    skos:definition "Ratio between novel English alternative labels 
+    gained via skos:exactMatch links and English alternative labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
+</pre>
+                
+                    <p>This way, measurements of "multilingual importing" with different parameters
+will not conflict with each other, as they will be represented as measurements of distinct metrics.
+This solution is of course much less interesting should the number of parameters or possible values for this parameters
+grow high, or worse, when the number of possible values is not known at the data modeling stage.</p>
+            </section>
+                
             
 
         </body>
