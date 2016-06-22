@@ -209,6 +209,12 @@
                         status : "Semantic Web, vol. 4, no. 1, pp. 3-13, 2013",
                         href : "https://dx.doi.org/10.3233/SW-2012-0069"
                     },
+                     "OWL-primer": {
+                        title: "OWL 2 Web Ontology Language Primer",
+                        authors: ["Pascal Hitzler", "Markus Krötzsch", "Bijan Parsia", "Peter F. Patel-Schneider", "Sebastian Rudolph"],
+                        status : "W3C Recommendation 11 December 2012",
+                        href : "http://www.w3.org/TR/owl2-primer/"
+                    },
                      "Vocab-Data-Cube": {
                         title: "The RDF Data Cube Vocabulary",
                         authors: ["Richard Cyganiak","Dave Reynolds"],
@@ -1937,15 +1943,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
         </pre>
                     <p>Let us add actual quality assessments:</p>
                     <pre class="highlight">
-:importingForPropertyPercentage
-    dqv:hasObservation :measurement_exactMatchAltLabelItDataset1,
-    :measurement_exactMatchAltLabelItDataset2, 
-    :measurement_exactMatchAltLabelEnDataset1, 
-    :measurement_exactMatchAltLabelEnDataset2,
-    :measurement_exactMatchPrefLabelItDataset1, 
-    :measurement_exactMatchprefLabelItDataset2 .
-
-# Adding quality observations 
 ## for Italian alternative labels
 :measurement_exactMatchAltLabelItDataset1 
        a 		dqv:QualityMeasurement;
@@ -2819,8 +2816,9 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                             version</a> include:
                     </p>
                     <ul>
-                        <li>Changes for compatibility with RDF Data Cube.</li>
+                        <li>New appendix for compatibility with RDF Data Cube.</li>
                         <li>Refinement of the definition for dqv:qualityAssessment.</li>
+			<li>New appendix on parameters, and re-factoring of the section on expressing linkest quality</li>
                     </ul>
                 </section>
         <section id="mapping-ISOZaveri" class="appendix">
@@ -2945,12 +2943,135 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
              </section>
 
-	    <section id="parameters" class="appendix">
-                    <h2>Defining and using parameters on metrics</h2>
-		    <p>@@Introduce problem of parameters, refering to 5.10@@</p>
-		    <p>@@Example from 5.10 (extract) specific properties to be applied on measurement of parameter-generic metrics. This is what is currently in 5.10</p>
-		    <p>@@meta-modeling remarqs: sub-property vs instance of meta-class. Note that says we postpone decision@@</p>
-		   <p>@@say there are solution for folding parameters in the definition of new metrics that embody them, as in the section on Data cube@@</p>
+	    <section id="Parameters" class="appendix">
+                    <h2>Defining and using parameters for metrics</h2>
+		    <p>Some metrics come with mandatory or optional <i>parameters</i>. Input parameters
+	     in particular play a key role in describing metrics and measurements.
+	     Their values specify how a metric is being applied to obtain a measurement, 
+	     e.g., when a quality metric is defined as a general procedure that can be applied to
+	     different types of statement in the dataset, and the parameter is used to specify the specific type
+	     a given measurement focused on. Or when the different components that contribute to a metric's computation are assigned
+	     different weights.</p>
+		    <p><a href="#ExpressQualLinkset">Section 5.10</a> presents examples of metrics with parameters
+	     (<code>onLanguage</code> and <code>onProperty</code>) and how they should be represented and used
+	     for publication of measurement data.</p>
+		    <p>During the design of DQV, however, questions were raised about the modeling
+	     of parameters in RDF and RDF-related frameworks, especially on how general constraints should
+	     be expressed for the way parameters can be applied to measurements of metrics.
+	     These has been discussed in the context of the DWBP WG
+	     <a href="https://www.w3.org/2013/dwbp/track/issues/223">Issue-223</a>. The WG has postponed the issue,
+	     as it was a much less mature aspect of the work in the field, and the we lacked resource
+	     to articulate a consensual decision. This appendix presents some of the options we considered.
+	     We welcome readers' feedback!</p>
+		   <p>The first problem is the specification of constraints on parameterized metrics and measurements. For
+	     example, specifying that every measurement of the Metric <code>importingForPropertyPercentage</code>
+	     should be the subject of an <code>onLanguage</code> statement that gives the language being
+	     considered for the measure. The first solution is to try and employ the modeling features of the
+	     Web Ontology Language OWL [[OWL-primer]]. First by creating a new class of metrics,
+	     which require to presence of the parameter and can be instanciated by metrics as in
+             following (inspired from the requirements behind the case in <a href="#ExpressQualLinkset">Section 5.10</a>):</p>
+<pre>
+:MetricWithLanguageParameter
+  rdfs:subClassOf dqv:Metric,
+                  [ a owl:Restriction ;
+                    owl:onProperty :onLanguage ;
+                    owl:cardinality  "1"^^xsd:nonNegativeInteger
+                  ] .
+
+:linksetImportingENSKOSPrefLabel a :MetricWithLanguageParameter ;  
+         skos:definition "Importing on English prefLabel"@en;
+         :onLanguage "en" .
+</pre>
+		   <p>This solution may be useful for some 'meta-parameters',
+i.e. for cases where a there would be classes metrics that can be parameterized, and the definition of
+individual metric definition would be depending the choosing value for these parameters. But this is not exactly
+what happens with the (unique) metric for "multilingual importing" in <a href="#ExpressQualLinkset">Section 5.10</a>.
+This metric indeed specifies that measurements will be for specific languages, but it doesn't say which,
+and the parameter needs to be instanciated at the level of the actual measurements or not. This would require a dedicated new
+class of measurements, say, <code>MeasurementWithLanguageParameter</code>, which would be created and used as in the following:
+<pre>
+# The following statements should be added to the ones from Section 5.10
+
+:MeasurementWithLanguageParameter
+  rdfs:subClassOf dqv:Measurement,
+                  [ a owl:Restriction ;
+                    owl:onProperty :onLanguage ;
+                    owl:cardinality  "1"^^xsd:nonNegativeInteger
+                  ] .
+
+:MetricWithLanguageParameter
+  rdfs:subClassOf dqv:Metric,
+                  [ a owl:Restriction ;
+                    owl:onProperty [ owl:inverseOf dqv:isMeasurementOf ] ;
+                    owl:allValuesFrom :MeasurementWithLanguageParameter
+                  ] .
+
+:importingForPropertyPercentage a :MetricWithLanguageParameter .
+
+:measurement_exactMatchAltLabelItDataset1 dqv:isMeasurementOf :importingForPropertyPercentage ;
+</pre>
+		   <p>Readers should note that this solution relies on OWL's <a href="https://en.wikipedia.org/wiki/Open-world_assumption">"open-world assumption"</a>. The class definitions above do not lead to constraints in the
+"traditional" understanding. I.e., if an OWL reasoner finds an measurement of <code>importingForPropertyPercentage</code> without an <code>onProperty</code> statement, it wouldn't flag a formal inonsistency error.
+It would just "expect" that the statement must have been asserted in some other RDF graph. Consequently, other
+approaches may be followed. The RDF Data Cube vocabulary offers a Data Structure Definition mechanism, which we
+examplify in the <a href="Compatibility_with_RDF_Data_Cube">Appendix on RDF Data Cube</a>.
+This solution would allow a Data Cube validation tool to flag a language-less measurement of
+<code>importingForPropertyPercentage</code> as being incomplete. However, as hinted in this Appendix,
+Data Cube's Data Structures will be harder to apply for the case of datasets of quality assessments
+of mixed types. A general constraint expression language like the coming SHACL [[SHACL]] may provide a convenient solution. But SHACL is still under development at the time of writing this document.</p>
+
+		   <p>The second aspect regards the "meta-modeling" of parameters in RDF, especially,
+	     how the properties such as <code>onLanguage</code> should be defined. A first option was to
+	     mint a new property <code>parameterValue</code>:</p>
+<pre>
+:onLanguage rdfs:subPropertyOf :parameterValue .
+</pre>
+		   <p>A second option is to create a class of (parameter) properties <code>ParameterProperty</code>:</p>
+<pre>
+:onLanguage a :ParameterProperty .
+</pre>
+		   <p>Both constructs would allow to represent and access all parameters for quality metrics.
+They have their respective strengths and weaknesses in terms of modeling elegance, complexity, etc. However,
+at the time of writing this document, it is unclear whether these provide any crucial value to implementers when
+implemented over the basic creation and use of parameter properties as presented in
+<a href="#ExpressQualLinkset">Section 5.10</a>, especially when these are completed with the OWL axioms or
+Data Cube's Data Structure Definition as hinted above.</p>
+		   <p>Finally, implementers may opt for a more basic solution that avoids explicit modeling
+of parameters altogether: folding parameters in the definition of new metrics that embody them. I.e.,
+to tackle the variation of possible measurements implied by different languages (say, English and Italian)
+and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLabel</code>), metrics like <code>importingForPropertyPercentage</code> could be "split", with one metric for each relevant combination of parameters, as in the following:</p> 
+                    <pre class="highlight">
+:importingForPropertyPercentagePrefLabelIt a dqv:Metric ;
+    skos:definition "Ratio between novel Italian preferred labels 
+    gained via skos:exactMatch links and Italian preferred labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension  :completeness .
+    
+:importingForPropertyPercentagePrefLabelEn a dqv:Metric ;
+    skos:definition "Ratio between novel English preferred labels 
+    gained via skos:exactMatch links and English preferred labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension :completeness .
+    
+:importingForPropertyPercentageAltLabelIt a dqv:Metric ;
+    skos:definition "Ratio between novel Italian alternative labels 
+    gained via skos:exactMatch links and Italian alternative labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension :completeness .
+    
+:importingForPropertyPercentageAltLabelEn a dqv:Metric ;
+    skos:definition "Ratio between novel English alternative labels 
+    gained via skos:exactMatch links and English alternative labels 
+    already in the dataset."@en
+    dqv:expectedDataType xsd:double ;
+    dqv:inDimension :completeness .
+</pre>
+<p>This solution can be useful in some cases, as seen at the end of the
+<a href="Compatibility_with_RDF_Data_Cube">Appendix on RDF Data Cube</a>. It is of course much less easy to implement, should the number of parameters or the sets of their possible values grow high, or, even worse, when the sets of values are not known at the data modeling stage.</p>
+	     
 		</section>
                 <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
@@ -2976,10 +3097,10 @@ ex:dsd a qb:DataStructureDefinition ;
     qb:component [ qb:measure  dqv:value ; ] ;
 
     ## Expressing the Data Cube attribute (here, unit of measurement)
-    qb:component [
-        qb:attribute sdmx-attribute:unitMeasure ;
-        qb:componentRequired false ;
-        qb:componentAttachment qb:DataSet ]
+    qb:component [ qb:attribute sdmx-attribute:unitMeasure ;
+                   qb:componentRequired false ;
+                   qb:componentAttachment qb:DataSet
+                 ] .
 
 </pre>
                     <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 5.10 to the dataset specified by the Data Structure Definition:</a>
@@ -2999,7 +3120,7 @@ ex:dsd a qb:DataStructureDefinition ;
                         <li>To extend the above Data Structure with the desired parameters;</li>
                         <li>To define a new Metric for each combination of the parameters values.</li>
                     </ul>
-         <p>Let's apply the first option to the example of Section <a href="#ExpressQualLinkset">5.10</a>.
+         <p>Let's apply the first option to the example of <a href="#ExpressQualLinkset">Section 5.10</a>.
 		    The “Multilingual importing” metric there requires to manage two parameters, <code>onProperty</code> and <code>onLanguage</code>, which gave raise to one instance of <code>owl:DataProperty</code> each. These parameters can be also expressed as instances <code>qb:DimensionProperty</code> and the above Data Structure extended as follows:</p>
                      <pre class="highlight">
     ## Adding a new type to the parameter properties
@@ -3007,53 +3128,18 @@ ex:dsd a qb:DataStructureDefinition ;
     :onProperty a qb:DimensionProperty .
 
     ## Extending the structure of daq:dsq with two new dimensions
-    ex:dsd qb:component [ qb:dimension  :onProperty ;
+    ex:dsd qb:component [ qb:dimension :onProperty ;
                           qb:order      4
                         ] ;
-           qb:component [ qb:dimension  :onLanguage ;
+           qb:component [ qb:dimension :onLanguage ;
                           qb:order      5
                         ] .     
         </pre>		    
                     <p>Alternatively, data publishers can keep to the original Data Structure. But in this case
 		    they should be prepared to not use the parameter properties introduced in 5.10.
-		    Instead, in order to tackle the variation of possible measurements implied by different properties
-		    (i.e., skos:prefLabel and skos:altLabel) and different languages (say, English and Italian),
-		    metrics like <code>importingForPropertyPercentage</code> should be "split" in distinct metrics,
-		    one for each relevant combination of parameters, as in the following:</p> 
-                    <pre class="highlight">
-:importingForPropertyPercentagePrefLabelIt a dqv:Metric ;
-    skos:definition "Ratio between novel Italian preferred labels 
-    gained via skos:exactMatch links and Italian preferred labels 
-    already in the dataset."@en
-    dqv:expectedDataType xsd:double ;
-    dqv:inDimension  :completeness .
-    
-:importingForPropertyPercentagePrefLabelEn a dqv:Metric ;
-    skos:definition "Ratio between novel English preferred labels 
-    gained via skos:exactMatch links and English preferred labels 
-    already in the dataset."@en
-    dqv:expectedDataType xsd:double ;
-    dqv:inDimension  :completeness .
-    
-:importingForPropertyPercentageAltLabelIt a dqv:Metric ;
-    skos:definition "Ratio between novel Italian alternative labels 
-    gained via skos:exactMatch links and Italian alternative labels 
-    already in the dataset."@en
-    dqv:expectedDataType xsd:double ;
-    dqv:inDimension  :completeness .
-    
-:importingForPropertyPercentageAltLabelEn a dqv:Metric ;
-    skos:definition "Ratio between novel English alternative labels 
-    gained via skos:exactMatch links and English alternative labels 
-    already in the dataset."@en
-    dqv:expectedDataType xsd:double ;
-    dqv:inDimension  :completeness .
-</pre>
-                
-                    <p>This way, measurements of "multilingual importing" with different parameters
-will not conflict with each other, as they will be represented as measurements of distinct metrics.
-This solution is of course much less interesting should the number of parameters or possible values for this parameters
-grow high, or worse, when the number of possible values is not known at the data modeling stage.</p>
+		    Instead, they could use the "split" metrics presented at the end of the
+		    <a href="Parameters">Appendix on parameters</a>. This solution is however not always applicable,
+		    as this Appendix shows it.</p>
             </section>
                 
             
