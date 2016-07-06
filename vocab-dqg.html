@@ -1702,7 +1702,7 @@ SubObjectPropertyOf(
 :myDataset 
     a dcat:Dataset ;
     dcterms:title "My dataset" ; 
-    dcat:distribution :myDatasetDistribution
+    dcat:distribution :myCSVDatasetDistribution, :mySPARQLDatasetDistribution
     .
 
 :myCSVDatasetDistribution
@@ -1717,10 +1717,10 @@ SubObjectPropertyOf(
     a dcat:Distribution ;
     dcat:accessURL &lt;http://www.example.org/sparql&gt;
     dcterms:title "SPARQL access to the dataset" ;
-    dcat:mediaType "sparql-results+json"  
+    dcat:mediaType "application/sparql-results+json"  
     .
 
-#definition of dimensions and metrics
+# definition of dimensions and metrics
 :availability
     a dqv:Dimension ;
     skos:prefLabel "Availability"@en ;
