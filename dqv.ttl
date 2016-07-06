@@ -12,7 +12,7 @@
 @prefix duv:     <http://www.w3.org/ns/duv#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
-@prefix :        <http://www.w3.org/ns/dqv#> .
+@prefix dqv:     <http://www.w3.org/ns/dqv#> .
 
 ############################
 ### Metadata section #######
@@ -35,61 +35,61 @@
 ### Classes here #####
 ######################
 
-:QualityMeasurement a owl:Class, rdfs:Class ;
+dqv:QualityMeasurement a owl:Class, rdfs:Class ;
   rdfs:label "Quality Measurement"@en ;
   rdfs:comment "A quality measurement represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric."@en ;
   owl:equivalentClass daq:Observation;
   rdfs:subClassOf qb:Observation .
   
-:Metric a owl:Class, rdfs:Class;
+dqv:Metric a owl:Class, rdfs:Class;
   rdfs:label "Metric"@en ;
   rdfs:comment "A standard to measure a quality dimension. An observation (instance of dqv:QualityMeasurement) assigns a value in a given unit to a Metric."@en ;
   owl:equivalentClass daq:Metric .
 
-:Dimension a owl:Class, rdfs:Class ;
+dqv:Dimension a owl:Class, rdfs:Class ;
   rdfs:label "Dimension"@en ;
   rdfs:comment "Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:inDimension property."@en ;
   rdfs:subClassOf skos:Concept ;
   owl:equivalentClass daq:Dimension .
   
-:Category a owl:Class, rdfs:Class ;
+dqv:Category a owl:Class, rdfs:Class ;
   rdfs:label "Category"@en ;
   rdfs:comment "Represents a group of quality dimensions in which a common type of information is used as quality indicator."@en ;
  rdfs:subClassOf skos:Concept ;
   owl:equivalentClass daq:Category .
 
-:QualityMeasurementDataset a owl:Class, rdfs:Class ;
+dqv:QualityMeasurementDataset a owl:Class, rdfs:Class ;
   rdfs:label "Quality Measurement Dataset"@en ;
   rdfs:comment "Represents a dataset of quality measurements, evaluations of a given dataset (or dataset distribution) against a specific quality metric."@en ;
   rdfs:subClassOf qb:DataSet ;
   owl:equivalentClass daq:QualityGraph .
 
-:QualityPolicy a owl:Class, rdfs:Class ;
+dqv:QualityPolicy a owl:Class, rdfs:Class ;
   rdfs:label "Quality policy"@en ;
   rdfs:comment "Represents a policy or agreement that is chiefly governed by data quality concerns."@en ;
   .
 
-:QualityAnnotation a owl:Class, rdfs:Class ;
+dqv:QualityAnnotation a owl:Class, rdfs:Class ;
   rdfs:label "Quality Annotation"@en ;
   rdfs:comment "Represents quality annotations, including rating, quality certificate, feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with an instance of oa:Motivation (and skos:Concept), which reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment."@en ;
   rdfs:subClassOf oa:Annotation ;
   owl:equivalentClass
     [ rdf:type owl:Restriction ; 
       owl:onProperty oa:motivation ;
-      owl:hasValue :qualityAssessment
+      owl:hasValue dqv:qualityAssessment
     ] .
 
-:QualityCertificate a owl:Class, rdfs:Class ;
+dqv:QualityCertificate a owl:Class, rdfs:Class ;
   rdfs:label "Quality certificate"@en ;
   rdfs:comment "Represents annotations that associate datasets or distributions to quality certificate."@en ;
-  rdfs:subClassOf :QualityAnnotation.
+  rdfs:subClassOf dqv:QualityAnnotation.
 
-:UserQualityFeedback a owl:Class, rdfs:Class ;
+dqv:UserQualityFeedback a owl:Class, rdfs:Class ;
   rdfs:label "User Quality feedback"@en ;
   rdfs:comment "Represents feedback users might want to associate to datasets or distributions. Besides dqv:qualityAssessment which is the motivation required by all quality annotations, one of the predefined instances of oa:Motivation should be indicated as motivation to distinguish among the different kinds of feedback, e.g, classifications, questions."@en ;
-  rdfs:subClassOf :QualityAnnotation, duv:UserFeedback .
+  rdfs:subClassOf dqv:QualityAnnotation, duv:UserFeedback .
 
-:QualityMetadata a owl:Class, rdfs:Class ;
+dqv:QualityMetadata a owl:Class, rdfs:Class ;
   rdfs:label "Quality Metadata"@en ;
   rdfs:comment "Represents quality metadata, it is defined to group quality certificates, policies, measurements and annotations under a named graph."@en ;
   rdfs:subClassOf <http://www.w3.org/2004/03/trix/rdfg-1/Graph> ;
@@ -102,85 +102,84 @@
 ### Properties here #######
 ###########################
 
-:isMeasurementOf a rdf:Property, qb:DimensionProperty ;
+dqv:isMeasurementOf a rdf:Property, qb:DimensionProperty ;
   rdfs:label "is measurement of"@en ;
   rdfs:comment "Indicates the metric being observed."@en ;
   rdfs:domain qb:Observation ;
-  rdfs:range :Metric ;
+  rdfs:range dqv:Metric ;
   owl:equivalentProperty daq:metric .
 
 # this property is still defined in the qb: namespace, the re-definition is therefore commented for now
-# :dataSet a rdf:Property ;
+# dqv:dataSet a rdf:Property ;
 #  rdfs:label "data set"@en ;
 #  rdfs:comment "Indicates the dataset to a quality measure (which is an RDF Data Cube observation) belongs."@en ;
 #  rdfs:domain qb:Observation ;
 #  rdfs:range qb:DataSet .
 
-:computedOn a rdf:Property, qb:DimensionProperty ;
+dqv:computedOn a rdf:Property, qb:DimensionProperty ;
   rdfs:label "computed on"@en ;
   rdfs:comment "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset and dcat:Distribution."@en ;
-  rdfs:domain :QualityMeasurement ;
+  rdfs:domain dqv:QualityMeasurement ;
   rdfs:range  rdfs:Resource ; #introduced for compatibility with RDF Data Cube
   owl:equivalentProperty daq:computedOn;
-  owl:inverseOf :hasQualityMeasurement .
+  owl:inverseOf dqv:hasQualityMeasurement .
 
-:value a rdf:Property, qb:MeasureProperty, owl:DatatypeProperty ;
+dqv:value a rdf:Property, qb:MeasureProperty, owl:DatatypeProperty ;
   rdfs:label "value"@en ;
   rdfs:comment "Refers to values computed by metric."@en ;
-  rdfs:domain :QualityMeasurement ;
+  rdfs:domain dqv:QualityMeasurement ;
   owl:equivalentProperty daq:value .
 
-:expectedDataType a rdf:Property ;
+dqv:expectedDataType a rdf:Property ;
   rdfs:label	"expected data type"@en ;
   rdfs:comment "Represents the expected data type for metric's observed value (e.g. xsd:boolean, xsd:double etc...)"@en ;
-  rdfs:domain :Metric ;
+  rdfs:domain dqv:Metric ;
   rdfs:domain xsd:anySimpleType ;
   owl:equivalentProperty daq:expectedDataType .
 
-:inCategory a rdf:Property ;
+dqv:inCategory a rdf:Property ;
   rdfs:label "in category"@en ;
   rdfs:comment "Represents the category a dimension is grouped in."@en ;
-  rdfs:domain :Dimension ;
-  rdfs:range :Category ;
+  rdfs:domain dqv:Dimension ;
+  rdfs:range dqv:Category ;
   owl:inverseOf daq:hasDimension ;
   vann:usageNote "Categories are meant to systematically organize dimensions. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:inCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality metrics should try to avoid this as much as possible and assign only one category to the dimensions they define."@en .
 
-:inDimension a rdf:Property ;
+dqv:inDimension a rdf:Property ;
   rdfs:label "in dimension"@en ;
   rdfs:comment "Represents the dimension a metric allows a measurement of."@en ;
-  rdfs:range :Dimension ;
- ## to add the equivalence  to SubObjectPropertyOf( ObjectInverseOf( daq:hasMetric )  :inDimension)                           
+  rdfs:range dqv:Dimension ;
+ ## to add the equivalence  to SubObjectPropertyOf( ObjectInverseOf( daq:hasMetric )  dqv:inDimension)                           
   vann:usageNote "Dimensions are meant to systematically organize metrics. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality measures should try to avoid this as much as possible and assign only one dimension to the metrics they define."@en .
 
-:hasQualityMetadata a rdf:Property ;
+dqv:hasQualityMetadata a rdf:Property ;
   rdfs:label "has quality metadata"@en ;
   rdfs:comment "Refers to a grouping of quality information such as certificates, policies, measurements and annotations as a named graph. Quality information represented in the graph can pertain to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset and dcat:Distribution. ."@en ;
-  rdfs:range :QualityMetadata .
+  rdfs:range dqv:QualityMetadata .
 
-:hasQualityMeasurement a rdf:Property ;
+dqv:hasQualityMeasurement a rdf:Property ;
   rdfs:label "has quality measurement"@en ;
   rdfs:comment "Refers to the performed quality measurements. Quality measurements can be performed to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset and dcat:Distribution."@en ;
-  rdfs:range :QualityMeasurement ;
-  owl:inverseOf :computedOn .
+  rdfs:range dqv:QualityMeasurement ;
+  owl:inverseOf dqv:computedOn .
 
-:hasQualityAnnotation a rdf:Property ;
+dqv:hasQualityAnnotation a rdf:Property ;
   rdfs:label "has quality annotation"@en ;
   rdfs:comment "Refers to a quality annotation. Quality annotation can be applied to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset and dcat:Distribution."@en ;
-  rdfs:range :QualityAnnotation ;
+  rdfs:range dqv:QualityAnnotation ;
   rdfs:subPropertyOf [ owl:inverseOf oa:hasTarget] .
 
 ###########################
 ### Instances here #######
 ###########################
 
-:qualityAssessment a oa:Motivation ;
+dqv:qualityAssessment a oa:Motivation ;
   skos:prefLabel "Quality assessment"@en ;
-  skos:definition "The motivation for when a user intends to assess the quality of a resource, for example a dataset"@en
+  skos:definition "The motivation for when a user intends to assess the quality of a resource, for example a dataset"@en;
   skos:scopeNote "This motivation must be specified for quality annotations"@en ;
   skos:broader oa:assessing .
 
-:precision a dqv:Dimension ;
+dqv:precision a dqv:Dimension ;
   skos:prefLabel "Precision"@en ;
-  skos:definition "Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of measurement or description."@en 
-.
+  skos:definition "Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of measurement or description."@en .
 
