@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html content="en" lang="en">
+<html  content="en"  lang="en">
   <head>
-    <meta  content="text/html; charset=utf-8"  http-equiv="content-type" />
+    <meta  content="text/html; charset=utf-8"  http-equiv="content-type">
     <title>Data on the Web Best Practices: Dataset Usage Vocabulary</title>
     <meta  name="description"  content="A vocabulary to describe how datasets are used by humans and machines as well as to describe consumer feedback">
     <script  class="remove"  src="http://www.w3.org/Tools/respec/respec-w3c-common">
@@ -227,17 +227,16 @@ pre red { color: red;
   </head>
   <body>
     <section  id="abstract">
-      <p>Datasets published on
-        the Web are accessed and experienced by consumers in a variety of ways,
-        but little information about these experiences is typically conveyed.
-        Dataset publishers many times lack feedback from consumers about how
-        datasets are used. Consumers lack an effective way to discuss
-        experiences with fellow collaborators and explore referencing material
-        citing the dataset. Datasets as defined by DCAT are a collection of
-        data, published or curated by a single agent, and available for access
-        or download in one or more formats. The Dataset Usage Vocabulary (DUV)
-        is used to describe consumer experiences, citations, and feedback about
-        the dataset from the human perspective. </p>
+      <p>Datasets published on the Web are accessed and experienced by consumers
+        in a variety of ways, but little information about these experiences is
+        typically conveyed. Dataset publishers many times lack feedback from
+        consumers about how datasets are used. Consumers lack an effective way
+        to discuss experiences with fellow collaborators and explore referencing
+        material citing the dataset. Datasets as defined by DCAT are a
+        collection of data, published or curated by a single agent, and
+        available for access or download in one or more formats. The Dataset
+        Usage Vocabulary (DUV) is used to describe consumer experiences,
+        citations, and feedback about the dataset from the human perspective. </p>
       <p>By specifying a number of foundational concepts used to collect dataset
         consumer feedback, experiences, and cite references associated with a
         dataset, APIs can be written to support collaboration across the Web by
@@ -246,7 +245,7 @@ pre red { color: red;
         published open dataset usage. </p>
     </section>
     <section  id="sotd">
-      <p>This is the third iteration of the vocabulary, developed following
+      <p>This is the fourth iteration of the vocabulary, developed following
         extensive consultation among and outside the working group who now
         regard it as nearing completion. Comment and feedback is sought before
         the next iteration which is likely to be the final version for the
@@ -254,15 +253,37 @@ pre red { color: red;
     </section>
     <section  id="intro"  class="informative">
       <h2> Introduction</h2>
-      <p>This vocabulary is meant to fill a niche that helps standardize the
-        way Web published dataset usage be conveyed and shared. At this time
-        there is no clear standard way to describe dataset usage on the Web.
-        Without a means to systematically describe dataset usage, searching and
-        conveying techniques are application specific and discovery and
-        collaboration across the Web is more difficult. This vocabulary also
-        recommends and requires data publishers to provide a mechanism of
-        receiving data usage information from data consumers in the form of
-        feedback, citation and data correction. </p>
+      <p>
+        <meta  charset="utf-8">
+        The Data on the Web Best Practices working group [REFERENCE] identified
+        Best Practices [REFERENCE] for citing published data, conveying feedback
+        between consumers and publishers, and providing descriptive metadata
+        that provides insights to the consumer about how published data can be
+        used.&nbsp; The data usage vocabulary is viewed as an extension to DCAT
+        version 1.0 to fill current existing gaps required to adequately cite,
+        describe usage, and convey feedback on published datasets and
+        distributions.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+        <br>
+        Broadly speaking the vocabulary is domain-independent and open.&nbsp; As
+        an open vocabulary the DUV encourages publishers to add descriptive
+        metadata tailored to meet each publisher’s domain-specific needs.&nbsp;
+        When publishers and consumers exchange, combine, and reuse published
+        data, the DUV metadata allows usage information to be clearly identified
+        and cross-referenced across datasets.&nbsp; Because the DUV heavily
+        relies on vocabulary reuse descriptive metadata in many cases can be
+        leveraged from original vocabulary. <br>
+        &nbsp;<br>
+        The DUV is modular consisting of four sub-models (DCAT, citation, usage,
+        feedback) to support different practitioner needs.&nbsp;&nbsp;&nbsp; As
+        a result the DUV can be used in part (DCAT+citation, DCAT+usage,
+        DCAT+feedback) or in its entirety depending on the practitioner’s
+        requirements.&nbsp; The DCAT+usage submodel is loosely defined to either
+        indicate usage from an informational perspective, or if descriptive
+        metadata is required, the usage submodel can indicate to find this
+        information.&nbsp; Additionally, the citation submodel describing basic
+        electronic citation elements, bibliographic references to dataset, and
+        citation rationale can be independently used.<br>
+      </p>
       <!-- ttl to json-ld convertor begin -->
       <form  id="langOptions"  action="#">View as: <label><input  name="presLang"
              value="turtle"  checked="checked"  type="radio">Turtle (press 't')</label>
@@ -271,11 +292,11 @@ pre red { color: red;
     </section>
     <section  id="namespaces-1">
       <h2> Namespaces</h2>
-      <p>The namespace for DUV is <code>http://www.w3.org/ns/duv#</code>.
-        However, it should be noted that DUV makes extensive use of terms from
-        other vocabularies.   DUV itself defines a minimal set of
-        classes and properties of its own. A full set of namespaces and prefixes
-        used in this document is shown in the table below.</p>
+      <p>The namespace for DUV is <code>http://www.w3.org/ns/duv#</code>. It
+        should be noted that DUV makes extensive use of terms from other
+        vocabularies which rely their own sets of namespaces. A full set of
+        namespaces and prefixes used in this document is shown in the table
+        below.</p>
       <table  id="namespaces">
         <thead>
           <tr>
@@ -303,10 +324,6 @@ pre red { color: red;
           <tr>
             <td>dct</td>
             <td>http://purl.org/dc/terms/</td>
-          </tr>
-          <tr>
-            <td>dctype</td>
-            <td>http://purl.org/dc/dcmitype/</td>
           </tr>
           <tr>
             <td>disco</td>
@@ -383,31 +400,30 @@ pre red { color: red;
     </section>
     <section  id="relationship_vocabularies">
       <h2> Relationship to other Vocabularies</h2>
-      <p> The <abbr  title="Dataset Usage Vocabulary">DUV</abbr> is a “glue”
-        vocabulary reusing and extending existing vocabulary classes and
-        properties to support citation, feedback, and usage. This section
-        provides our rationale and approach for vocabulary selection and reuse.</p>
-      <p> Core to the dataset usage vocabulary is the “dataset”. The DUV uses
-        the Data Catalog Vocabulary's dcat:Dataset class and all properties
-        associated with the class [[VOCAB-DCAT]]. From a data usage perspective
-        the DUV can be considered an extension of dcat:Dataset.</p>
-      <p>The Web Annotation Vocabulary [[OA]] is used to describe duv:Feedback
-        as a subclass inheriting the behavior of oa:Annotation. A crucial part
-        of the Web Annotation Model are “motivations” that describe the role of
-        particular Annotation. Each duv:Feedback must have at least one
-        oa:motivated_by property with a relationship to an instance of
-        oa:Motivation. A subset of the Motivation instances are important to
-        describe feedback to data publishers, and blogs between dataset
-        consumers. In addition to supporting duv:Feedback, because the Web
-        Annotation vocabulary provides a generic way of annotating any Web
-        resource, it is recommended that Web Annotation vocabulary be used to
-        annotate the dcat:Dataset for uses beyond the scope of the DUV. </p>
+      <p>Based on DWBP Best Practices the <abbr  title="Dataset Usage Vocabulary">DUV</abbr>
+        heavily relies upon is vocabulary reuse to support citation, feedback,
+        and usage of data published on the Web. This section provides our
+        rationale and approach for vocabulary selection and reuse.</p>
+      <p> The core DUV begins with the <code>dcat:Dataset</code> class and all
+        properties [[VOCAB-DCAT]].&nbsp;&nbsp; In fact, the DUV can be
+        considered an extension of <code>dcat:Dataset</code>.</p>
+      <p>The Web Annotation Vocabulary [[OA]] is used to describe <code>duv:Feedback</code>
+        as a subclass inheriting the behavior of <code>oa:Annotation</code>.&nbsp;
+        The intent for the <code>duv:Feedback</code> is provided by the <code>oa:motivated_by</code>
+        property and <code>oa:Motivation</code> subclasses (for example: <code>oa:describing</code>,
+        <code>oa:questioning</code>, <code>oa:replying</code>. A subset of the
+        Motivation instances are important to describe feedback to data
+        publishers, and blogs between dataset consumers. In addition to
+        supporting <code>duv:Feedback</code>, because the Web Annotation
+        vocabulary provides a generic way of annotating any Web resource, it is
+        recommended that Web Annotation vocabulary be used to annotate the <code>dcat:Dataset</code>
+        for uses beyond the scope of the DUV. </p>
       <p> The Semantic Publishing and Referencing [[SPAR]] Ontologies provides a
         suite of vocabularies used to related entities to reference citations,
         bibliographic records, and describe the publication process along with
         other related activities. The DUV directly relies upon Citation Typing
         Ontology [[CITO]], the FRBR-aligned Bibliographic Ontology [[FaBIO]],
-        and Dublin Core [[DC-TERMS]] vocabularies are used to describe citations
+        and Dublin Core [[DC-TERMS]] ontologies are used to describe citations
         and references between datasets and cited sources. In addition to
         ontologies the research community provided basic criteria for citing
         data on the Web [[MSUDataCite]] [[EmoryUCite]]. These resources helped
@@ -419,52 +435,57 @@ pre red { color: red;
     </section>
     <section  id="Vocab_Overview">
       <h2>Vocabulary Overview</h2>
-      <p><em>This section is non-normative.</em></p>
-      <p>This section depicts the vocabulary as a conceptual model. Shaded
-        boxes are used to identify each class. Labeled open arrows identify
-        example properties between the classes. Unlabeled shaded arrows are used
-        to show inheritance with the parent class identified by the arrow head.</p>
-      <a href="images/DUV_model.png"><img src="images/DUV_model.png"  style="width:100%" alt="The class diagram for DUV" /></a>
+      <p>This section depicts the vocabulary in its entirety as a conceptual
+        model.&nbsp; Boxes are used to identify each class. Labeled open arrows
+        identify object and literal properties. White arrowheads depict class
+        inheritance with the parent class identified by the arrowhead.&nbsp; Please
+        note that while most of the properties are reused from other
+        vocabularies, they are included in the diagram to (1) reduce the
+        learning curve required by DUV implementers that would otherwise be spent
+        constantly referencing to third party vocabularies and (2) provide a
+        starting place to familiarize DUV implementers with the basics needed to
+        get them started. </p>
+      <a  href="images/DUV_model.png"><img  src="images/DUV_model.png"  style="width:100%"
+           alt="The class diagram for DUV"></a>
       <section  id="Citation_Model">
         <h3>Citation Model</h3>
-        <p>The citation model was motivated by the UCR requirement <a href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
-            R-Citable  </a><em> It should be possible to cite data on the
-            Web.</em> The citation model is largely based on classes,
-          properties, and recommended approaches taken from the SPAR
-          Ontologies.  The remainder of the model is composed from the Open
-          Annotation vocabulary, Dublin Core, FOAF and by newly introduced DUV
-          properties.  </p>
+        <p>The citation model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
+            R-Citable </a><em> It should be possible to cite data on the Web.</em>
+          The citation model is largely based on classes, properties, and
+          recommended approaches taken from the SPAR Ontologies. The remainder
+          of the model is composed from the Open Annotation vocabulary, Dublin
+          Core, FOAF and by newly introduced DUV properties. </p>
         <p>The citation model seeks to meet the needs of:</p>
         <ol>
           <li>Data publishers who need to provide basic bibliographic reference
-            criteria for dcat:Dataset and dcat:Distributions <a  href="#ex1">(See
-              Example 1)</a>.  To do this, DUV extensions are added to the
-            DCAT model.  Classes include:  dcat:Dataset,
-            dcat:Distribution, and foaf:Agent.  Properties
-            include:   dct:title, pav:version, dct:issued,
-            dct:created, dct:identifier, dct:creator, dct:publisher,
-            disco:fundedBy.  </li>
-          <li>Data publishers wanting to annotate
-            dcat:Datasets/dcat:Distributions with bibliographic references that
-            provide data additional insights to data consumers <a  href="#ex2">(See
-              Example 2)</a>.  Classes include:  dcat:Dataset,
-            dcat:Distribution, biro:BibliographicReference,
-            fabio:Expression.  Properties include:
-            biro:BibliographicReference, frbr:part, frbr:partOf,
-            biro:references.</li>
+            criteria for <code>dcat:Dataset</code> and <code>dcat:Distributions</code>
+            <a  href="#ex1">(See Example 1)</a>. To do this, DUV extensions are
+            added to the DCAT model. Classes include: <code>dcat:Dataset</code>,
+            <code>dcat:Distribution</code>, and <code>foaf:Agent</code>.
+            Properties include: <code>dct:title</code>, <code>pav:version</code>,
+            <code>dct:issued</code>, <code>dct:created</code>, <code>dct:identifier</code>,
+            <code>dct:creator</code>, <code>dct:publisher</code>, <code>disco:fundedBy</code>.
+          </li>
+          <li>Data publishers wanting to annotate <code>dcat:Datasets</code>/<code>dcat:Distributions</code>
+            with bibliographic references that provide data additional insights
+            to data consumers <a  href="#ex2">(See Example 2)</a>. Classes
+            include: <code>dcat:Dataset</code>, <code>dcat:Distribution</code>,
+            <code>biro:BibliographicReference</code>, <code>fabio:Expression</code>.
+            Properties include: <code>biro:BibliographicReference</code>, <code>frbr:part</code>,
+            <code>frbr:partOf</code>, <code>biro:references</code>.</li>
           <li>Data consumers who want to understand the rationale as to <span  style="font-style: italic;">why</span>
-            a dcat:Dataset and dcat:Distribution is being cited <a  href="#ex3">(See
-              Example 3)</a>. Classes include: fabio:Expression,
-            cito:CitationAct, oa:Annotation, oa:Motivation,
-            cnt:ContentAsText.  Properties include: 
-            cito:hasCitingEntity, cito:hasCitedEntity, cnt:chars, oa:hasTarget,
-            oa:hasBody.</li>
+            a <code>dcat:Dataset</code> and <code>dcat:Distribution</code> is
+            being cited <a  href="#ex3">(See Example 3)</a>. Classes include: <code>fabio:Expression</code>,
+            <code>cito:CitationAct</code>, <code>oa:Annotation</code>, <code>oa:Motivation</code>,
+            <code>cnt:ContentAsText</code>. Properties include: <code>cito:hasCitingEntity</code>,
+            <code>cito:hasCitedEntity</code>, <code>cnt:chars</code>, <code>oa:hasTarget</code>,
+            <code>oa:hasBody</code>.</li>
         </ol>
         <p>Note that while the DUV reuses a limited set of [[SPAR]] classes and
-          properties to support basic [[VOCAB-DCAT]] Dataset and Distribution citation
-          requirements, the [[SPAR]] ontologies a richer set of classes and
-          properties for more advanced representations.  For example
-          [[FaBIO]] fabvio:Work class has many subclasses (e.g. fabio:Policy)
+          properties to support basic [[VOCAB-DCAT]] Dataset and Distribution
+          citation requirements, the [[SPAR]] ontologies a richer set of classes
+          and properties for more advanced representations. For example
+          [[FaBIO]] <code>fabvio:Work</code> class has many subclasses (e.g. <code>fabio:Policy</code>)
           that help characterize referenced material. </p>
         <ol>
         </ol>
@@ -472,40 +493,43 @@ pre red { color: red;
       <section  id="Usage_Model">
         <h3>Usage Model</h3>
         <p>The usage model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
-            R-TrackDataUsage  </a> <em>It should be possible to track the
-            usage of data.</em>  Sharing and tracking data usage can help
-          enhancing the utility of the datasets by providing help describing how
-          the datasets can be used by a consumer <a  href="#ex5">(See Example
-            5)</a>.  Usage could be considered as enabling <span  style="font-style: italic;">descriptive</span>
+            R-TrackDataUsage </a> <em>It should be possible to track the usage
+            of data.</em> Sharing and tracking data usage can help enhancing the
+          utility of the datasets by providing help describing how the datasets
+          can be used by a consumer <a  href="#ex5">(See Example 5)</a>. Usage
+          could be considered as enabling <span  style="font-style: italic;">descriptive</span>
           information provided by the data publisher to help the consumer
-          community make use of datasets and distributions.   Based on the
-          use cases, data usage can help provide guidance information about how
-          to use the dataset and tools <a  href="#ex6">(See Example 6)</a> that
-          can be used with the dataset.   As also stipulated by use cases
-          is the need to track usage metrics  </p>
-        <p>The following classes constitute the Usage Model: dcat:Dataset,
-          dcat:Distribution, duv:Usage, duv:UsageTool, foaf:Agent. Properties
-          include: duv:hasUsage, duv:hasUsageType, duv:performedBy,
-          duv:performs, duv:refersTo, dct:uri, dct:title, dct:created,
-          pav:version, dct:issued, and dct:description.   </p>
+          community make use of datasets and distributions. Based on the use
+          cases, data usage can help provide guidance information about how to
+          use the dataset and tools <a  href="#ex6">(See Example 6)</a> that
+          can be used with the dataset. As also stipulated by use cases is the
+          need to track usage metrics </p>
+        <p>The following classes constitute the Usage Model: <code>dcat:Dataset</code>,
+          <code>dcat:Distribution</code>, <code>duv:Usage</code>, <code>duv:UsageTool</code>,
+          <code>foaf:Agent</code>. Properties include: <code>duv:hasUsage</code>,
+          <code>duv:hasUsageType</code>, <code>duv:performedBy</code>, <code>duv:performs</code>,
+          <code>duv:refersTo</code>, <code>dct:uri</code>, <code>dct:title</code>,
+          <code>dct:created</code>, <code>pav:version</code>, <code>dct:issued</code>,
+          and <code>dct:description</code>. </p>
       </section>
       <section  id="Feedback_Model">
         <h3>Feedback Model</h3>
-        <p> The feedback model was motivated by UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a><em> 
+        <p> The feedback model was motivated by UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a><em>
             Data consumers should have a way of sharing feedback and rating data
-            <a  href="#ex4">(See Example 4)</a> .  </em>User feedback is
+            <a  href="#ex4">(See Example 4)</a> . </em>User feedback is
           important to address data quality concerns about published dataset.
           Different users may have different experience with the same dataset so
           it is important to capture the context in which data was used and the
           profile of the user who uses it. R-UsageFeedback should also provide a
           way for consumers to communicate suggested corrections or advice back
-          to data publisher.   </p>
-        <p>The following classes constitute the Feedback Model: dcat:Dataset,
-          dcat:Distribution, oa:Annotation, oa:Motivation, duv:UserFeedback,
-          dqv:UserQualityFeedback, duv:RatingFeedback, cnt:ContentAsText.
-          Properties include: duv:hasRating, oa:hasTarget, oa:hasBody,
-          duv:hasFeedback, duv:hasFeedback, oa:motivatedBy,
-          cnt:chars.   </p>
+          to data publisher. </p>
+        <p>The following classes constitute the Feedback Model: <code>dcat:Dataset</code>,
+          <code>dcat:Distribution</code>, <code>oa:Annotation</code>, <code>oa:Motivation</code>,
+          <code>duv:UserFeedback</code>, <code>dqv:UserQualityFeedback</code>,
+          <code>duv:RatingFeedback</code>, <code>cnt:ContentAsText</code>.
+          Properties include: <code>duv:hasRating</code>, <code>oa:hasTarget</code>,
+          <code>oa:hasBody</code>, <code>duv:hasFeedback</code>, <code>duv:hasFeedback</code>,
+          <code>oa:motivatedBy</code>, <code>cnt:chars</code>. </p>
       </section>
     </section>
     <div  class="note">This section will be non-normative and will contain links
@@ -617,7 +641,7 @@ pre red { color: red;
             </tr>
             <tr>
               <td>rdfs:subClassOf</td>
-              <td> <a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a></td>
+              <td> <a  href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a></td>
             </tr>
           </tbody>
         </table>
@@ -705,8 +729,7 @@ pre red { color: red;
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th><a  href="#Property:description">dct:description</a>
-              </th>
+              <th><a  href="#Property:description">dct:description</a> </th>
             </tr>
           </thead>
           <tbody>
@@ -732,7 +755,8 @@ pre red { color: red;
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th><a  href="http://rdf-vocabulary.ddialliance.org/discovery.html">disco:fundedBy</a> </th>
+              <th><a  href="http://rdf-vocabulary.ddialliance.org/discovery.html">disco:fundedBy</a>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -743,8 +767,8 @@ pre red { color: red;
             <tr>
               <td>vann:usageNote</td>
               <td><br>
-                dcat:Dataset (subject) disco:fundedBy  (predicate)
-                foaf:Agent (object)<br>
+                dcat:Dataset (subject) disco:fundedBy (predicate) foaf:Agent
+                (object)<br>
                 dcat:Distribution (subject) fundedBy (predicate) foaf:Agent
                 (object)</td>
             </tr>
@@ -809,7 +833,8 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4  aria-level="3"  id="Property:hascitingentity">Property: hasCitingEntity</h4>
+        <h4  aria-level="3"  id="Property:hascitingentity">Property:
+          hasCitingEntity</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -859,7 +884,8 @@ pre red { color: red;
             </tr>
           </tbody>
         </table>
-        <h4  id="Property:hasDistributor"  aria-level="3">Property: hasDistributor</h4>
+        <h4  id="Property:hasDistributor"  aria-level="3">Property:
+          hasDistributor</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -870,8 +896,8 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The distributor is the organization that makes the
-                dataset available for downloading and use.  </td>
+              <td>The distributor is the organization that makes the dataset
+                available for downloading and use. </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -897,10 +923,9 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The producer is the organization that sponsored the
-                author’s research and/or the organization that made the creation
-                of the dataset possible, such as codifying and digitizing the
-                data. </td>
+              <td>The producer is the organization that sponsored the author’s
+                research and/or the organization that made the creation of the
+                dataset possible, such as codifying and digitizing the data. </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -985,8 +1010,8 @@ pre red { color: red;
               <td>vann:usageNote</td>
               <td>dcat:Dataset (subject) oa:hasUsage(predicate) duv:Usage
                 (object)<br>
-                dcat:Distribution (subject) oa:hasUsage (predicate) 
-                duv:Usage (object)</td>
+                dcat:Distribution (subject) oa:hasUsage (predicate) duv:Usage
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1035,9 +1060,9 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td> dcat:Dataset (subject)  dct:identifier (predicate)
+              <td> dcat:Dataset (subject) dct:identifier (predicate)
                 rdfs:Literal (object)<br>
-                dcat:Distribution (subject)  dct:identifier (predicate)
+                dcat:Distribution (subject) dct:identifier (predicate)
                 rdfs:Literal (object)</td>
             </tr>
             <tr>
@@ -1171,9 +1196,9 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject)  dct:publisher (predicate)
-                rdfs:Literal (object)<br>
-                dcat:Distribution (subject)  dct:publisher (predicate)
+              <td>dcat:Dataset (subject) dct:publisher (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) dct:publisher (predicate)
                 rdfs:Literal (object)</td>
             </tr>
             <tr>
@@ -1223,10 +1248,10 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject)  dct:title (predicate)
-                rdfs:Literal (object)<br>
-                dcat:Distribution (subject)  dct:title (predicate)
-                rdfs:Literal (object)</td>
+              <td>dcat:Dataset (subject) dct:title (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) dct:title (predicate) rdfs:Literal
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1250,10 +1275,10 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject)  pav:version (predicate)
-                rdfs:Literal (object)<br>
-                dcat:Distribution (subject)  pav:version (predicate)
-                rdfs:Literal (object)</td>
+              <td>dcat:Dataset (subject) pav:version (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) pav:version (predicate) rdfs:Literal
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1321,7 +1346,6 @@ pre red { color: red;
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
@@ -1330,7 +1354,7 @@ pre red { color: red;
 }
 
       </pre>
-      <p id="ex2"> Example 2 - Citation:  An electronic memorandum that
+      <p  id="ex2"> Example 2 - Citation: An electronic memorandum that
         references a dataset.</p>
       <pre  class="schema turtle">     
 ex:timetable-001 a dcat:Dataset ;
@@ -1412,7 +1436,6 @@ ex:timetable-memorandum
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
@@ -1485,7 +1508,6 @@ ex:memorandum-cites-dataset
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
@@ -1636,7 +1658,6 @@ ex:localresident
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
@@ -1704,7 +1725,6 @@ ex:release-notes a duv:Usage;
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
@@ -1725,14 +1745,14 @@ ex:timetable-001-csv
 ex:route-calculator a duv:UsageTool;
     dct:title "Route Calculator"^^xsd:string;
     dct:created "15-FEB-2004"^^xsd:date ;
-    dct:uri &lt;http://example.org/route-calculator&gt; .
+    dct:uri <http:  example.org=""  route-calculator=""> .
 
     ex:release-notes a duv:Usage;
     dct:title "New timetable format"^^xsd:string;
     dct:created "20-DEC-2014"^^xsd:date ;
     duv:hasUsageTool ex:route-calculator ;
 .
-</pre>
+</http:></pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
     "@id" : "ex:release-notes",
@@ -1794,7 +1814,6 @@ ex:route-calculator a duv:UsageTool;
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dctype" : "http://purl.org/dc/dcmitype/",
     "dcat" : "http://www.w3.org/ns/dcat#",
     "vann" : "http://purl.org/vocab/vann#",
     "foaf" : "http://xmlns.com/foaf/0.1/",
