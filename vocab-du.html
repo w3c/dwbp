@@ -354,10 +354,6 @@ pre red { color: red;
             <td>http://www.w3.org/ns/oa#</td>
           </tr>
           <tr>
-            <td>pav</td>
-            <td>http://purl.org/pav</td>
-          </tr>
-          <tr>
             <td>rdf</td>
             <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
           </tr>
@@ -458,15 +454,15 @@ pre red { color: red;
         <p>The citation model seeks to meet the needs of:</p>
         <ol>
           <li>Data publishers who need to provide basic bibliographic reference
-            criteria for <code>dcat:Dataset</code> and <code>dcat:Distributions</code>
+            criteria for <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
             <a  href="#ex1">(See Example 1)</a>. To do this, DUV extensions are
             added to the DCAT model. Classes include: <code>dcat:Dataset</code>,
             <code>dcat:Distribution</code>, and <code>foaf:Agent</code>.
-            Properties include: <code>dct:title</code>, <code>pav:version</code>,
+            Properties include: <code>dct:title</code>, <code>dct:hasVersion</code>,
             <code>dct:issued</code>, <code>dct:created</code>, <code>dct:identifier</code>,
             <code>dct:creator</code>, <code>dct:publisher</code>, <code>disco:fundedBy</code>.
           </li>
-          <li>Data publishers wanting to annotate <code>dcat:Datasets</code>/<code>dcat:Distributions</code>
+          <li>Data publishers wanting to annotate <code>dcat:Dataset</code>/<code>dcat:Distribution</code>
             with bibliographic references that provide data additional insights
             to data consumers <a  href="#ex2">(See Example 2)</a>. Classes
             include: <code>dcat:Dataset</code>, <code>dcat:Distribution</code>,
@@ -509,7 +505,7 @@ pre red { color: red;
           <code>foaf:Agent</code>. Properties include: <code>duv:hasUsage</code>,
           <code>duv:hasUsageType</code>, <code>duv:performedBy</code>, <code>duv:performs</code>,
           <code>duv:refersTo</code>, <code>dct:uri</code>, <code>dct:title</code>,
-          <code>dct:created</code>, <code>pav:version</code>, <code>dct:issued</code>,
+          <code>dct:created</code>, <code>dct:hasVersion</code>, <code>dct:issued</code>,
           and <code>dct:description</code>. </p>
       </section>
       <section  id="Feedback_Model">
@@ -1265,7 +1261,7 @@ pre red { color: red;
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th> <a  href="#Property:version">pav:version</a> </th>
+              <th> <a  href="#Property:version">dct:hasVersion</a> </th>
             </tr>
           </thead>
           <tbody>
@@ -1275,14 +1271,14 @@ pre red { color: red;
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) pav:version (predicate) rdfs:Literal
+              <td>dcat:Dataset (subject) dct:hasVersion (predicate) rdfs:Literal
                 (object)<br>
-                dcat:Distribution (subject) pav:version (predicate) rdfs:Literal
-                (object)</td>
+                dcat:Distribution (subject) dct:hasVersion (predicate)
+                rdfs:Literal (object)</td>
             </tr>
             <tr>
               <td>Label</td>
-              <td>version</td>
+              <td>has version</td>
             </tr>
           </tbody>
         </table>
@@ -1297,14 +1293,14 @@ pre red { color: red;
       <pre  class="schema turtle">ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
-        pav:version "series-1.2"^^xsd:string;
+        dct:hasVersion "series-1.2"^^xsd:string;
         dct:issued "2015-05-05"^^xsd:date;
         dct:creator &lt;http://example.org/transport-agency/contact&gt;;
       </pre>
       <pre  class="schema json-ld">{
   "@id" : "ex:timetable-001",
   "@type" : "dcat:Dataset",
-  "pav:version" : "series-1.2",
+  "dct:hasVersion" : "series-1.2",
   "prism:doi" : "10.3456/4567.21",
   "creator" : "http://example.org/transport-agency/contact",
   "issued" : "2015-05-05",
@@ -1317,9 +1313,8 @@ pre red { color: red;
     "doi" : {
       "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "version" : {
-      "@id" : "http://pav-ontology.github.io/pav/version",
+    },<br>    "hasVersion" : {
+      "@id" : "http://purl.org/dc/terms/hasVersion",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
     "issued" : {
@@ -1354,15 +1349,15 @@ pre red { color: red;
 }
 
       </pre>
-      <p  id="ex2"> Example 2 - Citation: An electronic memorandum that
-        references a dataset.</p>
-      <pre  class="schema turtle">     
+            <p  id="ex2"> Example 2 - Citation: An electronic memorandum that
+              references a dataset.</p>
+            <pre  class="schema turtle">     
 ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
-        pav:version "series-1.2"^^xsd:string;
+        dct:hasVersion "series-1.2"^^xsd:string;
         dct:issued "2015-05-05"^^xsd:date;
-        dct:creator &lt;http://example.org/transport-agency/contact&gt;;
+        dct:creator <http://example.org/transport-agency/contact>;
 .
 
 ex:timetable-memorandum
@@ -1378,7 +1373,7 @@ ex:timetable-memorandum
   "@graph" : [ {
     "@id" : "ex:timetable-001",
     "@type" : "dcat:Dataset",
-    "pav:version" : "series-1.2",
+    "dct:hasVersion" : "series-1.2",
     "prism:doi" : "10.3456/4567.21",
     "creator" : "http://example.org/transport-agency/contact",
     "issued" : "2015-05-05",
@@ -1400,8 +1395,8 @@ ex:timetable-memorandum
       "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
-    "version" : {
-      "@id" : "http://pav-ontology.github.io/pav/version",
+    "hasVersion" : {
+      "@id" : "http://purl.org/dc/terms/hasVersion",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
     "issued" : {
