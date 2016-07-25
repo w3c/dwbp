@@ -605,8 +605,7 @@
                             <tbody>
                                 <tr>
                                     <td class="prop">Definition:</td>
-                                    <td>Indicates the dataset to a quality measurement (which is an
-                                        RDF Data Cube observation) belongs.</td>
+                                    <td>Indicates the data set of which this observation is a part.</td>
                                 </tr>
                                 <tr>
                                     <td class="prop">Domain:</td>
@@ -615,6 +614,12 @@
                                 <tr>
                                     <td class="prop">Range:</td>
                                     <td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td>
+                                </tr>
+				<tr>
+                                    <td class="prop">Usage note:</td>
+                                    <td>Indicates the dataset to which a quality measurement (which is an
+                                        RDF Data Cube observation) belongs. This is not the dataset whose quality
+				      is being measured, which is indicated by dqv:computedOn.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -788,8 +793,8 @@
                             <tr>
                                 <td class="prop">Definition:</td>
                                 <td>Represents criteria relevant for assessing quality. Each
-                                    quality dimension must have one or more metric to measure it. <!-- Dimensions are provided as subclasses of this abstract class, which is not intended for direct usage.-->
-                                    A dimension is linked with a category using the dqv:inDimension
+                                    quality dimension must have one or more metric to measure it. 
+                                    A dimension is linked with a category using the dqv:inCategory
                                     property.
                                 </td>
                             </tr>
