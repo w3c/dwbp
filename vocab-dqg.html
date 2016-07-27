@@ -1921,7 +1921,7 @@ SubObjectPropertyOf(
                     <!--p>For example, Thesauri and controlled vocabulary encoded in SKOS, which requires  quite specific  quality measures (e.g., qSKOS [[qskos]]).<\p-->
                     <p>
                         <a href="http://www.w3.org/TR/void/#linkset">(VoID) linksets</a> are
-                        collections of (RDF) links between two datasets. Linksets are as
+                        collections of (RDF) links between two datasets: the linkset's subject and the  linkset's object  containing  respectively the subjects and objects of all link triples. Linksets are as
                         important as datasets when it comes to the joint exploitation of
                         independently served datasets in Linked Data. The representation of
                         quality for a linkset offers a further example of how DQV can be
@@ -1929,7 +1929,7 @@ SubObjectPropertyOf(
                     </p>
 
                     <p>Let’s define three DCAT datasets, including one VoID linkset,
-                        which connects the two others:</p>
+                        which connects a subject dataset to a object dataset named respectively by <code>void:subjectsTarget</code> and by <code>void:objectsTarget</code>:</p>
                     <pre class="highlight">
 :myDataset1 
     a dcat:Dataset ;
@@ -1945,11 +1945,11 @@ SubObjectPropertyOf(
 
 :myLinkset 
     a dcat:Dataset, void:Linkset ;
-    dcterms:title "A Linkset between My dataset 1 and My dataset 2"; <!-- 
+    dcterms:title "A Linkset from My dataset 1 to My dataset 2"; <!-- 
     dcat:distribution :myLinksetDistribution -->
     void:linkPredicate skos:exactMatch ;
-    void:target :myDataset1 ;
-    void:target :myDataset2  
+    void:subjectsTarget :myDataset1 ;
+    void:objectsTarget :myDataset2  
     .
 <!--
 :myDataset1InRDF
@@ -1974,14 +1974,13 @@ SubObjectPropertyOf(
     a dcat:Distribution, void:Linkset ;
     dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
 --></pre>
-                    <p>We can represent information about the quality of :myLinkset
+                    <p>We can represent information about the quality of <code>:myLinkset</code>
                         using the “Multilingual importing” [[MultilingualImporting]] linkset
-                        quality metric. This metrics works on linksets between datasets that
-                        include SKOS concepts [[SKOS-reference]]. It quantifies the
-                        information gain when adding the preferred labels or the alternative
-                        labels of the concepts from a linked dataset to the descriptions of
-                        the concepts from the other dataset, which these concepts have been
-                        matched with a skos:exactMatch statement from the linkset. We must
+                        quality metric. This metric works on linksets between datasets that
+                        include SKOS concepts [[SKOS-reference]]. It considers the concepts that have been matched with skos:exactMatch links and quantifies the
+                        information gain the links provide when adding the preferred labels or the alternative
+                        labels of the concepts from the object dataset to the descriptions of
+                        the concepts from the subject dataset. We must
                         first define the proper metric, dimension and category.</p>
 
                     <!-- # Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
@@ -2012,8 +2011,8 @@ SubObjectPropertyOf(
 :importingForPropertyPercentage 
     a dqv:Metric ;
     skos:definition "Ratio between novel preferred or alternative labels 
-    gained via skos:exactMatch links and preferred or alternative labels 
-    already in the dataset."@en
+    gained from the object dataset via skos:exactMatch links and the  preferred or
+    alternative labels that are in the subject and object datasets."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension  :completeness .
 
@@ -2033,7 +2032,7 @@ SubObjectPropertyOf(
 </pre>
                     <p>The quality assessment of the "label importing" depends on
 two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which are 
-                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We  add the following statements to represent these parameters (note that type <code>qb:DimensionProperty</code> and the range definitions are firstly needed for <a href="#Compatibility_with_RDF_Data_Cube">compatibility with RDF Data Cube</a>).</p>
+                        respectively, the SKOS property and the language tag considered for measuring the completeness gains. We add the following statements to represent these parameters (note that type <code>qb:DimensionProperty</code> and the range definitions are firstly needed for <a href="#Compatibility_with_RDF_Data_Cube">compatibility with RDF Data Cube</a>).</p>
 
                     <pre class="highlight">
 :onLanguage
@@ -2052,7 +2051,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
     rdfs:range     	rdf:Property 
     .
         </pre>
-                    <p>Let us add actual quality assessments. Notice that each of the measurements is repeated, as the quality assessment has been taken in two distinct days:</p>
+                    <p>Let us add actual quality assessments for alternative and prefered labels in Italian and English:</p>
                     <pre class="highlight">
 ## for Italian alternative labels 
 :measurement_exactMatchAltLabelIt1 
@@ -2064,14 +2063,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
 
-:measurement_exactMatchAltLabelIt2 
-       a 		dqv:QualityMeasurement;
-       dqv:computedOn  	:myLinkset ;
-       dqv:value       	"1.0"^^xsd:double ;
-       dcterms:date      "2016-03-10"^^xsd:date ;
-       dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       :onLanguage    	"it" ;
-       :onProperty    	skos:altLabel .
 
 ## for English alternative labels
 :measurement_exactMatchAltLabelEn1 
@@ -2083,14 +2074,6 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .
 
-:measurement_exactMatchAltLabelEn2  
-       a 		dqv:QualityMeasurement;
-       dqv:computedOn  	:myLinkset ;
-       dqv:value       	"1.0"^^xsd:double ;
-       dcterms:date      "2016-03-10"^^xsd:date ;
-       dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       :onLanguage    	"en" ;
-       :onProperty    	skos:altLabel .      
 
 ## for Italian preferred labels
 :measurement_exactMatchPrefLabelIt1 
@@ -2100,16 +2083,19 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        dcterms:date     "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
        :onLanguage    	"it" ;
-       :onProperty    	skos:prefLabel .
+       :onProperty    	skos:prefLabel 
+       .
 
-:measurement_exactMatchPrefLabelIt2  
+## for English preferred labels
+:measurement_exactMatchPrefLabelIt1 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
-       dqv:value       	"0.5"^^xsd:double ;
-       dcterms:date     "2016-03-10"^^xsd:date ;
+       dqv:value       	"1"^^xsd:double ;
+       dcterms:date     "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
-       :onLanguage    	"it" ;
-       :onProperty    	skos:prefLabel .
+       :onLanguage    	"en" ;
+       :onProperty    	skos:prefLabel 
+       .
         </pre>
                 </section>
                 <section id="ExpressConformanceWithStandard">
