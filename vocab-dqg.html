@@ -224,8 +224,8 @@
                     "WebAnnotation" : {
                         title : "Web Annotation Vocabulary",
                         authors : [ "Robert Sanderson", "Paolo Ciccarese", "Benjamin Young" ],
-                        date : "31 March 2016",
-                        status : "W3C Working Draft",
+                        date : "5 July 2016",
+                        status : "W3C Candidate Reccomendation",
                         href : "https://www.w3.org/TR/annotation-vocab/"
                     }
                     
@@ -550,7 +550,7 @@
                                 <td class="prop">Equivalent to:</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#Observation">daq:Observation</a></td>
                             </tr> 
-                             <tr><td class="prop">Usage note:</td><td>The unit of measure in quality measurement should be specified through the property <a href="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
+                             <tr><td class="prop">DQV usage note:</td><td>The unit of measure in quality measurement should be specified through the property <a href="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a> as recommended by RDF Data Cube [[Vocab-Data-Cube]].    
                             The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures, which can be  exploited as values for <a href="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a>.</td></tr>
                         </tbody>
                     </table>
@@ -616,10 +616,10 @@
                                     <td><a href="http://purl.org/linked-data/cube#Observation">qb:DataSet</a></td>
                                 </tr>
 				<tr>
-                                    <td class="prop">Usage note:</td>
+                                    <td class="prop">DQV usage note:</td>
                                     <td>Indicates the dataset to which a quality measurement (which is an
                                         RDF Data Cube observation) belongs. This is not the dataset whose quality
-				      is being measured, which is indicated by dqv:computedOn.</td>
+				      is being measured, which is indicated by <a href="#dqv:computedOn">dqv:computedOn</a>.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -730,11 +730,11 @@
                             <tr>
                                 <td class="prop">Definition:</td>
                                 <td>A standard to measure a quality dimension. An observation
-                                    (instance of dqv:QualityMeasurement) assigns a value in a given unit
+                                    (instance of <a href="#dqv:QualityMeasurement">dqv:QualityMeasurement</a>) assigns a value in a given unit
                                     to a Metric. <!--Specific metrics are defined as subclasses of this abstract class.-->
                                 </td>
                             </tr>
-                            <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
+                            <!--<tr><td class="prop">DQV usage note:</td><td>@@TODO@@</td></tr>-->
                             <tr>
                                 <td class="prop">Equivalent to:</td>
                                 <td><a href="http://purl.org/eis/vocab/daq#Metric">daq:Metric</a></td>
@@ -794,7 +794,8 @@
                                 <td class="prop">Definition:</td>
                                 <td>Represents criteria relevant for assessing quality. Each
                                     quality dimension must have one or more metric to measure it. 
-                                    A dimension is linked with a category using the dqv:inCategory
+                                    A dimension is linked with a category using the <a
+                            href="#dqv:inCategory">dqv:inCategory</a>
                                     property.
                                 </td>
                             </tr>
@@ -839,10 +840,11 @@
                                 <!--tr><td class="prop">Minimum cardinality:</td><td></td></tr>
                     <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
                                 <tr>
-                                    <td class="prop">Usage note:</td>
+                                    <td class="prop">DQV usage note:</td>
                                     <td>Categories are meant to systematically organize
                                         dimensions. The Data Quality Vocabulary defines no specific
-                                        cardinality constraints for dqv:inCategory, since distinct
+                                        cardinality constraints for <a
+                            href="#dqv:inCategory">dqv:inCategory</a>, since distinct
                                         quality frameworks might have different perspectives over a
                                         dimension. A dimension may therefore be associated to more than
                                         one category. However, those who define new quality metrics
@@ -961,8 +963,10 @@
                                 <td><a href="https://www.w3.org/ns/odrl/2/#term-Asset">odrl:Asset</a></td>
                             </tr>
                             <tr>
-                                <td class="prop">Usage note:</td>
-                                <td><p>This property is used to anchor dqv:QualityPolicy to resource such as  a dataset, a linkset, a graph, a set of triples. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution.</p></td>
+                                <td class="prop">DQV usage note:</td>
+                                <td><p>This property is used to anchor <a href="#dqv:QualityPolicy">dqv:QualityPolicy</a> to resource such as  a dataset, a linkset, a graph, a set of triples. In the DQV context, this property is generally expected to be used in statements in which objects are instances of <a
+                                    href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a> or <a
+                                        href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a>.</p></td>
                             </tr>
                         </tbody>
                     </table>
@@ -983,14 +987,14 @@
                                 <td class="prop">Definition:</td>
                                 <td>Represents quality annotations, including rating, quality
                                     certificate, feedback that can be associated to datasets or
-                                    distributions. Quality annotations must have one oa:motivatedBy
-                                    statement with an instance of oa:Motivation (and skos:Concept),
+                                    distributions. Quality annotations must have one <a href="https://www.w3.org/TR/annotation-vocab/#motivatedby">oa:motivatedBy</a>
+                                    statement with an instance of <a href="https://www.w3.org/TR/annotation-vocab/#motivation">oa:Motivation</a> (and <a href="https://www.w3.org/2009/08/skos-reference/skos.html#Concept">skos:Concept</a>),
                                     which reflects a quality assessment purpose. We define this
-                                    instance as dqv:qualityAssessment.</td>
+                                    instance as <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a>.</td>
                             </tr>
                             <tr>
                                 <td class="prop">Subclass of:</td>
-                                <td><a href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a></td>
+                                <td><a href="https://www.w3.org/TR/annotation-vocab/#annotation">oa:Annotation</a></td>
                             </tr>
 
                             <!--<tr><td class="prop">Usage note:</td><td>@@TODO@@</td></tr>-->
@@ -1010,7 +1014,7 @@ EquivalentClasses(
                             <thead>
                                 <tr>
                                     <th>RDF Property:</th>
-                                    <th><a href="http://www.w3.org/ns/oa#hasTarget">oa:hasTarget</a></th>
+                                    <th><a href="https://www.w3.org/TR/annotation-vocab/#hastarget">oa:hasTarget</a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1020,10 +1024,10 @@ EquivalentClasses(
                                 </tr>
                                 <tr>
                                     <td class="prop">Domain:</td>
-                                    <td><a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></td>
+                                    <td><a href="https://www.w3.org/TR/annotation-vocab/#annotation">oa:Annotation</a></td>
                                 </tr>
                                 <tr>
-                                    <td class="prop">Usage note:</td>
+                                    <td class="prop">DQV usage note:</td>
                                     <td>This property is used in DQV to connect an instance of <a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a> or its subclasses (<a href="#dqv:QualityCertificate">dqv:QualityCertificate</a> and <a href="#dqv:UserQualityFeedback">dqv:UserQualityFeedback</a>) to the resource the annotation is about. Any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples) could be a target. However, in the
                                     DQV context, this property is generally expected to be used in
                                     statements in which objects are instances of <a
@@ -1039,7 +1043,7 @@ EquivalentClasses(
                             <thead>
                                 <tr>
                                     <th>RDF Property:</th>
-                                    <th><a href="http://www.w3.org/ns/oa#hasBody">oa:hasBody</a></th>
+                                    <th><a href="https://www.w3.org/TR/annotation-vocab/#hasbody">oa:hasBody</a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1049,10 +1053,10 @@ EquivalentClasses(
                                 </tr>
                                 <tr>
                                     <td class="prop">Domain:</td>
-                                    <td><a href="http://www.w3.org/ns/oa#Annotation">oa:Annotation</a></td>
+                                    <td><a href="https://www.w3.org/TR/annotation-vocab/#annotation">oa:Annotation</a></td>
                                 </tr>
                                 <tr>
-                                    <td class="prop">Usage note:</td>
+                                    <td class="prop">DQV usage note:</td>
                                     <td>This property is used in DQV to connect an instance of <a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a> or its subclasses (<a href="#dqv:QualityCertificate">dqv:QualityCertificate</a> and <a href="#dqv:UserQualityFeedback">dqv:UserQualityFeedback</a>) to the body of the annotation (e.g., a certificate or a textual comment). </td>
                                 </tr>
                             </tbody>
@@ -1096,7 +1100,7 @@ EquivalentClasses(
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Represents feedback users might want to associate to datasets or distributions. Besides  <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a> which is the motivation  required by all quality annotations, one of the <a href="https://www.w3.org/TR/2016/WD-annotation-model-20160331/#motivation-and-purpose">predefined instances of oa:Motivation</a>  should be indicated as  motivation to distinguish among the different kinds of feedback, e.g, classifications, questions.</td>
+                                <td>Represents feedback users might want to associate to datasets or distributions. Besides  <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a> which is the motivation  required by all quality annotations, one of the <a href="https://www.w3.org/TR/2016/CR-annotation-model-20160705/#motivation-and-purpose">predefined instances of oa:Motivation</a>  should be indicated as  motivation to distinguish among the different kinds of feedback, e.g, classifications, questions.</td>
                             </tr>
                             <tr>
                                 <td class="prop">Subclass of:</td>
@@ -1125,7 +1129,7 @@ EquivalentClasses(
                                 <td><a href="http://www.w3.org/2004/03/trix/rdfg-1/Graph">rdfg:Graph</a></td>
                             </tr>
                              <tr>
-                                <td class="prop">Usage note:</td>
+                                <td class="prop">DQV usage note:</td>
                                 <td>       
                     <p>
                         <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
@@ -1165,7 +1169,7 @@ SubObjectPropertyOf(
                                 <!--tr><td class="prop">Minimum cardinality:</td><td>1</td></tr>
                         <tr><td class="prop">Maximum cardinality:</td><td>1</td></tr-->
                                 <tr>
-                                    <td class="prop">Usage note:</td>
+                                    <td class="prop">DQV usage note:</td>
                                     <td>Dimensions are meant to systematically organize metrics, quality certificates and quality annotations.  
                                         The Data Quality Vocabulary defines no specific cardinality
                                         constraints for dqv:inDimension, since distinct quality
@@ -1335,7 +1339,7 @@ SubObjectPropertyOf(
                                 <td><a href="https://www.w3.org/TR/prov-o/#Entity">prov:Entity</a></td>
                             </tr>
                             <tr>
-                                <td class="prop">Usage note:</td>
+                                <td class="prop">DQV usage note:</td>
                                 <td><p>prov:wasDerivedFrom expresses a quite abstract relation of derivation. More specialized relations of derivation can be defined as subproperties of prov:wasDerivedFrom, whenever this is required by applications.</p></td>
                             </tr>
                         </tbody>
@@ -1361,10 +1365,10 @@ SubObjectPropertyOf(
                                 </td>
                             </tr>
                             <tr>
-                                <td class="prop">Instance of:</td><td><a href="https://www.w3.org/ns/oa#d4e555">oa:Motivation</a></td>
+                                <td class="prop">Instance of:</td><td><a href="https://www.w3.org/TR/annotation-vocab/#motivation">oa:Motivation</a></td>
                             </tr>
 			    <tr>
-                                <td class="prop">Narrower than:</td><td><a href="https://www.w3.org/TR/annotation-model/#motivation-and-purpose">oa:assessing</a></td>
+                                <td class="prop">Narrower than:</td><td><a href="https://www.w3.org/TR/annotation-vocab/#assessing">oa:assessing</a></td>
                             </tr>
                         </tbody>
                     </table>
