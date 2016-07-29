@@ -1956,10 +1956,10 @@ SubObjectPropertyOf(
                     <!--p>For example, Thesauri and controlled vocabulary encoded in SKOS, which requires  quite specific  quality measures (e.g., qSKOS [[qskos]]).<\p-->
                     <p>
                         <a href="http://www.w3.org/TR/void/#linkset">(VoID) linksets</a> are
-                        collections of (RDF) links between two datasets: the linkset's subject and the  linkset's object  containing  respectively the subjects and objects of all link triples. Linksets are as
+                        collections of (RDF) links between two datasets: the linkset's subject and the linkset's object, containing respectively the subjects and objects of all link statements. Linksets are as
                         important as datasets when it comes to the joint exploitation of
-                        independently served datasets in Linked Data. The representation of
-                        quality for a linkset offers a further example of how DQV can be
+                        datasets served independently in Linked Data. The representation of
+                        quality for a linkset is another example of how DQV can be
                         exploited.
                     </p>
 
@@ -1995,7 +1995,6 @@ SubObjectPropertyOf(
         dcat:byteSize "87120"^^xsd:decimal 
     .
 
-
 :myDataset2InRDF
     a dcat:Distribution, void:Dataset ;
     dcat:downloadURL &lt;http://www.example.org/files/mydataset2.rdf&gt; ;
@@ -2004,18 +2003,17 @@ SubObjectPropertyOf(
         dcat:byteSize "100120"^^xsd:decimal 
     .
 
-
 :myLinksetDistribution
     a dcat:Distribution, void:Linkset ;
     dcat:downloadURL &lt;http://www.example.org/files/mylinkset.rdf&gt;;
 --></pre>
                     <p>We can represent information about the quality of <code>:myLinkset</code>
-                        using the “Multilingual importing” [[MultilingualImporting]] linkset
-                        quality metric. This metric works on linksets between datasets that
-                        include SKOS concepts [[SKOS-reference]]. It considers the concepts that have been matched with skos:exactMatch links and quantifies the
-                        information gain the links provide when adding the preferred labels or the alternative
+                        using the “Multilingual importing” 
+                        quality metric [[MultilingualImporting]]. This metric applies to linksets between datasets that
+                        include SKOS concepts [[SKOS-reference]]. It considers the concepts that have been matched and quantifies the
+                        information gain the links provide if one adds the preferred labels or the alternative
                         labels of the concepts from the object dataset to the descriptions of
-                        the concepts from the subject dataset. We must
+                        the concepts from the subject dataset. Let us
                         first define the proper metric, dimension and category.</p>
 
                     <!-- # Definition of the new metric, dimension and category as subclasses of dqv Metric, Dimension and Category, respectively.
@@ -2055,7 +2053,7 @@ SubObjectPropertyOf(
     a  dqv:Dimension ;
     skos:prefLabel "Completeness Gain"@en ;
     skos:definition "Degree to which a linkset 
-    contributes to obtaining all required information in a particular dataset."@en ;
+    contribute to add relevant information to a particular dataset."@en ;
     dqv:inCategory :complementationGain 
     .
 
@@ -2089,7 +2087,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
                     <p>Let us add actual quality assessments for alternative and prefered labels in Italian and English:</p>
                     <pre class="highlight">
 ## for Italian alternative labels 
-:measurement_exactMatchAltLabelIt1 
+:measurement_exactMatchAltLabelIt 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1.0"^^xsd:double ;
@@ -2098,9 +2096,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        :onLanguage    	"it" ;
        :onProperty    	skos:altLabel .
 
-
 ## for English alternative labels
-:measurement_exactMatchAltLabelEn1 
+:measurement_exactMatchAltLabelEn
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.1"^^xsd:double ;
@@ -2109,28 +2106,25 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
        :onLanguage    	"en" ;
        :onProperty    	skos:altLabel .
 
-
 ## for Italian preferred labels
-:measurement_exactMatchPrefLabelIt1 
+:measurement_exactMatchPrefLabelIt 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"0.5"^^xsd:double ;
        dcterms:date     "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
        :onLanguage    	"it" ;
-       :onProperty    	skos:prefLabel 
-       .
+       :onProperty    	skos:prefLabel .
 
 ## for English preferred labels
-:measurement_exactMatchPrefLabelIt1 
+:measurement_exactMatchPrefLabelEn 
        a 		dqv:QualityMeasurement;
        dqv:computedOn  	:myLinkset ;
        dqv:value       	"1"^^xsd:double ;
        dcterms:date     "2016-01-10"^^xsd:date ;
        dqv:isMeasurementOf    :importingForPropertyPercentage ;
        :onLanguage    	"en" ;
-       :onProperty    	skos:prefLabel 
-       .
+       :onProperty    	skos:prefLabel .
         </pre>
                 </section>
                 <section id="ExpressConformanceWithStandard">
@@ -2872,7 +2866,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 :populationCompletenessMetric
     a dqv:Metric ;
     skos:definition "Ratio between the number of objects represented in the dataset and
-     the  number of objects expected to be represented according to the declared dataset
+     the number of objects expected to be represented according to the declared dataset
      scope."@en ;
     dqv:inDimension ldqd:completeness ;
     dqv:expectedDataType xsd:double
@@ -3176,28 +3170,28 @@ and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLab
 :importingForPropertyPercentagePrefLabelIt a dqv:Metric ;
     skos:definition "Ratio between novel Italian preferred labels 
     gained via skos:exactMatch links and Italian preferred labels 
-    already in the dataset."@en
+    already in the datasets."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension  :completeness .
     
 :importingForPropertyPercentagePrefLabelEn a dqv:Metric ;
     skos:definition "Ratio between novel English preferred labels 
     gained via skos:exactMatch links and English preferred labels 
-    already in the dataset."@en
+    already in the datasets."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension :completeness .
     
 :importingForPropertyPercentageAltLabelIt a dqv:Metric ;
     skos:definition "Ratio between novel Italian alternative labels 
     gained via skos:exactMatch links and Italian alternative labels 
-    already in the dataset."@en
+    already in the datasets."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension :completeness .
     
 :importingForPropertyPercentageAltLabelEn a dqv:Metric ;
     skos:definition "Ratio between novel English alternative labels 
     gained via skos:exactMatch links and English alternative labels 
-    already in the dataset."@en
+    already in the datasets."@en
     dqv:expectedDataType xsd:double ;
     dqv:inDimension :completeness .
 </pre>
