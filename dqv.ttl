@@ -148,9 +148,11 @@ dqv:inCategory a rdf:Property ;
 dqv:inDimension a rdf:Property ;
   rdfs:label "in dimension"@en ;
   rdfs:comment "Represents the dimension a metric allows a measurement of."@en ;
-  rdfs:range dqv:Dimension ;
- ## todo: add the equivalence to SubObjectPropertyOf( ObjectInverseOf( daq:hasMetric ) dqv:inDimension)                          
+  rdfs:range dqv:Dimension ;                        
   vann:usageNote "Dimensions are meant to systematically organize metrics. The Data Quality Vocabulary define no specific cardinality constraints for dqv:hasDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality measures should try to avoid this as much as possible and assign only one dimension to the metrics they define."@en .
+
+[ owl:inverseOf daq:hasMetric]  rdfs:subPropertyOf dqv:inDimension .
+
 
 dqv:hasQualityMetadata a rdf:Property ;
   rdfs:label "has quality metadata"@en ;
