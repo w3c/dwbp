@@ -877,17 +877,17 @@ table.bptable caption {
           information that helps data consumers better understand the meaning of
           data, its structure, and to clarify other issues, such as rights and
           license terms, the organization that generated the data, data quality,
-          data access methods and the update schedule of datasets.</p>
+          data access methods and the update schedule of datasets. Publishers are encouraged to provide human-readable information in multiple languages, and, as much as possible, provide the information in the language(s) that the intended users will understand. </p>
         <p>Metadata can be used to help tasks such as dataset discovery and reuse,
         and can be assigned considering different levels of granularity from a
         single property of a resource to a whole dataset, or all datasets from a
-        specific organization.</p>
-        <p>Metadata can be of different types. These types can be classified in
+        specific organization. Metadata can also be of different types. These types can be classified in
           different taxonomies, with different grouping criteria. For example, a
           specific taxonomy could define three metadata types according to
           descriptive, structural and administrative features. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and reuse.</p>
+           
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
@@ -1062,7 +1062,7 @@ The dataset is classified under
       a dcat:Distribution ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-      dcat:mediaType "text/csv" ;
+      dcat:mediaType "text/csv;charset=UTF-8" ;
       .
 </pre>
 
@@ -1127,6 +1127,7 @@ The dataset is classified under
               provided according to the vocabulary recommended by W3C to
               describe datasets, i.e. the Data Catalog Vocabulary
               [[VOCAB-DCAT]].</p>
+              <p> It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification and, informatively, to use <a href="http://cldr.unicode.org/">CLDR</a> as the source for both representing specific localized formats and as a reference for specific locale data values. </p>
             <aside class="example">
                <h5 class="subhead">Machine-readable</h5>
               <p>The example below shows the machine-readable metadata for the
@@ -1158,7 +1159,7 @@ The dataset is classified under
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if the metadata for the dataset itself includes information about local parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
+            <p>Check if the metadata for the dataset itself includes information about locale parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
             <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
           </section>
           <section class="ucr">
@@ -2277,7 +2278,7 @@ rel=“next last memento";
               the data may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
-              cannot be anticipated when the data is first published.</p>
+              cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale neutral</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
