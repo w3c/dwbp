@@ -1095,11 +1095,11 @@ The dataset is classified under
         <!-- begin Locale Parameters BP -->
         <div class="practice">
           <p><span id="LocaleParametersMetadata" class="practicelab">Provide
-              locale parameters metadata </span></p>
-          <p class="practicedesc">Provide metadata about locale parameters (date, time, and number formats, language).</p>
+              locale information </span></p>
+          <p class="practicedesc">Internationalize your data with metadata about locale parameters (date, time and number formats, language) and locale-neutral representations.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services. Using locale-neutral representations enables machines to localize the data for the user.</p>
 
             <!-- <p>Providing <a href="#locale_parameter">locale</a> parameters
               helps humans and computer applications to understand and to
@@ -1121,13 +1121,14 @@ The dataset is classified under
               information: </p>
             <ul>
               <li>The language(s) of the dataset.</li>
-              <li>The formats used for numeric values, dates and time. </li>
+              <li>The formats used for numeric values, dates and times. </li>
             </ul>
             <!--<p> The machine-readable version of the discovery metadata may be
               provided according to the vocabulary recommended by W3C to
               describe datasets, i.e. the Data Catalog Vocabulary
               [[VOCAB-DCAT]].</p> -->
-              <p> It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification and, informatively, to use <a href="http://cldr.unicode.org/">CLDR</a> as the source for both representing specific localized formats and as a reference for specific locale data values. Locale parameter metadata should be included in addition to HTML or XML <a href="https://www.w3.org/International/articles/language-tags/">language</a> and <a href="https://www.w3.org/International/questions/qa-html-dir">direction</a> tags. Since current standardized data formats do not provide a means to indicate language direction, you can employ Unicode control characters or field-specific metadata for rigth-to-left-reading values.</p>
+              <p> It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification. Locale parameter metadata should be included in addition to HTML or XML <a href="https://www.w3.org/International/articles/language-tags/">language</a> and <a href="https://www.w3.org/International/questions/qa-html-dir">direction</a> tags. Since current standardized data formats do not provide a means to indicate language direction, you can employ Unicode control characters or field-specific metadata for rigth-to-left-reading values.</p>
+              <p>Locale-neutral data formats separate the value from the unit so that machines can present the data in a localized way. Though the data identifies the units of its original locale, the information is presented in a neutral way so that it can be converted to a representation that works for any other locale. Sites presenting the data to users can then use information from  <a href="http://cldr.unicode.org/">CLDR</a> to render localized content.</p>
             <aside class="example">
                <h5 class="subhead">Machine-readable</h5>
               <p>The example below shows the machine-readable metadata for the
@@ -1152,15 +1153,23 @@ The dataset is classified under
       <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt; ; </strong>
       .
 </pre>
-              <h5 class="subhead">Human-readable</h5>
-              <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
-                human-readable description of dataset is available.</p>
+            <p>The price for a bus fare could be represented in a locale-neutral way as follows:</p>
+            <pre>
+"fare" {
+"value": 1.50,
+"currency": "EUR"
+}
+            </pre>
+            <h5 class="subhead">Human-readable </h5>
+            <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
+              human-readable description of dataset is available.</p>
             </aside>
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
             <p>Check if the metadata for the dataset itself includes information about locale parameters (i.e. date, time, number formats, and language) in a human-readable format.</p>
             <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
+            <p>Check that locale-sensitive data values are represented in a locale-neutral format.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
