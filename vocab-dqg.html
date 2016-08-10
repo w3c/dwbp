@@ -504,10 +504,6 @@
                         metrics could be "ratio of literals with language tags" and "number
                         of different language tags".</p-->
 
-                    <p>
-                        The following properties can be used with instances of this class: <a
-                            href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a>, <a href="#qb:dataSet">qb:dataSet</a>, <a href="#dqv:computedOn">dqv:computedOn</a>, <a href="#dqv:value">dqv:value</a>.
-                    </p>
                     <table class="definition">
                         <thead>
                             <tr>
@@ -534,6 +530,10 @@
                             The  <a href="http://www.wurvoc.org/vocabularies/om-1.8/">Ontology of units of Measure (OM)</a>  [[RijgersbergEtAl]] provides  a list of HTTP dereferenceable unit of measures, which can be  exploited as values for <a href="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure">sdmx-attribute:unitMeasure</a>.</td></tr>
                         </tbody>
                     </table>
+
+		    <p>The following properties can be used with instances of this class: <a
+                            href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a>, <a href="#qb:dataSet">qb:dataSet</a>, <a href="#dqv:computedOn">dqv:computedOn</a>, <a href="#dqv:value">dqv:value</a>.
+                    </p>
 
                     <section id="dqv:isMeasurementOf">
                         <h4>Property: isMeasurementOf</h4>
@@ -694,12 +694,7 @@
                 <section id="dqv:Metric">
                     <h3>Class: Metric</h3>
 
-                    <p>
-                        The following properties can be used with instances of this class: <a
-                            href="#dqv:inDimension">dqv:inDimension</a>, <a href="dqv:expectedDataType">dqv:expectedDataType</a>.
-                    </p>
-
-                            <table class="definition">
+                     <table class="definition">
                         <thead>
                             <tr>
                                 <th>RDF Class:</th>
@@ -721,6 +716,11 @@
                             </tr>
                         </tbody>
                     </table>
+		    
+                    <p>The following properties can be used with instances of this class: <a
+                            href="#dqv:inDimension">dqv:inDimension</a>, <a href="dqv:expectedDataType">dqv:expectedDataType</a>.
+                    </p>
+		    
             <section id="dqv:expectedDataType">
                         <h4>Property: expectedDataType</h4>
                         <table class="definition">
@@ -758,10 +758,7 @@
 
                 <section id="dqv:Dimension">
                     <h3>Class: Dimension</h3>
-                    <p>
-                        The following property can be used with instances of this class: <a
-                            href="#dqv:inCategory">dqv:inCategory</a>.
-                    </p>
+
                     <table class="definition">
                         <thead>
                             <tr>
@@ -790,6 +787,10 @@
                             </tr>
                         </tbody>
                     </table>
+
+		    <p>The following property can be used with instances of this class: <a
+                            href="#dqv:inCategory">dqv:inCategory</a>. SKOS properties that can be used with instances of SKOS Concepts [<cite><a href="#bib-SKOS-reference" class="bibref">SKOS-reference</a></cite>] can also be used with instances of this class.
+The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in ISO/IEC 25012"</a> and <a href="#DimensionsofZaveri">"Quality dimensions defined for Linked Data"</a> show examples of uses of this class.</p>
 
                     <section id="dqv:inCategory">
                         <h4>Property: inCategory</h4>
@@ -865,7 +866,12 @@
                             
                         </tbody>
                     </table>
-                </section> 
+		    
+		    <p>SKOS properties that can be used with instances of SKOS Concepts [<cite><a href="#bib-SKOS-reference" class="bibref">SKOS-reference</a></cite>] can also be used with instances of this class.
+The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in ISO/IEC 25012"</a> and <a href="#DimensionsofZaveri">"Quality dimensions defined for Linked Data"</a> show examples of uses of this class.</p>
+		    
+                </section>
+		    
                 <div class="note">
                         <p>
                            Dimension and category are abstract entities. We represent instances dqv:Dimension and dqv:Category as instances of <code>skos:Concept</code>, which we think enable similar features as these for dimensions and categories in daQ. Our representation choice differs more significantly for metrics, however. daQ uses RDFS/OWL classes and subclasses to represent constraints on measurements (e.g., on the type of values). RDFS/OWL however makes an 'open world' assumption that does not allow one to capture entirely all constraints. Additionally, languages are currently being defined to represent constraints in more appropriate ways (SHACL). We think it is therefore not appropriate now to recommend to treat specific metrics as subclasses of dqv:Metric, and we refer implementers to future progress on SHACL and related technology.
@@ -874,7 +880,7 @@
 
                 <section id="dqv:QualityMeasurementDataset">
                     <h3>Class: Quality Measurement Dataset</h3>
-                    <p>The following property can be used with instances of this class: <a href="#qb:structure">qb:structure</a>.</p>
+
                     <table class="definition">
                         <thead>
                             <tr>
@@ -900,7 +906,10 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p>The appendix <a href="#Compatibility_with_RDF_Data_Cube">"Compatibility with RDF Data Cube"</a> shows an example of use of this class.</p>
+
+		    <p>The following property can be used with instances of this class: <a href="#qb:structure">qb:structure</a>.
+		    The appendix <a href="#Compatibility_with_RDF_Data_Cube">"Compatibility with RDF Data Cube"</a> shows an example of use of this class.</p>
+		    
                     <section id="qb:structure">
                         <h4>Property: Structure</h4>
                         <table class="definition">
@@ -934,7 +943,7 @@
                 </section>
                   <section id="dqv:QualityPolicy">
                     <h3>Class: Quality Policy</h3>  
-                      <p>The following properties can be used with instances of this class:  <a href="#dqv:inDimension">dqv:inDimension</a>, <a href="#odrl:target">odrl:target</a>.</p>
+
                     <table class="definition">
                         <thead>
                             <tr>
@@ -949,8 +958,10 @@
                             </tr>
                         </tbody>
                     </table>
-                      <p>The section <a href="#ExpressConformanceWithPolicy">"Express the conformance of a dataset with a quality policy"</a> shows examples of uses of this class.</p>
-                      <section id="odrl:target">
+
+		    <p>The following properties can be used with instances of this class:  <a href="#dqv:inDimension">dqv:inDimension</a>, <a href="#odrl:target">odrl:target</a>. The section <a href="#ExpressConformanceWithPolicy">"Express the conformance of a dataset with a quality policy"</a> shows examples of uses of this class.</p>
+		    
+                  <section id="odrl:target">
                     <h4>Property: Target </h4>
                     <table class="definition">
                         <thead>
@@ -986,7 +997,7 @@
                 </section>
                 <section id="dqv:QualityAnnotation">
                     <h3>Class: Quality Annotation</h3>
-                    <p>The following properties can be used with instances of this class: <a href="#dqv:inDimension">dqv:inDimension</a>, <a href="#oa:hasTarget">oa:hasTarget</a>, <a href="#oa:hasBody">oa:hasBody</a>.</p>
+
                     <table class="definition">
                         <thead>
                             <tr>
@@ -1018,6 +1029,9 @@ EquivalentClasses(
                             </tr>
                         </tbody>
                     </table>
+
+		    <p>The following properties can be used with instances of this class: <a href="#dqv:inDimension">dqv:inDimension</a>, <a href="#oa:hasTarget">oa:hasTarget</a>, <a href="#oa:hasBody">oa:hasBody</a>.</p>
+		    
                       <section id="oa:hasTarget">
                         <h4>Property: Has Target</h4>
                         <table class="definition">
@@ -1124,7 +1138,7 @@ EquivalentClasses(
                 </section>
         <section id="dqv:QualityMetadata">
                     <h3>Class: Quality Metadata</h3>
-                    <p>The following properties can be used with instances of this class: <a href="#prov:wasGeneratedBy">prov:wasGeneratedBy</a>, <a href="#prov:wasAttributedTo">prov:wasAttributedTo</a>, <a href="#prov:wasDerivedFrom">prov:wasDerivedFrom</a>.</p>
+
                     <table class="definition">
                         <thead>
                             <tr>
@@ -1147,11 +1161,12 @@ EquivalentClasses(
                     <p>
                         <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
                     </p> </td>
-                            </tr>
-                             
+                            </tr>                     
                         </tbody>
                     </table>
-             <p>The sections <a href="#DocumentProvenanceQualityMetadata">"Document the provenance of the quality metadata"</a> and <a href="#DocumentProvSingleQM">"Document the provenance of single quality measurements"</a> show examples of uses of this class.</p>
+
+		    <p>The following properties can be used with instances of this class: <a href="#prov:wasGeneratedBy">prov:wasGeneratedBy</a>, <a href="#prov:wasAttributedTo">prov:wasAttributedTo</a>, <a href="#prov:wasDerivedFrom">prov:wasDerivedFrom</a>. The sections <a href="#DocumentProvenanceQualityMetadata">"Document the provenance of the quality metadata"</a> and <a href="#DocumentProvSingleQM">"Document the provenance of single quality measurements"</a> show examples of uses of this class.</p>
+		    
             <section id="prov:wasGeneratedBy">
                         <h4>Property: Was Generated By</h4>
                         <table class="definition">
