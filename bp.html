@@ -3809,27 +3809,40 @@ HTTP/1.1 200 OK
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
       .
-
-  :comment1Content a cnt:ContentAsText ;
-      cnt:chars "This dataset is missing stop 3" ; 
+  <!--:comment1Content a cnt:ContentAsText ;
+      cnt:chars "This dataset is missing stop 3" ; -->
+  :comment1Content 
+      a oa:TextualBody ;
+      rdf:value "This dataset is missing stop 3" ;
       .
-
-  :comment1
+  <!--:comment1
       a duv:UserFeedback ;
       oa:hasBody :comment1Content ;
       oa:hasTarget :stops-2015-05-05 ;
       dct:creator :localresident ;
-      .
-
-  :comment2Content a cnt:ContentAsText ;
-      cnt:chars "Are tab delimited formats also available?" ;
+      . -->
+  :comment1
+      a oa:Annotation ;
+      a duv:UserFeedback ;
+      oa:hasBody :comment1Content ;
+      oa:hasTarget :stops-2015-05-05 ;
+      dct:creator :localresident ;
+      oa:motivatedBy oa:assessing ;
+      .    
+  <!--:comment2Content a cnt:ContentAsText ;
+      cnt:chars "Are tab delimited formats also available?" ;-->
+  :comment2Content 
+      a oa:TextualBody ;
+      rdf:value "Are tab delimited formats also available?" ;
       .
 
   :comment2
+      a oa:Annotation ;
       a duv:UserFeedback ;
-      oa:hasTarget :stops-2015-05-05.csv ;
       oa:hasBody :comment2Content ;
+      oa:hasTarget :stops-2015-05-05.csv ;    
       dct:creator :localresident ;
+      oa:motivatedBy oa:assessing ;
       .
 
   :localresident
