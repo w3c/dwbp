@@ -538,8 +538,8 @@ pre red { color: red;
           <code>oa:motivatedBy</code>, <code>cnt:chars</code>. </p>
       </section>
     </section>
-    <div  class="note">This section will be non-normative and will contain links
-      back to the vocabularies we mention. </div>
+    <!--<div  class="note">This section will be non-normative and will contain links
+      back to the vocabularies we mention. </div> -->
     <section  id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
       <section  id="class-ratingfeedback">
@@ -654,7 +654,7 @@ pre red { color: red;
       </section>
       <section  id="Properties">
         <h3>Properties</h3>
-        <h4  aria-level="3"  id="Property:chars">Property: chars</h4>
+        <!--<h4  aria-level="3"  id="Property:chars">Property: chars</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -677,7 +677,7 @@ pre red { color: red;
               <td>chars</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
         <h4  aria-level="3"  id="Property:created">Property: created</h4>
         <table  class="definition">
           <thead>
@@ -1300,12 +1300,20 @@ pre red { color: red;
         Dataset Usage Vocabulary.</p>
       <p  id="ex1"> Example 1 - Citation: Basic reference criteria for a
         dataset.</p>
-      <pre  class="schema turtle">ex:timetable-001 a dcat:Dataset ;
+      <pre  class="schema turtle">
+    :stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        prism:doi "10.3456/4567.21"^^xsd:string ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+  <!--ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
         dct:hasVersion "series-1.2"^^xsd:string;
         dct:issued "2015-05-05"^^xsd:date;
-        dct:creator &lt;http://example.org/transport-agency/contact&gt;;
+        dct:creator &lt;http://example.org/transport-agency/contact&gt;;-->
       </pre>
       <pre  class="schema json-ld">{
   "@id" : "ex:timetable-001",
