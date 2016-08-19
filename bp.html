@@ -1090,22 +1090,12 @@ The dataset is classified under
         <!-- end of BP -->
         <!-- begin Locale Parameters BP -->
         <div class="practice">
-          <p><span id="LocaleParametersMetadata" class="practicelab">Provide
-              locale parameters metadata </span></p>
+          <p><span id="LocaleParametersMetadata" class="practicelab">Provide locale parameters metadata </span></p>
           <p class="practicedesc">Provide metadata about locale parameters (date, time, and number formats, language).</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
             <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
 
-            <!-- <p>Providing <a href="#locale_parameter">locale</a> parameters
-              helps humans and computer applications to understand and to
-              manipulate the data, improving the reuse of the data. Providing
-              information about the locality for which the data is currently
-              published aids data users in interpreting its meaning. Date, time,
-              and number formats can have very different meanings, despite
-              similar appearances. Making the language explicit allows users to
-              determine how readily they can work with the data and may enable
-              automated translation services.</p> -->
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -1113,17 +1103,22 @@ The dataset is classified under
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Locale parameters metadata can include the following
-              information: </p>
+<p>The simplest method is to use local-neutral representations of the actual data, and then add metadata to provide relevant locale information. For example, rather than storing "€2000.00" as a string, it's strongly preferred to exchange a data structure such as:</p>
+
+<pre>&hellip;
+"price" {
+    "value": 2000.00,
+    "currency": "EUR"
+}
+&hellip;</pre>
+<p>The XML Schema datatypes, such as xsd:date and xsd:integer are well known and widely used examples of locale-neutral data representations [[XMLSchema-2]]. The datatype used should be declared either directly or in the metadata.</p>
+<!--            <p>Locale parameters metadata can include the following information: </p>
             <ul>
               <li>The language(s) of the dataset.</li>
               <li>The formats used for numeric values, dates and time. </li>
-            </ul>
-            <!--<p> The machine-readable version of the discovery metadata may be
-              provided according to the vocabulary recommended by W3C to
-              describe datasets, i.e. the Data Catalog Vocabulary
-              [[VOCAB-DCAT]].</p> -->
-              <p> It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification and, informatively, to use <a href="http://cldr.unicode.org/">CLDR</a> as the source for both representing specific localized formats and as a reference for specific locale data values. </p>
+            </ul> -->
+
+              <p>It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification and, informatively, to use <a href="http://cldr.unicode.org/">CLDR</a> as the source for both representing specific localized formats and as a reference for specific locale data values. </p>
             <aside class="example">
                <h5 class="subhead">Machine-readable</h5>
               <p>The example below shows the machine-readable metadata for the
@@ -2791,7 +2786,7 @@ Highly
         of retrieval operations representing a single transaction.</p>
       <p> For data that is generated in real time or near real time, data publishers should use an automated system to enable immediate access to time-sensitive data, such as emergency information, weather forecasting data, or system monitoring metrics. In general, APIs should be available to allow third parties to automatically search and retrieve such data.</p> 
       <p> Aside from helping to automate real-time data pipelines, APIs are suitable for all kinds of data on the Web. Though they generally require more work than posting files for download, publishers are increasingly finding that delivering a well documented, standards-based, stable API is worth the effort.</p> 
-      <p>For some data publishers, it is important to know who has downloaded the data and how they have used it. There are two possible approaches to gathering this information. First, publishers can <em>invite</em> users to provide it, the user's motivation for doing so being that it encourages the continued publication of the data and promotes their own work. A second and less user-friendly approach is to require registration before data is accessed. In both cases, the Dataset Usage Vocabulary [[Vocab-DUV]] provides a structure for representing such information. When collecting data from users, the publisher should explain why and how information gathered from users (either explicitly or implicitly) will be used. Without a clear policy users might be fearful of providing information and thus the value of the dataset is reduced.</p>
+      <p>For some data publishers, it is important to know who has downloaded the data and how they have used it. There are two possible approaches to gathering this information. First, publishers can <em>invite</em> users to provide it, the user's motivation for doing so being that it encourages the continued publication of the data and promotes their own work. A second and less user-friendly approach is to require registration before data is accessed. In both cases, the Dataset Usage Vocabulary [[VOCAB-DUV]] provides a structure for representing such information. When collecting data from users, the publisher should explain why and how information gathered from users (either explicitly or implicitly) will be used. Without a clear policy users might be fearful of providing information and thus the value of the dataset is reduced.</p>
       <!--p>On a further note, it can be observed that data on the Web is
         essentially about the description of entities identified by a unique,
         Web-based, identifier (an URI). Once the data is dumped and sent to an
