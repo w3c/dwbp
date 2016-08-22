@@ -1088,93 +1088,6 @@ The dataset is classified under
           </section>
         </div>
         <!-- end of BP -->
-        <!-- begin Locale Parameters BP -->
-        <div class="practice">
-          <p><span id="LocaleParametersMetadata" class="practicelab">Provide
-              locale parameters metadata </span></p>
-          <p class="practicedesc">Provide metadata about locale parameters (date, time, and number formats, language).</p>
-          <section class="axioms">
-            <h4 class="subhead">Why</h4>
-            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
-
-            <!-- <p>Providing <a href="#locale_parameter">locale</a> parameters
-              helps humans and computer applications to understand and to
-              manipulate the data, improving the reuse of the data. Providing
-              information about the locality for which the data is currently
-              published aids data users in interpreting its meaning. Date, time,
-              and number formats can have very different meanings, despite
-              similar appearances. Making the language explicit allows users to
-              determine how readily they can work with the data and may enable
-              automated translation services.</p> -->
-          </section>
-          <section class="outcome">
-            <h4 class="subhead">Intended Outcome</h4>
-            <p>Humans and software agents will be able to interpret the meaning of strings representing dates, times, currencies and numbers etc. accurately.</p>
-          </section>
-          <section class="how">
-            <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Locale parameters metadata can include the following
-              information: </p>
-            <ul>
-              <li>The language(s) of the dataset.</li>
-              <li>The formats used for numeric values, dates and time. </li>
-            </ul>
-            <!--<p> The machine-readable version of the discovery metadata may be
-              provided according to the vocabulary recommended by W3C to
-              describe datasets, i.e. the Data Catalog Vocabulary
-              [[VOCAB-DCAT]].</p> -->
-              <p> It is also recommended to consistently use <a href="https://tools.ietf.org/html/bcp47">BCP47</a> as the standard for language and locale identification and, informatively, to use <a href="http://cldr.unicode.org/">CLDR</a> as the source for both representing specific localized formats and as a reference for specific locale data values. </p>
-            <aside class="example">
-               <h5 class="subhead">Machine-readable</h5>
-              <p>The example below shows the machine-readable metadata for the
-            bus stops dataset (<code>stops-2015-05-05</code>) with the inclusion of the <strong> locale
-                  parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
-                use multiple values for this property. The property <code><a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a></code> is used to specify the standard adopted for date and time formats. </p>
-              <pre class="highlight">
-  :stops-2015-05-05
-      a dcat:Dataset ;
-      dct:title "Bus stops of MyCity" ;
-      dcat:keyword "transport","mobility","bus" ;
-      dct:issued "2015-05-05"^^xsd:date ;
-      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
-      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-      dct:publisher :transport-agency-mycity ;
-      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
-      dcat:theme :mobility ;
-      dcat:distribution :stops-2015-05-05.csv ;
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
-      <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt; ; </strong>
-      .
-</pre>
-              <h5 class="subhead">Human-readable</h5>
-              <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
-                human-readable description of dataset is available.</p>
-            </aside>
-          </section>
-          <section class="test">
-            <h4 class="subhead">How to Test</h4>
-            <p>Check if the metadata for the dataset itself includes information about locale parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
-            <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
-          </section>
-          <section class="ucr">
-            <h4 class="subhead">Evidence</h4>
-            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>,
-              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-GeographicalContext ">R-GeographicalContext</a></p>
-          </section>
-          <section class="benefits">
-            <h4 class="subhead">Benefits</h4>
-            <ul class="benefitsList">
-              <li>Reuse</li>
-              <li>Comprehension</li>
-              <!--              <li>Linkability</li>
-              <li>Discoverability</li>              <li>Trust</li>              <li>Access</li>              <li>Interoperability</li>
-              <li>Processability</li>-->
-            </ul>
-          </section>
-        </div>
-        <!-- end of Locale Parameters BP -->
         <!-- begin of Provide Structural Metadata -->
         <div class="practice">
           <p><span id="StructuralMetadata" class="practicelab">Provide structural metadata </span> </p>
@@ -1194,7 +1107,7 @@ The dataset is classified under
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Human readable strucutral metadata usually provides the properties or columns of the dataset schema.</p>
+            <p>Human readable structural metadata usually provides the properties or columns of the dataset schema.</p>
             <p>Machine-readable structural metadata is available according to the format of a
               specific distribution and it may be provided within separate
               documents or embedded into the document. For more details see the
@@ -2284,29 +2197,9 @@ rel=“next last memento";
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
             <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, Turtle.</p>
-            <!--<p>Consider which data formats potential users of the data are most
-              likely to have the necessary tools to parse. Formats suggestion              are shown in the <a href="#OpenFormat"></a>.               Standard data              formats as well as the use of standard data vocabularies will              better enable machines to process the data.-->
-            <!--<aside class="example">
-        <p>The Census Team of the Office for Statistics of MyCity is in charge
-          of the publication of data about census. They decided to
-          publish one dataset about usual resident population collected in the 2001 Census.
-A usual resident was generally defined as someone who spent most of their time at a specific address. This dataset shows both the 2001 population, the 1991 population, along with the rate of change, the split of the population between those living in households and those living in communal establishments, the size of the area in hectares, population density and the number of students away from home in the area.</p>
-              <pre class="highlight">   
-  :census
-      a dcat:Dataset ;
-      dcat:distribution :census.csv ;
-      .
-   :census.csv
-      a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/census/2001/population.csv&gt; ;
-      dct:title "CSV distribution of the usual resident population of MyCity, collected in the 2001 Census." ;
-      dcat:mediaType "text/csv" ;
-      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
-      .
-</pre> </aside> -->
 <aside class="example">
 
-John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.
+<p>John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
 
 <pre>
 Identifier,Name,Description,Latitude,Longitude,ZONE,URL 
@@ -2314,20 +2207,6 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
 483,Main Street,Lily Park,-3.731541,-38.535157,x20,http://data.mycity.example.com/transport/road/bus/stop/id/483
 
 </pre>
-        <!--
-        <p>John decides to provide data about the bus stops of the route that goes from the airport to the central bus station of MyCity. The information provided includes, besides others, the name, the description, the latitude and the longitude of the bus stops and he uses CSV as the data format. </p>
-              <pre class="highlight">   
-  :stops_airport_to_centralstation
-      a dcat:Dataset ;
-      dcat:distribution :busstops_airport_to_centralstation.csv
-      .
-  :stops_airport_to_centralstation.csv
-      a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/transport/bustops/airport_to_centralstation.csv&gt; ;
-      dct:title "CSV distribution of the bus stops of the route that goes from the airport to the central bus station of MyCity." ;
-      dcat:mediaType "text/csv" ;
-      dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; 
-      .-->
  </aside>
 
           </section>
@@ -2353,6 +2232,83 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           </section>
         </div>
         <!-- end of Machine-Readable Standardized FormatBP -->
+
+        <!-- begin Locale Parameters BP -->
+        <div class="practice">
+          <p><span id="LocaleParametersMetadata" class="practicelab">Use locale-neutral data representations</span></p>
+          <p class="practicedesc">Use locale-neutral data structures and values, or, where that is not possible, provide metadata about the locale used by data values.</p>
+          <section class="axioms">
+            <h4 class="subhead">Why</h4>
+            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+
+          </section>
+          <section class="outcome">
+            <h4 class="subhead">Intended Outcome</h4>
+            <p>Humans and software agents will be able to interpret the meaning of strings representing dates, times, currencies and numbers etc. accurately.</p>
+          </section>
+          <section class="how">
+            <h4 class="subhead">Possible Approach to Implementation</h4>
+<p>Most common data representations are locale neutral. For example, XML Schema types such as <code>xsd:integer</code> and <code>xsd:date</code> are intended for locale-neutral data interchange. Using locale-neutral representations allows the data values to be processed accurately without complex parsing or misinterpretation and also allows the data to be presented in the format most comfortable for the consumer of the data in any locale.  For example, rather than storing "€2000,00" as a string, it's strongly preferred to exchange a data structure such as:</p>
+
+<pre>&hellip;
+"price" {
+    "value": 2000.00,
+    "currency": "EUR"
+}
+&hellip;</pre>
+<p>Some datasets contain values that are not or cannot be rendered into a locale-neutral format. This is particularly true of any natural language text values. For each data field that can contain locale affected or natural language text, there should be an associated language tag used to indicate the language and locale of the data. This locale information can be used in parsing the data or to ensure proper presentation and processing of the value by the consumer. <abbr title="Best Current Practice">BCP</abbr>47 [[BCP47]] provides the standard for language and locale identification and, informatively, <abbr title="Unicode Common Locale Data Repository">CLDR</abbr> [[CLDR]] is the source for both representing specific localized formats and as a reference for specific locale data values.</p>
+            <aside class="example">
+               <h5 class="subhead">Machine-readable</h5>
+              <p>The example below shows the machine-readable metadata for the
+            bus stops dataset (<code>stops-2015-05-05</code>) with the inclusion of the <strong> locale
+                  parameters </strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
+                use multiple values for this property. The property <code><a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a></code> is used to specify the standard adopted for date and time formats. </p>
+              <pre class="highlight">
+  :stops-2015-05-05
+      a dcat:Dataset ;
+      dct:title "Bus stops of MyCity" ;
+      dcat:keyword "transport","mobility","bus" ;
+      dct:issued "2015-05-05"^^xsd:date ;
+      dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
+      dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
+      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:publisher :transport-agency-mycity ;
+      dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dcat:theme :mobility ;
+      dcat:distribution :stops-2015-05-05.csv ;
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
+      <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt; ; </strong>
+      .
+</pre>
+              <h5 class="subhead">Human-readable</h5>
+              <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
+                human-readable description of dataset is available.</p>
+            </aside>
+          </section>
+          <section class="test">
+            <h4 class="subhead">How to Test</h4>
+            <p>Check if the metadata for the dataset itself includes information about locale parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
+            <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
+          </section>
+          <section class="ucr">
+            <h4 class="subhead">Evidence</h4>
+            <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatLocalize">R-FormatLocalize</a>,
+              <a href="http://www.w3.org/TR/dwbp-ucr/#R-MetadataAvailable">R-MetadataAvailable</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-GeographicalContext ">R-GeographicalContext</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></p>
+          </section>
+          <section class="benefits">
+            <h4 class="subhead">Benefits</h4>
+            <ul class="benefitsList">
+              <li>Reuse</li>
+              <li>Comprehension</li>
+              <!--              <li>Linkability</li>
+              <li>Discoverability</li>              <li>Trust</li>              <li>Access</li>              <li>Interoperability</li>
+              <li>Processability</li>-->
+            </ul>
+          </section>
+        </div>
+        <!-- end of Locale Parameters BP -->
+
         <!-- begin of Multiple Formats BP -->
         <div class="practice">
           <p><span id="MultipleFormats" class="practicelab">Provide data in multiple formats </span></p>
@@ -2539,7 +2495,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
               It increases interoperability and reduces
               redundancies, thereby encouraging reuse of your own data. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
-              and versioning metadata) helps the comparison and automatic processing of both data and metadata. In addition, refering to codes and terms from standards helps to avoid ambiguity and clashes between similar elements or values.</p>
+              and versioning metadata) helps the comparison and automatic processing of both data and metadata. In addition, referring to codes and terms from standards helps to avoid ambiguity and clashes between similar elements or values.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -2726,7 +2682,7 @@ Highly
         </section>
         <section class="test">
           <h4 class="subhead">How to Test</h4>
-          <p>This is almost always a matter of subjective judgement with no objective test. As a general guideline:</p><ul>
+          <p>This is almost always a matter of subjective judgment with no objective test. As a general guideline:</p><ul>
             <li>Are common vocabularies used such as Dublin Core and schema.org?</li>
             <li>Are simple facts stated simply and retrieved easily?</li>
             <li>For formal knowledge representation languages, applying an 
@@ -2791,7 +2747,7 @@ Highly
         of retrieval operations representing a single transaction.</p>
       <p> For data that is generated in real time or near real time, data publishers should use an automated system to enable immediate access to time-sensitive data, such as emergency information, weather forecasting data, or system monitoring metrics. In general, APIs should be available to allow third parties to automatically search and retrieve such data.</p> 
       <p> Aside from helping to automate real-time data pipelines, APIs are suitable for all kinds of data on the Web. Though they generally require more work than posting files for download, publishers are increasingly finding that delivering a well documented, standards-based, stable API is worth the effort.</p> 
-      <p>For some data publishers, it is important to know who has downloaded the data and how they have used it. There are two possible approaches to gathering this information. First, publishers can <em>invite</em> users to provide it, the user's motivation for doing so being that it encourages the continued publication of the data and promotes their own work. A second and less user-friendly approach is to require registration before data is accessed. In both cases, the Dataset Usage Vocabulary [[Vocab-DUV]] provides a structure for representing such information. When collecting data from users, the publisher should explain why and how information gathered from users (either explicitly or implicitly) will be used. Without a clear policy users might be fearful of providing information and thus the value of the dataset is reduced.</p>
+      <p>For some data publishers, it is important to know who has downloaded the data and how they have used it. There are two possible approaches to gathering this information. First, publishers can <em>invite</em> users to provide it, the user's motivation for doing so being that it encourages the continued publication of the data and promotes their own work. A second and less user-friendly approach is to require registration before data is accessed. In both cases, the Dataset Usage Vocabulary [[VOCAB-DUV]] provides a structure for representing such information. When collecting data from users, the publisher should explain why and how information gathered from users (either explicitly or implicitly) will be used. Without a clear policy users might be fearful of providing information and thus the value of the dataset is reduced.</p>
       <!--p>On a further note, it can be observed that data on the Web is
         essentially about the description of entities identified by a unique,
         Web-based, identifier (an URI). Once the data is dumped and sent to an
@@ -2869,7 +2825,7 @@ Highly
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approaches to Implementation</h4>
-          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data &ndash; and little unneeded data &ndash; for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
+          <p>Consider the expected use cases for your dataset and determine what types of subsets are likely to be most useful. An API is usually the most flexible approach to serving subsets of data, as it allows customization of what data is transferred, making the available subsets much more likely to provide the needed data &ndash; and little unneeded data &ndash; for any given situation. The granularity should be suitable for Web application access speeds. (An API call that  returns within one second enables an application to deliver interactivity that feels natural. Data that takes more than ten seconds to deliver will likely cause users to suspect failure.)</p>
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
@@ -3772,7 +3728,7 @@ HTTP/1.1 200 OK
       <!-- begin of BP Information about Feedback -->
       <div class="practice">
         <p><span id="FeedbackInformation" class="practicelab">Make feedback available</span></p>
-        <p class="practicedesc">Make consumerfeedback about datasets and distributions publicly available.</p>
+        <p class="practicedesc">Make consumer feedback about datasets and distributions publicly available.</p>
         <section class="axioms">
           <h4 class="subhead">Why</h4>
           <p>By sharing feedback with consumers, publishers can demonstrate to users that their concerns are being addressed, and they can avoid submission of duplicate bug reports. Sharing feedback also helps consumers understand any issues that may affect their ability to use the data, and it can foster a sense of community among them.</p>
@@ -3783,7 +3739,7 @@ HTTP/1.1 200 OK
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
-          <p>Feedback can be availabe  as part of an HTML Web page, but it can also be provided in a machine-readable format using the Dataset Usage Vocabulary [[VOCAB-DUV]].</p>
+          <p>Feedback can be available  as part of an HTML Web page, but it can also be provided in a machine-readable format using the Dataset Usage Vocabulary [[VOCAB-DUV]].</p>
           <aside class="example">
             <pre class="highlight">
   :stops-2015-05-05
@@ -3875,7 +3831,7 @@ HTTP/1.1 200 OK
     <!-- begin enrichment -->
     <section id="enrichment">
       <h3>Data Enrichment</h3>
-      <p>Data enrichment refers to a set of processes that can be used to enhance, refine or otherwise improve raw or previously processed data. This idea and other similar concepts contribute to making data a valuable asset for almost any modern business or enterprise. It is a diverse topic in itself, details of which are beyond the scope of the current document. However, it is worth noting that some of these techniques should be approached with caution, as ethical concerns may arise. In scientific research, care must be taken to avoid enrichment that distorts results or statistical outcomes. For data about individuals, privacy issues may arise when combining datasets. That is, enriching one dataset with another, when neither contains sufficient information about any individual to identify them, may yield a combined dataset that compromises privacy. Furthermore, these techniqes can be carried out at scale, which in turn highlights the need for caution.</p>
+      <p>Data enrichment refers to a set of processes that can be used to enhance, refine or otherwise improve raw or previously processed data. This idea and other similar concepts contribute to making data a valuable asset for almost any modern business or enterprise. It is a diverse topic in itself, details of which are beyond the scope of the current document. However, it is worth noting that some of these techniques should be approached with caution, as ethical concerns may arise. In scientific research, care must be taken to avoid enrichment that distorts results or statistical outcomes. For data about individuals, privacy issues may arise when combining datasets. That is, enriching one dataset with another, when neither contains sufficient information about any individual to identify them, may yield a combined dataset that compromises privacy. Furthermore, these techniques can be carried out at scale, which in turn highlights the need for caution.</p>
       <p>This section provides some advice to be followed by data publishers in
         order to enrich data.</p>
       <!-- begin of BP Enrich data -->
