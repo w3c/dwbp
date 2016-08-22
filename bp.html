@@ -650,11 +650,11 @@ table.bptable caption {
         data is managed. Such guidance will promote the reuse of data and foster
         trust in the data among developers, whatever technology they choose to
         use, increasing the potential for genuine innovation.</p>
-      <p> Not all data and metadata should be shared openly, however. Security, commercial sensitivity and, above all, individuals' privacy need to be taken into account. It is for data publishers to determine policy on which data should be shared and under what circumstances. Data sharing policies are likely to assess the exposure risk and determine the appropriate security measures to be taken to protect sensitive data, such as secure authentication and authorization.</p>
+      <p>Not all data and metadata should be shared openly, however. Security, commercial sensitivity and, above all, individuals' privacy need to be taken into account. It is for data publishers to determine policy on which data should be shared and under what circumstances. Data sharing policies are likely to assess the exposure risk and determine the appropriate security measures to be taken to protect sensitive data, such as secure authentication and authorization.</p>
 
 <p>Depending on circumstances, sensitive information about individuals might include full name, home address, email address, national identification number, IP address, vehicle registration plate number, driver's license number, face, fingerprints, or handwriting, credit card numbers, digital identity, date of birth, birthplace, genetic information, telephone number, login name, screen name, nickname, health records etc. Although it is likely to be safe to share some of that information openly, and even more within a controlled environment, publishers should bear in mind that combining data from multiple sources may allow inadvertent identification of individuals.</p>
 
-      <p>A general Best Practice to publish Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
+      <p>A general Best Practice for publishing Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. Another general Best Practice is to use Unicode for handling character and string data. Unicode improves multilingual text processing and makes easier software localization easier. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
 <!--      <p>Taking that into account, this document sets out a series of Best Practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>-->
       <p>Best Practices cover different aspects related to data publishing and
         consumption, like data formats, data access, data identifiers and
@@ -2288,8 +2288,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if the metadata for the dataset itself includes information about locale parameters (i.e. data, time, number formats, and language) in a human-readable format.</p>
-            <p>Check if the metadata with locale information is available in a valid machine-readable format and without syntax errors.</p>
+          <p>Check that locale-sensitive data values are represented in a locale-neutral format or that, if this is not possible, relevant locale metadata is provided.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -4352,25 +4351,26 @@ ex:timetable-001 a dcat:Dataset ;
 
       <p>This document has benefited from inputs from many members of the Spatial Data on the Web Working Group. Specific thanks are due to Andrea Perego, Dan Brickley, Linda van den Brink and Jeremy Tandy.</p>
 
-      <p>The editors would also like to thank comments received from Adriano Machado, Adriano Veloso, Andreas Kuckartz, Augusto Herrmann, Bart van Leeuwen, Erik Wilde, Giancarlo Guizzardi, Gisele Pappa, Gregg Kellogg, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Lewis John McGibbney, Makx Dekkers, Manuel Tomas Carrasco-Benitez, Maurino Andrea, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Peter Winstanley, Renato Iannella, Steven Adler, Vagner Diniz and Wagner Meira.</p>
+      <p>The editors would also like to thank comments received from Addison Phillips, Adriano Machado, Adriano Veloso, Andreas Kuckartz, Augusto Herrmann, Bart van Leeuwen, Erik Wilde, Giancarlo Guizzardi, Gisele Pappa, Gregg Kellogg, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Lewis John McGibbney, Makx Dekkers, Manuel Tomas Carrasco-Benitez, Maurino Andrea, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Peter Winstanley, Renato Iannella, Steven Adler, Vagner Diniz and Wagner Meira.</p>
 
       <p>The editors also gratefully acknowledge the chairs of this Working Group: Deirdre Lee, Hadley Beeman, Yaso Córdova and the staff contact Phil Archer.</p>
       </section>
     <section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history" rel="bibo:Chapter" property="bibo:hasPart">
       <h2>Change history</h2>
-      <p>Changes since the <a href="http://www.w3.org/TR/2016/WD-dwbp-20160112/">previous version</a> include:</p>
+      <p>Changes since the <a href="https://www.w3.org/TR/2016/WD-dwbp-20160519/">previous version</a> include:</p>
       <ul>
-        <li>Inclusion of two Best Practices in the <a href ="#enrichment">Data Enrichment </a> section: "Enrich data by generating new data" and "Provide Complementary Presentations". </li>
-        <li>A new section about <a href="#Reuse">Republication </a> with three new Best Practices: "Provide Feedback to the Original Publisher"; "Follow Licensing Terms"; "Cite the Original Publication". </li>
-        <li>Inclusion of new examples and updating of some of the existing examples. </li>
-        <li>Updating the subtitle, "Intended outcome" and "How to Test" in most of the Best Practices.</li>
-        <li>Inclusion of a new section called "Data Access APIs". </li>
-        <li>Removal of the Data Sensitive section and inclusion of the Best Practice "Provide an explanation for data that is not available" in the Data Access section. </li>
-        <li>Updating of figures in the following sections: Context, Data on the Web Challenges and Best Practices Benefits.</li>
-        <li>Updating of the html page with the example of human-readable metadata.</li>
-        <li>Creation of a html page with an example of API documentation.</li>
-
-      </ul>
+<li>Inclusion of CSV primer, BCP47 and CLDR references.*</li>
+<li>Inclusion of a sentence in BP31 to mention that data enrichments made by data consumers should be offered back to the original publisher.</li>
+<li>Minor updates to correct namespaces prefixes and some typos.</li>
+<li>Updating “Best Practice: Enrich data by generating new data” to clarify some topics about filling in missing values and the generation of new data.</li>
+<li>Inclusion of a new sentence in Section 1 (Introduction) to mention the use of Unicode as a general best practice.*</li>
+<li>Minor update on Example 2 to include the charset parameter.*</li>
+<li>Minor update on “Best Practice: Machine-readable standardized data formats” to mention that most machine-readable standardized formats are also locale neutral.*</li>
+<li>Minor update on Example 15 to correct the definition of ISO 639-1.</li>
+<li>Updating the introduction of Section 8.2 to mention the relevance of providing human-readable information in multiple languages.*</li>
+<li>Renaming “Best Practice: Provide locale parameters metadata” to  “Best Practice: Use locale-neutral data representations”, updating the content of
+this best practice to reflect the relevance of using locale-neutral data representations and moving this best practice from Section 8.2 Metadata to Section 8.8 Data Formats; updating of the Data on the Web challenges diagram and the “Use Cases Requirements x Best Practices” table accordingly.*</li></ul>
+<p>* Indicates changes following review by the Internationalization WG</a>.</p>
       </section>
   </body>
 </html>
