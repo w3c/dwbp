@@ -615,7 +615,7 @@ table.bptable caption {
         interaction between publishers and consumers.</p>
     </section>
     <section id="sotd">
-      <p>The Working Group believes that this document is now <strong>complete and ready to advance to Candidate Recommendation</strong> (call for implementations). If you have comments to make before that step is taken, please make them before <strong>Sunday 12 June 2016</strong>.</p>
+      <p>The Working Group <strong>invites publishers to test</strong> whether their datasets pass or fail each of the Best Practices in this document using the <a href="http://w3c.br/form-dwbp/">DWBP Evidences Form</a>. The information gathered through this means will be augmented by further analysis of data available on the Web and, as <a href="https://www.w3.org/2013/05/odbp-charter#deliverables">noted in the charter</a>, national or sector-specific guidelines that reference the Best Practices. The Working Group expects to adduce the combined set of evidence when requesting that the Director advance this document to Proposed Recommendation.</p>
     </section>
     <section id="intro" class="informative">
       <h2>Introduction</h2>
@@ -2239,7 +2239,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           <p class="practicedesc">Use locale-neutral data structures and values, or, where that is not possible, provide metadata about the locale used by data values.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+            <p>Data values that are machine-readable and not specific to any particular language or culture are more durable and less open to misinterpretation than values that use one of the many different cultural representations. By using a locale-neutral format, systems avoid the need to establish specific interchange rules that vary according to the language or location of the user. When the data is already in a locale-specific format, providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
 
           </section>
           <section class="outcome">
@@ -2276,8 +2276,8 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dcat:theme :mobility ;
       dcat:distribution :stops-2015-05-05.csv ;
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ,
+                   &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
       <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt; ; </strong>
       .
 </pre>
@@ -4093,15 +4093,6 @@ ex:timetable-001 a dcat:Dataset ;
     <section id="glossary" class="informative">
       <h2>Glossary</h2>
       <dl>
-        <dt><dfn id="dataset">Dataset</dfn></dt>
-        <dd>
-          <p>A dataset is defined as a collection of data, published or curated
-            by a single agent, and available for access or download in one or
-            more formats. A dataset does not have to be available as a
-            downloadable file.</p>
-          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog
-              Vocabulary (DCAT)</a></p>
-        </dd>
         <dt><dfn id="citation">Citation</dfn></dt>
         <dd>
           <p>A Citation may be either direct and explicit (as in the reference
@@ -4110,6 +4101,16 @@ ex:timetable-001 a dcat:Dataset ;
             implicit (e.g. as in artistic quotations or parodies, or in cases of
             plagiarism).</p>
           <p>From: <a href="http://www.sparontologies.net/ontologies/cito/source.html">CiTO, the Citation Typing Ontology.</a></p>
+        </dd>
+        <dt><dfn id="data_archiving">Data archiving</dfn></dt>
+        <dd>
+          <p>Data Archiving is the set of practices around the storage and
+            monitoring of the state of digital material over the years. </p>
+          <p>These tasks are the responsibility of a Trusted Digital Repository
+            (TDR), also sometimes referred to as <a href="http://tools.ietf.org/html/rfc4810">Long-Term
+              Archive Service (LTA)</a>. Often such services follow the Open
+              Archival Information System [[OAIS]] which defines the archival process
+            in terms of ingest, monitoring and reuse of data.</p>
         </dd>
         <dt><dfn id="data_consumer">Data consumer</dfn></dt>
         <dd>
@@ -4129,6 +4130,17 @@ ex:timetable-001 a dcat:Dataset ;
           <p>From: <a href="https://guide.dhcuration.org/representation/">Digital Humanities
               Curation Guide</a></p>
         </dd>
+        <dt><dfn id="data_preservation">Data preservation</dfn></dt>
+        <dd>
+          <p>Data Preservation is defined by the <a href="http://www.alliancepermanentaccess.org/index.php/consultancy/dpglossary/#Preservation">Alliance for Permanent Access Network</a>
+            as "The processes and operations in ensuring the technical and
+            intellectual survival of objects through time". This is part of a
+            data management plan <a href="https://guide.dhcuration.org/preservation/">focusing
+              on preservation planning and meta-data</a>. Whether it is
+            worthwhile to put effort into preservation depends on the (future)
+            value of the data, the resources available and the opinion of the
+            designated community of stakeholders.</p>
+        </dd>
         <dt><dfn id="data_producer">Data producer</dfn></dt>
         <dd>
           <p>Data Producer is a person or group responsible for generating and
@@ -4137,15 +4149,27 @@ ex:timetable-001 a dcat:Dataset ;
             quality in context." Communications of the ACM 40.5 (1997): 103-110.
           </p>
         </dd>
-        <!--<dt><dfn id="data_representation">Data representation</dfn></dt>
+        <dt><dfn id="data_provenance">Data provenance</dfn></dt>
         <dd>
-          <p>Data representation is any convention for the arrangement of
-            symbols in such a way as to enable information to be encoded by a
-            data producer and later decoded by data consumers."&gt;Data
-            representation</p>
-          <p>From: <a href="http://guide.dhcuration.org/representation/">Digital Humanities
-              Curation Guide</a></p>
-        </dd> -->
+          <p>Provenance originates from the French term "provenir" (to come
+            from), which is used to describe the curation process of artwork as
+            art is passed from owner to owner. Data provenance, in a similar
+            way, is metadata that allows data providers to pass details about
+            the data history to data users.</p>
+        </dd>
+        <dt><dfn id="data_quality">Data quality </dfn></dt>
+        <dd>
+          <p>Data quality is commonly defined as “fitness for use” for a
+            specific application or use case.</p>
+        </dd>
+        <dt><dfn id="dataset">Dataset</dfn></dt>
+        <dd>
+          <p>A dataset is defined as a collection of data, published or curated
+            by a single agent, and available for access or download in one or
+            more formats. A dataset does not have to be available as a
+            downloadable file.</p>
+          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary (DCAT)</a> [[VOCAB-DCAT]]</p>
+        </dd>
         <dt><dfn id="distribution">Distribution</dfn></dt>
         <dd>
           <p> A distribution represents a specific available form of a dataset.
@@ -4153,8 +4177,7 @@ ex:timetable-001 a dcat:Dataset ;
             might represent different formats of the dataset or different
             endpoints. Examples of distributions include a downloadable CSV
             file, an API or an RSS feed</p>
-          <p><a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary
-              (DCAT)</a></p>
+          <p>From: <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary (DCAT)</a> [[VOCAB-DCAT]]</p>
         </dd>
         <dt><dfn id="feedback">Feedback</dfn></dt>
         <dd>
@@ -4169,40 +4192,6 @@ ex:timetable-001 a dcat:Dataset ;
             show inter-related annotations between communities with more
             meaningful distinctions than a simple class/subclass tree.</p>
         </dd>
-        <dt><dfn id="data_preservation">Data preservation</dfn></dt>
-        <dd>
-          <p>Data Preservation is defined by the <a href="http://www.alliancepermanentaccess.org/index.php/consultancy/dpglossary/#Preservation">Alliance for Permanent Access Network</a>
-            as "The processes and operations in ensuring the technical and
-            intellectual survival of objects through time". This is part of a
-            data management plan <a href="https://guide.dhcuration.org/preservation/">focusing
-              on preservation planning and meta-data</a>. Whether it is
-            worthwhile to put effort into preservation depends on the (future)
-            value of the data, the resources available and the opinion of the
-            designated community of stakeholders.</p>
-        </dd>
-        <dt><dfn id="data_archiving">Data archiving</dfn></dt>
-        <dd>
-          <p>Data Archiving is the set of practices around the storage and
-            monitoring of the state of digital material over the years. </p>
-          <p>These tasks are the responsibility of a Trusted Digital Repository
-            (TDR), also sometimes referred to as <a href="http://tools.ietf.org/html/rfc4810">Long-Term
-              Archive Service (LTA)</a>. Often such services follow the Open
-              Archival Information System [[OAIS]] which defines the archival process
-            in terms of ingest, monitoring and reuse of data.</p>
-        </dd>
-        <dt><dfn id="data_provenance">Data Provenance</dfn></dt>
-        <dd>
-          <p>Provenance originates from the French term "provenir" (to come
-            from), which is used to describe the curation process of artwork as
-            art is passed from owner to owner. Data provenance, in a similar
-            way, is metadata that allows data providers to pass details about
-            the data history to data users.</p>
-        </dd>
-        <dt><dfn id="data_quality">Data Quality </dfn></dt>
-        <dd>
-          <p>Data quality is commonly defined as “fitness for use” for a
-            specific application or use case.</p>
-        </dd>
         <dt><dfn id="file_format">File format</dfn></dt>
         <dd>
           <p>File Format is a standard way that information is encoded for
@@ -4210,64 +4199,36 @@ ex:timetable-001 a dcat:Dataset ;
             information in a digital storage medium. File formats may be either
             proprietary or free and may be either unpublished or open.</p>
           <p>Examples of file formats include: plain text (in a specified character encoding, ideally UTF-8),
-          Comma Separated Variable (CSV) [[RFC4180]], Portable Document Format (<a href="http://partners.adobe.com/public/developer/tips/topic_tip31.html">PDF</a>)
-          <a href="https://www.w3.org/standards/xml/">XML</a>, JSON [[RFC4627]], Turtle [[Turtle]] and <a href="https://www.hdfgroup.org/HDF5/">HDF5</a>.
-<!--
-
- <a href="https://en.wikipedia.org/wiki/Text_file">txt</a>,
-            <a href="https://en.wikipedia.org/wiki/Portable_Document_Format">pdf</a>,
-            <a href="https://en.wikipedia.org/wiki/Postscript">ps</a>,<a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">avi</a>,
-            <a href="https://en.wikipedia.org/wiki/GIF">gif</a> or <a href="https://en.wikipedia.org/wiki/JPEG">jpg</a>-->
-          </p>
+          Comma Separated Variable (CSV) [[RFC4180]], Portable Document Format (<a href="http://partners.adobe.com/public/developer/tips/topic_tip31.html">PDF</a>) <a href="https://www.w3.org/standards/xml/">XML</a>, JSON [[RFC4627]], Turtle [[Turtle]] and <a href="https://www.hdfgroup.org/HDF5/">HDF5</a>.</p>
         </dd>
         <dt><dfn id="license">License</dfn></dt>
         <dd>
           <p>A license is a legal document giving official permission to do
             something with the data with which it is associated.</p>
-          <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">
-              DCTERMS</a></p>
+          <p>From: <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">DCTERMS</a> [[DCTERMS]]</p>
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
-          <p>A set of parameters that clarifies aspects of the data that may be interpreted differently in different geographic locations, such as language and formatting used for numeric values or dates.</p>
+          <p>A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior</p> <p>From <a href="https://www.w3.org/TR/ltli/#locale">Language Tags and Locale Identifiers for the World Wide Web</a> [[LTLI]].</p>
         </dd>
-        <dt><dfn id="machine_readable">Machine-Readable Data</dfn></dt>
+        <dt><dfn id="machine_readable">Machine-readable data</dfn></dt>
         <dd>
           <p>Machine-readable data is data in a standard format that can be read and processed automatically by a computing system. Traditional word processing documents and portable document format (PDF) files are easily read by humans but typically are difficult for machines to interpret and manipulate. Formats such as XML, JSON, HDF5, RDF and CSV are machine-readable data formats
           </p>
-          <p>From: Adapted from <a href="https://en.wikipedia.org/wiki/Machine-readable_data">Wikipedia</a> </p>
+          <p>Adapted from <a href="https://en.wikipedia.org/wiki/Machine-readable_data">Wikipedia</a>.</p>
         </dd>
-        <dt><dfn id="near_realtime">Near Real-Time </dfn></dt>
+        <dt><dfn id="near_realtime">Near real-time</dfn></dt>
         <dd>
           <p>The term "near real-time" or "nearly real-time" (NRT), in telecommunications and computing, refers to the time delay introduced, by automated data processing or network transmission, between the occurrence of an event and the use of the processed data, such as for display or feedback and control purposes. For example, a near-real-time display depicts an event or situation as it existed at the current time minus the processing time, as nearly the time of the live event.</p>
           <p>From: <a href="https://en.wikipedia.org/wiki/Real-time_computing#Near_real-time">Wikipedia</a></p>
         </dd>
-        <dt><dfn id="sensitive_data">Sensitive Data </dfn></dt>
+        <dt><dfn id="sensitive_data">Sensitive data</dfn></dt>
         <dd>
           <p> Sensitive data is any designated data or metadata that is used in
             limited ways and/or intended for limited audiences. Sensitive data
             may include personal data, corporate or government data, and
             mishandling of published sensitive data may lead to damages to
             individuals or organizations.</p>
-        </dd>
-        <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
-        <dd>
-          <p>Vocabulary is A collection of "terms" for a particular purpose.
-            Vocabularies can range from simple such as the widely used RDF
-              Schema [[RDF-SCHEMA]], FOAF [[FOAF]] and Dublin
-              Core [[DCTERMS]] to complex vocabularies with
-            thousands of terms, such as those used in healthcare to describe
-            symptoms, diseases and treatments. Vocabularies play a very
-            important role in Linked Data, specifically to help with data
-            integration. The use of this term overlaps with Ontology.</p>
-          <p> From: <a href="http://www.w3.org/TR/ld-glossary/#vocabulary">Linked
-              Data Glossary</a> </p>
-        </dd>
-        <dt><dfn id="structured_data">Structured data</dfn></dt>
-        <dd>
-          <p> Structured Data refers to data that conforms to a fixed schema.
-            Relational databases and spreadsheets are examples of structured
-            data.</p>
         </dd>
          <dt><dfn id="standard">Standard</dfn></dt>
           <dd>
@@ -4279,6 +4240,24 @@ ex:timetable-001 a dcat:Dataset ;
             standard.</p>
             <p>From: <a href="https://en.wikipedia.org/wiki/Technical_standard">Wikipedia</a></p>
           </dd>
+        <dt><dfn id="structured_data">Structured data</dfn></dt>
+        <dd>
+          <p> Structured Data refers to data that conforms to a fixed schema.
+            Relational databases and spreadsheets are examples of structured
+            data.</p>
+        </dd>
+        <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
+        <dd>
+          <p>Vocabulary is A collection of "terms" for a particular purpose.
+            Vocabularies can range from simple such as the widely used RDF
+              Schema [[RDF-SCHEMA]], FOAF [[FOAF]] and Dublin
+              Core [[DCTERMS]] to complex vocabularies with
+            thousands of terms, such as those used in healthcare to describe
+            symptoms, diseases and treatments. Vocabularies play a very
+            important role in Linked Data, specifically to help with data
+            integration. The use of this term overlaps with Ontology.</p>
+          <p>From: <a href="http://www.w3.org/TR/ld-glossary/#vocabulary">Linked Data Glossary</a> </p>
+        </dd>
         </dl>
     </section>
     <section id="challenges" class="informative">
