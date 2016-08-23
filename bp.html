@@ -2239,7 +2239,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           <p class="practicedesc">Use locale-neutral data structures and values, or, where that is not possible, provide metadata about the locale used by data values.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+            <p>Data values that are machine-readable and not specific to any particular language or culture are more durable and less open to misinterpretation than values that use one of the many different cultural representations. By using a locale-neutral format, systems avoid the need to establish specific interchange rules that vary according to the language or location of the user. When the data is already in a locale-specific format, providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
 
           </section>
           <section class="outcome">
@@ -2276,8 +2276,8 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dcat:theme :mobility ;
       dcat:distribution :stops-2015-05-05.csv ;
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;</strong>
-      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
+      <strong>dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ,
+                   &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
       <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt; ; </strong>
       .
 </pre>
@@ -4229,7 +4229,7 @@ ex:timetable-001 a dcat:Dataset ;
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
-          <p>A set of parameters that clarifies aspects of the data that may be interpreted differently in different geographic locations, such as language and formatting used for numeric values or dates.</p>
+          <p>Defined in <a href="https://www.w3.org/TR/ltli/#locale">Language Tags and Locale Identifiers for the World Wide Web</a> as: A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior [[LTLI]].</p>
         </dd>
         <dt><dfn id="machine_readable">Machine-Readable Data</dfn></dt>
         <dd>
