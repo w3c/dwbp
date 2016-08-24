@@ -1678,37 +1678,34 @@ SubObjectPropertyOf(
 :myDatasetDistribution
     dqv:hasQualityMeasurement :measurement1, :measurement2
     .
-
 <span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
 
 }
 
-# :myQualityMetadata has been created by :qualityChecker and it is the result of the
-# :qualityChecking activity 
+# :myQualityMetadata has been created by :myQualityChecker and it is the result of the
+# :myQualityChecking activity 
 
 :myQualityMetadata 
     a dqv:QualityMetadata ;
-    prov:wasAttributedTo :qualityChecker ;
+    prov:wasAttributedTo :myQualityChecker ;
     prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
-    prov:wasGeneratedBy :qualityChecking 
-    .
+    prov:wasGeneratedBy :myQualityChecking .
 
 # :qualityChecker is a service computing some quality metrics 	
 
-:qualityChecker
+:myQualityChecker
     a prov:SoftwareAgent ;   
-    rdfs:label "a quality assessment service"^^xsd:string
+    rdfs:label "A quality assessment service"^^xsd:string .
     # Further details about quality service/software can be provided, for example,
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
-    .
 
-# the :qualityChecking is the activity that has generated :myQualityMetadata starting from 
+# :myQualityChecking is the activity that has generated :myQualityMetadata from 
 # :myDatasetDistribution
 
-:qualityChecking
+:myQualityChecking
     a prov:Activity;
-    rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
-    prov:wasAssociatedWith :qualityChecker;
+    rdfs:label "The checking of myDatasetDistribution's quality"^^xsd:string;
+    prov:wasAssociatedWith :myQualityChecker;
     prov:used              :myDatasetDistribution;
     prov:generated         :myQualityMetadata;
     prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
@@ -1721,52 +1718,48 @@ SubObjectPropertyOf(
                         granularity (dqv:QualityMeasurement and dqv:QualityMetadata). In the previous example we have shown how to track  provenance at the level of quality metadata as a whole. In the following, we provide an example of provenance for a single quality measurement, <code>:measurement</code>.</p>
                     <pre class="highlight">
 :myDatasetDistribution
-    dqv:hasQualityMeasurement :measurement 
-    .
+    dqv:hasQualityMeasurement :myMeasurement .
 
-# :measurement has been created by :qualityChecker and it is the result of the
-# :qualityChecking activity 
+# :myMeasurement has been created by :myQualityChecker and it is the result of the
+# :myQualityChecking activity 
 
 
-:measurement
+:myMeasurement
     a dqv:QualityMeasurement ;
     dqv:computedOn :myDatasetDistribution ;
     dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
     dqv:value "true"^^xsd:boolean ;
-    prov:wasAttributedTo :qualityChecker ;
+    prov:wasAttributedTo :myQualityChecker ;
     prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
-    prov:wasGeneratedBy :qualityChecking 
+    prov:wasGeneratedBy :myQualityChecking 
     .
 
 :downloadURLAvailabilityMetric 
     a dqv:Metric ;
-    skos:definition "It checks if dcat:downloadURL  is available and  if its value is
+    skos:definition "Checks if dcat:downloadURL is available and if its value is
     dereferenceable."@en ;
     dqv:expectedDataType xsd:boolean ;
-    dqv:inDimension :availability
-    .
+    dqv:inDimension :availability .
     
-# :qualityChecker is a services computing some quality metrics 	
+# :myQualityChecker is a service computing some quality metrics 	
 
-:qualityChecker
+:myQualityChecker
     a prov:SoftwareAgent ;   
-    rdfs:label "a quality assessment service"^^xsd:string
+    rdfs:label "A quality assessment service"^^xsd:string .
     # Further details about quality service/software can be provided, for example,
     # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
-    . 
 
-# the :qualityChecking is the activity that has generated :measurement starting from 
-# :myDatasetDistribution
+# :myQualityChecking is the activity that has generated :myMeasurement from :myDatasetDistribution
 
-:qualityChecking
+:myQualityChecking
     a prov:Activity;
-    rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
-    prov:wasAssociatedWith :qualityChecker;
+    rdfs:label "The checking of myDatasetDistribution's quality"^^xsd:string;
+    prov:wasAssociatedWith :myQualityChecker;
     prov:used              :myDatasetDistribution;
-    prov:generated         :measurement;
+    prov:generated         :myMeasurement;
     prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
-    prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
-    .  </pre>
+    prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime .
+</pre>
                 </section>
                 <section id="DocumentProvDataset">
                     <h4>Document the provenance of a dataset</h4>
@@ -1907,8 +1900,7 @@ SubObjectPropertyOf(
  :datasetAvailabilityMetric 
     a dqv:Metric ;
     prov:wasDerivedFrom :downloadURLAvailabilityMetric, :SPARQLAvailabilityMetric;
-    skos:definition "Checks the availabitity of the specified
-    distributions."@en ;
+    skos:definition "Checks the availabitity of the specified distributions."@en ;
     dqv:expectedDataType xsd:boolean ;
     dqv:inDimension :availability
     .
@@ -2189,17 +2181,17 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
                     <pre class="highlight">
 :onLanguage
     a qb:DimensionProperty, owl:DataProperty ;
-    rdfs:comment   "language on which label importing is assessed."@en ;
+    rdfs:comment   "Language on which label importing is assessed."@en ;
     rdfs:domain    dqv:QualityMeasurement;
-    rdfs:label     "label import assessment language"@en ;
+    rdfs:label     "Label import assessment language"@en ;
     rdfs:range       xsd:string 
     .
 
 :onProperty
     a qb:DimensionProperty, rdf:Property ;
-    rdfs:comment 	"property on which label importing is assessed."@en ;
+    rdfs:comment 	"Property on which label importing is assessed."@en ;
     rdfs:domain 	dqv:QualityMeasurement ;
-    rdfs:label  	"label import assessment property"@en ;
+    rdfs:label  	"Label import assessment property"@en ;
     rdfs:range     	rdf:Property 
     .
         </pre>
