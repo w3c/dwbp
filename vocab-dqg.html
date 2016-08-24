@@ -155,6 +155,13 @@
                         status : "SEMANTICS 2014",
                         href : "http://arxiv.org/abs/1408.2468"
                     },
+                    "Dublin-Core" : {
+                        title : "DCMI Metadata Terms",
+                        authors : [ "DCMI Usage Board" ],
+                        date : "14 January 2008",
+                        status : "DCMI Recommendation",
+                        href : "http://dublincore.org/documents/dcmi-terms/"
+                    },
                     "MultilingualImporting" : {
                         title : "A Linkset Quality Metric Measuring Multilingual Gain in SKOS Thesauri",
                         authors : [ "Riccardo Albertoni", "Monica De Martino",
@@ -218,7 +225,8 @@
                      "Vocab-Data-Cube": {
                         title: "The RDF Data Cube Vocabulary",
                         authors: ["Richard Cyganiak","Dave Reynolds"],
-                        status : "W3C Recommendation 16 January 2014",
+                        date : "16 January 2014",
+                        status : "W3C Recommendation",
                         href : "https://www.w3.org/TR/vocab-data-cube/"
                     },
                     "WebAnnotation" : {
@@ -1485,6 +1493,31 @@ SubObjectPropertyOf(
                     <p>The section <a href="#ExpressDatasetAccuracyPrecision">"Express dataset precision and accuracy"</a> shows an example of use of this instance. 
                 </section>
                
+            </section>
+
+            <section id="documentation">
+                <h2>Note on documenting resources expressed with DQV</h2>
+		    <p>The above section presents the most important classes and properties DQV uses
+		    to represent quality-related metadata. I.e., these are the elements needed to express
+		    the machine-readable information that DQV-aware data consumers can exploit
+		    for their processes. However, in many cases extra human-readable information is also needed,
+		    e.g., to provide (mulitlingual) definitions and labels or just more context for the quality
+		    measurements, metrics, etc. that are expressed with the core DQV classes.</p>
+		    <p>To this end, we recommend using appropriate vocabularies like SKOS [[SKOS-reference]], Dublin Core [[Dublin-Core]] or PROV [[PROV-O]].
+		    SKOS and PROV provide elements that fit specific purposes but can be applied to a wide
+		    range of resources, i.e., they <a href="http://www.w3.org/TR/dwbp/#ChooseRightFormalizationLevel">minimize their ontological commitment</a>. 
+		    The section <a href="#ExpressAQualityAssessmentWithQualityMetrics">"Express a quality assessment with quality metrics"</a>, for example, 
+		    shows how properties like <a href="http://www.w3.org/2004/02/skos/core#prefLabel">skos:prefLabel</a> and
+		    <a href="http://www.w3.org/2004/02/skos/core#definition">skos:definition</a> can be applied to instances of
+		    <a href="#dqv:Dimension">dqv:Dimension</a>, which are by default instances of
+		    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>, but also to instances of
+		     <a href="#dqv:Metric">dqv:Metric</a>, which are not. Dublin Core provides general-purpose
+		    metadata elements that can also be used to express, say, a general description of a measurement:</p>
+		   <pre class="highlight">
+:currentnessMeasurement a dqv:QualityMeasurement ;
+    dqv:value "false"^^xsd:boolean 
+    dcterms:description “The triples in the dataset are outdated” .
+</pre>
             </section>
 
             <section id="examples">
