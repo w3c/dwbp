@@ -3044,8 +3044,9 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                     <ul>
                         <li>Refinement of Introduction section.</li> 
                         <li>Review of Vocabulary Specification section: new descriptions for properties  (e.g., dqv:hasQualityMetadata, dqv:hasQualityAnnotation and dcterms:conformsTo) and  further references to examples have been provided.</li>
-                        <li>Refinement of example 5.6: the example has been made consistent with the Web Annotation Vocabulary Candidate Recommendation. </li>
-                        <li>Refinement of example 5.10: The example has been simplified, the subject and object datasets have been distinguished.</li>
+                        <li>New section titled "Note on documenting resources expressed with DQV".</li>
+                        <li>Refinement of example 6.6: the example has been made consistent with the Web Annotation Vocabulary Candidate Recommendation.</li>
+                        <li>Refinement of example 6.10: the example has been simplified, the subject and object datasets have been distinguished.</li>
                         <li>New appendix for compatibility with RDF Data Cube.</li>
                         <li>Refinement of the definition for dqv:qualityAssessment.</li>
 			<li>New appendix on parameters, and re-factoring of the section on expressing linkset quality.</li>
@@ -3182,7 +3183,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 	     different types of statement in the dataset, and the parameter is used to specify the specific type
 	     a given measurement focused on. Or when the different components that contribute to a metric's computation are assigned
 	     different weights.</p>
-		    <p><a href="#ExpressQualLinkset">Section 5.10</a> presents examples of metrics with parameters
+		    <p><a href="#ExpressQualLinkset">Section 6.10</a> presents examples of metrics with parameters
 	     (<code>onLanguage</code> and <code>onProperty</code>) and how they should be represented and used
 	     for publication of measurement data.</p>
 		    <p>During the design of DQV, however, questions were raised about the modeling
@@ -3199,7 +3200,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 	     considered for the measure. The first solution is to try and employ the modeling features of the
 	     Web Ontology Language OWL [[OWL-primer]]. First by creating a new class of metrics,
 	     which require to presence of the parameter and can be instanciated by metrics as in
-             following (inspired from the requirements behind the case in <a href="#ExpressQualLinkset">Section 5.10</a>):</p>
+             following (inspired from the requirements behind the case in <a href="#ExpressQualLinkset">Section 6.10</a>):</p>
 <pre>
 :MetricWithLanguageParameter
   rdfs:subClassOf dqv:Metric,
@@ -3215,12 +3216,12 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 		   <p>This solution may be useful for some 'meta-parameters',
 i.e. for cases where there would be classes metrics that can be parameterized, and the definition of
 individual metric definition would be depending the choosing value for these parameters. But this is not exactly
-what happens with the (unique) metric for "multilingual importing" in <a href="#ExpressQualLinkset">Section 5.10</a>.
+what happens with the (unique) metric for "multilingual importing" in <a href="#ExpressQualLinkset">Section 6.10</a>.
 This metric indeed specifies that measurements will be for specific languages, but it doesn't say which,
 and the parameter needs to be instanciated at the level of the actual measurements or not. This would require a dedicated new
 class of measurements, say, <code>MeasurementWithLanguageParameter</code>, which would be created and used as in the following:
 <pre>
-# The following statements should be added to the ones from Section 5.10
+# The following statements should be added to the ones from Section 6.10
 
 :MeasurementWithLanguageParameter
   rdfs:subClassOf dqv:Measurement,
@@ -3264,7 +3265,7 @@ of mixed types. A general constraint expression language like the coming SHACL [
 They have their respective strengths and weaknesses in terms of modeling elegance, complexity, etc. However,
 at the time of writing this document, it is unclear whether these provide any crucial value to implementers when
 implemented over the basic creation and use of parameter properties as presented in
-<a href="#ExpressQualLinkset">Section 5.10</a>, especially when these are completed with the OWL axioms or
+<a href="#ExpressQualLinkset">Section 6.10</a>, especially when these are completed with the OWL axioms or
 Data Cube's Data Structure Definition as hinted above.</p>
 		   <p>Finally, implementers may opt for a more basic solution that avoids explicit modeling
 of parameters altogether: folding parameters in the definition of new metrics that embody them. I.e.,
@@ -3306,7 +3307,7 @@ and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLab
                 <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
                     <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
-		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 5.10:</p>
+		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 6.10:</p>
                     <pre class="highlight">
 :linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
     qb:structure  ex:dsd .
@@ -3333,7 +3334,7 @@ ex:dsd a qb:DataStructureDefinition ;
                  ] .
 
 </pre>
-                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 5.10 to the dataset specified by the Data Structure Definition:</a>
+                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 6.10 to the dataset specified by the Data Structure Definition:</a>
                     <pre class="highlight">
 :measurement_exactMatchAltLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
 :measurement_exactMatchAltLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
@@ -3343,14 +3344,14 @@ ex:dsd a qb:DataStructureDefinition ;
 :measurement_exactMatchprefLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
 </pre>
                     <p>DQV users should be aware that applying Data Cube Data Structure Definitions to their quality information datasets has an broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
-                    <p>RDF Data Cube also states that "no two qb:Observations in the same qb:DataSet may have the same value for all dimensions". This integrity constraint implies that it is not allowed to have two distinct measurements for the same metric, resource and date. Metrics depending on parameters such as the ones from <a href="#ExpressQualLinkset">Section 5.10</a> shall be used with extra care so as to adhere to this constraint: data publishers will probably need to represent quality measurements for the same resource and date, but which are obtained by applying distinct parameters.
+                    <p>RDF Data Cube also states that "no two qb:Observations in the same qb:DataSet may have the same value for all dimensions". This integrity constraint implies that it is not allowed to have two distinct measurements for the same metric, resource and date. Metrics depending on parameters such as the ones from <a href="#ExpressQualLinkset">Section 6.10</a> shall be used with extra care so as to adhere to this constraint: data publishers will probably need to represent quality measurements for the same resource and date, but which are obtained by applying distinct parameters.
                     </p>
                     <p>Adopters of DQV and Data Cube can consider two modelling options for addressing this:</p>
                     <ul>
                         <li>To extend the above Data Structure with the desired parameters;</li>
                         <li>To define a new Metric for each combination of the parameters values.</li>
                     </ul>
-         <p>Let's apply the first option to the example of <a href="#ExpressQualLinkset">Section 5.10</a>.
+         <p>Let's apply the first option to the example of <a href="#ExpressQualLinkset">Section 6.10</a>.
 		    The “Multilingual importing” metric there requires to manage two parameters, <code>onProperty</code> and <code>onLanguage</code>, which gave raise to one instance of <code>owl:DataProperty</code> each. These parameters can be also expressed as instances <code>qb:DimensionProperty</code> and the above Data Structure extended as follows:</p>
                      <pre class="highlight">
     ## Adding a new type to the parameter properties
@@ -3366,7 +3367,7 @@ ex:dsd a qb:DataStructureDefinition ;
                         ] .     
         </pre>		    
                     <p>Alternatively, data publishers can keep to the original Data Structure. But in this case
-		    they should be prepared to not use the parameter properties introduced in 5.10.
+		    they should be prepared to not use the parameter properties introduced in 6.10.
 		    Instead, they could use the "split" metrics presented at the end of the
 		    <a href="Parameters">Appendix on parameters</a>. This solution is however not always applicable,
 		    as this Appendix shows it.</p>
