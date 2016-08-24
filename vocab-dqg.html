@@ -3307,7 +3307,7 @@ and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLab
                 <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
                     <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
-		    <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 6.10:</p>
+		      <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 6.10:</p>
                     <pre class="highlight">
 :linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
     qb:structure  ex:dsd .
@@ -3334,7 +3334,7 @@ ex:dsd a qb:DataStructureDefinition ;
                  ] .
 
 </pre>
-                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 6.10 to the dataset specified by the Data Structure Definition:</a>
+                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 6.10 to the dataset specified by the Data Structure Definition:</p>
                     <pre class="highlight">
 :measurement_exactMatchAltLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
 :measurement_exactMatchAltLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
@@ -3371,9 +3371,6 @@ ex:dsd a qb:DataStructureDefinition ;
 		    Instead, they could use the "split" metrics presented at the end of the
 		    <a href="Parameters">Appendix on parameters</a>. This solution is however not always applicable,
 		    as this Appendix shows it.</p>
-            </section>
-                
-            
-
+            </section>     
         </body>
         </html>
