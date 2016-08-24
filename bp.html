@@ -2188,7 +2188,7 @@ rel=“next last memento";
               the data may lose meaning as it is transformed. On the other hand,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
-              cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale neutral.</p>
+              cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale-neutral.</p>
           </section>
           <section class="outcome">
             <h4 class="subhead">Intended Outcome</h4>
@@ -2205,7 +2205,6 @@ rel=“next last memento";
 Identifier,Name,Description,Latitude,Longitude,ZONE,URL 
 345,Castle Avenue,Sunset Drive,-3.731862,-38.526670,x20,http://data.mycity.example.com/transport/road/bus/stop/id/345
 483,Main Street,Lily Park,-3.731541,-38.535157,x20,http://data.mycity.example.com/transport/road/bus/stop/id/483
-
 </pre>
  </aside>
 
@@ -2239,7 +2238,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           <p class="practicedesc">Use locale-neutral data structures and values, or, where that is not possible, provide metadata about the locale used by data values.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Data values that are machine-readable and not specific to any particular language or culture are more durable and less open to misinterpretation than values that use one of the many different cultural representations. By using a locale-neutral format, systems avoid the need to establish specific interchange rules that vary according to the language or location of the user. When the data is already in a locale-specific format, providing <a href="#locale_parameter">locale</a> parameters helps humans and computer applications to work accurately with things like dates, currencies and numbers that may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly €2,000 is either two thousand Euros or an over-precise representation of two Euros. Making the locale and language explicit allows users to determine how readily they can work with the data and may enable automated translation services.</p>
+            <p>Data values that are machine-readable and not specific to any particular language or culture are more durable and less open to misinterpretation than values that use one of the many different cultural representations. Things like dates, currencies and numbers may look similar but have different meanings in different locales. For example, the 'date' 4/7 can be read as 7th of April or the 4th of July depending on where the data was created. Similarly, €2,000 is either two thousand Euros or an over-precise representation of two Euros. By using a locale-neutral format, systems avoid the need to establish specific interchange rules that vary according to the language or location of the user. When the data is already in a locale-specific format, making the locale and language explicit by providing <a href="#locale_parameter">locale</a> parameters allows users to determine how readily they can work with the data and may enable automated translation services.</p>
 
           </section>
           <section class="outcome">
@@ -2248,7 +2247,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-<p>Most common data representations are locale neutral. For example, XML Schema types such as <code>xsd:integer</code> and <code>xsd:date</code> are intended for locale-neutral data interchange. Using locale-neutral representations allows the data values to be processed accurately without complex parsing or misinterpretation and also allows the data to be presented in the format most comfortable for the consumer of the data in any locale.  For example, rather than storing "€2000,00" as a string, it's strongly preferred to exchange a data structure such as:</p>
+<p>Most common data serialization formats are locale-neutral. For example, XML Schema types such as <code>xsd:integer</code> and <code>xsd:date</code> are intended for locale-neutral data interchange. Using locale-neutral representations allows the data values to be processed accurately without complex parsing or misinterpretation and also allows the data to be presented in the format most comfortable for the consumer of the data in any locale.  For example, rather than storing "€2000,00" as a string, it's strongly preferred to exchange a data structure such as:</p>
 
 <pre>&hellip;
 "price" {
@@ -4344,7 +4343,7 @@ ex:timetable-001 a dcat:Dataset ;
 <li>Updating “Best Practice: Enrich data by generating new data” to clarify some topics about filling in missing values and the generation of new data.</li>
 <li>Inclusion of a new sentence in Section 1 (Introduction) to mention the use of Unicode as a general best practice.*</li>
 <li>Minor update on Example 2 to include the charset parameter.*</li>
-<li>Minor update on “Best Practice: Machine-readable standardized data formats” to mention that most machine-readable standardized formats are also locale neutral.*</li>
+<li>Minor update on “Best Practice: Machine-readable standardized data formats” to mention that most machine-readable standardized formats are also locale-neutral.*</li>
 <li>Minor update on Example 15 to correct the definition of ISO 639-1.</li>
 <li>Updating the introduction of Section 8.2 to mention the relevance of providing human-readable information in multiple languages.*</li>
 <li>Renaming “Best Practice: Provide locale parameters metadata” to  “Best Practice: Use locale-neutral data representations”, updating the content of
