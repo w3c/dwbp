@@ -3275,9 +3275,9 @@ implemented over the basic creation and use of parameter properties as presented
 <a href="#ExpressQualLinkset">Section 6.10</a>, especially when these are completed with the OWL axioms or
 Data Cube's Data Structure Definition as hinted above.</p>
 		   <p>Finally, implementers may opt for a more basic solution that avoids explicit modeling
-of parameters altogether: folding parameters in the definition of new metrics that embody them. I.e.,
+of parameters altogether: folding parameters in the definition of new metrics that embody them. I.e., in order 
 to tackle the variation of possible measurements implied by different languages (say, English and Italian)
-and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLabel</code>), metrics like <code>importingForPropertyPercentage</code> could be "split", with one metric for each relevant combination of parameters, as in the following:</p> 
+and different properties (say, <code>skos:prefLabel</code> and <code>skos:altLabel</code>), metrics like <code>importingForPropertyPercentage</code> could be "split" into one metric for each relevant combination of parameters, as in the following:</p> 
                     <pre class="highlight">
 :importingForPropertyPercentagePrefLabelIt a dqv:Metric ;
     skos:definition "Ratio between novel Italian preferred labels 
@@ -3341,7 +3341,7 @@ ex:dsd a qb:DataStructureDefinition ;
                  ] .
 
 </pre>
-                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of qb:DimensionProperty. The following statements represent the linking of actual measurements in Section 6.10 to the dataset specified by the Data Structure Definition:</p>
+                    <p>Allowing data publishers to use the properties <a href="#dqv:isMeasurementOf">dqv:isMeasurementOf</a> and <a href="#dqv:computedOn">dqv:computedOn</a> in such data structures is actually the reason why they have been defined as instances of <a href="http://purl.org/linked-data/cube#DimensionProperty">qb:DimensionProperty</a>>. The following statements represent the linking of actual measurements in Section 6.10 to the dataset specified by the Data Structure Definition:</p>
                     <pre class="highlight">
 :measurement_exactMatchAltLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
 :measurement_exactMatchAltLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
