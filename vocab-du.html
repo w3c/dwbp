@@ -348,6 +348,10 @@ pre red { color: red;
             <td>http://www.w3.org/ns/oa#</td>
           </tr>
           <tr>
+            <td>pav</td>
+            <td>http://pav-ontology.github.io/pav/</td>
+          </tr>
+          <tr>
             <td>rdf</td>
             <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
           </tr>
@@ -414,17 +418,16 @@ pre red { color: red;
       <p> The Semantic Publishing and Referencing [[SPAR]] Ontologies provides a
         suite of vocabularies used to related entities to reference citations,
         bibliographic records, and describe the publication process along with
-        other related activities. The DUV directly relies upon Citation Typing
-        Ontology [[CITO]], the FRBR-aligned Bibliographic Ontology [[FaBIO]],
-        and Dublin Core [[DC-TERMS]] ontologies are used to describe citations
-        and references between datasets and cited sources. In addition to
-        ontologies the research community provided basic criteria for citing
-        data on the Web [[MSUDataCite]] [[EmoryUCite]]. These resources helped
-        scope the DUV citation model into the minimal requirements for
-        electronic data publication. Finally, data citation principles being
-        adopted [[FORCE11-Citation]] are also being considered to ensure the DUV
-        is consistent with guidelines developed by other data citation
-        communities.</p>
+        other related activities. The DUV directly relies upon the FRBR-aligned
+        Bibliographic Ontology [[FaBIO]], and Dublin Core [[DC-TERMS]]
+        ontologies are used to describe citations and references between
+        datasets and cited sources. In addition to ontologies the research
+        community provided basic criteria for citing data on the Web
+        [[MSUDataCite]]. These resources helped scope the DUV citation model
+        into the minimal requirements for electronic data publication. Finally,
+        data citation principles being adopted [[FORCE11-Citation]] are also
+        being considered to ensure the DUV is consistent with guidelines
+        developed by other data citation communities.</p>
       <h3>Alternative Vocabulary Considerations </h3>
       <p>As discussed earlier, the intention of the DUV is to be thorough enough
         to offer a starting point for describing data usage and yet be open to
@@ -447,7 +450,7 @@ pre red { color: red;
         spent constantly referencing to third party vocabularies and (2) provide
         a starting place to familiarize DUV implementers with the basics needed
         to get them started. </p>
-      <a  href="images/DUV_model.png"><img  src="images/DUV_model.png"  style="width:100%"
+      <a  href="images/DUV_model.png"><img  src="images/DUV_model.png"  style="width:80%; vertical-align: bottom"
            alt="The class diagram for DUV"></a>
       <section  id="Citation_Model">
         <h3>Citation Model</h3>
@@ -464,11 +467,11 @@ pre red { color: red;
             <a  href="#ex1">(See Example 1)</a>. To do this, DUV extensions are
             added to the DCAT model. Classes include: <code>dcat:Dataset</code>,
             <code>dcat:Distribution</code>, and <code>foaf:Agent</code>.
-            Properties include: <code>dct:title</code>, <code>dct:hasVersion</code>,
+            Properties include: <code>dct:title</code>, <code>pav:version</code>,
             <code>dct:issued</code>, <code>dct:created</code>, <code>dct:identifier</code>,
             <code>dct:creator</code>, <code>dct:publisher</code>, <code>disco:fundedBy</code>.
             <p> <a  href="images/DUV_citation_submodel_part_1.png"><img  src="images/DUV_citation_submodel_part_1.png"
-                   style="width:50%"  alt="The class diagram for the citation DUV"></a>
+                   style="width:50%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a>
             </p>
           </li>
           <li>Data publishers wanting to annotate <code>dcat:Dataset</code>/<code>dcat:Distribution</code>
@@ -478,7 +481,7 @@ pre red { color: red;
             <code>biro:BibliographicReference</code>, <code>fabio:Expression</code>.
             Properties include: <code>frbr:partOf</code>, <code>biro:references</code>.
             <p> <a  href="images/DUV_citation_submodel_part_2.png"><img  src="images/DUV_citation_submodel_part_2.png"
-                   style="width:25%"  alt="The class diagram for the citation DUV"></a></p>
+                   style="width:25%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a></p>
           </li>
         </ol>
         <p>Note that while the DUV reuses a limited set of [[SPAR]] classes and
@@ -509,10 +512,10 @@ pre red { color: red;
           <code>dcat:Distribution</code>, <code>duv:Usage</code>, <code>duv:UsageTool</code><code></code>.
           Properties include: <code>duv:hasUsage</code>, <code>duv:hasUsageTool</code><code></code>,
           <code>duv:refersTo</code>, <code>dct:uri</code>, <code>dct:title</code>,
-          <code>dct:created</code>, <code>dct:hasVersion</code>, <code>dct:issued</code>,
+          <code>dct:created</code>, <code>pav:version</code>, <code>dct:issued</code>,
           and <code>dct:description</code>. </p>
         <a  href="images/DUV_usage_submodel.png"><img  src="images/DUV_usage_submodel.png"
-             style="width:50%"  alt="The class diagram for the DUV usage submodel"></a>
+             style="width:50%; vertical-align: bottom"  alt="The class diagram for the DUV usage submodel"></a>
       </section>
       <section  id="Feedback_Model">
         <h3>Feedback Model</h3>
@@ -526,13 +529,13 @@ pre red { color: red;
           should also provide a way for consumers to communicate suggested
           corrections or advice back to data publisher. </p>
         <a  href="images/DUV_feedback_submodel.png"><img  src="images/DUV_feedback_submodel.png"
-             style="width:50%"  alt="The class diagram for the DUV feedback submodel"></a>
+             style="width:50% ; vertical-align: bottom"  alt="The class diagram for the DUV feedback submodel"></a>
         <p>The following classes constitute the Feedback Model: <code>dcat:Dataset</code>,
           <code>dcat:Distribution</code>, <code>oa:Annotation</code>, <code>oa:Motivation</code>,
           <code>duv:UserFeedback</code>, <code>dqv:UserQualityFeedback</code>,
           <code>duv:RatingFeedback</code>, <code>oa:TextualBody</code>.
           Properties include: <code>duv:hasRating</code>, <code>oa:hasTarget</code>,
-          <code>oa:hasBody</code>, <code>duv:hasFeedback</code>, <code>oa:motivatedBy</code><code></code>.
+          <code>oa:hasBody</code>,<code></code> <code>oa:motivatedBy</code><code></code>.
         </p>
       </section>
     </section>
@@ -582,8 +585,8 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>A helpful description of actions that can be performed on a
-                given dataset or distribution.</td>
+              <td>Actions that can be performed on a given dataset or
+                distribution.</td>
             </tr>
             <tr>
               <td  class="prop">rdfs:isDefinedBy</td>
@@ -608,8 +611,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>A synopsis describing the way a tool can use a dataset or
-                distribution.<br>
+              <td>A tool that can use a dataset or distribution.<br>
               </td>
             </tr>
             <tr>
@@ -636,8 +638,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>User feedback on the dataset. Expresses whether the dataset
-                was useful or not, for example.</td>
+              <td>User feedback on a dataset or distribution.</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -665,7 +666,11 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The creation date associated with the dataset or distribution</td>
+              <td>
+                <meta  charset="utf-8">
+                <meta  charset="utf-8">
+                <span  style="font-family: Verdana,Arial,&quot;Arial Unicode MS&quot;,Helvetica,sans-serif;"></span>Date
+                of creation of the resource</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -691,7 +696,8 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Author of the cited dataset/distribution</td>
+              <td>An entity primarily responsible for making the resource.&nbsp;
+              </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -717,7 +723,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>free-text usage account of the resource.</td>
+              <td>A free text account of the resource </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -744,7 +750,9 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Funding agent </td>
+              <td>The agent (person, organization) responsible for sponsoring
+                the dataset/distribution research that made the creation of the
+                dataset possible, such as codifying and digitizing the data. </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -771,98 +779,18 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Body of the comment associated with either feedback or
-                associated with citation. </td>
+              <td>Body of the comment associated with user feedback.</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>duv:UserFeedback (subject) oa:hasBody (predicate)
-                cnt:ContentAsText (object)<br>
-                oa:Annotation (subject) oa:hasBody (predicate) cnt:ContextAsText
-                (object)</td>
+              <td>duv:UserFeedback (subject) oa:hasBody (predicate)&nbsp;
+                (object)<br>
+                oa:Annotation (subject) oa:hasBody (predicate)
+                oa:TextualBody(object)</td>
             </tr>
             <tr>
               <td>Label</td>
               <td>has body</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hascitedentity">Property:
-          hasCitedEntity</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hascitedentity">cito:hasCitedEntity </a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>The dataset, distribution, or citation of interest being
-                cited.</td>
-            </tr>
-            <tr>
-              <td>vann:usageNote</td>
-              <td>cito:CitationAct (subject) cito:hasCitedEntity (predicate)
-                dcat:Dataset (object)<br>
-                cito:CitationAct (subject) cito:hasCitedEntity (predicate)
-                dcat:Distribution (object)</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has cited entity</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hascitingentity">Property:
-          hasCitingEntity</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hascitingentity">cito:hasCitingEntity</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>Citation that references a dataset or a distribution.</td>
-            </tr>
-            <tr>
-              <td>vann:usageNote</td>
-              <td>cito:CitationAct (subject) cito:hasCitingEntity (predicate)
-                fabio:Expression (object)</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has citing entity</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  aria-level="3"  id="Property:hasfeedback">Property: hasFeedback</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hasfeedback">duv:hasFeedback</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>User feedback associated with dataset or distribution</td>
-            </tr>
-            <tr>
-              <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) duv:hasFeedback (predicate)
-                duv:UserFeedback (object)<br>
-                dcat:Distribution (subject) duv:hasFeedback (predicate)
-                duv:UserFeedback (object) </td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has dataset/distribution feedback</td>
             </tr>
           </tbody>
         </table>
@@ -878,8 +806,8 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The distributor is the organization that makes the dataset
-                available for downloading and use. </td>
+              <td>The distributor is the organization that makes the dataset or
+                distribution available for downloading and use.</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -891,34 +819,6 @@ pre red { color: red;
             <tr>
               <td>Label</td>
               <td>has distributor</td>
-            </tr>
-          </tbody>
-        </table>
-        <h4  id="Property:hasproducer"  aria-level="3">Property: hasProducer</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:hasproducer">duv:hasProducer</a> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>The producer is the organization that sponsored the author’s
-                research and/or the organization that made the creation of the
-                dataset possible, such as codifying and digitizing the data. </td>
-            </tr>
-            <tr>
-              <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) duv:hasProducer (predicate) foaf:Agent
-                (object)<br>
-                dcat:Distribution (subject) duv:hasProducer (predicate)
-                foaf:Agent (object)</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>has producer</td>
             </tr>
           </tbody>
         </table>
@@ -964,9 +864,7 @@ pre red { color: red;
               <td>duv:UserFeedback (subject) oa:hasTarget (predicate)
                 dcat:Dataset (object)<br>
                 duv:UserFeedback (subject) oa:hasTarget (predicate)
-                dcat:Distribution (object)<br>
-                oa:Annotation (subject) oa:hasTarget (predicate)
-                cito:CitationAct (object)</td>
+                dcat:Distribution (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -986,7 +884,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Dataset/distribution usage guidance or instructions. </td>
+              <td>Dataset or distribution usage guidance/instructions. </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -997,7 +895,7 @@ pre red { color: red;
             </tr>
             <tr>
               <td>Label</td>
-              <td>has dataset/distribution usage</td>
+              <td>has usage</td>
             </tr>
           </tbody>
         </table>
@@ -1012,8 +910,8 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Provided guidance about a tool that can be applied to a
-                dataset/distribution.</td>
+              <td>A usage tool (application, service) referred to by usage
+                guidance/instructions. </td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -1067,7 +965,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The issue or publication date associated with the dataset or
+              <td>Date of formal issuance (e.g. publication) of the dataset or
                 distribution</td>
             </tr>
             <tr>
@@ -1138,32 +1036,7 @@ pre red { color: red;
           </tbody>
         </table>
         <br>
-        <h4  id="Property:performs"  aria-level="3">Property: performs</h4>
-        <table  class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property:</th>
-              <th><a  href="#Property:performs">duv:performs</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td  class="prop">Definition</td>
-              <td>Agent performs usage </td>
-            </tr>
-            <tr>
-              <td>vann:usageNote</td>
-              <td>foaf:Agent (subject) duv:performs (predicate)
-                duv:Usage(object)</td>
-            </tr>
-            <tr>
-              <td>Label</td>
-              <td>performs</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        Property: publisher
+        <h4  id="Property:publisher"  aria-level="3">Property: dct:publisher</h4>
         <table  class="definition">
           <thead>
             <tr>
@@ -1174,14 +1047,14 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>Creator of the cited dataset of distribution</td>
+              <td>An entity responsible for making the resource available.</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) dct:publisher (predicate) rdfs:Literal
+              <td>dcat:Dataset (subject) dct:publisher (predicate) foaf:Agent
                 (object)<br>
-                dcat:Distribution (subject) dct:publisher (predicate)
-                rdfs:Literal (object)</td>
+                dcat:Distribution (subject) dct:publisher (predicate) foaf:Agent
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
@@ -1226,7 +1099,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The title of citation, dataset or distribution</td>
+              <td>A name given to the dataset or distribution</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -1247,24 +1120,24 @@ pre red { color: red;
           <thead>
             <tr>
               <th>RDF Property:</th>
-              <th> <a  href="#Property:version">dct:hasVersion</a> </th>
+              <th> <a  href="#Property:version">pav:version</a> </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>The version or edition number associated with the dataset. </td>
+              <td>The version of the dataset or distribution</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
-              <td>dcat:Dataset (subject) dct:hasVersion (predicate) rdfs:Literal
+              <td>dcat:Dataset (subject) pav:version (predicate) rdfs:Literal
                 (object)<br>
-                dcat:Distribution (subject) dct:hasVersion (predicate)
-                rdfs:Literal (object)</td>
+                dcat:Distribution (subject) pav:version (predicate) rdfs:Literal
+                (object)</td>
             </tr>
             <tr>
               <td>Label</td>
-              <td>has version</td>
+              <td>version</td>
             </tr>
           </tbody>
         </table>
@@ -1293,7 +1166,7 @@ pre red { color: red;
       <pre  class="schema json-ld">{
   "@id" : "ex:timetable-001",
   "@type" : "dcat:Dataset",
-  "dct:hasVersion" : "series-1.2",
+  "pav:version" : "series-1.2",
   "prism:doi" : "10.3456/4567.21",
   "creator" : "http://example.org/transport-agency/contact",
   "issued" : "2015-05-05",
@@ -1329,7 +1202,6 @@ pre red { color: red;
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
     "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
     "oa" : "http://www.w3.org/ns/oa#",
     "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
@@ -1348,7 +1220,7 @@ pre red { color: red;
 ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
-        dct:hasVersion "series-1.2"^^xsd:string;
+        pav:version "series-1.2"^^xsd:string;
         dct:issued "2015-05-05"^^xsd:date;
         dct:creator <http:  example.org=""  transport-agency=""  contact="">;
 .
@@ -1366,7 +1238,7 @@ ex:timetable-memorandum
   "@graph" : [ {
     "@id" : "ex:timetable-001",
     "@type" : "dcat:Dataset",
-    "dct:hasVersion" : "series-1.2",
+    "pav:version" : "series-1.2",
     "prism:doi" : "10.3456/4567.21",
     "creator" : "http://example.org/transport-agency/contact",
     "issued" : "2015-05-05",
