@@ -341,7 +341,7 @@
                     lifecycle. This is why next to rather expected constructs like
                     quality measurements, the Data Quality Vocabulary puts an emphasis
                     on feedback, annotation, policies and certificates.</p>
-                <p>DQV draws inspiration from and is aligned with existing work on representating data quality, notably
+                <p>DQV draws inspiration from and is aligned with existing work on representing data quality, notably
                     the daQ ontology for representing information (especially metrics) on the quality
                     of linked open datasets [[DaQ]].
                     daQ is itself anchored in the RDF Data Cube framework
@@ -1095,7 +1095,7 @@ EquivalentClasses(
                         </table>
                     </section> 
                   <div class="note">
-                        <p>The Web Annotation Vocabulary [[WebAnnotation]] is intended as a W3C Recommendation, but it is still under development at the time of publishing this Group Note. We have made our best to consider the latest version available, but changes might take place until the Web Annotation Vocabulary becomes a formal Recommendation. For example, new kinds of annotation body might be included and supercede the types we have considered in DQV. For this reason, we invite readers to check examples in this Note with the latest version of the Web Annotation Vocabulary.</p>
+                        <p>The Web Annotation Vocabulary [[WebAnnotation]] is intended as a W3C Recommendation, but it is still under development at the time of publishing this Group Note. We have made our best to consider the latest version available, but changes might take place until the Web Annotation Vocabulary becomes a formal Recommendation. For example, new kinds of annotation body might be included and supersede the types we have considered in DQV. For this reason, we invite readers to check examples in this Note with the latest version of the Web Annotation Vocabulary.</p>
                     </div>     
 
                 </section>
@@ -1506,7 +1506,7 @@ SubObjectPropertyOf(
 		    to represent quality-related metadata. I.e., these are the elements needed to express
 		    the machine-readable information that DQV-aware data consumers can exploit
 		    for their processes. However, in many cases extra human-readable information is also needed,
-		    e.g., to provide (mulitlingual) definitions and labels or just more context for the quality
+		    e.g., to provide (multilingual) definitions and labels or just more context for the quality
 		    measurements, metrics, etc. that are expressed with the core DQV classes.</p>
 		    <p>To this end, we recommend using appropriate vocabularies like SKOS [[SKOS-reference]], Dublin Core [[Dublin-Core]] or PROV [[PROV-O]].
 		    SKOS and PROV provide elements that fit specific purposes but can be applied to a wide
@@ -1851,7 +1851,7 @@ SubObjectPropertyOf(
                 <section id="expressQualityDerivation">
                     <h3>Express derivation between quality metrics, measurements and annotations</h3>
                     <p>DQV models derivation with the property <code>prov:wasDerivedFrom</code>. 
-                        For example, the accessability of the dataset <code>:myDataset</code> can be derived from the accessability of its distributions <code>:myCSVDatasetDistribution</code> and <code>:mySPARQLDatasetDistribution</code>.    
+                        For example, the accessibility of the dataset <code>:myDataset</code> can be derived from the accessibility of its distributions <code>:myCSVDatasetDistribution</code> and <code>:mySPARQLDatasetDistribution</code>.    
                     </p>
 
                     <pre  class="highlight">
@@ -2198,7 +2198,7 @@ two extra parameters: <code>:onProperty</code> and <code>:onLanguage</code>, whi
     rdfs:range     	rdf:Property 
     .
 </pre>
-                    <p>Let us add actual quality assessments for alternative and prefered labels in Italian and English:</p>
+                    <p>Let us add actual quality assessments for alternative and preferred labels in Italian and English:</p>
                     <pre class="highlight">
 ## for Italian alternative labels 
 :measurement_exactMatchAltLabelIt 
@@ -2355,7 +2355,7 @@ two extra parameters: <code>:onProperty</code> and <code>:onLanguage</code>, whi
                 </section>
                 <section id="ExpressDatasetAccuracyPrecision">
                     <h3>Express dataset precision and accuracy</h3>
-                        <p>The need for documenting data precision (also sometimes refered to as "resolution") is a common requirement, in particular, when dealing with spatial data. The following example shows how DQV can meet this requirement.</p>
+                        <p>The need for documenting data precision (also sometimes referred to as "resolution") is a common requirement, in particular, when dealing with spatial data. The following example shows how DQV can meet this requirement.</p>
                     <pre class="highlight">
 :myDataset a dcat:Dataset ;
     dqv:hasQualityMeasurement :myDatasetPrecision, :myDatasetAccuracy .
@@ -2866,7 +2866,7 @@ ldqd:interlinking
                         <h2>Expressing relations between quality dimensions</h2>
                         <p>In Zaveri Et Al. [[ZaveriEtAl]] some dimensions
                             are not completely independent and may be related. These relationships can be represented in DQV by using
-                            the appropriate SKOS properties or by specilizing the SKOS properties if more
+                            the appropriate SKOS properties or by specializing the SKOS properties if more
                             specific semantics must be expressed. For example, <code>ldqd:availability</code> is related to <code>ldqd:performance</code> and <code>ldqd:semanticAccuracy</code>, whilst <code>ldqd:semanticAccuracy</code> is related to <code>ldqd:timeliness</code>, 
                             <code>ldqd:trustworthiness</code>, <code>ldqd:consistency</code>, <code>ldqd:syntaticValidity</code> and <code>ldqd:completeness</code>.</p>
 
@@ -2915,7 +2915,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 
             <p>This section presents examples of metrics inspired by those reviewed in Zaveri et al. [[ZaveriEtAl]], in order to further illustrate how dqv:Metric can be instantiated. Note that they are not all specific to Linked Data quality, as some dimensions in Zaveri et al. matches the dimensions of ISO/IEC 25012 (see previous sub-section and Annex).</p>
             <div class="note">
-            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribition, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved the remaining issues.</p>
+            <p>These examples are just some of the possible ones. They show metrics for different dimensions and kinds of dataset distributions. We might consider reorganizing examples around specific criteria (e.g., include at least a metric for each dimension, or focus on metrics for a specific kind of distribution, e.g., RDF, JSON, CSV). We might also consider to add further examples about derived metrics, multivalued metrics and extra parameters, once we have solved the remaining issues.</p>
             </div>
 
         <pre class="highlight">	
@@ -3215,7 +3215,7 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
 </pre>
 		   <p>Both patterns allow to represent parameters for quality metrics.
 They have their own strengths and weaknesses in terms of modeling elegance, complexity, etc. However, we could not carry a full analysis and
-recommend a prefered approach. Moreover, at the time of publishing it is unclear whether using either of them
+recommend a preferred approach. Moreover, at the time of publishing it is unclear whether using either of them
 delivers crucial value to implementers interested in the basic needs presented in <a href="#ExpressQualLinkset">Section 6.10</a>.
 Especially, solutions for representing constraints using OWL axioms or Data Cube's Data Structure Definition,
 as discussed in the next sub-section, do not seem to be seriously impacted by choosing either of these two meta-modeling approaches, or none.</p>
@@ -3312,7 +3312,7 @@ class of measurements, say, <code>:MeasurementWithLanguageParameter</code>, as f
 "traditional" understanding! I.e., if an OWL reasoner finds a measurement of <code>:importingForPropertyPercentage</code> without an <code>:onProperty</code> statement, it will not raise a formal inconsistency error.
 It will instead just assume that the statement must have been asserted in another RDF graph elsewhere. Other
 approaches may be followed to palliate this. The RDF Data Cube vocabulary offers a Data Structure Definition mechanism, which we
-examplify in the <a href="Compatibility_with_RDF_Data_Cube">Appendix on RDF Data Cube</a>.
+exemplify in the <a href="Compatibility_with_RDF_Data_Cube">Appendix on RDF Data Cube</a>.
 This solution allows a Data Cube validation tool to flag a language-less measurement of
 <code>:importingForPropertyPercentage</code> as incomplete. However, as hinted in this Appendix,
 Data Cube's Data Structures are harder to apply when quality assessments
@@ -3324,7 +3324,7 @@ may provide an appropriate solution. However, SHACL is still under development a
 
                 <section id="Compatibility_with_RDF_Data_Cube" class="appendix">
                     <h2>Compatibility with RDF Data Cube</h2>
-                    <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurment data in visualization or processing tools compatible with Data Cube.<p>
+                    <p>The RDF Data Cube vocabulary [[Vocab-Data-Cube]] provides a means to represent multi-dimension data, including statistics. Measurements represented in DQV can fit this approach, and there might be many benefits in representing them in a way compatible with Data cube prescriptions &mdash; starting with the possibility to load measurement data in visualization or processing tools compatible with Data Cube.<p>
 		      <p>In DQV, instances of dqv:QualityMeasurement are also instances of Data Cube's qb:Observation. A dataset (RDF graph) of DQV measurements can be made further compatible with Data Cube by specifying an appropriate (Data Cube) Data Structure Definition, following a pattern introduced by the daQ vocabulary [[DaQ-RDFCUBE]]. The following example is aimed at representing measurements for the metrics capturing the <a href="#ExpressQualLinkset">quality of a linkset</a> presented in Section 6.10:</p>
                     <pre class="highlight">
 :linksetQualityMeasurements a dqv:QualityMeasurementDataset ;
@@ -3361,7 +3361,7 @@ ex:dsd a qb:DataStructureDefinition ;
 :measurement_exactMatchPrefLabelItDataset1 qb:dataSet :linksetQualityMeasurements .
 :measurement_exactMatchprefLabelItDataset2 qb:dataSet :linksetQualityMeasurements .
 </pre>
-                    <p>DQV users should be aware that applying Data Cube Data Structure Definitions to their quality information datasets has an broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
+                    <p>DQV users should be aware that applying Data Cube Data Structure Definitions to their quality information datasets has a broad impact on the possible content of these. All resources that are said to be in the dataset (using the <a href="#qb:dataSet">qb:dataSet</a> property) are indeed expected to have the components defined as mandatory in the data structure!</p>
                     <p>RDF Data Cube also states that "no two qb:Observations in the same qb:DataSet may have the same value for all dimensions". This integrity constraint implies that it is not allowed to have two distinct measurements for the same metric, resource and date. Metrics depending on parameters such as the ones from <a href="#ExpressQualLinkset">Section 6.10</a> shall be used with extra care so as to adhere to this constraint: data publishers will probably need to represent quality measurements for the same resource and date, but which are obtained by applying distinct parameters.
                     </p>
                     <p>Adopters of DQV and Data Cube can consider two modelling options for addressing this:</p>
