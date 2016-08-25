@@ -2452,14 +2452,21 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
             </p>
                 <section id="Statistics">
                     <h3>Statistics</h3>
-                    <p>
-                        The following table gives example on statistics that can be computed
-                        on a dataset and interpreted as quality indicators by the data
-                        consumer. Some of them can be relevant for the dimensions listed in
-                        the rest of this section. The properties come from the <a
+                    <p>Statistics are not systematically conceived as quality measures.
+Yet, statistics on datasets can be seen as quality indicators relevant for the dimensions listed in
+the rest of this section. For instance, the percentages of empty string attributes and of URIs that
+do not point to any useful information (either directly in the published data or via HTTP content negotiation)
+can indicate quality issues for compliance or completeness. These indicators can be published as such
+or aggregated with other statistics into further refined quality assessments, using the pattern
+with <code>prov:wasDerivedFrom</code>
+presented in the <a href="#model">"Vocabulary Overview"</a> section.</p>
+<p>The following table gives examples of statistics that can be computed
+                        on a dataset and interpreted as quality indicators for completeness and understandability, coming from the <a
                             href="https://github.com/jiemakel/aether/raw/master/void-ext.ttl">VoID
                             extension</a> created for the <a
                             href="http://jiemakel.github.io/aether/">Aether tool</a>.
+We invite readers interested in statistics to investigate whether elements coming from Aether or similar efforts 
+can match their needs.
                     </p>
                     <table>
                         <thead>
@@ -2502,8 +2509,8 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
                                 extension</a> represents statistics as direct statements that have a
                             dataset as subject and an integer as object. This pattern, which
                             can be expected to be rather common, is different from the pattern
-                            that DQV inherits from daQ. Guidance on how DQV/daQ can work with
-                            other quality statistics vocabulary will be provided.
+                            that DQV inherits from daQ. Guidance on how DQV can work with
+                            other quality statistics vocabulary shall be provided with future versions of the DQV documentation.
                         </p>
                     </div>
                 </section>
