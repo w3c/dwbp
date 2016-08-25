@@ -1717,7 +1717,7 @@ SubObjectPropertyOf(
                 <section id="DocumentProvSingleQM">
                     <h4>Document the provenance of single quality measurements</h4>           
                     <p>The group has discussed provenance at different levels of
-                        granularity (dqv:QualityMeasurement and dqv:QualityMetadata). In the previous example we have shown how to track  provenance at the level of quality metadata as a whole. In the following, we provide an example of provenance for a single quality measurement, <code>:measurement</code>.</p>
+                        granularity (dqv:QualityMeasurement and dqv:QualityMetadata). In the previous example we have shown how to track  provenance at the level of quality metadata as a whole. In the following, we provide an example of provenance for a single quality measurement, <code>:myMeasurement</code>.</p>
                     <pre class="highlight">
 :myDatasetDistribution
     dqv:hasQualityMeasurement :myMeasurement .
@@ -1907,7 +1907,7 @@ SubObjectPropertyOf(
     .
 </pre>
                      <p>
-                    Depending on the specific application context, the expression of this derivation can be kept at level of the quality measurements. In the following the measurement <code>:measurement3</code> of <code>:myDataset</code>'s availability is derived from  <code>:measurement1</code> and <code>:measurement2</code>.
+                    Depending on the specific application context, the expression of this derivation can be kept at level of the quality measurements. In the following, the measurement <code>:measurement3</code> of <code>:myDataset</code>'s availability is derived from  <code>:measurement1</code> and <code>:measurement2</code>.
                     </p> 
                     <pre class="highlight">
 :myCSVDatasetDistribution dqv:hasQualityMeasurement :measurement1 .
@@ -1933,11 +1933,11 @@ SubObjectPropertyOf(
     a dqv:QualityMeasurement ;
     dqv:computedOn :myDataset ;
     dqv:isMeasurementOf :datasetAvailabilityMetric ;
-    prov:wasDerivedFrom measurement1, measurement2 ;
+    prov:wasDerivedFrom :measurement1, :measurement2 ;
     dqv:value "false"^^xsd:boolean
     .
                     </pre>
-                     <p>The classification of <code>mydataset</code> as <code>:three_star</code> can be derived from the result of a quality measurement <code>:measurement2</code></p>
+                     <p>The classification of <code>:myDataset</code> as <code>:three_stars</code> can be derived from the result of a quality measurement <code>:measurement2</code></p>
                     <pre class="highlight">
 :myDataset
     dqv:hasQualityAnnotation  :myDatasetClassification .
@@ -1969,8 +1969,7 @@ SubObjectPropertyOf(
             </div-->
                     <p>
                         Let’s consider
-                        <code>myControlledVocabulary</code>
-                        , a controlled vocabulary made available on the Web using the SKOS
+                        <code>:myControlledVocabulary</code>, a controlled vocabulary made available on the Web using the SKOS
                         [[SKOS-reference]] and DCAT [[vocab-dcat]].
                     </p>
                     <pre class="highlight">
@@ -2036,7 +2035,7 @@ SubObjectPropertyOf(
 
                     <p>
                         DQV represents the qSKOS quality assessment on
-                        <code>myControlledVocabulary</code>
+                        <code>:myControlledVocabulary</code>
                         for the dimensions “Incomplete Language Coverage” and “Label
                         Conflicts”.
                     </p>
@@ -2077,7 +2076,7 @@ SubObjectPropertyOf(
                     </p>
 
                     <p>Let’s define three DCAT datasets, including one VoID linkset,
-                        which connects a subject dataset to a object dataset named respectively by <code>void:subjectsTarget</code> and by <code>void:objectsTarget</code>:</p>
+                        which connects a subject dataset to an object dataset named respectively by <code>void:subjectsTarget</code> and by <code>void:objectsTarget</code>:</p>
                     <pre class="highlight">
 :myDataset1 
     a dcat:Dataset ;
@@ -2177,7 +2176,7 @@ SubObjectPropertyOf(
     .
 </pre>
                     <p>The quality assessment of the "label importing" depends on
-two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which are 
+two extra parameters: <code>:onProperty</code> and <code>:onLanguage</code>, which are 
                         respectively, the SKOS property and the language tag considered for measuring the completeness gains. We add the following statements to represent these parameters (note that type <code>qb:DimensionProperty</code> and the range definitions are firstly needed for <a href="#Compatibility_with_RDF_Data_Cube">compatibility with RDF Data Cube</a>).</p>
 
                     <pre class="highlight">
@@ -2277,11 +2276,10 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
 
                     <p>
                         Note that this example does not include the metadata about the
-                        dataset ex:myDataset itself. We assume this is present in an RDF
+                        dataset <code>:myDataset</code> itself. We assume this is present in an RDF
                         data source accessible via the URI
-                        <code>ex:myDatasetRecord</code>
-                        . We also assume that
-                        <code>ex:geoDCAT-AP</code>
+                        <code>:myDatasetRecord</code>. We also assume that
+                        <code>:geoDCAT-AP</code>
                         is a reference URI that denotes the GeoDCAT-AP standard, which can
                         be re-used across many catalog record descriptions, not just a
                         locally introduced URI.
@@ -2305,7 +2303,7 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
                     a dataset and commits to serve the data with a certain quality, more concretely,
                     99% availability of a SPARQL endpoint (distribution) associated with the dataset.
                     This is expressed in ODRL as an offer with a duty on the service provider
-                    that states a constraint defined using a DQV metric (<code>sparqlEndpointUptime</code>), for which measurements
+                    that states a constraint defined using a DQV metric (<code>:sparqlEndpointUptime</code>), for which measurements
                     have to be greater than a certain percentage (99). The <code>odrl:assigner</code> is the issuer
                     of the policy statement; it is also the assignee of the duty to deliver the
                     distribution as the policy requires it. There is no explicitly mentioned recipient
@@ -2377,6 +2375,11 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
                                         <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecisionES .
+        
+:myDatasetPrecisionES a dqv:QualityMeasurement ;
+    dqv:isMeasurementOf :spatialResolutionAsEquivalentScale ;
+    dqv:value "0.000001"^^xsd:decimal
+    .   
 
 :spatialResolutionAsEquivalentScale a dqv:Metric;
     skos:definition "Spatial resolution of a dataset expressed as equivalent scale,
@@ -2384,27 +2387,22 @@ two extra parameters: <code>onProperty</code> and <code>onLanguage</code>, which
     dqv:expectedDataType xsd:decimal ;
     dqv:inDimension dqv:precision 
     .
-    
-:myDatasetPrecisionES a dqv:QualityMeasurement ;
-    dqv:isMeasurementOf :spatialResolutionAsEquivalentScale ;
-    dqv:value "0.000001"^^xsd:decimal
-    .   
 </pre>
 <p>  or specifying the angular distance.</p>
 <pre class="highlight">
 :myDataset a dcat:Dataset;
     dqv:hasQualityMeasurement :myDatasetPrecisionAS .
+        
+:myDatasetPrecisionAS a dqv:QualityMeasurement ;
+     dqv:isMeasurementOf :spatialResolutionAsAngularDistance ;
+     dqv:value "3.5"^^xsd:decimal ;
+     sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/degree&gt; .
 
 :spatialResolutionAsAngularDistance a dqv:Metric;
      skos:definition "Spatial resolution of a dataset expressed as angular distance"@en ;
      dqv:expectedDataType xsd:decimal ;
      dqv:inDimension dqv:precision 
      .
-    
-:myDatasetPrecisionAS a dqv:QualityMeasurement ;
-     dqv:isMeasurementOf :spatialResolutionAsAngularDistance ;
-     dqv:value "3.5"^^xsd:decimal ;
-     sdmx-attribute:unitMeasure &lt;http://www.wurvoc.org/vocabularies/om-1.8/degree&gt; .
 </pre>
                     
 <p>Note that the precision (or resolution) of a dataset is not equivalent to its accuracy. High precision values are not necessarily accurate. High precision values can even be pointless, as when one asserts that Magna Carta was signed at <code>1215-06-15T00:00:00</code>. Accuracy is nonetheless an important dimension of data quality. Data accuracy metrics and measurements can be represented with DQV, as in the following example:</p>
