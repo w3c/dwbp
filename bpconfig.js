@@ -1,13 +1,14 @@
 var respecConfig = {
     specStatus: "ED",
     shortName: "dwbp",
-    publishDate:  "2016-05-16",
+//    publishDate:  "2016-05-16",
     previousPublishDate: "2015-06-25",
     previousMaturity: "WD",
     previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20160112/",
     edDraftURI: "http://w3c.github.io/dwbp/bp.html",
+    implementationReportURI: "https://www.w3.org/2013/dwbp/wiki/BP_Implementation_Report",
      lcEnd: "2016-06-12",
-    // crEnd: "3000-01-01",
+     crEnd: "2016-10-31",
     editors: [
     {
       name: "Bernadette Farias Lóscio",
