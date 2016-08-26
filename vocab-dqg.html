@@ -309,15 +309,13 @@
             <section >
                 <h2 id="intro">Introduction</h2>
                 <p>
-                    The Data on the Web Best Practices <a
-                        href="http://www.w3.org/TR/dwbp/">Working Draft</a> has pointed out
+                    The <a href="http://www.w3.org/TR/dwbp/">Data on the Web Best Practices</a> have pointed out
                     the relevance of <a href="http://www.w3.org/TR/dwbp/#quality">publishing
                         information about the quality of data published on the Web</a>.
-                    Accordingly, the <a href="http://www.w3.org/2013/dwbp/wiki/Main_Page">Data
-                        on the Web Best Practices Working Group</a> has been chartered to create
+                    Accordingly, the <a href="http://www.w3.org/2013/dwbp/">W3C Data on the Web Best Practices Working Group</a> has been chartered to create
                     a vocabulary for expressing data quality. The Data Quality Vocabulary
-                    (DQV) presented in this document is foreseen as an extension to DCAT
-                    [[vocab-dcat]] to cover the quality of the data, how frequently is it
+                    (DQV) presented in this document is foreseen as an extension to the DCAT
+                    vocabulary [[vocab-dcat]] to cover the quality of the data, how frequently is it
                     updated, whether it accepts user corrections, persistence commitments
                     etc. When used by publishers, this vocabulary will foster trust in
                     the data amongst developers.
@@ -453,7 +451,7 @@
                      <ul>
                         <li>A Quality Dimension (<a href="#dqv:Dimension">dqv:Dimension</a>) is a quality-related characteristic of a dataset
                             relevant to the consumer (e.g., the availability of a dataset).</li>
-                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension, which is abstract,  by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or that of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an <code>rdfs:label</code> or <code>rdfs:comment</code>) or boolean (e.g. whether or not a SPARQL endpoint is accessible).</li>
+                        <li>A Quality Metric (<a href="#dqv:Metric">dqv:Metric</a>)  gives a procedure for measuring a data quality dimension, which is abstract,  by observing a concrete quality indicator. There are usually multiple metrics per dimension; e.g., availability can be indicated by the accessibility of a SPARQL endpoint, or that of an RDF dump. The value of a metric can be numeric (e.g., for the metric “human-readable labeling of classes, properties and entities”, the percentage of entities having an <code>rdfs:label</code> or <code>rdfs:comment</code>) or boolean (e.g., whether or not a SPARQL endpoint is accessible).</li>
                     </ul>
                     <!--p>For example, a dimension could be "multilinguality" and two metrics could be "ratio of literals with language tags" and "number
                         of different language tags".</p-->
@@ -491,26 +489,6 @@
 		</div>
                 <section id="dqv:QualityMeasurement">
                     <h3>Class: Quality Measurement</h3>
-
-                    <!--p>DQV defines quality measures as specific instances of DQV
-                        observations, adapting the daQ quality metrics framework [[DaQ]],
-                        [[DaQ-RDFCUBE]]:</p>
-                    <ul>
-                        <li>A Quality Dimension is a characteristic of a dataset
-                            relevant to the consumer (e.g., the availability of a dataset).</li>
-                        <li>A Quality Metric gives a procedure for measuring a data
-                            quality dimension, which is abstract, by observing a concrete
-                            quality indicator. There are usually multiple metrics per
-                            dimension; e.g., availability can be indicated by the accessibility
-                            of a SPARQL endpoint, or of an RDF dump. The value of a metric can
-                            be numeric (e.g., for the metric “human-readable labeling of
-                            classes, properties and entities”, the percentage of entities
-                            having an rdfs:label or rdfs:comment) or boolean (e.g. whether or
-                            not a SPARQL endpoint is accessible).</li>
-                    </ul>
-                    <p>For example, a dimension could be "multilinguality" and two
-                        metrics could be "ratio of literals with language tags" and "number
-                        of different language tags".</p-->
 
                     <table class="definition">
                         <thead>
@@ -741,7 +719,7 @@
                             <tbody>
                                 <tr>
                                     <td class="prop">Definition:</td>
-                                    <td>Represents the expected data type for metric's observed value (e.g. xsd:boolean, xsd:double etc...) </td>
+                                    <td>Represents the expected data type for the metric's observed value (e.g., xsd:boolean, xsd:double etc...) </td>
                                 </tr>
                             <tr>
                                     <td class="prop">Domain:</td>
@@ -882,7 +860,7 @@ The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in I
 		    
                 <div class="note">
                         <p>
-                           Dimension and category are abstract entities. We represent instances dqv:Dimension and dqv:Category as instances of <code>skos:Concept</code>, which we think enable similar features as these for dimensions and categories in daQ. Our representation choice differs more significantly for metrics, however. daQ uses RDFS/OWL classes and subclasses to represent constraints on measurements (e.g., on the type of values). RDFS/OWL however makes an 'open world' assumption that does not allow one to capture entirely all constraints. Additionally, languages are currently being defined to represent constraints in more appropriate ways (SHACL). We think it is therefore not appropriate now to recommend to treat specific metrics as subclasses of dqv:Metric, and we refer implementers to future progress on SHACL and related technology.
+                           Dimension and category are abstract entities. We represent instances dqv:Dimension and dqv:Category as instances of <code>skos:Concept</code>, which we think enable similar features as these for dimensions and categories in daQ. Our representation choice differs significantly for metrics, however. daQ uses RDFS/OWL classes and subclasses so as to represent constraints on measurements (e.g., on the type of values). RDFS/OWL does not allow one to fully capture all constraints. Additionally, other languages are being defined to represent constraints in more appropriate ways. We think it is therefore not appropriate now to recommend to treat specific metrics as subclasses of dqv:Metric, and we refer implementers to future progress on SHACL and related technology. See Appendix <a href="#Parameters">"Defining and using parameters for metrics"</a> for further discussion.
                         </p>
                     </div>
 
@@ -943,7 +921,7 @@ The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in I
                                 </tr>
                                 <tr>
                                     <td class="prop">DQV usage note:</td>
-                                    <td>In DQV, each dataset of quality measurements is an RDF Cube DataSet. This property is used to indicate the RDF Data structure definition a dataset of quality measurements is expected to comply with.</td>
+                                    <td>In DQV, each dataset of quality measurements is an RDF Cube DataSet. This property can be used to indicate the RDF Data structure definition a dataset of quality measurements is expected to comply with.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -995,7 +973,7 @@ The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in I
                             </tr>
                             <tr>
                                 <td class="prop">DQV usage note:</td>
-                                <td><p>This property is used to anchor <a href="#dqv:QualityPolicy">dqv:QualityPolicy</a> to resource such as  a dataset, a linkset, a graph, a set of triples. In the DQV context, this property is generally expected to be used in statements in which objects are instances of <a
+                                <td><p>This property is used to attach an instance of <a href="#dqv:QualityPolicy">dqv:QualityPolicy</a> to a dataset, a linkset, a graph, a set of triples, etc. In the DQV context, this property is generally expected to be used in statements in which objects are instances of <a
                                     href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a> or <a
                                         href="http://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a>.</p></td>
                             </tr>
@@ -1016,11 +994,10 @@ The appendix <a href="#DimensionsOfISOIEC25012">"Quality dimensions defined in I
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Represents quality annotations, including rating, quality
-                                    certificate, feedback that can be associated to datasets or
+                                <td>Represents quality annotations, including ratings, quality
+                                    certificates or feedback that can be associated to datasets or
                                     distributions. Quality annotations must have one <a href="https://www.w3.org/TR/2016/CR-annotation-vocab-20160705/#motivatedby">oa:motivatedBy</a>
-                                    statement with an instance of <a href="https://www.w3.org/TR/2016/CR-annotation-vocab-20160705/#motivation">oa:Motivation</a> (and <a href="https://www.w3.org/2009/08/skos-reference/skos.html#Concept">skos:Concept</a>),
-                                    which reflects a quality assessment purpose. We define this
+                                    statement with an instance of <a href="https://www.w3.org/TR/2016/CR-annotation-vocab-20160705/#motivation">oa:Motivation</a> (and <a href="https://www.w3.org/2009/08/skos-reference/skos.html#Concept">skos:Concept</a>) that reflects a quality assessment purpose. We define this
                                     instance as <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a>.</td>
                             </tr>
                             <tr>
@@ -1089,13 +1066,13 @@ EquivalentClasses(
                                 </tr>
                                 <tr>
                                     <td class="prop">DQV usage note:</td>
-                                    <td>This property is used in DQV to connect an instance of <a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a> or its subclasses (<a href="#dqv:QualityCertificate">dqv:QualityCertificate</a> and <a href="#dqv:UserQualityFeedback">dqv:UserQualityFeedback</a>) to the body of the annotation (e.g., a certificate or a textual comment). </td>
+                                    <td>This property is used in DQV to connect an instance of <a href="#dqv:QualityAnnotation">dqv:QualityAnnotation</a> or its subclasses (<a href="#dqv:QualityCertificate">dqv:QualityCertificate</a> and <a href="#dqv:UserQualityFeedback">dqv:UserQualityFeedback</a>) to the body of the annotation, e.g., a certificate or a textual comment. </td>
                                 </tr>
                             </tbody>
                         </table>
                     </section> 
                   <div class="note">
-                        <p>The Web Annotation Vocabulary [[WebAnnotation]] is intended as a W3C Recommendation, but it is still under development at the time of publishing this Group Note. We have made our best to consider the latest version available, but changes might take place until the Web Annotation Vocabulary becomes a formal Recommendation. For example, new kinds of annotation body might be included and supersede the types we have considered in DQV. For this reason, we invite readers to check examples in this Note with the latest version of the Web Annotation Vocabulary.</p>
+                        <p>The Web Annotation Vocabulary [[WebAnnotation]] is intended as a W3C Recommendation, but it is still under development at the time of publishing this Note. We have made our best to consider the latest version available, but changes might take place until it becomes a formal Recommendation. For example, new kinds of annotation body might be included and supersede the types we have considered in DQV. For this reason, we invite readers to check examples in this Note with the latest version of the Web Annotation Vocabulary.</p>
                     </div>     
 
                 </section>
@@ -1136,7 +1113,7 @@ EquivalentClasses(
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Represents feedback users might want to associate to datasets or distributions. Besides  <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a> which is the motivation  required by all quality annotations, one of the <a href="https://www.w3.org/TR/2016/CR-annotation-model-20160705/#motivation-and-purpose">predefined instances of oa:Motivation</a>  should be indicated as  motivation to distinguish among the different kinds of feedback, e.g, classifications, questions.</td>
+                                <td>Represents feedback that users have on the quality of datasets or distributions. Besides <a href="#dqv:qualityAssessment">dqv:qualityAssessment</a>, which is the motivation required by all quality annotations, one of the <a href="https://www.w3.org/TR/2016/CR-annotation-model-20160705/#motivation-and-purpose">predefined instances of oa:Motivation</a> should be indicated as motivation to distinguish among the different kinds of feedback, e.g, classifications, questions.</td>
                             </tr>
                             <tr>
                                 <td class="prop">Subclass of:</td>
@@ -1170,7 +1147,7 @@ EquivalentClasses(
                                 <td class="prop">DQV usage note:</td>
                                 <td>       
                     <p>
-                        <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use a dedicated property of their choice to link instances of dqv:QualityMetadata with instances of other DQV classes. For example using (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a>.
+                        <a href="#dqv:QualityMetadata">QualityMetadata</a> containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment "technique". Implementers can use <a href="https://www.w3.org/TR/rdf11-primer/#section-multiple-graphs">(RDF) graph containment</a>. They may also use an appropriate property of their choice &mdash; for example (a subproperty of) <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a> &mdash; to link instances of dqv:QualityMetadata with instances of other DQV classes.
                     </p> </td>
                             </tr>                     
                         </tbody>
@@ -1352,7 +1329,7 @@ SubObjectPropertyOf(
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Refers to a grouping of quality information such as certificates, policies, measurements and annotations as a named graph. Quality information represented in the graph can pertain to any kind of resource (e.g., a
+                                <td>Refers to a grouping of quality information such as certificates, policies, measurements and annotations as a named graph. Quality information represented in such a grouping can pertain to any kind of resource (e.g., a
                                     dataset, a linkset, a graph, a set of triples). However, in the
                                     DQV context, this property is generally expected to be used in
                                     statements in which subjects are instances of <a
@@ -1381,8 +1358,8 @@ SubObjectPropertyOf(
                             <tr>
                                 <td class="prop">Definition:</td>
                                 <td>Refers to a  quality annotation. Quality
-                                    annotation can be applied to any kind of resource (e.g., a
-                                    dataset, a linkset, a graph, a set of triples). However, in the
+                                    annotation can be applied to any kind of resource, e.g., a
+                                    dataset, a linkset, a graph, a set of triples. However, in the
                                     DQV context, this property is generally expected to be used in
                                     statements in which subjects are instances of <a
                                     href="http://www.w3.org/TR/vocab-dcat/#class-dataset">dcat:Dataset</a>
@@ -1487,7 +1464,7 @@ SubObjectPropertyOf(
                         <tbody>
                             <tr>
                                 <td class="prop">Definition:</td>
-                                <td>Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of measurement or description. It is equivalent the notion of Precision from ISO 25012.
+                                <td>Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of a measurement or description. It is equivalent the notion of Precision from ISO 25012.
                                 </td>
                             </tr>
                             <tr>
@@ -1502,7 +1479,7 @@ SubObjectPropertyOf(
 
             <section id="documentation">
                 <h2>Note on documenting resources expressed with DQV</h2>
-		    <p>The above section presents the most important classes and properties DQV uses
+		    <p>The above section presents the most important classes and properties that DQV uses
 		    to represent quality-related metadata. I.e., these are the elements needed to express
 		    the machine-readable information that DQV-aware data consumers can exploit
 		    for their processes. However, in many cases extra human-readable information is also needed,
@@ -1511,9 +1488,9 @@ SubObjectPropertyOf(
 		    <p>To this end, we recommend using appropriate vocabularies like SKOS [[SKOS-reference]], Dublin Core [[Dublin-Core]] or PROV [[PROV-O]].
 		    SKOS and PROV provide elements that fit specific purposes but can be applied to a wide
 		    range of resources, i.e., they <a href="http://www.w3.org/TR/dwbp/#ChooseRightFormalizationLevel">minimize their ontological commitment</a>. 
-		    The section <a href="#ExpressAQualityAssessmentWithQualityMetrics">"Express a quality assessment with quality metrics"</a>, for example, 
-		    shows how properties like <a href="http://www.w3.org/2004/02/skos/core#prefLabel">skos:prefLabel</a> and
-		    <a href="http://www.w3.org/2004/02/skos/core#definition">skos:definition</a> can be applied to instances of
+		    The section <a href="#ExpressAQualityAssessmentWithQualityMetrics">"Express a quality assessment with quality metrics"</a> 
+		    shows examples with the properties <a href="http://www.w3.org/2004/02/skos/core#prefLabel">skos:prefLabel</a> and
+		    <a href="http://www.w3.org/2004/02/skos/core#definition">skos:definition</a>. These properties can be applied to instances of
 		    <a href="#dqv:Dimension">dqv:Dimension</a>, which are by default instances of
 		    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a>, but also to instances of
 		     <a href="#dqv:Metric">dqv:Metric</a>, which are not. Dublin Core provides general-purpose
