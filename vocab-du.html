@@ -77,10 +77,29 @@ localBiblio: {
   href:     "http://libguides.lib.msu.edu/citedata",
   authors:  ["Michigan State University"]
   },
-  "EmoryUCite": {
-  title:    "General Citation Guidelines",
-  href:     "http://einstein.library.emory.edu/citations_general.html",
-  authors:  ["Emory University"]
+    "BP": {
+  title:    "Data on the Web Best Practices",
+  href:     "https://www.w3.org/TR/dwbp/",
+  authors:  ["Bernadette Farias Lóscio", "Caroline Burle", "Newton Calegari"]
+  },
+  "DWBP": {
+  title:    "Data on the Web Best Practices",
+  href:     "https://www.w3.org/2013/dwbp/wiki/Main_Page",
+  authors:  ["W3C"]
+  },
+  "SCHEMA": {
+  title:    "Schema.org",
+  href:     "https://schema.org/",
+  authors:  ["Dan Brickley"]
+  },
+  "REV": {
+  title:    "RDF Review Vocabulary",
+  href:     "http://vocab.org/review/terms.html"
+  },
+  "OKFN": {
+  title:    "Open Knowledge Foundation (OKFN), Linked Open Vocabularies (LOV)",
+  href:     "http://lov.okfn.org/dataset/lov/",
+  authors:  ["Pierre-Yves Vandenbussche","Bernard Vatant"]
   },
   "FORCE11-Citation": {
   title:    "Data Citation Principles",
@@ -253,14 +272,15 @@ pre red { color: red;
     </section>
     <section  id="intro"  class="informative">
       <h2> Introduction</h2>
-      <p> The Data on the Web Best Practices working group [REFERENCE]
-        identified Best Practices [REFERENCE] for citing published data,
-        conveying feedback between consumers and publishers, and providing
-        descriptive metadata that provides insights to the consumer about how
-        published data can be used.&nbsp; The data usage vocabulary is viewed as
-        an extension to DCAT version 1.0 to fill current existing gaps required
-        to adequately cite, describe usage, and convey feedback on published
-        datasets and distributions.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      <p> The Data on the Web Best Practices working group [[DWBP]] identified
+        Best Practices [[BP]] for citing published data, conveying feedback
+        between consumers and publishers, and providing descriptive metadata
+        that provides insights to the consumer about how published data can be
+        used.&nbsp; The data usage vocabulary is viewed as an extension to the
+        Data Catalog (DCAT) vocabulary version 1.0 [[VOCAB-DCAT]] to fill
+        current existing gaps required to adequately cite, describe usage, and
+        convey feedback on published datasets and
+        distributions.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
         <br>
         Broadly speaking the vocabulary is domain-independent and open.&nbsp; As
         an open vocabulary the DUV encourages publishers to add descriptive
@@ -432,11 +452,21 @@ pre red { color: red;
       <p>As discussed earlier, the intention of the DUV is to be thorough enough
         to offer a starting point for describing data usage and yet be open to
         using other alternative classes and properties as required by
-        developers.&nbsp; For example, <code>duv:Feedback</code> the subclass
-        of <code>oa:Annotation</code> reuses the object property <code>oa:hasBody</code>.
-        The DUV uses <code>oa:TextualBody</code> as a means to capture textual
-        information, however what if needed to capture feedback in alternative
-        ways such as using the Review vocabulary xxxx</p>
+        developers.&nbsp; For example, duv:Feedback the subclass of
+        oa:Annotation reuses the object property oa:hasBody. While the [[OA]]
+        uses oa:TextualBody as a means to capture textual information, however
+        what if needed to capture feedback in alternative ways, it is highly
+        suggested spending time exploring resources such as the Open Knowledge
+        Foundation, Linked Open Vocabularies [[OKFN]] such as using the Review
+        vocabulary [[REV]].&nbsp; This vocabulary features a very lightweight
+        way to specify ratings. <br>
+        <br>
+        While the focus of this document is mainly on representing the DUV using
+        semantic expressions, a very active effort Schema.org [[SCHEMA]]
+        provides lightweight data structures that can be used as markup that
+        commercial search engines recognize, aiding in discovery.&nbsp; Not only
+        do Schema.org and the DUV rely on many related concepts, efforts are
+        underway to extend the Schema.org to support additional data structures.</p>
     </section>
     <section  id="Vocab_Overview">
       <h2>Vocabulary Overview</h2>
@@ -457,29 +487,106 @@ pre red { color: red;
         <p>The citation model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
             R-Citable </a><em> It should be possible to cite data on the Web.</em>
           The citation model is largely based on classes, properties, and
-          recommended approaches taken from the SPAR Ontologies. <!--The remainder
-          of the model is composed from the Open Annotation vocabulary, Dublin
-          Core, FOAF and by newly introduced DUV properties. --></p>
+          recommended approaches taken from the SPAR Ontologies.
+          <!--The remainder
+          of the model is composed from the Open Annotation vocabulary, Dublin          Core, FOAF and by newly introduced DUV properties. --></p>
         <p>The citation model seeks to meet the needs of:</p>
         <ol>
-          <li>Data publishers who need to provide basic bibliographic reference
-            criteria for <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
-            <a  href="#ex1">(See Example 1)</a>. To do this, DUV extensions are
-            added to the DCAT model. Classes include: <code>dcat:Dataset</code>,
-            <code>dcat:Distribution</code>, and <code>foaf:Agent</code>.
-            Properties include: <code>dct:title</code>, <code>pav:version</code>,
-            <code>dct:issued</code>, <code>dct:created</code>, <code>dct:identifier</code>,
-            <code>dct:creator</code>, <code>dct:publisher</code>, <code>disco:fundedBy</code>.
+          <li>Data consumers who cite published <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
+            <a  href="#ex1">(See Example 1)</a> by using basic bibliographic
+            reference criteria provided by the data publisher. &nbsp; To do
+            this, DUV extensions are added to the DCAT model in two ways:&nbsp;
+            First because&nbsp;<code>dcat:Dataset</code> or <code>dcat:Distribution</code>
+            are forms of electronic media that can be potentially cited, both
+            use the same citation properties.&nbsp; Secondly, to fill any
+            information gaps, new properties were created or properties from
+            other vocabularies were added.&nbsp;
+            <p> </p>
             <p> <a  href="images/DUV_citation_submodel_part_1.png"><img  src="images/DUV_citation_submodel_part_1.png"
                    style="width:50%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a>
             </p>
+            <p>The table below shows how a portion of the DUV properties can be
+              used to form a bibliographic reference.&nbsp; </p>
+            <table  style="width: 70%;"  border="2">
+              <tbody>
+                <tr>
+                  <td><span  style="font-weight: bold;">Bibliographic Field</span></td>
+                  <td><span  style="font-weight: bold;">Definition</span></td>
+                  <td><span  style="font-weight: bold;">Property used in DUV</span></td>
+                </tr>
+                <tr>
+                  <td>Author(s)</td>
+                  <td>An individual, a group of individuals, or an organization
+                    responsible for creating the dataset or distribution.</td>
+                  <td>dct:creator</td>
+                </tr>
+                <tr>
+                  <td>Title</td>
+                  <td>Name of the dataset or distribution or the name of the
+                    activities that produced the data.</td>
+                  <td>dct:title</td>
+                </tr>
+                <tr>
+                  <td>Year</td>
+                  <td>When data was produced.</td>
+                  <td>dct:created</td>
+                </tr>
+                <tr>
+                  <td>Publisher</td>
+                  <td>This may be the name of the archive where it is housed or
+                    the organization responsible for performing publication
+                    services.</td>
+                  <td>dct:publisher</td>
+                </tr>
+                <tr>
+                  <td>Distributor (if used)</td>
+                  <td>Organization that makes the data set available for
+                    downloading and use </td>
+                  <td>duv:hasDistributor</td>
+                </tr>
+                <tr>
+                  <td>Edition or version</td>
+                  <td>Edition or version number associated with the data set</td>
+                  <td>pav:version </td>
+                </tr>
+                <tr>
+                  <td>Access information (a URL or other persistent identifier).
+                  </td>
+                  <td>Web address of dataset or distribution, or persistent
+                    identifier such as digital object identifier (DOI). </td>
+                  <td>dct:identifier<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p><br>
+              &nbsp; Extracting metadata from the properties in <a  href="#ex1">example
+                1</a>, it is possible to form the following example reference:</p>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <p>MyCity Bus Association. Bus stops of MyCity. 1.0 version.
+                      Transport Agency, 2015 [publisher,distributor].
+                      doi:10.0902/1975.16</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p> </p>
           </li>
           <li>Data publishers wanting to annotate <code>dcat:Dataset</code>/<code>dcat:Distribution</code>
             with bibliographic references that provide data additional insights
-            to data consumers <a  href="#ex2">(See Example 2)</a>. Data publishers can also annotate a dataset or distribution with bibliographic references provided by data consumers <a  href="#ex2">(See Example 3)</a>. For example, a researcher uses a dataset for performing some experiments and then publishes a paper with the experimentation's results. The dataset can be annotated with the bibliographic reference of this paper. 
-            include: <code>dcat:Dataset</code>, <code>dcat:Distribution</code>,
-            <code>biro:BibliographicReference</code>, <code>fabio:Expression</code>.
-            Properties include: <code>frbr:partOf</code>, <code>biro:references</code>.
+            to data consumers <a  href="#ex2">(See Example 2)</a>. Data
+            publishers can also annotate a dataset or distribution with
+            bibliographic references provided by data consumers <a  href="#ex2">(See
+              Example 3)</a>. For example, a researcher uses a dataset for
+            performing some experiments and then publishes a paper with the
+            experimentation's results. The dataset can be annotated with the
+            bibliographic reference of this paper. include: <code>dcat:Dataset</code>,
+            <code>dcat:Distribution</code>, <code>biro:BibliographicReference</code>,
+            <code>fabio:Expression</code>. Properties include: <code>frbr:partOf</code>,
+            <code>biro:references</code>.
             <p> <a  href="images/DUV_citation_submodel_part_2.png"><img  src="images/DUV_citation_submodel_part_2.png"
                    style="width:25%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a></p>
           </li>
@@ -666,10 +773,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>
-                <meta  charset="utf-8">
-                <meta  charset="utf-8">
-                <span  style="font-family: Verdana,Arial,&quot;Arial Unicode MS&quot;,Helvetica,sans-serif;"></span>Date
+              <td> <span  style="font-family: Verdana,Arial,&quot;Arial Unicode MS&quot;,Helvetica,sans-serif;"></span>Date
                 of creation of the resource</td>
             </tr>
             <tr>
@@ -1168,7 +1272,7 @@ pre red { color: red;
         dct:issued "2015-05-05"^^xsd:date;
         dct:creator &lt;http://example.org/transport-agency/contact&gt;;-->
       </pre>
-  <pre  class="schema json-ld">{
+      <pre  class="schema json-ld">{
   "@id" : ":stops-2015-05-05",
   "@type" : "dcat:Dataset",
   "pav:version" : "1.0",
@@ -1439,7 +1543,7 @@ pre red { color: red;
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
+        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1452,11 +1556,12 @@ pre red { color: red;
 
 :stops-2015-05-05.csv
         a dcat:Distribution ;
-        dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
+        dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
+ bus=""  stops-2015-05-05.csv=""> ;
         dct:title "CSV distribution of stops-2015-05-05 dataset" ;
         dct:description "CSV distribution of the bus stops dataset of MyCity" ;
         dcat:mediaType "text/csv;charset=UTF-8" ;
-        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+        dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
         .
 <!--ex:timetable-001
       a dcat:Dataset;
@@ -1497,7 +1602,7 @@ ex:localresident
         a foaf:Person  ;
         foaf:Name "Alan Law"^^xsd:string  ;
         .
-      </pre>
+      </http:></http:></http:></pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
     "@id" : "ex:comment1",
@@ -1608,11 +1713,12 @@ ex:localresident
       <p  id="ex5">Example 4:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
       <pre  class="schema turtle"> :stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
+      dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
+ bus=""  stops-2015-05-05.csv=""> ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
       .    
 
 <!--ex:timetable-001-csv
@@ -1627,7 +1733,7 @@ ex:release-notes a duv:Usage;
   dct:description "The previous proprietary format has been replaced with a 
                   CSV format to take advantage of new off the shelf tools"^^xsd:string ;
  .
-      </pre>
+      </http:></http:></pre>
       <pre  class="schema json-ld">  "@graph" : [ {
     "@id" : "ex:release-notes",
     "@type" : "duv:Usage",
@@ -1682,11 +1788,12 @@ ex:release-notes a duv:Usage;
       <p  id="ex6">Example 5 - Data Usage:  A data consumer uses the distribution <code>stops-2015-05-05.csv</code> to produce a visualization of bus routes from MyCity. A route calculator service was used to generate the bus routes (<code>http://example.org/route-calculator</code>). The dataset publisher collects this usage and updates the dataset metadata with a new property <code>duv:hasUsage </code> .</p>
       <pre  class="schema turtle">:stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
+      dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
+ bus=""  stops-2015-05-05.csv=""> ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
       duv:hasUsage ex:route-vis ;
       .    
 <!--
@@ -1706,10 +1813,10 @@ ex:route-vis a duv:Usage;
 ex:route-calculator a duv:UsageTool ;
       dct:title "Route Calculator"^^xsd:string ;
       dct:created "2016-03-04"^^xsd:date ;
-      dct:uri &lt;http://example.org/route-calculator&gt; ;
+      dct:uri <http:  example.org=""  route-calculator=""> ;
       .
 
-</http:></pre>
+</http:></http:></http:></pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
     "@id" : "ex:release-notes",
