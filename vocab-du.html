@@ -1276,7 +1276,7 @@ pre red { color: red;
   "@id" : ":stops-2015-05-05",
   "@type" : "dcat:Dataset",
   "pav:version" : "1.0",
-  "prism:doi" : "10.3456/4567.21",
+  "dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;",
   "publisher" : ":transport-agency-mycity",
   "creator": ":bus-association-mycity",
   "hasDistributor: ":transport-agency-mycity", 
@@ -1377,20 +1377,30 @@ pre red { color: red;
 }
 
       </pre> -->
-      <p  id="ex2"> Example 2 - Citation: A research paper that has a reference to the dataset <code>stops-2015-05-05</code>.</p>
+      
+<!--ex:timetable-001 a dcat:Dataset ;
+        dct:title  "Bus timetable of MyCity"^^xsd:string;
+        prism:doi "10.3456/4567.21"^^xsd:string ;
+        pav:version "series-1.2"^^xsd:string;
+        dct:issued "2015-05-05"^^xsd:date;
+        dct:creator <http:  example.org=""  transport-agency=""  contact="">; -->
+
+      
+
+       <p  id="ex2"> Example 2 - Citation: A memorandum that gives more insights about the dataset <code>stops-2015-05-05</code>.</p>
 
       <pre  class="schema turtle">:stops-memorandum
-        a fabio:ResearchPaper ;
-        frbr:realization :paper-a-expression ; 
+        a fabio:InstructionalWork ;
+        frbr:realization :memo-a-expression ; 
         .
 
-:paper-a-expression a fabio:JournalArticle ;
+:memo-a-expression a fabio:PolicyDocument ;
         frbr:part :reference-to-stops-dataset ;
         .
 
 :reference-to-stops-dataset
         a biro:BibliographicReference;
-        dct:bibliographicCitation "citation to dataset stops-2015-05-05"^^xsd:string ;
+        dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string;
         biro:references :stops-2015-05-05 ;
         .   </pre>  
 <!--ex:timetable-001 a dcat:Dataset ;
@@ -1401,6 +1411,95 @@ pre red { color: red;
         dct:creator <http:  example.org=""  transport-agency=""  contact="">; -->
 
       
+
+      <pre  class="schema json-ld">      
+{
+  "@graph" : [ {
+    "@id" : "ex:timetable-001",
+    "@type" : "dcat:Dataset",
+    "pav:version" : "series-1.2",
+    "prism:doi" : "10.3456/4567.21",
+    "creator" : "http://example.org/transport-agency/contact",
+    "issued" : "2015-05-05",
+    "dct:title" : "Bus timetable of MyCity"
+  }, {
+    "@id" : "ex:timetable-memorandum",
+    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
+    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City 
+     Timetable Schedule Change Memorandum Effective January 1, 2015. 
+     Sept 15, 2014. DOI:0.3456/4567.21",
+    "references" : "ex:timetable-001"
+  } ],
+  "@context" : {
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "doi" : {
+      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasVersion" : {
+      "@id" : "http://purl.org/dc/terms/hasVersion",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "bibliographicCitation" : {
+      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "references" : {
+      "@id" : "http://purl.org/spar/biro/references",
+      "@type" : "@id"
+    },
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://pav-ontology.github.io/pav/",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "cnt" : "http://www.w3.org/2011/content",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/",
+    "cito" : "http://purl.org/spar/cito/",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "ex" : "http://example.org#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "vann" : "http://purl.org/vocab/vann#",
+    "foaf" : "http://xmlns.com/foaf/0.1/",
+    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+  }
+}
+
+      </pre>
+
+      <p  id="ex2"> Example 3 - Citation: A research paper that has a reference to the dataset <code>stops-2015-05-05</code>.</p>
+
+      <pre  class="schema turtle">:stops-paper
+        a fabio:ResearchPaper ;
+        frbr:realization :paper-a-expression ; 
+        .
+
+:paper-a-expression a fabio:JournalArticle ;
+        frbr:part :reference-to-stops-dataset ;
+        .
+
+:reference-to-stops-dataset
+        a biro:BibliographicReference;
+        dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string ;
+        biro:references :stops-2015-05-05 ;
+        .   </pre>  
 
       <pre  class="schema json-ld">      
 {
@@ -1539,11 +1638,11 @@ pre red { color: red;
 } -->
 
       
-      <p  id="ex4">Example 3 - Feedback:  Providing a mechanism for consumers to comment and ask the dataset publisher questions. </p>
+      <p  id="ex4">Example 4 - Feedback:  Providing a mechanism for consumers to comment and ask the dataset publisher questions. </p>
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1556,12 +1655,11 @@ pre red { color: red;
 
 :stops-2015-05-05.csv
         a dcat:Distribution ;
-        dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
- bus=""  stops-2015-05-05.csv=""> ;
+        dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
         dct:title "CSV distribution of stops-2015-05-05 dataset" ;
         dct:description "CSV distribution of the bus stops dataset of MyCity" ;
         dcat:mediaType "text/csv;charset=UTF-8" ;
-        dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
+        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
         .
 <!--ex:timetable-001
       a dcat:Dataset;
@@ -1586,7 +1684,7 @@ ex:comment1
         a duv:UserFeedback ;
         oa:hasBody "This list is missing stop 3"^^xsd:string ;
         oa:hasTarget :stops-2015-05-05 ;
-        oa:motivatedBy ;
+        oa:motivatedBy oa:editing;
         dct:creator ex:localresident ;
         .
 
@@ -1594,7 +1692,7 @@ ex:comment2
         a duv:UserFeedback ;
         oa:hasTarget :stops-2015-05-05.csv;
         oa:hasBody "Are tab delimited formats also available?"^^xsd:string ;
-        oa:motivatedBy ;
+        oa:motivatedBy oa:questioning;
         dct:creator ex:localresident ;
         .
 
@@ -1710,22 +1808,21 @@ ex:localresident
   }
 }
       </pre>
-      <p  id="ex5">Example 4:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
+     <!-- <p  id="ex5">Example 5:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
       <pre  class="schema turtle"> :stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
- bus=""  stops-2015-05-05.csv=""> ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
       .    
 
 <!--ex:timetable-001-csv
     a dcat:Distribution;
     dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
     dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string ;
-    dcat:mediaType "text/csv"^^xsd:string; -->
+    dcat:mediaType "text/csv"^^xsd:string; 
 
 ex:release-notes a duv:Usage;
   dct:title "New bus stops list format";
@@ -1783,17 +1880,16 @@ ex:release-notes a duv:Usage;
     "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
   }
 }
-
+-->
       </pre>
       <p  id="ex6">Example 5 - Data Usage:  A data consumer uses the distribution <code>stops-2015-05-05.csv</code> to produce a visualization of bus routes from MyCity. A route calculator service was used to generate the bus routes (<code>http://example.org/route-calculator</code>). The dataset publisher collects this usage and updates the dataset metadata with a new property <code>duv:hasUsage </code> .</p>
       <pre  class="schema turtle">:stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
- bus=""  stops-2015-05-05.csv=""> ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
       duv:hasUsage ex:route-vis ;
       .    
 <!--
