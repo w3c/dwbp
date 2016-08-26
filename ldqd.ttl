@@ -3,23 +3,35 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix ldqd:    <http://www.w3.org/2016/05/ldqd#> .
 
 # Representation of quality categories and dimensions from Amrapali Zaveri, Anisa Rula, Andrea Maurino, Ricardo Pietrobon, Jens Lehmann, Sören Auer: Quality assessment for Linked Data: A Survey. Semantic Web 7(1): 63-93 (2016) https://dx.doi.org/10.3233/SW-150175
 
+ldqd:ldqdCS a skos:ConceptScheme ;
+   dcterms:title "Representation of quality categories and dimensions from Amrapali Zaveri, Anisa Rula, Andrea Maurino, Ricardo Pietrobon, Jens Lehmann, Sören Auer: Quality assessment for Linked Data: A Survey. Semantic Web 7(1): 63-93 (2016) https://dx.doi.org/10.3233/SW-150175" ;
+   rdfs:comment "The RDF representation of this concept scheme has been edited by Riccardo Albertoni and Antoine Isaac for the W3C Data on the Web Best Practices"@en ;
+   dcterms:creator [foaf:name "Amrapali Zaveri"], [foaf:name "Anisa Rula"], [foaf:name "Andrea Maurino"], [foaf:name "Ricardo Pietrobon"], [foaf:name "Jens Lehmann"], [foaf:name "Sören Auer"] ;
+   dcterms:contributor [foaf:name "Riccardo Albertoni"], [foaf:name "Antoine Isaac"] .
+
 # Definition of categories
 
 ldqd:accessibilityDimensions a dqv:Category ; 
+   skos:inScheme ldqd:ldqdCS ;
    skos:prefLabel "Accessibility"@en . 
 
 ldqd:intrinsicDimensions a dqv:Category ; 
+   skos:inScheme ldqd:ldqdCS ;
    skos:prefLabel "Intrinsic dimensions"@en . 
 
 ldqd:contextualDimensions a dqv:Category ; 
+   skos:inScheme ldqd:ldqdCS ;
    skos:prefLabel "Contextual dimensions"@en . 
 
 ldqd:representationalDimensions a dqv:Category ; 
+   skos:inScheme ldqd:ldqdCS ;
    skos:prefLabel "Representational Dimensions"@en . 
 
 # Definition of dimensions
@@ -28,6 +40,7 @@ ldqd:representationalDimensions a dqv:Category ;
 
 ldqd:availability
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:accessibilityDimensions ;
 	skos:prefLabel "Availability"@en ;
 	skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en
@@ -35,6 +48,7 @@ ldqd:availability
 
 ldqd:licensing
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:accessibilityDimensions  ;
 	skos:prefLabel "Licensing"@en ;
 	skos:definition "Licensing is defined as the granting of permission for a consumer to re-use a dataset under defined conditions."@en
@@ -42,6 +56,7 @@ ldqd:licensing
 
 ldqd:interlinking
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:accessibilityDimensions ;
 	skos:prefLabel "Consistency"@en ;
 	skos:definition "Interlinking refers to the degree to which entities that represent the same concept are linked to each other, be it within or between two or more data sources."@en
@@ -49,6 +64,7 @@ ldqd:interlinking
 
 ldqd:security
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:accessibilityDimensions ;
 	skos:prefLabel "Security"@en ;
 	skos:definition "Security is the extent to which data is protected against alteration and misuse."@en
@@ -56,6 +72,7 @@ ldqd:security
 
 ldqd:performance
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:accessibilityDimensions ;
 	skos:prefLabel "Performance"@en ;
 	skos:definition "Performance refers to the efficiency of a system that binds to a large dataset, that is, the more performant a data source is the more efficiently a system can process data."@en
@@ -66,6 +83,7 @@ ldqd:performance
 
 ldqd:syntacticValidity
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:intrinsicDimensions ;
 	skos:prefLabel "Syntactic validity"@en;
 	skos:definition "Syntactic validity is defined as the degree to which an RDF document conforms to the specification of the serialization format."@en
@@ -73,6 +91,7 @@ ldqd:syntacticValidity
 
 ldqd:semanticAccuracy	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:intrinsicDimensions ;
 	skos:prefLabel "Semantic accuracy"@en ;
 	skos:definition "Semantic accuracy is defined as the degree to which data values correctly represent the real world facts."@en
@@ -80,6 +99,7 @@ ldqd:semanticAccuracy
 
 ldqd:consistency	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:intrinsicDimensions ;
 	skos:prefLabel "Consistency"@en ;
 	skos:definition "Consistency means that a knowledge base is free of (logical/formal) contradictions with respect to particular knowledge representation and inference mechanisms."@en
@@ -87,6 +107,7 @@ ldqd:consistency
 
 ldqd:conciseness	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:intrinsicDimensions ;
 	skos:prefLabel "Conciseness"@en ;
 	skos:definition "Conciseness refers to the minimization of redundancy of entities at the schema and the data level."@en
@@ -94,6 +115,7 @@ ldqd:conciseness
 
 ldqd:completeness	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:intrinsicDimensions ;
 	skos:prefLabel "Completeness"@en;
 	skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en
@@ -104,6 +126,7 @@ ldqd:completeness
 
 ldqd:relevancy	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:contextualDimensions  ;
 	skos:prefLabel "Relevancy"@en ;
 	skos:definition "Relevancy refers to the provision of information which is in accordance with the task at hand and important to the users’ query."@en
@@ -111,6 +134,7 @@ ldqd:relevancy
 
 ldqd:trustworthiness	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:contextualDimensions  ;
 	skos:prefLabel "Trustworthiness"@en ;
 	skos:definition "Trustworthiness is defined as the degree to which the information is accepted to be correct, true, real and credible."@en
@@ -118,13 +142,15 @@ ldqd:trustworthiness
 
 ldqd:understandability	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:contextualDimensions  ;
 	skos:prefLabel "Understandability"@en ;
 	skos:definition "Understandability refers to the ease with which data can be comprehended without ambiguity and be used by a human information consumer."@en
 	.
 
 ldqd:timeliness	
-	a dqv:Dimension ; 
+	a dqv:Dimension ;
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:contextualDimensions  ;
 	skos:prefLabel "Timeliness"@en ;
 	skos:definition "Timeliness measures how up-to-date data is relative to a specific task."@en
@@ -135,6 +161,7 @@ ldqd:timeliness
 
 ldqd:representationalConciseness	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:representationalDimensions  ;
 	skos:prefLabel "Representational-conciseness"@en ;
 	skos:definition "Representational-conciseness refers to the representation of the data, which is compact and well formatted on the one hand and clear and complete on the other hand."@en
@@ -142,6 +169,7 @@ ldqd:representationalConciseness
 
 ldqd:interoperability	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:representationalDimensions ;
 	skos:prefLabel "Interoperability"@en ;
 	skos:definition "Interoperability is the degree to which the format and structure of the information conforms to previously returned information as well as data from other sources."@en
@@ -149,6 +177,7 @@ ldqd:interoperability
 
 ldqd:interpretability	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:representationalDimensions  ;
 	skos:prefLabel "Interpretability"@en ;
 	skos:definition "Interpretability refers to technical aspects of the data, that is, whether information is represented using an appropriate notation and whether the machine is able to process the data."@en
@@ -156,6 +185,7 @@ ldqd:interpretability
 
 ldqd:versatility	
 	a dqv:Dimension ; 
+        skos:inScheme ldqd:ldqdCS ;
 	dqv:inCategory ldqd:representationalDimensions  ;
 	skos:prefLabel "Versatility"@en ;
 	skos:definition "Versatility refers to the availability of the data in different representations and in an internationalized way."@en
