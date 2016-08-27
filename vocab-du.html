@@ -369,7 +369,9 @@ pre red { color: red;
           </tr>
           <tr>
             <td>pav</td>
-            <td>http://pav-ontology.github.io/pav/</td>
+            <td>
+              <meta  charset="utf-8">
+              http://purl.org/pav/</td>
           </tr>
           <tr>
             <td>rdf</td>
@@ -568,8 +570,8 @@ pre red { color: red;
                   <td>
                     <p><span  style="font-style: italic;">dct:creator + .
                         +&nbsp; dct:title + pav:version </span>+ . + <span  style="font-style: italic;">dct:publisher
-                        </span>+ [. +<span  style="font-style: italic;"> duv:hasDistributor</span>
-                      + ] .&nbsp; + <span  style="font-style: italic;">dct:identifier</span></p>
+                        </span>+ [. +<span  style="font-style: italic;">
+                        duv:hasDistributor</span> + ] .&nbsp; + <span  style="font-style: italic;">dct:identifier</span></p>
                     <p>MyCity Bus Association. Bus stops of MyCity. 1.0 version.
                       Transport Agency, 2015 [publisher,distributor].
                       doi:10.0902/1975.16</p>
@@ -1342,7 +1344,8 @@ pre red { color: red;
     <section  id="examples">
       <h2> Examples</h2>
       <p> This section shows some examples to illustrate the application of the
-        Dataset Usage Vocabulary. The following examples are based on the <a href="https://www.w3.org/TR/dwbp/#basicExample">running example of the Data on the Web Best Practices</a> document.</p>
+        Dataset Usage Vocabulary. The following examples are based on the <a  href="https://www.w3.org/TR/dwbp/#basicExample">running
+          example of the Data on the Web Best Practices</a> document.</p>
       <p  id="ex1"> Example 1 - Citation: Basic reference criteria for a
         dataset.</p>
       <pre  class="schema turtle">:stops-2015-05-05 
@@ -1357,87 +1360,42 @@ pre red { color: red;
         disco:fundedBy :bus-association-mycity ;
         dct:created "2015-05-05"^^xsd:date ;
         .
-  <!--ex:timetable-001 a dcat:Dataset ;
-        dct:title  "Bus timetable of MyCity"^^xsd:string;
-        prism:doi "10.3456/4567.21"^^xsd:string ;
-        dct:hasVersion "series-1.2"^^xsd:string;
-        dct:issued "2015-05-05"^^xsd:date;
-        dct:creator &lt;http://example.org/transport-agency/contact&gt;;-->
       </pre>
       <pre  class="schema json-ld">{
   "@id" : ":stops-2015-05-05",
   "@type" : "dcat:Dataset",
-  "pav:version" : "1.0",
-  "dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;",
-  "publisher" : ":transport-agency-mycity",
-  "creator": ":bus-association-mycity",
-  "hasDistributor: ":transport-agency-mycity", 
-  "fundedBy": ":bus-association-mycity",
+  "version" : "1.0",
+  "created" : "2015-05-05",
+  "creator" : ":bus-association-mycity",
+  "identifier" : "http://dx.doi.org/10.0902/1975.16",
   "issued" : "2015-05-05",
-  "created : "2015-05-05",
-  "dct:title" : "Bus stops of MyCity",
+  "publisher" : ":transport-agency-mycity",
+  "title" : "Bus stops of MyCity",
+  "fundedBy" : ":bus-association-mycity",
+  "hasDistributor" : ":transport-agency-mycity",
   "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "doi" : {
-      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },<br>    "version" : {
-      "@id" : "http://purl.org/dc/terms/hasVersion",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "issued" : {
-      "@id" : "http://purl.org/dc/terms/issued",
-      "@type" : "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "publisher" : {
-      "@id" : "http://purl.org/dc/terms/creator",
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
       "@type" : "@id"
     },
-    "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
-    "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
-    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
-    "xsd" : "http://www.w3.org/2001/XMLSchema#",
-    "skos" : "http://www.w3.org/2004/02/skos/core#",
-    "biro" : "http://purl.org/spar/biro/",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
-    "dct" : "http://purl.org/dc/terms/",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
-  }
-}
-      </pre> 
-      <!-- <pre  class="schema json-ld">{
-  "@id" : "ex:timetable-001",
-  "@type" : "dcat:Dataset",
-  "pav:version" : "series-1.2",
-  "prism:doi" : "10.3456/4567.21",
-  "creator" : "http://example.org/transport-agency/contact",
-  "issued" : "2015-05-05",
-  "dct:title" : "Bus timetable of MyCity",
-  "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
     },
-    "doi" : {
-      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },<br>    "hasVersion" : {
-      "@id" : "http://purl.org/dc/terms/hasVersion",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
     },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
     "issued" : {
       "@id" : "http://purl.org/dc/terms/issued",
       "@type" : "http://www.w3.org/2001/XMLSchema#date"
@@ -1446,45 +1404,36 @@ pre red { color: red;
       "@id" : "http://purl.org/dc/terms/creator",
       "@type" : "@id"
     },
+    "" : "http://example.org#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
     "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
     "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
     "skos" : "http://www.w3.org/2004/02/skos/core#",
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "cito" : "http://purl.org/spar/cito#",
     "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+    "foaf" : "http://xmlns.com/foaf/0.1/"
   }
 }
 
-      </pre> -->
-      
-<!--ex:timetable-001 a dcat:Dataset ;
-        dct:title  "Bus timetable of MyCity"^^xsd:string;
-        prism:doi "10.3456/4567.21"^^xsd:string ;
-        pav:version "series-1.2"^^xsd:string;
-        dct:issued "2015-05-05"^^xsd:date;
-        dct:creator <http:  example.org=""  transport-agency=""  contact="">; -->
-
-      
-
-       <p  id="ex2"> Example 2 - Citation: A memorandum that gives more insights about the dataset <code>stops-2015-05-05</code>.</p>
-
-      <pre  class="schema turtle">:stops-2015-05-05 
+      </pre>
+      <p  id="ex2"> Example 2 - Citation: A memorandum that gives more insights
+        about the dataset <code>stops-2015-05-05</code>.</p>
+      <pre  class="schema turtle">      :stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;   ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1509,46 +1458,67 @@ pre red { color: red;
         a biro:BibliographicReference;
         dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string;
         biro:references :stops-2015-05-05 ;
-        .   </pre>  
-<!--ex:timetable-001 a dcat:Dataset ;
-        dct:title  "Bus timetable of MyCity"^^xsd:string;
-        prism:doi "10.3456/4567.21"^^xsd:string ;
-        pav:version "series-1.2"^^xsd:string;
-        dct:issued "2015-05-05"^^xsd:date;
-        dct:creator <http:  example.org=""  transport-agency=""  contact="">; -->
-
-      
-
+        .   </pre>
       <pre  class="schema json-ld">      
 {
   "@graph" : [ {
-    "@id" : "ex:timetable-001",
-    "@type" : "dcat:Dataset",
-    "pav:version" : "series-1.2",
-    "prism:doi" : "10.3456/4567.21",
-    "creator" : "http://example.org/transport-agency/contact",
-    "issued" : "2015-05-05",
-    "dct:title" : "Bus timetable of MyCity"
+    "@id" : ":memo-a-expression",
+    "@type" : "fabio:PolicyDocument",
+    "part" : ":reference-to-stops-dataset"
   }, {
-    "@id" : "ex:timetable-memorandum",
-    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
-    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City 
-     Timetable Schedule Change Memorandum Effective January 1, 2015. 
-     Sept 15, 2014. DOI:0.3456/4567.21",
-    "references" : "ex:timetable-001"
+    "@id" : ":reference-to-stops-dataset",
+    "@type" : "biro:BibliographicReference",
+    "dct:bibliographicCitation" : "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16",
+    "references" : ":stops-2015-05-05"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "isReferencedBy" : ":stops-memorandum",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity"
+  }, {
+    "@id" : ":stops-memorandum",
+    "@type" : "fabio:InstructionalWork",
+    "realization" : ":memo-a-expression"
   } ],
   "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
     },
-    "doi" : {
-      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
     },
-    "hasVersion" : {
-      "@id" : "http://purl.org/dc/terms/hasVersion",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "isReferencedBy" : {
+      "@id" : "http://purl.org/spar/biro/isReferencedBy",
+      "@type" : "@id"
     },
     "issued" : {
       "@id" : "http://purl.org/dc/terms/issued",
@@ -1556,6 +1526,14 @@ pre red { color: red;
     },
     "creator" : {
       "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "realization" : {
+      "@id" : "http://purl.org/vocab/frbr/core#realization",
+      "@type" : "@id"
+    },
+    "part" : {
+      "@id" : "http://purl.org/vocab/frbr/core#part",
       "@type" : "@id"
     },
     "bibliographicCitation" : {
@@ -1566,37 +1544,35 @@ pre red { color: red;
       "@id" : "http://purl.org/spar/biro/references",
       "@type" : "@id"
     },
+    "" : "http://example.org#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
     "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
     "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
     "skos" : "http://www.w3.org/2004/02/skos/core#",
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
     "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+    "foaf" : "http://xmlns.com/foaf/0.1/"
   }
 }
 
       </pre>
-
-      <p  id="ex2"> Example 3 - Citation: A research paper that has a reference to the dataset <code>stops-2015-05-05</code>.</p>
-
+      <p  id="ex2"> Example 3 - Citation: A research paper that has a reference
+        to the dataset <code>stops-2015-05-05</code>.</p>
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1622,38 +1598,69 @@ pre red { color: red;
         a biro:BibliographicReference;
         dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string ;
         biro:references :stops-2015-05-05 ;
-        .   </pre>  
+        .   
 
+      </pre>
       <pre  class="schema json-ld">      
 {
   "@graph" : [ {
-    "@id" : "ex:timetable-001",
-    "@type" : "dcat:Dataset",
-    "pav:version" : "series-1.2",
-    "prism:doi" : "10.3456/4567.21",
-    "creator" : "http://example.org/transport-agency/contact",
-    "issued" : "2015-05-05",
-    "dct:title" : "Bus timetable of MyCity"
+    "@id" : ":paper-a-expression",
+    "@type" : "fabio:JournalArticle",
+    "part" : ":reference-to-stops-dataset"
   }, {
-    "@id" : "ex:timetable-memorandum",
-    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
-    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City 
-     Timetable Schedule Change Memorandum Effective January 1, 2015. 
-     Sept 15, 2014. DOI:0.3456/4567.21",
-    "references" : "ex:timetable-001"
+    "@id" : ":reference-to-stops-dataset",
+    "@type" : "biro:BibliographicReference",
+    "dct:bibliographicCitation" : "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16",
+    "references" : ":stops-2015-05-05"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "isReferencedBy" : [ ":stops-paper", ":stops-memorandum" ],
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity"
+  }, {
+    "@id" : ":stops-paper",
+    "@type" : "fabio:ResearchPaper",
+    "realization" : ":paper-a-expression"
   } ],
   "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
     },
-    "doi" : {
-      "@id" : "http://prismstandard.org/namespaces/basic/2.2/doi",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
     },
-    "hasVersion" : {
-      "@id" : "http://purl.org/dc/terms/hasVersion",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "isReferencedBy" : {
+      "@id" : "http://purl.org/spar/biro/isReferencedBy",
+      "@type" : "@id"
+    },
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
     },
     "issued" : {
       "@id" : "http://purl.org/dc/terms/issued",
@@ -1663,6 +1670,14 @@ pre red { color: red;
       "@id" : "http://purl.org/dc/terms/creator",
       "@type" : "@id"
     },
+    "realization" : {
+      "@id" : "http://purl.org/vocab/frbr/core#realization",
+      "@type" : "@id"
+    },
+    "part" : {
+      "@id" : "http://purl.org/vocab/frbr/core#part",
+      "@type" : "@id"
+    },
     "bibliographicCitation" : {
       "@id" : "http://purl.org/dc/terms/bibliographicCitation",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
@@ -1671,101 +1686,35 @@ pre red { color: red;
       "@id" : "http://purl.org/spar/biro/references",
       "@type" : "@id"
     },
+    "" : "http://example.org#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
     "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
     "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
     "skos" : "http://www.w3.org/2004/02/skos/core#",
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
     "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+    "foaf" : "http://xmlns.com/foaf/0.1/"
   }
 }
 
       </pre>
-<!--      <p  id="ex3">Example 3 - Citation:  Specifying that a paper that cites a dataset. </p>
-      <pre  class="schema turtle"> ex:mobility-paper-ref
-        a biro:BibliographicReference;
-        dct:bibliographicCitation "Larsson, P. Mayor (2015). Finding the best routes for MyCity June 1, 2016. DOI:0.3456/4567.21"^^xsd:string ;
-        biro:references :stops-2015-05-05;
-        .
-<!--ex:memorandum-cites-dataset
-      a cito:CitationAct ;
-      cito:hasCitingEntity ex:timetable-memorandum ;
-      cito:hasCitedEntity ex:timetable-001 . 
-      </pre>
-      <pre  class="schema json-ld">{
-  "@graph" : [ {
-    "@id" : "ex:memorandum-cites-dataset",
-    "@type" : "cito:CitationAct",
-    "hasCitedEntity" : "ex:timetable-001",
-    "hasCitingEntity" : "ex:timetable-memorandum"
-  }, {
-    "@id" : "ex:timetable-memorandum",
-    "@type" : [ "biro:BibliographicReference", "fabio:Policy" ],
-    "dct:bibliographicCitation" : "Costello, E. Mayor (2015). City Timetable 
-    Schedule Change Memorandum Effective January 1, 2015. Sept 15, 2014. 
-    DOI:0.3456/4567.21",
-    "references" : "ex:timetable-001"
-  } ],
-  "@context" : {
-    "hasCitingEntity" : {
-      "@id" : "http://purl.org/spar/cito/hasCitingEntity",
-      "@type" : "@id"
-    },
-    "hasCitedEntity" : {
-      "@id" : "http://purl.org/spar/cito/hasCitedEntity",
-      "@type" : "@id"
-    },
-    "bibliographicCitation" : {
-      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "references" : {
-      "@id" : "http://purl.org/spar/biro/references",
-      "@type" : "@id"
-    },
-    "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
-    "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
-    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
-    "xsd" : "http://www.w3.org/2001/XMLSchema#",
-    "skos" : "http://www.w3.org/2004/02/skos/core#",
-    "biro" : "http://purl.org/spar/biro/",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
-    "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
-    "dct" : "http://purl.org/dc/terms/",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
-  }
-} -->
-
-      
-      <p  id="ex4">Example 4 - Feedback:  Providing a mechanism for consumers to comment and ask the dataset publisher questions. </p>
+      <p  id="ex4">Example 4 - Feedback:&nbsp; Providing a mechanism for
+        consumers to comment and ask the dataset publisher questions. </p>
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;  ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1775,44 +1724,24 @@ pre red { color: red;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
         duv:hasFeedback :comment1 ;
-        duv:hasFeedback :comment2 ;
         .
 
 :stops-2015-05-05.csv
         a dcat:Distribution ;
-        dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
- bus=""  stops-2015-05-05.csv=""> ;
+        dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt;   ;
         dct:title "CSV distribution of stops-2015-05-05 dataset" ;
         dct:description "CSV distribution of the bus stops dataset of MyCity" ;
         dcat:mediaType "text/csv;charset=UTF-8" ;
-        dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
+        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
         duv:hasFeedback :comment2 ;
         .
-<!--ex:timetable-001
-      a dcat:Dataset;
-      dct:title "Bus timetable of MyCity"^^xsd:string;
-      dct:issued "2015-05-05"^^xsd:date;
-      dct:publisher ex:transport-agency-mycity ;
-      dcat:distribution ex:timetable-001-csv;
-      .
 
-ex:timetable-001-csv
-      a dcat:Distribution;
-      dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
-      dct:description "CSV distribution of the bus timetable 
-                       dataset of MyCity."^^xsd:string ;
-      dcat:mediaType "text/csv"^^xsd:string;
-      . 
-
-ex:comment1Content a cnt:ContentAsText ;
-      cnt:chars "This timetable is missing route 3"^^xsd:string ;
-      . -->
 :comment1
         a duv:UserFeedback ;
         oa:hasBody "This list is missing stop 3"^^xsd:string ;
         oa:hasTarget :stops-2015-05-05 ;
         oa:motivatedBy oa:editing;
-        dct:creator ex:localresident ;
+        dct:creator :localresident ;
         .
 
 :comment2
@@ -1820,196 +1749,150 @@ ex:comment1Content a cnt:ContentAsText ;
         oa:hasTarget :stops-2015-05-05.csv;
         oa:hasBody "Are tab delimited formats also available?"^^xsd:string ;
         oa:motivatedBy oa:questioning;
-        dct:creator ex:localresident ;
+        dct:creator :localresident ;
         .
 
 :localresident
         a foaf:Person  ;
         foaf:Name "Alan Law"^^xsd:string  ;
         .
-      </http:></http:></http:></pre>
+
+      </pre>
       <pre  class="schema json-ld">{
   "@graph" : [ {
-    "@id" : "ex:comment1",
+    "@id" : ":comment1",
     "@type" : "duv:UserFeedback",
-    "creator" : "ex:localresident",
-    "hasBody" : "ex:comment1Content",
-    "hasTarget" : "ex:timetable-001"
+    "creator" : ":localresident",
+    "oa:hasBody" : "This list is missing stop 3",
+    "hasTarget" : ":stops-2015-05-05",
+    "motivatedBy" : "oa:editing"
   }, {
-    "@id" : "ex:comment1Content",
-    "@type" : "cnt:ContentAsText",
-    "cnt:chars" : "This timetable is missing route 3"
-  }, {
-    "@id" : "ex:comment2",
+    "@id" : ":comment2",
     "@type" : "duv:UserFeedback",
-    "creator" : "ex:localresident",
-    "hasBody" : "ex:comment1Content",
-    "hasTarget" : "ex:timetable-001-csv"
+    "creator" : ":localresident",
+    "oa:hasBody" : "Are tab delimited formats also available?",
+    "hasTarget" : ":stops-2015-05-05.csv",
+    "motivatedBy" : "oa:questioning"
   }, {
-    "@id" : "ex:comment2Content",
-    "@type" : "cnt:ContentAsText",
-    "cnt:chars" : "Are tab delimited formats also available?"
-  }, {
-    "@id" : "ex:localresident",
+    "@id" : ":localresident",
     "@type" : "foaf:Person",
     "foaf:Name" : "Alan Law"
   }, {
-    "@id" : "ex:timetable-001",
+    "@id" : ":stops-2015-05-05",
     "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
     "issued" : "2015-05-05",
-    "publisher" : "ex:transport-agency-mycity",
-    "dct:title" : "Bus timetable of MyCity",
-    "distribution" : "ex:timetable-001-csv"
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity",
+    "hasFeedback" : ":comment1"
   }, {
-    "@id" : "ex:timetable-001-csv",
+    "@id" : ":stops-2015-05-05.csv",
     "@type" : "dcat:Distribution",
-    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
-    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
-    "dcat:mediaType" : "text/csv"
+    "description" : "CSV distribution of the bus stops dataset of MyCity",
+    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
+    "title" : "CSV distribution of stops-2015-05-05 dataset",
+    "downloadURL" : "http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv",
+    "mediaType" : "text/csv;charset=UTF-8",
+    "hasFeedback" : ":comment2"
   } ],
   "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "description" : {
-      "@id" : "http://purl.org/dc/terms/description",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "mediaType" : {
-      "@id" : "http://www.w3.org/ns/dcat#mediaType",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "contentchars" : {
-      "@id" : "http://www.w3.org/2011/contentchars",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "issued" : {
-      "@id" : "http://purl.org/dc/terms/issued",
-      "@type" : "http://www.w3.org/2001/XMLSchema#date"
-    },
-    "publisher" : {
-      "@id" : "http://purl.org/dc/terms/publisher",
-      "@type" : "@id"
-    },
-    "distribution" : {
-      "@id" : "http://www.w3.org/ns/dcat#distribution",
-      "@type" : "@id"
-    },
     "hasBody" : {
       "@id" : "http://www.w3.org/ns/oa#hasBody",
-      "@type" : "@id"
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
     "hasTarget" : {
       "@id" : "http://www.w3.org/ns/oa#hasTarget",
+      "@type" : "@id"
+    },
+    "motivatedBy" : {
+      "@id" : "http://www.w3.org/ns/oa#motivatedBy",
       "@type" : "@id"
     },
     "creator" : {
       "@id" : "http://purl.org/dc/terms/creator",
       "@type" : "@id"
     },
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "hasFeedback" : {
+      "@id" : "http://www.w3.org/ns/duv#hasFeedback",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
     "Name" : {
       "@id" : "http://xmlns.com/foaf/0.1/Name",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
+    "downloadURL" : {
+      "@id" : "http://www.w3.org/ns/dcat#downloadURL",
+      "@type" : "@id"
+    },
+    "description" : "http://purl.org/dc/terms/description",
+    "mediaType" : "http://www.w3.org/ns/dcat#mediaType",
+    "license" : {
+      "@id" : "http://purl.org/dc/terms/license",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
     "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
     "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
     "skos" : "http://www.w3.org/2004/02/skos/core#",
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
     "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+    "foaf" : "http://xmlns.com/foaf/0.1/"
   }
 }
+
       </pre>
-     <!-- <p  id="ex5">Example 5:  Data Usage - Dataset publisher provides information about how consumers can use a particular distribution. </p>
-      <pre  class="schema turtle"> :stops-2015-05-05.csv
-      a dcat:Distribution ;
-      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt; ;
-      dct:title "CSV distribution of stops-2015-05-05 dataset" ;
-      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-      dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-      .    
-
-<!--ex:timetable-001-csv
-    a dcat:Distribution;
-    dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
-    dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string ;
-    dcat:mediaType "text/csv"^^xsd:string; 
-
-ex:release-notes a duv:Usage;
-  dct:title "New bus stops list format";
-  dct:created "20-DEC-2015" ;
-  dct:description "The previous proprietary format has been replaced with a 
-                  CSV format to take advantage of new off the shelf tools"^^xsd:string ;
- .
-      </http:></http:></pre>
-      <pre  class="schema json-ld">  "@graph" : [ {
-    "@id" : "ex:release-notes",
-    "@type" : "duv:Usage",
-    "created" : "20-DEC-2014",
-    "dct:description" : "The previous proprietary format has been replaced with a CVS format to take advantage of new off the shelf tools",
-    "dct:title" : "New timetable format"
-  }, {
-    "@id" : "ex:timetable-001-csv",
-    "@type" : "dcat:Distribution",
-    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
-    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
-    "dcat:mediaType" : "text/csv"
-  } ],
-  "@context" : {
-    "title" : {
-      "@id" : "http://purl.org/dc/terms/title",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "description" : {
-      "@id" : "http://purl.org/dc/terms/description",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "mediaType" : {
-      "@id" : "http://www.w3.org/ns/dcat#mediaType",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "created" : "http://purl.org/dc/terms/created",
-    "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
-    "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
-    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
-    "xsd" : "http://www.w3.org/2001/XMLSchema#",
-    "skos" : "http://www.w3.org/2004/02/skos/core#",
-    "biro" : "http://purl.org/spar/biro/",
-    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
-    "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
-    "dct" : "http://purl.org/dc/terms/",
-    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
-  }
-}
--->
-      
-      <p  id="ex5">Example 5 - Feedback:  A rating feedback provided by a data consumer. To describe possible values for rating, the data publisher used <a href="http://www.w3.org/TR/skos-primer/">SKOS </a>. </p>
+      <p  id="ex5">Example 5 - Feedback:&nbsp; A rating feedback provided by a
+        data consumer. To describe possible values for rating, the data
+        publisher used <a  href="http://www.w3.org/TR/skos-primer/">SKOS </a>.
+      </p>
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
@@ -2058,110 +1941,262 @@ ex:release-notes a duv:Usage;
       a skos:ConceptScheme ;
       skos:prefLabel "A set of values to rate datasets and distributions." ;
       .
-
-
-      <p  id="ex6">Example 6 - Data Usage:  A data consumer uses the distribution <code>stops-2015-05-05.csv</code> to produce a visualization of bus routes from MyCity. A route calculator service was used to generate the bus routes (<code>http://example.org/route-calculator</code>). The dataset publisher collects this usage and updates the dataset metadata with a new property <code>duv:hasUsage </code> .</p>
-      <pre  class="schema turtle">:stops-2015-05-05.csv
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : ":bad",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "bad"
+    }, {
+      "@language" : "pt",
+      "@value" : "ruim"
+    } ]
+  }, {
+    "@id" : ":excellent",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "excellent"
+    }, {
+      "@language" : "pt",
+      "@value" : "excelente"
+    } ]
+  }, {
+    "@id" : ":good",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "good"
+    }, {
+      "@language" : "pt",
+      "@value" : "boa"
+    } ]
+  }, {
+    "@id" : ":rating",
+    "@type" : "skos:ConceptScheme",
+    "prefLabel" : "A set of values to rate datasets and distributions."
+  }, {
+    "@id" : ":rating1",
+    "@type" : "duv:RatingFeedback",
+    "hasBody" : ":good",
+    "hasTarget" : ":stops-2015-05-05",
+    "motivatedBy" : "oa:assessing"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity",
+    "hasFeedback" : ":rating1:"
+  } ],
+  "@context" : {
+    "inScheme" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type" : "@id"
+    },
+    "prefLabel" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "hasFeedback" : {
+      "@id" : "http://www.w3.org/ns/duv#hasFeedback",
+      "@type" : "@id"
+    },
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "hasBody" : {
+      "@id" : "http://www.w3.org/ns/oa#hasBody",
+      "@type" : "@id"
+    },
+    "hasTarget" : {
+      "@id" : "http://www.w3.org/ns/oa#hasTarget",
+      "@type" : "@id"
+    },
+    "motivatedBy" : {
+      "@id" : "http://www.w3.org/ns/oa#motivatedBy",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+      
+      </pre>
+      <p  id="ex6">Example 6 -&nbsp;Data Usage:&nbsp; A data consumer uses the
+        distribution <code>stops-2015-05-05.csv</code> to produce a
+        visualization of bus routes from MyCity. A route calculator service was
+        used to generate the bus routes (<code>http://example.org/route-calculator</code>).
+        The dataset publisher collects this usage and updates the dataset
+        metadata with a new property <code>duv:hasUsage </code> .</p>
+      <pre  class="schema turtle">
+:stops-2015-05-05.csv
       a dcat:Distribution ;
-      dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
- bus=""  stops-2015-05-05.csv=""> ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt;   ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
-      dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
-      duv:hasUsage ex:route-vis ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
+      duv:hasUsage :route-vis ;
       .    
-<!--
 
-ex:timetable-001-csv
-      a dcat:Distribution;
-      dct:title "CSV distribution MyCity_busTimetable dataset."^^xsd:string ;
-      dct:description "CSV distribution of the bus timetable dataset of MyCity."^^xsd:string;
-      dcat:mediaType "text/csv"^^xsd:string; -->
-ex:route-vis a duv:Usage;
+:route-vis a duv:Usage;
       dct:title "Visualization of MyCity bus routes"^^xsd:string ;
       dct:created "2016-05-05"^^xsd:date ;
-      duv:hasUsageTool ex:route-calculator ;
+      duv:hasUsageTool :route-calculator ;
       duv:refersTo :stops-2015-05-05.csv ;
       .
 
-ex:route-calculator a duv:UsageTool ;
+:route-calculator a duv:UsageTool ;
       dct:title "Route Calculator"^^xsd:string ;
       dct:created "2016-03-04"^^xsd:date ;
-      dct:identifier <http:  example.org=""  route-calculator=""> ;
+      dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;   ;
       .
 
-</http:></http:></http:></pre>
+</pre>
       <pre  class="schema json-ld">{
+{
   "@graph" : [ {
-    "@id" : "ex:release-notes",
-    "@type" : "duv:Usage",
-    "created" : "20-DEC-2014",
-    "dct:title" : "New timetable format",
-    "hasUsageTool" : "ex:route-calculator"
-  }, {
-    "@id" : "ex:route-calculator",
+    "@id" : ":route-calculator",
     "@type" : "duv:UsageTool",
-    "created" : "15-FEB-2004",
-    "dct:title" : "Route Calculator",
-    "uri" : "http://example.org/route-calculator"
+    "created" : "2016-03-04",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "dct:title" : "Route Calculator"
   }, {
-    "@id" : "ex:timetable-001-csv",
+    "@id" : ":route-vis",
+    "@type" : "duv:Usage",
+    "created" : "2016-05-05",
+    "dct:title" : "Visualization of MyCity bus routes",
+    "hasUsageTool" : ":route-calculator",
+    "refersTo" : ":stops-2015-05-05.csv"
+  }, {
+    "@id" : ":stops-2015-05-05.csv",
     "@type" : "dcat:Distribution",
-    "dct:description" : "CSV distribution of the bus timetable dataset of MyCity.",
-    "dct:title" : "CSV distribution MyCity_busTimetable dataset.",
-    "dcat:mediaType" : "text/csv"
+    "description" : "CSV distribution of the bus stops dataset of MyCity",
+    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
+    "dct:title" : "CSV distribution of stops-2015-05-05 dataset",
+    "downloadURL" : "http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv",
+    "mediaType" : "text/csv;charset=UTF-8",
+    "hasUsage" : ":route-vis"
   } ],
   "@context" : {
     "title" : {
       "@id" : "http://purl.org/dc/terms/title",
       "@type" : "http://www.w3.org/2001/XMLSchema#string"
     },
-    "description" : {
-      "@id" : "http://purl.org/dc/terms/description",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
-    "mediaType" : {
-      "@id" : "http://www.w3.org/ns/dcat#mediaType",
-      "@type" : "http://www.w3.org/2001/XMLSchema#string"
-    },
     "created" : {
       "@id" : "http://purl.org/dc/terms/created",
       "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "downloadURL" : {
+      "@id" : "http://www.w3.org/ns/dcat#downloadURL",
+      "@type" : "@id"
+    },
+    "description" : "http://purl.org/dc/terms/description",
+    "mediaType" : "http://www.w3.org/ns/dcat#mediaType",
+    "license" : {
+      "@id" : "http://purl.org/dc/terms/license",
+      "@type" : "@id"
+    },
+    "hasUsage" : {
+      "@id" : "http://www.w3.org/ns/duv#hasUsage",
+      "@type" : "@id"
     },
     "hasUsageTool" : {
       "@id" : "http://www.w3.org/ns/duv#hasUsageTool",
       "@type" : "@id"
     },
-    "uri" : {
-      "@id" : "http://purl.org/dc/terms/uri",
+    "refersTo" : {
+      "@id" : "http://www.w3.org/ns/duv#refersTo",
       "@type" : "@id"
     },
+    "" : "http://example.org#",
     "duv" : "http://www.w3.org/ns/duv#",
-    "pav" : "http://pav-ontology.github.io/pav/",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
     "fabio" : "http://purl.org/spar/fabio/",
-    "cnt" : "http://www.w3.org/2011/content",
     "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
-    "dqv" : "http://www.w3.org/ns/dqv#",
     "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
     "skos" : "http://www.w3.org/2004/02/skos/core#",
     "biro" : "http://purl.org/spar/biro/",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
-    "frbr" : "http://purl.org/vocab/frbr/",
-    "cito" : "http://purl.org/spar/cito/",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
     "oa" : "http://www.w3.org/ns/oa#",
-    "ex" : "http://example.org#",
     "dct" : "http://purl.org/dc/terms/",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
     "dcat" : "http://www.w3.org/ns/dcat#",
-    "vann" : "http://purl.org/vocab/vann#",
-    "foaf" : "http://xmlns.com/foaf/0.1/",
-    "prism" : "http://prismstandard.org/namespaces/basic/2.2/"
+    "foaf" : "http://xmlns.com/foaf/0.1/"
   }
 }
+
       </pre>
     </section>
-          <section  id="conclusion"  class="informative"><br><script  type="application/javascript">var bodyKeypressCallbacks = {};
+    <section  id="conclusion"  class="informative"><br>
+      <script  type="application/javascript">var bodyKeypressCallbacks = {};
 
         /* a form like
         <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
@@ -2229,6 +2264,6 @@ ex:route-calculator a duv:UsageTool ;
             return bodyKeypressCallbacks[evt.which]();
           return true;
         });
-        </script>
-</section>
-</body></html>
+        </script> </section>
+  </body>
+</html>
