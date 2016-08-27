@@ -1,11 +1,10 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix biro:    <http://purl.org/spar/biro/> .
-@prefix cnt:     <http://www.w3.org/2011/content/> .
-@prefix fabio:   <http://purl.org/spar/fabio/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
 @prefix dct:     <http://purl.org/dc/terms/> .
 @prefix disco:   <http://rdf-vocabulary.ddialliance.org/discovery#> .
+@prefix pav:     <http://purl.org/pav/>
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix foaf:    <http://xmlns.com/foaf/0.1/> .
@@ -15,7 +14,6 @@
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix oa:      <http://www.w3.org/ns/oa#> .
 @prefix dcat:    <http://www.w3.org/ns/dcat#> .
-@prefix cito:    <http://purl.org/spar/cito#> .
 @prefix dqv:     <http://www.w3.org/ns/dqv#> .
 @prefix duv:        <http://www.w3.org/ns/duv#> .
 
@@ -63,6 +61,8 @@ duv:UserFeedback a owl:Class, rdfs:Class ;
 duv:hasFeedback a rdf:Property ;
     rdfs:label "has dataset feedback"@en ;
     rdfs:comment "User feedback associated with Dataset or distribution"@en ;
+    vann:usageNote "dcat:Dataset (subject) duv:hasFeedback (predicate) duv:UserFeedback (object)"@en ;
+    vann:usageNote "dcat:Distribution (subject) duv:hasFeedback (predicate) duv:UserFeedback (object)"@en ; 
 .
 
 duv:hasUsage a rdf:Property ;
@@ -76,12 +76,6 @@ duv:hasDistributor a rdf:Property ;
     vann:usageNote "dcat:Dataset (subject) duv:hasDistributor (predicate) foaf:Agent (object)"@en ;
     vann:usageNote "dcat:Distribution (subject) duv:hasDistributor (predicate) foaf:Agent (object)"@en .
 
-duv:hasProducer a rdf:Property ;
-    rdfs:label "has producer"@en ;
-    rdfs:comment "The producer is the organization that sponsored the author’s research and/or the organization that made the creation of the dataset possible, such as codifying and digitizing the data."@en ;
-    vann:usageNote "dcat:Dataset (subject) duv:hasProducer (predicate) foaf:Agent (object)"@en ;
-    vann:usageNote "dcat:Distribution (subject) duv:hasProducer (predicate) foaf:Agent (object)"@en .
-
 duv:hasRating a rdf:Property ;
     rdfs:label "has rating"@en ;
     rdfs:comment "Rating Feedback has rating opinion"@en ;
@@ -92,16 +86,6 @@ duv:hasUsageTool a rdf:Property ;
     rdfs:comment "Describes the tool that provides the Usage "@en ;
 .
     
-duv:performedBy a rdf:Property ;
-    rdfs:label "performed by"@en ;
-    rdfs:comment "Usage performed by agent"@en ;
-.
-
-duv:performs a rdf:Property ;
-    rdfs:label "performs"@en ;
-    rdfs:comment "Agent performs usage"@en ;
-.
-
 duv:refersTo a rdf:Property ;
     rdfs:label "refers to dataset"@en ;
     rdfs:comment "Dataset associated with Usage. "@en ;
