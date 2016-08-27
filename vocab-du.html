@@ -1342,7 +1342,7 @@ pre red { color: red;
     <section  id="examples">
       <h2> Examples</h2>
       <p> This section shows some examples to illustrate the application of the
-        Dataset Usage Vocabulary.</p>
+        Dataset Usage Vocabulary. The following examples are based on the <a href="https://www.w3.org/TR/dwbp/#basicExample">running example of the Data on the Web Best Practices</a> document.</p>
       <p  id="ex1"> Example 1 - Citation: Basic reference criteria for a
         dataset.</p>
       <pre  class="schema turtle">:stops-2015-05-05 
@@ -1481,7 +1481,22 @@ pre red { color: red;
 
        <p  id="ex2"> Example 2 - Citation: A memorandum that gives more insights about the dataset <code>stops-2015-05-05</code>.</p>
 
-      <pre  class="schema turtle">:stops-memorandum
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        biro:isReferencedBy :stops-memorandum ;
+        .
+
+:stops-memorandum
         a fabio:InstructionalWork ;
         frbr:realization :memo-a-expression ; 
         .
@@ -1578,7 +1593,23 @@ pre red { color: red;
 
       <p  id="ex2"> Example 3 - Citation: A research paper that has a reference to the dataset <code>stops-2015-05-05</code>.</p>
 
-      <pre  class="schema turtle">:stops-paper
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier <http:  dx.doi.org=""  10.0902=""  1975.16=""> ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        biro:isReferencedBy :stops-memorandum ;
+        biro:isReferencedBy :stops-paper ;
+        .
+
+:stops-paper
         a fabio:ResearchPaper ;
         frbr:realization :paper-a-expression ; 
         .
@@ -1743,6 +1774,8 @@ pre red { color: red;
         disco:fundedBy :bus-association-mycity ;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
+        duv:hasFeedback :comment1 ;
+        duv:hasFeedback :comment2 ;
         .
 
 :stops-2015-05-05.csv
@@ -1753,6 +1786,7 @@ pre red { color: red;
         dct:description "CSV distribution of the bus stops dataset of MyCity" ;
         dcat:mediaType "text/csv;charset=UTF-8" ;
         dct:license <http:  creativecommons.org=""  licenses=""  by-sa=""  3.0=""> ;
+        duv:hasFeedback :comment2 ;
         .
 <!--ex:timetable-001
       a dcat:Dataset;
@@ -1773,7 +1807,7 @@ ex:timetable-001-csv
 ex:comment1Content a cnt:ContentAsText ;
       cnt:chars "This timetable is missing route 3"^^xsd:string ;
       . -->
-ex:comment1
+:comment1
         a duv:UserFeedback ;
         oa:hasBody "This list is missing stop 3"^^xsd:string ;
         oa:hasTarget :stops-2015-05-05 ;
@@ -1781,7 +1815,7 @@ ex:comment1
         dct:creator ex:localresident ;
         .
 
-ex:comment2
+:comment2
         a duv:UserFeedback ;
         oa:hasTarget :stops-2015-05-05.csv;
         oa:hasBody "Are tab delimited formats also available?"^^xsd:string ;
@@ -1789,7 +1823,7 @@ ex:comment2
         dct:creator ex:localresident ;
         .
 
-ex:localresident
+:localresident
         a foaf:Person  ;
         foaf:Name "Alan Law"^^xsd:string  ;
         .
@@ -1975,7 +2009,58 @@ ex:release-notes a duv:Usage;
 }
 -->
       
-      <p  id="ex6">Example 5 - Data Usage:  A data consumer uses the distribution <code>stops-2015-05-05.csv</code> to produce a visualization of bus routes from MyCity. A route calculator service was used to generate the bus routes (<code>http://example.org/route-calculator</code>). The dataset publisher collects this usage and updates the dataset metadata with a new property <code>duv:hasUsage </code> .</p>
+      <p  id="ex5">Example 5 - Feedback:  A rating feedback provided by a data consumer. To describe possible values for rating, the data publisher used <a href="http://www.w3.org/TR/skos-primer/">SKOS </a>. </p>
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        duv:hasFeedback :rating1:
+
+        .
+
+:rating1
+        a duv:RatingFeedback ;
+        oa:hasBody :good ;
+        oa:hasTarget :stops-2015-05-05 ;
+        oa:motivatedBy oa:assessing;
+        .
+
+:good
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "good"@en ;
+      skos:prefLabel "boa"@pt
+      .
+
+:bad
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "bad"@en ;
+      skos:prefLabel "ruim"@pt
+      .
+
+:excellent
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "excellent"@en ;
+      skos:prefLabel "excelente"@pt
+      .
+
+:rating
+      a skos:ConceptScheme ;
+      skos:prefLabel "A set of values to rate datasets and distributions." ;
+      .
+
+
+      <p  id="ex6">Example 6 - Data Usage:  A data consumer uses the distribution <code>stops-2015-05-05.csv</code> to produce a visualization of bus routes from MyCity. A route calculator service was used to generate the bus routes (<code>http://example.org/route-calculator</code>). The dataset publisher collects this usage and updates the dataset metadata with a new property <code>duv:hasUsage </code> .</p>
       <pre  class="schema turtle">:stops-2015-05-05.csv
       a dcat:Distribution ;
       dcat:downloadURL <http:  data.mycity.example.com=""  transport=""  dataset=""
