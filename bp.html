@@ -3377,17 +3377,17 @@ In order to help developers, the transport agency offers a complete documentatio
   </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
-          <p>The URI of a dataset will always dereference to the dataset or redirect to information about it.</p>
+          <p>The URI of a resource will always dereference to the resource or redirect to information about it.</p>
         </section>
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
           <p>There are two scenarios to consider:</p><ol>
-            <li>the dataset has been deleted entirely and is no longer available via any route;</li>
-            <li>the dataset has been archived and is only available through a request to the archive.</li></ol>
+            <li>the resource has been deleted entirely and is no longer available via any route;</li>
+            <li>the resource has been archived and is only available through a request to the archive.</li></ol>
           <p>In the first of these cases, the server should be configured to respond with an HTTP Response code of <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11">410 (Gone)</a>. From the specification:</p>
           <blockquote>The 410 response is primarily intended to assist the task of Web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed.</blockquote>
           <p>In the second case, where data has been archived, it is more appropriate to redirect requests to a Web page giving information about the archive that holds the data and how a potential user can access it.</p>
-          <p>In both cases, the original URI continues to identify the dataset and leads to useful information, even though that dataset is no longer directly available.</p>
+          <p>In both cases, the original URI continues to identify the resource and leads to useful information, even though the data is no longer directly available.</p>
 
           <aside class="example" id="archiveExample">
           <p>John decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
