@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>DWBP Implementation Report</title>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+        specStatus: "WG-NOTE",
+        editors: [
+        {
+          name: "Bernadette Farias Lóscio",
+          company: "CIn - UFPE, Brazil",
+          companyURL: "http://www.cin.ufpe.br/"
+        }, {
+          name: "Caroline Burle",
+          company: "NIC.br, Brazil",
+          companyURL: "http://nic.br/",
+        }, {
+          name: "Newton Calegari",
+          url: "https://newtoncalegari.com.br",
+          company: "NIC.br, Brazil",
+          companyURL: "http://nic.br/",
+        }],
+        processVersion: 2017,
+        // edDraftURI: "http://some.github.repo",
+        shortName: "dwbp"
+      };
+    </script>
+    <script>
+    function createDatasetPortalsTable() {
+      datasetPortalsList = [{"ProvidedBy": "Phil Archer", "OrganizationName": "Activist", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://data.gg/", "Link": "https://data.gg/developers/health", "Reach": "", "ID": "D01", "Domain": "Healthcare", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1491790"},
+      {"ProvidedBy": "Bernadette", "OrganizationName": "Auckland War Memorial Museum Open Data", "DataCatalogue": "CKAN (datahub)", "Category": "Dataset", "OrganizationSite": "http://www.aucklandmuseum.com/", "Link": "https://datahub.io/en/dataset/am-collections-online", "Reach": "New Zeland", "ID": "D02", "Domain": "cultural heritage\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1527374"},
+      {"ProvidedBy": "Christophe Gu\u00e9ret", "OrganizationName": "BBC", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://bbc.co.uk", "Link": "http://shakespeare.acropolis.org.uk/", "Reach": "", "ID": "D03", "Domain": "Literature and Folklore", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490591"},
+      {"ProvidedBy": "Christophe Gu\u00e9ret", "OrganizationName": "BBC", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://bbc.co.uk", "Link": "http://acropolis.org.uk/", "Reach": "", "ID": "D04", "Domain": "Education", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490669"},
+      {"ProvidedBy": "Laura Manley", "OrganizationName": "Center for Open Data Enterprise", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://opendataimpactmap.org", "Link": "http://opendataimpactmap.org/map.html", "Reach": "Global", "ID": "D05", "Domain": "impact analysis", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1519086"},
+      {"ProvidedBy": "Jos\u00e9 Marcio Martins Junior", "OrganizationName": "Cetic.br", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://cetic.br/", "Link": "http:/cetic.br/tics/usuarios/2014/total-brasil/A/", "Reach": "Brazil", "ID": "D06", "Domain": "digital inclusion", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1639317"},
+      {"ProvidedBy": "Riccardo Albertoni", "OrganizationName": "CNR-IMATI", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://linkeddata.ge.imati.cnr.it/", "Link": "http://linkeddata.ge.imati.cnr.it/services.jsp", "Reach": "Europe", "ID": "D07", "Domain": "Environment", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490737"},
+      {"ProvidedBy": "Riccardo Albertoni", "OrganizationName": "CNR-IMATI", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://linkeddata.ge.imati.cnr.it/", "Link": "http://linkeddata.ge.imati.cnr.it/resource/data/dcat-void/EARTh20140604?output=text/turtle", "Reach": "Europe", "ID": "D08", "Domain": "Environment", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490737"},
+      {"ProvidedBy": "Annette", "OrganizationName": "Crunchbase", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://www.crunchbase.com", "Link": "http://www0.cs.ucl.ac.uk/staff/w.zhang/cb.html", "Reach": "", "ID": "D09", "Domain": "finance", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1496328"},
+      {"ProvidedBy": "Annette", "OrganizationName": "Crunchbase", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://www.crunchbase.com", "Link": "http://www0.cs.ucl.ac.uk/staff/w.zhang/cb.html", "Reach": "", "ID": "D10", "Domain": "finance", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1496328"},
+      {"ProvidedBy": "Christophe Gu\u00e9ret", "OrganizationName": "Data Archiving and Networked Services (DANS)", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://dans.knaw.nl", "Link": "https://easy.dans.knaw.nl/ui/home", "Reach": "", "ID": "D11", "Domain": "archive documents\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1527648"},
+      {"ProvidedBy": "Reinaldo Ferraz", "OrganizationName": "Data.gov", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://data.gov", "Link": "http://catalog.data.gov/dataset/consumer-complaint-database", "Reach": "USA", "ID": "D12", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Diogo Cortiz", "OrganizationName": "Data.gov.uk", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://data.gov.uk", "Link": "https://data.gov.uk/dataset/land-registry-monthly-price-paid-data", "Reach": "UK", "ID": "D13", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Williams Alc\u00e2ntara", "OrganizationName": "Data.gov.uk", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://data.gov.uk", "Link": "https://data.gov.uk/dataset/land-registry-monthly-price-paid-data", "Reach": "UK", "ID": "D14", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Williams Alc\u00e2ntara", "OrganizationName": "Data.gov.uk", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://data.gov.uk", "Link": "https://data.gov.uk/dataset/uk-civil-service-high-earners/", "Reach": "UK", "ID": "D15", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627072"},
+      {"ProvidedBy": "Phil Archer", "OrganizationName": "Datawheel, Deloitte", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "https://datausa.io/", "Link": "https://datausa.io/about/datasets/", "Reach": "USA", "ID": "D16", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Williams Alc\u00e2ntara", "OrganizationName": "DBpedia", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "https://dbpedia.org", "Link": "http://wiki.dbpedia.org/Downloads2015-10", "Reach": "Global", "ID": "D17", "Domain": "cross domain", "WBGThesaurus": ""},
+      {"ProvidedBy": "Bernadette loscio", "OrganizationName": "EMPREL", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://www.emprel.gov.br/", "Link": "http://dados.recife.pe.gov.br/dataset/monitoramento-das-areas-de-riscos", "Reach": "Brazil", "ID": "D18", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Antoine Isaac", "OrganizationName": "Europeana", "DataCatalogue": "proprietary", "Category": "Data Portal", "OrganizationSite": "http://www.europeana.eu/", "Link": "http://labs.europeana.eu/", "Reach": "Europe", "ID": "D19", "Domain": "cultural heritage\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1527374"},
+      {"ProvidedBy": "Milos Jovanovik", "OrganizationName": "Faculty of Computer Science and Engineering - Skopje, Macedonia", "DataCatalogue": "CKAN (datahub)", "Category": "Dataset", "OrganizationSite": "http://finki.ukim.mk/en", "Link": "https://datahub.io/dataset/linked-drugs", "Reach": "", "ID": "D20", "Domain": "pharmaceutical consumption", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1850134"},
+      {"ProvidedBy": "Phil Archer", "OrganizationName": "FAO", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://ring.ciard.net/", "Link": "http://ring.ciard.net/chinese-crop-germplasm-information-system-cgris", "Reach": "Global", "ID": "D21", "Domain": "Agriculture and Rural Development", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490815"},
+      {"ProvidedBy": "Martin Alvarez-Espinar", "OrganizationName": "Gijon City Council", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.gijon.es", "Link": "http://transparencia.gijon.es/risp_datasets/show/busgijontr", "Reach": "Spain", "ID": "D22", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627080"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "no", "Category": "Data Portal", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/api/exportacao", "Reach": "Brazil", "ID": "D23", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627075"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Data Portal", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/duvidas-frequentes", "Reach": "Brazil", "ID": "D24", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627076"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Data Portal", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/api/licenca-de-uso", "Reach": "Brazil", "ID": "D25", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627077"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/pessoal/servidores-ativos/", "Reach": "Brazil", "ID": "D26", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/api/pessoal/servidores-ativos/lista-de-servidores", "Reach": "Brazil", "ID": "D27", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627072"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/despesa/json-despesa-acao/", "Reach": "Brazil", "ID": "D28", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627073"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/download-de-dados/pessoal/servidor-ativo", "Reach": "Brazil", "ID": "D29", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627074"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/despesa/json-despesa-acao/", "Reach": "Brazil", "ID": "D30", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627078"},
+      {"ProvidedBy": "F\u00e1bio Rodrigues", "OrganizationName": "Governo de Alagoas", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://transparencia.al.gov.br", "Link": "http://transparencia.al.gov.br/portal/download-de-dados/despesas/comparativo-de-despesa", "Reach": "Brazil", "ID": "D31", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627079"},
+      {"ProvidedBy": "Laufer", "OrganizationName": "IGN - Institut National de L\u00ednformation G\u00e9ographique et Foresti\u00e9re", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://data.ign.fr", "Link": "http://data.ign.fr/set/ignf/20140409.trig\n", "Reach": "France", "ID": "D32", "Domain": "Geographic data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627079"},
+      {"ProvidedBy": "Laufer", "OrganizationName": "IGN - Institut National de L\u00ednformation G\u00e9ographique et Foresti\u00e9re", "DataCatalogue": "no", "Category": "SPARQL endpoint\n", "OrganizationSite": "http://data.ign.fr", "Link": "http://data.ign.fr/endpoint.html\n", "Reach": "France", "ID": "D33", "Domain": "Geographic data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627079"},
+      {"ProvidedBy": "Annette", "OrganizationName": "Kaggle", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://www.kaggle.com", "Link": "https://www.kaggle.com/txtrouble/carbon-emissions", "Reach": "", "ID": "D34", "Domain": "Environment", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490737"},
+      {"ProvidedBy": "Annette", "OrganizationName": "Kaggle", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "https://www.kaggle.com", "Link": "https://www.kaggle.com/njitram/d/hugomathien/soccer/exploring-the-incident-data/comments", "Reach": "", "ID": "D35", "Domain": "sports", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1512923"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/contato/", "Reach": "Brazil", "ID": "D36", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627063"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/compras-publicas-do-governo-federal", "Reach": "Brazil", "ID": "D37", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627064"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/dominios-gov-br", "Reach": "Brazil", "ID": "D38", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627065"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/dominios-gov-br/resource/e2ec4c92-bad8-4739-a9e3-42dad967c2cb", "Reach": "Brazil", "ID": "D39", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627066"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/imoveis-dominiais-da-uniao", "Reach": "Brazil", "ID": "D40", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627067"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/ocorrencias-aeronauticas-da-aviacao-civil-brasileira", "Reach": "Brazil", "ID": "D41", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627068"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/orcamento-federal", "Reach": "Brazil", "ID": "D42", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627069"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/promocao-e-apoio-a-eventos-nacionais-de-turismo", "Reach": "Brazil", "ID": "D43", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627070"},
+      {"ProvidedBy": "Jefferson Rafael Silva", "OrganizationName": "Minist\u00e9rio do Planejamento, Desenvolvimento e Gest\u00e3o", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://dados.gov.br/", "Link": "http://dados.gov.br/dataset/siconv", "Reach": "Brazil", "ID": "D44", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Deirdre Lee", "OrganizationName": "National Transport Authority", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "https://data.dublinked.ie/dataset", "Link": "https://data.dublinked.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail", "Reach": "Ireland", "ID": "D45", "Domain": "Transport", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1495827"},
+      {"ProvidedBy": "Annette", "OrganizationName": "NCBI Consensus CDS database", "DataCatalogue": "proprietary", "Category": "Data Portal", "OrganizationSite": "https://www.ncbi.nlm.nih.gov/projects/CCDS/CcdsBrowse.cgi?REQUEST=PAST_ANNOUNCEMENTS", "Link": "https://www.ncbi.nlm.nih.gov/projects/CCDS/CcdsBrowse.cgi?REQUEST=PAST_ANNOUNCEMENTS", "Reach": "", "ID": "D46", "Domain": "Biological data", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490923"},
+      {"ProvidedBy": "Annette", "OrganizationName": "NOAA data catalog", "DataCatalogue": "CKAN", "Category": "Data Portal", "OrganizationSite": "http://data.noaa.gov", "Link": "http://data.noaa.gov", "Reach": "", "ID": "D47", "Domain": "Environment", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490737"},
+      {"ProvidedBy": "Williams Alc\u00e2ntara", "OrganizationName": "OpenStreetMap", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "https://www.openstreetmap.org/", "Link": "http://wiki.openstreetmap.org/wiki/Planet.osm", "Reach": "Global", "ID": "D48", "Domain": "Geographic data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627079"},
+      {"ProvidedBy": "Deirdre Lee", "OrganizationName": "Ordnance Survey Ireland & ADAPT, Trinity College Dublin", "DataCatalogue": "CKAN", "Category": "Dataset", "OrganizationSite": "http://data.geohive.ie/", "Link": "https://data.gov.ie/dataset/osi-national-statutory-boundary-linked-data", "Reach": "Ireland", "ID": "D49", "Domain": "Geographic data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627079"},
+      {"ProvidedBy": "Eric Stephan", "OrganizationName": "Pacific Northwest National Laboratory", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "https://rdesc.org/", "Link": "https://rdesc.org/metadata.php?uri=http://rdesc.org/arm/datastream/sgpswatsE25.b1", "Reach": "", "ID": "D50", "Domain": "scientific research\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1543184"},
+      {"ProvidedBy": "Newton Calegari", "OrganizationName": "Schema.org", "DataCatalogue": "no", "Category": "Vocabulary", "OrganizationSite": "http://schema.org", "Link": "http://schema.org/Organization", "Reach": "Global", "ID": "D51", "Domain": "cross domain", "WBGThesaurus": ""},
+      {"ProvidedBy": "Gregor Boyd", "OrganizationName": "Scottish Government", "DataCatalogue": "PublishMyData", "Category": "Dataset", "OrganizationSite": "http://statistics.gov.scot", "Link": "http://statistics.gov.scot/data/carbon-footprint", "Reach": "UK", "ID": "D52", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "Bill Roberts", "OrganizationName": "Scottish Governmet", "DataCatalogue": "PublishMyData", "Category": "Dataset", "OrganizationSite": "http://statistics.gov.scot", "Link": "http://statistics.gov.scot/data/age-at-first-birth", "Reach": "UK", "ID": "D53", "Domain": "Government data\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1627071"},
+      {"ProvidedBy": "", "OrganizationName": "", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D54", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "Eric Stephan", "OrganizationName": "US Department of Energy Atmospheric Radiation Measurement (ARM) Data Archive,  Microwave Radiometer Dataset", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://www.archive.arm.gov", "Link": "http://www.archive.arm.gov/arm/Thumbnail2.jsp?datastream=sgpmwrlosB5.b1&startDate=04/21/2009&varName=vap\n", "Reach": "", "ID": "D55", "Domain": "Environment", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490737"},
+      {"ProvidedBy": "Christophe Gu\u00e9ret", "OrganizationName": "Wellcome Trust", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://wellcomelibrary.org/", "Link": "http://wellcomelibrary.org/resource/collections/", "Reach": "", "ID": "D56", "Domain": "digital libraries\n", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1639346"},
+      {"ProvidedBy": "Newton Calegari", "OrganizationName": "Wikidata", "DataCatalogue": "no", "Category": "Dataset", "OrganizationSite": "http://wikidata.org", "Link": "https://www.wikidata.org/wiki/Wikidata:Data_access", "Reach": "Global", "ID": "D57", "Domain": "cross domain", "WBGThesaurus": ""},
+      {"ProvidedBy": "Bernadette", "OrganizationName": "World Bank", "DataCatalogue": "proprietary", "Category": "Dataset", "OrganizationSite": "http://data.worldbank.org/", "Link": "http://data.worldbank.org/data-catalog/ed-stats", "Reach": "Global", "ID": "D58", "Domain": "Education", "WBGThesaurus": "http://vocabulary.worldbank.org/thesaurus/1490669"},
+      {"ProvidedBy": "", "OrganizationName": "MusicBrainz", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D59", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "", "OrganizationName": "Bio2RDF", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D60", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "", "OrganizationName": "Geonames", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D61", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "", "OrganizationName": "Imdb", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D62", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "", "OrganizationName": "RKBExplorer", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D63", "Domain": "", "WBGThesaurus": ""},
+      {"ProvidedBy": "", "OrganizationName": "Yago", "DataCatalogue": "", "Category": "", "OrganizationSite": "", "Link": "", "Reach": "", "ID": "D64", "Domain": "", "WBGThesaurus": ""}]
+
+      datasetPortalsTable = document.getElementById('table-datasetportals');
+      var tbody = datasetPortalsTable.getElementsByTagName('tbody')[0];
+      for (var i = 0; i < datasetPortalsList.length; i++) {
+        var obj = datasetPortalsList[i];
+
+        var row = tbody.insertRow(tbody.rows.length); // new row for the table
+        var orgId = row.insertCell(0);                // cell for organization id
+        var orgName = row.insertCell(1);              // cell for organization name
+        var orgSite = row.insertCell(2);              // cell for organization site
+        var evidenceURI = row.insertCell(3);
+        var evidenceCategory = row.insertCell(4);
+        var evidenceDomain = row.insertCell(5);
+        var wbgThesaurus = row.insertCell(6);
+        var dataCatalogue = row.insertCell(7);
+        var evidenceReach = row.insertCell(8);
+        var providedBy = row.insertCell(9);
+
+        orgId.innerHTML = obj['ID'];
+        orgId.id = obj['ID'];
+        orgName.innerHTML = obj['OrganizationName'];
+        orgSite.innerHTML = "<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" ;
+        evidenceURI.innerHTML = "<a href="+obj['Link']+">"+obj['Link']+"</a>" ;
+        evidenceCategory.innerHTML = obj['Category'];
+        evidenceDomain.innerHTML = obj['Domain'];
+        wbgThesaurus.innerHTML = obj['WBGThesaurus'];
+        dataCatalogue.innerHTML = obj['DataCatalogue'];
+        evidenceReach.innerHTML = obj['Reach'];
+        providedBy.innerHTML = obj['ProvidedBy'];
+      }
+}
+    </script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This is required.
+      </p>
+    </section>
+    <section id='sotd'>
+      <p>
+        This is required.
+      </p>
+    </section>
+    <section>
+      <h2>Introduction</h2>
+      <p>One of the main goals of the Data on the Web Best Practices ([DWBP]) is to facilitate interaction between publishers and consumers of data on the Web. A set of 35 Data on the Web Best Practices was created to cover different aspects related to data publishing and consumption, such as metadata, data licenses, data provenance, data quality, data versioning, data identifiers, data formats, data vocabularies, data access and APIs, data preservation, feedback, data enrichment, and republication. To show that the DWBP are implementable and broadly adopted and referenced, we adopted the following strategies:</p>
+      <ol>
+        <li>We have documented the existence of multiple evidences to show that a given best practice has been adopted by renewed organizations when publishing or consuming data on the Web. An evidence can be of different types, including: datasets; data portals; documents; references; guidelines; good practices.</li>
+        <li>We have shown that each one of the proposed DWBP is implementable. Therefore, we have documented the existence of at least two implementations demonstrating the feasibility of the DWBP.</li>
+      </ol>
+      <p>Evidence or implementation should cover one or more of the DWBP, regardless the strategy. During the implementation phase we looked for existing evidences as well as new implementations. This information was gathered as follows:</p>
+      <ul>
+        <li><a href="http://w3c.br/form-dwbp/">DWBP evidence form</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1l_imkvTjIRizyQl23HnBP2FFzO_cx4Uvm2i7q5KbpCM/edit#gid=0">DWBP template form</a></li>
+      </ul>
+      <p>This report summarizes both surveys results and implementation details.</p>
+      <section>
+        <h3>Methodology</h3>
+        <p>We considered the following categories to collect evidence for the DWBP:</p>
+        <p><strong>Datasets</strong>, <strong>Data Portals</strong> and <strong>Vocabularies</strong>:</p>
+        <p>This is the main category and concerns datasets, data portals and vocabularies available on the Web. The idea is to show that the DWBP were already considered by organizations responsible for publishing the data.<br>
+        A dataset may be available on data catalogues and data portals may be implemented using technologies such as CKAN and Socrata, among others. In some cases, proprietary technologies were used to make the data available on the Web.<br>
+        We also considered vocabularies as an evidence for the DWBP. It is important to note that publishing a vocabulary can be considered as specific case of publishing data on the Web.</p>
+        <p><strong>Documents</strong> and <strong>References</strong>:</p>
+        <p>Besides the Datasets, Data Portals and Vocabularies we also considered other types of evidence that could show the relevance of a specific Best Practice.<br>
+        This category includes web sites, web pages, blogs, published papers, APIs documentation, wikis, etc, that show the relevance of the DWBP.<br>
+        This category includes web sites, web pages, blogs, published papers, APIs documentation, wikis, etc, that show the relevance of the DWBP.</p>
+        <p><strong>Guidelines</strong> and <strong>Good Practices</strong>:</p>
+        <p>Finally, we also considered Guidelines and Good Practices, which contain links to public consultation that reference the DWBP.</p>
+        <p>Considering the categories above we used the following methodology to collect evidences for the DWBP:</p>
+        <ol>
+        <li>A standard email was sent to several organizations around the world in order to collect evidence.</li>
+        <li>A review of the evidence was made in order to check which DWBP should have more evidence.</li>
+        <li>The comments were reviewed among the evidence gathered.</li>
+        <li>The Implementation Report was elaborated.</li></ol>
+        <p>One of our main concerns when collecting evidences was to have evidences from renewed organizations as well as high profile datasets worldwide. Regarding that, we collected evidence from different types of organizations, <!-- which can be seen at XXX --> in this document.</p>
+        <p>For some of the DWBP, such as Data Preservation, Real-time access, and Version history, was more difficult to find evidence on the form of datasets and data portals.</p>
+        <p>In the case of data Preservation, we received the comment saying that "archiving process has not been developed". About providing real-time access was said that "Generally the data is statistical in nature and goes through a slower collection and processing cycle".</p>
+        <p>On the other hand, most of the DWBP such as Metadata, Reuse vocabularies - preferably standardized ones, Data Formats, License, Data Identifiers, APIs, Feedback, and Data Enrichment.</p>
+        <p>In the case of Metadata we received a comment explaining that "A DCAT profile is provided in order to document the metadata". About  Data Formats, was said for instance that "Currency values etc are provided together with units." and "Data is available as RDF in a number of serialisation formats." Considering the reuse of vocabularies, we received a comment saying that "A number of standard vocabularies are re-used, notably DCAT, RDF Data Cube, DCMI Terms." In the case of Data Identifiers was mentioned that "The dataset contents are provided as Linked Data, with (reasonably) persistent identifiers for geographical areas, time intervals and other statistical dimension values." Regarding License was said that "The license is provided in a machine readable form via the property and in human readable form "The license is provided in a machine readable form via the property and in human readable form."</p>
+
+      </section>
+      <section>
+        <h3>Meeting the exit criteria</h3>
+        <p>As noted in the DWBP charter, to move on to Proposed Recommendation, evidence will be adduced in order to demonstrate that each of the best practices has been recommended or adopted in at least two environments, such as data portals and formal policies. Evidence of implementation was gathered from existing datasets, which have already implemented the proposed best practices, as well as from national or sector-specific guidelines that reference the DWBP.</p>
+      </section>
+    </section>
+    <section>
+      <h2>List of evidence</h2>
+      <p>The following lists the reported evidence, the type of evidence and the supported DWBP.</p>
+      <section>
+        <h3>BP x Evidence</h3>
+      </section>
+      <section>
+        <h3>List of Evidence</h3>
+        <p>The following list shows organizations and implementers that contributed with DWBP evidence.</p>
+        <!-- this table is auto-generated via javascript -->
+        <table id="table-datasetportals">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Organization Name</th>
+              <th>Organization Site</th>
+              <th>Evidence's URI</th>
+              <th>Category</th>
+              <th>Domain</th>
+              <th>WBG Thesaurus</th>
+              <th>Data Catalogue?</th>
+              <th>Reach</th>
+              <th>Provided by</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>Guidelines and Good Practices</h3>
+      </section>
+
+    </section>
+    <section>
+      <h2>List of Implementations</h2>
+      <p>The following lists the implementations and the supported the DWBP. Considering that a given implementation doesn’t need to cover the complete set of the DWBP, we proposed some publication scenarios. Each scenario covers one or more best practices and also helps to show the application of the DWBP in more specific situations, as described below:</p>
+    </section>
+    <script>
+    // script calls
+    createDatasetPortalsTable();
+
+    </script>
+  </body>
+</html>
