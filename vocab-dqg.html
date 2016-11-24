@@ -21,7 +21,7 @@
                 // subtitle   :  "an excellent document",
 
                 // if you wish the publication date to be other than today, set this
-                publishDate : "2016-08-30",
+                publishDate : "2016-11-25",
                 // prEnd:        "2014-01-12",
                 // lcEnd:        "2013-11-26", 
                 // crEnd:        "2013-11-26",
@@ -32,11 +32,11 @@
 
                 // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
                 // and its maturity status
-                previousPublishDate : "2015-05-19",
+                previousPublishDate : "2016-08-30",
                 //previousPublishDate:  "2013-08-01",
-                previousMaturity : "WD",
+                previousMaturity : "WG-NOTE",
                 //previousMaturity:  "CR",
-                previousURI : "https://www.w3.org/TR/2016/WD-vocab-dqv-20160519/",
+                previousURI : "https://www.w3.org/TR/2016/NOTE-vocab-dqv-20160830/",
 
                 // if there a publicly available Editor's Draft, this is the link
                 edDraftURI : "http://w3c.github.io/dwbp/vocab-dqg.html",
@@ -1677,7 +1677,7 @@ SubObjectPropertyOf(
     a prov:SoftwareAgent ;   
     rdfs:label "A quality assessment service"^^xsd:string .
     # Further details about quality service/software can be provided, for example,
-    # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
+    # deploying  vocabularies such as Dataset Usage Vocabulary (DUV), Dublin Core or ADMS.SW
 
 # :myQualityChecking is the activity that has generated :myQualityMetadata from 
 # :myDatasetDistribution
@@ -1727,7 +1727,7 @@ SubObjectPropertyOf(
     a prov:SoftwareAgent ;   
     rdfs:label "A quality assessment service"^^xsd:string .
     # Further details about quality service/software can be provided, for example,
-    # deploying  vocabularies such as Data Usage Vocabulary (DUV), Dublin Core or ADMS.SW
+    # deploying  vocabularies such as Dataset Usage Vocabulary (DUV), Dublin Core or ADMS.SW
 
 # :myQualityChecking is the activity that has generated :myMeasurement from :myDatasetDistribution
 
@@ -2765,9 +2765,7 @@ iso:accessibility a  dqv:Dimension ;
                         <tr>
                             <th rowspan="4">Representational dimensions</th>
                             <td>Representational-conciseness</td>
-                            <td>Representational-conciseness refers to the representation
-                                of the data, which is compact and well formatted on the one hand
-                                and clear and complete on the other hand.</td>
+                            <td>Representational-conciseness refers to the representation of the data, which is compact and well formatted.</td>
                         </tr>
                         <tr>
                             <td>Interoperability</td>
@@ -3022,18 +3020,12 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                     <h2>Change history</h2>
                     <p>
                         Changes since the <a
-                            href="https://www.w3.org/TR/2016/WD-vocab-dqv-20160519/">previous
+                            href="https://www.w3.org/TR/2016/NOTE-vocab-dqv-20160830/">previous
                             version</a> include:
                     </p>
                     <ul>
-                        <li>Refinement of Introduction section.</li> 
-                        <li>Review of Vocabulary Specification section: further descriptions for properties (e.g., dqv:hasQualityMetadata, dqv:hasQualityAnnotation and dcterms:conformsTo), usage notes and references to examples have been included.</li>
-                        <li>New section titled "Note on documenting resources expressed with DQV".</li>
-                        <li>Refinement of example 6.6: the example has been made consistent with the Web Annotation Vocabulary Candidate Recommendation.</li>
-                        <li>Refinement of example 6.10: the example has been simplified, the subject and object datasets have been distinguished.</li>
-                        <li>New appendix for compatibility with RDF Data Cube.</li>
-                        <li>Refinement of the definition for dqv:qualityAssessment.</li>
-			<li>New appendix on parameters, and re-factoring of the section on expressing linkset quality.</li>
+                        <li>Changed every occurences of "Data Usage Vocabulary" into "Dataset Usage Vocabulary".</li> 
+                        <li>Revised the correspondences between quality dimensions in ISO/IEC 25012 and Zaveri et al. according to the latest feedback.</li>
                     </ul>
                 </section>
         <section id="mapping-ISOZaveri" class="appendix">
@@ -3102,15 +3094,15 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                             <td>skos:exactMatch</td>
                         </tr>
                 <!-- Added according to zaveri suggetions -->
-                        <tr>
+                        <!--tr>
                             <td>Interpretability</td>
                             <td>Understandability</td>
                             <td>skos:relatedMatch</td>
-                        </tr>
+                        </tr-->
                         <tr>
                             <td>Versatility</td>
                             <td>Understandability</td>
-                            <td>skos:broadMatch</td>
+                            <td>skos:relatedMatch</td>
                         </tr>
                         <tr>
                             <td>Syntactic Validity</td>
@@ -3152,6 +3144,22 @@ ldqd:trustworthiness skos:narrowMatch iso:credibility .
                             <td>Compliance</td>
                             <td>skos:broadMatch</td>
                         </tr>
+                        <tr>
+                            <td>Conciseness</td>
+                            <td>Accuracy</td>
+                            <td>skos:relatedMatch</td>
+                        </tr>
+                        <tr>
+                            <td>Conciseness</td>
+                            <td>Consistency</td>
+                            <td>skos:relatedMatch</td>
+                        </tr>
+                        <!--tr>
+                            <td>Conciseness</td>
+                            <td>Completeness</td>
+                            <td>skos:relatedMatch</td>
+                        </tr-->
+                
              </tbody>
 
              </table>
