@@ -124,7 +124,82 @@
         providedBy.innerHTML = obj['ProvidedBy'];
       }
 }
+
+function createBpEvidenceTable(){
+  bpEvidenceJson = [
+    {"bp": "BP1", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D18", "D19", "D20", "D21", "D22", "D31", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D56", "D57", "D58"]},
+    {"bp": "BP2", "evidence": ["D02", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D23", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D57", "D58"]},
+    {"bp": "BP3", "evidence": ["D04", "D06", "D08", "D20", "D21", "D31", "D45", "D49", "D50", "D52"]},
+    {"bp": "BP4", "evidence": ["D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D17", "D20", "D22", "D25", "D38", "D45", "D49", "D51", "D52", "D53", "D56", "D57"]},
+    {"bp": "BP5", "evidence": ["D01", "D06", "D11", "D12", "D13", "D16", "D20", "D21", "D24", "D38", "D52", "D53"]},
+    {"bp": "BP6", "evidence": ["D06", "D08", "D13", "D16", "D49", "D50", "D52", "D55"]},
+    {"bp": "BP7", "evidence": ["D01", "D02", "D05", "D08", "D12", "D13", "D17", "D20", "D41", "D45", "D46", "D47", "D50", "D51"]},
+    {"bp": "BP8", "evidence": ["D12", "D13", "D17", "D20", "D45", "D46"]},
+    {"bp": "BP9", "evidence": ["D03", "D04", "D05", "D11", "D12", "D13", "D14", "D17", "D20", "D21", "D22", "D41", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
+    {"bp": "BP10", "evidence": ["D02", "D03", "D04", "D05", "D06", "D08", "D11", "D13", "D14", "D16", "D17", "D19", "D20", "D21", "D37", "D49", "D51", "D52", "D53", "D56"]},
+    {"bp": "BP11", "evidence": ["D06", "D11", "D13", "D14", "D17", "D20", "D32"]},
+    {"bp": "BP12", "evidence": ["D01", "D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D16", "D17", "D19", "D20", "D21", "D22", "D28", "D30", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
+    {"bp": "BP13", "evidence": ["D03", "D04", "D06", "D08", "D11", "D18", "D20", "D21", "D51", "D53", "D56", "D57"]},
+    {"bp": "BP14", "evidence": ["D01", "D02", "D03", "D04", "D05", "D06", "D12", "D13", "D14", "D17", "D19", "D22", "D23", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
+    {"bp": "BP15", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D42", "D49", "D50", "D51", "D52", "D53", "D56"]},
+    {"bp": "BP16", "evidence": ["D03", "D04", "D06", "D11", "D16", "D17", "D19", "D20", "D21", "D37", "D45", "D49", "D50", "D51", "D52", "D53", "D56"]},
+    {"bp": "BP17", "evidence": ["D01", "D05", "D11", "D13", "D17", "D18", "D20", "D44", "D48", "D49", "D52", "D53", "D57", "D58"]},
+    {"bp": "BP18", "evidence": ["D03", "D04", "D05", "D11", "D13", "D16", "D17", "D29", "D33", "D44", "D45", "D49", "D52", "D53", "D56"]},
+    {"bp": "BP19", "evidence": ["D03", "D04", "D08", "D13", "D17", "D19", "D20", "D21", "D49", "D51", "D53", "D56", "D57", "D58"]},
+    {"bp": "BP20", "evidence": ["D05", "D17", "D22", "D45"]},
+    {"bp": "BP21", "evidence": ["D01", "D05", "D06", "D11", "D12", "D13", "D18", "D19", "D21", "D22", "D38", "D45", "D49", "D51", "D53", "D58"]},
+    {"bp": "BP22", "evidence": ["D05", "D06", "D43", "D45", "D55", "D57"]},
+    {"bp": "BP23", "evidence": ["D02", "D03", "D04", "D11", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D28", "D44", "D45", "D48", "D49", "D52", "D53", "D56", "D57", "D58"]},
+    {"bp": "BP24", "evidence": ["D03", "D04", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D44", "D45", "D49", "D53", "D56"]},
+    {"bp": "BP25", "evidence": ["D02", "D07", "D12", "D13", "D14", "D15", "D16", "D19", "D21", "D22", "D27", "D37", "D45", "D48", "D49", "D52", "D53", "D57", "D58"]},
+    {"bp": "BP26", "evidence": ["D03", "D04", "D11", "D14", "D15", "D21", "D45", "D53", "D56"]},
+    {"bp": "BP27", "evidence": ["D04", "D11"]},
+    {"bp": "BP28", "evidence": ["D11"]},
+    {"bp": "BP29", "evidence": ["D01", "D02", "D04", "D05", "D06", "D12", "D13", "D14", "D15", "D19", "D20", "D21", "D36", "D45", "D51", "D52", "D53", "D57", "D58"]},
+    {"bp": "BP30", "evidence": ["D05", "D13", "D14", "D15", "D20", "D34", "D51"]},
+    {"bp": "BP31", "evidence": ["D04", "D05", "D16", "D19", "D20", "D49"]},
+    {"bp": "BP32", "evidence": ["D01", "D02", "D05", "D16", "D17", "D19", "D20", "D26", "D45", "D52", "D53", "D56", "D58"]},
+    {"bp": "BP33", "evidence": ["D06", "D19", "D35", "D45", "D49", "D52"]},
+    {"bp": "BP34", "evidence": ["D04", "D05", "D09", "D11", "D16", "D20", "D40", "D45", "D49", "D52", "D56", "D57"]},
+    {"bp": "BP35", "evidence": ["D01", "D04", "D06", "D11", "D16", "D19", "D20", "D21", "D38", "D45", "D49", "D52", "D58"]}];
+
+    bpEvidenceTable = document.getElementById('table-bp-evidence');
+    var tbody = bpEvidenceTable.getElementsByTagName('tbody')[0];
+    var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
+    for (var i = 0; i < bpEvidenceJson.length; i++) {
+      obj = bpEvidenceJson[i];
+      var row = tbody.insertRow(tbody.rows.length); // new row for the table
+
+      newCell(obj.bp);
+      var list = "";
+      obj.evidence.forEach(function(ev) {
+        var d = "<a href='#"+ev+"'>"+ev+"</a>, ";
+        list += d;
+      })
+      list = list.slice(0, -2);
+      newCell(list);
+      newCell(obj.evidence.length);
+    }
+}
     </script>
+    <style type="text/css">
+      .table-container {
+        overflow: auto;
+      }
+
+      .dwbp-ir-table {
+        border: 1px solid #CCC;
+        border-spacing: 0px;
+        border-collapse: collapse;;
+      }
+      .dwbp-ir-table td, .dwbp-ir-table th {
+        padding: 5px;
+        border: 1px solid #AAA;
+      }
+      .dwbp-ir-table tbody tr:nth-child(odd) {
+       background-color: #EDEDED;
+     }
+    </style>
   </head>
   <body>
     <section id='abstract'>
@@ -186,15 +261,27 @@
       <p>The following lists the reported evidence, the type of evidence and the supported DWBP.</p>
       <section>
         <h3>BP x Evidence</h3>
+        <table id="table-bp-evidence" class="dwbp-ir-table">
+          <thead>
+            <tr>
+              <th>BP</th>
+              <th>Evidence</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </section>
       <section>
         <h3>List of Evidence</h3>
         <p>The following list shows organizations and implementers that contributed with DWBP evidence.</p>
         <!-- this table is auto-generated via javascript -->
-        <table id="table-datasetportals">
+        <div class="table-container">
+          <table id="table-datasetportals" class="dwbp-ir-table">
           <thead>
             <tr>
-              <th>#</th>
+              <th>ID</th>
               <th>Organization Name</th>
               <th>Organization Site</th>
               <th>Evidence's URI</th>
@@ -209,6 +296,7 @@
           <tbody>
           </tbody>
         </table>
+        </div>
       </section>
       <section>
         <h3>Guidelines and Good Practices</h3>
@@ -222,6 +310,7 @@
     <script>
     // script calls
     createDatasetPortalsTable();
+    createBpEvidenceTable();
 
     </script>
   </body>
