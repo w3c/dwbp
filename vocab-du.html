@@ -1349,14 +1349,14 @@ pre red { color: red;
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
         dct:creator :bus-association-mycity ;
         duv:hasDistributor :transport-agency-mycity ; 
         disco:fundedBy :bus-association-mycity ;
-        dct:created "2015-05-05"^^xsd:date ;
+        dct:created "2015-05-05"^^xsd:date 
         .
       </pre>
       <pre  class="schema json-ld">{
@@ -1431,7 +1431,7 @@ pre red { color: red;
       <pre  class="schema turtle">      :stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;   ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI    ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1440,22 +1440,22 @@ pre red { color: red;
         disco:fundedBy :bus-association-mycity ;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
-        biro:isReferencedBy :stops-memorandum ;
+        biro:isReferencedBy :stops-memorandum 
         .
 
 :stops-memorandum
         a fabio:InstructionalWork ;
-        frbr:realization :memo-a-expression ; 
+        frbr:realization :memo-a-expression  
         .
 
 :memo-a-expression a fabio:PolicyDocument ;
-        frbr:part :reference-to-stops-dataset ;
+        frbr:part :reference-to-stops-dataset 
         .
 
 :reference-to-stops-dataset
         a biro:BibliographicReference;
         dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string;
-        biro:references :stops-2015-05-05 ;
+        biro:references :stops-2015-05-05 
         .   </pre>
       <pre  class="schema json-ld">      
 {
@@ -1570,7 +1570,7 @@ pre red { color: red;
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI  ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1580,22 +1580,22 @@ pre red { color: red;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
         biro:isReferencedBy :stops-memorandum ;
-        biro:isReferencedBy :stops-paper ;
+        biro:isReferencedBy :stops-paper 
         .
 
 :stops-paper
         a fabio:ResearchPaper ;
-        frbr:realization :paper-a-expression ; 
+        frbr:realization :paper-a-expression  
         .
 
 :paper-a-expression a fabio:JournalArticle ;
-        frbr:part :reference-to-stops-dataset ;
+        frbr:part :reference-to-stops-dataset 
         .
 
 :reference-to-stops-dataset
         a biro:BibliographicReference;
         dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string ;
-        biro:references :stops-2015-05-05 ;
+        biro:references :stops-2015-05-05 
         .   
 
       </pre>
@@ -1712,7 +1712,7 @@ pre red { color: red;
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;  ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI   ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1721,7 +1721,7 @@ pre red { color: red;
         disco:fundedBy :bus-association-mycity ;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
-        duv:hasFeedback :comment1 ;
+        duv:hasFeedback :comment1 
         .
 
 :stops-2015-05-05.csv
@@ -1731,7 +1731,7 @@ pre red { color: red;
         dct:description "CSV distribution of the bus stops dataset of MyCity" ;
         dcat:mediaType "text/csv;charset=UTF-8" ;
         dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
-        duv:hasFeedback :comment2 ;
+        duv:hasFeedback :comment2 
         .
 
 :comment1
@@ -1739,7 +1739,7 @@ pre red { color: red;
         oa:hasBody "This list is missing stop 3"^^xsd:string ;
         oa:hasTarget :stops-2015-05-05 ;
         oa:motivatedBy oa:editing;
-        dct:creator :localresident ;
+        dct:creator :localresident 
         .
 
 :comment2
@@ -1747,12 +1747,12 @@ pre red { color: red;
         oa:hasTarget :stops-2015-05-05.csv;
         oa:hasBody "Are tab delimited formats also available?"^^xsd:string ;
         oa:motivatedBy oa:questioning;
-        dct:creator :localresident ;
+        dct:creator :localresident 
         .
 
 :localresident
         a foaf:Person  ;
-        foaf:Name "Alan Law"^^xsd:string  ;
+        foaf:Name "Alan Law"^^xsd:string  
         .
 
       </pre>
@@ -1894,7 +1894,7 @@ pre red { color: red;
       <pre  class="schema turtle">:stops-2015-05-05 
         a dcat:Dataset ;
         dct:title "Bus stops of MyCity" ;
-        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt; ;
+        dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI  ;
         dct:issued "2015-05-05"^^xsd:date ;
         pav:version "1.0" ;
         dct:publisher :transport-agency-mycity ;
@@ -1903,15 +1903,14 @@ pre red { color: red;
         disco:fundedBy :bus-association-mycity ;
         dct:created "2015-05-05"^^xsd:date ;
         dcat:distribution :stops-2015-05-05.csv ;
-        duv:hasFeedback :rating1:
-
+        duv:hasFeedback :rating1
         .
 
 :rating1
         a duv:RatingFeedback ;
         oa:hasBody :good ;
         oa:hasTarget :stops-2015-05-05 ;
-        oa:motivatedBy oa:assessing;
+        oa:motivatedBy oa:assessing
         .
 
 :good
@@ -2091,20 +2090,20 @@ pre red { color: red;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
-      duv:hasUsage :route-vis ;
+      duv:hasUsage :route-vis 
       .    
 
 :route-vis a duv:Usage;
       dct:title "Visualization of MyCity bus routes"^^xsd:string ;
       dct:created "2016-05-05"^^xsd:date ;
       duv:hasUsageTool :route-calculator ;
-      duv:refersTo :stops-2015-05-05.csv ;
+      duv:refersTo :stops-2015-05-05.csv 
       .
 
 :route-calculator a duv:UsageTool ;
       dct:title "Route Calculator"^^xsd:string ;
       dct:created "2016-03-04"^^xsd:date ;
-      dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;   ;
+      dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI    
       .
 
 </pre>
