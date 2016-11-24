@@ -1,0 +1,8063 @@
+<!DOCTYPE html>
+<!-- saved from url=(0214)http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html -->
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta lang="" property="dc:language" content="en">
+<title>Data on the Web Best Practices: Data Quality Vocabulary</title>
+<meta charset="utf-8">
+
+
+
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid black;
+	padding: 1em;
+}
+
+table#namespaces td {
+	font-family: monospace;
+}
+
+table.definition {
+	width: 100%;
+}
+
+table.definition td.prop {
+	width: 10em;
+}
+/*  .editorsnote::before {
+    content:    "Editor's Note";
+    display:    block;
+  	width:      150px;
+    background: #F30023;
+    color:  #fff;
+    margin: -1.5em 0 0.5em 0;
+    font-weight:    bold;
+    border: 1px solid #cff6d9;
+    padding:    3px 1em;
+  }
+  .editorsnote {
+    margin: 1em 0em 1em 1em;
+    padding:    1em;
+    border: 2px solid #cff6d9;
+  } */
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+
+pre red { color: red;
+}
+</style>
+<style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title , div.ednote-title, div.warning-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title, div.ednote-title { color: #2b2; }
+div.warning-title { color: #f22; }
+div.issue-title span, div.note-title span, div.ednote-title span, div.warning-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue, div.ednote, div.warning {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .ednote > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+.issue, .note, .ednote, .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note , div.ednote,  div.warning {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.ednote, span.issue, span.warning { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note, .ednote {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+
+.warning {
+    border-color: #f11;
+    border-right-width: .2em;
+    border-top-width: .2em;
+    border-bottom-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+</style><link rel="stylesheet" href="./dqvdiff-20151214_files/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+  "specStatus": "WD",
+  "shortName": "vocab-dqv",
+  "publishDate": "2015-12-17",
+  "previousPublishDate": "2015-06-25",
+  "previousMaturity": "FPWD",
+  "previousURI": "http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/",
+  "edDraftURI": "http://w3c.github.io/dwbp/vocab-dqg.html",
+  "editors": [
+    {
+      "name": "Riccardo Albertoni",
+      "url": "mailto:riccardo.albertoni@ge.imati.cnr.it",
+      "company": "CNR - Consiglio Nazionale delle Ricerche, Italy",
+      "companyURL": "http://www.cnr.it/"
+    },
+    {
+      "name": "Antoine Isaac",
+      "url": "mailto:aisaac@few.vu.nl",
+      "company": "VU University Amsterdam and Europeana, The Netherlands",
+      "companyURL": "http://www.vu.nl/"
+    },
+    {
+      "name": "Christophe Guéret",
+      "note": "early drafts",
+      "company": "formerly at DANS, The Netherlands"
+    }
+  ],
+  "otherLinks": [
+    {
+      "key": "Contributors",
+      "data": [
+        {
+          "value": "Jeremy Debattista"
+        },
+        {
+          "value": "Makx Dekkers"
+        },
+        {
+          "value": "Deirdre Lee"
+        },
+        {
+          "value": "Nandana Mihindukulasooriya"
+        }
+      ]
+    },
+    {
+      "key": "Other locations",
+      "data": [
+        {
+          "value": "We are on Github",
+          "href": "https://github.com/w3c/dwbp"
+        },
+        {
+          "value": "Wiki pages",
+          "href": "https://www.w3.org/2013/dwbp/wiki/Data_quality_notes"
+        }
+      ]
+    },
+    {
+      "key": "Changes",
+      "data": [
+        {
+          "value": "Change History",
+          "href": "#change-history"
+        },
+        {
+          "value": "Diff to previous version",
+          "href": "http://w3c.github.io/dwbp/diffs/dqvdiff-20151214.html"
+        }
+      ]
+    }
+  ],
+  "wg": "Data on the Web Best Practices Working Group",
+  "wgURI": "http://www.w3.org/2013/dwbp/",
+  "wgPublicList": "public-dwbp-comments",
+  "noRecTrack": true,
+  "wgPatentURI": "http://www.w3.org/2004/01/pp-impl/68239/status",
+  "doRDFa": "1.1",
+  "maxTocLevel": 2,
+  "localBiblio": {
+    "CC-VOCAB": {
+      "title": "Creative Commons Rights Expression Language",
+      "href": "http://creativecommons.org/ns"
+    },
+    "DaQ": {
+      "title": "daQ, an Ontology for Dataset Quality Information",
+      "authors": [
+        "Jeremy Debattista",
+        "Christoph Lange",
+        "Sören Auer"
+      ],
+      "date": "2014",
+      "status": "LDOW 2014",
+      "href": "http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf"
+    },
+    "DaQ-RDFCUBE": {
+      "title": "Representing dataset quality metadata using multi-dimensional views",
+      "authors": [
+        "Jeremy Debattista",
+        "Christoph Lange",
+        "Sören Auer"
+      ],
+      "date": "2014",
+      "status": "SEMANTICS 2014",
+      "href": "http://arxiv.org/abs/1408.2468"
+    },
+    "MultilingualImporting": {
+      "title": "A Linkset Quality Metric Measuring Multilingual Gain in SKOS Thesauri",
+      "authors": [
+        "Riccardo Albertoni",
+        "Monica De Martino",
+        "Paola Podestà"
+      ],
+      "date": "2015",
+      "status": "LDQ@ESWC 2015",
+      "href": "http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf"
+    },
+    "GeoDCAT-AP": {
+      "title": "GeoDCAT-AP: A geospatial extension for the DCAT application profile for data portals in Europe",
+      "authors": [
+        "ISA Programme"
+      ],
+      "date": "13 July 2015",
+      "status": "WG Draft",
+      "href": "http://joinup.ec.europa.eu/catalogue/distribution/geodcat-ap-working-draft-6-0"
+    },
+    "ZaveriEtAl": {
+      "title": "Quality assessment for Linked Data: A Survey",
+      "authors": [
+        "Amrapalia Zaveri",
+        "Anisa Rula",
+        "Andrea Maurino",
+        "Ricardo Pietrobon",
+        "Jens  Lehmann",
+        "Sören Auer"
+      ],
+      "status": " Semantic Web, vol. 7, no. 1, pp. 63-93, 2015",
+      "href": "https://dx.doi.org/10.3233/SW-150175"
+    },
+    "ISOIEC25012": {
+      "title": "ISO/IEC 25012 - Data Quality model",
+      "href": "http://iso25000.com/index.php/en/iso-25000-standards/iso-25012"
+    },
+    "qSKOS": {
+      "title": "Finding Quality Issues in SKOS Vocabularies",
+      "authors": [
+        "Christian Mader",
+        "Bernhard Haslhofer",
+        "Antoine Isaac"
+      ],
+      "status": "Theory and Practice of Digital Libraries, Lecture Notes in Computer Science, Vol. 7489, pp 222-233, 2012",
+      "href": "https://dx.doi.org/10.1007/978-3-642-33290-6_25"
+    }
+  }
+}</script><style type="text/css">
+.diff-old-a {
+  font-size: smaller;
+  color: red;
+}
+
+.diff-new { background-color: yellow; }
+.diff-chg { background-color: lime; }
+.diff-new:before,
+.diff-new:after
+    { content: "\2191" }
+.diff-chg:before, .diff-chg:after
+    { content: "\2195" }
+.diff-old { text-decoration: line-through; background-color: #FBB; }
+.diff-old:before,
+.diff-old:after
+    { content: "\2193" }
+:focus { border: thin red solid}
+</style>
+</head>
+
+<body class="h-entry" role="document" id="respecDocument">
+<div class="head" role="contentinfo" id="respecHeader">
+<p>
+<a class="logo" href="http://www.w3.org/">
+<img width="72" height="48" src="./dqvdiff-20151214_files/w3c_home" alt="W3C">
+</a>
+</p>
+<h1 class="title p-name" id="title" property="dcterms:title">
+Data
+<ins class="diff-new">on
+the
+Web
+Best
+Practices:
+Data
+</ins>
+Quality
+Vocabulary
+</h1>
+<h2 id="w3c-working-draft-17-december-2015">
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+<del class="diff-old">First
+Public
+</del>
+Working
+Draft
+<del class="diff-old">25
+June
+</del>
+<time property="dcterms:issued" class="dt-published" datetime="2015-12-17">
+<ins class="diff-chg">17
+December
+</ins>
+2015
+</time>
+</h2>
+<dl>
+<dt>
+This
+version:
+</dt>
+<dd>
+<del class="diff-old">http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/
+</del>
+<a class="u-url" href="http://www.w3.org/TR/2015/WD-vocab-dqv-20151217/">
+<ins class="diff-chg">http://www.w3.org/TR/2015/WD-vocab-dqv-20151217/
+</ins>
+</a>
+</dd>
+<dt>
+Latest
+published
+version:
+</dt>
+<dd>
+<a href="http://www.w3.org/TR/vocab-dqv/">
+http://www.w3.org/TR/vocab-dqv/
+</a>
+</dd>
+<dt>
+Latest
+editor's
+draft:
+</dt>
+<dd>
+<a href="http://w3c.github.io/dwbp/vocab-dqg.html">
+http://w3c.github.io/dwbp/vocab-dqg.html
+</a>
+</dd>
+<dt>
+<ins class="diff-new">Previous
+version:
+</ins></dt><dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/"><ins class="diff-new">
+http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/
+</ins></a></dd><dt>
+Editors:
+</dt>
+<dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0">
+<span property="rdf:first" typeof="foaf:Person">
+<meta property="foaf:name" content="Riccardo Albertoni">
+<a class="u-url url p-name fn" property="foaf:homepage" href="mailto:riccardo.albertoni@ge.imati.cnr.it">
+Riccardo
+Albertoni
+</a>,
+<a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.cnr.it/">
+CNR
+-
+Consiglio
+Nazionale
+delle
+Ricerche,
+Italy
+</a>
+</span>
+<span property="rdf:rest" resource="_:editor1">
+</span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1">
+<span property="rdf:first" typeof="foaf:Person">
+<meta property="foaf:name" content="Antoine Isaac">
+<del class="diff-old">Christophe
+Guéret
+</del>
+<a class="u-url url p-name fn" property="foaf:homepage" href="mailto:aisaac@few.vu.nl">
+<ins class="diff-chg">Antoine
+Isaac
+</ins>
+</a>,
+<a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.vu.nl/">
+<del class="diff-old">Free
+</del>
+<ins class="diff-chg">VU
+</ins>
+University
+Amsterdam
+and
+<del class="diff-old">DANS,
+</del>
+<ins class="diff-chg">Europeana,
+</ins>
+The
+Netherlands
+</a>
+</span>
+<span property="rdf:rest" resource="_:editor2">
+</span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor2">
+<span property="rdf:first" typeof="foaf:Person">
+<del class="diff-old">Antoine
+Isaac
+,
+Free
+University
+Amsterdam
+and
+Europeana,
+</del>
+<span property="foaf:name" class="p-name fn">
+<ins class="diff-chg">Christophe
+Guéret
+</ins></span>,<ins class="diff-chg">
+formerly
+at
+DANS,
+</ins>
+The
+Netherlands
+<ins class="diff-chg">(early
+drafts)
+</ins>
+</span>
+<span property="rdf:rest" resource="rdf:nil">
+</span>
+</dd>
+<dt>
+<ins class="diff-new">Contributors:
+</ins></dt><dd><ins class="diff-new">
+Jeremy
+Debattista
+</ins></dd><dd><ins class="diff-new">
+Makx
+Dekkers
+</ins></dd><dd><ins class="diff-new">
+Deirdre
+Lee
+</ins></dd><dd><ins class="diff-new">
+Nandana
+Mihindukulasooriya
+</ins></dd><dt>
+Other
+locations:
+</dt>
+<dd>
+<a href="https://github.com/w3c/dwbp">
+<ins class="diff-new">We
+are
+on
+</ins>
+Github
+<del class="diff-old">repository
+</del>
+</a>
+</dd>
+<dd>
+<del class="diff-old">File
+a
+bug
+</del>
+<a href="https://www.w3.org/2013/dwbp/wiki/Data_quality_notes">
+Wiki
+pages
+</a>
+</dd>
+<dt>
+<del class="diff-old">Contributors
+</del>
+<ins class="diff-chg">Changes:
+</ins>
+</dt>
+<dd>
+<del class="diff-old">Jeremy
+Debattista,
+Fraunhofer
+IAIS
+Makx
+Dekkers,
+AMI
+Consult
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#change-history">
+<ins class="diff-chg">Change
+History
+</ins>
+</a>
+</dd>
+<dd>
+<del class="diff-old">Deirdre
+Lee,
+Derilinx
+</del>
+<a href="http://w3c.github.io/dwbp/diffs/dqvdiff-20151214.html">
+<ins class="diff-chg">Diff
+to
+previous
+version
+</ins>
+</a>
+</dd>
+</dl>
+<p class="copyright">
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">
+Copyright
+</a>
+©
+<del class="diff-old">2014-2015
+</del>
+<ins class="diff-chg">2015
+</ins>
+<a href="http://www.w3.org/">
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+</a>
+<sup>
+®
+</sup>
+(
+<a href="http://www.csail.mit.edu/">
+<abbr title="Massachusetts Institute of Technology">
+MIT
+</abbr>
+</a>,
+<a href="http://www.ercim.eu/">
+<abbr title="European Research Consortium for Informatics and Mathematics">
+ERCIM
+</abbr>
+</a>,
+<a href="http://www.keio.ac.jp/">
+Keio
+</a>,
+<a href="http://ev.buaa.edu.cn/">
+Beihang
+</a>
+).
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">
+liability
+</a>,
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">
+trademark
+</a>
+and
+<a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">
+document
+use
+</a>
+rules
+apply.
+</p>
+<hr title="Separator for header">
+</div>
+<section id="abstract" class="introductory" property="dc:abstract">
+<h2 id="h-abstract" resource="#h-abstract">
+<span property="xhv:role" resource="xhv:heading">
+Abstract
+</span>
+</h2>
+<p>
+This
+document
+provides
+a
+framework
+in
+which
+the
+quality
+of
+a
+dataset
+can
+be
+described,
+whether
+by
+the
+dataset
+publisher
+or
+by
+a
+broader
+community
+of
+users.
+It
+does
+not
+provide
+a
+formal,
+complete
+definition
+of
+quality,
+rather,
+it
+sets
+out
+a
+consistent
+means
+by
+which
+information
+can
+be
+provided
+such
+that
+a
+potential
+user
+of
+a
+dataset
+can
+make
+his/her
+own
+judgment
+about
+its
+fitness
+for
+purpose.
+</p>
+</section>
+<section id="sotd" class="introductory">
+<h2 id="h-sotd" resource="#h-sotd">
+<span property="xhv:role" resource="xhv:heading">
+Status
+of
+This
+Document
+</span>
+</h2>
+<p>
+<em>
+This
+section
+describes
+the
+status
+of
+this
+document
+at
+the
+time
+of
+its
+publication.
+Other
+documents
+may
+supersede
+this
+document.
+A
+list
+of
+current
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+publications
+and
+the
+latest
+revision
+of
+this
+technical
+report
+can
+be
+found
+in
+the
+<a href="http://www.w3.org/TR/">
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+technical
+reports
+index
+</a>
+at
+http://www.w3.org/TR/.
+</em>
+</p>
+<p>
+<del class="diff-old">This
+</del>
+<ins class="diff-chg">The
+model
+for
+the
+Data
+Quality
+Vocabulary
+</ins>
+is
+<del class="diff-old">an
+early
+draft
+of
+</del>
+<ins class="diff-chg">nearing
+maturity,
+but
+</ins>
+the
+<del class="diff-old">DQV.
+Its
+publication
+</del>
+<ins class="diff-chg">Working
+Group
+</ins>
+is
+<del class="diff-old">designed
+to
+provoke
+comment
+</del>
+<ins class="diff-chg">seeking
+feedback
+</ins>
+on
+<del class="diff-old">the
+overall
+direction
+foreseen
+as
+much
+as
+the
+</del>
+<ins class="diff-chg">a
+number
+of
+</ins>
+specific
+<del class="diff-old">details.
+</del>
+<ins class="diff-chg">issues
+highlighted
+in
+the
+document
+below.
+</ins>
+</p>
+<p>
+This
+document
+was
+published
+by
+the
+<a href="http://www.w3.org/2013/dwbp/">
+Data
+on
+the
+Web
+Best
+Practices
+Working
+Group
+</a>
+as
+a
+<del class="diff-old">First
+Public
+</del>
+Working
+Draft.
+If
+you
+wish
+to
+make
+comments
+regarding
+this
+document,
+please
+send
+them
+to
+<a href="mailto:public-dwbp-comments@w3.org">
+public-dwbp-comments@w3.org
+</a>
+(
+<a href="mailto:public-dwbp-comments-request@w3.org?subject=subscribe">
+subscribe
+</a>,
+<a href="http://lists.w3.org/Archives/Public/public-dwbp-comments/">
+archives
+</a>
+).
+All
+comments
+are
+welcome.
+</p>
+<p>
+Publication
+as
+a
+<del class="diff-old">First
+Public
+</del>
+Working
+Draft
+does
+not
+imply
+endorsement
+by
+the
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+Membership.
+This
+is
+a
+draft
+document
+and
+may
+be
+updated,
+replaced
+or
+obsoleted
+by
+other
+documents
+at
+any
+time.
+It
+is
+inappropriate
+to
+cite
+this
+document
+as
+other
+than
+work
+in
+progress.
+</p>
+<p>
+This
+document
+was
+produced
+by
+a
+group
+operating
+under
+the
+<a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">
+5
+February
+2004
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+Patent
+Policy
+</a>.
+The
+group
+does
+not
+expect
+this
+document
+to
+become
+a
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+Recommendation.
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+maintains
+a
+<a href="http://www.w3.org/2004/01/pp-impl/68239/status" rel="disclosure">
+public
+list
+of
+any
+patent
+disclosures
+</a>
+made
+in
+connection
+with
+the
+deliverables
+of
+the
+group;
+that
+page
+also
+includes
+instructions
+for
+disclosing
+a
+patent.
+An
+individual
+who
+has
+actual
+knowledge
+of
+a
+patent
+which
+the
+individual
+believes
+contains
+<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">
+Essential
+Claim(s)
+</a>
+must
+disclose
+the
+information
+in
+accordance
+with
+<a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">
+section
+6
+of
+the
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+Patent
+Policy
+</a>.
+</p>
+<p>
+This
+document
+is
+governed
+by
+the
+<a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">
+1
+<del class="diff-old">August
+2014
+</del>
+<ins class="diff-chg">September
+2015
+</ins>
+<abbr title="World Wide Web Consortium">
+W3C
+</abbr>
+Process
+Document
+</a>.
+</p>
+</section>
+<section id="toc">
+<h2 class="introductory" id="h-toc" resource="#h-toc">
+<span property="xhv:role" resource="xhv:heading">
+Table
+of
+Contents
+</span>
+</h2>
+<ul class="toc" role="directory">
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#intro" class="tocxref">
+<span class="secno">
+1.
+</span>
+Introduction
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#namespaces" class="tocxref">
+<span class="secno">
+2.
+</span>
+<del class="diff-old">Conformance
+</del>
+<ins class="diff-chg">Namespaces
+</ins>
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#model" class="tocxref">
+<span class="secno">
+3.
+</span>
+<del class="diff-old">Namespaces
+</del>
+<ins class="diff-chg">Vocabulary
+Overview
+</ins>
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#VocabularySpecification" class="tocxref">
+<span class="secno">
+4.
+</span>
+Vocabulary
+<del class="diff-old">Overview
+</del>
+<ins class="diff-chg">specification
+</ins>
+</a>
+<ul class="toc">
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure" class="tocxref">
+<span class="secno">
+<del class="diff-old">5.
+</del>
+<ins class="diff-chg">4.1
+</ins>
+</span>
+<del class="diff-old">Vocabulary
+specification
+</del>
+<ins class="diff-chg">Class:
+Quality
+Measure
+</ins>
+</a>
+<ul class="toc">
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Metric" class="tocxref">
+<span class="secno">
+<del class="diff-old">5.1
+</del>
+<ins class="diff-chg">4.2
+</ins>
+</span>
+Class:
+<del class="diff-old">Quality
+Measure
+</del>
+<ins class="diff-chg">Metric
+</ins>
+</a>
+<ul class="toc">
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Dimension" class="tocxref">
+<span class="secno">
+<del class="diff-old">5.2
+</del>
+<ins class="diff-chg">4.3
+</ins>
+</span>
+Class:
+<del class="diff-old">Metric
+</del>
+<ins class="diff-chg">Dimension
+</ins>
+</a>
+<ul class="toc">
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Category" class="tocxref">
+<span class="secno">
+<ins class="diff-new">4.4
+</ins></span><ins class="diff-new">
+Class:
+Category
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasureDataset" class="tocxref"><span class="secno"><ins class="diff-new">
+4.5
+</ins></span><ins class="diff-new">
+Class:
+Quality
+Measure
+Dataset
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityAnnotation" class="tocxref"><span class="secno"><ins class="diff-new">
+4.6
+</ins></span><ins class="diff-new">
+Class:
+Quality
+Annotation
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:UserQualityFeedback" class="tocxref"><span class="secno"><ins class="diff-new">
+4.7
+</ins></span><ins class="diff-new">
+Class:
+User
+Quality
+Feedback
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasQualityMeasure" class="tocxref"><span class="secno"><ins class="diff-new">
+4.8
+</ins></span><ins class="diff-new">
+Property:
+Has
+Quality
+Measure
+</ins></a></li>
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#examples" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.
+</del>
+<ins class="diff-chg">5.
+</ins>
+</span>
+Example
+Usage
+</a>
+<ul class="toc">
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#ExpressAQualityAssessmentWithQualityMetrics" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.1
+</del>
+<ins class="diff-chg">5.1
+</ins>
+</span>
+Express
+a
+quality
+assessment
+with
+quality
+metrics
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#DocumentProvenanceQualityMetadata" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.2
+</del>
+<ins class="diff-chg">5.2
+</ins>
+</span>
+Document
+the
+provenance
+of
+the
+quality
+metadata
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#DocumentProvSingleQM" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.3
+</del>
+<ins class="diff-chg">5.3
+</ins></span><ins class="diff-chg">
+Document
+the
+provenance
+of
+single
+quality
+measurement
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#DocumentProvDataset" class="tocxref"><span class="secno"><ins class="diff-chg">
+5.4
+</ins>
+</span>
+Document
+the
+provenance
+of
+a
+dataset
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#odiCert" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.4
+</del>
+<ins class="diff-chg">5.5
+</ins>
+</span>
+Express
+that
+a
+dataset
+received
+an
+ODI
+certificate
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#ExpressQualSKOS" class="tocxref">
+<span class="secno">
+<del class="diff-old">6.5
+</del>
+<ins class="diff-chg">5.6
+</ins></span><ins class="diff-chg">
+Express
+quality
+of
+SKOS
+concept
+schemes
+</ins></a></li><li class="tocline"><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#ExpressQualLinkset" class="tocxref"><span class="secno"><ins class="diff-chg">
+5.7
+</ins>
+</span>
+Express
+the
+quality
+of
+a
+linkset
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#ExpressConformanceWithStandard" class="tocxref">
+<span class="secno">
+<ins class="diff-new">5.8
+</ins></span><ins class="diff-new">
+Express
+the
+conformance
+of
+a
+dataset's
+metadata
+with
+a
+standard
+</ins></a></li>
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#DimentsionsMetricsHints" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.
+</del>
+<ins class="diff-chg">6.
+</ins>
+</span>
+Dimensions
+and
+metrics
+hints
+</a>
+<ul class="toc">
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Statistics" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.1
+</del>
+<ins class="diff-chg">6.1
+</ins>
+</span>
+Statistics
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Availability" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.2
+</del>
+<ins class="diff-chg">6.2
+</ins>
+</span>
+Availability
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Processability" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.3
+</del>
+<ins class="diff-chg">6.3
+</ins>
+</span>
+Processability
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Accuracy" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.4
+</del>
+<ins class="diff-chg">6.4
+</ins>
+</span>
+Accuracy
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Consistency" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.5
+</del>
+<ins class="diff-chg">6.5
+</ins>
+</span>
+Consistency
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Relevance" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.6
+</del>
+<ins class="diff-chg">6.6
+</ins>
+</span>
+Relevance
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Completeness" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.7
+</del>
+<ins class="diff-chg">6.7
+</ins>
+</span>
+Completeness
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Conformance" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.8
+</del>
+<ins class="diff-chg">6.8
+</ins>
+</span>
+Conformance
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Credibility" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.9
+</del>
+<ins class="diff-chg">6.9
+</ins>
+</span>
+Credibility
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#Timeliness" class="tocxref">
+<span class="secno">
+<del class="diff-old">7.10
+</del>
+<ins class="diff-chg">6.10
+</ins>
+</span>
+Timeliness
+</a>
+</li>
+</ul>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#requirements" class="tocxref">
+<span class="secno">
+<del class="diff-old">8.
+</del>
+<ins class="diff-chg">7.
+</ins>
+</span>
+Requirements
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#acknowledgements" class="tocxref">
+<span class="secno">
+A.
+</span>
+Acknowledgements
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#change-history" class="tocxref">
+<span class="secno">
+B.
+</span>
+<del class="diff-old">References
+</del>
+<ins class="diff-chg">Change
+history
+</ins>
+</a>
+</li>
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#references" class="tocxref">
+<span class="secno">
+<del class="diff-old">B.1
+</del>
+<ins class="diff-chg">C.
+</ins>
+</span>
+<del class="diff-old">Normative
+references
+</del>
+<ins class="diff-chg">References
+</ins>
+</a>
+<ul class="toc">
+<li class="tocline">
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#informative-references" class="tocxref">
+<span class="secno">
+<del class="diff-old">B.2
+</del>
+<ins class="diff-chg">C.1
+</ins>
+</span>
+Informative
+references
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="informative" typeof="bibo:Chapter" resource="#intro" property="bibo:hasPart">
+<h2 id="intro" resource="#intro">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+1.
+</span>
+Introduction
+</span>
+</h2>
+<p>
+<em>
+This
+section
+is
+non-normative.
+</em>
+</p>
+<p>
+The
+Data
+on
+the
+Web
+Best
+Practices
+<a href="http://www.w3.org/TR/dwbp/">
+<ins class="diff-new">Working
+Draft
+</ins>
+</a>
+<del class="diff-old">points
+</del>
+<ins class="diff-chg">has
+pointed
+</ins>
+out
+the
+relevance
+of
+<a href="http://www.w3.org/TR/dwbp/#quality">
+publishing
+information
+about
+the
+quality
+of
+data
+published
+on
+the
+Web
+</a>.
+Accordingly,
+the
+<a href="http://www.w3.org/2013/dwbp/wiki/Main_Page">
+Data
+on
+the
+Web
+Best
+Practices
+Working
+Group
+</a>
+has
+been
+chartered
+to
+create
+a
+vocabulary
+for
+expressing
+data
+quality.
+The
+Data
+Quality
+Vocabulary
+(DQV)
+presented
+in
+this
+document
+is
+foreseen
+as
+an
+extension
+to
+DCAT
+[
+<cite>
+<a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-vocab-dcat">
+vocab-dcat
+</a>
+</cite>
+]
+to
+cover
+the
+quality
+of
+the
+data,
+how
+frequently
+is
+it
+updated,
+whether
+it
+accepts
+user
+corrections,
+persistence
+commitments
+etc.
+When
+used
+by
+publishers,
+this
+vocabulary
+will
+foster
+trust
+in
+the
+data
+amongst
+developers.
+</p>
+<p>
+This
+vocabulary
+does
+not
+seek
+to
+determine
+what
+"quality"
+means.
+We
+believe
+that
+quality
+lies
+in
+the
+eye
+of
+the
+beholder;
+that
+there
+is
+no
+objective,
+ideal
+definition
+of
+it.
+Some
+datasets
+will
+be
+judged
+as
+low-quality
+resources
+by
+some
+data
+consumers,
+while
+they
+will
+perfectly
+fit
+others'
+needs.
+<del class="diff-old">Accordingly,
+</del>
+<ins class="diff-chg">In
+accordance,
+</ins>
+we
+attach
+a
+lot
+of
+importance
+to
+allowing
+many
+actors
+to
+assess
+the
+quality
+of
+datasets
+and
+publish
+their
+annotations,
+<del class="diff-old">certificates
+and
+</del>
+<ins class="diff-chg">certificates,
+</ins>
+opinions
+about
+a
+dataset.
+A
+dataset's
+publisher
+should
+<ins class="diff-new">seek
+to
+</ins>
+publish
+metadata
+that
+helps
+data
+consumers
+determine
+whether
+they
+can
+use
+the
+dataset
+to
+their
+benefit.
+However,
+publishers
+should
+not
+be
+the
+only
+ones
+to
+have
+a
+say
+on
+the
+quality
+of
+data
+published
+in
+an
+open
+environment
+like
+the
+Web.
+Certification
+agencies,
+data
+<del class="diff-old">aggregators
+and
+</del>
+<ins class="diff-chg">aggregators,
+</ins>
+data
+consumers
+can
+make
+relevant
+quality
+<del class="diff-old">assessments
+</del>
+<ins class="diff-chg">assessments,
+</ins>
+too.
+</p>
+<p>
+We
+want
+to
+stimulate
+this
+by
+making
+it
+easier
+to
+publish,
+exchange
+and
+consume
+quality
+metadata,
+for
+every
+step
+of
+a
+dataset's
+lifecycle.
+This
+is
+why
+next
+to
+rather
+expected
+<del class="diff-old">constructs,
+</del>
+<ins class="diff-chg">constructs
+</ins>
+like
+quality
+measures,
+the
+Data
+Quality
+Vocabulary
+puts
+a
+lot
+of
+emphasis
+on
+feedback,
+annotation,
+agreements
+and
+the
+provenance
+of
+the
+<del class="diff-old">metadata.
+</del>
+<ins class="diff-chg">metadata
+that
+describes
+them.
+</ins>
+</p>
+</section>
+<section id="namespaces" typeof="bibo:Chapter" resource="#namespaces" property="bibo:hasPart">
+<h2 id="h-namespaces" resource="#h-namespaces">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+2.
+</span>
+<del class="diff-old">Conformance
+As
+well
+as
+sections
+marked
+as
+non-normative,
+all
+authoring
+guidelines,
+diagrams,
+examples,
+and
+notes
+in
+this
+specification
+are
+non-normative.
+Everything
+else
+in
+this
+specification
+is
+normative.
+3.
+</del>
+Namespaces
+</span>
+</h2>
+<p>
+The
+namespace
+for
+DQV
+is
+provisionally
+set
+as
+<code>
+http://www.w3.org/ns/dqv#
+</code>.
+DQV,
+however,
+seeks
+to
+re-use
+elements
+from
+other
+vocabularies,
+following
+the
+<a href="http://www.w3.org/TR/dwbp/#dataVocabularies">
+best
+practices
+for
+data
+vocabularies
+</a>
+identified
+by
+the
+Data
+on
+the
+Web
+Best
+Practices
+Working
+Group.
+</p>
+<div class="note">
+<div class="note-title" aria-level="3" role="heading" id="h-note1">
+<span>
+<del class="diff-old">Issue
+1
+</del>
+<ins class="diff-chg">Note
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+The
+Working
+Group
+is
+considering
+putting
+all
+new
+classes
+and
+properties
+<del class="diff-old">(together
+with
+</del>
+<ins class="diff-chg">defined
+in
+</ins>
+the
+<del class="diff-old">ones
+of
+</del>
+<abbr title="Data on the Web Best Practices">
+<ins class="diff-chg">DWBP
+</ins></abbr><ins class="diff-chg">
+Vocabularies
+in
+the
+</ins><a href="http://www.w3.org/ns/dcat#"><ins class="diff-chg">
+DCAT
+</ins></a><ins class="diff-chg">
+namespace.
+As
+an
+attempt
+to
+stimulate
+reactions
+which
+might
+help
+in
+taking
+a
+decision,
+</ins>
+the
+<a href="http://www.w3.org/TR/vocab-duv/">
+Dataset
+Usage
+Vocabulary
+</a>
+<del class="diff-old">)
+in
+</del>
+<ins class="diff-chg">will
+be
+moved
+under
+</ins>
+the
+DCAT
+<del class="diff-old">namespace
+.
+(
+Issue-179
+).
+</del>
+<ins class="diff-chg">namespace.
+In
+case
+of
+positive
+reactions
+to
+the
+DUV
+choice,
+the
+data
+quality
+vocabulary
+might
+consider
+to
+go
+in
+the
+same
+direction.
+</ins>
+</p>
+</div>
+</div>
+<p>
+The
+table
+below
+indicates
+the
+full
+list
+of
+namespaces
+and
+prefixes
+used
+in
+this
+document.
+</p>
+<table id="namespacesTable">
+<thead>
+<tr>
+<th>
+Prefix
+</th>
+<th>
+Namespace
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+daq
+</td>
+<td>
+http://purl.org/eis/vocab/daq#
+</td>
+</tr>
+<tr>
+<td>
+dcat
+</td>
+<td>
+http://www.w3.org/ns/dcat#
+</td>
+</tr>
+<tr>
+<td>
+dcterms
+</td>
+<td>
+http://purl.org/dc/terms/
+</td>
+</tr>
+<tr>
+<td>
+dqv
+</td>
+<td>
+http://www.w3.org/ns/dqv#
+</td>
+</tr>
+<tr>
+<td>
+duv
+</td>
+<td>
+http://www.w3.org/ns/duv#
+</td>
+</tr>
+<tr>
+<td>
+oa
+</td>
+<td>
+http://www.w3.org/ns/oa#
+</td>
+</tr>
+<tr>
+<td>
+prov
+</td>
+<td>
+http://www.w3.org/ns/prov#
+</td>
+</tr>
+</tbody>
+</table>
+<del class="diff-old">Issue
+2
+Are
+we
+actually
+allowed
+by
+W3C
+to
+re-use
+elements
+from
+DAQ
+?
+This
+vocabulary
+is
+not
+a
+community
+standard
+and
+its
+guarantee
+of
+sustainability
+may
+be
+judged
+not
+good
+enough.
+A
+possible
+way
+forward
+would
+be
+to
+declare
+all
+relevant
+classes
+in
+the
+DQV
+namespace
+but
+then
+declare
+them
+all
+as
+owl:equivalentClass/property
+with
+their
+DAQ
+counterparts.
+(
+Issue-180
+).
+</del>
+</section>
+<section id="model" typeof="bibo:Chapter" resource="#model" property="bibo:hasPart">
+<h2 id="h-model" resource="#h-model">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">4.
+</del>
+<ins class="diff-chg">3.
+</ins>
+</span>
+Vocabulary
+Overview
+</span>
+</h2>
+<p>
+The
+following
+vocabulary
+is
+based
+on
+DCAT
+[
+<cite>
+<a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-vocab-dcat">
+vocab-dcat
+</a>
+</cite>
+]
+that
+it
+extends
+with
+a
+number
+of
+additional
+properties
+and
+classes
+suitable
+for
+expressing
+the
+quality
+of
+a
+dataset.
+</p>
+<p>
+The
+quality
+of
+a
+given
+dataset
+<del class="diff-old">or
+</del>
+<ins class="diff-chg">of
+</ins>
+distribution
+is
+assessed
+via
+a
+number
+of
+observed
+properties.
+For
+instance,
+one
+may
+consider
+a
+dataset
+to
+be
+of
+high
+quality
+because
+it
+complies
+<del class="diff-old">with
+</del>
+<ins class="diff-chg">to
+</ins>
+a
+specific
+standard
+while
+for
+other
+<del class="diff-old">use
+cases
+</del>
+<ins class="diff-chg">use-cases
+</ins>
+the
+quality
+of
+the
+data
+will
+depend
+on
+its
+level
+of
+interlinking
+with
+other
+datasets.
+To
+express
+these
+properties
+an
+instance
+of
+a
+<a href="http://www.w3.org/TR/vocab-dcat/#Class:_Dataset">
+dcat:Dataset
+</a>
+or
+<a href="http://www.w3.org/TR/vocab-dcat/#Class:_Distribution">
+dcat:Distribution
+</a>
+can
+be
+related
+to
+four
+different
+classes:
+</p>
+<ul>
+<li>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityAnnotation">
+dqv:QualityAnnotation
+</a>
+represents
+<del class="diff-old">feedback
+</del>
+<ins class="diff-chg">feedbacks
+</ins>
+and
+quality
+certificates
+given
+about
+the
+dataset
+or
+<del class="diff-old">a
+distribution
+of
+it.
+</del>
+<ins class="diff-chg">its
+distribution.
+</ins>
+</li>
+<li>
+<a href="http://purl.org/dc/terms/Standard">
+dcterms:Standard
+</a>
+represents
+a
+standard
+the
+dataset
+or
+its
+distribution
+conforms
+to.
+</li>
+<li>
+<a href="http://www.w3.org/ns/prov#Entity">
+prov:Entity
+</a>
+represents
+an
+entity
+involved
+in
+the
+provenance
+of
+the
+dataset
+or
+distribution.
+</li>
+<li>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure">
+dqv:QualityMeasure
+</a>
+represents
+a
+metric
+value
+providing
+quantitative
+or
+qualitative
+information
+about
+the
+dataset
+or
+distribution.
+</li>
+</ul>
+<div class="note">
+<div class="note-title" aria-level="3" role="heading" id="h-note2">
+<span>
+<ins class="diff-chg">Note
+</ins></span></div>
+<div class="">
+<p>
+<ins class="diff-new">Textual
+description
+of
+the
+diagram
+will
+be
+added.
+</ins></p></div></div><figure id="fig-data-model-showing-the-main-relevant-classes-and-their-relations.x"><a href="./dqvdiff-20151214_files/DataQuality0.2.6.svg"><img src="./dqvdiff-20151214_files/DataQuality0.2.6.svg">
+</a>
+<figcaption>
+Fig.
+<span class="figno">
+1
+</span>
+<span class="fig-title">
+Data
+model
+showing
+the
+main
+relevant
+classes
+and
+their
+relations.
+<del class="diff-old">N.B.
+</del>
+</span>
+</figcaption>
+</figure>
+<p>
+<em>
+<ins class="diff-chg">N.B.:
+</ins>
+"graph
+containment"
+refers
+to
+the
+inclusion
+of
+quality
+statements
+in
+(RDF)
+graphs,
+e.g.
+for
+capturing
+the
+provenance
+of
+quality
+statements
+(see
+later
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#DocumentProvenanceQualityMetadata">
+example
+</a>
+<del class="diff-old">).
+Issue
+3
+What
+is
+the
+relation
+between
+duv:Feedback
+and
+dqv:UserFeedback
+?
+(
+Issue-165
+).
+</del>
+<ins class="diff-chg">)
+</ins></em>
+</p>
+<div class="issue" id="issue-1">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue1">
+<span>
+Issue
+<del class="diff-old">4
+</del>
+<ins class="diff-chg">1
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+Should
+we
+have
+only
+the
+existing
+class
+<del class="diff-old">daq:QualityGraph
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasureDataset">
+<ins class="diff-chg">dqv:QualityMeasureDataset
+</ins>
+</a>
+or
+<del class="diff-old">keep
+the
+</del>
+<ins class="diff-chg">define
+a
+</ins>
+new
+class
+dqv:QualityMetadata
+to
+represent
+a
+set
+of
+statements
+providing
+quantitative
+and/or
+qualitative
+information
+about
+the
+dataset
+or
+distribution.
+One
+could
+be
+a
+sub-class
+of
+the
+other.
+(
+<a href="https://www.w3.org/2013/dwbp/track/issues/181">
+Issue-181
+</a>
+)
+</p>
+</div>
+</div>
+<div class="issue" id="issue-2">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue2">
+<span>
+Issue
+<del class="diff-old">5
+</del>
+<ins class="diff-chg">2
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+<del class="diff-old">The
+label
+</del>
+<ins class="diff-chg">Is
+dqv:QualityPolicy
+a
+subclass
+</ins>
+of
+<del class="diff-old">daq:QualityGraph
+does
+not
+fit
+well
+with
+</del>
+<a href="http://dublincore.org/documents/dcmi-terms/#terms-Standard)">
+<ins class="diff-chg">dcterms:Standard
+</ins></a><ins class="diff-chg">
+?
+The
+wording
+in
+</ins>
+the
+<del class="diff-old">current
+model.
+DAQ
+graphs
+are
+meant
+to
+contain
+measures.
+In
+our
+context
+a
+"quality
+graph"
+has
+</del>
+<ins class="diff-chg">Dublin
+Core
+specification
+is
+very
+open
+("A
+basis
+for
+comparison;
+</ins>
+a
+<del class="diff-old">wider
+scope:
+actually
+</del>
+<ins class="diff-chg">reference
+point
+against
+which
+other
+things
+can
+be
+evaluated"),
+but
+</ins>
+the
+<del class="diff-old">role
+of
+representing
+overall
+quality
+graphs
+</del>
+<ins class="diff-chg">label
+</ins>
+is
+<del class="diff-old">currently
+played
+by
+dqv:QualityMetadata
+.
+(
+Issue-182
+)
+Issue
+6
+We
+may
+want
+to
+consider
+a
+revision
+of
+DCAT
+to
+make
+dcat:Dataset
+and
+dcat:Distribution
+subclasses
+</del>
+<ins class="diff-chg">quite
+restrictive.
+At
+the
+time
+</ins>
+of
+<del class="diff-old">prov:Entity
+.
+(
+Issue-183
+</del>
+<a href="http://www.w3.org/2015/09/24-dwbp-minutes.html">
+<ins class="diff-chg">discussion
+</ins>
+</a>
+<del class="diff-old">)
+Issue
+7
+Is
+</del>
+a
+<del class="diff-old">dqv:ServiceLevelAgreement
+a
+kind
+</del>
+<ins class="diff-chg">majority
+</ins>
+of
+<del class="diff-old">certificate,
+or
+a
+standard?
+(
+Issue-184
+)
+Issue
+8
+dqv:QualityAnnotation
+</del>
+<ins class="diff-chg">WG
+members
+</ins>
+is
+<del class="diff-old">foreseen
+as
+a
+subclass
+of
+oa:Annotation
+.
+The
+instances
+of
+this
+class
+should
+have
+a
+oa:motivatedBy
+statement
+</del>
+<ins class="diff-chg">ok
+</ins>
+with
+<ins class="diff-new">subclassing,
+but
+we
+welcome
+public
+feedback
+before
+making
+</ins>
+a
+<del class="diff-old">an
+instance
+of
+oa:Motivation
+,
+which
+reflects
+a
+quality
+assessment
+purpose.
+We
+plan
+to
+define
+is
+as
+dqv:qualityAssessment
+.
+</del>
+<ins class="diff-chg">final
+decision
+</ins>
+(
+<del class="diff-old">Issue-185
+</del>
+<a href="https://www.w3.org/2013/dwbp/track/issues/199">
+<ins class="diff-chg">Issue-199
+</ins>
+</a>
+)
+</p>
+</div>
+</div>
+</section>
+<section id="VocabularySpecification" typeof="bibo:Chapter" resource="#VocabularySpecification" property="bibo:hasPart">
+<h2 id="h-vocabularyspecification" resource="#h-vocabularyspecification">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.
+</del>
+<ins class="diff-chg">4.
+</ins>
+</span>
+Vocabulary
+specification
+</span>
+</h2>
+<div class="note">
+<div class="note-title" aria-level="3" role="heading" id="h-note3">
+<span>
+Note
+</span>
+</div>
+<div class="">
+<p>
+This
+section
+is
+work
+in
+progress.
+We
+will
+include
+later
+more
+tables
+with
+specification
+of
+individual
+classes
+and
+properties.
+</p>
+</div>
+</div>
+<section id="dqv:QualityMeasure" typeof="bibo:Chapter" resource="#dqv:QualityMeasure" property="bibo:hasPart">
+<h3 id="h-dqv-qualitymeasure" resource="#h-dqv-qualitymeasure">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.1
+</del>
+<ins class="diff-chg">4.1
+</ins>
+</span>
+Class:
+Quality
+Measure
+</span>
+</h3>
+<p>
+DQV
+defines
+quality
+measures
+as
+specific
+instances
+of
+<del class="diff-old">DAQ
+</del>
+<ins class="diff-chg">DQV
+</ins>
+observations,
+adapting
+the
+DAQ
+quality
+metrics
+framework
+<del class="diff-old">:
+</del>
+<ins class="diff-chg">[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-DaQ"><ins class="diff-chg">
+DaQ
+</ins></a></cite><ins class="diff-chg">
+],
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-DaQ-RDFCUBE"><ins class="diff-chg">
+DaQ-RDFCUBE
+</ins></a></cite><ins class="diff-chg">
+]:
+</ins>
+</p>
+<ul>
+<li>
+A
+Quality
+Dimension
+is
+a
+characteristic
+of
+a
+dataset
+relevant
+to
+the
+consumer
+(e.g.,
+the
+availability
+of
+a
+dataset).
+</li>
+<li>
+A
+Quality
+Metric
+<del class="diff-old">is
+</del>
+<ins class="diff-chg">gives
+</ins>
+a
+procedure
+for
+measuring
+a
+data
+quality
+dimension,
+which
+is
+abstract,
+by
+observing
+a
+concrete
+quality
+indicator.
+There
+are
+usually
+multiple
+metrics
+per
+dimension;
+e.g.,
+availability
+can
+be
+indicated
+by
+the
+accessibility
+of
+a
+SPARQL
+endpoint,
+or
+of
+an
+RDF
+dump.
+The
+value
+of
+a
+metric
+can
+be
+numeric
+(e.g.,
+for
+the
+metric
+“human-readable
+labeling
+of
+classes,
+properties
+and
+entities”,
+the
+percentage
+of
+entities
+having
+an
+rdfs:label
+or
+rdfs:comment)
+or
+boolean
+(e.g.
+whether
+or
+not
+a
+SPARQL
+endpoint
+is
+accessible).
+</li>
+</ul>
+<p>
+For
+example,
+a
+dimension
+could
+be
+"multilinguality"
+and
+two
+metrics
+could
+be
+"ratio
+of
+literals
+with
+language
+tags"
+and
+"number
+of
+different
+language
+tags".
+</p>
+<p>
+The
+following
+<del class="diff-old">property
+</del>
+<ins class="diff-chg">properties
+</ins>
+should
+be
+used
+on
+this
+class:
+<del class="diff-old">daq:metric
+.
+The
+following
+property
+may
+be
+used
+for
+this
+class:
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasMetric">
+<ins class="diff-chg">dqv:hasMetric
+</ins></a>,<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:value"><ins class="diff-chg">
+dqv:value
+</ins></a>,<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#qb:dataSet">
+qb:dataSet
+</a>.
+</p>
+<div class="issue" id="issue-3">
+<div class="issue-title" aria-level="4" role="heading" id="h-issue3">
+<span>
+<ins class="diff-new">Issue
+3
+</ins></span></div><div class=""><p><ins class="diff-new">
+Should
+(and
+if
+yes,
+how)
+DQV
+represent
+multiple/derived
+values
+for
+a
+metric
+(e.g.,
+average
+or
+normalized
+value)?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/222"><ins class="diff-new">
+Issue-222
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div><div class="issue" id="issue-4"><div class="issue-title" aria-level="4" role="heading" id="h-issue4"><span><ins class="diff-new">
+Issue
+4
+</ins></span></div><div class=""><p><ins class="diff-new">
+Should
+(and
+if
+yes,
+how)
+DQV
+represent
+parameters
+for
+a
+metric
+applied
+for
+computing
+a
+specific
+quality
+measure
+(e.g.,a
+specific
+setting
+of
+weights)?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/223"><ins class="diff-new">
+Issue-223
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div>
+<del class="diff-old">Issue
+9
+</del><table class="definition">
+<thead>
+<tr>
+<th>
+RDF
+Class:
+</th>
+<th>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure">
+dqv:QualityMeasure
+</a>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="prop">
+Definition:
+</td>
+<td>
+A
+quality
+measure
+represents
+the
+evaluation
+of
+a
+given
+dataset
+(or
+dataset
+distribution)
+against
+a
+specific
+quality
+metric.
+</td>
+</tr>
+<tr>
+<td class="prop">
+Subclass
+of:
+</td>
+<td>
+<del class="diff-old">daq:Observation
+(itself
+a
+subclass
+of
+</del>
+<a href="http://purl.org/linked-data/cube#Observation">
+qb:Observation
+</a>
+<del class="diff-old">)
+</del>
+</td>
+</tr>
+<tr>
+
+<td class="prop">
+<ins class="diff-chg">Equivalent
+class
+</ins></td>
+<td>
+<del class="diff-old">There
+might
+be
+no
+need
+for
+a
+subclass
+link
+between
+dqv:QualityMeasure
+and
+daq:Observation
+.
+I.e.,
+we
+could
+re-use
+</del>
+<a href="http://purl.org/eis/vocab/daq#Observation">
+daq:Observation
+</a>
+<del class="diff-old">directly.
+(
+Issue-186
+)
+</del>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="dqv:hasMetric" typeof="bibo:Chapter" resource="#dqv:hasMetric" property="bibo:hasPart">
+<h4 id="h-dqv-hasmetric" resource="#h-dqv-hasmetric">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.1.1
+</del>
+<ins class="diff-chg">4.1.1
+</ins>
+</span>
+Property:
+<del class="diff-old">metric
+</del>
+<ins class="diff-chg">hasMetric
+</ins>
+</span>
+</h4>
+<table class="definition">
+<thead>
+<tr>
+<th>
+RDF
+Property:
+</th>
+<th>
+<del class="diff-old">daq:metric
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasMetric">
+<ins class="diff-chg">dqv:hasMetric
+</ins>
+</a>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="prop">
+Definition:
+</td>
+<td>
+Indicates
+the
+metric
+being
+observed.
+</td>
+</tr>
+<tr>
+<td class="prop">
+<ins class="diff-new">Instance
+of:
+</ins></td><td><a href="http://purl.org/linked-data/cube#DimensionProperty"><ins class="diff-new">
+qb:DimensionProperty
+</ins></a></td></tr><tr><td class="prop">
+Domain:
+</td>
+<td>
+<a href="http://purl.org/linked-data/cube#Observation">
+qb:Observation
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Range:
+</td>
+<td>
+<del class="diff-old">daq:Metric
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Metric">
+<ins class="diff-chg">dqv:Metric
+</ins>
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+<del class="diff-old">Minimum
+cardinality:
+</del>
+<ins class="diff-chg">Equivalent
+Property
+</ins>
+</td>
+<td>
+<del class="diff-old">1
+</del>
+<a href="http://purl.org/eis/vocab/daq#metric">
+<ins class="diff-chg">daq:metric
+</ins></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qb:dataSet" typeof="bibo:Chapter" resource="#qb:dataSet" property="bibo:hasPart">
+<h4 id="h-qb-dataset" resource="#h-qb-dataset">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.1.2
+</del>
+<ins class="diff-chg">4.1.2
+</ins>
+</span>
+Property:
+<del class="diff-old">measure
+dataset
+</del>
+<ins class="diff-chg">dataSet
+</ins>
+</span>
+</h4>
+<table class="definition">
+<thead>
+<tr>
+<th>
+RDF
+Property:
+</th>
+<th>
+<a href="http://purl.org/linked-data/cube#dataSet">
+qb:dataSet
+</a>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="prop">
+Definition:
+</td>
+<td>
+Indicates
+the
+<del class="diff-old">data
+set
+of
+which
+this
+observation
+is
+</del>
+<ins class="diff-chg">dataset
+to
+</ins>
+a
+<del class="diff-old">part.
+</del>
+<ins class="diff-chg">quality
+measure
+(which
+is
+an
+RDF
+Data
+Cube
+observation)
+belongs.
+</ins>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Domain:
+</td>
+<td>
+<a href="http://purl.org/linked-data/cube#Observation">
+qb:Observation
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Range:
+</td>
+<td>
+<a href="http://purl.org/linked-data/cube#Observation">
+qb:DataSet
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dqv:computedOn" typeof="bibo:Chapter" resource="#dqv:computedOn" property="bibo:hasPart">
+<h4 id="h-dqv-computedon" resource="#h-dqv-computedon">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<ins class="diff-new">4.1.3
+</ins></span><ins class="diff-new">
+Property:
+computedOn
+</ins></span></h4><table class="definition"><thead><tr><th><ins class="diff-new">
+RDF
+Property:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:computedOn"><ins class="diff-new">
+dqv:computedOn
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-new">
+Definition:
+</ins></td><td><ins class="diff-new">
+Refers
+to
+the
+resource
+(e.g.,
+a
+dataset,
+a
+linkset,
+a
+graph,
+a
+set
+of
+triples)
+on
+which
+the
+quality
+measurement
+is
+performed.
+In
+the
+DQV
+context,
+this
+property
+is
+generally
+expected
+to
+be
+used
+in
+statements
+in
+which
+objects
+are
+instances
+of
+</ins><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset"><ins class="diff-new">
+dcat:Dataset
+</ins></a><ins class="diff-new">
+and
+</ins><a href="http://www.w3.org/TR/vocab-dcat/#class-distribution"><ins class="diff-new">
+dcat:Distribution
+</ins></a>.</td></tr><tr><td class="prop"><ins class="diff-new">
+Instance
+of:
+</ins></td><td><a href="http://purl.org/linked-data/cube#DimensionProperty"><ins class="diff-new">
+qb:DimensionProperty
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Domain:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure"><ins class="diff-new">
+dqv:QualityMeasure
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Equivalent
+property:
+</ins></td><td><a href="http://purl.org/eis/vocab/daq#computedOn"><ins class="diff-new">
+daq:computedOn
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Inverse
+property:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasQualityMeasure"><ins class="diff-new">
+dqv:hasQualityMeasure
+</ins></a></td></tr></tbody></table>
+</section>
+<section id="dqv:value" typeof="bibo:Chapter" resource="#dqv:value" property="bibo:hasPart">
+<h4 id="h-dqv-value" resource="#h-dqv-value">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.2
+</del>
+<ins class="diff-chg">4.1.4
+</ins></span><ins class="diff-chg">
+Property:
+value
+</ins></span></h4><table class="definition"><thead><tr><th><ins class="diff-chg">
+RDF
+Property:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:value"><ins class="diff-chg">
+dqv:value
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-chg">
+Definition:
+</ins></td><td><ins class="diff-chg">
+Refers
+to
+values
+computed
+by
+metric.
+</ins></td></tr><tr><td class="prop"><ins class="diff-chg">
+Instance
+of:
+</ins></td><td><a href="http://purl.org/linked-data/cube#MeasureProperty"><ins class="diff-chg">
+qb:MeasureProperty
+</ins></a>,<a href="http://www.w3.org/2002/07/owl#DatatypeProperty"><ins class="diff-chg">
+owl:DatatypeProperty
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-chg">
+Domain:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure"><ins class="diff-chg">
+dqv:QualityMeasure
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-chg">
+Equivalent
+property:
+</ins></td><td><a href="http://purl.org/eis/vocab/daq#value"><ins class="diff-chg">
+daq:value
+</ins></a></td></tr></tbody></table></section></section><section id="dqv:Metric" typeof="bibo:Chapter" resource="#dqv:Metric" property="bibo:hasPart"><h3 id="h-dqv-metric" resource="#h-dqv-metric"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+4.2
+</ins>
+</span>
+Class:
+Metric
+</span>
+</h3>
+<p>
+The
+following
+properties
+should
+be
+used
+on
+this
+class:
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasDimension">
+dqv:hasDimension
+</a>.
+</p>
+<div class="issue" id="issue-5">
+<div class="issue-title" aria-level="4" role="heading" id="h-issue5">
+<span>
+<ins class="diff-new">Issue
+5
+</ins></span></div><div class=""><p><ins class="diff-new">
+In
+daQ,
+the
+property
+</ins><a href="http://purl.org/eis/vocab/daq#expectedDataType"><ins class="diff-new">
+daq:expectedDataType
+</ins></a><ins class="diff-new">
+associates
+each
+metric
+to
+the
+expected
+data
+type
+for
+its
+observed
+value.
+Data
+types
+for
+observed
+values
+are
+restricted
+to
+</ins><a href="http://www.w3.org/2001/XMLSchema#anySimpleType"><ins class="diff-new">
+xsd:anySimpleType
+</ins></a><ins class="diff-new">
+(e.g.
+xsd:boolean,
+xsd:double
+etc…).
+Is
+the
+current
+practice
+of
+using
+daq:expectedDataType
+in
+daQ
+appropriate?
+Isn't
+the
+restriction
+to
+xsd:anySimpleType
+too
+narrow?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/224"><ins class="diff-new">
+Issue-224
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div>
+<table class="definition">
+<thead>
+<tr>
+<th>
+RDF
+Class:
+</th>
+<th>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Metric">
+<ins class="diff-new">dqv:Metric
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-new">
+Definition:
+</ins></td><td><ins class="diff-new">
+A
+standard
+to
+measure
+a
+quality
+dimension.
+An
+observation
+(instance
+of
+dqv:QualityMeasure)
+assigns
+a
+value
+in
+a
+given
+unit
+to
+a
+Metric.
+</ins></td></tr><tr><td class="prop"><ins class="diff-new">
+Equivalent
+class
+</ins></td><td>
+<a href="http://purl.org/eis/vocab/daq#Metric">
+daq:Metric
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="dqv:hasDimension" typeof="bibo:Chapter" resource="#dqv:hasDimension" property="bibo:hasPart">
+<h4 id="h-dqv-hasdimension" resource="#h-dqv-hasdimension">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<ins class="diff-new">4.2.1
+</ins></span><ins class="diff-new">
+Property:
+hasDimension
+</ins></span></h4><table class="definition"><thead><tr><th><ins class="diff-new">
+RDF
+Property:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasDimension"><ins class="diff-new">
+dqv:hasDimension
+</ins></a>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="prop">
+Definition:
+</td>
+<td>
+<del class="diff-old">The
+smallest
+unit
+of
+measuring
+</del>
+<ins class="diff-chg">Represents
+the
+dimension
+a
+metric
+allows
+</ins>
+a
+<ins class="diff-new">measurement
+of.
+</ins></td></tr><tr><td class="prop"><ins class="diff-new">
+Domain:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Metric"><ins class="diff-new">
+dqv:Metric
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Range:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Dimension"><ins class="diff-new">
+dqv:Dimension
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Inverse:
+</ins></td><td><a href="http://purl.org/eis/vocab/daq#hasMetric"><ins class="diff-new">
+daq:hasMetric
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Usage
+note:
+</ins></td><td><ins class="diff-new">
+Dimensions
+are
+meant
+to
+systematically
+organize
+metrics.
+The
+Data
+Quality
+Vocabulary
+defines
+no
+specific
+cardinality
+constraints
+for
+dqv:hasDimension,
+since
+distinct
+</ins>
+quality
+<del class="diff-old">dimension
+is
+</del>
+<ins class="diff-chg">frameworks
+might
+have
+different
+perspectives
+over
+</ins>
+a
+metric.
+A
+metric
+<del class="diff-old">belongs
+</del>
+<ins class="diff-chg">may
+therefore
+be
+associated
+</ins>
+to
+<del class="diff-old">exactly
+</del>
+<ins class="diff-chg">more
+than
+</ins>
+one
+dimension.
+<ins class="diff-new">However,
+those
+who
+define
+new
+quality
+measures
+should
+try
+to
+avoid
+this
+as
+much
+as
+possible
+and
+assign
+only
+one
+dimension
+to
+the
+metrics
+they
+define.
+</ins>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="dqv:Dimension" typeof="bibo:Chapter" resource="#dqv:Dimension" property="bibo:hasPart">
+<h3 id="h-dqv-dimension" resource="#h-dqv-dimension">
+<span property="xhv:role" resource="xhv:heading">
+<del class="diff-old">Issue
+10
+</del>
+<span class="secno">
+<ins class="diff-chg">4.3
+</ins></span><ins class="diff-chg">
+Class:
+Dimension
+</ins>
+</span>
+</h3>
+<p>
+<del class="diff-old">Do
+we
+want
+to
+keep
+the
+same
+occurrence
+constraints
+as
+defined
+in
+DAQ
+(for
+example,
+that
+every
+metric
+</del>
+<ins class="diff-chg">The
+following
+properties
+</ins>
+should
+<del class="diff-old">belong
+to
+exactly
+one
+dimension)?
+In
+this
+specific
+case
+this
+may
+</del>
+be
+<del class="diff-old">demanding
+too
+much
+</del>
+<ins class="diff-chg">used
+</ins>
+on
+<ins class="diff-new">this
+class:
+</ins><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasCategory"><ins class="diff-new">
+dqv:hasCategory
+</ins></a>.</p><table class="definition"><thead><tr><th><ins class="diff-new">
+RDF
+Class:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Dimension"><ins class="diff-new">
+dqv:Dimension
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-new">
+Definition:
+</ins></td><td><ins class="diff-new">
+Represents
+criteria
+relevant
+for
+assessing
+quality.
+Each
+</ins>
+quality
+<del class="diff-old">data
+publishers:
+it
+could
+be
+that
+a
+metric
+does
+not
+clearly
+belong
+to
+a
+dimension,
+</del>
+<ins class="diff-chg">dimension
+must
+have
+one
+</ins>
+or
+<del class="diff-old">that
+a
+</del>
+<ins class="diff-chg">more
+</ins>
+metric
+<ins class="diff-new">to
+measure
+it.
+A
+dimension
+</ins>
+is
+<del class="diff-old">in
+scope
+for
+several
+dimensions.
+(
+Issue-187
+</del>
+<ins class="diff-chg">linked
+with
+a
+category
+using
+the
+dqv:hasDimension
+property.
+</ins></td></tr><tr><td class="prop"><ins class="diff-chg">
+Equivalent
+class
+</ins></td><td><a href="http://purl.org/eis/vocab/daq#Dimension"><ins class="diff-chg">
+daq:Dimension
+</ins>
+</a>
+<del class="diff-old">)
+</del>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="dqv:hasCategory" typeof="bibo:Chapter" resource="#dqv:hasCategory" property="bibo:hasPart">
+<h4 id="h-dqv-hascategory" resource="#h-dqv-hascategory">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">5.2.1
+</del>
+<ins class="diff-chg">4.3.1
+</ins>
+</span>
+Property:
+<del class="diff-old">dimension
+</del>
+<ins class="diff-chg">hasCategory
+</ins>
+</span>
+</h4>
+<table class="definition">
+<thead>
+<tr>
+<th>
+RDF
+Property:
+</th>
+<th>
+<del class="diff-old">dqv:hasDimension
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasCategory">
+<ins class="diff-chg">dqv:hasCategory
+</ins>
+</a>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="prop">
+Definition:
+</td>
+<td>
+Represents
+the
+<del class="diff-old">dimension
+a
+metric
+allows
+</del>
+<ins class="diff-chg">category
+</ins>
+a
+<del class="diff-old">measurement
+of.
+</del>
+<ins class="diff-chg">dimension
+is
+grouped
+in.
+</ins>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Domain:
+</td>
+<td>
+<del class="diff-old">daq:Metric
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Dimension">
+<ins class="diff-chg">dqv:Dimension
+</ins>
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Range:
+</td>
+<td>
+<del class="diff-old">daq:Dimension
+</del>
+<a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Category">
+<ins class="diff-chg">dqv:Category
+</ins>
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+Inverse:
+</td>
+<td>
+<del class="diff-old">daq:hasMetric
+</del>
+<a href="http://purl.org/eis/vocab/daq#hasDimension">
+<ins class="diff-chg">daq:hasDimension
+</ins>
+</a>
+</td>
+</tr>
+<tr>
+<td class="prop">
+<del class="diff-old">Minimum
+cardinality:
+</del>
+<ins class="diff-chg">Usage
+note:
+</ins>
+</td>
+<td>
+<del class="diff-old">1
+</del>
+<ins class="diff-chg">Categories
+are
+meant
+to
+systematically
+organize
+dimensions.
+The
+Data
+Quality
+Vocabulary
+defines
+no
+specific
+cardinality
+constraints
+for
+dqv:hasCategory,
+since
+distinct
+quality
+frameworks
+might
+have
+different
+perspectives
+over
+a
+dimension.
+A
+dimension
+may
+therefore
+be
+associated
+to
+more
+than
+one
+category.
+However,
+those
+who
+define
+new
+quality
+measures
+should
+try
+to
+avoid
+this
+as
+much
+as
+possible
+and
+assign
+only
+one
+category
+to
+the
+dimensions
+they
+define.
+</ins></td></tr></tbody></table></section></section><section id="dqv:Category" typeof="bibo:Chapter" resource="#dqv:Category" property="bibo:hasPart"><h3 id="h-dqv-category" resource="#h-dqv-category"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+4.4
+</ins></span><ins class="diff-chg">
+Class:
+Category
+</ins></span></h3><table class="definition"><thead><tr><th><ins class="diff-chg">
+RDF
+Class:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:Category"><ins class="diff-chg">
+dqv:Category
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-chg">
+Definition:
+</ins></td><td><ins class="diff-chg">
+Represents
+a
+group
+of
+quality
+dimensions
+in
+which
+a
+common
+type
+of
+information
+is
+used
+as
+quality
+indicator.
+</ins>
+</td>
+</tr>
+<tr>
+<td class="prop">
+<del class="diff-old">Maximum
+cardinality:
+</del>
+<ins class="diff-chg">Equivalent
+class
+</ins>
+</td>
+<td>
+<del class="diff-old">1
+</del>
+<a href="http://purl.org/eis/vocab/daq#Category">
+<ins class="diff-chg">daq:Category
+</ins></a></td></tr></tbody></table></section><section id="dqv:QualityMeasureDataset" typeof="bibo:Chapter" resource="#dqv:QualityMeasureDataset" property="bibo:hasPart"><h3 id="h-dqv-qualitymeasuredataset" resource="#h-dqv-qualitymeasuredataset"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+4.5
+</ins></span><ins class="diff-chg">
+Class:
+Quality
+Measure
+Dataset
+</ins></span></h3><table class="definition"><thead><tr><th><ins class="diff-chg">
+RDF
+Class:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasureDataset"><ins class="diff-chg">
+dqv:QualityMeasureDataset
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-chg">
+Definition:
+</ins></td><td><ins class="diff-chg">
+Represents
+a
+dataset
+of
+quality
+measures,
+evaluations
+of
+a
+given
+dataset
+(or
+dataset
+distribution)
+against
+a
+specific
+quality
+metric.
+</ins></td></tr><tr><td class="prop"><ins class="diff-chg">
+Subclass
+of:
+</ins></td><td><a href="http://www.w3.org/TR/vocab-data-cube/#ref_qb_DataSet"><ins class="diff-chg">
+qb:DataSet
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-chg">
+Equivalent
+class
+</ins></td><td><a href="http://purl.org/eis/vocab/daq#QualityGraph"><ins class="diff-chg">
+daq:QualityGraph
+</ins></a></td></tr></tbody></table></section><section id="dqv:QualityAnnotation" typeof="bibo:Chapter" resource="#dqv:QualityAnnotation" property="bibo:hasPart"><h3 id="h-dqv-qualityannotation" resource="#h-dqv-qualityannotation"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+4.6
+</ins></span><ins class="diff-chg">
+Class:
+Quality
+Annotation
+</ins></span></h3><table class="definition"><thead><tr><th><ins class="diff-chg">
+RDF
+Class:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityAnnotation"><ins class="diff-chg">
+dqv:QualityAnnotation
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-chg">
+Definition:
+</ins></td><td><ins class="diff-chg">
+Represents
+quality
+annotations,
+including
+rating,
+quality
+certificate,
+feedback
+that
+can
+be
+associated
+to
+datasets
+or
+distributions.
+Quality
+annotations
+must
+have
+one
+oa:motivatedBy
+statement
+with
+an
+instance
+of
+oa:Motivation
+(and
+skos:Concept),
+which
+reflects
+a
+quality
+assessment
+purpose.
+We
+define
+this
+instance
+as
+dqv:qualityAssessment.
+</ins></td></tr><tr><td class="prop"><ins class="diff-chg">
+Subclass
+of:
+</ins></td><td><a href="http://www.w3.org/ns/oa#d4e434"><ins class="diff-chg">
+oa:Annotation
+</ins></a></td></tr>		    	<tr><td class="prop">Equivalent class </td><td><pre>EquivalentClasses(<ins class="diff-chg">
+   dqv:QualityAnnotation 
+   ObjectHasValue( oa:motivatedBy dqv:qualityAssessment )  	
+)
+</ins></pre></td></tr></tbody></table><div class="note"><div class="note-title" aria-level="4" role="heading" id="h-note4"><span><ins class="diff-chg">
+Note
+</ins></span></div><div class=""><p><ins class="diff-chg">
+To
+make
+the
+document
+more
+self-contained
+we
+might
+consider
+to
+describe
+some
+properties
+of
+oa:Annotation,
+such
+as
+hasBody,
+hasTarget.
+</ins></p></div></div></section><section id="dqv:UserQualityFeedback" typeof="bibo:Chapter" resource="#dqv:UserQualityFeedback" property="bibo:hasPart"><h3 id="h-dqv-userqualityfeedback" resource="#h-dqv-userqualityfeedback"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+4.7
+</ins></span><ins class="diff-chg">
+Class:
+User
+Quality
+Feedback
+</ins></span></h3><table class="definition"><thead><tr><th><ins class="diff-chg">
+RDF
+Class:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:UserQualityFeedback"><ins class="diff-chg">
+dqv:UserQualityFeedback
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-chg">
+Definition:
+</ins></td><td><ins class="diff-chg">
+Represents
+feedback
+users
+might
+want
+to
+associate
+to
+datasets
+or
+distributions.
+</ins></td></tr><tr><td class="prop"><ins class="diff-chg">
+Subclass
+of:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityAnnotation"><ins class="diff-chg">
+dqv:QualityAnnotation
+</ins></a><a href=""><ins class="diff-chg">
+duv:UserFeedback
+</ins></a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="issue" id="issue-6">
+<div class="issue-title" aria-level="4" role="heading" id="h-issue6">
+<span>
+<ins class="diff-new">Issue
+6
+</ins></span></div><div class=""><p><ins class="diff-new">
+Should
+we
+exploit
+predefined
+instances
+of
+oa:Motivation
+to
+further
+characterize
+a
+user's
+feedback
+purposes?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/201"><ins class="diff-new">
+Issue-201
+</ins></a><ins class="diff-new">
+)
+</ins><br><ins class="diff-new">
+Combining
+the
+</ins><a href="http://www.w3.org/TR/annotation-model/#creation-reason"><ins class="diff-new">
+predefined
+instances
+of
+oa:Motivation
+</ins></a><ins class="diff-new">
+with
+the
+dqv:qualityAssessment
+we
+could
+distinguish
+different
+kinds
+of
+for
+user
+feedbacks,
+for
+example:
+</ins></p><ol><li><ins class="diff-new">
+dqv:qualityAssessment
+plus
+oa:editing
+might
+indicate
+a
+request
+for
+a
+modification
+or
+edit,
+which
+relates
+to
+the
+quality
+of
+the
+target
+dataset/distribution
+</ins></li><li><ins class="diff-new">
+dqv:qualityAssessment
+plus
+oa:questioning
+might
+express
+a
+question
+issued
+about
+specific
+quality
+of
+the
+dataset/distribution
+</ins></li><li><ins class="diff-new">
+dqv:qualityAssessment
+plus
+oa:classification
+might
+represent
+the
+assignment
+of
+a
+classification
+type,
+typically
+from
+a
+controlled
+vocabulary
+or
+list,
+to
+the
+target
+resource(s).
+For
+example,
+it
+could
+be
+used
+to
+classify
+a
+dataset/distribution
+against
+a
+rating
+system
+(e.g.,
+the
+5
+Stars
+linked
+open
+data
+rating
+system).
+</ins></li></ol></div></div>
+</section>
+<section id="dqv:hasQualityMeasure" typeof="bibo:Chapter" resource="#dqv:hasQualityMeasure" property="bibo:hasPart">
+<h3 id="h-dqv-hasqualitymeasure" resource="#h-dqv-hasqualitymeasure">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<ins class="diff-new">4.8
+</ins></span><ins class="diff-new">
+Property:
+Has
+Quality
+Measure
+</ins></span></h3><table class="definition"><thead><tr><th><ins class="diff-new">
+RDF
+Property:
+</ins></th><th><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:hasQualityMeasure"><ins class="diff-new">
+dqv:hasQualityMeasure
+</ins></a></th></tr></thead><tbody><tr><td class="prop"><ins class="diff-new">
+Definition:
+</ins></td><td><ins class="diff-new">
+Refers
+to
+the
+performed
+quality
+measurements.
+Quality
+measurements
+can
+be
+performed
+to
+any
+kind
+of
+resource
+(e.g.,
+a
+dataset,
+a
+linkset,
+a
+graph,
+a
+set
+of
+triples).
+However,
+in
+the
+DQV
+context,
+this
+property
+is
+generally
+expected
+to
+be
+used
+in
+statements
+in
+which
+subjects
+are
+instances
+of
+</ins><a href="http://www.w3.org/TR/vocab-dcat/#class-dataset"><ins class="diff-new">
+dcat:Dataset
+</ins></a><ins class="diff-new">
+and
+</ins><a href="http://www.w3.org/TR/vocab-dcat/#class-distribution"><ins class="diff-new">
+dcat:Distribution
+</ins></a>.</td></tr><tr><td class="prop"><ins class="diff-new">
+Range:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:QualityMeasure"><ins class="diff-new">
+dqv:QualityMeasure
+</ins></a></td></tr><tr><td class="prop"><ins class="diff-new">
+Inverse
+property:
+</ins></td><td><a href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#dqv:computedOn"><ins class="diff-new">
+dqv:computedOn
+</ins></a></td></tr></tbody></table>
+</section>
+</section>
+<section id="examples" class="informative" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">
+<h2 id="h-examples" resource="#h-examples">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.
+</del>
+<ins class="diff-chg">5.
+</ins>
+</span>
+Example
+Usage
+</span>
+</h2>
+<p>
+<em>
+This
+section
+is
+non-normative.
+</em>
+</p>
+This
+section
+shows
+some
+examples
+to
+illustrate
+the
+application
+of
+the
+Dataset
+Quality
+Vocabulary.
+<div class="note">
+<div class="note-title" aria-level="3" role="heading" id="h-note5">
+<span>
+Note
+</span>
+</div>
+<div class="">
+<p>
+This
+section
+is
+still
+work
+in
+progress.
+Further
+examples
+will
+be
+provided
+as
+soon
+as
+some
+of
+the
+pending
+issues
+are
+resolved.
+<ins class="diff-new">We
+invite
+the
+public
+to
+contact
+the
+editors
+and
+submit
+relevant
+examples
+of
+quality
+data,
+even
+not
+yet
+represented
+in
+DQV.
+We
+welcome
+your
+input!
+</ins>
+</p>
+</div>
+</div>
+<p>
+<em>
+NB:
+in
+the
+remainder
+of
+this
+section,
+the
+prefix
+"
+<code>:
+</code>
+"
+refers
+to
+<code>
+http://example.org/
+</code>
+</em>
+</p>
+<section id="ExpressAQualityAssessmentWithQualityMetrics" typeof="bibo:Chapter" resource="#ExpressAQualityAssessmentWithQualityMetrics" property="bibo:hasPart">
+<h3 id="h-expressaqualityassessmentwithqualitymetrics" resource="#h-expressaqualityassessmentwithqualitymetrics">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.1
+</del>
+<ins class="diff-chg">5.1
+</ins>
+</span>
+Express
+a
+quality
+assessment
+with
+quality
+metrics
+</span>
+</h3>
+Let
+us
+consider
+a
+dataset
+<code>
+myDataset
+</code>,
+and
+its
+distribution
+<code>
+myDatasetDistribution
+</code>,
+<pre>:myDataset 
+	a  dcat:Dataset ;
+<del class="diff-old">	dct:title "My dataset" ; 
+</del>
+<ins class="diff-chg">	dcterms:title "My dataset" ; 
+</ins>
+	dcat:distribution :myDatasetDistribution
+	.
+:myDatasetDistribution
+	a  dcat:Distribution ;
+	dcat:downloadURL &lt;http://www.example.org/files/mydataset.csv&gt; ;
+<del class="diff-old">       	dct:title "CSV distribution of dataset" ;
+</del>
+<ins class="diff-chg">       	dcterms:title "CSV distribution of dataset" ;
+</ins>
+       	dcat:mediaType "text/csv" ;
+       	dcat:byteSize "87120"^^xsd:decimal 
+	.
+</pre>
+<p id="twoCSV">
+An
+automated
+quality
+checker
+has
+provided
+a
+quality
+assessment
+with
+two
+(CSV)
+quality
+measures
+for
+<code>
+myDatasetDistribution
+</code>.
+</p>
+<pre>:myDatasetDistribution
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+:measure1 
+	a dqv:QualityMeasure ;
+<del class="diff-old">	# when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
+	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
+        # In any case we could remove this statement.  
+	daq:computedOn :myDatasetDistribution ;
+	daq:metric :cvsAvailabilityMetric ;
+	daq:value "1.0"^^xsd:double 
+</del>
+<ins class="diff-chg">	dqv:computedOn :myDatasetDistribution ;
+	dqv:hasMetric :csvAvailabilityMetric ;
+	dqv:value "1.0"^^xsd:double 
+</ins>
+	.
+     	
+:measure2
+	a dqv:QualityMeasure ;
+<del class="diff-old">	# when daq:computedOn ranges into a dcat:Distribution/dcat:Dataset, 
+	# dqv:hasQualityMeasure is likely to be the inverse of daq:computedOn ?
+        # In any case we could remove this statement.  
+	daq:computedOn :myDatasetDistribution ;
+	daq:metric :csvConsistencyMetric ;
+	daq:value "0.5"^^xsd:double 
+	.
+:cvsAvailabilityMetric 
+	a daq:Metric ;
+	dqv:hasDimension :availability
+</del>
+<ins class="diff-chg">	dqv:computedOn :myDatasetDistribution ;
+	dqv:hasMetric :csvConsistencyMetric ;
+	dqv:value "0.5"^^xsd:double 
+</ins>
+	.
+<del class="diff-old">:csvConsistencyMetric
+	a daq:Metric ; 
+	dqv:hasDimension :consistency
+	.
+	
+:availability
+	a daq:Dimension ; 
+</del>
+<ins class="diff-chg">#definition of dimensions and metrics
+:availabity
+	a dqv:Dimension ; 
+</ins>
+	dqv:hasCategory :category1;
+	.
+:consistency
+<del class="diff-old">	a daq:Dimension ;
+</del>
+<ins class="diff-chg">	a dqv:Dimension ;
+</ins>
+	dqv:hasCategory :category2
+	.
+<del class="diff-old"># Categories and  dimensions might be more extensively defined, for example, 
+# by grounding them in the section 'Dimensions and metrics hints'.
+# However, any quality framework is free to define its own dimensions and categories.
+</del>
+<ins class="diff-chg">	
+:csvAvailabilityMetric 
+	a dqv:Metric ;
+	dqv:hasDimension :availabity
+	.
+:csvConsistencyMetric
+	a dqv:Metric ; 
+	dqv:hasDimension :consistency
+	.
+	
+</ins>
+</pre>
+<p>
+<ins class="diff-new">Categories
+and
+dimensions
+might
+be
+more
+extensively
+defined,
+see
+in
+the
+section
+'Dimensions
+and
+metrics
+hints'
+for
+further
+examples.
+Any
+quality
+framework
+is
+free
+to
+define
+its
+own
+dimensions
+and
+categories.
+</ins></p><div class="issue" id="issue-7"><div class="issue-title" aria-level="4" role="heading" id="h-issue7"><span><ins class="diff-new">
+Issue
+7
+</ins></span></div><div class=""><p><ins class="diff-new">
+Is
+there
+any
+reason
+for
+turning
+the
+classes
+dqv:Dimension,
+dqv:Metric
+and
+dqv:Category
+as
+well
+as
+the
+properties
+dqv:hasDimension
+and
+dqv:hasCategory
+into
+"abstract"
+classes
+and
+properties
+as
+they
+were
+defined
+in
+daQ
+(see
+Section
+"Extending
+the
+daQ"
+</ins><a href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq"><ins class="diff-new">
+here
+</ins></a><ins class="diff-new">
+)?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/204"><ins class="diff-new">
+Issue-204
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div><div class="issue" id="issue-8"><div class="issue-title" aria-level="4" role="heading" id="h-issue8"><span><ins class="diff-new">
+Issue
+8
+</ins></span></div><div class=""><p><ins class="diff-new">
+Should
+we
+represent
+dimensions
+and
+categories
+as
+instances
+of
+</ins><a href="http://www.w3.org/2004/02/skos/core#Concept"><ins class="diff-new">
+skos:Concept
+</ins></a><ins class="diff-new">
+?
+This
+would
+allow
+publishers
+of
+quality
+framework
+to
+express
+(hierarchical)
+relations
+between
+dimensions
+or
+categories.
+This
+could
+also
+enable
+to
+align
+with
+quality-focused
+categorizations
+less
+focused
+on
+metrics.
+Including
+the
+</ins><a href="http://w3c.github.io/dwbp/bp.html"><abbr title="Data on the Web Best Practices"><ins class="diff-new">
+DWBP
+</ins></abbr><ins class="diff-new">
+Best
+Practices
+</ins></a><ins class="diff-new">
+dimensions,
+or
+even
+the
+parts
+of
+DQV
+about
+annotations.
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/205"><ins class="diff-new">
+Issue-205
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div>
+</section>
+<section id="DocumentProvenanceQualityMetadata" typeof="bibo:Chapter" resource="#DocumentProvenanceQualityMetadata" property="bibo:hasPart">
+<h3 id="h-documentprovenancequalitymetadata" resource="#h-documentprovenancequalitymetadata">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.2
+</del>
+<ins class="diff-chg">5.2
+</ins>
+</span>
+Document
+the
+provenance
+of
+the
+quality
+metadata
+</span>
+</h3>
+<p>
+The
+<del class="diff-old">result
+</del>
+<ins class="diff-chg">results
+</ins>
+of
+metrics
+obtained
+in
+the
+previous
+assessment
+are
+stored
+in
+the
+<code>
+myQualityMetadata
+</code>
+graph.
+</p>
+<pre># myQualityMatadata is a graph 
+<del class="diff-old"># we are assuming dqv:QualityMetadata is an extension of daq:QualityGraph,
+# otherwise we should probably define a proper qb:DataStructureDefinition 
+</del>
+:myQualityMetadata {
+:myDatasetDistribution
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+<span class="red"># The graph contains the rest of the statements presented in the previous example.</span>
+}
+# myQualityMetadata has been created by: qualityChecker and it is the result of the :qualityChecking activity 
+:myQualityMetadata 
+	a dqv:QualityMetadata ;
+	prov:wasAttributedTo :qualityChecker ;
+	prov:generatedAtTime "2015-05-27T02:52:02Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy :qualityChecking 
+	.
+# qualityChecker is a service computing some quality metrics 	
+:qualityChecker
+	a prov:SoftwareAgent ;   
+	rdfs:label "a quality assessment service"^^xsd:string
+	<span class="red"># We should probably suggest to add more info about the services</span>
+	.
+# the qualityChecking is the activity that has generated myQualityMetadata starting from  MyDatasetDistribution    
+:qualityChecking
+	a prov:Activity;
+	rdfs:label "the checking of myDatasetDistribution's quality"^^xsd:string;
+   	prov:wasAssociatedWith :qualityChecker;
+   	prov:used              :myDatasetDistribution;
+   	prov:generated         :myQualityMetadata;
+<del class="diff-old">   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime
+   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime;
+</del>
+<ins class="diff-chg">   	prov:endedAtTime      "2015-05-27T02:52:02Z"^^xsd:dateTime;
+   	prov:startedAtTime     "2015-05-27T00:52:02Z"^^xsd:dateTime
+</ins>
+	. 
+</pre>
+</section>
+<section id="DocumentProvSingleQM" typeof="bibo:Chapter" resource="#DocumentProvSingleQM" property="bibo:hasPart">
+<h3 id="h-documentprovsingleqm" resource="#h-documentprovsingleqm">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.3
+</del>
+<ins class="diff-chg">5.3
+</ins></span><ins class="diff-chg">
+Document
+the
+provenance
+of
+single
+quality
+measurement
+</ins></span></h3><div class="note"><div class="note-title" aria-level="4" role="heading" id="h-note6"><span><ins class="diff-chg">
+Note
+</ins></span></div><div class=""><p><ins class="diff-chg">
+The
+group
+has
+discussed
+provenance
+at
+different
+level
+of
+granularity
+(dqv:QualityMeasure
+and
+dqv:QualityMetadata),
+so
+we
+might
+consider
+to
+add
+an
+example
+of
+provenance
+for
+dqv:QualityMeasure.
+</ins></p></div></div></section><section id="DocumentProvDataset" typeof="bibo:Chapter" resource="#DocumentProvDataset" property="bibo:hasPart"><h3 id="h-documentprovdataset" resource="#h-documentprovdataset"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+5.4
+</ins>
+</span>
+Document
+the
+provenance
+of
+a
+dataset
+</span>
+</h3>
+<p>
+Statements
+similar
+to
+the
+ones
+applied
+to
+the
+resource
+<code>
+myQualityMetadata
+</code>
+above
+can
+be
+applied
+to
+the
+resource
+<code>
+myDataset
+</code>
+to
+indicate
+the
+provenance
+of
+the
+dataset.
+I.e.,
+a
+dataset
+can
+be
+generated
+by
+a
+specific
+software
+agent,
+be
+generated
+at
+a
+certain
+time,
+etc.
+The
+<a href="http://www.w3.org/TR/hcls-dataset/">
+HCLS
+Community
+Profile
+</a>
+for
+describing
+datasets
+<del class="diff-old">provide
+</del>
+<ins class="diff-chg">provides
+</ins>
+further
+examples.
+</p>
+</section>
+<section id="odiCert" typeof="bibo:Chapter" resource="#odiCert" property="bibo:hasPart">
+<h3 id="h-odicert" resource="#h-odicert">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.4
+</del>
+<ins class="diff-chg">5.5
+</ins>
+</span>
+Express
+that
+a
+dataset
+received
+an
+ODI
+certificate
+</span>
+</h3>
+<p>
+<ins class="diff-new">Let
+us
+express
+that
+an
+ODI
+certificate
+for
+the
+"City
+of
+Raleigh
+Open
+Government
+Data"
+dataset
+is
+available
+at
+the
+URL
+&lt;https://certificates.theodi.org/en/datasets/393/certificate&gt;.
+</ins></p>		<pre>&lt;https://certificates.theodi.org/en/datasets/393&gt; a dcat:Dataset ;<ins class="diff-new">
+        dqv:hasQualityAnnotation :myDatasetQA .
+:myDatasetQA 
+	a dqv:QualityCertificate ;
+	oa:hasTarget &lt;https://certificates.theodi.org/en/datasets/393&gt; ;
+	oa:hasBody  &lt;https://certificates.theodi.org/en/datasets/393/certificate&gt; ;
+        oa:motivatedBy dqv:qualityAssessment .
+</ins></pre></section><section id="ExpressQualSKOS" typeof="bibo:Chapter" resource="#ExpressQualSKOS" property="bibo:hasPart"><h3 id="h-expressqualskos" resource="#h-expressqualskos"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-new">
+5.6
+</ins></span><ins class="diff-new">
+Express
+quality
+of
+SKOS
+concept
+schemes
+</ins></span>
+</h3>
+<p>
+<ins class="diff-new">Let’s
+consider
+</ins><code><ins class="diff-new">
+myControlledVocabulary
+</ins></code>,<ins class="diff-new">
+a
+controlled
+vocabulary
+made
+available
+on
+the
+Web
+using
+the
+SKOS
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-SKOS-reference"><ins class="diff-new">
+SKOS-reference
+</ins></a></cite><ins class="diff-new">
+]
+and
+DCAT
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-vocab-dcat"><ins class="diff-new">
+vocab-dcat
+</ins></a></cite><ins class="diff-new">
+].
+</ins>
+</p>
+	<pre>:myControlledVocabulary 
+<ins class="diff-chg">	a dcat:Dataset ;
+	dcterms:title "My controlled vocabulary" 
+	.
+	
+:myControlledVocabularyDistribution
+	a  dcat:Distribution ;
+	dcat:downloadURL &lt;http://www.example.org/files/myControlledVocabulary.csv&gt; ;
+       	dcterms:title "SKOS/RDF distribution of my controlled vocabulary"" ;
+       	dcat:mediaType "text/turtle" ;
+       	dcat:byteSize "190120"^^xsd:decimal 
+.
+</ins></pre><p><ins class="diff-chg">
+qSKOS
+is
+an
+open
+source
+tool,
+which
+detects
+quality
+issues
+affecting
+SKOS
+vocabularies
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-qSKOS"><ins class="diff-chg">
+qSKOS
+</ins></a></cite><ins class="diff-chg">
+].
+It
+considers
+26
+quality
+issues
+including,
+for
+example,
+“Incomplete
+Language
+Coverage”
+and
+“Label
+Conflicts”
+which
+are
+grouped
+in
+the
+category
+“Labeling
+and
+Documentation
+issues”.
+Quality
+issues
+addressed
+by
+qSKOS
+can
+be
+considered
+as
+DQV
+quality
+dimensions,
+whilst
+the
+number
+of
+concepts
+in
+which
+a
+quality
+issue
+occurs
+can
+be
+the
+metric
+deployed
+for
+each
+quality
+dimension.
+</ins></p>	<pre># definition of instances for some of the  metrics, dimensions and categories deployed in qSKOS. <ins class="diff-chg">
+:numOfConceptsWithLabelConflicts 
+	a dqv:Metric;
+	rdfs:label "Conflicting concepts"@en ;
+	rdfs:comment "Number of concepts having conflicting labels"@en ;
+	dqv:hasDimension  :LabelConflicts 
+	.
+:numOfConceptsWithIncompleteLanguageCoverage
+	a dqv:Metric;
+	rdfs:label "Language incomplete concepts"@en ;
+	rdfs:comment "Number of concepts having an incomplete language coverage"@en ;
+	dqv:hasDimension  :incompleteLanguageCoverage .
+:LabelConflicts
+	a  dqv:Dimension;
+	rdfs:label "Label Conflicts"@en ;
+	rdfs:comment "Dimension corresponding to the label conflicts quality issue"@en ;
+        dqv:hasCategory :labelingDocumentationIssues .
+:incompleteLanguageCoverage
+	a  dqv:Dimension;
+	rdfs:label "Incomplete Language Coverage"@en ;
+	rdfs:comment "Dimension corresponding to the incomplete language coverage issue"@en ;
+        dqv:hasCategory :labelingDocumentationIssues .
+:labelingDocumentationIssues
+        a  dqv:Category ;
+	rdfs:label "Labeling and Documentation Issues"@en ;
+	rdfs:comment "Category grouping labeling and documentation issues"@en ;
+.
+</ins></pre><p><ins class="diff-chg">
+DQV
+represents
+the
+qSKOS
+quality
+assessment
+on
+</ins><code><ins class="diff-chg">
+myControlledVocabulary
+</ins></code><ins class="diff-chg">
+for
+the
+dimensions
+“Incomplete
+Language
+Coverage”
+and
+“Label
+Conflicts”.
+</ins></p><pre>:myDatasetDistribution<ins class="diff-chg">
+	dqv:hasQualityMeasure :measure1, :measure2
+	.
+</ins>
+<ins class="diff-new">:measure1 
+	a dqv:QualityMeasure ;
+	dqv:computedOn :myControlledVocabulary ;
+	dqv:hasMetric :numOfConceptsWithMissingValues ;
+	dqv:value "1500"^^xsd:integer  
+	.
+     	
+:measure2
+	a dqv:QualityMeasure ;
+	dqv:computedOn :numOfConceptsWithIncompleteLanguageCoverage ;
+	dqv:hasMetric :csvConsistencyMetric ;
+	dqv:value "450"^^xsd:integer 
+	.
+</ins>
+</pre>
+</section>
+<section id="ExpressQualLinkset" typeof="bibo:Chapter" resource="#ExpressQualLinkset" property="bibo:hasPart">
+<h3 id="h-expressquallinkset" resource="#h-expressquallinkset">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">6.5
+</del>
+<ins class="diff-chg">5.7
+</ins>
+</span>
+Express
+the
+quality
+of
+a
+linkset
+</span>
+</h3>
+<p>
+</p>
+<p>
+<a href="http://www.w3.org/TR/void/#linkset">
+<ins class="diff-chg">(VoID)
+linksets
+</ins></a><ins class="diff-chg">
+are
+collections
+of
+(RDF)
+links
+between
+two
+datasets.
+Linksets
+are
+as
+important
+as
+datasets
+when
+it
+comes
+to
+the
+joint
+exploitation
+of
+independently
+served
+datasets
+in
+linked
+data.
+The
+representation
+of
+quality
+for
+a
+linkset
+offers
+a
+further
+example
+of
+how
+DQV
+can
+be
+exploited.
+</ins></p><p><ins class="diff-chg">
+Let’s
+define
+three
+DCAT
+datasets,
+including
+one
+VoID
+linkset,
+which
+connects
+the
+two
+others:
+</ins></p>		<pre>:myDataset1 <ins class="diff-chg">
+	a dcat:Dataset ;
+	dcterms:title "My dataset 1" 
+</ins>
+<ins class="diff-chg">	.
+</ins>
+<del class="diff-old">Issue
+11
+</del>
+<ins class="diff-chg">:myDataset2 
+	a dcat:Dataset ;
+	dcterms:title "My dataset 2"  
+</ins>
+<ins class="diff-chg">	.
+</ins>
+<ins class="diff-chg">:myLinkset 
+	a dcat:Dataset, void:Linkset ;
+	dcterms:title "A Linkset between My dataset 1 and My dataset 2"; 
+	void:linkPredicate skos:exactMatch ;
+ 	void:target :myDataset1 ;
+ 	void:target :myDataset2  
+	.
+</ins></pre>
+<p>
+<del class="diff-old">This
+section
+will
+be
+completed
+by
+examples
+coming
+from
+Riccardo's
+work
+on
+measuring
+</del>
+<ins class="diff-chg">We
+can
+represent
+information
+about
+</ins>
+the
+quality
+of
+<ins class="diff-new">:myLinkset
+using
+the
+“Multilingual
+importing”
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-MultilingualImporting"><ins class="diff-new">
+MultilingualImporting
+</ins></a></cite><ins class="diff-new">
+]
+linkset
+quality
+metric.
+This
+metrics
+works
+on
+</ins>
+linksets
+between
+<ins class="diff-new">datasets
+that
+include
+</ins>
+SKOS
+<del class="diff-old">concept
+schemes,
+from
+</del>
+<ins class="diff-chg">concepts
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-SKOS-reference"><ins class="diff-chg">
+SKOS-reference
+</ins></a></cite><ins class="diff-chg">
+].
+It
+quantifies
+</ins>
+the
+<del class="diff-old">perspective
+of
+</del>
+<ins class="diff-chg">information
+gain
+when
+</ins>
+adding
+<del class="diff-old">multilingual
+</del>
+<ins class="diff-chg">the
+preferred
+</ins>
+labels
+<ins class="diff-new">or
+the
+alternative
+labels
+of
+the
+concepts
+from
+a
+linked
+dataset
+</ins>
+to
+<ins class="diff-new">the
+descriptions
+of
+the
+concepts
+from
+the
+other
+dataset,
+which
+</ins>
+these
+<del class="diff-old">schemes.
+On
+</del>
+<ins class="diff-chg">concepts
+have
+been
+matched
+with
+a
+skos:exactMatch
+statement
+from
+</ins>
+the
+<del class="diff-old">Web,
+linksets
+</del>
+<ins class="diff-chg">linkset.
+We
+must
+first
+define
+the
+proper
+metric,
+dimension
+and
+category.
+</ins></p><pre># Definition of instances for Metric, Dimension and Category. <ins class="diff-chg">
+:importingForPropertyPercentage 
+	a dqv:Metric;
+	dqv:hasDimension  :completeness.
+:completeness
+	a  dqv:Dimension;
+        dqv:hasCategory :complementationGain .
+:complementationGain
+        a  dqv:Category .
+</ins></pre><p><ins class="diff-chg">
+The
+quality
+assessment
+of
+the
+"label
+importing"
+can
+be
+made
+dependent
+on
+two
+extra
+parameters:
+property
+and
+language,
+respectively
+the
+SKOS
+property
+and
+the
+language
+tag.
+We
+extend
+DQV
+to
+represent
+these
+parameters.
+</ins></p><div class="issue" id="issue-9"><div class="issue-title" aria-level="4" role="heading" id="h-issue9"><span><ins class="diff-chg">
+Issue
+9
+</ins></span></div><div class=""><p><ins class="diff-chg">
+We
+need
+to
+further
+evaluate
+the
+way
+we
+add
+extra
+parameters
+for
+the
+metric
+and
+extend
+the
+DAQ
+RDF-CUBE
+data
+structure
+(postponed
+issue)
+</ins></p></div></div><pre>:language<ins class="diff-chg">
+        a qb:DimensionProperty, owl:DataProperty ;
+        rdfs:comment   "language on which label importing is assessed."@en ;
+        rdfs:domain    dqv:QualityMeasure;
+        rdfs:label     "label import assessment language"@en .
+:property
+        a qb:DimensionProperty, rdf:Property ;
+        rdfs:comment 	"property which label importing is assessed."@en ;
+        rdfs:domain 	dqv:QualityMeasure ;
+        rdfs:label  	"label import assessment property"@en ;
+        rdfs:range     	rdf:Property .
+</ins></pre><p><ins class="diff-chg">
+Let
+us
+add
+actual
+quality
+assessments:
+</ins></p><pre>:qualityMeasureDataset  a  dqv:QualityMeasureDataset ;<ins class="diff-chg">
+        qb:structure  :dsd .
+:importingForPropertyPercentage
+</ins>  <span class="red"> # should dqv:hasObservation  be added as inverse of dqv:hasMetric?<ins class="diff-chg">
+        dqv:hasObservation  		:exactMatchaltLabelit1 , :exactMatchaltLabelit2 , 
+			   		:exactMatchaltLabelen1 , :exactMatchaltLabelen2,
+			    		:exactMatchprefLabelit1, :exactMatchprefLabelit2 .
+</ins>	</span><ins class="diff-chg">
+#Adding quality observations 
+## for Italian alternative labels
+:measure_exactMatchAltLabelItDataset1 
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"it" ;
+       :property    	skos:altLabel .
+:measure_exactMatchAltLabelItDataset2 
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"it" ;
+       :property    	skos:altLabel .
+## for English alternative labels
+:measure_exactMatchAltLabelEnDataset1 
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.1"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"en" ;
+       :property    	skos:altLabel .
+:measure_exactMatchAltLabelEnDataset2  
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"1.0"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"en" ;
+       :property    	skos:altLabel .      
+## for Italian preferred labels
+:measure_exactMatchPrefLabelItDataset1 
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"it" ;
+       :property    	skos:prefLabel .
+:exactMatchprefLabelit2  
+       a 		dqv:QualityMeasure;
+       dqv:computedOn  	:myLinkset ;
+       dqv:value       	"0.5"^^xsd:double ;
+       dqv:hasMetric      	:importingForPropertyPercentage ;
+       qb:dataSet      	:qualityMeasureDataset;
+       :language    	"it" ;
+       :property    	skos:prefLabel .
+</ins></pre><ins class="diff-chg">
+Let
+us
+specify
+the
+RDF
+Data
+Cube
+data
+structure:
+</ins><pre>:dsd  a     qb:DataStructureDefinition ;<ins class="diff-chg">
+##Copying the structure of daq:dsq
+        qb:component  [ qb:dimension  dqv:computedOn ;
+                        qb:order      2
+                      ] ;
+        qb:component  [ qb:measure  dqv:value] ;
+        qb:component  [ qb:dimension  &lt;http://purl.org/linked-data/sdmx/2009/dimension#timePeriod&gt; ;
+                        qb:order      3
+                      ] ;
+        qb:component  [ qb:dimension  dqv:hasMetric ;
+                        qb:order      1
+                      ] ;
+       
+	qb:component [ qb:measure dqv:value;];
+	# Attribute (here: unit of measurement)
+	qb:component [
+		qb:attribute sdmx-attribute:unitMeasure
+	;
+	qb:componentRequired false ;
+	qb:componentAttachment qb:DataSet ; ] ;
+	
+    
+##Extending  the structure of lds:dsq with two new dimensions
+        qb:component  [ qb:dimension  :property ;
+                        qb:order      4
+                      ] ;
+        qb:component  [ qb:dimension  :language ;
+                        qb:order      5
+                      ] .
+</ins></pre></section><section id="ExpressConformanceWithStandard" typeof="bibo:Chapter" resource="#ExpressConformanceWithStandard" property="bibo:hasPart"><h3 id="h-expressconformancewithstandard" resource="#h-expressconformancewithstandard"><span property="xhv:role" resource="xhv:heading"><span class="secno"><ins class="diff-chg">
+5.8
+</ins></span><ins class="diff-chg">
+Express
+the
+conformance
+of
+a
+dataset's
+metadata
+with
+a
+standard
+</ins></span></h3><p><ins class="diff-chg">
+It
+is
+often
+desirable
+to
+indicate
+that
+metadata
+about
+datasets
+in
+a
+catalogue
+</ins>
+are
+<ins class="diff-new">compliant
+with
+a
+metadata
+standard,
+or
+</ins>
+an
+<del class="diff-old">especially
+interesting
+case
+</del>
+<ins class="diff-chg">application
+profile
+</ins>
+of
+<del class="diff-old">datasets!
+we
+could
+</del>
+<ins class="diff-chg">an
+existing
+metadata
+standard.
+A
+typical
+example
+is
+the
+GeoDCAT
+Application
+Profile
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-GeoDCAT-AP"><ins class="diff-chg">
+GeoDCAT-AP
+</ins></a></cite><ins class="diff-chg">
+],
+an
+extension
+of
+the
+DCAT
+vocabulary
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-vocab-dcat"><ins class="diff-chg">
+vocab-dcat
+</ins></a></cite><ins class="diff-chg">
+]
+to
+represent
+metadata
+for
+geospatial
+data
+portals.
+GeoDCAT-AP
+enables
+to
+express
+that
+a
+dataset's
+metadata
+conforms
+to
+an
+existing
+standard,
+following
+the
+recommendations
+of
+ISO
+19115,
+ISO
+19157
+and
+the
+EU
+INSPIRE
+directive.
+DCAT
+partly
+supports
+the
+expression
+of
+such
+metadata
+conformance
+statements.
+The
+following
+example
+illustrates
+how
+a
+</ins><a href="http://www.w3.org/TR/vocab-dcat/#Class:_Catalog_record"><ins class="diff-chg">
+(DCAT)
+catalog
+record
+</ins></a><ins class="diff-chg">
+can
+be
+said
+to
+be
+conformant
+with
+the
+GeoDCAT-AP
+standard
+itself.
+</ins></p><pre>ex:myDataset a dcat:Dataset;<ins class="diff-chg">
+ex:myDatasetRecord a dcat:CatalogRecord ;
+ foaf:primaryTopic :myDataset ;
+ dcterms:conformsTo :geoDCAT-AP .
+ex:geoDCAT-AP a dcterms:Standard;
+  dcterms:title "GeoDCAT Application Profile" ;
+  dcterms:comment "GeoDCAT-AP is developed in the context of the Interoperability Solutions for European Public Administrations (ISA) Programme"@en;
+  dcterms:issued "201X-XX-XX"^^xsd:date .
+</ins></pre><p><ins class="diff-chg">
+Note
+that
+this
+example
+does
+not
+include
+the
+metadata
+about
+the
+dataset
+ex:myDataset
+itself.
+We
+assume
+this
+is
+present
+in
+an
+RDF
+data
+source
+accessible
+via
+the
+URI
+</ins><code><ins class="diff-chg">
+ex:myDatasetRecord
+</ins></code>.<ins class="diff-chg">
+We
+</ins>
+also
+<del class="diff-old">add
+examples
+from
+qSKOS
+.
+</del>
+<ins class="diff-chg">assume
+that
+</ins><code><ins class="diff-chg">
+ex:geoDCAT-AP
+</ins></code><ins class="diff-chg">
+is
+a
+reference
+URI
+that
+denotes
+the
+GeoDCAT-AP
+standard,
+which
+can
+be
+re-used
+across
+many
+catalog
+record
+descriptions,
+not
+just
+a
+locally
+introduced
+URI.
+</ins></p><div class="issue" id="issue-10"><div class="issue-title" aria-level="4" role="heading" id="h-issue10"><span><ins class="diff-chg">
+Issue
+10
+</ins></span></div><div class=""><p><ins class="diff-chg">
+Relation
+between
+DQV,
+ISO
+19115/19157
+and
+GeoDCAT-AP:
+DQV
+is
+already
+able
+to
+express
+the
+notion
+of
+"conformance"
+to
+a
+standard
+using
+the
+property
+dcterms:conformsTo.
+However,
+there
+were
+suggestion
+to
+be
+further
+compatible
+with
+ISO
+19157:2013
+and
+INSPIRE
+by
+adding
+respectively
+"Not
+conformant"
+and
+"Not
+evaluated"
+as
+possible
+properties
+or
+values.
+Should
+DQV
+be
+this
+expressive?
+</ins>
+(
+<del class="diff-old">Issue-188
+</del>
+<a href="https://www.w3.org/2013/dwbp/track/issues/202">
+<ins class="diff-chg">Issue-202
+</ins>
+</a>
+)
+</p>
+</div>
+</div>
+</section>
+</section>
+<section id="DimentsionsMetricsHints" class="informative" typeof="bibo:Chapter" resource="#DimentsionsMetricsHints" property="bibo:hasPart">
+<h2 id="h-dimentsionsmetricshints" resource="#h-dimentsionsmetricshints">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.
+</del>
+<ins class="diff-chg">6.
+</ins>
+</span>
+Dimensions
+and
+metrics
+hints
+</span>
+</h2>
+<p>
+<em>
+This
+section
+is
+non-normative.
+</em>
+</p>
+<div class="note">
+<div class="note-title" aria-level="3" role="heading" id="h-note7">
+<span>
+Note
+</span>
+</div>
+<div class="">
+<p>
+This
+section
+will
+be
+<del class="diff-old">refined,
+especially
+considering
+public
+feedback.
+</del>
+<ins class="diff-chg">refined
+as
+soon
+as
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/204"><ins class="diff-chg">
+Issue-204
+</ins></a><ins class="diff-chg">
+and
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/205"><ins class="diff-chg">
+Issue-205
+</ins></a><ins class="diff-chg">
+are
+solved.
+In
+particular,
+following
+the
+discussion
+on
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/200"><ins class="diff-chg">
+Issue-200
+</ins></a>,<ins class="diff-chg">
+we
+plan
+to
+align
+the
+DQV
+dimension
+classification
+with
+the
+ISO
+25012
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-ISOIEC25012"><ins class="diff-chg">
+ISOIEC25012
+</ins></a></cite><ins class="diff-chg">
+]
+and
+to
+provide
+the
+classification
+proposed
+in
+Zaveri
+Et
+Al.
+[
+</ins><cite><a class="bibref" href="http://www.aptest.com/standards/htmldiff/htmldiff.pl?oldfile=http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/&amp;newfile=http://riccardoalbertoni.github.io/dwbp/publishing-snapshots/WD-vocab-dqv-20151214/Overview.html#bib-ZaveriEtAl"><ins class="diff-chg">
+ZaveriEtAl
+</ins></a></cite><ins class="diff-chg">
+]
+as
+a
+further
+example.
+Suggestions
+on
+possible
+mappings
+between
+ISO
+25012
+and
+Zaveri
+et
+al.'s
+dimensions
+as
+well
+as
+any
+other
+well-known
+classification
+are
+welcome.
+</ins>
+</p>
+</div>
+</div>
+<p>
+This
+section
+gathers
+relevant
+quality
+dimensions
+and
+ideas
+for
+corresponding
+metrics,
+which
+might
+be
+eventually
+represented
+as
+instances
+of
+<a href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq#Dimension">
+daq:Dimension
+</a>
+and
+<a href="http://butterbur04.iai.uni-bonn.de/ontologies/daq/daq#Metric">
+daq:Metric
+</a>.
+The
+goal
+is
+not
+to
+define
+a
+normative
+list
+of
+dimensions
+and
+metrics,
+rather,
+the
+section
+provides
+a
+set
+of
+examples
+starting
+from
+use
+cases
+included
+in
+the
+<a href="http://www.w3.org/TR/dwbp-ucr/">
+Use
+Cases
+&amp;
+Requirements
+document
+</a>
+and
+from
+the
+following
+sources:
+</p>
+<ul>
+<li>
+<a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Apr/0023.html">
+http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Apr/0023.html
+</a>
+</li>
+<li>
+<a href="http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578">
+http://www.slideshare.net/OpenDataSupport/open-data-quality-29248578
+</a>
+</li>
+<li>
+<a href="https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary">
+https://www.w3.org/2013/dwbp/wiki/Quality_and_Granularity_Description_Vocabulary
+</a>
+</li>
+</ul>
+<div class="issue" id="issue-11">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue11">
+<span>
+<ins class="diff-chg">Issue
+11
+</ins></span></div><div class=""><p><ins class="diff-chg">
+Are
+the
+levels
+of
+granularity
+of
+dqv:Dimension
+and
+dqv:Category
+well-defined
+enough
+and
+fit
+for
+purpose?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/225"><ins class="diff-chg">
+Issue-225
+</ins></a><ins class="diff-chg">
+)
+</ins></p></div></div><section id="Statistics" typeof="bibo:Chapter" resource="#Statistics" property="bibo:hasPart">
+<h3 id="h-statistics" resource="#h-statistics">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.1
+</del>
+<ins class="diff-chg">6.1
+</ins>
+</span>
+Statistics
+</span>
+</h3>
+<p>
+The
+following
+table
+gives
+example
+on
+statistics
+that
+can
+be
+computed
+on
+a
+dataset
+and
+interpreted
+as
+quality
+indicators
+by
+the
+data
+consumer.
+Some
+of
+them
+can
+be
+relevant
+for
+the
+dimensions
+listed
+in
+the
+rest
+of
+this
+section.
+The
+properties
+come
+from
+the
+<a href="https://github.com/jiemakel/aether/raw/master/void-ext.ttl">
+VoID
+extension
+</a>
+created
+for
+the
+<a href="http://jiemakel.github.io/aether/">
+Aether
+tool
+</a>.
+</p>
+<table>
+<thead>
+<tr>
+<th>
+Observation
+</th>
+<th>
+Suggested
+term
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Number
+of
+distinct
+external
+resources
+linked
+to
+</td>
+<td>
+http://ldf.fi/void-ext#distinctIRIReferenceObjects
+</td>
+</tr>
+<tr>
+<td>
+Number
+of
+distinct
+external
+resources
+used
+(including
+schema
+terms)
+</td>
+<td>
+http://ldf.fi/void-ext#distinctIRIReferences
+</td>
+</tr>
+<tr>
+<td>
+Number
+of
+distinct
+literals
+</td>
+<td>
+http://ldf.fi/void-ext#distinctLiterals
+</td>
+</tr>
+<tr>
+<td>
+Number
+of
+languages
+used
+</td>
+<td>
+http://ldf.fi/void-ext#languages
+</td>
+</tr>
+</tbody>
+</table>
+<del class="diff-old">Issue
+12
+Are
+statistics
+about
+a
+dataset
+a
+kind
+of
+quality
+info
+we
+need
+to
+include
+in
+the
+data
+quality
+vocabulary?
+(
+Issue-164
+)
+</del>
+<div class="note">
+<div class="note-title" aria-level="4" role="heading" id="h-note8">
+<span>
+<del class="diff-old">Issue
+13
+</del>
+<ins class="diff-chg">Note
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+The
+Aether
+<a href="http://jiemakel.github.io/aether/">
+VoID
+extension
+</a>
+represents
+statistics
+as
+direct
+statements
+that
+have
+a
+dataset
+as
+subject
+and
+an
+integer
+as
+object.
+This
+pattern,
+which
+can
+be
+expected
+to
+be
+rather
+common,
+is
+different
+from
+the
+pattern
+that
+DQV
+inherits
+from
+<del class="diff-old">DAQ
+(see
+examples
+).
+This
+document
+will
+probably
+have
+to
+explain
+</del>
+<ins class="diff-chg">DAQ.
+Guidance
+on
+</ins>
+how
+<del class="diff-old">the
+different
+patterns
+</del>
+<ins class="diff-chg">DQV/daQ
+</ins>
+can
+<ins class="diff-new">work
+with
+other
+quality
+statistics
+vocabulary
+will
+</ins>
+be
+<del class="diff-old">reconciled,
+if
+indeed
+both
+should
+exist
+alongside.
+(
+Issue-189
+)
+</del>
+<ins class="diff-chg">provided.
+</ins>
+</p>
+</div>
+</div>
+</section>
+<section id="Availability" typeof="bibo:Chapter" resource="#Availability" property="bibo:hasPart">
+<h3 id="h-availability" resource="#h-availability">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.2
+</del>
+<ins class="diff-chg">6.2
+</ins>
+</span>
+Availability
+</span>
+</h3>
+<p>
+<em>
+Can
+the
+data
+be
+accessed
+now
+and
+over
+time?
+</em>
+</p>
+<ul>
+<li>
+Yes/no,
+maybe
+with
+explanation
+why
+the
+data
+is
+not
+available
+(privacy,
+security,
+archived,
+lost,
+not
+yet
+captured
+etc.)
+</li>
+<li>
+Open/restricted/registration,
+again
+possibly
+with
+explanation
+</li>
+<li>
+For
+access/re-use
+</li>
+<li>
+Indication
+of
+persistence
+and
+longevity
+</li>
+</ul>
+<p>
+Since
+a
+dcat:Dataset
+is
+an
+abstract
+thing,
+it
+might
+be
+available
+at
+any
+point
+in
+time,
+past
+present
+or
+future.
+We
+already
+have
+dcterms:issued
+so
+two
+properties
+come
+to
+mind:
+</p>
+<ul>
+<li>
+dcat:verifiedAvailableOn
+{date}
+(the
+last
+time
+someone/something
+checked
+that
+the
+dataset
+was
+accessible,
+probably
+applies
+to
+a
+dcat:Distribution,
+not
+dcat:Dataset)
+</li>
+<li>
+dcat:availableUntilAtLeast
+{date}
+(Potentially
+a
+data
+on
+which
+the
+dataset
+is
+expected
+to
+be
+withdrawn)
+</li>
+</ul>
+<p>
+Other
+questions
+that
+come
+to
+mind:
+how
+do
+we
+indicate
+that
+the
+dataset
+is
+expected
+to
+be
+available
+'for
+the
+foreseeable
+future?'
+</p>
+</section>
+<section id="Processability" typeof="bibo:Chapter" resource="#Processability" property="bibo:hasPart">
+<h3 id="h-processability" resource="#h-processability">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.3
+</del>
+<ins class="diff-chg">6.3
+</ins>
+</span>
+Processability
+</span>
+</h3>
+<p>
+<em>
+Is
+the
+data
+machine
+readable
+?
+</em>
+</p>
+<ul>
+<li>
+Level
+on
+the
+5-star
+scale
+(although
+there
+were
+opinions
+that
+it
+is
+dangerous
+to
+attach
+value
+to
+the
+linking
+because
+the
+data
+might
+be
+good
+but
+link
+to
+‘bad’
+data)
+</li>
+<li>
+Links
+to
+metadata
+standards
+used
+and
+data
+model/schema
+to
+enable
+automatic
+processing
+</li>
+</ul>
+</section>
+<section id="Accuracy" typeof="bibo:Chapter" resource="#Accuracy" property="bibo:hasPart">
+<h3 id="h-accuracy" resource="#h-accuracy">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.4
+</del>
+<ins class="diff-chg">6.4
+</ins>
+</span>
+Accuracy
+</span>
+</h3>
+<p>
+<em>
+is
+the
+data
+correctly
+representing
+the
+real-world
+entity
+or
+event?
+</em>
+</p>
+</section>
+<section id="Consistency" typeof="bibo:Chapter" resource="#Consistency" property="bibo:hasPart">
+<h3 id="h-consistency" resource="#h-consistency">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.5
+</del>
+<ins class="diff-chg">6.5
+</ins>
+</span>
+Consistency
+</span>
+</h3>
+<p>
+<em>
+Is
+the
+data
+not
+containing
+contradictions?
+</em>
+</p>
+<p>
+<em>
+Can
+I
+use
+it
+readily
+in
+an
+analysis
+tool?
+Can
+I
+open
+the
+dataset
+in
+R
+and
+do
+some
+statistical
+manipulations?
+Can
+I
+open
+it
+in
+Tableau
+and
+make
+a
+visualization
+without
+doing
+a
+lot
+of
+cleaning?
+</em>
+</p>
+<p>
+There
+could
+be
+some
+overlap
+with
+accuracy.
+</p>
+</section>
+<section id="Relevance" typeof="bibo:Chapter" resource="#Relevance" property="bibo:hasPart">
+<h3 id="h-relevance" resource="#h-relevance">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.6
+</del>
+<ins class="diff-chg">6.6
+</ins>
+</span>
+Relevance
+</span>
+</h3>
+<p>
+<em>
+Does
+the
+dataset
+include
+an
+appropriate
+amount
+of
+data?
+</em>
+</p>
+<p>
+It
+might
+be
+useful
+to
+include
+some
+information
+about
+the
+context
+(e.g.,
+why
+was
+the
+data
+created
+and
+what
+purpose
+is
+it
+supposed
+to
+serve).
+</p>
+</section>
+<section id="Completeness" typeof="bibo:Chapter" resource="#Completeness" property="bibo:hasPart">
+<h3 id="h-completeness" resource="#h-completeness">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.7
+</del>
+<ins class="diff-chg">6.7
+</ins>
+</span>
+Completeness
+</span>
+</h3>
+<p>
+<em>
+Does
+the
+data
+include
+all
+data
+items
+representing
+the
+entity
+or
+event
+?
+</em>
+</p>
+</section>
+<section id="Conformance" typeof="bibo:Chapter" resource="#Conformance" property="bibo:hasPart">
+<h3 id="h-conformance" resource="#h-conformance">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.8
+</del>
+<ins class="diff-chg">6.8
+</ins>
+</span>
+Conformance
+</span>
+</h3>
+<p>
+<em>
+Is
+the
+data
+following
+accepted
+standards
+?
+</em>
+</p>
+</section>
+<section id="Credibility" typeof="bibo:Chapter" resource="#Credibility" property="bibo:hasPart">
+<h3 id="h-credibility" resource="#h-credibility">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.9
+</del>
+<ins class="diff-chg">6.9
+</ins>
+</span>
+Credibility
+</span>
+</h3>
+<p>
+<em>
+Is
+the
+data
+based
+on
+trustworthy
+sources
+?
+</em>
+</p>
+<p>
+This
+is
+described
+using
+the
+provenance
+vocabulary
+PROV-O
+</p>
+</section>
+<section id="Timeliness" typeof="bibo:Chapter" resource="#Timeliness" property="bibo:hasPart">
+<h3 id="h-timeliness" resource="#h-timeliness">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">7.10
+</del>
+<ins class="diff-chg">6.10
+</ins>
+</span>
+Timeliness
+</span>
+</h3>
+<p>
+<em>
+Is
+the
+data
+representing
+the
+actual
+situation
+and
+it
+is
+published
+soon
+enough
+?
+</em>
+</p>
+</section>
+</section>
+<section id="requirements" class="informative" typeof="bibo:Chapter" resource="#requirements" property="bibo:hasPart">
+<h2 id="h-requirements" resource="#h-requirements">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">8.
+</del>
+<ins class="diff-chg">7.
+</ins>
+</span>
+Requirements
+</span>
+</h2>
+<p>
+<em>
+This
+section
+is
+non-normative.
+</em>
+</p>
+<p>
+The
+<a href="http://www.w3.org/TR/dwbp-ucr/">
+UCR
+document
+</a>
+lists
+relevant
+<a href="http://www.w3.org/TR/dwbp-ucr/#requirements-for-quality-and-granularity-description-vocabulary">
+requirement
+for
+data
+quality
+and
+granularity
+</a>:
+</p>
+<ul>
+<li>
+R-DataMissingIncomplete:
+'Publishers
+should
+indicate
+if
+data
+is
+partially
+missing
+or
+if
+the
+dataset
+is
+incomplete'
+</li>
+<li>
+R-QualityComparable:
+'Data
+should
+be
+comparable
+with
+other
+datasets'
+</li>
+<li>
+R-Data
+should
+be
+complete:
+'Data
+should
+be
+complete'
+</li>
+<li>
+R-QualityMetrics:
+'Data
+should
+be
+associated
+with
+a
+set
+of
+documented,
+objective
+and,
+if
+available,
+standardized
+quality
+metrics.
+This
+set
+of
+quality
+metrics
+may
+include
+user-defined
+or
+domain-specific
+metrics.'
+</li>
+<li>
+R-QualityOpinions:
+'Subjective
+quality
+opinions
+on
+the
+data
+should
+be
+supported'
+</li>
+<li>
+R-GranularityLevels:
+'Data
+available
+at
+different
+levels
+of
+granularity
+should
+be
+accessible
+and
+modeled
+in
+a
+common
+way'
+</li>
+</ul>
+<p>
+The
+aforementioned
+requirements
+are
+going
+to
+be
+further
+elaborated
+considering
+on-going
+discussions
+and
+materials
+from
+these
+two
+wiki
+pages:
+<a href="https://www.w3.org/2013/dwbp/wiki/Requirements_From_FPWD_BP">
+Requirements
+from
+FPWD_BP
+</a>
+and
+<a href="https://www.w3.org/2013/dwbp/wiki/Quality_Requirements_From_UCR">
+Quality
+Requirements
+From
+UCR
+</a>.
+</p>
+<div class="issue" id="issue-12">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue12">
+<span>
+Issue
+<del class="diff-old">14
+</del>
+<ins class="diff-chg">12
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+We
+have
+to
+confirm
+whether
+the
+scope
+of
+DQV
+work
+is
+indeed
+these
+"official"
+DQV
+reqs
+or
+if
+we
+should
+go
+beyond,
+e.g.,
+reflecting
+the
+quality
+of
+the
+vocabulary
+(re-)used,
+access
+to
+datasets,
+metadata
+and
+more
+generally
+the
+implementation
+of
+our
+best
+practices
+(cf.
+the
+<a href="http://lists.w3.org/Archives/Public/public-dwbp-wg/2015Mar/0094.html">
+"5
+stars"
+thread
+</a>
+).
+</p>
+<p>
+The
+distinction
+between
+<a href="https://www.w3.org/2013/dwbp/wiki/Guidance_on_the_Provision_of_Metadata#Intrinsic_vs_Extrinsic_Metadata">
+<del class="diff-old">intrinsic
+</del>
+<ins class="diff-chg">Intrinsic
+</ins>
+and
+extrinsic
+metadata
+</a>
+may
+help
+making
+choices
+here.
+For
+example,
+DQV
+could
+be
+defined
+wrt.
+intrinsic
+properties
+of
+the
+datasets,
+not
+extrinsic
+properties
+(let
+alone
+properties
+of
+the
+metadata
+for
+a
+dataset!)
+(
+<a href="https://www.w3.org/2013/dwbp/track/issues/190">
+Issue-190
+</a>
+)
+</p>
+</div>
+</div>
+<div class="issue" id="issue-13">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue13">
+<span>
+Issue
+<del class="diff-old">15
+</del>
+<ins class="diff-chg">13
+</ins>
+</span>
+</div>
+<div class="">
+<p>
+Backward
+compatibility
+with
+DAQ
+and
+<ins class="diff-new">RDF
+</ins>
+Data
+Cube:
+DAQ
+exploits
+Data
+Cube
+to
+make
+metric
+results
+consumable
+by
+<del class="diff-old">visualizers
+</del>
+<ins class="diff-chg">visualisers
+</ins>
+such
+as
+CubeViz
+(see
+<a href="http://eis-bonn.github.io/Luzzu/papers/semantics2014.pdf">
+Jeremy's
+paper
+</a>
+).
+This
+may
+be
+useful
+to
+preserve
+in
+DQV.
+(
+<a href="https://www.w3.org/2013/dwbp/track/issues/191">
+Issue-191
+</a>
+)
+</p>
+</div>
+</div>
+<div class="issue" id="issue-14">
+<div class="issue-title" aria-level="3" role="heading" id="h-issue14">
+<span>
+<ins class="diff-new">Issue
+14
+</ins></span></div><div class=""><p><ins class="diff-new">
+The
+</ins><abbr title="World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+Human
+Care
+and
+Life
+Science
+Community
+Group
+has
+created
+a
+</ins><a href="http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/"><ins class="diff-new">
+DCAT
+profile
+for
+describing
+datasets
+</ins></a>.<ins class="diff-new">
+This
+is
+work
+is
+well
+visible
+and
+used
+in
+the
+HCLS
+community.
+DQV
+should
+be
+aligned
+with
+this
+profile
+if
+there
+are
+overlapping
+areas.
+Are
+there
+such
+areas?
+(
+</ins><a href="https://www.w3.org/2013/dwbp/track/issues/221"><ins class="diff-new">
+Issue-221
+</ins></a><ins class="diff-new">
+)
+</ins></p></div></div>
+</section>
+<section id="acknowledgements" class="appendix" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+<h2 id="h-acknowledgements" resource="#h-acknowledgements">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+A.
+</span>
+Acknowledgements
+</span>
+</h2>
+</section>
+<section id="change-history" class="appendix" typeof="bibo:Chapter" resource="#change-history" property="bibo:hasPart">
+<h2 id="h-change-history" resource="#h-change-history">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<ins class="diff-new">B.
+</ins></span><ins class="diff-new">
+Change
+history
+</ins></span></h2><p><ins class="diff-new">
+Changes
+since
+the
+</ins><a href="http://www.w3.org/TR/2015/WD-vocab-dqv-20150625/"><ins class="diff-new">
+previous
+version
+</ins></a><ins class="diff-new">
+include:
+</ins></p><ul><li><ins class="diff-new">
+Revision
+of
+the
+Data
+Model
+in
+Fig
+1.
+</ins></li><li><ins class="diff-new">
+Revision
+of
+the
+section
+"Vocabulary
+Specification".
+</ins></li><li><ins class="diff-new">
+Inclusion
+of
+"Vocabulary
+Specification"
+subsections
+describing
+Dimension,
+Category,
+Quality
+Measure
+Dataset,
+Quality
+Annotation,
+User
+Quality
+Feedback.
+</ins></li><li><ins class="diff-new">
+Inclusion
+of
+new
+examples
+to
+express
+(i)
+that
+a
+dataset
+received
+an
+ODI
+certificate,
+(ii)
+the
+quality
+of
+SKOS
+concept
+schemes,
+(iii)
+the
+quality
+of
+linksets,
+(iv)
+the
+conformance
+of
+a
+dataset's
+metadata
+with
+a
+standard.
+</ins></li><li><ins class="diff-new">
+Revision
+of
+the
+document
+according
+to
+resolved
+issues.
+</ins></li><li><ins class="diff-new">
+Inclusion
+of
+new
+open
+issues
+arising
+from
+group
+discussion
+and
+external
+feedback.
+</ins></li><li><ins class="diff-new">
+Creation
+of
+an
+RDF
+file
+for
+DQV
+at
+http://www.w3.org/ns/dqv#.
+</ins></li></ul></section>
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+<h2 id="h-references" resource="#h-references">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">B.
+</del>
+<ins class="diff-chg">C.
+</ins>
+</span>
+References
+</span>
+</h2>
+<section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+<h3 id="h-informative-references" resource="#h-informative-references">
+<span property="xhv:role" resource="xhv:heading">
+<span class="secno">
+<del class="diff-old">B.1
+</del>
+<ins class="diff-chg">C.1
+</ins>
+</span>
+<del class="diff-old">Normative
+</del>
+<ins class="diff-chg">Informative
+</ins>
+references
+</span>
+</h3>
+<dl class="bibliography" resource="">
+<del class="diff-old">[RFC2119]
+</del>
+<dt id="bib-DaQ">
+<ins class="diff-chg">[DaQ]
+</ins>
+</dt>
+<dd>
+<del class="diff-old">S.
+Bradner.
+</del>
+<ins class="diff-chg">Jeremy
+Debattista;
+Christoph
+Lange;
+Sören
+Auer.
+</ins><a href="http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf" property="dc:references">
+<cite>
+<del class="diff-old">Key
+words
+</del>
+<ins class="diff-chg">daQ,
+an
+Ontology
+</ins>
+for
+<del class="diff-old">use
+</del>
+<ins class="diff-chg">Dataset
+Quality
+Information
+</ins></cite></a>.<ins class="diff-chg">
+2014.
+LDOW
+2014.
+URL:
+</ins><a href="http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf" property="dc:references"><ins class="diff-chg">
+http://ceur-ws.org/Vol-1184/ldow2014_paper_09.pdf
+</ins></a></dd><dt id="bib-DaQ-RDFCUBE"><ins class="diff-chg">
+[DaQ-RDFCUBE]
+</ins></dt><dd><ins class="diff-chg">
+Jeremy
+Debattista;
+Christoph
+Lange;
+Sören
+Auer.
+</ins><a href="http://arxiv.org/abs/1408.2468" property="dc:references"><cite><ins class="diff-chg">
+Representing
+dataset
+quality
+metadata
+using
+multi-dimensional
+views
+</ins></cite></a>.<ins class="diff-chg">
+2014.
+SEMANTICS
+2014.
+URL:
+</ins><a href="http://arxiv.org/abs/1408.2468" property="dc:references"><ins class="diff-chg">
+http://arxiv.org/abs/1408.2468
+</ins></a></dd><dt id="bib-GeoDCAT-AP"><ins class="diff-chg">
+[GeoDCAT-AP]
+</ins></dt><dd><ins class="diff-chg">
+ISA
+Programme.
+</ins><a href="http://joinup.ec.europa.eu/catalogue/distribution/geodcat-ap-working-draft-6-0" property="dc:references"><cite><ins class="diff-chg">
+GeoDCAT-AP:
+A
+geospatial
+extension
+for
+the
+DCAT
+application
+profile
+for
+data
+portals
+</ins>
+in
+<del class="diff-old">RFCs
+to
+Indicate
+Requirement
+Levels
+</del>
+<ins class="diff-chg">Europe
+</ins>
+</cite>
+</a>.
+<del class="diff-old">March
+1997.
+Best
+Current
+Practice.
+</del>
+<ins class="diff-chg">13
+July
+2015.
+WG
+Draft.
+</ins>
+URL:
+<del class="diff-old">https://tools.ietf.org/html/rfc2119
+</del>
+<a href="http://joinup.ec.europa.eu/catalogue/distribution/geodcat-ap-working-draft-6-0" property="dc:references">
+<ins class="diff-chg">http://joinup.ec.europa.eu/catalogue/distribution/geodcat-ap-working-draft-6-0
+</ins>
+</a>
+</dd>
+<dt id="bib-ISOIEC25012">
+<ins class="diff-chg">[ISOIEC25012]
+</ins></dt>
+<dd>
+<a href="http://iso25000.com/index.php/en/iso-25000-standards/iso-25012" property="dc:references">
+<cite>
+<ins class="diff-chg">ISO/IEC
+25012
+-
+Data
+Quality
+model
+</ins></cite>
+</a>.
+<ins class="diff-chg">URL:
+</ins><a href="http://iso25000.com/index.php/en/iso-25000-standards/iso-25012" property="dc:references"><ins class="diff-chg">
+http://iso25000.com/index.php/en/iso-25000-standards/iso-25012
+</ins></a></dd>
+<del class="diff-old">B.2
+Informative
+references
+</del>
+<dt id="bib-MultilingualImporting">
+<ins class="diff-chg">[MultilingualImporting]
+</ins></dt>
+<dd>
+<ins class="diff-chg">Riccardo
+Albertoni;
+Monica
+De
+Martino;
+Paola
+Podestà.
+</ins><a href="http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf" property="dc:references">
+<cite>
+<ins class="diff-chg">A
+Linkset
+Quality
+Metric
+Measuring
+Multilingual
+Gain
+in
+SKOS
+Thesauri
+</ins></cite></a>.<ins class="diff-chg">
+2015.
+LDQ@ESWC
+2015.
+URL:
+</ins><a href="http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf" property="dc:references"><ins class="diff-chg">
+http://ceur-ws.org/Vol-1376/LDQ2015_paper_01.pdf
+</ins></a></dd><dt id="bib-SKOS-reference"><ins class="diff-chg">
+[SKOS-reference]
+</ins></dt><dd><ins class="diff-chg">
+Alistair
+Miles;
+Sean
+Bechhofer.
+</ins><a href="http://www.w3.org/TR/skos-reference" property="dc:references"><cite><ins class="diff-chg">
+SKOS
+Simple
+Knowledge
+Organization
+System
+Reference
+</ins></cite></a>.<ins class="diff-chg">
+18
+August
+2009.
+W3C
+Recommendation.
+URL:
+</ins><a href="http://www.w3.org/TR/skos-reference" property="dc:references"><ins class="diff-chg">
+http://www.w3.org/TR/skos-reference
+</ins></a></dd><dt id="bib-ZaveriEtAl"><ins class="diff-chg">
+[ZaveriEtAl]
+</ins></dt><dd><ins class="diff-chg">
+Amrapalia
+Zaveri;
+Anisa
+Rula;
+Andrea
+Maurino;
+Ricardo
+Pietrobon;
+Jens
+Lehmann;
+Sören
+Auer.
+</ins><a href="https://dx.doi.org/10.3233/SW-150175" property="dc:references"><cite><ins class="diff-chg">
+Quality
+assessment
+for
+Linked
+Data: A
+Survey
+</ins></cite></a>.<ins class="diff-chg">
+Semantic
+Web,
+vol.
+7,
+no.
+1,
+pp.
+63-93,
+2015.
+URL:
+</ins><a href="https://dx.doi.org/10.3233/SW-150175" property="dc:references"><ins class="diff-chg">
+https://dx.doi.org/10.3233/SW-150175
+</ins></a></dd><dt id="bib-qSKOS"><ins class="diff-chg">
+[qSKOS]
+</ins></dt><dd><ins class="diff-chg">
+Christian
+Mader;
+Bernhard
+Haslhofer;
+Antoine
+Isaac.
+</ins><a href="https://dx.doi.org/10.1007/978-3-642-33290-6_25" property="dc:references"><cite><ins class="diff-chg">
+Finding
+Quality
+Issues
+in
+SKOS
+Vocabularies
+</ins></cite></a>.<ins class="diff-chg">
+Theory
+and
+Practice
+of
+Digital
+Libraries,
+Lecture
+Notes
+in
+Computer
+Science,
+Vol.
+7489,
+pp
+222-233,
+2012.
+URL:
+</ins><a href="https://dx.doi.org/10.1007/978-3-642-33290-6_25" property="dc:references"><ins class="diff-chg">
+https://dx.doi.org/10.1007/978-3-642-33290-6_25
+</ins></a></dd>
+<dt id="bib-vocab-dcat">
+[vocab-dcat]
+</dt>
+<dd>
+Fadi
+Maali;
+John
+Erickson.
+<a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references">
+<cite>
+Data
+Catalog
+Vocabulary
+(DCAT)
+</cite>
+</a>.
+16
+January
+2014.
+W3C
+Recommendation.
+URL:
+<a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references">
+http://www.w3.org/TR/vocab-dcat/
+</a>
+</dd>
+</dl>
+</section>
+</section>
+
+
+</body></html>

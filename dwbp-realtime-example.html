@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html  prefix="dcat: http://www.w3.org/ns/dcat#
+dqv: http://www.w3.org/ns/dqv#dct: http://purl.org/dc/terms/"  lang="en">
+  <head>
+    <meta  content="text/html; charset=utf-8"  http-equiv="content-type">
+    <title>DWBP - Examples</title>
+    <meta  content="width=device-width,initial-scale=1"  name="viewport">
+    <style  type="text/css">
+   .container {
+    font-family: sans-serif;
+    max-width: 968px;
+    margin: 0 auto;
+  }
+
+  .human-readable-example {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    color: #333;
+    width: 100%;
+  }
+
+  .human-readable-example td {
+    padding: 6px 3px 6px 3px;
+    letter-spacing: all;
+  }
+
+  .human-readable-example tr:first-child td:first-child {
+    width: 25%;
+  }
+
+  .human-readable-example tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+
+  .human-readable-example tr:nth-child(odd) {
+    background-color: #FFFFFF;
+  }
+  div.example {
+    padding: 0.5em;
+    border-left: 0.5em solid #E0CB52;
+    border-color: #E0CB52;
+    background: none repeat scroll 0% 0% #FCFAEE;
+  }
+  a {
+    color: #00C;
+    text-decoration: none;
+  }
+  a[href]:hover {
+    background: none repeat scroll 0% 0% #FFA;
+  }
+</style>
+  </head>
+  <body>
+    <div  class="container">
+      <h1>Example of Real-time Data API</h1>
+      <section  id="abstract">
+        <p>This is the human-readable API specification for real-time data example of the <a  href="http://w3.org/TR/dwbp/"><abbr title="Data on the Web Best Practices">DWBP document</abbr></a>.</p>
+      </section>
+      <section resource="#timetable-001"  typeof="dcat:Dataset">
+        <div class="example">
+          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data. 
+            The API provides consumers real-time status information using a REST API. The API allows
+            the consumer to select: </p>
+          <ul>
+            <li>Current position of the bus</li>
+            <li>Bus arrival time</li>
+            <li>Bus status</li>
+          </ul>
+        </div>
+        <h2 id="dataset-description">API Description</h2>
+        <table class="human-readable-example">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>API</th>
+              <th>Parameters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bus position</td>
+              <td><code>{root}/bus/position/current</code></td>
+              <td>bus_id</td>
+            </tr>
+            <tr>
+              <td>Bus arrival time to some stop</td>
+              <td><code>{root}/bus/arrival_time</code></td>
+              <td>bus_id, stop_id</td>
+            </tr>
+            <tr>
+              <td>Bus status <br>(Possible return: "on-schedule", "delay", "out-of-service")</td>
+              <td><code>{root}/bus/status</code></td>
+              <td>bus_id</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <section><br>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
