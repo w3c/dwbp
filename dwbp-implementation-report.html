@@ -104,13 +104,12 @@
         var orgId = row.insertCell(row.cells.length);
         orgId.innerHTML = obj['ID'];
         orgId.id = obj['ID'];
-        newCell(obj['OrganizationName']);
-        newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" );
+        newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationName']+"</a>" );
         newCell("<a href="+obj['Link']+">"+obj['Link']+"</a>");
         newCell(obj['Category']);
         newCell(obj['Domain']);
         newCell(obj['DataCatalogue']);
-        newCell(obj['ProvidedBy']);
+        // newCell(obj['ProvidedBy']);
       }
 }
 
@@ -191,25 +190,24 @@ function createReferencesTable() {
 {"Link": "https://dev.twitter.com/overview/api/upcoming-changes-to-tweets", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://twitter.com/", "OrganizationName": "Twitter", "ID": "R17"},
 {"Link": "https://www.nationalarchives.gov.uk/documents/information-management/redirection-technical-guidance-for-departments-v4.2-web-version.pdf", "email": "hvdsomp@gmail.com", "ProvidedBy": "Herbert Van de Sompel", "Category": "Document", "OrganizationSite": "http://nationalarchives.gov.uk/", "OrganizationName": "The National Archives", "ID": "R18"},
 {"Link": "http://sunlightfoundation.com/opendataguidelines/#permanent-access", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "http://sunlightfoundation.com/", "OrganizationName": "Sunlight Foundation", "ID": "R19"},
-{"Link": "https://dmp.data.jhu.edu/preserve-share-research-data/preserve-archive/", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "https://dmp.data.jhu.edu/", "OrganizationName": "Johns Hopkins University Data Management Services", "ID": "R20"}];
+{"Link": "https://dmp.data.jhu.edu/preserve-share-research-data/preserve-archive/", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "https://dmp.data.jhu.edu/", "OrganizationName": "Johns Hopkins University Data Management Services", "ID": "R20"},
+{"Link": "http://guides.dataverse.org/en/latest/user/dataset-management.html","email": "hvdsomp@gmail.com","ProvidedBy": "Herbert Van de Sompel","Category": "Page","OrganizationSite": "http://dataverse.org/","OrganizationName": "Dataverse project","ID": "R21"}];
 
   referencesTable = document.getElementById('table-references');
-  var tbody = datasetPortalsTable.getElementsByTagName('tbody')[0];
+  var tbody = referencesTable.getElementsByTagName('tbody')[0];
 
   var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
-  for (var i = 0; i < datasetPortalsList.length; i++) {
-    var obj = datasetPortalsList[i];
+  for (var i = 0; i < references.length; i++) {
+    var obj = references[i];
     var row = tbody.insertRow(tbody.rows.length); // new row for the table
     var orgId = row.insertCell(row.cells.length);
     orgId.innerHTML = obj['ID'];
     orgId.id = obj['ID'];
-    newCell(obj['OrganizationName']);
-    newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" );
+    newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationName']+"</a>" );
     newCell("<a href="+obj['Link']+">"+obj['Link']+"</a>");
     newCell(obj['Category']);
-    newCell(obj['Domain']);
-    newCell(obj['DataCatalogue']);
-    newCell(obj['ProvidedBy']);
+    // newCell(obj['ProvidedBy']);
+    // newCell(obj['email']);
   }
 
 }
@@ -314,14 +312,13 @@ function createReferencesTable() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Organization Name</th>
-              <th>Organization Site</th>
+              <th>Organisation Name</th>
               <th>Evidence's URI</th>
               <th>Category</th>
               <th>Domain</th>
               <th>Data Catalogue?</th>
               <!-- <th>Reach</th> -->
-              <th>Provided by</th>
+              <!-- <th>Provided by</th> -->
             </tr>
           </thead>
           <tbody>
@@ -338,14 +335,10 @@ function createReferencesTable() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Organization Name</th>
-              <th>Organization Site</th>
+              <th>Organisation</th>
               <th>Evidence's URI</th>
               <th>Category</th>
-              <th>Domain</th>
-              <th>Data Catalogue?</th>
-              <!-- <th>Reach</th> -->
-              <th>Provided by</th>
+              <!-- <th>Provided by</th> -->
             </tr>
           </thead>
           <tbody>
@@ -368,6 +361,7 @@ function createReferencesTable() {
     // script calls
     createDatasetPortalsTable();
     createBpEvidenceTable();
+    createReferencesTable();
 
     </script>
   </body>
