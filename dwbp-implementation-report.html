@@ -194,11 +194,11 @@ function createReferencesTable() {
 {"Link": "https://dmp.data.jhu.edu/preserve-share-research-data/preserve-archive/", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "https://dmp.data.jhu.edu/", "OrganizationName": "Johns Hopkins University Data Management Services", "ID": "R20"}];
 
   referencesTable = document.getElementById('table-references');
-  var tbody = datasetPortalsTable.getElementsByTagName('tbody')[0];
+  var tbody = referencesTable.getElementsByTagName('tbody')[0];
 
   var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
-  for (var i = 0; i < datasetPortalsList.length; i++) {
-    var obj = datasetPortalsList[i];
+  for (var i = 0; i < references.length; i++) {
+    var obj = references[i];
     var row = tbody.insertRow(tbody.rows.length); // new row for the table
     var orgId = row.insertCell(row.cells.length);
     orgId.innerHTML = obj['ID'];
@@ -207,9 +207,8 @@ function createReferencesTable() {
     newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" );
     newCell("<a href="+obj['Link']+">"+obj['Link']+"</a>");
     newCell(obj['Category']);
-    newCell(obj['Domain']);
-    newCell(obj['DataCatalogue']);
     newCell(obj['ProvidedBy']);
+    newCell(obj['email']);
   }
 
 }
@@ -368,6 +367,7 @@ function createReferencesTable() {
     // script calls
     createDatasetPortalsTable();
     createBpEvidenceTable();
+    createReferencesTable();
 
     </script>
   </body>
