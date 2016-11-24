@@ -96,72 +96,61 @@
 
       datasetPortalsTable = document.getElementById('table-datasetportals');
       var tbody = datasetPortalsTable.getElementsByTagName('tbody')[0];
+
+      var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
       for (var i = 0; i < datasetPortalsList.length; i++) {
         var obj = datasetPortalsList[i];
-
         var row = tbody.insertRow(tbody.rows.length); // new row for the table
-        var orgId = row.insertCell(0);                // cell for organization id
-        var orgName = row.insertCell(1);              // cell for organization name
-        var orgSite = row.insertCell(2);              // cell for organization site
-        var evidenceURI = row.insertCell(3);
-        var evidenceCategory = row.insertCell(4);
-        var evidenceDomain = row.insertCell(5);
-        var wbgThesaurus = row.insertCell(6);
-        var dataCatalogue = row.insertCell(7);
-        var evidenceReach = row.insertCell(8);
-        var providedBy = row.insertCell(9);
-
+        var orgId = row.insertCell(row.cells.length);
         orgId.innerHTML = obj['ID'];
         orgId.id = obj['ID'];
-        orgName.innerHTML = obj['OrganizationName'];
-        orgSite.innerHTML = "<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" ;
-        evidenceURI.innerHTML = "<a href="+obj['Link']+">"+obj['Link']+"</a>" ;
-        evidenceCategory.innerHTML = obj['Category'];
-        evidenceDomain.innerHTML = obj['Domain'];
-        wbgThesaurus.innerHTML = obj['WBGThesaurus'];
-        dataCatalogue.innerHTML = obj['DataCatalogue'];
-        evidenceReach.innerHTML = obj['Reach'];
-        providedBy.innerHTML = obj['ProvidedBy'];
+        newCell(obj['OrganizationName']);
+        newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" );
+        newCell("<a href="+obj['Link']+">"+obj['Link']+"</a>");
+        newCell(obj['Category']);
+        newCell(obj['Domain']);
+        newCell(obj['DataCatalogue']);
+        newCell(obj['ProvidedBy']);
       }
 }
 
 function createBpEvidenceTable(){
   bpEvidenceJson = [
-    {"bp": "BP1", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D18", "D19", "D20", "D21", "D22", "D31", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D56", "D57", "D58"]},
-    {"bp": "BP2", "evidence": ["D02", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D23", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D57", "D58"]},
-    {"bp": "BP3", "evidence": ["D04", "D06", "D08", "D20", "D21", "D31", "D45", "D49", "D50", "D52"]},
-    {"bp": "BP4", "evidence": ["D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D17", "D20", "D22", "D25", "D38", "D45", "D49", "D51", "D52", "D53", "D56", "D57"]},
-    {"bp": "BP5", "evidence": ["D01", "D06", "D11", "D12", "D13", "D16", "D20", "D21", "D24", "D38", "D52", "D53"]},
-    {"bp": "BP6", "evidence": ["D06", "D08", "D13", "D16", "D49", "D50", "D52", "D55"]},
-    {"bp": "BP7", "evidence": ["D01", "D02", "D05", "D08", "D12", "D13", "D17", "D20", "D41", "D45", "D46", "D47", "D50", "D51"]},
-    {"bp": "BP8", "evidence": ["D12", "D13", "D17", "D20", "D45", "D46"]},
-    {"bp": "BP9", "evidence": ["D03", "D04", "D05", "D11", "D12", "D13", "D14", "D17", "D20", "D21", "D22", "D41", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
-    {"bp": "BP10", "evidence": ["D02", "D03", "D04", "D05", "D06", "D08", "D11", "D13", "D14", "D16", "D17", "D19", "D20", "D21", "D37", "D49", "D51", "D52", "D53", "D56"]},
-    {"bp": "BP11", "evidence": ["D06", "D11", "D13", "D14", "D17", "D20", "D32"]},
-    {"bp": "BP12", "evidence": ["D01", "D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D16", "D17", "D19", "D20", "D21", "D22", "D28", "D30", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
-    {"bp": "BP13", "evidence": ["D03", "D04", "D06", "D08", "D11", "D18", "D20", "D21", "D51", "D53", "D56", "D57"]},
-    {"bp": "BP14", "evidence": ["D01", "D02", "D03", "D04", "D05", "D06", "D12", "D13", "D14", "D17", "D19", "D22", "D23", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58"]},
-    {"bp": "BP15", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D42", "D49", "D50", "D51", "D52", "D53", "D56"]},
-    {"bp": "BP16", "evidence": ["D03", "D04", "D06", "D11", "D16", "D17", "D19", "D20", "D21", "D37", "D45", "D49", "D50", "D51", "D52", "D53", "D56"]},
-    {"bp": "BP17", "evidence": ["D01", "D05", "D11", "D13", "D17", "D18", "D20", "D44", "D48", "D49", "D52", "D53", "D57", "D58"]},
-    {"bp": "BP18", "evidence": ["D03", "D04", "D05", "D11", "D13", "D16", "D17", "D29", "D33", "D44", "D45", "D49", "D52", "D53", "D56"]},
-    {"bp": "BP19", "evidence": ["D03", "D04", "D08", "D13", "D17", "D19", "D20", "D21", "D49", "D51", "D53", "D56", "D57", "D58"]},
-    {"bp": "BP20", "evidence": ["D05", "D17", "D22", "D45"]},
-    {"bp": "BP21", "evidence": ["D01", "D05", "D06", "D11", "D12", "D13", "D18", "D19", "D21", "D22", "D38", "D45", "D49", "D51", "D53", "D58"]},
-    {"bp": "BP22", "evidence": ["D05", "D06", "D43", "D45", "D55", "D57"]},
-    {"bp": "BP23", "evidence": ["D02", "D03", "D04", "D11", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D28", "D44", "D45", "D48", "D49", "D52", "D53", "D56", "D57", "D58"]},
-    {"bp": "BP24", "evidence": ["D03", "D04", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D44", "D45", "D49", "D53", "D56"]},
-    {"bp": "BP25", "evidence": ["D02", "D07", "D12", "D13", "D14", "D15", "D16", "D19", "D21", "D22", "D27", "D37", "D45", "D48", "D49", "D52", "D53", "D57", "D58"]},
-    {"bp": "BP26", "evidence": ["D03", "D04", "D11", "D14", "D15", "D21", "D45", "D53", "D56"]},
-    {"bp": "BP27", "evidence": ["D04", "D11"]},
-    {"bp": "BP28", "evidence": ["D11"]},
-    {"bp": "BP29", "evidence": ["D01", "D02", "D04", "D05", "D06", "D12", "D13", "D14", "D15", "D19", "D20", "D21", "D36", "D45", "D51", "D52", "D53", "D57", "D58"]},
-    {"bp": "BP30", "evidence": ["D05", "D13", "D14", "D15", "D20", "D34", "D51"]},
-    {"bp": "BP31", "evidence": ["D04", "D05", "D16", "D19", "D20", "D49"]},
-    {"bp": "BP32", "evidence": ["D01", "D02", "D05", "D16", "D17", "D19", "D20", "D26", "D45", "D52", "D53", "D56", "D58"]},
-    {"bp": "BP33", "evidence": ["D06", "D19", "D35", "D45", "D49", "D52"]},
-    {"bp": "BP34", "evidence": ["D04", "D05", "D09", "D11", "D16", "D20", "D40", "D45", "D49", "D52", "D56", "D57"]},
-    {"bp": "BP35", "evidence": ["D01", "D04", "D06", "D11", "D16", "D19", "D20", "D21", "D38", "D45", "D49", "D52", "D58"]}];
+    {"bp": "BP1", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D18", "D19", "D20", "D21", "D22", "D31", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D56", "D57", "D58", "R10"]},
+    {"bp": "BP2", "evidence": ["D02", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D23", "D38", "D45", "D49", "D50", "D51", "D52", "D53", "D55", "D57", "D58", "R10"]},
+    {"bp": "BP3", "evidence": ["D04", "D06", "D08", "D20", "D21", "D31", "D45", "D49", "D50", "D52", "R10"]},
+    {"bp": "BP4", "evidence": ["D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D17", "D20", "D22", "D25", "D38", "D45", "D49", "D51", "D52", "D53", "D56", "D57",]},
+    {"bp": "BP5", "evidence": ["D01", "D06", "D11", "D12", "D13", "D16", "D20", "D21", "D24", "D38", "D52", "D53", "R11"]},
+    {"bp": "BP6", "evidence": ["D06", "D08", "D13", "D16", "D49", "D50", "D52", "D55", "R11"]},
+    {"bp": "BP7", "evidence": ["D01", "D02", "D05", "D08", "D12", "D13", "D17", "D20", "D41", "D45", "D46", "D47", "D50", "D51", "R11","R12",]},
+    {"bp": "BP8", "evidence": ["D12", "D13", "D17", "D20", "D45", "D46", "R04","R10","R12",]},
+    {"bp": "BP9", "evidence": ["D03", "D04", "D05", "D11", "D12", "D13", "D14", "D17", "D20", "D21", "D22", "D41", "D49", "D51", "D52", "D53", "D56", "D57", "D58", "R10",]},
+    {"bp": "BP10", "evidence": ["D02", "D03", "D04", "D05", "D06", "D08", "D11", "D13", "D14", "D16", "D17", "D19", "D20", "D21", "D37", "D49", "D51", "D52", "D53", "D56",]},
+    {"bp": "BP11", "evidence": ["D06", "D11", "D13", "D14", "D17", "D20", "D32",]},
+    {"bp": "BP12", "evidence": ["D01", "D02", "D03", "D04", "D05", "D08", "D11", "D12", "D13", "D16", "D17", "D19", "D20", "D21", "D22", "D28", "D30", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58", ]},
+    {"bp": "BP13", "evidence": ["D03", "D04", "D06", "D08", "D11", "D18", "D20", "D21", "D51", "D53", "D56", "D57", ]},
+    {"bp": "BP14", "evidence": ["D01", "D02", "D03", "D04", "D05", "D06", "D12", "D13", "D14", "D17", "D19", "D22", "D23", "D37", "D45", "D49", "D51", "D52", "D53", "D56", "D57", "D58", "R10"]},
+    {"bp": "BP15", "evidence": ["D02", "D03", "D04", "D06", "D08", "D11", "D12", "D13", "D17", "D19", "D20", "D21", "D22", "D42", "D49", "D50", "D51", "D52", "D53", "D56", "R10"]},
+    {"bp": "BP16", "evidence": ["D03", "D04", "D06", "D11", "D16", "D17", "D19", "D20", "D21", "D37", "D45", "D49", "D50", "D51", "D52", "D53", "D56",]},
+    {"bp": "BP17", "evidence": ["D01", "D05", "D11", "D13", "D17", "D18", "D20", "D44", "D48", "D49", "D52", "D53", "D57", "D58", ]},
+    {"bp": "BP18", "evidence": ["D03", "D04", "D05", "D11", "D13", "D16", "D17", "D29", "D33", "D44", "D45", "D49", "D52", "D53", "D56", "R05"]},
+    {"bp": "BP19", "evidence": ["D03", "D04", "D08", "D13", "D17", "D19", "D20", "D21", "D49", "D51", "D53", "D56", "D57", "D58", "R06","R07"]},
+    {"bp": "BP20", "evidence": ["D05", "D17", "D22", "D45", "R01","R14"]},
+    {"bp": "BP21", "evidence": ["D01", "D05", "D06", "D11", "D12", "D13", "D18", "D19", "D21", "D22", "D38", "D45", "D49", "D51", "D53", "D58",]},
+    {"bp": "BP22", "evidence": ["D05", "D06", "D43", "D45", "D55", "D57",]},
+    {"bp": "BP23", "evidence": ["D02", "D03", "D04", "D11", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D28", "D44", "D45", "D48", "D49", "D52", "D53", "D56", "D57", "D58", "R15"]},
+    {"bp": "BP24", "evidence": ["D03", "D04", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "D21", "D22", "D44", "D45", "D49", "D53", "D56", "R16"]},
+    {"bp": "BP25", "evidence": ["D02", "D07", "D12", "D13", "D14", "D15", "D16", "D19", "D21", "D22", "D27", "D37", "D45", "D48", "D49", "D52", "D53", "D57", "D58", "R15"]},
+    {"bp": "BP26", "evidence": ["D03", "D04", "D11", "D14", "D15", "D21", "D45", "D53", "D56", "R17"]},
+    {"bp": "BP27", "evidence": ["D04", "D11", "R10",]},
+    {"bp": "BP28", "evidence": ["D11", "R08","R10"]},
+    {"bp": "BP29", "evidence": ["D01", "D02", "D04", "D05", "D06", "D12", "D13", "D14", "D15", "D19", "D20", "D21", "D36", "D45", "D51", "D52", "D53", "D57", "D58",]},
+    {"bp": "BP30", "evidence": ["D05", "D13", "D14", "D15", "D20", "D34", "D51", "R13"]},
+    {"bp": "BP31", "evidence": ["D04", "D05", "D16", "D19", "D20", "D49", "R03"]},
+    {"bp": "BP32", "evidence": ["D01", "D02", "D05", "D16", "D17", "D19", "D20", "D26", "D45", "D52", "D53", "D56", "D58", "R02"]},
+    {"bp": "BP33", "evidence": ["D06", "D19", "D35", "D45", "D49", "D52", "R09"]},
+    {"bp": "BP34", "evidence": ["D04", "D05", "D09", "D11", "D16", "D20", "D40", "D45", "D49", "D52", "D56", "D57",]},
+    {"bp": "BP35", "evidence": ["D01", "D04", "D06", "D11", "D16", "D19", "D20", "D21", "D38", "D45", "D49", "D52", "D58"],}];
 
     bpEvidenceTable = document.getElementById('table-bp-evidence');
     var tbody = bpEvidenceTable.getElementsByTagName('tbody')[0];
@@ -180,6 +169,49 @@ function createBpEvidenceTable(){
       newCell(list);
       newCell(obj.evidence.length);
     }
+}
+
+function createReferencesTable() {
+  references = [{"Link": "https://www.nextbus.com/#!/sf-muni/E/E____I_F00/4532/4503", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://www.nextbus.com/", "OrganizationName": "NextBus", "ID": "R01"},
+{"Link": "http://docs.ckan.org/en/latest/maintaining/data-viewer.html", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "http://docs.ckan.org/", "OrganizationName": "CKAN", "ID": "R02"},
+{"Link": "https://www.researchgate.net/publication/262254329_Fashion_10000_An_enriched_social_image_dataset_for_fashion_and_clothing", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Paper", "OrganizationSite": "null", "OrganizationName": "null", "ID": "R03"},
+{"Link": "https://www.w3.org/2016/11/sdsvoc/SDSVoc16_paper_6", "email": "laufer@globo.com", "ProvidedBy": "Laufer", "Category": "Paper", "OrganizationSite": "http://data.ign.fr", "OrganizationName": "IGN - Institut National de Línformation Géographique et Forestiére", "ID": "R04"},
+{"Link": "http://portal.nersc.gov/project/20C_Reanalysis/", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Project", "OrganizationSite": "http://portal.nersc.gov/project/20C_Reanalysis/", "OrganizationName": "20th Century Reanalysis Project", "ID": "R05"},
+{"Link": "http://restlet.com/blog/2015/12/10/understanding-http-content-negotiation/", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Blog", "OrganizationSite": "http://restlet.com/blog", "OrganizationName": "RESTLET", "ID": "R06"},
+{"Link": "https://www.w3.org/blog/2006/02/content-negotiation/", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Blog", "OrganizationSite": "https://www.w3.org/blog/2006/02/content-negotiation/", "OrganizationName": "W3C", "ID": "R07"},
+{"Link": "http://blog.dshr.org/2008/01/does-preserving-context-matter.html", "email": "christophe.gueret@bbc.co.uk", "ProvidedBy": "Christophe Guéret", "Category": "Blog", "OrganizationSite": "http://blog.dshr.org/", "OrganizationName": "David Rosenthal Blog", "ID": "R08"},
+{"Link": "http://www.uniprot.org/contact", "email": "eric.stephan@pnnl.gov", "ProvidedBy": "Eric Stephan", "Category": "Site", "OrganizationSite": "http://www.uniprot.org", "OrganizationName": "Universal Protein Resource", "ID": "R09"},
+{"Link": "https://pcmdi.llnl.gov/search/acme-llnl/", "email": "eric.stephan@pnnl.gov", "ProvidedBy": "Eric Stephan", "Category": "Site", "OrganizationSite": "https://pcmdi.llnl.gov/search/acme-llnl/", "OrganizationName": "Earth System Grid/ Accelerated Climate Modeling for Energy", "ID": "R10"},
+{"Link": "http://materialsproject.org", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Site", "OrganizationSite": "http://materialsproject.org", "OrganizationName": "collaboration between Lawrence Berkeley Natl Lab; MIT; and other insitutions", "ID": "R11"},
+{"Link": "http://www.bcis.org.uk", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Site", "OrganizationSite": "http://www.bcis.org.uk", "OrganizationName": "British Cardiovascular Intervention Society", "ID": "R12"},
+{"Link": "http://wikipathways.org/index.php", "email": "eric.stephan@pnnl.gov", "ProvidedBy": "Eric Stephan", "Category": "Wiki", "OrganizationSite": " http://wikipathways.org/", "OrganizationName": "WikiPATHWAYS", "ID": "R13"},
+{"Link": "https://dev.twitter.com/streaming/public", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://twitter.com/", "OrganizationName": "Twitter", "ID": "R14"},
+{"Link": "https://dev.twitter.com/overview/api", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://twitter.com/", "OrganizationName": "Twitter", "ID": "R15"},
+{"Link": "https://dev.twitter.com/rest/public", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://twitter.com/", "OrganizationName": "Twitter", "ID": "R16"},
+{"Link": "https://dev.twitter.com/overview/api/upcoming-changes-to-tweets", "email": "amgreiner@lbl.gov", "ProvidedBy": "Annette", "Category": "Page", "OrganizationSite": "https://twitter.com/", "OrganizationName": "Twitter", "ID": "R17"},
+{"Link": "https://www.nationalarchives.gov.uk/documents/information-management/redirection-technical-guidance-for-departments-v4.2-web-version.pdf", "email": "hvdsomp@gmail.com", "ProvidedBy": "Herbert Van de Sompel", "Category": "Document", "OrganizationSite": "http://nationalarchives.gov.uk/", "OrganizationName": "The National Archives", "ID": "R18"},
+{"Link": "http://sunlightfoundation.com/opendataguidelines/#permanent-access", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "http://sunlightfoundation.com/", "OrganizationName": "Sunlight Foundation", "ID": "R19"},
+{"Link": "https://dmp.data.jhu.edu/preserve-share-research-data/preserve-archive/", "email": "bfl@cin.ufpe.br", "ProvidedBy": "Bernadette ", "Category": "Page", "OrganizationSite": "https://dmp.data.jhu.edu/", "OrganizationName": "Johns Hopkins University Data Management Services", "ID": "R20"}];
+
+  referencesTable = document.getElementById('table-references');
+  var tbody = datasetPortalsTable.getElementsByTagName('tbody')[0];
+
+  var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
+  for (var i = 0; i < datasetPortalsList.length; i++) {
+    var obj = datasetPortalsList[i];
+    var row = tbody.insertRow(tbody.rows.length); // new row for the table
+    var orgId = row.insertCell(row.cells.length);
+    orgId.innerHTML = obj['ID'];
+    orgId.id = obj['ID'];
+    newCell(obj['OrganizationName']);
+    newCell("<a href="+obj['OrganizationSite']+">"+obj['OrganizationSite']+"</a>" );
+    newCell("<a href="+obj['Link']+">"+obj['Link']+"</a>");
+    newCell(obj['Category']);
+    newCell(obj['Domain']);
+    newCell(obj['DataCatalogue']);
+    newCell(obj['ProvidedBy']);
+  }
+
 }
     </script>
     <style type="text/css">
@@ -258,7 +290,7 @@ function createBpEvidenceTable(){
     </section>
     <section>
       <h2>List of evidence</h2>
-      <p>The following lists the reported evidence, the type of evidence and the supported DWBP.</p>
+      <p>The list below show the evidence collected for each Data on the Web Best Practice.</p>
       <section>
         <h3>BP x Evidence</h3>
         <table id="table-bp-evidence" class="dwbp-ir-table">
@@ -274,8 +306,8 @@ function createBpEvidenceTable(){
         </table>
       </section>
       <section>
-        <h3>List of Evidence</h3>
-        <p>The following list shows organizations and implementers that contributed with DWBP evidence.</p>
+        <h3>Datasets, Data portals and Vocabularies</h3>
+        <p>The following list shows organizations and implementers that contributed with DWBP evidence for the Datasets, Data Portals and Vocabularies.</p>
         <!-- this table is auto-generated via javascript -->
         <div class="table-container">
           <table id="table-datasetportals" class="dwbp-ir-table">
@@ -287,9 +319,8 @@ function createBpEvidenceTable(){
               <th>Evidence's URI</th>
               <th>Category</th>
               <th>Domain</th>
-              <th>WBG Thesaurus</th>
               <th>Data Catalogue?</th>
-              <th>Reach</th>
+              <!-- <th>Reach</th> -->
               <th>Provided by</th>
             </tr>
           </thead>
@@ -298,8 +329,34 @@ function createBpEvidenceTable(){
         </table>
         </div>
       </section>
+
+      <section>
+        <h3>Documents and References</h3>
+        <p>The following list shows organizations and implementers that contributed with DWBP evidence for Documents and References.</p>
+        <div class="table-container">
+          <table id="table-references" class="dwbp-ir-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Organization Name</th>
+              <th>Organization Site</th>
+              <th>Evidence's URI</th>
+              <th>Category</th>
+              <th>Domain</th>
+              <th>Data Catalogue?</th>
+              <!-- <th>Reach</th> -->
+              <th>Provided by</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
       <section>
         <h3>Guidelines and Good Practices</h3>
+        <p>The following list shows organizations and implementers that contributed with DWBP evidence for Guidelines and Good Practices.</p>
       </section>
 
     </section>
