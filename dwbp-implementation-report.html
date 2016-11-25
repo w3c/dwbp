@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <title>DWBP Implementation Report</title>
-    <script src='//www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
     <script class='remove'>
       var respecConfig = {
         specStatus: "base",
@@ -156,7 +156,7 @@ function createBpEvidenceTable(){
       obj = bpEvidenceJson[i];
       var row = tbody.insertRow(tbody.rows.length); // new row for the table
 
-      newCell(obj.bp);
+      newCell("<a href='#"+obj.bp+"'>"+obj.bp+"</a>");
       var list = "";
       obj.evidence.forEach(function(ev) {
         var d = "<a href='#"+ev+"'>"+ev+"</a>, ";
@@ -263,10 +263,10 @@ function createGuidelinesTable() {
       .dwbp-ir-table tbody tr:nth-child(odd) {
        background-color: #EDEDED;
      }
-      
+
       .panel {
          max-width: 800px !important;
-         margin: 0 auto; 
+         margin: 0 auto;
          margin-bottom: 20px;
          background-color: #fff;
          border: 1px solid transparent;
@@ -475,7 +475,7 @@ function createGuidelinesTable() {
         <li> Considering the reuse of vocabularies, we received a comment saying that "A number of standard vocabularies are re-used, notably DCAT, RDF Data Cube, DCMI Terms." </li>
         <li> In the case of Data Identifiers was mentioned that "The dataset contents are provided as Linked Data, with (reasonably) persistent identifiers for geographical areas, time intervals and other statistical dimension values." </li>
         <li> Regarding License was said that "The license is provided in a machine readable form via the property and in human readable form "The license is provided in a machine readable form via the property and in human readable form." </li>
-        </ol>  
+        </ol>
         </p>
     </section>
     <section>
@@ -488,7 +488,7 @@ function createGuidelinesTable() {
       <thead>
       <tr>
       <th> Step </th>
-      <th> Implemented DWBP </th>  
+      <th> Implemented DWBP </th>
       </tr>
       </thead>
       <tr>
@@ -522,8 +522,50 @@ function createGuidelinesTable() {
 
       </table>
 
-      
+
     </section>
+    <section>
+      <h2>Set of Best Practices</h2>
+      <p>The following list shows the set of best practices linked to the <a href="http://w3.org/TR/dwbp">DWBP</a> document:</p>
+      <ul>
+        <li id="BP1"><a href="http://w3.org/TR/dwbp#ProvideMetadata">Best Practice 1</a>: Provide metadata</li>
+        <li id="BP2"><a href="http://w3.org/TR/dwbp#DescriptiveMetadata">Best Practice 2</a>: Provide descriptive metadata</li>
+        <li id="BP3"><a href="http://w3.org/TR/dwbp#StructuralMetadata">Best Practice 3</a>: Provide structural metadata </li>
+        <li id="BP4"><a href="http://w3.org/TR/dwbp#DataLicense">Best Practice 4</a>: Provide data license information</li>
+        <li id="BP5"><a href="http://w3.org/TR/dwbp#DataProvenance">Best Practice 5</a>: Provide data provenance information</li>
+        <li id="BP6"><a href="http://w3.org/TR/dwbp#DataQuality">Best Practice 6</a>: Provide data quality information</li>
+        <li id="BP7"><a href="http://w3.org/TR/dwbp#VersioningInfo">Best Practice 7</a>: Provide a version indicator</li>
+        <li id="BP8"><a href="http://w3.org/TR/dwbp#VersionHistory">Best Practice 8</a>: Provide version history</li>
+        <li id="BP9"><a href="http://w3.org/TR/dwbp#UniqueIdentifiers">Best Practice 9</a>: Use persistent URIs as identifiers of datasets</li>
+        <li id="BP10"><a href="http://w3.org/TR/dwbp#identifiersWithinDatasets">Best Practice 10</a>: Use persistent URIs as identifiers within datasets</li>
+        <li id="BP11"><a href="http://w3.org/TR/dwbp#VersionIdentifiers">Best Practice 11</a>: Assign URIs to dataset versions and series</li>
+        <li id="BP12"><a href="http://w3.org/TR/dwbp#MachineReadableStandardizedFormat">Best Practice 12</a>: Use machine-readable standardized data formats </li>
+        <li id="BP13"><a href="http://w3.org/TR/dwbp#LocaleParametersMetadata">Best Practice 13</a>: Use locale-neutral data representations</li>
+        <li id="BP14"><a href="http://w3.org/TR/dwbp#MultipleFormats">Best Practice 14</a>: Provide data in multiple formats </li>
+        <li id="BP15"><a href="http://w3.org/TR/dwbp#ReuseVocabularies">Best Practice 15</a>: Reuse vocabularies, preferably standardized ones</li>
+        <li id="BP16"><a href="http://w3.org/TR/dwbp#ChooseRightFormalizationLevel">Best Practice 16</a>: Choose the right formalization level</li>
+        <li id="BP17"><a href="http://w3.org/TR/dwbp#BulkAccess">Best Practice 17</a>: Provide bulk download </li>
+        <li id="BP18"><a href="http://w3.org/TR/dwbp#ProvideSubsets">Best Practice 18</a>: Provide Subsets for Large Datasets</li>
+        <li id="BP19"><a href="http://w3.org/TR/dwbp#Conneg">Best Practice 19</a>: Use content negotiation for serving data available in multiple formats</li>
+        <li id="BP20"><a href="http://w3.org/TR/dwbp#AccessRealTime">Best Practice 20</a>: Provide real-time access </li>
+        <li id="BP21"><a href="http://w3.org/TR/dwbp#AccessUptoDate">Best Practice 21</a>: Provide data up to date </li>
+        <li id="BP22"><a href="http://w3.org/TR/dwbp#DataUnavailabilityReference">Best Practice 22</a>: Provide an explanation for data that is not available</li>
+        <li id="BP23"><a href="http://w3.org/TR/dwbp#useanAPI">Best Practice 23</a>: Make data available through an API</li>
+        <li id="BP24"><a href="http://w3.org/TR/dwbp#APIHttpVerbs">Best Practice 24</a>: Use Web Standards as the foundation of APIs</li>
+        <li id="BP25"><a href="http://w3.org/TR/dwbp#documentYourAPI">Best Practice 25</a>: Provide complete documentation for your API</li>
+        <li id="BP26"><a href="http://w3.org/TR/dwbp#avoidBreakingChangesAPI">Best Practice 26</a>: Avoid Breaking Changes to Your API</li>
+        <li id="BP27"><a href="http://w3.org/TR/dwbp#ResourceStatus">Best Practice 27</a>: Preserve identifiers</li>
+        <li id="BP28"><a href="http://w3.org/TR/dwbp#EvaluateCoverage">Best Practice 28</a>: Assess dataset coverage</li>
+        <li id="BP29"><a href="http://w3.org/TR/dwbp#GatherFeedback">Best Practice 29</a>: Gather feedback from data consumers </li>
+        <li id="BP30"><a href="http://w3.org/TR/dwbp#FeedbackInformation">Best Practice 30</a>: Make feedback available</li>
+        <li id="BP31"><a href="http://w3.org/TR/dwbp#EnrichData">Best Practice 31</a>: Enrich data by generating new data</li>
+        <li id="BP32"><a href="http://w3.org/TR/dwbp#ProvideComplementaryPresentations">Best Practice 32</a>: Provide Complementary Presentations</li>
+        <li id="BP33"><a href="http://w3.org/TR/dwbp#ProvideFeedbackToPublisher">Best Practice 33</a>: Provide Feedback to the Original Publisher</li>
+        <li id="BP34"><a href="http://w3.org/TR/dwbp#FollowLicensingTerms">Best Practice 34</a>: Follow Licensing Terms</li>
+        <li id="BP35"><a href="http://w3.org/TR/dwbp#CiteOriginalPublication">Best Practice 35</a>: Cite the Original Publication</li>
+      </ul>
+    </section>
+
     <script>
     // script calls
     createDatasetPortalsTable();
