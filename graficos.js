@@ -134,14 +134,53 @@ var dataPieDominio = {
         {	
 			label: 'Domain',
             data: [1,1,1,3,2,1,1,2,5,2,4,27,1,1,1,1,1,1,1], 
-            backgroundColor:"#36A2EB",          
-            hoverBackgroundColor:"#36A2EB"
+            backgroundColor:["#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#5F9EA0",
+                "#FF1493",
+                "#4B0082",
+                "#C71585",
+                "#48D1CC",
+                "#3CB371",
+                "#BC8F8F",
+                "#87CEEB"
+
+                ],          
+            hoverBackgroundColor:["#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#5F9EA0",
+                "#FF1493",
+                "#4B0082",
+                "#C71585",
+                "#48D1CC",
+                "#3CB371",
+                "#BC8F8F",
+                "#87CEEB"
+                ]
         }]
 };
 
 var ctx = document.getElementById('graficoPieDom').getContext('2d');
 var myPieChart = new Chart(ctx,{
-    type: 'bar',
+    type: 'pie',
     data: dataPieDominio,
     options: options
 });
