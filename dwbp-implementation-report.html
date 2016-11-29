@@ -245,6 +245,65 @@ function createGuidelinesTable() {
     }
 
 }
+
+function createBpDataCatalogueTable(){
+  bpDataCatalogueJson = [
+    {"bp": "BP1", "catalogue": ["CKAN","SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP2", "catalogue": ["CKAN","SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP3", "catalogue": ["CKAN (partial)", "SOCRATA", "JUNAR (partial)", "ARCGIS OPEN DATA"]},
+    {"bp": "BP4", "catalogue": ["CKAN", "SOCRATA", "DKAN", "ARCGIS OPEN DATA (partial)", "OPENDATASOFT (partial)"]},
+    {"bp": "BP5", "catalogue": ["CKAN", "SOCRATA", "DKAN", "ARCGIS OPEN DATA (partial)", "OPENDATASOFT (partial)"]},
+    {"bp": "BP6", "catalogue": ["SOCRATA"]},
+    {"bp": "BP7", "catalogue": ["CKAN", "DKAN"]},
+    {"bp": "BP8", "catalogue": ["SOCRATA (partial)", "DKAN"]},
+    {"bp": "BP9", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP10", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP11", "catalogue": ["SOCRATA", "KAGGLE"]},
+    {"bp": "BP12", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP13", "catalogue": ["OPENDATASOFT (partial)"]},
+    {"bp": "BP14", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP15", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR (partial)", "OPENDATASOFT"]},
+    {"bp": "BP16", "catalogue": ["Unavailable evaluation."]},
+    {"bp": "BP17", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP18", "catalogue": ["CKAN (partial)", "SOCRATA", "DKAN (partial)", "JUNAR", "ARCGIS OPEN DATA"]},
+    {"bp": "BP19", "catalogue": ["SOCRATA", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP20", "catalogue": ["ARCGIS OPEN DATA"]},
+    {"bp": "BP21", "catalogue": ["SOCRATA"]},
+    {"bp": "BP22", "catalogue": ["Unavailable evaluation (*)."]},
+    {"bp": "BP23", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP24", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP25", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP26", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP27", "catalogue": ["No software complies with this Best Practice (**)"]},
+    {"bp": "BP28", "catalogue": ["Unavailable evaluation (*)."]},
+    {"bp": "BP29", "catalogue": ["CKAN", "SOCRATA", "DKAN"]},
+    {"bp": "BP30", "catalogue": ["Unavailable evaluation (*)."]},
+    {"bp": "BP31", "catalogue": ["No software complies with this Best Practice (***)"]},
+    {"bp": "BP32", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
+    {"bp": "BP33", "catalogue": ["CKAN", "SOCRATA", "OPENDATASOFT"]},
+    {"bp": "BP34", "catalogue": ["Unavailable evaluation (*)."]},
+    {"bp": "BP35", "catalogue": ["Unavailable evaluation (*)."]}];
+
+    bpDataCatalogueTable = document.getElementById('table-bp-datacatalogue');
+    var tbody = bpDataCatalogueTable.getElementsByTagName('tbody')[0];
+    var newCell = function(val) { return row.insertCell(row.cells.length).innerHTML = val};
+    for (var i = 0; i < bpDataCatalogueJson.length; i++) {
+      obj = bpDataCatalogueJson[i];
+      var row = tbody.insertRow(tbody.rows.length); // new row for the table
+
+      newCell("<a href='#"+obj.bp+"'>"+obj.bp+"</a>");
+      var list = "";
+      obj.catalogue.forEach(function(ev) {
+        var d = ev + ", ";
+        list += d;
+      })
+      list = list.slice(0, -2);
+      newCell(list);
+      newCell(obj.catalogue.length);
+    }
+}
+
+
     </script>
     <style type="text/css">
       .table-container {
@@ -477,13 +536,46 @@ function createGuidelinesTable() {
         <li> Regarding License was said that "The license is provided in a machine readable form via the property and in human readable form "The license is provided in a machine readable form via the property and in human readable form." </li>
         </ol>
         </p>
-    </section>
+    </section>  
     <section>
-      <h2>Data Catalogues Evaluation</h2>
+      <h2>DWBP and Data Catalogues </h2>
+      
+      <p> In this section we present some more evidence that shows the adoption of the DWBP. Rather than specific datasets or data portals, we use the following data catalogue solutions as evidence: <a href="http://ckan.org/">CKAN</a>, <a href="https://socrata.com/">SOCRATA</a>, <a href="http://www.nucivic.com/dkan/">DKAN</a>, <a href="http://www.junar.com">JUNAR</a>, <a href="http://opendata.arcgis.com/">ArcGIS Open Data</a> and <a href="https://www.opendatasoft.com/">OPENDATASOFT</a>. For each one of the DWBP, we show the list of data catalogue solutions that implement it. </p>
+      
+    
       <div>
-        <iframe style="width: 100%; min-height: 600px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSScipdOtRbFmSQo-8EIOjrvn5bdJjzyhFTYrVauUDKoxj1Zfhsahs0-6MwHOGEJhlUrSGOK6iFG2h0/pubhtml?widget=true&amp;headers=false"></iframe>
-      </div>
+        <table id="table-bp-datacatalogue" class="dwbp-ir-table">
+          <thead>
+            <tr>
+              <th>BP</th>
+              <th>Data Catalogues</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <!--<p>
+        (*) Directly related to the data. Therefore, its evaluation isn't adequate for the software but for the portals.
+        <br/>
+        (**) A maioria dos portais apresentaram o código de erro 404, enquanto que o CKAN retornou com mensagem de acesso não autorizado e o DKAN redirecionou para a lista dos datasets (sem mensagem de erro). O mais próximo da Best Practice foi o Junar que retornou mensagem de erro 500 e sugerindo entrar em contato (com acesso ao formulário de contato).
+        <br/>
+        (***) Apesar de nenhum portal implementar esta Best Practice em sua instalação padrão, o ArcGIS Open Data e o OPENDATASOFT permitem acesso a essa funcionalidade através de extensões, respectivamente, o GeoEnrichment service e Processor (mais de um tipo, como Zip Code to Geo Coordinates, Geo Distance, entre outros).  
+        </p>
+      </div> -->
+    
+<!--CKAN and JUNAR partially implement BP3 because they don't offer an explicit way to present human-readable metadata. 
+ARCGIS OPEN DATA partially implement BP4 because they don't offer a way to represent machine-readable license metadata.
+ARCGIS OPEN DATA partially implement BP5 because they don't offer a way to represent machine-readable provenance metadata.
+SOCRATA partially implements BP8 because it doesn't offer a way to represent machine-readable version history metadata
+JUNAR (partial) BP15
+
+
+BP13, BP16, BP22, BP28: it was not possible to evaluate these BP because they apply to the data itself rather than the data catalogue solution used to publish the data. 
+BP -->
+
     </section>
+      
     <section>
       <h2>Implementations</h2>
       <p>Besides the evidences described earlier, we also worked on implementations to show how to use the DWBP and also to reinforce that the DWBP are implmentable.The following lists the implementations and the supported the DWBP. </p>
@@ -578,6 +670,8 @@ function createGuidelinesTable() {
     createBpEvidenceTable();
     createReferencesTable();
     createGuidelinesTable();
+    createBpDataCatalogueTable();
+
 
     </script>
   </body>
