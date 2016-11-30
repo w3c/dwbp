@@ -128,12 +128,13 @@ var DoughnutDesafios = new Chart(ctx,{
 
 
  /* GRAFICO DE EVIDENCIA POR DOMINIO */
+ /* GRAFICO DE EVIDENCIA POR DOMINIO */
 var dataPieDominio = {
-    labels: ["Agriculture and Rural Development","Archive Ocuments","Biological Data","Cross Domain","Cultural Heritage","Digital Inclusion","Digital Libraries","Education","Environment","Finance","Geographic Data","Government Data","Healthcare","Impact Analysis","Literature and Folklore","Pharmaceutical Consumption","Scientific Research","Sports","Transport"],
+    labels: ["Agriculture and Rural Development", "Archive Documents","Biological Data","Cross Domain","Cultural Heritage","Digital Inclusion","Digital Libraries","Education","Environment","Finance","Geographic Data","Government Data","Healthcare","Impact Analysis","Literature and Folklore","Pharmaceutical Consumption","Scientific Research","Sports","Transport"],
     datasets: [
-        {	
-			label: 'Domain',
-            data: [1,1,1,3,2,1,1,2,5,2,4,27,1,1,1,1,1,1,1], 
+        { 
+      label: 'Domain',
+            data: [1,1,1,3,2,1,1,2,4,1,3,9,1,1,1,1,1,1,1], 
             backgroundColor:["#2ecc71",
                 "#36A2EB",
                 "#FFCE56",
@@ -184,6 +185,8 @@ var myPieChart = new Chart(ctx,{
     data: dataPieDominio,
     options: options
 });
+
+/* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
 
 /* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
 
