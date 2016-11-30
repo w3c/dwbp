@@ -1,4 +1,4 @@
-$(function() {
+$( document ).ready(function() {
   var options = {
     responsive:true
   };
@@ -25,109 +25,6 @@ $(function() {
 
 /*FIM DO GRAFICO DE EVIDENCIA POR BP */
 
-
-
-
- /*GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP */
-  dataBarBPDatasetsPortal = {
-    labels: ['BP1','BP2','BP3','BP4','BP5','BP6','BP7','BP8','BP9','BP10','BP11','BP12','BP13','BP14','BP15','BP16','BP17','BP18','BP19','BP20','BP21','BP22','BP23','BP24','BP25','BP26','BP27','BP28','BP29','BP30','BP31','BP32','BP33','BP34','BP35'],
-    datasets: [{
-      label: 'Best Practices',
-      data: [26,22,10,20,12,8,14,6,19,20,7,26,12,22,20,17,14,15,14,4,16,6,23,16,19,9,2,1,19,7,6,13,6,12,13],
-      backgroundColor: "#36A2EB",
-      hoverBackgroundColor: "#3498db"
-    }]
-  };
-
-
-  var ctx = document.getElementById('graficoBarraBPDatasetsPortal').getContext('2d');
-  var myPieChart = new Chart(ctx,{
-      type: 'bar',
-      data: dataBarBPDatasetsPortal,
-      options: options
-  });
-
-/*FIM DO GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP */
-
-
-
-
-/*GRAFICO DE EVIDENCIA (Documents and References) POR BP */
-  dataBarBPDocRef = {
-    labels: ["BP3","BP5","BP6","BP7","BP8","BP9","BP26","BP27","BP28","BP30","BP31","BP32","BP33"],
-    datasets: [{
-      label: 'Best Practices',
-      data: [1,1,1,2,3,1,1,1,2,1,1,1,1],
-      backgroundColor: [
-                "#2ecc71",
-                "#36A2EB",
-                "#FFCE56",
-                "#00008B",
-                "#3498db",
-                "#95a5a6",
-                "#9b59b6",
-                "#f1c40f",
-                "#e74c3c",
-                "#4682B4",
-                "#DC143C",
-                "#FFD700",
-                "#D2691E"
-
-            ],
-      hoverBackgroundColor: [
-                "#2ecc71",
-                "#36A2EB",
-                "#FFCE56",
-                "#00008B",
-                "#3498db",
-                "#95a5a6",
-                "#9b59b6",
-                "#f1c40f",
-                "#e74c3c",
-                "#4682B4",
-                "#DC143C",
-                "#FFD700",
-                "#D2691E"          
-            ],
-    }]
-  };
-
-  var ctx = document.getElementById('graficoBarraBPDocRef').getContext('2d');
-  var myPieChart = new Chart(ctx,{
-      type: 'pie',
-      data: dataBarBPDocRef,
-      options: options
-  });
-
-/*FIM DO GRAFICO DE EVIDENCIA (Documents and References) POR BP */
-
-
-
-
-/* GRAFICO EVIDENCIA POR DESAFIOS */
-var dataDoughnutDesafios = {
-    labels: ["Metadata","Data License","Provenance e Quality","Data Versioning","Data Identification","Data Formats","Data Vocabularies","Data Access","Data Preservation","Feedback","Data Enrichment","Data Republication"],
-    datasets: [
-        {
-			label: 'Challenges',
-            data: [58,20,20,20,46,60,36,136,3,26,19,31], 
-            backgroundColor:"#3CB371",
-            hoverBackgroundColor:"#3CB371"
-        }]
-};
-
-var ctx = document.getElementById('graficoDoughnutDesafios').getContext('2d');
-var DoughnutDesafios = new Chart(ctx,{
-    type: 'bar',
-    data: dataDoughnutDesafios,
-    options: options
-});
-/* FIM DO GRAFICO EVIDENCIAS POR DESAFIO */
-
-
-
-
- /* GRAFICO DE EVIDENCIA POR DOMINIO */
  /* GRAFICO DE EVIDENCIA POR DOMINIO */
 var dataPieDominio = {
     labels: ["Agriculture and Rural Development", "Archive Documents","Biological Data","Cross Domain","Cultural Heritage","Digital Inclusion","Digital Libraries","Education","Environment","Finance","Geographic Data","Government Data","Healthcare","Impact Analysis","Literature and Folklore","Pharmaceutical Consumption","Scientific Research","Sports","Transport"],
@@ -179,8 +76,8 @@ var dataPieDominio = {
         }]
 };
 
-var ctx = document.getElementById('graficoPieDom').getContext('2d');
-var myPieChart = new Chart(ctx,{
+var ctxDomain = document.getElementById('graficoPieDom').getContext('2d');
+var PieChartDomain = new Chart(ctxDomain,{
     type: 'pie',
     data: dataPieDominio,
     options: options
@@ -188,7 +85,105 @@ var myPieChart = new Chart(ctx,{
 
 /* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
 
-/* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
+
+
+
+ /*GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP 
+  dataBarBPDatasetsPortal = {
+    labels: ['BP1','BP2','BP3','BP4','BP5','BP6','BP7','BP8','BP9','BP10','BP11','BP12','BP13','BP14','BP15','BP16','BP17','BP18','BP19','BP20','BP21','BP22','BP23','BP24','BP25','BP26','BP27','BP28','BP29','BP30','BP31','BP32','BP33','BP34','BP35'],
+    datasets: [{
+      label: 'Best Practices',
+      data: [26,22,10,20,12,8,14,6,19,20,7,26,12,22,20,17,14,15,14,4,16,6,23,16,19,9,2,1,19,7,6,13,6,12,13],
+      backgroundColor: "#36A2EB",
+      hoverBackgroundColor: "#3498db"
+    }]
+  };
+
+var canvas = document.getElementById('graficoBarraBPDatasetsPortal');
+var context = canvas.getContext('2d');
+
+  
+  var PieChartDataset = new Chart(context,{
+      type: 'bar',
+      data: dataBarBPDatasetsPortal,
+      options: options
+  });
+
+/*FIM DO GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP */
+
+
+/*GRAFICO DE EVIDENCIA (Documents and References) POR BP 
+  dataBarBPDocRef = {
+    labels: ["BP3","BP5","BP6","BP7","BP8","BP9","BP26","BP27","BP28","BP30","BP31","BP32","BP33"],
+    datasets: [{
+      label: 'Best Practices',
+      data: [1,1,1,2,3,1,1,1,2,1,1,1,1],
+      backgroundColor: [
+                "#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#FFD700",
+                "#D2691E"
+
+            ],
+      hoverBackgroundColor: [
+                "#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#FFD700",
+                "#D2691E"          
+            ],
+    }]
+  };
+
+  var ctx = document.getElementById('graficoBarraBPDocRef').getContext('2d');
+  var myPieChart = new Chart(ctx,{
+      type: 'pie',
+      data: dataBarBPDocRef,
+      options: options
+  });
+
+/*FIM DO GRAFICO DE EVIDENCIA (Documents and References) POR BP */
+
+
+
+
+/* GRAFICO EVIDENCIA POR DESAFIOS 
+var dataDoughnutDesafios = {
+    labels: ["Metadata","Data License","Provenance e Quality","Data Versioning","Data Identification","Data Formats","Data Vocabularies","Data Access","Data Preservation","Feedback","Data Enrichment","Data Republication"],
+    datasets: [
+        {
+			label: 'Challenges',
+            data: [58,20,20,20,46,60,36,136,3,26,19,31], 
+            backgroundColor:"#3CB371",
+            hoverBackgroundColor:"#3CB371"
+        }]
+};
+
+var ctx = document.getElementById('graficoDoughnutDesafios').getContext('2d');
+var DoughnutDesafios = new Chart(ctx,{
+    type: 'bar',
+    data: dataDoughnutDesafios,
+    options: options
+});
+/* FIM DO GRAFICO EVIDENCIAS POR DESAFIO */
+
 
 
 
@@ -234,7 +229,7 @@ var DoughnutAlcance = new Chart(ctx,{
 /* FIM DO GRAFICO DE ALCANCE DAS EVIDENCIAS */
 
 
-/*  Number of evidences per category */
+/*  Number of evidences per category 
 
 dataPieCategory = {
     labels: ["Dataset","Data Portal","SPARQL endpoint","Vocabulary"],
@@ -267,7 +262,7 @@ dataPieCategory = {
 
 
 
-/* USO DOS CATALOGOS DE DADOS */
+/* USO DOS CATALOGOS DE DADOS 
 
 dataPieCatalogos = {
     labels: ["CKAN","CKAN (datahub)","Proprietary","PublishMyData"],
@@ -299,7 +294,7 @@ dataPieCatalogos = {
 
 
 
-/* NUVEM DE PALAVRAS DOMINIOS */
+/* NUVEM DE PALAVRAS DOMINIOS 
 
 var words = [
   {text: "Agriculture and Rural Development", weight: 1},
@@ -329,7 +324,6 @@ $('#demo').jQCloud(words);
 /* FIM NUVEM DE PALAVRAS DOMINIOS */
 
 });
-
 
 
 
