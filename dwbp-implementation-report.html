@@ -258,10 +258,10 @@ function createBpDataCatalogueTable(){
     {"bp": "BP12", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
     {"bp": "BP13", "catalogue": ["OPENDATASOFT (partial)"]},
     {"bp": "BP14", "catalogue": ["SOCRATA","JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
-    {"bp": "BP15", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR (partial)", "OPENDATASOFT"]},
+    {"bp": "BP15", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "OPENDATASOFT"]},
     {"bp": "BP16", "catalogue": []},
     {"bp": "BP17", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
-    {"bp": "BP18", "catalogue": ["CKAN (partial)", "SOCRATA", "DKAN (partial)", "JUNAR", "ARCGIS OPEN DATA"]},
+    {"bp": "BP18", "catalogue": ["CKAN", "SOCRATA", "DKAN", "JUNAR", "ARCGIS OPEN DATA"]},
     {"bp": "BP19", "catalogue": ["SOCRATA", "JUNAR", "ARCGIS OPEN DATA", "OPENDATASOFT"]},
     {"bp": "BP20", "catalogue": ["ARCGIS OPEN DATA"]},
     {"bp": "BP21", "catalogue": ["SOCRATA"]},
@@ -564,15 +564,15 @@ function createBpDataCatalogueTable(){
           <li> BP31: this BP concerns processes that can be used to enhance, refine or otherwise improve raw or previously processed data, which are not part of the basic data catalog functions.
         </ul>
 
-        <p> Concerning BP27 &hellip; </p>
+        <p> Concerning BP27 none of the data catalog solutions implement it. In general, when a dataset is not available then just a 404 error message is returned. </p>
         
-        <p>Some Best Practices related to metadata are partially implemented by the data catalog solutions. It is important to observe that almost all data catalog solutions are compatible with DCAT, which means that metadata covered by DCAT are available both in human-readable and machine-readable formats. In general, it means that just a human-readable or a machine-readable version of the metadata is available, as detailed in the following.
+        <p>Some Best Practices related to metadata are partially implemented by the data catalog solutions. Note that almost all data catalog solutions are compatible with DCAT, which means that metadata covered by DCAT may be completely or partially available both in human-readable and machine-readable formats. In general, it means that just a human-readable or a machine-readable version of the metadata is available, as detailed in the following.
     
         <ul>
           <li>BP3 is partially implemented by CKAN and JUNAR because they do not offer an explicit way to present human-readable structural metadata. </li>
-          <li>BP4 and BP5 are partially implemented by ARCGIS OPEN DATA because it does not offer a way to represent machine-readable license metadata and machine-readable provenance metadata. </li>
+          <li>BP4 and BP5 are partially implemented by ARCGIS OPEN DATA and OPENDATASOFT because it does not offer a way to represent machine-readable license metadata and machine-readable provenance metadata. </li>
           <li>BP8 is partially implemented by SOCRATA because it does not offer a way to represent machine-readable version history metadata. </li>
-          <!--<li> JUNAR (partial) BP15 </li> -->
+          <li>BP13 is partially implemented by OPENDATASOFT because it does not offer a way to represent machine-readable language metadata. </li>
         </ul>
 
         <p> As a general analysis with regards to the <a href="https://www.w3.org/TR/dwbp/#challenges">Data on the Web Challenges</a>, we can say that Metadata, Data Licenses and Data Formats challenges are a main concern of the data catalog solutions. The Data Access challenge has also been recognized as an important one except when it concerns real-time data. The use of Data Access APIs is a consensus. The major data catalog solutions also deal with the Data Identification challenge, however just part of the problem has been solved. The Data Vocabularies challenge has also been considered as an important one since data catalog solutions reuse existing vocabularies, e.g. DCAT, when publishing metadata about the data catalogs. Other challenges like Data Provenance, Data Versioning and Feedback have been superficially dealt with in the data catalog solutions. In general, Data Quality, Data Preservation, Data Enrichment and Data Republications are challenges still not explored by the major data catalog solutions. </p>
