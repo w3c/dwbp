@@ -1,4 +1,4 @@
-$(function() {
+$( document ).ready(function() {
   var options = {
     responsive:true
   };
@@ -25,10 +25,70 @@ $(function() {
 
 /*FIM DO GRAFICO DE EVIDENCIA POR BP */
 
+ /* GRAFICO DE EVIDENCIA POR DOMINIO */
+var dataPieDominio = {
+    labels: ["Agriculture and Rural Development", "Archive Documents","Biological Data","Cross Domain","Cultural Heritage","Digital Inclusion","Digital Libraries","Education","Environment","Finance","Geographic Data","Government Data","Healthcare","Impact Analysis","Literature and Folklore","Pharmaceutical Consumption","Scientific Research","Sports","Transport"],
+    datasets: [
+        { 
+      label: 'Domain',
+            data: [1,1,1,3,2,1,1,2,4,1,3,9,1,1,1,1,1,1,1], 
+            backgroundColor:["#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#5F9EA0",
+                "#FF1493",
+                "#4B0082",
+                "#C71585",
+                "#48D1CC",
+                "#3CB371",
+                "#BC8F8F",
+                "#87CEEB"
+
+                ],          
+            hoverBackgroundColor:["#2ecc71",
+                "#36A2EB",
+                "#FFCE56",
+                "#00008B",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#4682B4",
+                "#DC143C",
+                "#5F9EA0",
+                "#FF1493",
+                "#4B0082",
+                "#C71585",
+                "#48D1CC",
+                "#3CB371",
+                "#BC8F8F",
+                "#87CEEB"
+                ]
+        }]
+};
+
+var ctxDomain = document.getElementById('graficoPieDom').getContext('2d');
+var PieChartDomain = new Chart(ctxDomain,{
+    type: 'pie',
+    data: dataPieDominio,
+    options: options
+});
+
+/* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
 
 
 
- /*GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP */
+
+ /*GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP 
   dataBarBPDatasetsPortal = {
     labels: ['BP1','BP2','BP3','BP4','BP5','BP6','BP7','BP8','BP9','BP10','BP11','BP12','BP13','BP14','BP15','BP16','BP17','BP18','BP19','BP20','BP21','BP22','BP23','BP24','BP25','BP26','BP27','BP28','BP29','BP30','BP31','BP32','BP33','BP34','BP35'],
     datasets: [{
@@ -39,9 +99,11 @@ $(function() {
     }]
   };
 
+var canvas = document.getElementById('graficoBarraBPDatasetsPortal');
+var context = canvas.getContext('2d');
 
-  var ctx = document.getElementById('graficoBarraBPDatasetsPortal').getContext('2d');
-  var myPieChart = new Chart(ctx,{
+  
+  var PieChartDataset = new Chart(context,{
       type: 'bar',
       data: dataBarBPDatasetsPortal,
       options: options
@@ -50,9 +112,7 @@ $(function() {
 /*FIM DO GRAFICO DE EVIDENCIA (Datasets and Data Portals) POR BP */
 
 
-
-
-/*GRAFICO DE EVIDENCIA (Documents and References) POR BP */
+/*GRAFICO DE EVIDENCIA (Documents and References) POR BP 
   dataBarBPDocRef = {
     labels: ["BP3","BP5","BP6","BP7","BP8","BP9","BP26","BP27","BP28","BP30","BP31","BP32","BP33"],
     datasets: [{
@@ -104,7 +164,7 @@ $(function() {
 
 
 
-/* GRAFICO EVIDENCIA POR DESAFIOS */
+/* GRAFICO EVIDENCIA POR DESAFIOS 
 var dataDoughnutDesafios = {
     labels: ["Metadata","Data License","Provenance e Quality","Data Versioning","Data Identification","Data Formats","Data Vocabularies","Data Access","Data Preservation","Feedback","Data Enrichment","Data Republication"],
     datasets: [
@@ -124,68 +184,6 @@ var DoughnutDesafios = new Chart(ctx,{
 });
 /* FIM DO GRAFICO EVIDENCIAS POR DESAFIO */
 
-
-
-
- /* GRAFICO DE EVIDENCIA POR DOMINIO */
-var dataPieDominio = {
-    labels: ["Agriculture and Rural Development","Archive Ocuments","Biological Data","Cross Domain","Cultural Heritage","Digital Inclusion","Digital Libraries","Education","Environment","Finance","Geographic Data","Government Data","Healthcare","Impact Analysis","Literature and Folklore","Pharmaceutical Consumption","Scientific Research","Sports","Transport"],
-    datasets: [
-        {	
-			label: 'Domain',
-            data: [1,1,1,3,2,1,1,2,5,2,4,27,1,1,1,1,1,1,1], 
-            backgroundColor:["#2ecc71",
-                "#36A2EB",
-                "#FFCE56",
-                "#00008B",
-                "#3498db",
-                "#95a5a6",
-                "#9b59b6",
-                "#f1c40f",
-                "#e74c3c",
-                "#4682B4",
-                "#DC143C",
-                "#5F9EA0",
-                "#FF1493",
-                "#4B0082",
-                "#C71585",
-                "#48D1CC",
-                "#3CB371",
-                "#BC8F8F",
-                "#87CEEB"
-
-                ],          
-            hoverBackgroundColor:["#2ecc71",
-                "#36A2EB",
-                "#FFCE56",
-                "#00008B",
-                "#3498db",
-                "#95a5a6",
-                "#9b59b6",
-                "#f1c40f",
-                "#e74c3c",
-                "#4682B4",
-                "#DC143C",
-                "#5F9EA0",
-                "#FF1493",
-                "#4B0082",
-                "#C71585",
-                "#48D1CC",
-                "#3CB371",
-                "#BC8F8F",
-                "#87CEEB"
-                ]
-        }]
-};
-
-var ctx = document.getElementById('graficoPieDom').getContext('2d');
-var myPieChart = new Chart(ctx,{
-    type: 'pie',
-    data: dataPieDominio,
-    options: options
-});
-
-/* FIM GRAFICO DE EVIDENCIA POR DOMINIO */
 
 
 
@@ -231,7 +229,7 @@ var DoughnutAlcance = new Chart(ctx,{
 /* FIM DO GRAFICO DE ALCANCE DAS EVIDENCIAS */
 
 
-/*  Number of evidences per category */
+/*  Number of evidences per category 
 
 dataPieCategory = {
     labels: ["Dataset","Data Portal","SPARQL endpoint","Vocabulary"],
@@ -264,7 +262,7 @@ dataPieCategory = {
 
 
 
-/* USO DOS CATALOGOS DE DADOS */
+/* USO DOS CATALOGOS DE DADOS 
 
 dataPieCatalogos = {
     labels: ["CKAN","CKAN (datahub)","Proprietary","PublishMyData"],
@@ -296,7 +294,7 @@ dataPieCatalogos = {
 
 
 
-/* NUVEM DE PALAVRAS DOMINIOS */
+/* NUVEM DE PALAVRAS DOMINIOS 
 
 var words = [
   {text: "Agriculture and Rural Development", weight: 1},
@@ -326,7 +324,6 @@ $('#demo').jQCloud(words);
 /* FIM NUVEM DE PALAVRAS DOMINIOS */
 
 });
-
 
 
 
