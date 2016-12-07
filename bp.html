@@ -803,7 +803,7 @@ table.bptable caption {
           <h4 class="subhead">Why</h4>
           <p>This section answers two crucial questions:</p>
           <ul>
-            <li>Why this is unique to publishing or reusing data on the Web? </li>
+            <li>Why is this specifically relevant to publishing or reusing data on the Web? </li>
             <li>How does this encourages publication or reuse of data on the
               Web? </li>
           </ul>
@@ -836,7 +836,7 @@ table.bptable caption {
         </section>
         <section class="benefits" typeof="bibo:Chapter" resource="" property="bibo:hasPart">
           <h4 class="subhead">Benefits</h4>
-          A <a href="#BP_Benefits"> benefit </a> represents an improvement in the way how datasets are available on the Web. A Best Practice can have one or more benefits. 
+          A <a href="#BP_Benefits"> benefit </a> represents an improvement in the way how datasets are available on the Web. A Best Practice can have one or more benefits.
           <ul class="benefitsList">
             <!-- This text list is replaced by the icons by scripting -->
             <li>Reuse</li>
@@ -860,9 +860,9 @@ table.bptable caption {
       <section id="basicExample">
         <h3>Running Example</h3>
           <div class="example" style="counter-increment:none">John works for the Transport Agency of MyCity and is in charge of publishing data about public transport. John wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
-          <p>RDF examples of the application of some Best Practices are shown using Turtle [[Turtle]].</p>
+          <p>RDF examples of the application of some Best Practices are shown using Turtle [[Turtle]] or JSON-LD [[JSON-LD]].</p>
       </section>
-      
+
       <section id="metadata">
         <h3>Metadata</h3>
         <p>The Web is an open information space, where the absence of a specific
@@ -883,7 +883,7 @@ table.bptable caption {
           descriptive, structural and administrative features. A different taxonomy could define
           metadata types with a scheme according to tasks where metadata are
           used, for example, discovery and reuse.</p>
-           
+
         <!-- begin of Provide Metadata BP -->
         <div class="practice">
           <p><span id="ProvideMetadata" class="practicelab">Provide metadata</span></p>
@@ -1017,7 +1017,7 @@ table.bptable caption {
 The dataset is classified under
                 the domain represented by the relative URI <code>mobility</code>. This
                 domain may be defined as part of a set of domains identified by
-                the URI <code>themes</code>. 
+                the URI <code>themes</code>.
                   To describe both concepts and schema
                 concepts, John used <a href="http://www.w3.org/TR/skos-primer/">SKOS </a>.
                 To express frequency of update an instance from the <a href="http://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
@@ -1035,9 +1035,9 @@ The dataset is classified under
       dct:issued "2015-05-05"^^xsd:date ;
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
-      dct:publisher :transport-agency-mycity ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
+      dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
       dcat:theme :mobility ;
       dcat:distribution :stops-2015-05-05.csv
       .
@@ -1275,7 +1275,7 @@ The dataset is classified under
           <section class="test">
             <h4 class="subhead">How to Test</h4>
             <p>Check if the metadata for the dataset itself includes the data license information in a human-readable format.</p>
-            <p>Check if a user agent can automatically detect /discover the data license of the dataset.</p>
+            <p>Check if a user agent can automatically detect/discover and process the data license.</p>
           </section>
           <section class="ucr">
               <h4 class="subhead">Evidence</h4>
@@ -1346,7 +1346,7 @@ The dataset is classified under
       <strong>dct:issued "2015-05-05"^^xsd:date ; </strong>
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       <strong>dct:publisher :transport-agency-mycity ; </strong>
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
@@ -1448,19 +1448,19 @@ The dataset is classified under
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
       dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-      <strong>dqv:hasQualityMeasurement :measure1, :measure2 </strong> 
+      <strong>dqv:hasQualityMeasurement :measure1, :measure2 </strong>
       .
   :measure1
       a dqv:QualityMeasurement ;
       dqv:computedOn :stops-2015-05-05.csv ;
       dqv:isMeasurementOf :downloadURLAvailabilityMetric ;
-      dqv:value "true"^^xsd:boolean 
+      dqv:value "true"^^xsd:boolean
       .
   :measure2
       a dqv:QualityMeasurement ;
       dqv:computedOn :stops-2015-05-05.csv ;
       dqv:isMeasurementOf :csvCompletenessMetric ;
-      dqv:value "0.5"^^xsd:double 
+      dqv:value "0.5"^^xsd:double
       .
 
 #definition of dimensions and metrics
@@ -1468,13 +1468,13 @@ The dataset is classified under
       a dqv:Dimension ;
       skos:prefLabel "Availability"@en ;
       skos:definition "Availability of a dataset is the extent to which data (or some portion of it) is present, obtainable and ready for use."@en ;
-      dqv:inCategory :accessibility 
+      dqv:inCategory :accessibility
       .
   :completeness
       a dqv:Dimension ;
       skos:prefLabel "Completeness"@en ;
       skos:definition "Completeness refers to the degree to which all required information is present in a particular dataset."@en ;
-      dqv:inCategory :intrinsicDimensions	
+      dqv:inCategory :intrinsicDimensions
       .
   :downloadURLAvailabilityMetric
       a dqv:Metric ;
@@ -1527,8 +1527,8 @@ The dataset is classified under
           are updated on a scheduled basis, and other datasets are changed as
           improvements in collecting the data make updates worthwhile. In order
           to deal with these changes, new versions of a dataset may be created.
-          Unfortunately, there is no consensus about when changes to a dataset should 
-          cause it to be considered a different dataset altogether rather than a new version. 
+          Unfortunately, there is no consensus about when changes to a dataset should
+          cause it to be considered a different dataset altogether rather than a new version.
           In the following, we present some scenarios where most publishers would agree that
           the revision should be considered a new version of the existing dataset. </p>
         <ul>
@@ -1552,7 +1552,7 @@ The dataset is classified under
           different dataset versions to make the dataset trustworthy. Publishers
           should remember that a given dataset may be in use by one or more
           data consumers, and they should take reasonable steps to inform those consumers when a new version is released.
-          For real-time data, an automated timestamp can serve as a version identifier. 
+          For real-time data, an automated timestamp can serve as a version identifier.
           For each dataset, the publisher should take a
           consistent, informative approach to versioning, so data consumers can
           understand and work with the changing data. </p>
@@ -1618,7 +1618,7 @@ The dataset is classified under
       dct:issued "2015-05-05"^^xsd:date ;
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
@@ -1747,7 +1747,7 @@ rel="original" </pre>
       dct:issued "2015-12-17"^^xsd:date ;
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
@@ -1886,8 +1886,8 @@ rel=“next last memento";
               identification and comparison processes by any stakeholder in a
               reliable way. They are an essential pre-condition for proper data
               management and reuse.</p>
-            <p>Developers may build URIs into their code and so it is important 
-            that those URIs persist and that they dereference to the same 
+            <p>Developers may build URIs into their code and so it is important
+            that those URIs persist and that they dereference to the same
             resource over time without the need for human intervention.</p>
           </section>
           <section class="outcome">
@@ -1896,14 +1896,14 @@ rel=“next last memento";
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>To be persistent, URIs must be designed as such. A lot has been 
+            <p>To be persistent, URIs must be designed as such. A lot has been
             written on this topic, see, for example, the European Commission's
-            Study on Persistent URIs [[PURI]] which in turn links to many other 
+            Study on Persistent URIs [[PURI]] which in turn links to many other
             resources.</p>
             <p>Where a data publisher is unable or unwilling to manage a URI
               space directly for persistence, an alternative approach is to use
-              a redirection service such as 
-              <a href="https://w3id.org/">Permanent Identifiers for the Web</a> 
+              a redirection service such as
+              <a href="https://w3id.org/">Permanent Identifiers for the Web</a>
               or <a href="http://purl.org/">purl.org</a>.
               These provide persistent URIs that can be redirected as required
               so that the eventual location can be ephemeral. The <a href="http://www.purlz.org/">software
@@ -1940,7 +1940,7 @@ rel=“next last memento";
                   specific bus route.</li>
                 <li>Likewise, the path segment of <code>/bus</code>
                   take us further towards the specific dataset for which John is
-                  responsible.</li> 
+                  responsible.</li>
                 <li>Finally <code>/stops</code> leads us to the dataset
                   concerning bus stops in MyCity.</li>
                 <li>In DCAT terms, this would be the identifier for the dataset.
@@ -2034,13 +2034,13 @@ rel=“next last memento";
                 segment indicates that the URI identifies something that is not
                 an information resource, i.e. something you cannot retrieve over
                 the Internet, and <code>/AB</code> is the local identifier for
-                the actual bus route. 
+                the actual bus route.
 
                 This is consistent with advice from GS1's SmartSearch Implementation Guideline [[GS1]]
-                which says that where standard identifiers are used for a product, location etc., 
-                it is recommended that the URI includes the type of identifier 
-                being used.  For example, if a <abbr title="Global Trade Identification Number">GTIN</abbr> is 
-                being used to identify a product then the URI should be of the form: 
+                which says that where standard identifiers are used for a product, location etc.,
+                it is recommended that the URI includes the type of identifier
+                being used.  For example, if a <abbr title="Global Trade Identification Number">GTIN</abbr> is
+                being used to identify a product then the URI should be of the form:
                 <code>http://data.myproduct.example.com/gtin/05011476100885</code>.
 
                 Dereferencing URIs for non-information resources should result in an
@@ -2170,7 +2170,7 @@ rel=“next last memento";
           <section class="axioms">
             <h4 class="subhead">Why</h4>
             <p>As data becomes more ubiquitous, and datasets become larger and
-              more complex, processing by computers becomes ever more crucial. 
+              more complex, processing by computers becomes ever more crucial.
               Posting data in a format that is not <a href= "#machine_readable">machine-readable</a> places
               severe limitations on the continuing usefulness of the data. Data
               becomes useful when it has been processed and transformed into
@@ -2193,7 +2193,7 @@ rel=“next last memento";
 <p>John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
 
 <pre>
-Identifier,Name,Description,Latitude,Longitude,ZONE,URL 
+Identifier,Name,Description,Latitude,Longitude,ZONE,URL
 345,Castle Avenue,Sunset Drive,-3.731862,-38.526670,x20,http://data.mycity.example.com/transport/road/bus/stop/id/345
 483,Main Street,Lily Park,-3.731541,-38.535157,x20,http://data.mycity.example.com/transport/road/bus/stop/id/483
 </pre>
@@ -2261,7 +2261,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
       dct:issued "2015-05-05"^^xsd:date ;
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dcat:theme :mobility ;
@@ -2270,11 +2270,6 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
                    &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
       <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt;</strong>
       .
-
-  fare_id,price,currency_type,payment_method,transfers,transfer_duration
-  p,1.25,USD,0,0,0
-  a,5.25,USD,0,0,0
-
 </pre>
               <h5 class="subhead">Human-readable</h5>
               <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
@@ -2332,9 +2327,9 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
               make the data available in many formats against the cost of doing so, but providing at least
               one alternative will greatly increase the usability of the data.</p> -->
             <p>A word of warning: local identifiers within the dataset, which may be exposed as fragment identifiers in URIs, must be consistent across the various formats.</p>
-            
+
 <aside class="example">
-             
+
 <p>In order to reach a larger number of data consumers, John decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
               <pre class="highlight">
   :stops-2015-05-05
@@ -2409,11 +2404,11 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
       dct:license &lt;http://reference.data.gov.uk/id/open-government-licence&gt; ;
       .-->
             </pre>
-            </aside> 
+            </aside>
           </section>
           <section class="test">
             <h4 class="subhead">How to Test</h4>
-            <p>Check if the complete dataset is available in more than one data format.</p>
+            <p>Check if the dataset is available in more than one data format.</p>
           </section>
           <section class="ucr">
             <h4 class="subhead">Evidence</h4>
@@ -2465,7 +2460,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           inference techniques on the Semantic Web. The first means offered by
           W3C for creating ontologies is the RDF Schema [[RDF-SCHEMA]] language.
           It is possible to define more expressive ontologies with additional
-          axioms using languages such as those in The Web Ontology Language
+          terms such as those in The Web Ontology Language
           [[OWL2-OVERVIEW]]. </p>
         <p>On the other hand, “controlled vocabularies”, “concept schemes” and
           “knowledge organization systems” enumerate and define resources that
@@ -2485,7 +2480,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           <p class="practicedesc">Use terms from shared vocabularies, preferably standardized ones, to encode data and metadata.</p>
           <section class="axioms">
             <h4 class="subhead">Why</h4>
-            <p>Use of vocabularies already in use by others captures and facilitates consensus in communities. 
+            <p>Use of vocabularies already in use by others captures and facilitates consensus in communities.
               It increases interoperability and reduces
               redundancies, thereby encouraging reuse of your own data. In particular, the
               use of shared vocabularies for metadata (especially structural, provenance, quality
@@ -2498,7 +2493,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
             <p>The <a href="http://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for Publishing Linked Data [[LD-BP]] provides guidance on the discovery, evaluation and selection of existing vocabularies.</p>
-            <p>Organizations such as the Open Geospatial Consortium (OGC), 
+            <p>Organizations such as the Open Geospatial Consortium (OGC),
             <abbr title="International Standards Organization">ISO</abbr>, W3C,
             <abbr title="World Meteorological Organization">WMO</abbr>, libraries and research data services, etc.
             provide lists of codes, terminologies and Linked Data vocabularies that can be used by everyone.
@@ -2513,7 +2508,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
               Reusing Dublin Core properties like <code>dct:title</code> instead of
               creating new ones (say, <code>dcat:title</code>) enables DCAT-based metadata
               to be consumed by any application that can read and manipulate Dublin Core statements.</li>
-              <li>In the digital culture sector, the data model for 
+              <li>In the digital culture sector, the data model for
               <a href="http://europeana.eu">Europeana</a> (<a href="http://pro.europeana.eu/page/edm-documentation">EDM</a>)
               also makes extensive uses of existing shared vocabularies like Dublin Core, FOAF, SKOS, etc.
               This has facilitated adoption of EDM by Europeana's data providers and helped
@@ -2679,9 +2674,9 @@ Highly
           <p>This is almost always a matter of subjective judgment with no objective test. As a general guideline:</p><ul>
             <li>Are common vocabularies used such as Dublin Core and schema.org?</li>
             <li>Are simple facts stated simply and retrieved easily?</li>
-            <li>For formal knowledge representation languages, applying an 
-          inference engine on top of the data that uses a given vocabulary does 
-          not produce too many statements that are unnecessary for target 
+            <li>For formal knowledge representation languages, applying an
+          inference engine on top of the data that uses a given vocabulary does
+          not produce too many statements that are unnecessary for target
           applications.</li></ul>
         </section>
         <section class="ucr">
@@ -2731,7 +2726,7 @@ Highly
     <!-- begin of Data Access -->
     <section id="dataAccess">
       <h3>Data Access</h3>
-      <p>Providing easy access to data on the Web enables both humans and machines to take advantage of the benefits of sharing data using the Web infrastructure. By default, the Web offers access using Hypertext Transfer Protocol (HTTP) methods. This provides access to data at an atomic transaction level. This might be through the simple bulk download of a file or, where data is distributed across multiple files or requires more sophisticated retrieval methods, through an API. The two basic methods, bulk download and <abbr title="Application Programming Interfaces">API</abbr>, are not mutually exclusive. 
+      <p>Providing easy access to data on the Web enables both humans and machines to take advantage of the benefits of sharing data using the Web infrastructure. By default, the Web offers access using Hypertext Transfer Protocol (HTTP) methods. This provides access to data at an atomic transaction level. This might be through the simple bulk download of a file or, where data is distributed across multiple files or requires more sophisticated retrieval methods, through an API. The two basic methods, bulk download and <abbr title="Application Programming Interfaces">API</abbr>, are not mutually exclusive.
 
       <p>In the bulk download approach, data is
         generally pre-processed server side where multiple files or directory
@@ -2739,8 +2734,8 @@ Highly
         being retrieved from non-file system solutions, depending on the data
         user communities, the data publisher can offer APIs to support a series
         of retrieval operations representing a single transaction.</p>
-      <p> For data that is generated in real time or near real time, data publishers should use an automated system to enable immediate access to time-sensitive data, such as emergency information, weather forecasting data, or system monitoring metrics. In general, APIs should be available to allow third parties to automatically search and retrieve such data.</p> 
-      <p> Aside from helping to automate real-time data pipelines, APIs are suitable for all kinds of data on the Web. Though they generally require more work than posting files for download, publishers are increasingly finding that delivering a well documented, standards-based, stable API is worth the effort.</p> 
+      <p> For data that is generated in real time or near real time, data publishers should use an automated system to enable immediate access to time-sensitive data, such as emergency information, weather forecasting data, or system monitoring metrics. In general, APIs should be available to allow third parties to automatically search and retrieve such data.</p>
+      <p> Aside from helping to automate real-time data pipelines, APIs are suitable for all kinds of data on the Web. Though they generally require more work than posting files for download, publishers are increasingly finding that delivering a well documented, standards-based, stable API is worth the effort.</p>
       <p>For some data publishers, it is important to know who has downloaded the data and how they have used it. There are two possible approaches to gathering this information. First, publishers can <em>invite</em> users to provide it, the user's motivation for doing so being that it encourages the continued publication of the data and promotes their own work. A second and less user-friendly approach is to require registration before data is accessed. In both cases, the Dataset Usage Vocabulary [[VOCAB-DUV]] provides a structure for representing such information. When collecting data from users, the publisher should explain why and how information gathered from users (either explicitly or implicitly) will be used. Without a clear policy users might be fearful of providing information and thus the value of the dataset is reduced.</p>
       <!--p>On a further note, it can be observed that data on the Web is
         essentially about the description of entities identified by a unique,
@@ -2823,7 +2818,7 @@ Highly
           <p>Another way to subset a dataset is to simply split it into smaller units and make those units individually available for download or viewing.</p>
           <p>It can also be helpful to mark up a dataset so that individual sections through the data (or even smaller pieces, if expected use cases warrant it) can be processed separately. One way to do that is by indicating “slices” with the <a href="/TR/vocab-data-cube/#cubes-slices">RDF Data Cube Vocabulary</a>.</p>
           <aside class="example">
-            
+
 
 <p> The MyCity transit agency has been collecting detailed data about passenger usage for several years. This is a very large dataset, containing values for numbers of passengers by transit type, route, vehicle, driver, entry stop, exit stop, transit pass type, entry time, etc.  They have found that a wide variety of stakeholders are interested in downloading various subsets of the data. The folks who run each transit system want only the data for their transit mode, the city planners only want the numbers of entries and exits at each stop, the city budget office wants only the numbers for the various types of passes sold, and others want still different subsets. The agency created a Web site where users can select which variables are of interest to them, set ranges on some variables, and download only the subset they need. </p>
 
@@ -2860,7 +2855,7 @@ Highly
         <section class="axioms">
           <h4 class="subhead">Why</h4>
           <p>It is possible to serve data in an HTML page mixed with
-            human-readable and machine-readable data, using RDFa for example. 
+            human-readable and machine-readable data, using RDFa for example.
             However, as the Architecture of the Web [[WEBARCH]] and DCAT [[VOCAB-DCAT]] make clear,
             a resource, such as a dataset, can have many representations. The same data might be available
             as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via and API but should be made available
@@ -2897,7 +2892,7 @@ Highly
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
-          <p><span>Relevant requirements</span>: </p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a></p>
         </section>
         <section class="benefits">
           <h4 class="subhead">Benefits</h4>
@@ -2950,11 +2945,11 @@ Highly
               facilitate these read-only requests.</li>
           </ul>
           <p>To engender greater credibility, in addition to data itself, publishers can provide access to
-          error conditions, anomalies, and instrument "house keeping" data. This will 
+          error conditions, anomalies, and instrument "house keeping" data. This will
           enhance real-time applications' ability to interpret and convey
           real-time data quality to consumers.</p> -->
           <aside class="example">
-          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data. 
+          <p>In this example the Transport Agency of MyCity keeps track of all bus GPS data.
             The API provides consumers real-time status information using a REST API. The API allows
             the consumer to select: </p>
           <ul>
@@ -3038,7 +3033,7 @@ Highly
         <section class="how">
           <h4 class="subhead">Possible Approach to Implementation</h4>
           <p>New versions of the dataset can be posted to the Web on a regular schedule, following the <a href="#dataVersioning">Best Practices for Data Versioning</a>. Posting to the Web can be made a part of the release process for new versions of the data. Making Web publication a deliverable item in the process and assigning an individual person as responsible for the task can help prevent data becoming out of date. To set consumer expectations for updates going forward, you can include human-readable text stating the expected publication frequency, and you can provide machine-readable metadata indicating the frequency as well. </p>
-          
+
           <aside class="example">
             <p>Suppose that the update frequency of the bus stops dataset is annual. In order to describe the frequency with which new data is added to the dataset, the property <code>dct:accrualPeriodicity</code> can be used. A new version of the dataset (<code>stops-2016-05-05</code>) is created to reflect the update schedule of the data. It is important to note that new versions can be created sooner than the schedule calls for, but the publisher should ensure that extra versions are published to the Web as quickly as their scheduled counterparts.
              <pre class="highlight">
@@ -3082,6 +3077,7 @@ Highly
       <!-- end of BP Access Up to date -->
 
 <!-- Unavailability reference -->
+<!-- Shall this BP also cover data that is gone because archived / obsololete/ ... ?  -->
       <div class="practice">
         <p><span id="DataUnavailabilityReference" class="practicelab">Provide an explanation for data that is not available</span></p>
         <p class="practicedesc">For data that is not available, provide an explanation about how the data can be accessed and who can access it.</p>
@@ -3263,8 +3259,8 @@ Highly
             <aside class="example">
 
 
-In order to help developers, the transport agency offers a complete documentation about the API that provides access to data about bus stops and routes. The <a href="./dwbp-api-example.html">API documentation</a> includes a list of the calls handled by the API, the corresponding parameters and some examples. 
-             
+In order to help developers, the transport agency offers a complete documentation about the API that provides access to data about bus stops and routes. The <a href="./dwbp-api-example.html">API documentation</a> includes a list of the calls handled by the API, the corresponding parameters and some examples.
+
              <!--<p>Example of an <a href="./dwbp-api-example.html">API documentation</a> page.</p> -->
 
 <!--<ul>
@@ -3479,8 +3475,8 @@ HTTP/1.1 200 OK
           <aside class="example">
             <p>An RDF dataset targeted for preservation is made of the following
               triples:</p>
-            <pre class="highlight"> 
-  &lt;http://data.mycity.example.com/transport/route/bus/ABtimetable&gt; 
+            <pre class="highlight">
+  &lt;http://data.mycity.example.com/transport/route/bus/ABtimetable&gt;
       a gtfs:Route ;
       gtfs:color "ff0000" ;
       gtfs:shortname "10" ;
@@ -3491,7 +3487,7 @@ HTTP/1.1 200 OK
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
-  &lt;http://data.mycity.example.com/ransport/route/bus/BFC&gt; 
+  &lt;http://data.mycity.example.com/ransport/route/bus/BFC&gt;
       a gtfs:Route ;
       gtfs:color "ffff00" ;
       gtfs:shortname "20" ;
@@ -3536,7 +3532,7 @@ HTTP/1.1 200 OK
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
-  &lt;http://data.mycity.example.com/transport/route/bus/BFC&gt; 
+  &lt;http://data.mycity.example.com/transport/route/bus/BFC&gt;
       a gtfs:Route;
       gtfs:color "ffff00";
       gtfs:shortname "20";
@@ -3549,7 +3545,7 @@ HTTP/1.1 200 OK
   …
 
   # Custom vocabulary element
-  ex:usualVehicleType 
+  ex:usualVehicleType
       a rdf:Property ;
       rdfs:subPropertyOf gtfs:routeType ;
       rdfs:range gtfs:Bus
@@ -3744,7 +3740,7 @@ HTTP/1.1 200 OK
       dct:issued "2015-05-05"^^xsd:date ;
       dcat:contactPoint &lt;http://data.mycity.example.com/transport/contact&gt; ;
       dct:temporal &lt;http://reference.data.gov.uk/id/year/2015&gt; ;
-      dct:spatial &lt;http://www.geonames.org/3399415&gt; ;
+      dct:spatial &lt;http://sws.geonames.org/3399415&gt; ;
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dcat:theme :mobility ;
@@ -3753,13 +3749,13 @@ HTTP/1.1 200 OK
 
   :stops-2015-05-05.csv
       a dcat:Distribution ;
-      dct:title "CSV distribution of stops-2015-05-05 dataset" ; 
+      dct:title "CSV distribution of stops-2015-05-05 dataset" ;
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
       dcat:mediaType "text/csv;charset=UTF-8" ;
       .
   <!--:comment1Content a cnt:ContentAsText ;
       cnt:chars "This dataset is missing stop 3" ; -->
-  :comment1Content 
+  :comment1Content
       a oa:TextualBody ;
       rdf:value "This dataset is missing stop 3" ;
       .
@@ -3776,10 +3772,10 @@ HTTP/1.1 200 OK
       oa:hasTarget :stops-2015-05-05 ;
       dct:creator :localresident ;
       oa:motivatedBy oa:assessing ;
-      .    
+      .
   <!--:comment2Content a cnt:ContentAsText ;
       cnt:chars "Are tab delimited formats also available?" ;-->
-  :comment2Content 
+  :comment2Content
       a oa:TextualBody ;
       rdf:value "Are tab delimited formats also available?" ;
       .
@@ -3788,7 +3784,7 @@ HTTP/1.1 200 OK
       a oa:Annotation ;
       a duv:UserFeedback ;
       oa:hasBody :comment2Content ;
-      oa:hasTarget :stops-2015-05-05.csv ;    
+      oa:hasTarget :stops-2015-05-05.csv ;
       dct:creator :localresident ;
       oa:motivatedBy oa:assessing ;
       .
@@ -3830,6 +3826,7 @@ HTTP/1.1 200 OK
       <p>This section provides some advice to be followed by data publishers in
         order to enrich data.</p>
       <!-- begin of BP Enrich data -->
+      <!-- Could linkage to external URIs be presented as an enrichment too ? -->
       <div class="practice">
         <p><span id="EnrichData" class="practicelab">Enrich data by generating new data</span></p>
         <p class="practicedesc">Enrich your data by generating new data when doing so will enhance its value.</p>
@@ -4024,7 +4021,7 @@ foaf:title "Mayor"^^xsd:string .
 ex:timetable-001 a dcat:Dataset ;
         dct:title  "Bus timetable of MyCity"^^xsd:string;
         prism:doi "10.3456/4567.21"^^xsd:string ;
-        dcat:landingPage <https://example.org/mycity/trans/timetable-001>; 
+        dcat:landingPage <https://example.org/mycity/trans/timetable-001>;
         pav:version "series-1.2"^^xsd:string;
         dct:issued "2015-MAY-05"^^xsd:date;
         dct:creator ex:author .
@@ -4032,15 +4029,15 @@ ex:timetable-001 a dcat:Dataset ;
 
 <!--<pre class="highlight">
 
-  :bus-stops-2015-05-05 
+  :bus-stops-2015-05-05
       a dcat:Dataset ;
       dct:title "Bus stops of MyCity" ;
       dct:issued "2015-05-05"^^xsd:date ;
       prism:doi "10.3456/4567.21"^^xsd:string ;
       dct:creator :john ;
-      owl:versionInfo "1.0" ; 
+      owl:versionInfo "1.0" ;
       pav:version "1.0" ;
-      . 
+      .
 
   ex:bus-stops-memorandum
       a biro:BibliographicReference ;
