@@ -860,7 +860,7 @@ table.bptable caption {
       <section id="basicExample">
         <h3>Running Example</h3>
           <div class="example" style="counter-increment:none">John works for the Transport Agency of MyCity and is in charge of publishing data about public transport. John wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
-          <p>RDF examples of the application of some Best Practices are shown using Turtle [[Turtle]].</p>
+          <p>RDF examples of the application of some Best Practices are shown using Turtle [[Turtle]] or JSON-LD [[JSON-LD]].</p>
       </section>
       
       <section id="metadata">
@@ -1257,7 +1257,7 @@ The dataset is classified under
             </ul>
             <aside class="example">
               <h5 class="subhead">Machine-readable</h5>
-              <p> The CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>) will be published under the <a href= "http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. The property <code>dct:license</code> is used to include this information as part of the distribution metadata. </p>
+              <p> The CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>) will be published under the <a href= "http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported</a> license. The property <code>dct:license</code> is used to include this information as part of the distribution metadata. In this case, the license is not written in a machine-readable language, but the property <code>dct:license</code> allows a software agent to automatically detect the data license of the distribution. </p>
               <pre class="highlight">
   :stops-2015-05-05.csv
       a dcat:Distribution ;
@@ -2251,7 +2251,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
                <h5 class="subhead">Machine-readable</h5>
               <p>The example below shows the machine-readable metadata for the
             bus stops dataset (<code>stops-2015-05-05</code>) with the inclusion of the <strong> locale
-                  parameters</strong> metadata, followed by a <strong>locale-neutral representation</strong> of bus fare data. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
+                  parameters</strong> metadata. The property <code>dct:language</code> is used to declare the languages the dataset is published in. If the dataset is available in multiple languages,
                 use multiple values for this property. The property <code><a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a></code> is used to specify the standard adopted for date and time formats. </p>
               <pre class="highlight">
   :stops-2015-05-05
@@ -2270,12 +2270,15 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
                    &lt;http://id.loc.gov/vocabulary/iso639-1/pt&gt; ;</strong>
       <strong>dct:conformsTo &lt;http://www.iso.org/iso/home/standards/iso8601.htm&gt;</strong>
       .
+</pre>
 
+<p> The example below shows a <strong>locale-neutral representation</strong> of bus fare data. </p>
+<pre class="highlight">
   fare_id,price,currency_type,payment_method,transfers,transfer_duration
   p,1.25,USD,0,0,0
   a,5.25,USD,0,0,0
-
 </pre>
+
               <h5 class="subhead">Human-readable</h5>
               <p><a href="dwbp-example.html#locale-parameters">Example page</a> with
                 human-readable description of dataset is available.</p>
@@ -2897,7 +2900,7 @@ Highly
         </section>
         <section class="ucr">
           <h4 class="subhead">Evidence</h4>
-          <p><span>Relevant requirements</span>: </p>
+          <p><span>Relevant requirements</span>: <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMachineRead">R-FormatMachineRead</a>, <a href="http://www.w3.org/TR/dwbp-ucr/#R-FormatMultiple">R-FormatMultiple</a></p>
         </section>
         <section class="benefits">
           <h4 class="subhead">Benefits</h4>
@@ -3748,20 +3751,20 @@ HTTP/1.1 200 OK
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dcat:theme :mobility ;
-      dcat:distribution :stops-2015-05-05.csv ;
+      dcat:distribution :stops-2015-05-05.csv 
       .
 
   :stops-2015-05-05.csv
       a dcat:Distribution ;
       dct:title "CSV distribution of stops-2015-05-05 dataset" ; 
       dct:description "CSV distribution of the bus stops dataset of MyCity" ;
-      dcat:mediaType "text/csv;charset=UTF-8" ;
+      dcat:mediaType "text/csv;charset=UTF-8" 
       .
   <!--:comment1Content a cnt:ContentAsText ;
       cnt:chars "This dataset is missing stop 3" ; -->
   :comment1Content 
       a oa:TextualBody ;
-      rdf:value "This dataset is missing stop 3" ;
+      rdf:value "This dataset is missing stop 3" 
       .
   <!--:comment1
       a duv:UserFeedback ;
@@ -3775,13 +3778,13 @@ HTTP/1.1 200 OK
       oa:hasBody :comment1Content ;
       oa:hasTarget :stops-2015-05-05 ;
       dct:creator :localresident ;
-      oa:motivatedBy oa:assessing ;
+      oa:motivatedBy oa:assessing 
       .    
   <!--:comment2Content a cnt:ContentAsText ;
       cnt:chars "Are tab delimited formats also available?" ;-->
   :comment2Content 
       a oa:TextualBody ;
-      rdf:value "Are tab delimited formats also available?" ;
+      rdf:value "Are tab delimited formats also available?" 
       .
 
   :comment2
@@ -3790,12 +3793,12 @@ HTTP/1.1 200 OK
       oa:hasBody :comment2Content ;
       oa:hasTarget :stops-2015-05-05.csv ;    
       dct:creator :localresident ;
-      oa:motivatedBy oa:assessing ;
+      oa:motivatedBy oa:assessing 
       .
 
   :localresident
       a foaf:Person ;
-      foaf:Name "Alan Law" ;
+      foaf:Name "Alan Law" 
       .</pre>
           </aside>
         </section>
