@@ -6,7 +6,7 @@ var respecConfig = {
     previousMaturity: "CR",
 //    previousURI: "http://www.w3.org/TR/2015/WD-dwbp-20160112/",
     edDraftURI: "http://w3c.github.io/dwbp/bp.html",
-    implementationReportURI: "https://www.w3.org/2013/dwbp/wiki/BP_Implementation_Report",
+    implementationReportURI: "http://w3c.github.io/dwbp/dwbp-implementation-report.html",
      prEnd: "2017-01-15",
      crEnd: "2016-10-31",
     editors: [
