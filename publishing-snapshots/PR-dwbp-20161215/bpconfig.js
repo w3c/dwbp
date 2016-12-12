@@ -1,5 +1,5 @@
 var respecConfig = {
-    specStatus: "PR",
+    specStatus: "ED",
     shortName: "dwbp",
     publishDate:  "2016-12-15",
     previousPublishDate: "2015-08-30",

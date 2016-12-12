@@ -10,10 +10,10 @@
 var respecConfig = {
 specStatus: "ED",
 shortName: "vocab-duv",
-//publishDate: "2016-08-30",
+publishDate: "2016-12-15",
 previousPublishDate: "2016-08-30",
-previousMaturity: "WD",
-previousURI: "http://www.w3.org/TR/2016/WD-vocab-duv-20160519/",
+previousMaturity: "NOTE",
+//previousURI: "http://www.w3.org/TR/2016/WD-vocab-duv-20160519/",
 edDraftURI: "http://w3c.github.io/dwbp/vocab-du.html",
 // lcEnd: "3000-01-01",
 // crEnd: "3000-01-01",
@@ -256,38 +256,35 @@ pre red { color: red;
     <section  id="sotd">
       <p>This document presents the most mature version of the Dataset Usage Vocabulary that could be produced in the lifespan of the <a href="/2013/dwbp/">Data on the Web Best Practices Working Group</a>. At the time of publication, it has remained stable for several months, even after receiving feedback and suggestions from the community. Further clarifications and extensions of this model may be carried out by future working groups.</p>
     </section>
-    <section  id="intro"  class="informative">
+    <section  id="intro">
       <h2> Introduction</h2>
       <p> The Data on the Web Best Practices working group identified
         Best Practices [[DWBP]] for citing published data, conveying feedback
         between consumers and publishers, and providing descriptive metadata
         that provides insights to the consumer about how published datasets can
-        be used.&nbsp; The dataset usage vocabulary is viewed as an extension to
+        be used. The dataset usage vocabulary is viewed as an extension to
         the Data Catalog (DCAT) vocabulary version 1.0 [[VOCAB-DCAT]] to fill
         current existing gaps required to adequately cite, describe usage, and
         convey feedback on published datasets and
-        distributions.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-        <br>
-        Broadly speaking the vocabulary is domain-independent and open.&nbsp; As
+        distributions.</p>
+        <p>Broadly speaking the vocabulary is domain-independent and open. As
         an open vocabulary the DUV encourages publishers to add descriptive
-        metadata tailored to meet each publisher’s domain-specific needs.&nbsp;
+        metadata tailored to meet each publisher’s domain-specific needs.
         When publishers and consumers exchange, combine, and reuse published
         data, the DUV metadata allows usage information to be clearly identified
-        and cross-referenced across datasets.&nbsp; Because the DUV heavily
+        and cross-referenced across datasets. Because the DUV heavily
         relies on vocabulary reuse descriptive metadata in many cases can be
-        leveraged from original vocabulary. <br>
-        &nbsp;<br>
-        The DUV is modular consisting of four sub-models (DCAT, citation, usage,
-        feedback) to support different practitioner needs.&nbsp;&nbsp;&nbsp; As
+        leveraged from original vocabulary.</p>
+        <p>The DUV is modular consisting of four sub-models (DCAT, citation, usage,
+        feedback) to support different practitioner needs. As
         a result the DUV can be used in part (DCAT+citation, DCAT+usage,
         DCAT+feedback) or in its entirety depending on the practitioner’s
-        requirements.&nbsp; The DCAT+usage submodel is loosely defined to either
+        requirements. The DCAT+usage submodel is loosely defined to either
         indicate usage from an informational perspective, or if descriptive
         metadata is required, the usage submodel can indicate to find this
-        information.&nbsp; Additionally, the citation submodel describing basic
+        information. Additionally, the citation submodel describing basic
         electronic citation elements, bibliographic references to dataset, and
-        citation rationale can be independently used.<br>
-      </p>
+        citation rationale can be independently used.</p>
       <!-- ttl to json-ld convertor begin -->
       <form  id="langOptions"  action="#">View as: <label><input  name="presLang"
              value="turtle"  checked="checked"  type="radio">Turtle (press 't')</label>
@@ -407,11 +404,11 @@ pre red { color: red;
         rationale and approach for vocabulary selection and reuse.</p>
       <p>The core DUV begins with reusing the Data Catalog Vocabulary
         [[VOCAB-DCAT]] <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
-        classes and many of their related properties.&nbsp;&nbsp; In fact, the
+        classes and many of their related properties. In fact, the
         DUV can be considered an extension of <code>the dcat:Dataset and </code><code>dcat:Distribution</code>
         classes. </p>
       <p>The Web Annotation Vocabulary [[Annotation-Vocab]] is used to describe <code>duv:Feedback</code>
-        as a subclass inheriting the behavior of <code>oa:Annotation</code>.&nbsp;
+        as a subclass inheriting the behavior of <code>oa:Annotation</code>.
         The intent for the <code>duv:Feedback</code> is provided by the <code>oa:motivated_by</code>
         property and <code>oa:Motivation</code> subclasses (for example: <code>oa:describing</code>,
         <code>oa:questioning</code>, <code>oa:replying</code>). A subset of the
@@ -450,7 +447,7 @@ pre red { color: red;
         While the focus of this document is mainly on representing the DUV using
         semantic expressions, a very active effort Schema.org [[SCHEMA]]
         provides lightweight data structures that can be used as markup that
-        commercial search engines recognize, aiding in discovery.&nbsp; Not only
+        commercial search engines recognize, aiding in discovery. Not only
         do Schema.org and the DUV rely on many related concepts, efforts are
         underway to extend the Schema.org to support additional data structures.</p>
     </section>
@@ -466,29 +463,26 @@ pre red { color: red;
         spent constantly referencing to third party vocabularies and (2) provide
         a starting place to familiarize DUV implementers with the basics needed
         to get them started. </p>
-      <a  href="images/DUV_model.png"><img  src="images/DUV_model.png"  style="width:100%; vertical-align: bottom"
+      <a  href="images/DUV_model.png"><img  src="DUV_model.png"  style="width:100%; vertical-align: bottom"
            alt="The class diagram for DUV"></a>
       <section  id="Citation_Model">
         <h3>Citation Model</h3>
         <p>The citation model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
             R-Citable </a><em> It should be possible to cite data on the Web.</em>
           The citation model is largely based on classes, properties, and
-          recommended approaches taken from the SPAR Ontologies.
-          <!--The remainder
-          of the model is composed from the Open Annotation vocabulary, Dublin          Core, FOAF and by newly introduced DUV properties. --></p>
+          recommended approaches taken from the SPAR Ontologies.</p>
         <p>The citation model seeks to meet the needs of:</p>
         <ol>
           <li>Data consumers who cite published <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
             <a  href="#ex1">(See Example 1)</a> by using basic bibliographic
-            reference criteria provided by the data publisher. &nbsp; To do
-            this, DUV extensions are added to the DCAT model in two ways:&nbsp;
-            First because&nbsp;<code>dcat:Dataset</code> or <code>dcat:Distribution</code>
+            reference criteria provided by the data publisher. To do
+            this, DUV extensions are added to the DCAT model in two ways:
+            First because <code>dcat:Dataset</code> or <code>dcat:Distribution</code>
             are forms of electronic media that can be potentially cited, both
-            use the same citation properties.&nbsp; Secondly, to fill any
+            use the same citation properties. Secondly, to fill any
             information gaps, new properties were created or properties from
-            other vocabularies were added.&nbsp;
-            <p> </p>
-            <p> <a  href="images/DUV_citation_submodel_part_1.png"><img  src="images/DUV_citation_submodel_part_1.png"
+            other vocabularies were added.
+            <p> <a  href="images/DUV_citation_submodel_part_1.png"><img  src="DUV_citation_submodel_part_1.png"
                    style="width:70%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a>
             </p>
             <p>The table below shows how a portion of the DUV properties can be
@@ -568,7 +562,7 @@ pre red { color: red;
             <code>dcat:Distribution</code>, <code>biro:BibliographicReference</code>,
             <code>fabio:Expression</code>. Properties include: <code><code>frbr:part</code>,frbr:partOf</code>,
             <code>biro:references</code>, <code>biro:isReferencedBy</code>.
-            <p> <a  href="images/DUV_citation_submodel_part_2.png"><img  src="images/DUV_citation_submodel_part_2.png"
+            <p> <a  href="images/DUV_citation_submodel_part_2.png"><img  src="DUV_citation_submodel_part_2.png"
                    style="width:40%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a></p>
           </li>
         </ol>
@@ -602,7 +596,7 @@ pre red { color: red;
           <code>duv:refersTo</code>, <code>dct:identifier</code>, <code>dct:title</code>,
           <code>dct:created</code>, <code>pav:version</code>, <code>dct:issued</code>,
           and <code>dct:description</code>. </p>
-        <a  href="images/DUV_usage_submodel.png"><img  src="images/DUV_usage_submodel.png"
+        <a  href="images/DUV_usage_submodel.png"><img  src="DUV_usage_submodel.png"
              style="width:65%; vertical-align: bottom"  alt="The class diagram for the DUV usage submodel"></a>
       </section>
       <section  id="Feedback_Model">
@@ -616,7 +610,7 @@ pre red { color: red;
           the profile of the user who uses it. <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>
           should also provide a way for consumers to communicate suggested
           corrections or advice back to the dataset publisher. </p>
-        <a  href="images/DUV_feedback_submodel.png"><img  src="images/DUV_feedback_submodel.png"
+        <a  href="images/DUV_feedback_submodel.png"><img  src="DUV_feedback_submodel.png"
              style="width:65% ; vertical-align: bottom"  alt="The class diagram for the DUV feedback submodel"></a>
         <p>The following classes constitute the Feedback Model: <code>dcat:Dataset</code>,
           <code>dcat:Distribution</code>, <code>oa:Annotation</code>, <code>oa:Motivation</code>,
@@ -627,8 +621,6 @@ pre red { color: red;
         </p>
       </section>
     </section>
-    <!--<div  class="note">This section will be non-normative and will contain links
-      back to the vocabularies we mention. </div> -->
     <section  id="vocabulary-specification">
       <h2> Vocabulary Specification </h2>
       <section  id="class-ratingfeedback">
@@ -741,8 +733,6 @@ pre red { color: red;
       </section>
       <section  id="Properties">
         <h3>Properties</h3>
-        <!--<h4  aria-level="3"  id="Property:chars">Property: chars</h4>
-        <table  class="definition">          <thead>            <tr>              <th>RDF Property:</th>              <th> <a  href="#Property:chars">cnt:chars</a> </th>            </tr>          </thead>          <tbody>            <tr>              <td  class="prop">Definition</td>              <td>Text content of an annotation body.</td>            </tr>            <tr>              <td>vann:usageNote</td>              <td>cnt:ContentAsText (subject) cnt:chars (predicate) rdfs:Literal                (object)</td>            </tr>            <tr>              <td>Label</td>              <td>chars</td>            </tr>          </tbody>        </table> -->
         <h4  aria-level="3"  id="Property:created">Property: created</h4>
         <table  class="definition">
           <thead>
@@ -781,8 +771,7 @@ pre red { color: red;
           <tbody>
             <tr>
               <td  class="prop">Definition</td>
-              <td>An entity primarily responsible for making the resource.&nbsp;
-              </td>
+              <td>An entity primarily responsible for making the resource.</td>
             </tr>
             <tr>
               <td>vann:usageNote</td>
@@ -2168,7 +2157,7 @@ pre red { color: red;
 
       </pre>
     </section>
-    <section  id="conclusion"  class="informative"><br>
+    <section  id="conclusion">
       <script  type="application/javascript">var bodyKeypressCallbacks = {};
 
         /* a form like
