@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html  content="en"  lang="en">
+  <head>
+    <meta  content="text/html; charset=utf-8"  http-equiv="content-type">
+    <title>Data on the Web Best Practices: Dataset Usage Vocabulary</title>
+    <meta  name="description"  content="A vocabulary to describe how datasets are used by humans and machines as well as to describe consumer feedback">
+    <script  class="remove"  src="http://www.w3.org/Tools/respec/respec-w3c-common">
+  </script>
+    <script  class="remove">
+var respecConfig = {
+specStatus: "NOTE",
+shortName: "vocab-duv",
+publishDate: "2016-12-15",
+previousPublishDate: "2016-08-30",
+previousMaturity: "WD",
+//previousURI: "http://www.w3.org/TR/2016/WD-vocab-duv-20160519/",
+edDraftURI: "http://w3c.github.io/dwbp/vocab-du.html",
+// lcEnd: "3000-01-01",
+// crEnd: "3000-01-01",
+editors: [{
+name: "Bernadette Farias L&oacute;scio",
+company: "CIn - UFPE, Brazil",
+companyURL: "http://www.cin.ufpe.br/"
+},{
+name: "Eric G. Stephan",
+company: "Pacific Northwest National Laboratory",
+companyURL: "http://www.pnnl.gov/"
+}, {
+name: "Sumit Purohit",
+company: "Pacific Northwest National Laboratory",
+companyURL: "http://www.pnnl.gov/"
+}],
+wg: "Data on the Web Working Group",
+noRecTrack: true,
+wgURI: "http://www.w3.org/2013/dwbp/",
+wgPublicList: "public-dwbp-wg",
+wgPatentURI: "https://www.w3.org/2004/01/pp-impl/68239/status",
+otherLinks: [{
+key: "Repository",
+data: [{
+value: "We are on Github",
+href: "https://github.com/w3c/dwbp"
+}]
+}, {
+key: "Changes",
+data: [{
+value: "Diff to previous version",
+href: "diff-xxx.html"
+}, {
+value: "Commit history",
+href: "https://github.com/w3c/dwbp/commits/gh-pages"
+}]
+}],
+
+localBiblio: {
+  "BiRO" : {
+    title : "BiRO, the Bibliographic Reference Ontology",
+    href : " http://purl.org/spar/biro",
+    authors : ["David Shotton" , "Silvio Peroni"]
+  },
+  "CITO" : {
+  title : "CiTO, the Citation Typing Ontology",
+  href : " http://purl.org/spar/cito",
+  authors: ["David Shotton", "Silvio Peroni"]
+  },
+  "SPAR": {
+  title:    " Semantic Publishing and Referencing (SPAR) Ontologies",
+  href:     "http://www.sparontologies.net"
+  },
+  "FaBIO": {
+  title:    "FaBiO, the FRBR-aligned Bibliographic Ontology",
+  href:     "http://purl.org/spar/fabio",
+  authors:  ["David Shotton", "Silvio Peroni"]
+  },
+  "MSUDataCite": {
+  title:    "How to Cite Data:  General Info",
+  href:     "http://libguides.lib.msu.edu/citedata",
+  authors:  ["Michigan State University"]
+  },
+    "BP": {
+  title:    "Data on the Web Best Practices",
+  href:     "https://www.w3.org/TR/dwbp/",
+  authors:  ["Bernadette Farias Lóscio", "Caroline Burle", "Newton Calegari"]
+  },
+  "SCHEMA": {
+  title:    "Schema.org",
+  href:     "https://schema.org/",
+  authors:  ["Dan Brickley"]
+  },
+  "REV": {
+  title:    "RDF Review Vocabulary",
+  href:     "http://vocab.org/review/terms.html"
+  },
+  "OKFN": {
+  title:    "Open Knowledge Foundation (OKFN), Linked Open Vocabularies (LOV)",
+  href:     "http://lov.okfn.org/dataset/lov/",
+  authors:  ["Pierre-Yves Vandenbussche","Bernard Vatant"]
+  },
+  "FORCE11-Citation": {
+  title:    "Data Citation Principles",
+  href:     "https://www.force11.org/group/joint-declaration-data-citation-principles-final",
+  authors:  ["Emory University"]
+    }
+}
+  
+};
+
+
+</script> <style  type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid black;
+	padding: 1em;
+}
+
+table#namespaces td {
+	font-family: monospace;
+}
+
+table.definition {
+	width: 100%;
+}
+
+table.definition td.prop {
+	width: 10em;
+}
+/*  .editorsnote::before {
+    content:    "Editor's Note";
+    display:    block;
+  	width:      150px;
+    background: #F30023;
+    color:  #fff;
+    margin: -1.5em 0 0.5em 0;
+    font-weight:    bold;
+    border: 1px solid #cff6d9;
+    padding:    3px 1em;
+  }
+  .editorsnote {
+    margin: 1em 0em 1em 1em;
+    padding:    1em;
+    border: 2px solid #cff6d9;
+  } */
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+
+pre red { color: red;
+}
+</style><!-- ttl to json-ld convertor begin -->
+    <style>
+			.todo {
+				color: red;
+			}
+		    pre {
+				tab-size: 4;
+		    }
+			th {
+				text-align: left;
+			}
+      .comment {
+        /* font-lock-comment-face */
+        color: #b22222;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #008b8b;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0000ff;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #a020f0;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #8b2252;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #228b22;
+      }
+      .example {
+        display: inline-block;
+      }
+      .example.wrapper {
+        background-color: #fff;
+      }
+      .example.wrapper pre {
+        background-color: #fcfaee;
+        margin-left: 0;
+        line-height: 1.2;
+      }
+      .example.wrapper .fail {
+        background-color: #fceefa
+      }
+      .verticalDivider {
+        float: left;
+        width: .5em;
+        border:thin solid #fff; /* disappears without this */
+      }
+
+.highlight1     { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(176, 176, 0, .5); border-right: 5px solid rgba(176, 176, 0, .5); } /* font-weight: bold  ;  */
+.highlight1.top {    margin-top: -5px;                      border-top: 5px solid rgba(176, 176, 0, .5);                                                } /* font-weight: bold  ;  */
+.highlight1.bot { margin-bottom: -5px;                   border-bottom: 5px solid rgba(176, 176, 0, .5);                                                } /* font-weight: bold  ;  */
+.lowlight1      { margin-left: -5px; margin-right: -5px;   border-left: 5px solid transparent; border-right: 5px solid transparent;                     } /* font-weight: normal;  */
+.lowlight1.top  {    margin-top: -5px;                      border-top: 5px solid transparent;                                                          } /* font-weight: normal;  */
+.lowlight1.bot  { margin-bottom: -5px;                   border-bottom: 5px solid transparent;                                                          } /* font-weight: normal;  */
+.highlight2     { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(176, 0, 176, .5); border-right: 5px solid rgba(176, 0, 176, .5); } /* font-weight: bold  ;  */
+.highlight2.top {    margin-top: -5px;                      border-top: 5px solid rgba(176, 0, 176, .5);                                                } /* font-weight: bold  ;  */
+.highlight2.bot { margin-bottom: -5px;                   border-bottom: 5px solid rgba(176, 0, 176, .5);                                                } /* font-weight: bold  ;  */
+.lowlight2      { margin-left: -5px; margin-right: -5px;   border-left: 5px solid rgba(127, 127, 127, .07); border-right: 5px solid rgba(127, 127, 127, .07);         } /* font-weight: normal;  */
+.lowlight2.top  {    margin-top: -5px;                      border-top: 5px solid rgba(127, 127, 127, .07);                                                           } /* font-weight: normal;  */
+.lowlight2.bot  { margin-bottom: -5px;                   border-bottom: 5px solid rgba(127, 127, 127, .07);                                                           } /* font-weight: normal;  */
+
+.highlightBG1   { /* border: 5px solid transparent; */ background-color: #bb0; font-weight: bold; }
+.lowlightBG1    { /* border: 5px solid transparent; */ font-weight: normal; }
+.highlightBG2   { /* border: 5px solid transparent; */ background-color: #b00; font-weight: bold; }
+.lowlightBG2    { /* border: 5px solid transparent; */ font-weight: normal; }
+
+.new            { font-weight: bold; }
+.errorSite      { color: red; }
+		</style>
+    <!--
+<script src="http://www.w3.org/2013/ShEx/demobits/jquery.min.js" type= "text/javascript"></script> -->
+    <!-- That script libraray was causing a problem. Commenting it out seems to have fixed it. The T/J swicth still works ;-) -->
+    <!-- ttl to json-ld convertor end -->
+  </head>
+  <body>
+    <section  id="abstract">
+      <p>Datasets published on the Web are accessed and experienced by consumers
+        in a variety of ways, but little information about these experiences is
+        typically conveyed. Dataset publishers many times lack feedback from
+        consumers about how datasets are used. Consumers lack an effective way
+        to discuss experiences with fellow collaborators and explore referencing
+        material citing the dataset. Datasets as defined by DCAT are a
+        collection of data, published or curated by a single agent, and
+        available for access or download in one or more formats. The Dataset
+        Usage Vocabulary (DUV) is used to describe consumer experiences,
+        citations, and feedback about the dataset from the human perspective. </p>
+      <p>By specifying a number of foundational concepts used to collect dataset
+        consumer feedback, experiences, and cite references associated with a
+        dataset, APIs can be written to support collaboration across the Web by
+        structurally publishing consumer opinions and experiences, and provide a
+        means for dataset consumers and producers advertise and search for
+        published open dataset usage. </p>
+    </section>
+    <section  id="sotd">
+      <p>This document presents the most mature version of the Dataset Usage Vocabulary that could be produced in the lifespan of the <a href="/2013/dwbp/">Data on the Web Best Practices Working Group</a>. At the time of publication, it has remained stable for several months, even after receiving feedback and suggestions from the community. Further clarifications and extensions of this model may be carried out by future working groups.</p>
+    </section>
+    <section  id="intro">
+      <h2> Introduction</h2>
+      <p> The Data on the Web Best Practices working group identified
+        Best Practices [[DWBP]] for citing published data, conveying feedback
+        between consumers and publishers, and providing descriptive metadata
+        that provides insights to the consumer about how published datasets can
+        be used. The dataset usage vocabulary is viewed as an extension to
+        the Data Catalog (DCAT) vocabulary version 1.0 [[VOCAB-DCAT]] to fill
+        current existing gaps required to adequately cite, describe usage, and
+        convey feedback on published datasets and
+        distributions.</p>
+        <p>Broadly speaking the vocabulary is domain-independent and open. As
+        an open vocabulary the DUV encourages publishers to add descriptive
+        metadata tailored to meet each publisher’s domain-specific needs.
+        When publishers and consumers exchange, combine, and reuse published
+        data, the DUV metadata allows usage information to be clearly identified
+        and cross-referenced across datasets. Because the DUV heavily
+        relies on vocabulary reuse descriptive metadata in many cases can be
+        leveraged from original vocabulary.</p>
+        <p>The DUV is modular consisting of four sub-models (DCAT, citation, usage,
+        feedback) to support different practitioner needs. As
+        a result the DUV can be used in part (DCAT+citation, DCAT+usage,
+        DCAT+feedback) or in its entirety depending on the practitioner’s
+        requirements. The DCAT+usage submodel is loosely defined to either
+        indicate usage from an informational perspective, or if descriptive
+        metadata is required, the usage submodel can indicate to find this
+        information. Additionally, the citation submodel describing basic
+        electronic citation elements, bibliographic references to dataset, and
+        citation rationale can be independently used.</p>
+      <!-- ttl to json-ld convertor begin -->
+      <form  id="langOptions"  action="#">View as: <label><input  name="presLang"
+             value="turtle"  checked="checked"  type="radio">Turtle (press 't')</label>
+        <label><input  name="presLang"  value="json-ld"  type="radio">JSON-LD
+          (press 'j')</label> . </form>
+    </section>
+    <section  id="namespaces-1">
+      <h2> Namespaces</h2>
+      <p>The namespace for DUV is <code>http://www.w3.org/ns/duv#</code>. It
+        should be noted that DUV makes extensive use of terms from other
+        vocabularies which rely their own sets of namespaces. A full set of
+        namespaces and prefixes used in this document is shown in the table
+        below.</p>
+      <table  id="namespaces">
+        <thead>
+          <tr>
+            <th>Prefix</th>
+            <th>Namespace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>biro</td>
+            <td>http://purl.org/spar/biro/</td>
+          </tr>
+          <tr>
+            <td>cito</td>
+            <td>http://purl.org/spar/cito/</td>
+          </tr>
+          <tr>
+            <td>dcat</td>
+            <td>http://www.w3.org/ns/dcat#</td>
+          </tr>
+          <tr>
+            <td>dct</td>
+            <td>http://purl.org/dc/terms/</td>
+          </tr>
+          <tr>
+            <td>disco</td>
+            <td>http://rdf-vocabulary.ddialliance.org/discovery#</td>
+          </tr>
+          <tr>
+            <td>dqv</td>
+            <td>http://www.w3.org/ns/dqv#</td>
+          </tr>
+          <tr>
+            <td>duv</td>
+            <td>http://www.w3.org/ns/duv#</td>
+          </tr>
+          <tr>
+            <td>fabio</td>
+            <td>http://purl.org/spar/fabio/</td>
+          </tr>
+          <tr>
+            <td>foaf</td>
+            <td>http://xmlns.com/foaf/0.1/</td>
+          </tr>
+          <tr>
+            <td>frbr</td>
+            <td>http://purl.org/vocab/frbr/core#</td>
+          </tr>
+          <tr>
+            <td>oa</td>
+            <td>http://www.w3.org/ns/oa#</td>
+          </tr>
+          <tr>
+            <td>pav</td>
+            <td> http://purl.org/pav/</td>
+          </tr>
+          <tr>
+            <td>rdf</td>
+            <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+          </tr>
+          <tr>
+            <td>rdfs</td>
+            <td>http://www.w3.org/2000/01/rdf-schema#</td>
+          </tr>
+          <tr>
+            <td>skos</td>
+            <td>http://www.w3.org/2004/02/skos/core#</td>
+          </tr>
+          <tr>
+            <td>vann</td>
+            <td>http://purl.org/vocab/vann/</td>
+          </tr>
+          <tr>
+            <td>xsd</td>
+            <td>http://www.w3.org/2001/XMLSchema#</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section  id="audience">
+      <h2>Audience</h2>
+      <p>The <abbr  title="Dataset Usage Vocabulary">DUV</abbr> is intended for
+        data producers and publishers interested in tracking, sharing, and
+        persisting consumer dataset usage. It is also intended for collaborators
+        who require an exchange medium to advertise and interactively convey
+        dataset usage. </p>
+    </section>
+    <section  id="scope">
+      <h2>Scope</h2>
+      <p> The scope of the <abbr  title="Dataset Usage Vocabulary">DUV</abbr>
+        is defined by the Data on the Web Best Practices (DWBP) Use Case
+        document [[DWBP-UCR]] based on the data usage requirements about
+        datasets. These requirements include: citing datasets on the Web,
+        tracking the usage of datasets, sharing feedback and rating datasets.
+        These requirements were derived from fourteen real world use cases
+        examples provided in the use case document. </p>
+    </section>
+    <section  id="relationship_vocabularies">
+      <h2> Relationship to other Vocabularies</h2>
+      <h3>Vocabulary Reuse</h3>
+      <p>Based on DWBP the <abbr  title="Dataset Usage Vocabulary">DUV</abbr>
+        heavily relies upon is vocabulary reuse to support citation, feedback,
+        and usage of datasets published on the Web. This section provides our
+        rationale and approach for vocabulary selection and reuse.</p>
+      <p>The core DUV begins with reusing the Data Catalog Vocabulary
+        [[VOCAB-DCAT]] <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
+        classes and many of their related properties. In fact, the
+        DUV can be considered an extension of <code>the dcat:Dataset and </code><code>dcat:Distribution</code>
+        classes. </p>
+      <p>The Web Annotation Vocabulary [[Annotation-Vocab]] is used to describe <code>duv:Feedback</code>
+        as a subclass inheriting the behavior of <code>oa:Annotation</code>.
+        The intent for the <code>duv:Feedback</code> is provided by the <code>oa:motivated_by</code>
+        property and <code>oa:Motivation</code> subclasses (for example: <code>oa:describing</code>,
+        <code>oa:questioning</code>, <code>oa:replying</code>). A subset of the
+        Motivation instances are important to describe feedback to data
+        publishers, and blogs between dataset consumers. In addition to
+        supporting <code>duv:Feedback</code>, because the Web Annotation
+        vocabulary provides a generic way of annotating any Web resource, it is
+        recommended that Web Annotation vocabulary be used to annotate the <code>dcat:Dataset</code>
+        for uses beyond the scope of the DUV. </p>
+      <p> The Semantic Publishing and Referencing [[SPAR]] Ontologies provides a
+        suite of vocabularies used to related entities to reference citations,
+        bibliographic records, and describe the publication process along with
+        other related activities. The DUV directly relies upon the FRBR-aligned
+        Bibliographic Ontology [[FaBIO]], and Dublin Core [[DC-TERMS]]
+        ontologies are used to describe citations and references between
+        datasets and cited sources. In addition to ontologies the research
+        community provided basic criteria for citing data on the Web
+        [[MSUDataCite]]. These resources helped scope the DUV citation model
+        into the minimal requirements for electronic dataset publication.
+        Finally, data citation principles being adopted [[FORCE11-Citation]] are
+        also being considered to ensure the DUV is consistent with guidelines
+        developed by other data citation communities.</p>
+      <h3>Alternative Vocabulary Considerations </h3>
+      <p>As discussed earlier, the intention of the DUV is to be thorough enough
+        to offer a starting point for describing dataset usage and yet be open
+        to using other alternative classes and properties as required by
+        developers.&nbsp; For example, duv:Feedback the subclass of
+        oa:Annotation reuses the object property oa:hasBody. While the [[Annotation-Vocab]]
+        uses oa:TextualBody as a means to capture textual information, however
+        what if needed to capture feedback in alternative ways, it is highly
+        suggested spending time exploring resources such as the Open Knowledge
+        Foundation, Linked Open Vocabularies [[OKFN]] such as using the Review
+        vocabulary [[REV]].&nbsp; This vocabulary features a very lightweight
+        way to specify ratings. <br>
+        <br>
+        While the focus of this document is mainly on representing the DUV using
+        semantic expressions, a very active effort Schema.org [[SCHEMA]]
+        provides lightweight data structures that can be used as markup that
+        commercial search engines recognize, aiding in discovery. Not only
+        do Schema.org and the DUV rely on many related concepts, efforts are
+        underway to extend the Schema.org to support additional data structures.</p>
+    </section>
+    <section  id="Vocab_Overview">
+      <h2>Vocabulary Overview</h2>
+      <p>This section depicts the vocabulary in its entirety as a conceptual
+        model.&nbsp; Boxes are used to identify each class. Labeled open arrows
+        identify object and literal properties. White arrowheads depict class
+        inheritance with the parent class identified by the arrowhead.&nbsp;
+        Please note that while most of the properties are reused from other
+        vocabularies, they are included in the diagram to (1) reduce the
+        learning curve required by DUV implementers that would otherwise be
+        spent constantly referencing to third party vocabularies and (2) provide
+        a starting place to familiarize DUV implementers with the basics needed
+        to get them started. </p>
+      <a  href="images/DUV_model.png"><img  src="DUV_model.png"  style="width:100%; vertical-align: bottom"
+           alt="The class diagram for DUV"></a>
+      <section  id="Citation_Model">
+        <h3>Citation Model</h3>
+        <p>The citation model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
+            R-Citable </a><em> It should be possible to cite data on the Web.</em>
+          The citation model is largely based on classes, properties, and
+          recommended approaches taken from the SPAR Ontologies.</p>
+        <p>The citation model seeks to meet the needs of:</p>
+        <ol>
+          <li>Data consumers who cite published <code>dcat:Dataset</code> and <code>dcat:Distribution</code>
+            <a  href="#ex1">(See Example 1)</a> by using basic bibliographic
+            reference criteria provided by the data publisher. To do
+            this, DUV extensions are added to the DCAT model in two ways:
+            First because <code>dcat:Dataset</code> or <code>dcat:Distribution</code>
+            are forms of electronic media that can be potentially cited, both
+            use the same citation properties. Secondly, to fill any
+            information gaps, new properties were created or properties from
+            other vocabularies were added.
+            <p> <a  href="images/DUV_citation_submodel_part_1.png"><img  src="DUV_citation_submodel_part_1.png"
+                   style="width:70%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a>
+            </p>
+            <p>The table below shows how a portion of the DUV properties can be
+              used to form a bibliographic reference.&nbsp; </p>
+            <table  class="definition">
+              <tbody>
+                <tr>
+                  <th>Bibliographic Field</th>
+                  <th>Definition</th>
+                  <th>Property used in DUV</th>
+                </tr>
+                <tr>
+                  <td>Author(s)</td>
+                  <td>An individual, a group of individuals, or an organization
+                    responsible for creating the dataset or distribution.</td>
+                  <td>dct:creator</td>
+                </tr>
+                <tr>
+                  <td>Title</td>
+                  <td>Name of the dataset or distribution or the name of the
+                    activities that produced the data.</td>
+                  <td>dct:title</td>
+                </tr>
+                <tr>
+                  <td>Year</td>
+                  <td>When data was produced.</td>
+                  <td>dct:created</td>
+                </tr>
+                <tr>
+                  <td>Publisher</td>
+                  <td>This may be the name of the archive where it is housed or
+                    the organization responsible for performing publication
+                    services.</td>
+                  <td>dct:publisher</td>
+                </tr>
+                <tr>
+                  <td>Distributor (if used)</td>
+                  <td>Organization that makes the dataset available for
+                    downloading and use </td>
+                  <td>duv:hasDistributor</td>
+                </tr>
+                <tr>
+                  <td>Edition or version</td>
+                  <td>Edition or version number associated with the dataset</td>
+                  <td>pav:version </td>
+                </tr>
+                <tr>
+                  <td>Access information (a URL or other persistent identifier).
+                  </td>
+                  <td>Web address of dataset or distribution, or persistent
+                    identifier such as digital object identifier (DOI). </td>
+                  <td>dct:identifier<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Extracting metadata from the properties in <a  href="#ex1">example 1</a>, it is possible to form the following example reference:</p>
+
+           <div style="border:thin solid black; padding:0.5em">
+             <p><span  style="font-style: italic;">dct:creator + . + dct:title + pav:version </span>+ . + <span  style="font-style: italic;">dct:publisher
+                        </span>+ [. +<span  style="font-style: italic;">
+                        duv:hasDistributor</span> + ] . + <span  style="font-style: italic;">dct:identifier</span></p>
+                    <p>MyCity Bus Association. Bus stops of MyCity. 1.0 version.
+                      Transport Agency, 2015 [publisher,distributor].
+                      doi:10.0902/1975.16</p>
+           </div>
+          </li>
+          <li>Data publishers wanting to annotate <code>dcat:Dataset</code>/<code>dcat:Distribution</code>
+            with bibliographic references that provide data additional insights
+            to data consumers <a  href="#ex2">(See Example 2)</a>. Data
+            publishers can also annotate a dataset or distribution with
+            bibliographic references provided by data consumers <a  href="#ex3">(See
+              Example 3)</a>. For example, a researcher uses a dataset for
+            performing some experiments and then publishes a paper with the
+            experimentation's results. The dataset can be annotated with the
+            bibliographic reference of this paper. include: <code>dcat:Dataset</code>,
+            <code>dcat:Distribution</code>, <code>biro:BibliographicReference</code>,
+            <code>fabio:Expression</code>. Properties include: <code><code>frbr:part</code>,frbr:partOf</code>,
+            <code>biro:references</code>, <code>biro:isReferencedBy</code>.
+            <p> <a  href="images/DUV_citation_submodel_part_2.png"><img  src="DUV_citation_submodel_part_2.png"
+                   style="width:40%; vertical-align: bottom"  alt="The class diagram for the citation DUV"></a></p>
+          </li>
+        </ol>
+        <p>Note that while the DUV reuses a limited set of [[SPAR]] classes and
+          properties to support basic [[VOCAB-DCAT]] dataset and distribution
+          citation requirements, the [[SPAR]] ontologies have a richer set of
+          classes and properties for more advanced representations. For example
+          [[FaBIO]] <code>fabio:Expression</code> class has many subclasses
+          (e.g. <code>fabio:Policy</code>) that help characterize referenced
+          material. </p>
+        <ol>
+        </ol>
+      </section>
+      <section  id="Usage_Model">
+        <h3>Usage Model</h3>
+        <p>The usage model was motivated by the UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-Citable">
+            R-TrackDataUsage </a> <em>It should be possible to track the usage
+            of data.</em> Sharing and tracking dataset usage can help enhancing
+          the utility of the datasets by providing help describing how the
+          datasets can be used by a consumer <a  href="#ex5">(See Example 5)</a>.
+          Usage could be considered as enabling <span  style="font-style: italic;">descriptive</span>
+          information provided by the data publisher to help the consumer
+          community make use of datasets and distributions. Based on the use
+          cases, data usage can help provide guidance information about how to
+          use the dataset and tools <a  href="#ex6">(See Example 6)</a> that
+          can be used with the dataset. As also stipulated by use cases is the
+          need to track usage metrics </p>
+        <p>The following classes constitute the Usage Model: <code>dcat:Dataset</code>,
+          <code>dcat:Distribution</code>, <code>duv:Usage</code>, <code>duv:UsageTool</code><code></code>.
+          Properties include: <code>duv:hasUsage</code>, <code>duv:hasUsageTool</code><code></code>,
+          <code>duv:refersTo</code>, <code>dct:identifier</code>, <code>dct:title</code>,
+          <code>dct:created</code>, <code>pav:version</code>, <code>dct:issued</code>,
+          and <code>dct:description</code>. </p>
+        <a  href="images/DUV_usage_submodel.png"><img  src="DUV_usage_submodel.png"
+             style="width:65%; vertical-align: bottom"  alt="The class diagram for the DUV usage submodel"></a>
+      </section>
+      <section  id="Feedback_Model">
+        <h3>Feedback Model</h3>
+        <p> The feedback model was motivated by UCR requirement <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a><em>
+            Data consumers should have a way of sharing feedback and rating data
+            <a  href="#ex4">(See Example 4)</a> . </em>User feedback is
+          important to address data quality concerns about published dataset.
+          Different users may have different experiences with the same dataset
+          so it is important to capture the context in which data was used and
+          the profile of the user who uses it. <a  href="http://www.w3.org/TR/dwbp-ucr/#R-UsageFeedback">R-UsageFeedback</a>
+          should also provide a way for consumers to communicate suggested
+          corrections or advice back to the dataset publisher. </p>
+        <a  href="images/DUV_feedback_submodel.png"><img  src="DUV_feedback_submodel.png"
+             style="width:65% ; vertical-align: bottom"  alt="The class diagram for the DUV feedback submodel"></a>
+        <p>The following classes constitute the Feedback Model: <code>dcat:Dataset</code>,
+          <code>dcat:Distribution</code>, <code>oa:Annotation</code>, <code>oa:Motivation</code>,
+          <code>duv:UserFeedback</code>, <code>dqv:UserQualityFeedback</code>,
+          <code>duv:RatingFeedback</code>, <code>oa:TextualBody</code>.
+          Properties include: <code><code>duv:hasFeedback</code>, <code></code>duv:hasRating</code>,
+          <code>oa:hasTarget</code>, <code>oa:hasBody</code>,<code></code> <code>oa:motivatedBy</code><code></code>.
+        </p>
+      </section>
+    </section>
+    <section  id="vocabulary-specification">
+      <h2> Vocabulary Specification </h2>
+      <section  id="class-ratingfeedback">
+        <h3> Class: RatingFeedback</h3>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a  href="#class-ratingfeedback">duv:RatingFeedback</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Predefined criteria used to express a user opinion about a
+                dataset or distribution using a discrete range of values.</td>
+            </tr>
+            <tr>
+              <td  class="prop">rdfs:isDefinedBy</td>
+              <td><a  href="http://www.w3.org/ns/duv">http://www.w3.org/ns/duv</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>rating feedback</td>
+            </tr>
+            <tr>
+              <td>rdfs:subClassOf</td>
+              <td><a  href="#class-userFeedback">duv:UserFeedback</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section  id="class-usage">
+        <h3>Class: Usage</h3>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a  href="#class-usage">duv:Usage</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Actions that can be performed on a given dataset or
+                distribution.</td>
+            </tr>
+            <tr>
+              <td  class="prop">rdfs:isDefinedBy</td>
+              <td><a  href="http://www.w3.org/ns/duv">http://www.w3.org/ns/duv</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>usage</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section  id="class-usageTool">
+        <h3>Class: UsageTool</h3>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a  href="#class-usageTool">duv:UsageTool</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>A tool that can use a dataset or distribution.<br>
+              </td>
+            </tr>
+            <tr>
+              <td  class="prop">rdfs:isDefinedBy</td>
+              <td><a  href="http://www.w3.org/ns/duv">http://www.w3.org/ns/duv</a></td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>usage tool<br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section  id="class-userFeedback">
+        <h3>Class: UserFeedback</h3>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Class:</th>
+              <th><a  href="#class-userFeedback">duv:UserFeedback</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>User feedback on a dataset or distribution.</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>user feedback</td>
+            </tr>
+            <tr>
+              <td>rdfs:subClassOf</td>
+              <td> <a  href="http://www.w3.org/ns/oa#d4e434">oa:Annotation</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section  id="Properties">
+        <h3>Properties</h3>
+        <h4  aria-level="3"  id="Property:created">Property: created</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> <a  href="#Property:created">dct:created</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td> <span  style="font-family: Verdana,Arial,&quot;Arial Unicode MS&quot;,Helvetica,sans-serif;"></span>Date
+                of creation of the resource</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) dct:created (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) dct:created (predicate) rdfs:Literal
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>created</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  aria-level="3"  id="Property:creator"> Property: creator </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:creator">dct:creator</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>An entity primarily responsible for making the resource.</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) dct:creator (predicate) foaf:Agent
+                (object)<br>
+                dcat:Distribution (subject) dct:creator (predicate) foaf:Agent
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>creator</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  aria-level="3"  id="Property:description"> Property: description </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:description">dct:description</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>A free text account of the resource </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:Usage (subject) dct:description (predicate) rdfs:Literal
+                (object)<br>
+                duv:UsageTool (subject) dct:description (predicate) rdfs:Literal
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>description</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  aria-level="3"  id="Property:fundedBy">Property: fundedBy</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="http://rdf-vocabulary.ddialliance.org/discovery.html">disco:fundedBy</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The agent (person, organization) responsible for sponsoring
+                the dataset/distribution research that made the creation of the
+                dataset possible, such as codifying and digitizing the data. </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td><br>
+                dcat:Dataset (subject) disco:fundedBy (predicate) foaf:Agent
+                (object)<br>
+                dcat:Distribution (subject) fundedBy (predicate) foaf:Agent
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>funded by</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  id="Property:hasbody">Property: oa:hasBody</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasbody">oa:hasBody</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Body of the comment associated with user feedback.</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:UserFeedback (subject) oa:hasBody (predicate)&nbsp;
+                (object)<br>
+                oa:Annotation (subject) oa:hasBody (predicate)
+                oa:TextualBody(object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has body</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  id="Property:hasDistributor"  aria-level="3">Property:
+          hasDistributor</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasDistributor">duv:hasDistributor</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The distributor is the organization that makes the dataset or
+                distribution available for downloading and use.</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) duv:hasDistributor (predicate)
+                foaf:Agent (object)<br>
+                dcat:Distribution (subject) duv:hasDistributor (predicate)
+                foaf:Agent (object) </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has distributor</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  id="Property:hasrating"  aria-level="3">Property: hasRating</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasrating">duv:hasRating</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>RatingFeedback has rating opinion</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:RatingFeedback (subject) duv:hasRating (predicate)
+                skos:Concept (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has rating</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  id="Property:hastarget"  aria-level="3">Property: oa:hasTarget</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hastarget">oa:hasTarget</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Dataset or distribution associated with UserFeedback. </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:UserFeedback (subject) oa:hasTarget (predicate)
+                dcat:Dataset (object)<br>
+                duv:UserFeedback (subject) oa:hasTarget (predicate)
+                dcat:Distribution (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has target</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  aria-level="3"  id="Property:hasusage">Property: hasUsage</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasusage">duv:hasUsage</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Dataset or distribution usage guidance/instructions. </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) oa:hasUsage(predicate) duv:Usage
+                (object)<br>
+                dcat:Distribution (subject) oa:hasUsage (predicate) duv:Usage
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has usage</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4  id="Property:hasusagetool"  aria-level="3">Property: hasUsageTool </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:hasusagetool">duv:hasUsageTool</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>A usage tool (application, service) referred to by usage
+                guidance/instructions. </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Usage (subject) oa:hasUsageTool(predicate) duv:UsageTool
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>has usage tool</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:identifier"  aria-level="3">Property: identifier</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:identifier">dct:identifier</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The identifier of the dataset or distribution.</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td> dcat:Dataset (subject) dct:identifier (predicate)
+                rdfs:Literal (object)<br>
+                dcat:Distribution (subject) dct:identifier (predicate)
+                rdfs:Literal (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>identifier</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:isReferencedBy"  aria-level="3">Property:
+          isReferencedBy<br>
+        </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> biro:isReferencedBy<br>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The relation between a publication and the bibliographic
+                record or bibliographic reference describing it. </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>is referenced by<br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:issued"  aria-level="3">Property: issued<br>
+        </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> dct:issued<br>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Date of formal issuance (e.g. publication) of the dataset or
+                distribution</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) dct:issued (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) dct:issued (predicate) rdfs:Literal
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>issue<br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:motivatedby"  aria-level="3">Property: motivatedBy</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="http://www.w3.org/ns/oa#d4e230">oa:motivatedBy</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>reason behind citation annotation or userfeedback </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:UserFeedback (subject) oa:motivatedBy (predicate)
+                oa:Motivation (object)<br>
+                oa:Annotation (subject) oa:motivatedBy (predicate) oa:Motivation
+                (object)<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>motivated by</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <br>
+        <h4  id="Property:part"  aria-level="3">Property: part</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="http://www.sparontologies.net/ontologies/fabio/source.html">frbr:part</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>A part of an endeavour</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>part</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:partof"  aria-level="3">Property: partOf</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="http://www.sparontologies.net/ontologies/fabio/source.html">frbr:partOf</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>An endeavour of an endeavour</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>part of</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:performedBy"  aria-level="3">Property: performedBy</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:performedBy">duv:performedBy</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Usage performed by agent. </td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>duv:Usage (subject) duv:performedBy (predicate) foaf:Agent
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>performed by</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:publisher"  aria-level="3">Property: dct:publisher</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> dct:publisher </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>An entity responsible for making the resource available.</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) dct:publisher (predicate) foaf:Agent
+                (object)<br>
+                dcat:Distribution (subject) dct:publisher (predicate) foaf:Agent
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>publisher</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:references"  aria-level="3">Property: references </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:references">biro:references</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The relation between a bibliographic record or a bibliographic
+                reference and the publication being referenced.</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>references</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:refersto"  aria-level="3">Property: refersTo </h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="#Property:refersto">duv:refersTo</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>Dataset/distribution associated with Usage. </td>
+            </tr>
+            <tr>
+              <td  class="prop">vann:usageNotes</td>
+              <td> duv:Usage (subject) duv:refersTo (predicate)
+                dcat:Dataset (object) <br>
+              </td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>refers to</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:title"  aria-level="3">Property: title</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th><a  href="http://purl.org/dc/terms/title"> dct:title </a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>A name given to the dataset or distribution</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) dct:title (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) dct:title (predicate) rdfs:Literal
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>title</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <h4  id="Property:version"  aria-level="3">Property: version</h4>
+        <table  class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property:</th>
+              <th> <a  href="#Property:version">pav:version</a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td  class="prop">Definition</td>
+              <td>The version of the dataset or distribution</td>
+            </tr>
+            <tr>
+              <td>vann:usageNote</td>
+              <td>dcat:Dataset (subject) pav:version (predicate) rdfs:Literal
+                (object)<br>
+                dcat:Distribution (subject) pav:version (predicate) rdfs:Literal
+                (object)</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td>version</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <section  id="examples">
+      <h2> Examples</h2>
+      <p> This section shows some examples to illustrate the application of the
+        Dataset Usage Vocabulary. The following examples are based on the <a  href="https://www.w3.org/TR/dwbp/#basicExample">running
+          example of the Data on the Web Best Practices</a> document.</p>
+      <p  id="ex1"> Example 1 - Citation: Basic reference criteria for a
+        dataset.</p>
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier "http://dx.doi.org/10.0902/1975.16"^^xsd:anyURI;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date 
+        .
+      </pre>
+      <pre  class="schema json-ld">{
+  "@id" : ":stops-2015-05-05",
+  "@type" : "dcat:Dataset",
+  "version" : "1.0",
+  "created" : "2015-05-05",
+  "creator" : ":bus-association-mycity",
+  "identifier" : "http://dx.doi.org/10.0902/1975.16",
+  "issued" : "2015-05-05",
+  "publisher" : ":transport-agency-mycity",
+  "title" : "Bus stops of MyCity",
+  "fundedBy" : ":bus-association-mycity",
+  "hasDistributor" : ":transport-agency-mycity",
+  "@context" : {
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "cito" : "http://purl.org/spar/cito#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+
+      </pre>
+      <p  id="ex2"> Example 2 - Citation: A memorandum that gives more insights
+        about the dataset <code>stops-2015-05-05</code>.</p>
+      <pre  class="schema turtle">      :stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier "http://dx.doi.org/10.0902/1975.16"^^xsd:anyURI    ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        biro:isReferencedBy :stops-memorandum 
+        .
+
+:stops-memorandum
+        a fabio:InstructionalWork ;
+        frbr:realization :memo-a-expression  
+        .
+
+:memo-a-expression a fabio:PolicyDocument ;
+        frbr:part :reference-to-stops-dataset 
+        .
+
+:reference-to-stops-dataset
+        a biro:BibliographicReference;
+        dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string;
+        biro:references :stops-2015-05-05 
+        .   </pre>
+      <pre  class="schema json-ld">      
+{
+  "@graph" : [ {
+    "@id" : ":memo-a-expression",
+    "@type" : "fabio:PolicyDocument",
+    "part" : ":reference-to-stops-dataset"
+  }, {
+    "@id" : ":reference-to-stops-dataset",
+    "@type" : "biro:BibliographicReference",
+    "dct:bibliographicCitation" : "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16",
+    "references" : ":stops-2015-05-05"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "isReferencedBy" : ":stops-memorandum",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity"
+  }, {
+    "@id" : ":stops-memorandum",
+    "@type" : "fabio:InstructionalWork",
+    "realization" : ":memo-a-expression"
+  } ],
+  "@context" : {
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "isReferencedBy" : {
+      "@id" : "http://purl.org/spar/biro/isReferencedBy",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "realization" : {
+      "@id" : "http://purl.org/vocab/frbr/core#realization",
+      "@type" : "@id"
+    },
+    "part" : {
+      "@id" : "http://purl.org/vocab/frbr/core#part",
+      "@type" : "@id"
+    },
+    "bibliographicCitation" : {
+      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "references" : {
+      "@id" : "http://purl.org/spar/biro/references",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+
+      </pre>
+      <p  id="ex3"> Example 3 - Citation: A research paper that has a reference
+        to the dataset <code>stops-2015-05-05</code>.</p>
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier "http://dx.doi.org/10.0902/1975.16"^^xsd:anyURI  ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        biro:isReferencedBy :stops-memorandum ;
+        biro:isReferencedBy :stops-paper 
+        .
+
+:stops-paper
+        a fabio:ResearchPaper ;
+        frbr:realization :paper-a-expression  
+        .
+
+:paper-a-expression a fabio:JournalArticle ;
+        frbr:part :reference-to-stops-dataset 
+        .
+
+:reference-to-stops-dataset
+        a biro:BibliographicReference;
+        dct:bibliographicCitation "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16"^^xsd:string ;
+        biro:references :stops-2015-05-05 
+        .   
+
+      </pre>
+      <pre  class="schema json-ld">      
+{
+  "@graph" : [ {
+    "@id" : ":paper-a-expression",
+    "@type" : "fabio:JournalArticle",
+    "part" : ":reference-to-stops-dataset"
+  }, {
+    "@id" : ":reference-to-stops-dataset",
+    "@type" : "biro:BibliographicReference",
+    "dct:bibliographicCitation" : "MyCity Bus Association. Bus stops of MyCity. 1.0 version. Transport Agency, 2015 [publisher,distributor]. doi:10.0902/1975.16",
+    "references" : ":stops-2015-05-05"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "isReferencedBy" : [ ":stops-paper", ":stops-memorandum" ],
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity"
+  }, {
+    "@id" : ":stops-paper",
+    "@type" : "fabio:ResearchPaper",
+    "realization" : ":paper-a-expression"
+  } ],
+  "@context" : {
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "isReferencedBy" : {
+      "@id" : "http://purl.org/spar/biro/isReferencedBy",
+      "@type" : "@id"
+    },
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "realization" : {
+      "@id" : "http://purl.org/vocab/frbr/core#realization",
+      "@type" : "@id"
+    },
+    "part" : {
+      "@id" : "http://purl.org/vocab/frbr/core#part",
+      "@type" : "@id"
+    },
+    "bibliographicCitation" : {
+      "@id" : "http://purl.org/dc/terms/bibliographicCitation",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "references" : {
+      "@id" : "http://purl.org/spar/biro/references",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+
+      </pre>
+      <p  id="ex4">Example 4 - Feedback:&nbsp; Providing a mechanism for
+        consumers to comment and ask the dataset publisher questions. </p>
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier "http://dx.doi.org/10.0902/1975.16"^^xsd:anyURI   ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        duv:hasFeedback :comment1 
+        .
+
+:stops-2015-05-05.csv
+        a dcat:Distribution ;
+        dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt;   ;
+        dct:title "CSV distribution of stops-2015-05-05 dataset" ;
+        dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+        dcat:mediaType "text/csv;charset=UTF-8" ;
+        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
+        duv:hasFeedback :comment2 
+        .
+
+:comment1
+        a duv:UserFeedback ;
+        oa:hasBody "This list is missing stop 3"^^xsd:string ;
+        oa:hasTarget :stops-2015-05-05 ;
+        oa:motivatedBy oa:editing;
+        dct:creator :localresident 
+        .
+
+:comment2
+        a duv:UserFeedback ;
+        oa:hasTarget :stops-2015-05-05.csv;
+        oa:hasBody "Are tab delimited formats also available?"^^xsd:string ;
+        oa:motivatedBy oa:questioning;
+        dct:creator :localresident 
+        .
+
+:localresident
+        a foaf:Person  ;
+        foaf:Name "Alan Law"^^xsd:string  
+        .
+
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : ":comment1",
+    "@type" : "duv:UserFeedback",
+    "creator" : ":localresident",
+    "oa:hasBody" : "This list is missing stop 3",
+    "hasTarget" : ":stops-2015-05-05",
+    "motivatedBy" : "oa:editing"
+  }, {
+    "@id" : ":comment2",
+    "@type" : "duv:UserFeedback",
+    "creator" : ":localresident",
+    "oa:hasBody" : "Are tab delimited formats also available?",
+    "hasTarget" : ":stops-2015-05-05.csv",
+    "motivatedBy" : "oa:questioning"
+  }, {
+    "@id" : ":localresident",
+    "@type" : "foaf:Person",
+    "foaf:Name" : "Alan Law"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity",
+    "hasFeedback" : ":comment1"
+  }, {
+    "@id" : ":stops-2015-05-05.csv",
+    "@type" : "dcat:Distribution",
+    "description" : "CSV distribution of the bus stops dataset of MyCity",
+    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
+    "title" : "CSV distribution of stops-2015-05-05 dataset",
+    "downloadURL" : "http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv",
+    "mediaType" : "text/csv;charset=UTF-8",
+    "hasFeedback" : ":comment2"
+  } ],
+  "@context" : {
+    "hasBody" : {
+      "@id" : "http://www.w3.org/ns/oa#hasBody",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasTarget" : {
+      "@id" : "http://www.w3.org/ns/oa#hasTarget",
+      "@type" : "@id"
+    },
+    "motivatedBy" : {
+      "@id" : "http://www.w3.org/ns/oa#motivatedBy",
+      "@type" : "@id"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "hasFeedback" : {
+      "@id" : "http://www.w3.org/ns/duv#hasFeedback",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Name" : {
+      "@id" : "http://xmlns.com/foaf/0.1/Name",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "downloadURL" : {
+      "@id" : "http://www.w3.org/ns/dcat#downloadURL",
+      "@type" : "@id"
+    },
+    "description" : "http://purl.org/dc/terms/description",
+    "mediaType" : "http://www.w3.org/ns/dcat#mediaType",
+    "license" : {
+      "@id" : "http://purl.org/dc/terms/license",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+
+      </pre>
+      <p  id="ex5">Example 5 - Feedback:&nbsp; A rating feedback provided by a
+        dataset consumer. To describe possible values for rating, the data
+        publisher used <a  href="http://www.w3.org/TR/skos-primer/">SKOS </a>.
+      </p>
+      <pre  class="schema turtle">:stops-2015-05-05 
+        a dcat:Dataset ;
+        dct:title "Bus stops of MyCity" ;
+        dct:identifier "http://dx.doi.org/10.0902/1975.16"^^xsd:anyURI  ;
+        dct:issued "2015-05-05"^^xsd:date ;
+        pav:version "1.0" ;
+        dct:publisher :transport-agency-mycity ;
+        dct:creator :bus-association-mycity ;
+        duv:hasDistributor :transport-agency-mycity ; 
+        disco:fundedBy :bus-association-mycity ;
+        dct:created "2015-05-05"^^xsd:date ;
+        dcat:distribution :stops-2015-05-05.csv ;
+        duv:hasFeedback :rating1
+        .
+
+:rating1
+        a duv:RatingFeedback ;
+        oa:hasBody :good ;
+        oa:hasTarget :stops-2015-05-05 ;
+        oa:motivatedBy oa:assessing
+        .
+
+:good
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "good"@en ;
+      skos:prefLabel "boa"@pt
+      .
+
+:bad
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "bad"@en ;
+      skos:prefLabel "ruim"@pt
+      .
+
+:excellent
+      a skos:Concept ;
+      skos:inScheme :rating ;
+      skos:prefLabel "excellent"@en ;
+      skos:prefLabel "excelente"@pt
+      .
+
+:rating
+      a skos:ConceptScheme ;
+      skos:prefLabel "A set of values to rate datasets and distributions." ;
+      .
+      </pre>
+      <pre  class="schema json-ld">{
+  "@graph" : [ {
+    "@id" : ":bad",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "bad"
+    }, {
+      "@language" : "pt",
+      "@value" : "ruim"
+    } ]
+  }, {
+    "@id" : ":excellent",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "excellent"
+    }, {
+      "@language" : "pt",
+      "@value" : "excelente"
+    } ]
+  }, {
+    "@id" : ":good",
+    "@type" : "skos:Concept",
+    "inScheme" : ":rating",
+    "prefLabel" : [ {
+      "@language" : "en",
+      "@value" : "good"
+    }, {
+      "@language" : "pt",
+      "@value" : "boa"
+    } ]
+  }, {
+    "@id" : ":rating",
+    "@type" : "skos:ConceptScheme",
+    "prefLabel" : "A set of values to rate datasets and distributions."
+  }, {
+    "@id" : ":rating1",
+    "@type" : "duv:RatingFeedback",
+    "hasBody" : ":good",
+    "hasTarget" : ":stops-2015-05-05",
+    "motivatedBy" : "oa:assessing"
+  }, {
+    "@id" : ":stops-2015-05-05",
+    "@type" : "dcat:Dataset",
+    "version" : "1.0",
+    "created" : "2015-05-05",
+    "creator" : ":bus-association-mycity",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "issued" : "2015-05-05",
+    "publisher" : ":transport-agency-mycity",
+    "title" : "Bus stops of MyCity",
+    "fundedBy" : ":bus-association-mycity",
+    "distribution" : ":stops-2015-05-05.csv",
+    "hasDistributor" : ":transport-agency-mycity",
+    "hasFeedback" : ":rating1:"
+  } ],
+  "@context" : {
+    "inScheme" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type" : "@id"
+    },
+    "prefLabel" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "fundedBy" : {
+      "@id" : "http://rdf-vocabulary.ddialliance.org/discovery#fundedBy",
+      "@type" : "@id"
+    },
+    "publisher" : {
+      "@id" : "http://purl.org/dc/terms/publisher",
+      "@type" : "@id"
+    },
+    "hasDistributor" : {
+      "@id" : "http://www.w3.org/ns/duv#hasDistributor",
+      "@type" : "@id"
+    },
+    "title" : "http://purl.org/dc/terms/title",
+    "version" : "http://purl.org/pav/version",
+    "hasFeedback" : {
+      "@id" : "http://www.w3.org/ns/duv#hasFeedback",
+      "@type" : "@id"
+    },
+    "distribution" : {
+      "@id" : "http://www.w3.org/ns/dcat#distribution",
+      "@type" : "@id"
+    },
+    "issued" : {
+      "@id" : "http://purl.org/dc/terms/issued",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator",
+      "@type" : "@id"
+    },
+    "hasBody" : {
+      "@id" : "http://www.w3.org/ns/oa#hasBody",
+      "@type" : "@id"
+    },
+    "hasTarget" : {
+      "@id" : "http://www.w3.org/ns/oa#hasTarget",
+      "@type" : "@id"
+    },
+    "motivatedBy" : {
+      "@id" : "http://www.w3.org/ns/oa#motivatedBy",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+      
+      </pre>
+      <p  id="ex6">Example 6 -&nbsp;Dataset Usage:&nbsp; A dataset consumer uses
+        the distribution <code>stops-2015-05-05.csv</code> to produce a
+        visualization of bus routes from MyCity. A route calculator service was
+        used to generate the bus routes (<code>http://example.org/route-calculator</code>).
+        The dataset publisher collects this usage and updates the dataset
+        metadata with a new property <code>duv:hasUsage </code> .</p>
+      <pre  class="schema turtle">:stops-2015-05-05.csv
+      a dcat:Distribution ;
+      dcat:downloadURL &lt;http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv&gt;   ;
+      dct:title "CSV distribution of stops-2015-05-05 dataset" ;
+      dct:description "CSV distribution of the bus stops dataset of MyCity" ;
+      dcat:mediaType "text/csv;charset=UTF-8" ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;   ;
+      duv:hasUsage :route-vis 
+      .    
+
+:route-vis a duv:Usage;
+      dct:title "Visualization of MyCity bus routes"^^xsd:string ;
+      dct:created "2016-05-05"^^xsd:date ;
+      duv:hasUsageTool :route-calculator ;
+      duv:refersTo :stops-2015-05-05.csv 
+      .
+
+:route-calculator a duv:UsageTool ;
+      dct:title "Route Calculator"^^xsd:string ;
+      dct:created "2016-03-04"^^xsd:date ;
+      dct:identifier &lt;http://dx.doi.org/10.0902/1975.16&gt;^^xsd:anyURI    
+      .
+
+</pre>
+      <pre  class="schema json-ld">{
+{
+  "@graph" : [ {
+    "@id" : ":route-calculator",
+    "@type" : "duv:UsageTool",
+    "created" : "2016-03-04",
+    "identifier" : "http://dx.doi.org/10.0902/1975.16",
+    "dct:title" : "Route Calculator"
+  }, {
+    "@id" : ":route-vis",
+    "@type" : "duv:Usage",
+    "created" : "2016-05-05",
+    "dct:title" : "Visualization of MyCity bus routes",
+    "hasUsageTool" : ":route-calculator",
+    "refersTo" : ":stops-2015-05-05.csv"
+  }, {
+    "@id" : ":stops-2015-05-05.csv",
+    "@type" : "dcat:Distribution",
+    "description" : "CSV distribution of the bus stops dataset of MyCity",
+    "license" : "http://creativecommons.org/licenses/by-sa/3.0/",
+    "dct:title" : "CSV distribution of stops-2015-05-05 dataset",
+    "downloadURL" : "http://data.mycity.example.com/transport/dataset/bus/stops-2015-05-05.csv",
+    "mediaType" : "text/csv;charset=UTF-8",
+    "hasUsage" : ":route-vis"
+  } ],
+  "@context" : {
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "created" : {
+      "@id" : "http://purl.org/dc/terms/created",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "identifier" : {
+      "@id" : "http://purl.org/dc/terms/identifier",
+      "@type" : "@id"
+    },
+    "downloadURL" : {
+      "@id" : "http://www.w3.org/ns/dcat#downloadURL",
+      "@type" : "@id"
+    },
+    "description" : "http://purl.org/dc/terms/description",
+    "mediaType" : "http://www.w3.org/ns/dcat#mediaType",
+    "license" : {
+      "@id" : "http://purl.org/dc/terms/license",
+      "@type" : "@id"
+    },
+    "hasUsage" : {
+      "@id" : "http://www.w3.org/ns/duv#hasUsage",
+      "@type" : "@id"
+    },
+    "hasUsageTool" : {
+      "@id" : "http://www.w3.org/ns/duv#hasUsageTool",
+      "@type" : "@id"
+    },
+    "refersTo" : {
+      "@id" : "http://www.w3.org/ns/duv#refersTo",
+      "@type" : "@id"
+    },
+    "" : "http://example.org#",
+    "duv" : "http://www.w3.org/ns/duv#",
+    "pav" : "http://purl.org/pav/",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "fabio" : "http://purl.org/spar/fabio/",
+    "disco" : "http://rdf-vocabulary.ddialliance.org/discovery#",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+    "dqv" : "http://www.w3.org/ns/dqv#",
+    "voaf" : "http://purl.org/vocommons/voaf#",
+    "skos" : "http://www.w3.org/2004/02/skos/core#",
+    "biro" : "http://purl.org/spar/biro/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "frbr" : "http://purl.org/vocab/frbr/core#",
+    "oa" : "http://www.w3.org/ns/oa#",
+    "dct" : "http://purl.org/dc/terms/",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "vann" : "http://purl.org/vocab/vann/",
+    "dcat" : "http://www.w3.org/ns/dcat#",
+    "foaf" : "http://xmlns.com/foaf/0.1/"
+  }
+}
+
+      </pre>
+    </section>
+    <section  id="conclusion">
+      <script  type="application/javascript">var bodyKeypressCallbacks = {};
+
+        /* a form like
+        <form id="langOptions" action="">View as: <input type="radio" name="presLang" value="turtle" checked="checked">Turtle (press 't')</input> <input type="radio" name="presLang" value="json-ld">JSON-LD (press 'j')</input> .</form>
+        controls display of sections like
+        <pre class="schema turtle">...</pre>
+        <pre class="schema json-ld">...</pre>
+         */
+        [
+          { lookIn: ".schema", form: "#langOptions", radioName: "presLang", keys:
+            { 74: "json-ld", 106: "json-ld", 84: "turtle", 116: "turtle" }
+          },
+          { lookIn: ".enumChoice", form: "#enumOptions", radioName: "enumForm", keys:
+            { 67: "collection", 99: "collection", 79: "objectlist", 111: "objectlist" }
+          },
+          { lookIn: ".sparqlExt", form: "#sparqlOptions", radioName: "sparqlRepresentation", keys:
+            { 66: "builtin", 98: "builtin", 69: "extension", 101: "extension" }
+          }
+        ].forEach(function (x) {
+
+          /* In lookIn, reveal classes selected by radioName; hide others.
+           */
+          function revealClass (lookIn, form, radioName) {
+            $(lookIn+"."+$(form+" input[name="+radioName+"]").not(":checked").val()).hide();
+            $(lookIn+"."+$(form+" input[name="+radioName+"]" +    ":checked").val()).show();
+          }
+          /* Look in all lookIn containers for the height different of from and to targets.
+           */
+          function adjustHeight (lookIn, from, to) {
+            var visibleTop = $(window).scrollTop();
+            var all = $(lookIn+"."+from); // all containers of from (and presumably, to)
+            var adj = 0;
+            for (var i = 0; i < all.length; ++i) {
+              var elt = all.slice(i, i+1);
+              if (elt.offset().top >= visibleTop) // stop when we pass the current scroll top.
+                break;
+              adj += elt.siblings("."+to).height() - elt.height();
+            }
+            $(window).scrollTop($(window).scrollTop() + adj); // move the scroll top.
+          }
+         var inputs = $(x.form + " input[name="+x.radioName+"]");
+          // Listen for checkbox changes.
+          inputs.change(function() {revealClass(x.lookIn, x.form, x.radioName);})
+          // Show only the currently selected class.
+          revealClass(x.lookIn, x.form, x.radioName);
+          // Assign callbacks the the associated keycodes.
+          Object.keys(x.keys).forEach(function (k) {
+            bodyKeypressCallbacks[k] = function () {
+              // If the corresponding radio button isn't already selected,
+              if(!inputs.filter("[value="+x.keys[k]+"]").is(":checked")) {
+                // adjust the height from the current class to the new class;
+                adjustHeight(x.lookIn, $("input[name="+x.radioName+"]:checked", x.form).val(), ""+x.keys[k]+"");
+                // set it as "checked";
+                inputs.filter("[value="+x.keys[k]+"]").prop("checked", true); // .change() did nothing
+                // swap which is displayed.
+                revealClass(x.lookIn, x.form, x.radioName);
+              }
+              return false;
+            };
+          });
+        });
+        $("html > body").keypress(function (evt) {
+          if (evt.ctrlKey)
+            return true; // don't interfere with browser control keys.
+          if (evt.which in bodyKeypressCallbacks)
+            return bodyKeypressCallbacks[evt.which]();
+          return true;
+        });
+        </script> </section>
+  </body>
+</html>
