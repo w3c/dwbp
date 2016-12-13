@@ -20,6 +20,7 @@ var respecConfig = {
       companyURL: "http://nic.br/",
     }, {
       name: "Newton Calegari",
+      url: "https://newtoncalegari.com.br/",
       company: "NIC.br, Brazil",
       companyURL: "http://nic.br/",
     }],
