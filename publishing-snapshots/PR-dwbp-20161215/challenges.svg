@@ -1,395 +1,356 @@
-<?xml version="1.0" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink" 
-     width="920"
-     height="1510"
-     viewBox="945 20 800 1990"
-     preserveAspectRatio="xMinYMin">
+     width="100%" height="100%"
+     viewBox="0 0 1250 1850">
 
-<title>Data on the Web Challenges</title>
-<style type="text/css">
-  text {
-    font-family:sans-serif;
-    font-size:1em;
-  }
+  <title>Data on the Web Challenges</title>
 
-  text.leftCol, text.rightCol {
-    fill:#005A9C; 
-    font-size:1.2em;
-    text-anchor:end;
-    cursor:pointer;
-    text-decoration:underline;
-  }
-  text.rightCol {text-anchor:start}
-
-  .connectorLabel, .blueBoxText, .centreBox {text-anchor:middle; fill:black; stroke:none}
-
-  .centreBox {font-size:1.6em; font-weight:bold}
-
-  #svg {border:medium solid green}
-</style>
-
-<script type="text/javascript">
-<![CDATA[
-
-  var svgns = "http://www.w3.org/2000/svg";
-
-  function initialise() {
-    text = document.getElementsByTagNameNS(svgns,'text');
-    if (text[0].addEventListener) {
-      for (var i = 0; i < text.length; i++) {
-        text[i].addEventListener("click", shift, false);
-      }
-    } else if (text[0].attachEvent)  {
-      for (var i = 0; i < text.length; i++) {
-        text[i].attachEvent('onclick', shift);
-      }
+  <style type="text/css">
+    text {
+      font-family:sans-serif;
+      font-size:1em;
     }
-  }
 
-  function shift() {
-    parent.document.location.hash = this.id;
-  }
+    a {
+      fill:#005A9C; 
+      font-size:1.2em;
+      text-anchor:end;
+      cursor:pointer;
+      text-decoration:underline;
+    }
+    text.rightCol {text-anchor:start}
 
-  window.onload=initialise;
-]]></script>
+    .connectorLabel, .blueBoxText, .centreBox {text-anchor:middle; fill:black; stroke:none}
 
-<defs>
-  <rect x="60" y="10" width="170" height="110" fill="#bbf" stroke="black" stroke-width="1" id="firstRect" />  
+    .centreBox {font-size:1.6em; font-weight:bold}
 
-  <path id="leftConnector" stroke="black" stroke-width="2" d="M 420 85 L 660 85" />
+    #svg {border:medium solid green}
+  </style>
 
-  <path id="rightConnector" stroke="black" stroke-width="2" d="M 830 85 L 890 85" />
+  <defs>
+    <rect x="60" y="10" width="170" height="110" fill="#ccf" stroke="black" stroke-width="1" id="firstRect" />  
 
-  <path id="RColLeftConnector" stroke="black" stroke-width="2" d="M 460 85 L 520 85" />
+    <path id="leftConnector" stroke="black" stroke-width="2" d="M 420 85 H660" />
 
-  <path id="RColRightConnector"  stroke="black" stroke-width="2" d="M 680 85 L 920 85" />
+    <path id="rightConnector" stroke="black" stroke-width="2" d="M 830 85 H890" />
 
-  <path id="verticalConnector" stroke="black" stroke-width="2" d="M 890 85 L 890 1806" />
+    <path id="RColLeftConnector" stroke="black" stroke-width="2" d="M 460 85 H510" />
 
-  <path id="challengeToVert" stroke="black" stroke-width="2" d="M -60 90 L 0 90" />
+    <path id="RColRightConnector"  stroke="black" stroke-width="2" d="M 680 85 H920" />
+
+    <path id="verticalConnector" stroke="black" stroke-width="2" d="M 890 85 L 890 1806" />
+
+    <path id="challengeToVert" stroke="black" stroke-width="2" d="M -60 90 H0" />
+  </defs>
+
+  <g transform="translate(-940,-20)">
+    <!-- Central box -->
+    <g transform="translate(950,850)">
+      <rect x="0" y="0" width="250" height="180" fill="#ccf" stroke="black" stroke-width="1" id="CentreRect" />  
+      <text x="125" y="84" class="centreBox" tabindex="0">Data on the Web <tspan x="125" y="114">Challenges</tspan></text>
+    <!--<use xlink:href="#challengeToVert" />-->
+      <use xlink:href="#challengeToVert" transform="translate(310,0)" />
+    </g>
+
+    <!-- Vertical connector here -->
+    <!--  <use xlink:href="#verticalConnector" /> -->
+    <use xlink:href="#verticalConnector" transform="translate(370,0)" />
 
 
-</defs>
+    <!--Metadata -->
+    <g transform="translate(800,0)">
+      <!-- Blue box -->
+      <g transform="translate(450,20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Metadata</text>
+      </g>
 
-<!--Metadata -->
-<g transform="translate(800,0)">
-  <g id="BPsMetadata" transform="translate(925,5)">
-    <text x="10" y="55" class="rightCol" id="ProvideMetadata">Provide metadata</text>
-    <text x="10" y="85" class="rightCol" id="DescriptiveMetadata">Provide descriptive metadata</text>
-    <text x="10" y="115" class="rightCol" id="StructuralMetadata">Provide structural metadata</text>
-    <path d="M 5,30 L -5,30 -5,130 10,130" stroke-width="2" stroke="black" fill="none"/>
+      <!-- Link -->
+      <g> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How do I provide metadata
+          <tspan x="800" y="105" class="connectorLabel">for humans &amp; machines?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsMetadata" transform="translate(925,5)">
+        <a role="listitem" xlink:href="Overview.html#ProvideMetadata" target="_top"><text x="10" y="55" class="rightCol" id="ProvideMetadata">Provide metadata</text></a>
+        <a role="listitem" xlink:href="Overview.html#DescriptiveMetadata" target="_top"><text x="10" y="85" class="rightCol" id="DescriptiveMetadata">Provide descriptive metadata</text></a>
+        <a role="listitem" xlink:href="Overview.html#StructuralMetadata" target="_top"><text x="10" y="115" class="rightCol" id="StructuralMetadata">Provide structural metadata</text></a>
+        <path d="M 5,30 L -5,30 -5,130 10,130" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Licence -->
+    <g transform="translate(800,180)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data License</text>
+      </g> 
+
+      <!-- Link -->
+      <g transform="translate(0,-35)">
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How do I permit
+          <tspan x="800" y="105" class="connectorLabel">&amp; restrict access?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsLicence" transform="translate(925,5)">
+        <a role="listitem" xlink:href="Overview.html#DataLicense" target="_top"><text x="10" y="43" class="rightCol" id="DataLicense">Provide data license information</text></a>
+        <path d="M 5,10 L -5,10 -5,75 10,75" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Prov & Quality -->
+    <g transform="translate(800,315)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="60" class="blueBoxText" role="heading" tabindex="0">Provenance <tspan x="140" y="90">&amp; Quality</tspan></text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-35)"> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How can I add trust?</text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsProv" transform="translate(925,5)">
+        <a role="listitem" xlink:href="Overview.html#DataProvenance" target="_top"><text x="10" y="30" class="rightCol" id="DataProvenance">Provide data provenance information</text></a>
+        <a role="listitem" xlink:href="Overview.html#DataQuality" target="_top"><text x="10" y="60" class="rightCol" id="DataQuality">Provide data quality information</text></a>
+        <path d="M 5,10 L -5,10 -5,75 10,75" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Versioning -->
+    <g transform="translate(800,450)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Versioning</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-45)"> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How can I track
+          <tspan x="800" y="105" class="connectorLabel">versions &amp; version histories?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsVersion" transform="translate(925,5)">
+        <a role="listitem" xlink:href="Overview.html#VersioningInfo" target="_top"><text x="10" y="30" class="rightCol" id="VersioningInfo">Provide a version indicator</text></a>
+        <a role="listitem" xlink:href="Overview.html#VersionHistory" target="_top"><text x="10" y="60" class="rightCol" id="VersionHistory">Provide version history</text></a>
+        <path d="M 5,0 L -5,0 -5,80 10,80" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Identification -->
+    <g transform="translate(800,585)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Identification</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)"> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How can I identify
+          <tspan x="800" y="105" class="connectorLabel">datasets &amp; distributions?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsIdentification" transform="translate(925,5)">
+        <a role="listitem" xlink:href="Overview.html#UniqueIdentifiers" target="_top"><text x="10" y="5" class="rightCol" id="UniqueIdentifiers">Use persistent URIs as identifiers of datasets</text></a>
+        <a role="listitem" xlink:href="Overview.html#identifiersWithinDatasets" target="_top"><text x="10" y="35" class="rightCol" id="identifiersWithinDatasets">Use persistent URIs as identifiers within datasets</text></a>
+        <a role="listitem" xlink:href="Overview.html#VersionIdentifiers" target="_top"><text x="10" y="65" class="rightCol" id="VersionIdentifiers">Assign URIs to dataset versions and series</text></a>
+        <path d="M 5,-20 L -5,-20 -5,85 10,85" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Data Formats -->
+    <g transform="translate(800,680)">
+      <!-- Blue box -->
+      <g transform="translate(450,20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Formats</text>
+      </g>
+
+      <!-- Link -->
+      <g> 
+       <use xlink:href="#RColLeftConnector"/>
+       <text x="800" y="75" class="connectorLabel" tabindex="0">What data formats
+         <tspan x="800" y="105" class="connectorLabel">should I use?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsDataFormats" transform="translate(925,20)">
+        <a role="listitem" xlink:href="Overview.html#MachineReadableStandardizedFormat" target="_top"><text x="10" y="30" class="rightCol" id="MachineReadableStandardizedFormat">Use machine-readable, standardized formats</text></a>
+        <a role="listitem" xlink:href="Overview.html#LocaleParametersMetadata" target="_top"><text x="10" y="60" class="rightCol" id="LocaleParametersMetadata">Use locale-neutral data representations</text></a>
+        <a role="listitem" xlink:href="Overview.html#MultipleFormats" target="_top"><text x="10" y="90" class="rightCol" id="MultipleFormats">Provide data in multiple formats</text></a>
+        <path d="M 5,10 L -5,10 -5,105 10,105" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Data Vocabularies -->
+    <g transform="translate(800,820)">
+      <!-- Blue box -->
+      <g transform="translate(450,20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Vocabularies</text>
+      </g>
+
+      <!-- Link -->  
+      <g> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How to improve
+          <tspan x="800" y="105" class="connectorLabel">data interoperability?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsDataVocab" transform="translate(925,20)">
+        <a role="listitem" xlink:href="Overview.html#ReuseVocabularies" target="_top"><text x="10" y="55" class="rightCol" id="ReuseVocabularies">Reuse vocabularies, preferably standardized ones</text></a>
+        <a role="listitem" xlink:href="Overview.html#ChooseRightFormalizationLevel" target="_top"><text x="10" y="85" class="rightCol" id="ChooseRightFormalizationLevel">Choose the right formalization level</text></a>
+        <path d="M 5,30 L -5,30 -5,100 10,100" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+      <!--
+      <a role="listitem" xlink:href="Overview.html#MetadataStandardized" target="_top"><text x="10" y="60" class="rightCol" id="MetadataStandardized">Use standardized terms</text></a>
+      <a role="listitem" xlink:href="Overview.html#ReuseVocabularies" target="_top"><text x="10" y="90" class="rightCol" id="ReuseVocabularies">Reuse vocabularies</text></a>
+      <a role="listitem" xlink:href="Overview.html#ChooseRightFormalizationLevel" target="_top"><text x="10" y="120" class="rightCol" id="ChooseRightFormalizationLevel">Choose the right formalization level</text></a>
+      <path d="M 5,40 L -5,40 -5,140 10,140" stroke-width="2" stroke="black" fill="none"/>
+      -->
+    </g>
+
+    <!-- Sensitive data -->
+
+    <!-- Data access -->
+    <g transform="translate(800,1070)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)">
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Access</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)"> 
+        <use xlink:href="#RColLeftConnector"/>
+        <text x="800" y="75" class="connectorLabel" tabindex="0">How can I provide
+          <tspan x="800" y="105" class="connectorLabel">access to data?</tspan></text>
+        <use xlink:href="#RColRightConnector"/>
+      </g>
+
+      <g role="list" id="BPsAccess" transform="translate(925,-90)">
+        <a role="listitem" xlink:href="Overview.html#BulkAccess" target="_top"><text x="10" y="30" class="rightCol" id="BulkAccess">Provide bulk download</text></a>
+        <a role="listitem" xlink:href="Overview.html#ProvideSubsets" target="_top"><text x="10" y="60" class="rightCol" id="ProvideSubsets">Provide Subsets for Large Datasets</text></a>
+        <a role="listitem" xlink:href="Overview.html#Conneg" target="_top"><text x="10" y="90" class="rightCol" id="Conneg">Use content negotiation</text></a>
+        <a role="listitem" xlink:href="Overview.html#AccessRealTime" target="_top"><text x="10" y="120" class="rightCol" id="AccessRealTime">Provide real time access</text></a>
+        <a role="listitem" xlink:href="Overview.html#AccessUptoDate" target="_top"><text x="10" y="150" class="rightCol" id="AccessUptoDate">Provide data up to date</text></a>
+        <a role="listitem" xlink:href="Overview.html#DataUnavailabilityReference" target="_top"><text x="10" y="180" class="rightCol" id="DataUnavailabilityReference">Provide an explanation for data that's not available</text></a>
+        <a role="listitem" xlink:href="Overview.html#useanAPI" target="_top"><text x="10" y="210" class="rightCol" id="useanAPI">Make Data Available through an API</text></a>
+        <a role="listitem" xlink:href="Overview.html#APIHttpVerbs" target="_top"><text x="10" y="240" class="rightCol" id="APIHttpVerbs">Use Web Standards as the foundation of APIs</text></a>
+        <a role="listitem" xlink:href="Overview.html#documentYourAPI" target="_top"><text x="10" y="270" class="rightCol" id="documentYourAPI">Provide complete documentation for your API</text></a>
+        <a role="listitem" xlink:href="Overview.html#avoidBreakingChangesAPI" target="_top"><text x="10" y="300" class="rightCol" id="avoidBreakingChangesAPI">Avoid Breaking Changes to Your API</text></a>
+        <path d="M 10,0 L -5,0 -5,312 10,312" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Preservation -->
+    <g transform="translate(800,1325)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)"> 
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Preservation</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)"> 
+        <use xlink:href="#RColLeftConnector"/>
+       <text x="800" y="75" class="connectorLabel" tabindex="0">How can data be
+         <tspan x="800" y="105" class="connectorLabel">be archived?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsDataPreservation" transform="translate(925,20)">
+        <a role="listitem" xlink:href="Overview.html#ResourceStatus" target="_top"><text x="10" y="30" class="rightCol" id="ResourceStatus">Preserve identifiers</text></a>
+        <a role="listitem" xlink:href="Overview.html#EvaluateCoverage" target="_top"><text x="10" y="60" class="rightCol" id="EvaluateCoverage">Assess dataset coverage</text></a>
+        <!--  <a role="listitem" xlink:href="Overview.html#Serialisation" target="_top"><text x="10" y="60" class="rightCol" id="Serialisation">Use a trusted serialization format</text></a> -->
+        <path d="M 10,0 L -5,0 -5,80 10,80" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Feedback -->
+    <g transform="translate(800,1468)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)"> 
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Feedback</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)"> 
+       <use xlink:href="#RColLeftConnector"/>
+       <text x="800" y="75" class="connectorLabel" tabindex="0">How can I
+         <tspan x="800" y="105" class="connectorLabel">engage users?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsDataPreservation" transform="translate(925,0)">
+        <a role="listitem" xlink:href="Overview.html#GatherFeedback" target="_top"><text x="10" y="30" class="rightCol" id="GatherFeedback">Gather feedback from data consumers</text></a>
+        <a role="listitem" xlink:href="Overview.html#FeedbackInformation" target="_top"><text x="10" y="60" class="rightCol" id="FeedbackInformation">Make feedback available</text></a>
+        <path d="M 10,0 L -5,0 -5,90 10,90" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Enrichment-->
+    <g transform="translate(800,1610)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)"> 
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Enrichment</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)">
+       <use xlink:href="#RColLeftConnector"/>
+       <text x="800" y="75" class="connectorLabel" tabindex="0">How can I add
+         <tspan x="800" y="105" class="connectorLabel">value to data?</tspan></text>
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsEnrichment" transform="translate(925,0)">
+        <a role="listitem" xlink:href="Overview.html#EnrichData" target="_top"><text x="10" y="30" class="rightCol" id="EnrichData">Enrich data by generating new data</text></a>
+        <a role="listitem" xlink:href="Overview.html#ProvideComplementaryPresentations" target="_top"><text x="10" y="60" class="rightCol" id="ProvideComplementaryPresentations">Provide Complementary Presentations</text></a>
+        <path d="M 10,0 L -5,0 -5,90 10,90" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
+
+    <!--Republication-->
+    <g transform="translate(800,1750)">
+      <!-- Blue box -->
+      <g transform="translate(450,-20)"> 
+        <use xlink:href="#firstRect"/>
+        <text x="140" y="70" class="blueBoxText" role="heading" tabindex="0">Data Republication</text>
+      </g>
+
+      <!-- Link -->
+      <g transform="translate(0,-30)">
+       <use xlink:href="#RColLeftConnector"/>
+       <text x="800" y="75" class="connectorLabel" tabindex="0">How can I reuse
+         <tspan x="800" y="105" class="connectorLabel">data responsibly?</tspan></text>
+
+        <use xlink:href="#RColRightConnector" />
+      </g>
+
+      <g role="list" id="BPsReuse" transform="translate(925,0)">
+        <a role="listitem" xlink:href="Overview.html#ProvideFeedbackToPublisher" target="_top"><text x="10" y="30" class="rightCol" id="ProvideFeedbackToPublisher">Provide Feedback to the Original Publisher</text></a>
+        <a role="listitem" xlink:href="Overview.html#FollowLicensingTerms" target="_top"><text x="10" y="60" class="rightCol" id="FollowLicensingTerms">Follow Licensing Terms</text></a>
+        <a role="listitem" xlink:href="Overview.html#CiteOriginalPublication" target="_top"><text x="10" y="90" class="rightCol" id="CiteOriginalPublication">Cite the Original Publication</text></a>
+        <path d="M 10,0 L -5,0 -5,110 10,110" stroke-width="2" stroke="black" fill="none"/>
+      </g>
+    </g>
   </g>
-
-  <g> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How do I provide metadata</text>
-    <text x="800" y="105" class="connectorLabel">for humans &amp; machines?</text>
-    <use xlink:href="#RColRightConnector" />
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Metadata</text>
-  </g>
-</g>
-
-<!--Licence -->
-<g transform="translate(800,180)">
-  <g id="BPsLicence" transform="translate(925,5)">
-    <text x="10" y="43" class="rightCol" id="DataLicense">Provide data license information</text>
-    <path d="M 5,10 L -5,10 -5,75 10,75" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-35)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How do I permit</text>
-    <text x="800" y="105" class="connectorLabel">&amp; restrict access?</text>
-    <use xlink:href="#RColRightConnector" />
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,-20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data License</text>
-  </g>
-</g>
-
-<!--Prov & Quality -->
-<g transform="translate(800,315)">
-  <g id="BPsProv" transform="translate(925,5)">
-    <text x="10" y="30" class="rightCol" id="DataProvenance">Provide data provenance information</text>
-    <text x="10" y="60" class="rightCol" id="DataQuality">Provide data quality information</text>
-    <path d="M 5,10 L -5,10 -5,75 10,75" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-35)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How can I add trust?</text>
-    <use xlink:href="#RColRightConnector" />
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,-20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="60" class="blueBoxText">Provenance</text>
-    <text x="140" y="90" class="blueBoxText">&amp; quality</text>
-  </g>
-</g>
-
-<!--Versioning -->
-<g transform="translate(800,450)">
-  <g id="BPsVersion" transform="translate(925,5)">
-    <text x="10" y="30" class="rightCol" id="VersioningInfo">Provide a version indicator</text>
-    <text x="10" y="60" class="rightCol" id="VersionHistory">Provide version history</text>
-    <path d="M 5,0 L -5,0 -5,80 10,80" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-45)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How can I track</text>
-    <text x="800" y="105" class="connectorLabel">versions &amp; version histories?</text>
-    <use xlink:href="#RColRightConnector" />
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,-20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Versioning</text>
-  </g>
-</g>
-
-<!--Identification -->
-<g transform="translate(800,585)">
-  <g id="BPsIdentification" transform="translate(925,5)">
-    <text x="10" y="5" class="rightCol" id="UniqueIdentifiers">Use persistent URIs as identifiers of datasets</text>
-    <text x="10" y="35" class="rightCol" id="identifiersWithinDatasets">Use persistent URIs as identifiers within datasets</text>
-    <text x="10" y="65" class="rightCol" id="VersionIdentifiers">Assign URIs to dataset versions and series</text>
-    <path d="M 5,-20 L -5,-20 -5,85 10,85" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-30)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How can I identify</text>
-    <text x="800" y="105" class="connectorLabel">datasets &amp; distributions?</text>
-    <use xlink:href="#RColRightConnector" />
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,-20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Identification</text>
-  </g>
-</g>
-
-
-<!-- Data Formats -->
-
-<g transform="translate(800,680)">
-  <g id="BPsDataFormats" transform="translate(925,20)">
-    <text x="10" y="30" class="rightCol" id="MachineReadableStandardizedFormat">Use machine-readable, standardized formats</text>
-    <text x="10" y="60" class="rightCol" id="LocaleParametersMetadata">Use locale-neutral data representations</text>
-    <text x="10" y="90" class="rightCol" id="MultipleFormats">Provide data in multiple formats</text>
-    <path d="M 5,10 L -5,10 -5,105 10,105" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g> <!-- Link -->
-   <use xlink:href="#RColLeftConnector"/>
-   <text x="800" y="75" class="connectorLabel">What data formats</text>
-   <text x="800" y="105" class="connectorLabel">should I use?</text>
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Formats</text>
-  </g>
-</g>
-
-
-<!-- Data Vocabularies -->
-
-<g transform="translate(800,820)">
-  <g id="BPsDataVocab" transform="translate(925,20)">
-    <text x="10" y="55" class="rightCol" id="ReuseVocabularies">Reuse vocabularies, preferably standardized ones</text>
-    <text x="10" y="85" class="rightCol" id="ChooseRightFormalizationLevel">Choose the right formalization level</text>
-    <path d="M 5,30 L -5,30 -5,100 10,100" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-    <!--<text x="10" y="60" class="rightCol" id="MetadataStandardized">Use standardized terms</text>
-    <text x="10" y="90" class="rightCol" id="ReuseVocabularies">Reuse vocabularies</text>
-    <text x="10" y="120" class="rightCol" id="ChooseRightFormalizationLevel">Choose the right formalization level</text>
-    <path d="M 5,40 L -5,40 -5,140 10,140" stroke-width="2" stroke="black" fill="none"/>-->
-  
-
-  <g> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How to improve</text>
-    <text x="800" y="105" class="connectorLabel">data interoperability?</text>
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Vocabularies</text>
-  </g>
-</g>
-
-
-<!-- Sensitive data -->
-
-
-<!-- Data access -->
-<g transform="translate(800,1070)">
-  <g id="BPsAccess" transform="translate(925,-90)">
-    <text x="10" y="30" class="rightCol" id="BulkAccess">Provide bulk download</text>
-    <text x="10" y="60" class="rightCol" id="ProvideSubsets">Provide Subsets for Large Datasets</text>
-    <text x="10" y="90" class="rightCol" id="Conneg">Use content negotiation</text>
-    <text x="10" y="120" class="rightCol" id="AccessRealTime">Provide real time access</text>
-    <text x="10" y="150" class="rightCol" id="AccessUptoDate">Provide data up to date</text>
-    <text x="10" y="180" class="rightCol" id="DataUnavailabilityReference">Provide an explanation for data that's not available</text>
-    <text x="10" y="210" class="rightCol" id="useanAPI">Make Data Available through an API</text>
-    <text x="10" y="240" class="rightCol" id="APIHttpVerbs">Use Web Standards as the foundation of APIs</text>
-    <text x="10" y="270" class="rightCol" id="documentYourAPI">Provide complete documentation for your API</text>
-    <text x="10" y="300" class="rightCol" id="avoidBreakingChangesAPI">Avoid Breaking Changes to Your API</text>
-    <path d="M 10,0 L -5,0 -5,312 10,312" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-30)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-    <text x="800" y="75" class="connectorLabel">How can I provide</text>
-    <text x="800" y="105" class="connectorLabel">access to data?</text>
-    <use xlink:href="#RColRightConnector"/>
-
-  </g>
-
-  <!-- Blue box -->
-  <g transform="translate(450,-20)">
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Access</text>
-  </g>
-</g>
-
-
-<!-- Preservation -->
-
-<g transform="translate(800,1325)">
-  <g id="BPsDataPreservation" transform="translate(925,20)">
-    <text x="10" y="30" class="rightCol" id="ResourceStatus">Preserve identifiers</text>
-    <text x="10" y="60" class="rightCol" id="EvaluateCoverage">Assess dataset coverage</text>
-<!--    <text x="10" y="60" class="rightCol" id="Serialisation">Use a trusted serialization format</text> -->
-    <path d="M 10,0 L -5,0 -5,80 10,80" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-
-  <g transform="translate(0,-30)"> <!-- Link -->
-    <use xlink:href="#RColLeftConnector"/>
-   <text x="800" y="75" class="connectorLabel">How can data be</text>
-   <text x="800" y="105" class="connectorLabel">be archived?</text>
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <g transform="translate(450,-20)"> <!-- Blue box -->
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Preservation</text>
-  </g>
-</g>
-
-
- <!--Feedback -->
-<g transform="translate(800,1468)">
-  <g id="BPsDataPreservation" transform="translate(925,0)">
-    <text x="10" y="30" class="rightCol" id="GatherFeedback">Gather feedback from data consumers</text>
-    <text x="10" y="60" class="rightCol" id="FeedbackInformation">Make feedback available</text>
-    <path d="M 10,0 L -5,0 -5,90 10,90" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <g transform="translate(0,-30)"> <!-- Link -->
-   <use xlink:href="#RColLeftConnector"/>
-   <text x="800" y="75" class="connectorLabel">How can I</text>
-   <text x="800" y="105" class="connectorLabel">engage users?</text>
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <g transform="translate(450,-20)"> <!-- Blue box -->
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Feedback</text>
-  </g>
-
-</g>
-
-<!--Enrichment-->
-
-<g transform="translate(800,1610)">
-  <g id="BPsEnrichment" transform="translate(925,0)">
-    <text x="10" y="30" class="rightCol" id="EnrichData">Enrich data by generating new data</text>
-    <text x="10" y="60" class="rightCol" id="ProvideComplementaryPresentations">Provide Complementary Presentations</text>
-    <path d="M 10,0 L -5,0 -5,90 10,90" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <!-- Link -->
-  <g transform="translate(0,-30)">
-   <use xlink:href="#RColLeftConnector"/>
-   <text x="800" y="75" class="connectorLabel">How can I add</text>
-   <text x="800" y="105" class="connectorLabel">value to data?</text>
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <g transform="translate(450,-20)"> <!-- Blue box -->
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Enrichment</text>
-  </g>
-</g>
-
-
-<g transform="translate(800,1750)">
-  <g id="BPsReuse" transform="translate(925,0)">
-    <text x="10" y="30" class="rightCol" id="ProvideFeedbackToPublisher">Provide Feedback to the Original Publisher</text>
-    <text x="10" y="60" class="rightCol" id="FollowLicensingTerms">Follow Licensing Terms</text>
-    <text x="10" y="90" class="rightCol" id="CiteOriginalPublication">Cite the Original Publication</text>
-    <path d="M 10,0 L -5,0 -5,110 10,110" stroke-width="2" stroke="black" fill="none"/>
-  </g>
-
-  <!-- Link -->
-  <g transform="translate(0,-30)">
-   <use xlink:href="#RColLeftConnector"/>
-   <text x="800" y="75" class="connectorLabel">How can I reuse</text>
-   <text x="800" y="105" class="connectorLabel">data responsibly?</text>
-
-    <use xlink:href="#RColRightConnector" />
-  </g>
-
-  <g transform="translate(450,-20)"> <!-- Blue box -->
-    <use xlink:href="#firstRect"/>
-    <text x="140" y="70" class="blueBoxText">Data Republication</text>
-  </g>
-</g>
-
-
-
-
-
-<!-- Central box -->
-<g transform="translate(950,850)">
-  <rect x="0" y="0" width="250" height="180" fill="#bbf" stroke="black" stroke-width="1" id="CentreRect" />  
-  <text x="125" y="84" class="centreBox">Data on the Web</text>
-  <text x="125" y="114" class="centreBox">Challenges</text>
-<!--<use xlink:href="#challengeToVert" />-->
-  <use xlink:href="#challengeToVert" transform="translate(310,0)" />
-</g>
-
-  <!-- Vertical connector here -->
-<!--  <use xlink:href="#verticalConnector" /> -->
-  <use xlink:href="#verticalConnector" transform="translate(370,0)" />
-
-
-
-
 </svg>
