@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="0 0 1000 380">
+     viewBox="0 0 400 301">
+
+  <title>Data on the Web Context</title>
+  <desc>A Data on the Web Publication follows the Web Architecture Principles and uses Vocabulary and Standards.
+    A Data on the Web Publication consists of a dataset, which contains metadata, and which has 1 to n distributions, 
+    each of which contain data values and metadata.</desc>
+
+  <style type="text/css">
+
+    text {
+      fill: black;
+      stroke: none;
+      font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+      font-family: Frutiger, Myriad, Arial, Helvetica, sans-serif;
+      text-anchor: middle;
+      font-weight: normal;
+    }
+
+      text[role=title] {
+        font-size: 25px;
+      }
+
+      #publication {
+      }
+
+        #publication > rect {
+          fill: rgb(222, 235, 247);
+          fill: rgb(224, 243, 248);
+          fill: rgb(247, 251, 255);
+          stroke: rgb(49, 54, 149);
+          stroke-width: 2px;
+        }
+
+      #dataset {
+        font-size: 25px;
+        fill: rgb(104, 155, 208);
+      }
+
+        #dataset .property {
+          fill: rgb(219, 227, 241);
+        }
+
+
+      .distribution {
+        font-size: 15px;
+        fill: rgb(177, 207, 149);
+      }
+
+        .distribution .property {
+          fill: rgb(228, 239, 219);
+       }
+
+      .box {
+        font-size: 19px;
+        text-transform: uppercase;
+      }
+
+      #webarch {
+        fill: rgb(242, 204, 177);
+      }
+
+      #vocab-standards {
+        fill: rgb(254, 227, 145);
+      }
+
+      text[role=heading] {
+        font-size: 1em;
+        text-transform: uppercase;
+        font-weight: bold;
+        fill: white;
+      }
+
+      .property text {
+        font-size: 1.1em;
+        text-transform: uppercase;
+        font-weight: normal;
+      }
+
+    #endArrow {
+      fill: rgb(49, 54, 149);
+      stroke: none;
+      stroke-width: 1px;
+      stroke-linejoin: round;
+    }
+
+    .connector text {
+      font-size: 22px;
+    }
+ 
+    .connector path {
+      fill: none;
+      stroke: rgb(49, 54, 149);
+      stroke-width: 3px;
+      marker-end: url(#endArrow);
+    }
+
+
+  
+  </style>
+  <defs>    
+    <marker id="endArrow" viewBox="-30 -15 40 60" markerUnits="strokeWidth"
+        refX="-4" refY="0" markerWidth="10" markerHeight="20" orient="auto"
+        class="process">
+      <path d="M-12,0 L-19,-9.5 L0,0 L-19,9.5 Z"/>
+    </marker>
+  </defs>
+
+  <g>
+    <g transform="translate(300,10)">
+      <g id="publication" transform="translate(0,0)">
+        <rect width="400" height="360" rx="5" ry="5"/>
+        <text role="title" x="200" y="32" tabindex="0">Data on the Web Publication</text>
+
+
+        <g id="dataset" transform="translate(50,50)" tabindex="0">
+          <rect width="300" height="120" rx="20" ry="20"/>
+          <text role="heading" x="150" y="40">Dataset</text>
+
+          <g class="property" transform="translate(25,60)">
+            <rect width="250" height="40"/>
+            <text x="125" y="30">Metadata</text>
+          </g>
+        </g>
+
+        <g class="connector" transform="translate(95,170)">
+          <path d="M0,0 V25 M0,43 V65"/>
+          <text x="0" y="40" tabindex="0" aria-flowto="distribution-1">has</text>
+        </g>
+        <g id="distribution-1" class="distribution" transform="translate(10,240)" tabindex="0">
+          <rect width="170" height="110" rx="15" ry="15"/>
+          <text role="heading" x="85" y="20">Distribution 1</text>
+
+          <g class="property" transform="translate(20,30)">
+            <rect width="130" height="30"/>
+            <text x="65" y="22">Data Values</text>
+          </g>
+          <g class="property" transform="translate(20,70)">
+            <rect width="130" height="30"/>
+            <text x="65" y="22">Metadata</text>
+          </g>
+        </g>
+
+        <g class="connector" transform="translate(200,295)">
+          <text x="0" y="0">…</text>
+        </g>
+
+        <g class="connector" transform="translate(305,170)">
+          <path d="M0,0 V25 M0,43 V65"/>
+          <text x="0" y="40" tabindex="0" aria-flowto="distribution-n">has</text>
+        </g>
+        <g id="distribution-n" class="distribution" transform="translate(220,240)" tabindex="0">
+          <rect width="170" height="110" rx="15" ry="15"/>
+          <text role="heading" x="85" y="20">Distribution n</text>
+
+          <g class="property" transform="translate(20,30)">
+            <rect width="130" height="30"/>
+            <text x="65" y="22">Data Values</text>
+          </g>
+          <g class="property" transform="translate(20,70)">
+            <rect width="130" height="30"/>
+            <text x="65" y="22">Metadata</text>
+          </g>
+        </g>
+
+      </g>
+    </g>
+
+    <g class="connector" transform="translate(300,190)">
+      <path d="M0,0 H-115"/>
+      <text x="-57.5" y="-10" tabindex="0" aria-flowto="webarch">follows</text>
+    </g>
+    <g id="webarch" class="box" transform="translate(10,135)" tabindex="0">
+      <rect width="170" height="110" rx="15" ry="15"/>
+      <text x="85" y="34">Web <tspan x="85" dy="1.5em">Architecture</tspan> <tspan x="85" dy="1.5em">Principles</tspan></text>
+    </g>
+
+    <g class="connector" transform="translate(700,190)">
+      <path d="M0,0 H115"/>
+      <text x="57.5" y="-10" tabindex="0" aria-flowto="vocab-standards">uses</text>
+    </g>
+    <g id="vocab-standards" class="box" transform="translate(820,135)" tabindex="0">
+      <rect width="170" height="110" rx="15" ry="15"/>
+      <text x="85" y="34">Vocabulary <tspan x="85" dy="1.5em">and</tspan> <tspan x="85" dy="1.5em">Standards</tspan></text>
+    </g>
+
+  </g>
+
+</svg>
