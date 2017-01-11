@@ -260,7 +260,7 @@
 
     <p>Depending on circumstances, sensitive information about individuals might include full name, home address, email address, national identification number, IP address, vehicle registration plate number, driver's license number, face, fingerprints, or handwriting, credit card numbers, digital identity, date of birth, birthplace, genetic information, telephone number, login name, screen name, nickname, health records etc. Although it is likely to be safe to share some of that information openly, and even more within a controlled environment, publishers should bear in mind that combining data from multiple sources may allow inadvertent identification of individuals.</p>
 
-    <p>A general Best Practice for publishing Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [<cite><a class="bibref" href="#bib-GTFS">GTFS</a></cite>] and the Service Interface for Real Time Information [<cite><a class="bibref" href="#bib-SIRI">SIRI</a></cite>]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. Another general Best Practice is to use Unicode for handling character and string data. Unicode improves multilingual text processing and makes easier software localization easier. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
+    <p>A general Best Practice for publishing Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [<cite><a class="bibref" href="#bib-GTFS">GTFS</a></cite>] and the Service Interface for Real Time Information [<cite><a class="bibref" href="#bib-SIRI">SIRI</a></cite>]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. Another general Best Practice is to use Unicode for handling character and string data. Unicode improves multilingual text processing and makes software localization easier. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
     <!--      <p>Taking that into account, this document sets out a series of Best Practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>-->
     <p>Best Practices cover different aspects related to data publishing and consumption, like data formats, data access, data identifiers and metadata. In order to delimit the scope and elicit the required features for Data on the Web Best Practices, the <abbr title="Data on the Web Best Practices">DWBP</abbr> working group compiled a set of use cases [<cite><a class="bibref" href="#bib-DWBP-UCR">DWBP-UCR</a></cite>] that represent scenarios of how data is commonly published on the Web and how it is used. The set of requirements derived from these use cases were used to guide the development of the Best Practices.</p>
     <p>The Best Practices proposed in this document are intended to serve a more general purpose than the practices suggested in, for example, Best Practices for Publishing Linked Data [<cite><a class="bibref" href="#bib-LD-BP">LD-BP</a></cite>] since <abbr title="Data on the Web Best Practices">DWBP</abbr> is domain-independent. Whilst <abbr title="Data on the Web Best Practices">DWBP</abbr> recommends the use of Linked Data, it also promotes best practices for data on the Web in other open formats such as CSV. Methods for sharing tabular data, including CSV files, in a way that maximizes the potential of the Web to make links between data points, are described in the Tabular Data Primer [<cite><a class="bibref" href="#bib-Tabular-Data-Primer">Tabular-Data-Primer</a></cite>].
@@ -320,54 +320,67 @@
         <tr>
           <th>Prefix</th>
           <th>Namespace IRI</th>
+          <th>Description</th>
         </tr>
         <tr>
           <td>dcat</td>
-          <td>https://www.w3.org/ns/dcat#</td>
+          <td>http://www.w3.org/ns/dcat#</td>
+          <td><a href="#bib-VOCAB-DCAT">Data Catalog Vocabulary (DCAT)</a></td>
         </tr>
-        <tr>
+         <tr>
           <td>dct</td>
           <td>http://purl.org/dc/terms/</td>
+          <td><a href="#bib-DCTERMS">Dublin Core Metadata Initiative (DCMI) Metadata Terms</a></td>
         </tr>
         <tr>
           <td>dqv</td>
-          <td>https://www.w3.org/ns/dqv#</td>
+          <td>http://www.w3.org/ns/dqv#</td>
+          <td><a href="#bib-VOCAB-DQV">DWBP Data Quality Vocabulary (DQV)</a></td>
         </tr>
         <tr>
           <td>duv</td>
-          <td>https://www.w3.org/ns/duv#</td>
+          <td>http://www.w3.org/ns/duv#</td>
+          <td><a href="#bib-VOCAB-DUV">DWBP Dataset Usage Vocabulary (DUV)</a></td>
         </tr>
         <tr>
           <td>foaf</td>
           <td>http://xmlns.com/foaf/0.1/</td>
+          <td><a href="#bib-FOAF">Friend of a Friend (FOAF) Vocabulary</a></td>
         </tr>
         <tr>
           <td>oa</td>
-          <td>https://www.w3.org/ns/oa#</td>
+          <td>http://www.w3.org/ns/oa#</td>
+          <td><a href="#bib-Annotation-Model">Web Annotation Ontology</a></td>
         </tr>
         <tr>
           <td>owl</td>
-          <td>https://www.w3.org/2002/07/owl#</td>
+          <td>http://www.w3.org/2002/07/owl#</td>
+          <td><a href="#bib-OWL2-OVERVIEW">Web Ontology Language (OWL)</a></td>
         </tr>
         <tr>
           <td>pav</td>
           <td>http://pav-ontology.github.io/pav/</td>
+          <td><a href="#bib-PAV">Provenance, Authoring and Versioning (PAV)</a></td>
         </tr>
         <tr>
           <td>prov</td>
-          <td>https://www.w3.org/ns/prov#</td>
+          <td>http://www.w3.org/ns/prov#</td>
+          <td><a href="#bib-PROV-O">Provenance Ontology (PROV)</a></td>
         </tr>
-        <tr>
+         <tr>
           <td>rdf</td>
-          <td>https://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+          <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+          <td>Resource Description Framework (RDF)</td>
         </tr>
         <tr>
           <td>rdfs</td>
-          <td>https://www.w3.org/2000/01/rdf-schema#</td>
+          <td>http://www.w3.org/2000/01/rdf-schema#</td>
+          <td><a href="#bib-RDF-SCHEMA">RDF Schema vocabulary (RDFS)</a></td>
         </tr>
         <tr>
           <td>skos</td>
-          <td>https://www.w3.org/2004/02/skos/core#</td>
+          <td>http://www.w3.org/2004/02/skos/core#</td>
+          <td><a href="#bib-SKOS-PRIMER">Simple Knowledge Organization System (SKOS)</a></td>
         </tr>
       </tbody>
     </table>
@@ -496,7 +509,7 @@
     <section id="basicExample" typeof="bibo:Chapter" resource="#basicExample" property="bibo:hasPart">
       <h3 id="h-basicexample" resource="#h-basicexample"><span property="xhv:role" resource="xhv:heading"><span class="secno">8.1 </span>Running Example</span>
       </h3>
-      <div class="example" style="counter-increment:none">John works for the Transport Agency of MyCity and is in charge of publishing data about public transport. John wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
+      <div class="example" style="counter-increment:none">Adrian works for the Transport Agency of MyCity and is in charge of publishing data about public transport. Adrian wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
       <p>RDF examples of the application of some Best Practices are shown using Turtle [<cite><a class="bibref" href="#bib-Turtle">Turtle</a></cite>] or JSON-LD [<cite><a class="bibref" href="#bib-JSON-LD">JSON-LD</a></cite>].</p>
     </section>
 
@@ -614,8 +627,8 @@
           <aside class="example">
             <div class="example-title marker"><span>Example 2</span></div>
             <h4 class="subhead" id="machine-readable-1">Machine-readable</h4>
-            <p>The example below shows how to use [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>] to provide the machine-readable <strong> discovery </strong> metadata for the bus stops dataset (<code>stops-2015-05-05</code>). The dataset has one CSV distribution (<code>stops-2015-05-05.csv</code>) that is also described using the [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>]. The dataset is classified under the domain represented by the relative URI <code>mobility</code>. This domain may be defined as part of a set of domains identified by the URI <code>themes</code>. To describe both concepts and schema concepts, John used <a href="https://www.w3.org/TR/skos-primer/">SKOS </a>. To express frequency of update an instance from the <a href="https://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
-                  Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary efforts was used. John chose to describe the spatial and temporal coverage of the example dataset using URIs from <a href="http://www.geonames.org/">Geonames</a> and the <a href="http://reference.data.gov.uk/id/interval">Interval
+            <p>The example below shows how to use [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>] to provide the machine-readable <strong> discovery </strong> metadata for the bus stops dataset (<code>stops-2015-05-05</code>). The dataset has one CSV distribution (<code>stops-2015-05-05.csv</code>) that is also described using the [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>]. The dataset is classified under the domain represented by the relative URI <code>mobility</code>. This domain may be defined as part of a set of domains identified by the URI <code>themes</code>. To describe both concepts and schema concepts, Adrian used <a href="https://www.w3.org/TR/skos-primer/">SKOS </a>. To express frequency of update an instance from the <a href="https://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
+                  Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr> Data Cube Vocabulary efforts was used. Adrian chose to describe the spatial and temporal coverage of the example dataset using URIs from <a href="http://www.geonames.org/">Geonames</a> and the <a href="http://reference.data.gov.uk/id/interval">Interval
                   dataset</a> from data.gov.uk, respectively.</p>
             <pre class="highlight hljs javascript">  :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05</span>
       a dcat:Dataset ;
@@ -713,7 +726,7 @@
           <aside class="example">
             <div class="example-title marker"><span>Example 3</span></div>
             <h4 class="subhead" id="machine-readable-2">Machine-readable</h4>
-            <p> John used the <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/">Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution.</p>
+            <p> Adrian used the <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/">Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution.</p>
             <pre class="highlight hljs xquery">{
   <span class="hljs-string">"@context"</span>: [<span class="hljs-string">"https://www.w3.org/ns/csvw"</span>, {
     <span class="hljs-string">"@language"</span>: <span class="hljs-string">"en"</span>
@@ -826,7 +839,7 @@
 
         <section class="description" typeof="bibo:Chapter" resource="#intended-outcome-4" property="bibo:hasPart">
           <h4 class="subhead" id="intended-outcome-4" resource="#intended-outcome-4"><span property="xhv:role" resource="xhv:heading">Intended Outcome</span></h4>
-          <p>Humans will be able to understand data license information describing possible restrictions placed on the use of a given distribution and software agents to automatically detect the data license of a distribution.</p>
+          <p>Humans will be able to understand data license information describing possible restrictions placed on the use of a given distribution, and software agents will be able to automatically detect the data license of a distribution.</p>
         </section>
 
         <section class="how" typeof="bibo:Chapter" resource="#possible-approach-to-implementation-4" property="bibo:hasPart">
@@ -866,7 +879,7 @@
         <section class="test" typeof="bibo:Chapter" resource="#how-to-test-4" property="bibo:hasPart">
           <h4 class="subhead" id="how-to-test-4" resource="#how-to-test-4"><span property="xhv:role" resource="xhv:heading">How to Test</span></h4>
           <p>Check if the metadata for the dataset itself includes the data license information in a human-readable format.</p>
-          <p>Check if a user agent can automatically detect /discover the data license of the dataset.</p>
+          <p>Check if a user agent can automatically detect or discover the data license of the dataset.</p>
         </section>
 
         <section class="ucr" typeof="bibo:Chapter" resource="#evidence-4" property="bibo:hasPart">
@@ -918,7 +931,7 @@
             <div class="example-title marker"><span>Example 5</span></div>
             <h4 class="subhead" id="machine-readable-4">Machine-readable</h4>
             <p> The example below shows the machine-readable metadata for the bus stops dataset with the inclusion of the
-              <strong>provenance</strong> metadata. The properties <code>dct:creator</code>, <code> dct:publisher</code> and <code>dct:issued </code> are used to give information about the origin of the dataset. The property <code> prov:actedOnBehalfOf </code> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
+              <strong>provenance</strong> metadata. The properties <code>dct:creator</code>, <code> dct:publisher</code> and <code>dct:issued </code> are used to give information about the origin of the dataset. The property <code> prov:actedOnBehalfOf </code> is used to designate that Adrian acted on behalf of the Transport Agency of MyCity.</p>
             <pre class="highlight hljs javascript">  :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05</span>
       a dcat:Dataset, <strong><span class="hljs-attr">prov</span>:Entity</strong> ;
       dct:title <span class="hljs-string">"Bus stops of MyCity"</span> ;
@@ -930,13 +943,13 @@
       <strong>dct:publisher :transport-agency-mycity ; </strong>
       dct:accrualPeriodicity &lt;http:<span class="hljs-comment">//purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;</span>
       dct:language &lt;http:<span class="hljs-comment">//id.loc.gov/vocabulary/iso639-1/en&gt; ;</span>
-      <strong>dct:creator :john </strong>
+      <strong>dct:creator :adrian </strong>
       .
 
-  :john
+  :adrian
       a foaf:Person, <span class="hljs-attr">prov</span>:Agent ;
-      foaf:givenName <span class="hljs-string">"John"</span> ;
-      foaf:mbox &lt;mailto:john@mycitytransport.org&gt; ;
+      foaf:givenName <span class="hljs-string">"Adrian"</span> ;
+      foaf:mbox &lt;mailto:adrian@mycitytransport.org&gt; ;
       <strong>prov:actedOnBehalfOf :transport-agency-mycity </strong>
       .
   :transport-agency-mycity
@@ -1140,7 +1153,7 @@
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http:<span class="hljs-comment">//purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;</span>
       dct:language &lt;http:<span class="hljs-comment">//id.loc.gov/vocabulary/iso639-1/en&gt; ;</span>
-      dct:creator :john ;
+      dct:creator :adrian ;
       <strong>owl:versionInfo <span class="hljs-string">"1.0"</span> ; </strong>
       <strong>pav:version <span class="hljs-string">"1.0"</span> </strong>
       .
@@ -1247,7 +1260,7 @@ rel=<span class="hljs-string">"original"</span> </pre>
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http:<span class="hljs-comment">//purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;</span>
       dct:language &lt;http:<span class="hljs-comment">//id.loc.gov/vocabulary/iso639-1/en&gt; ;</span>
-      dct:creator :john ;
+      dct:creator :adrian ;
        ...
       <strong>dct:isVersionOf :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05</span> ;
       pav:previousVersion :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05</span> ;
@@ -1380,11 +1393,11 @@ rel=“next last memento";
             <div class="example-title marker"><span>Example 9</span></div>
             <p>The URI <code>http://data.mycity.example.com/transport/dataset/bus/stops</code> has several features that support persistence:</p>
             <ul>
-              <li>All names are subject to change over time but in choosing a domain name, it is reasonable for John to assume that MyCity will continue to exist and that it will continue to have a government. Therefore, while cases like Yugoslavia prove that even country names change and top level domains disappear (like .yu), a domain name based on the city's name is as persistent as any domain name can be.</li>
-              <li>By putting data on the <code>data.mycity.example.com</code> subdomain, John is creating a specific domain that can be managed independently of any particular department.</li>
+              <li>All names are subject to change over time but in choosing a domain name, it is reasonable for Adrian to assume that MyCity will continue to exist and that it will continue to have a government. Therefore, while cases like Yugoslavia prove that even country names change and top level domains disappear (like .yu), a domain name based on the city's name is as persistent as any domain name can be.</li>
+              <li>By putting data on the <code>data.mycity.example.com</code> subdomain, Adrian is creating a specific domain that can be managed independently of any particular department.</li>
               <li>It is <em>not</em> safe to assume that a specific <em>department</em> will persist. The authorities in MyCity might very well decide that the Transport Agency should be merged with another to create the Transport and Environment Agency. It is right, therefore, not to include the name of the Transport Agency in the URI, but to include the task from which the data comes, in this case that of providing public transport.</li>
               <li>The <code>/dataset</code> path segment is an indication that the URI identifies a dataset, rather than, say, a specific bus route.</li>
-              <li>Likewise, the path segment of <code>/bus</code> take us further towards the specific dataset for which John is responsible.
+              <li>Likewise, the path segment of <code>/bus</code> take us further towards the specific dataset for which Adrian is responsible.
               </li>
               <li>Finally, <code>/stops</code> leads us to the dataset concerning bus stops in MyCity.</li>
               <li>In DCAT terms, this would be the identifier for the dataset. Specific distributions of the dataset are likely to be identified by adding the relevant file extension to the URI, such as <code>http://data.mycity.example.com/transport/dataset/bus/stops.csv</code>,
@@ -1571,7 +1584,7 @@ rel=“next last memento";
         <section class="axioms" typeof="bibo:Chapter" resource="#why-12" property="bibo:hasPart">
           <h4 class="subhead" id="why-12" resource="#why-12"><span property="xhv:role" resource="xhv:heading">Why</span></h4>
           <p>As data becomes more ubiquitous, and datasets become larger and more complex, processing by computers becomes ever more crucial. Posting data in a format that is not <a href="#machine_readable">machine-readable</a> places severe limitations on the continuing usefulness of the data. Data becomes useful when it has been processed and transformed into information. Note that there is an important distinction between formats that can be read and edited by humans using a computer and formats that are machine-readable. The latter term implies that the data is readily extracted, transformed and processed by a computer. </p>
-          <p>Using non-standard data formats is costly and inefficient, and the data may lose meaning as it is transformed. On the other hand, standardized data formats enable interoperability as well as future uses, such as remixing or visualization, many of which cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale-neutral.</p>
+          <p>Using non-standard data formats is costly and inefficient, and the data may lose meaning as it is transformed. By contrast, standardized data formats enable interoperability as well as future uses, such as remixing or visualization, many of which cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale-neutral.</p>
         </section>
 
         <section class="outcome" typeof="bibo:Chapter" resource="#intended-outcome-12" property="bibo:hasPart">
@@ -1581,11 +1594,11 @@ rel=“next last memento";
 
         <section class="how" typeof="bibo:Chapter" resource="#possible-approach-to-implementation-12" property="bibo:hasPart">
           <h4 class="subhead" id="possible-approach-to-implementation-12" resource="#possible-approach-to-implementation-12"><span property="xhv:role" resource="xhv:heading">Possible Approach to Implementation</span></h4>
-          <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, Turtle.</p>
+          <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, or Turtle.</p>
           <aside class="example">
             <div class="example-title marker"><span>Example 12</span></div>
 
-            <p>John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/"> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
+            <p>Adrian knows that tabular data is commonly used on the Web and decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, Adrian uses the <a href="https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/"> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
 
             <pre class="hljs javascript">Identifier,Name,Description,Latitude,Longitude,ZONE,URL
 <span class="hljs-number">345</span>,Castle Avenue,Sunset Drive,<span class="hljs-number">-3.731862</span>,<span class="hljs-number">-38.526670</span>,x20,<span class="hljs-attr">http</span>:<span class="hljs-comment">//data.mycity.example.com/transport/road/bus/stop/id/345</span>
@@ -1727,7 +1740,7 @@ rel=“next last memento";
           <aside class="example">
             <div class="example-title marker"><span>Example 14</span></div>
 
-            <p>In order to reach a larger number of data consumers, John decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
+            <p>In order to reach a larger number of data consumers, Adrian decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
             <pre class="highlight hljs javascript">  :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05</span>
       a dcat:Dataset ;
       dcat:distribution :stops<span class="hljs-number">-2015</span><span class="hljs-number">-05</span><span class="hljs-number">-05.</span>csv ;
@@ -1806,7 +1819,7 @@ rel=“next last memento";
           <p>The <a href="https://www.w3.org/TR/ld-bp/#VOCABULARIES">Vocabularies</a> section of the <abbr title="World Wide Web Consortium">W3C</abbr> Best Practices for Publishing Linked Data [<cite><a class="bibref" href="#bib-LD-BP">LD-BP</a></cite>] provides guidance on the discovery, evaluation and selection of existing vocabularies.</p>
           <p>Organizations such as the Open Geospatial Consortium (OGC),
             <abbr title="International Standards Organization">ISO</abbr>, <abbr title="World Wide Web Consortium">W3C</abbr>,
-            <abbr title="World Meteorological Organization">WMO</abbr>, libraries and research data services, etc. provide lists of codes, terminologies and Linked Data vocabularies that can be used by everyone. A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized vocabulary resources is an efficient way to do this, noting that the same URI may have multilingual labels attached for greater cross-border interoperability. The European Union's multilingual thesaurus, <a href="http://eurovoc.europa.eu/">Eurovoc</a> provides a prime example.</p>
+            <abbr title="World Meteorological Organization">WMO</abbr>, libraries and research data services, etc. provide lists of codes, terminologies and Linked Data vocabularies that can be used by everyone. A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized vocabulary resources is an efficient way to do this, noting that the same URI may have multilingual labels attached for greater cross-border interoperability. The European Union's multilingual thesaurus, <a href="http://eurovoc.europa.eu/">Eurovoc</a>, provides a prime example.</p>
           <aside class="example">
             <div class="example-title marker"><span>Example 15</span></div>
             <ol>
@@ -1900,10 +1913,10 @@ rel=“next last memento";
 
           <aside class="example">
             <div class="example-title marker"><span>Example 16</span></div>
-            <p>John encodes the bus stop data using GTFS [<cite><a class="bibref" href="#bib-GTFS">GTFS</a></cite>] because:</p>
+            <p>Adrian encodes the bus stop data using GTFS [<cite><a class="bibref" href="#bib-GTFS">GTFS</a></cite>] because:</p>
             <ul>
               <li>it is in widespread use;</li>
-              <li>it offers a level of detail that matches his data;</li>
+              <li>it offers a level of detail that matches their data;</li>
               <li>a motivation for publishing bus stop data is to support the development of applications to help bus users and GTFS is designed for just that purpose.</li>
             </ul>
           </aside>
@@ -2067,7 +2080,7 @@ rel=“next last memento";
 
         <section class="axioms" typeof="bibo:Chapter" resource="#why-19" property="bibo:hasPart">
           <h4 class="subhead" id="why-19" resource="#why-19"><span property="xhv:role" resource="xhv:heading">Why</span></h4>
-          <p>It is possible to serve data in an HTML page mixed with human-readable and machine-readable data, using RDFa for example. However, as the Architecture of the Web [<cite><a class="bibref" href="#bib-WEBARCH">WEBARCH</a></cite>] and DCAT [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>] make clear, a resource, such as a dataset, can have many representations. The same data might be available as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via and <abbr title="Application Programming Interfaces">API</abbr> but should be made available from <em>the same</em> URL using <a href="/DesignIssues/Conneg">content negotiation</a> to return the appropriate representation (what DCAT calls a distribution). Specific URIs can be used to identify individual representations of the data directly, by-passing content negotiation.</p>
+          <p>It is possible to serve data in an HTML page mixed with human-readable and machine-readable data, using RDFa for example. However, as the Architecture of the Web [<cite><a class="bibref" href="#bib-WEBARCH">WEBARCH</a></cite>] and DCAT [<cite><a class="bibref" href="#bib-VOCAB-DCAT">VOCAB-DCAT</a></cite>] make clear, a resource, such as a dataset, can have many representations. The same data might be available as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via an <abbr title="Application Programming Interfaces">API</abbr>, but should be made available from <em>the same</em> URL using <a href="/DesignIssues/Conneg">content negotiation</a> to return the appropriate representation (what DCAT calls a distribution). Specific URIs can be used to identify individual representations of the data directly, by-passing content negotiation.</p>
         </section>
 
         <section class="outcome" typeof="bibo:Chapter" resource="#intended-outcome-19" property="bibo:hasPart">
@@ -2327,7 +2340,7 @@ rel=“next last memento";
             <p>Rails (Ruby), Django (Python), and Express (NodeJS) are some example Web development frameworks that offer support for building APIs. Examples of <abbr title="Application Programming Interfaces">API</abbr> frameworks include Swagger, Apigility, Restify, and Restlet. </p>
             <aside class="example">
               <div class="example-title marker"><span>Example 23</span></div>
-              <p>Besides providing bulk downloads of data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an <abbr title="Application Programming Interfaces">API</abbr> to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
+              <p>Besides providing bulk downloads of data about public transport, Adrian decides to offer a more flexible data access mechanism. For this, Adrian develops an <abbr title="Application Programming Interfaces">API</abbr> to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
             </aside>
           </section>
 
@@ -2590,7 +2603,7 @@ rel=“next last memento";
 
           <aside class="example" id="archiveExample">
             <div class="example-title marker"><span>Example 27</span></div>
-            <p>John decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
+            <p>Adrian decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
 
             <div style="border:thin solid black; padding:0 0.3em; font-family:serif">
               <h4 style="margin-top:0.3em" id="archived">Archived</h4>
@@ -2655,7 +2668,7 @@ rel=“next last memento";
       gtfs:longName <span class="hljs-string">"Airport - Bullfrog"</span> ;
       gtfs:agency &lt;http:<span class="hljs-comment">//data.mycity.example.com/transport-agency/DTA&gt; ;</span>
       gtfs:routeType ex:three ;
-      ex:usualVehicleType dbpedia:Roumaster ;
+      ex:usualVehicleType dbpedia:Routemaster ;
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
@@ -2682,7 +2695,7 @@ rel=“next last memento";
       gtfs:longName "Airport - Bullfrog" ;
       gtfs:agency <span class="hljs-tag">&lt;<span class="hljs-name">http:</span>//<span class="hljs-attr">data.mycity.example.com</span>/<span class="hljs-attr">transport-agency</span>/<span class="hljs-attr">DTA</span>&gt;</span> ;
       gtfs:routeType ex:three ;
-      ex:usualVehicleType dbpedia:Roumaster ;
+      ex:usualVehicleType dbpedia:Routemaster ;
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
@@ -3246,12 +3259,12 @@ rel=“next last memento";
       </dd>
       <dt><dfn id="locale_parameter" data-dfn-type="dfn">Locale</dfn></dt>
       <dd>
-        <p>A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior</p>
+        <p>A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior.</p>
         <p>From <a href="https://www.w3.org/TR/ltli/#locale">Language Tags and Locale Identifiers for the World Wide Web</a> [<cite><a class="bibref" href="#bib-LTLI">LTLI</a></cite>].</p>
       </dd>
       <dt><dfn id="machine_readable" data-dfn-type="dfn">Machine-readable data</dfn></dt>
       <dd>
-        <p>Machine-readable data is data in a standard format that can be read and processed automatically by a computing system. Traditional word processing documents and portable document format (PDF) files are easily read by humans but typically are difficult for machines to interpret and manipulate. Formats such as XML, JSON, HDF5, RDF and CSV are machine-readable data formats
+        <p>Machine-readable data is data in a standard format that can be read and processed automatically by a computing system. Traditional word processing documents and portable document format (PDF) files are easily read by humans but typically are difficult for machines to interpret and manipulate. Formats such as XML, JSON, HDF5, RDF and CSV are machine-readable data formats.
         </p>
         <p>Adapted from <a href="https://en.wikipedia.org/wiki/Machine-readable_data">Wikipedia</a>.</p>
       </dd>
@@ -3277,7 +3290,7 @@ rel=“next last memento";
       </dd>
       <dt><dfn id="vocabulary" data-dfn-type="dfn">Vocabulary</dfn></dt>
       <dd>
-        <p>Vocabulary is A collection of "terms" for a particular purpose. Vocabularies can range from simple such as the widely used RDF Schema [<cite><a class="bibref" href="#bib-RDF-SCHEMA">RDF-SCHEMA</a></cite>], FOAF [<cite><a class="bibref" href="#bib-FOAF">FOAF</a></cite>] and Dublin Core [<cite><a class="bibref" href="#bib-DCTERMS">DCTERMS</a></cite>] to complex vocabularies with thousands of terms, such as those used in healthcare to describe symptoms, diseases and treatments. Vocabularies play a very important role in Linked Data, specifically to help with data integration. The use of this term overlaps with Ontology.</p>
+        <p>A vocabulary is a collection of "terms" for a particular purpose. Vocabularies can range from simple such as the widely used RDF Schema [<cite><a class="bibref" href="#bib-RDF-SCHEMA">RDF-SCHEMA</a></cite>], FOAF [<cite><a class="bibref" href="#bib-FOAF">FOAF</a></cite>] and Dublin Core [<cite><a class="bibref" href="#bib-DCTERMS">DCTERMS</a></cite>] to complex vocabularies with thousands of terms, such as those used in healthcare to describe symptoms, diseases and treatments. Vocabularies play a very important role in Linked Data, specifically to help with data integration. The use of this term overlaps with Ontology.</p>
         <p>From: <a href="https://www.w3.org/TR/ld-glossary/#vocabulary">Linked Data Glossary</a> </p>
       </dd>
     </dl>
