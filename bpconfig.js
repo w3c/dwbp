@@ -47,6 +47,9 @@ var respecConfig = {
         value: "Deirdre Lee"
       },
       {
+        value: "Doug Schepers"
+      },
+      {
         value: "Eric G. Stephan"
       },
       {
