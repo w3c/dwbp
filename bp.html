@@ -650,7 +650,7 @@ table.bptable caption {
 
 <p>Depending on circumstances, sensitive information about individuals might include full name, home address, email address, national identification number, IP address, vehicle registration plate number, driver's license number, face, fingerprints, or handwriting, credit card numbers, digital identity, date of birth, birthplace, genetic information, telephone number, login name, screen name, nickname, health records etc. Although it is likely to be safe to share some of that information openly, and even more within a controlled environment, publishers should bear in mind that combining data from multiple sources may allow inadvertent identification of individuals.</p>
 
-      <p>A general Best Practice for publishing Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. Another general Best Practice is to use Unicode for handling character and string data. Unicode improves multilingual text processing and makes easier software localization easier. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
+      <p>A general Best Practice for publishing Data on the Web is to use standards. Different types of organizations specify standards that are specific to the publishing of datasets related to particular domains &amp; applications, involving communities of users interested in that data. These standards define a common way of communicating information among the users of these communities. For example, there are two standards that can be used to publish transport timetables: the General Transit Feed Specification [[GTFS]] and the Service Interface for Real Time Information [[SIRI]]. These specify, in a mixed way, standardized terms, standardized data formats and standardized data access. Another general Best Practice is to use Unicode for handling character and string data. Unicode improves multilingual text processing and makes software localization easier. The Best Practices set out in this document serve a general purpose of publishing and using Data on the Web and are domain &amp; application independent. They can be extended or complemented by other Best Practices documents or standards that cover more specialized contexts.</p>
 <!--      <p>Taking that into account, this document sets out a series of Best Practices that will help publishers and consumers face the new challenges and opportunities posed by data on the Web. They intend to serve a general purpose of publishing and using Data on the Web, but they may be specialized according to specific domains, such as Spatial Data on the Web Best Practices [[SDW-BP]].</p>-->
       <p>Best Practices cover different aspects related to data publishing and
         consumption, like data formats, data access, data identifiers and
@@ -1213,7 +1213,7 @@ The dataset is classified under
           </section>
           <section class="description">
             <h4 class="subhead">Intended Outcome</h4>
-            <p>Humans will be able to understand data license information describing possible restrictions placed on the use of a given distribution and software agents to automatically detect the data license of a distribution.</p>
+            <p>Humans will be able to understand data license information describing possible restrictions placed on the use of a given distribution, and software agents will be able to automatically detect the data license of a distribution.</p>
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
@@ -1253,7 +1253,7 @@ The dataset is classified under
           <section class="test">
             <h4 class="subhead">How to Test</h4>
             <p>Check if the metadata for the dataset itself includes the data license information in a human-readable format.</p>
-            <p>Check if a user agent can automatically detect /discover the data license of the dataset.</p>
+            <p>Check if a user agent can automatically detect or discover the data license of the dataset.</p>
           </section>
           <section class="ucr">
               <h4 class="subhead">Evidence</h4>
@@ -2106,7 +2106,7 @@ rel=“next last memento";
               becomes useful when it has been processed and transformed into
               information. Note that there is an important distinction between formats that can be read and edited by humans using a computer and formats that are machine-readable. The latter term implies that the data is readily extracted, transformed and processed by a computer. </p>
             <p>Using non-standard data formats is costly and inefficient, and
-              the data may lose meaning as it is transformed. On the other hand,
+              the data may lose meaning as it is transformed. By contrast,
               standardized data formats enable interoperability as well as
               future uses, such as remixing or visualization, many of which
               cannot be anticipated when the data is first published. It is also important to note that most machine-readable standardized formats are also locale-neutral.</p>
@@ -2117,7 +2117,7 @@ rel=“next last memento";
           </section>
           <section class="how">
             <h4 class="subhead">Possible Approach to Implementation</h4>
-            <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, Turtle.</p>
+            <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, or Turtle.</p>
 <aside class="example">
 
 <p>John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
@@ -2360,7 +2360,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             provide lists of codes, terminologies and Linked Data vocabularies that can be used by everyone.
             A key point is to make sure the dataset, or its documentation, provides enough (human- and machine-readable) context
               so that data consumers can retrieve and exploit the standardized meaning of the values. In the context of the Web, using unambiguous, Web-based identifiers (URIs) for standardized vocabulary resources
-              is an efficient way to do this, noting that the same URI may have multilingual labels attached for greater cross-border interoperability. The European Union's multilingual thesaurus, <a href="http://eurovoc.europa.eu/">Eurovoc</a> provides a prime example.</p>
+              is an efficient way to do this, noting that the same URI may have multilingual labels attached for greater cross-border interoperability. The European Union's multilingual thesaurus, <a href="http://eurovoc.europa.eu/">Eurovoc</a>, provides a prime example.</p>
             <aside class="example"><ol>
               <li>The DCAT vocabulary expresses metadata concerning datasets [[VOCAB-DCAT]] and
               re-uses elements from several pre-existing vocabularies: Dublin Core, FOAF, SKOS and vCard.
@@ -2622,10 +2622,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             human-readable and machine-readable data, using RDFa for example. 
             However, as the Architecture of the Web [[WEBARCH]] and DCAT [[VOCAB-DCAT]] make clear,
             a resource, such as a dataset, can have many representations. The same data might be available
-            as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via and API but should be made available
-            from <em>the same</em> URL using <a href="/DesignIssues/Conneg">content negotiation</a> to return the appropriate representation (what
-            DCAT calls a distribution). Specific URIs can be used to identify individual representations of the data directly, by-passing
-            content negotiation.</p>
+            as JSON, XML, RDF, CSV and HTML. These multiple representations can be made available via an <abbr title="Application Programming Interface">API</abbr>, but should be made available from <em>the same</em> URL using <a href="/DesignIssues/Conneg">content negotiation</a> to return the appropriate representation (what DCAT calls a distribution). Specific URIs can be used to identify individual representations of the data directly, by-passing content negotiation.</p>
         </section>
         <section class="outcome">
           <h4 class="subhead">Intended Outcome</h4>
@@ -3149,7 +3146,7 @@ In order to help developers, the transport agency offers a complete documentatio
       gtfs:longName "Airport - Bullfrog" ;
       gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
       gtfs:routeType ex:three ;
-      ex:usualVehicleType dbpedia:Roumaster ;
+      ex:usualVehicleType dbpedia:Routemaster ;
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
@@ -3194,7 +3191,7 @@ In order to help developers, the transport agency offers a complete documentatio
       gtfs:longName "Airport - Bullfrog" ;
       gtfs:agency &lt;http://data.mycity.example.com/transport-agency/DTA&gt; ;
       gtfs:routeType ex:three ;
-      ex:usualVehicleType dbpedia:Roumaster ;
+      ex:usualVehicleType dbpedia:Routemaster ;
       foaf:isPrimaryTopicOf ex:Airport_Bullfrog
       .
 
@@ -3736,7 +3733,8 @@ In order to help developers, the transport agency offers a complete documentatio
         </dd>
         <dt><dfn id="locale_parameter">Locale</dfn></dt>
         <dd>
-          <p>A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior</p> <p>From <a href="https://www.w3.org/TR/ltli/#locale">Language Tags and Locale Identifiers for the World Wide Web</a> [[LTLI]].</p>
+          <p>A collection of international preferences, generally related to a language and geographic region that a (certain category) of users require. These are usually identified by a shorthand identifier or token, such as a language tag, that is passed from the environment to various processes to get culturally affected behavior.</p> 
+          <p>From <a href="https://www.w3.org/TR/ltli/#locale">Language Tags and Locale Identifiers for the World Wide Web</a> [[LTLI]].</p>
         </dd>
         <dt><dfn id="machine_readable">Machine-readable data</dfn></dt>
         <dd>
@@ -3775,7 +3773,7 @@ In order to help developers, the transport agency offers a complete documentatio
         </dd>
         <dt><dfn id="vocabulary">Vocabulary</dfn></dt>
         <dd>
-          <p>Vocabulary is A collection of "terms" for a particular purpose.
+          <p>A vocabulary is a collection of "terms" for a particular purpose.
             Vocabularies can range from simple such as the widely used RDF
               Schema [[RDF-SCHEMA]], FOAF [[FOAF]] and Dublin
               Core [[DCTERMS]] to complex vocabularies with
