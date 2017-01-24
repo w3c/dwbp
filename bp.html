@@ -868,7 +868,7 @@ table.bptable caption {
       <p>Each BP is related to one or more requirements from the Data on the Web Best Practices Use Cases &amp; Requirements document [[DWBP-UCR]] which guided their development. Each Best Practice has at least one of these requirements as evidence of its relevance.</p>
       <section id="basicExample">
         <h3>Running Example</h3>
-          <div class="example" style="counter-increment:none">John works for the Transport Agency of MyCity and is in charge of publishing data about public transport. John wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
+          <div class="example" style="counter-increment:none">Adrian works for the Transport Agency of MyCity and is in charge of publishing data about public transport. Adrian wants to publish this data for different types of data consumers such as developers interested on creating applications and also for software agents. It is important that both humans and software agents can easily understand and process the data which should be kept up to date and be easily discoverable on the Web. </div>
           <p>RDF examples of the application of some Best Practices are shown using Turtle [[Turtle]] or JSON-LD [[JSON-LD]].</p>
       </section>
       
@@ -1020,10 +1020,10 @@ The dataset is classified under
                 domain may be defined as part of a set of domains identified by
                 the URI <code>themes</code>. 
                   To describe both concepts and schema
-                concepts, John used <a href="https://www.w3.org/TR/skos-primer/">SKOS </a>.
+                concepts, Adrian used <a href="https://www.w3.org/TR/skos-primer/">SKOS </a>.
                 To express frequency of update an instance from the <a href="https://www.w3.org/TR/vocab-data-cube/#dsd-cog">Content-Oriented
                   Guidelines</a> developed as part of the <abbr title="World Wide Web Consortium">W3C</abbr>
-                Data Cube Vocabulary efforts was used. John chose to describe
+                Data Cube Vocabulary efforts was used. Adrian chose to describe
                 the spatial and temporal coverage of the example dataset using
                 URIs from <a href="http://www.geonames.org/">Geonames</a> and the <a
                   href="http://reference.data.gov.uk/id/interval">Interval
@@ -1118,7 +1118,7 @@ The dataset is classified under
             </ul>
             <aside class="example">
               <h5 class="subhead">Machine-readable</h5>
-              <p> John used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/>Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution.</p>
+              <p> Adrian used the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/>Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution of the bus stops dataset (<code>stops-2015-05-05.csv</code>). The example below presents the structural metadata for this distribution.</p>
               <pre class="highlight">{
 	"@context": ["https://www.w3.org/ns/csvw", {
 		"@language": "en"
@@ -1319,7 +1319,7 @@ The dataset is classified under
               <h5 class="subhead">Machine-readable</h5>
               <p> The example below shows the machine-readable metadata for the
                 bus stops dataset with the inclusion of the
-                <strong>provenance</strong> metadata. The properties <code>dct:creator</code>, <code> dct:publisher</code> and <code>dct:issued </code> are used to give information about the origin of the dataset. The property <code> prov:actedOnBehalfOf </code> is used to designate that John acted on behalf of the Transport Agency of MyCity.</p>
+                <strong>provenance</strong> metadata. The properties <code>dct:creator</code>, <code> dct:publisher</code> and <code>dct:issued </code> are used to give information about the origin of the dataset. The property <code> prov:actedOnBehalfOf </code> is used to designate that Adrian acted on behalf of the Transport Agency of MyCity.</p>
               <pre class="highlight">
   :stops-2015-05-05
       a dcat:Dataset, <strong>prov:Entity</strong> ;
@@ -1332,13 +1332,13 @@ The dataset is classified under
       <strong>dct:publisher :transport-agency-mycity ; </strong>
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-      <strong>dct:creator :john </strong>
+      <strong>dct:creator :adrian </strong>
       .
 
-  :john
+  :adrian
       a foaf:Person, prov:Agent ;
-      foaf:givenName "John" ;
-      foaf:mbox &lt;mailto:john@mycitytransport.org&gt; ;
+      foaf:givenName "Adrian" ;
+      foaf:mbox &lt;mailto:adrian@mycitytransport.org&gt; ;
       <strong>prov:actedOnBehalfOf :transport-agency-mycity </strong>
       .
   :transport-agency-mycity
@@ -1581,7 +1581,7 @@ The dataset is classified under
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-      dct:creator :john ;
+      dct:creator :adrian ;
       <strong>owl:versionInfo "1.0" ; </strong>
       <strong>pav:version "1.0" </strong>
       .
@@ -1702,7 +1702,7 @@ rel="original" </pre>
       dct:publisher :transport-agency-mycity ;
       dct:accrualPeriodicity &lt;http://purl.org/linked-data/sdmx/2009/code#freq-A&gt; ;
       dct:language &lt;http://id.loc.gov/vocabulary/iso639-1/en&gt; ;
-      dct:creator :john ;
+      dct:creator :adrian ;
        ...
       <strong>dct:isVersionOf :stops-2015-05-05 ;
       pav:previousVersion :stops-2015-05-05 ;
@@ -1866,14 +1866,14 @@ rel=“next last memento";
                 has several features that support persistence:</p>
               <ul>
                 <li>All names are subject to change over time but in choosing a
-                  domain name, it is reasonable for John to assume that MyCity
+                  domain name, it is reasonable for Adrian to assume that MyCity
                   will continue to exist and that it will continue to have a
                   government. Therefore, while cases like Yugoslavia prove that
                   even country names change and top level domains disappear
                   (like .yu), a domain name based on the city's name is as persistent as any
                   domain name can be.</li>
                 <li>By putting data on the <code>data.mycity.example.com</code>
-                  subdomain, John is creating a specific domain that can be
+                  subdomain, Adrian is creating a specific domain that can be
                   managed independently of any particular department.</li>
                 <li>It is <em>not</em> safe to assume that a specific <em>department</em>
                   will persist. The authorities in MyCity might very well decide
@@ -1886,7 +1886,7 @@ rel=“next last memento";
                   that the URI identifies a dataset, rather than, say, a
                   specific bus route.</li>
                 <li>Likewise, the path segment of <code>/bus</code>
-                  take us further towards the specific dataset for which John is
+                  take us further towards the specific dataset for which Adrian is
                   responsible.</li> 
                 <li>Finally, <code>/stops</code> leads us to the dataset
                   concerning bus stops in MyCity.</li>
@@ -2133,7 +2133,7 @@ rel=“next last memento";
             <p>Make data available in a machine-readable standardized data format that is easily parseable including but not limited to CSV, XML, HDF5, JSON and RDF serialization syntaxes like RDF/XML, JSON-LD, or Turtle.</p>
 <aside class="example">
 
-<p>John knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
+<p>Adrian knows that tabular data is commonly used on the Web and he decides to use CSV as the data format for one of the distributions of the bus stops dataset. To facilitate data processing, he uses the <a href = https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/> Model for Tabular Data and Metadata on the Web</a> for publishing the CSV distribution (<code>stops-2015-05-05.csv</code>). The example below presents a fragment of the CSV distribution which complies with the structural metadata defined in <a href="#StructuralMetadata">Example 4</a>.</p>
 
 <pre>
 Identifier,Name,Description,Latitude,Longitude,ZONE,URL 
@@ -2270,7 +2270,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             
 <aside class="example">
              
-<p>In order to reach a larger number of data consumers, John decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
+<p>In order to reach a larger number of data consumers, Adrian decides to also provide a JSON distribution of the bus stops dataset. In the following example, the property <code>dcat:distribution</code> is used to associate the dataset <code>stops-2015-05-05</code> with its two distributions: <code>stops-2015-05-05.csv</code> and <code>stops-2015-05-05.json.</code></p>
               <pre class="highlight">
   :stops-2015-05-05
       a dcat:Dataset ;
@@ -2484,7 +2484,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
 <p>Another example of this "design for wide use" can be seen in <a href="http://schema.org">schema.org</a>. Launched in June 2011, schema.org was massively adopted in a very short time in part because of its informative rather than normative approach for defining the types of objects that properties can be used with. For instance, the values of the property <a href="http://schema.org/author"><code>author</code></a> are only "expected" to be of type <code>Organization</code> or <code>Person</code>. <code>author</code> "can be used" on the type <code>CreativeWork</code> but this is not a strict constraint. Again, that approach to design makes schema.org a good choice as a vocabulary to use when encoding data for sharing.</p>
 
           <aside class="example">
-          <p>John encodes the bus stop data using GTFS [[GTFS]] because:</p><ul>
+          <p>Adrian encodes the bus stop data using GTFS [[GTFS]] because:</p><ul>
             <li>it is in widespread use;</li>
             <li>it offers a level of detail that matches his data;</li>
             <li>a motivation for publishing bus stop data is to support the development of applications to help bus users and GTFS is designed for just that purpose.</li>
@@ -2885,7 +2885,7 @@ Identifier,Name,Description,Latitude,Longitude,ZONE,URL
             <p>Creating an API is a little more involved than posting data for download. It requires some understanding of how to build a Web application. One need not necessarily to build one from scratch, however. If you use a data management platform, such as CKAN, you may be able to enable an existing API. Many Web development frameworks include support for APIs, and there are also frameworks written specifically for building custom APIs.</p>
             <p>Rails (Ruby), Django (Python), and Express (NodeJS) are some example Web development frameworks that offer support for building APIs. Examples of API frameworks include Swagger, Apigility, Restify, and Restlet. </p>
             <aside class="example">
-            <p>Besides providing bulk downloads of data about public transport, John decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
+            <p>Besides providing bulk downloads of data about public transport, Adrian decides to offer a more flexible data access mechanism. For this, he develops an API to offer access to bus stops, bus routes and real-time information about bus stops. See the <a href="dwbp-api-example.html">examples of its use</a>.</p>
             </aside>
           </section>
           <section class="test">
@@ -3095,7 +3095,7 @@ In order to help developers, the transport agency offers a complete documentatio
           <p>In both cases, the original URI continues to identify the resource and leads to useful information, even though the data is no longer directly available.</p>
 
           <aside class="example" id="archiveExample">
-          <p>John decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
+          <p>Adrian decides to archive versions of the bus stop data that have been superseded by more recent versions for at least a year, such as the version from 2012-03-30. The server is configured such that requests for the March 2012 dataset are redirected, using HTTP Code 303, to a Web page that includes the following notice.</p>
 
 <div style="border:thin solid black; padding:0 0.3em; font-family:serif">
 <h4 style="margin-top:0.3em">Archived</h4>
@@ -3868,7 +3868,7 @@ In order to help developers, the transport agency offers a complete documentatio
 
       <p>This document has benefited from inputs from many members of the Spatial Data on the Web Working Group. Specific thanks are due to Andrea Perego, Dan Brickley, Linda van den Brink and Jeremy Tandy.</p>
 
-      <p>The editors would also like to thank comments received from Addison Phillips, Adriano Machado, Adriano Veloso, Andreas Kuckartz, Augusto Herrmann, Bart van Leeuwen, Christophe Gueret, Doug Schepers, Erik Wilde, Giancarlo Guizzardi, Gisele Pappa, Gregg Kellogg, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Lewis John McGibbney, Makx Dekkers, Manuel Tomas Carrasco-Benitez, Maurino Andrea, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Peter Winstanley, Renato Iannella, Steven Adler, Vagner Diniz and Wagner Meira.</p>
+      <p>The editors would also like to thank comments received from Addison Phillips, Adriano Machado, Adriano Veloso, Andreas Kuckartz, Augusto Herrmann, Bart van Leeuwen, Christophe Gueret, Doug Schepers, Erik Wilde, Giancarlo Guizzardi, Gisele Pappa, Gregg Kellogg, Herbert Van de Sompel, Ivan Herman, Leigh Dodds, Lewis John McGibbney, Makx Dekkers, Manuel Tomas Carrasco-Benitez, Maurino Andrea, Michel Dumontier, Nandana Mihindukulasooriya, Nathalia Sautchuk Patrício, Peter Winstanley, Renato Iannella, Steven Adler, Vagner Diniz, and Wagner Meira.</p>
 
       <p>The editors also gratefully acknowledge the chairs of this Working Group: Deirdre Lee, Hadley Beeman, Yaso Córdova and the staff contact Phil Archer.</p>
       </section>
